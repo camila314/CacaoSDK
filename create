@@ -1,0 +1,11 @@
+#!/bin/sh
+copypath="~"
+read -p "Where would you like to install?" copypath
+copypath="${copypath//\\/}"
+if [ ! -d "$copypath" ]; then
+	echo "Unable to located path given: $copypath"
+else
+	echo "Copying files"
+	cp -r `dirname $0`/to_copy/* $copypath
+	echo "Done."
+fi
