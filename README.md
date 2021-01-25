@@ -10,8 +10,8 @@ Cacao requires the GNU gcc that is not installed by default on macs. The best wa
 On MacOS 10.14 (Mojave), there are issues with headers not being found. To fix this, ensure that the command line developer tools are installed and run the following:
 
 ```bash
-	cd /Library/Developer/CommandLineTools/Packages/
-	open macOS_SDK_headers_for_macOS_10.14.pkg
+cd /Library/Developer/CommandLineTools/Packages/
+open macOS_SDK_headers_for_macOS_10.14.pkg
 ```
 
 ## How to use
