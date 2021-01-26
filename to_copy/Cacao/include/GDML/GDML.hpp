@@ -61,7 +61,7 @@ public:
     void registerWrite(long address, size_t byteCount, char* bytes);
 
     template <typename F>
-    void registerHook(long address, F function);
+    F registerHook(long address, F function);
     func_t getOriginal(long address);
     char const* getName();
 private:
