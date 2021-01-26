@@ -2,7 +2,7 @@
 //  GDML.hpp
 //  GDML
 //
-//  Created by Camden on 7/17/20.
+//  Created by Full Name on 7/17/20.
 //  Copyright © 2020 camden314. All rights reserved.
 //
 #include <vector>
@@ -59,7 +59,9 @@ public:
     void enable();
     void disable();
     void registerWrite(long address, size_t byteCount, char* bytes);
-    void registerHook(long address, func_t function);
+
+    template <typename F>
+    void registerHook(long address, F function);
     func_t getOriginal(long address);
     char const* getName();
 private:
