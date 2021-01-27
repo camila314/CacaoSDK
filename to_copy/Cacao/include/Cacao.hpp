@@ -2,6 +2,7 @@
 #define __CACAO_HPP__
 
 #include <cocos2dx/cocos2d.h>
+#include <CCMenuItemSpriteExtra.h>
 #include <cocos2dext/cocos-ext.h>
 #include <GDML/GDML.hpp>
 #include <iostream>
@@ -142,10 +143,11 @@ public:
 	void addAllParticles();
 	void setColor(cocos2d::_ccColor3B const&);
 	void setSecondColor(cocos2d::_ccColor3B const&);
+	CLASS_PARAM(double, yAccel, 0x760);
 
 };
 
-class GJGameBaseLayer : public GDObj {
+class GJGameBaseLayer : public cocos2d::CCLayer, public GDObj {
 public:
 	CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
 	CLASS_PARAM(PlayerObject*, player1, 0x380);
@@ -167,6 +169,7 @@ public:
 	CLASS_PARAM(float, length, 0x5f8);
 	CLASS_PARAM(int, attempt, 0x754);
 	CLASS_PARAM(bool, practiceMode, 0x739);
+	CLASS_PARAM(float, time, 0x760);
 	STRUCT_PARAM(GameModes, gameModes, 0x76f);
 };
 
@@ -175,11 +178,6 @@ public:
 	static ObjectToolbox* sharedState();
 };
 
-class CCMenuItemSpriteExtra : public cocos2d::CCSprite {
-public:
-	static CCMenuItemSpriteExtra* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*));
-	void setSizeMult(float a);
-};
 class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
 	FLAlertLayer();
@@ -246,4 +244,11 @@ public:
 	CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x188);
 	CLASS_PARAM(int, scene, 0x1f4);
 };
+
+class ButtonSprite : public cocos2d::CCSprite, public GDObj {
+public:
+	static ButtonSprite* create(char const* text, int width, int relativeWidth, float scale, bool relative);
+};
+
+
 #endif

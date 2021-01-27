@@ -267,6 +267,9 @@ public:
     
     bool hasPremultipliedAlpha();
     bool hasMipmaps();
+
+    //Robtop Modification:
+    void releaseGLTexture(void);
 private:
     bool initPremultipliedATextureWithImage(CCImage * image, unsigned int pixelsWide, unsigned int pixelsHigh);
     

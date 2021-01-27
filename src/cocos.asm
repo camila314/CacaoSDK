@@ -172,6 +172,7 @@ defit __ZN21CCMenuItemSpriteExtra11setSizeMultEf, 0x1255e0
 
 defit __ZN7cocos2d13CCLabelBMFont6createEPKcS2_, 0x347660
 defit __ZN7cocos2d13CCLabelBMFont8setScaleEf, 0x34a5d0
+defit __ZN7cocos2d13CCLabelBMFont9setStringEPKcb, 0x3489e0
 
 defit __ZN11GameManager11fadeInMusicEPKc, 0x1c2ff0
 
@@ -363,3 +364,6 @@ defit __ZN16EditorPauseLayer9saveLevelEv, 0x13ebd0
 defit __ZN16GJAccountManager11sharedStateEv, 0x85070
 
 defit __ZNK7cocos2d7CCArray5countEv, 0x41a2f0
+
+defit __ZN7cocos2d8CCObject6retainEv, 0x250ec0
+defit __ZN12ButtonSprite6createEPKciifb, 0x4fa40

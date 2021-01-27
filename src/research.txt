@@ -1,0 +1,104 @@
+;Virtuals
+CCDirector:
+	[rdi+0xa0] = getTouchDispatcher()
+CCNode:
+	[rdi+0x1c0] = addChild(cocos2d::CCNode*, int)
+FLAlertLayer:
+	[rdi+0x3c0] = registerWithTouchDispatcher()
+	[rdi+0x4e0] = show()
+CCLayer:
+	[rdi+0x408] = setKeypadEnabled(bool)
+CCScale9Sprite:
+	[rdi+0x130] = setContentSize(CCSize)
+; variables
+
+CCNode:
+	[rdi+0x24] = rotation
+	[rdi+0x28] = rotation but its visual
+GameManager:
+	[rdi+0x180] = PlayLayer instance
+	[rdi+0x188] = LevelEditorLayer
+	[rdi+0x1c0] = username
+	[rdi+0x1f4] = scene number
+GameObject:
+	[rdi+0x3c4] = Object ID
+	[rdi+0x458] = pointer to an array of Group IDS
+	[rdi+0x460] = How Many Group IDS
+
+GJBaseGameLayer: 0x170
+	[rdi+0x180] = GJEffectManager instance
+	[rdi+0x380] = PlayerObject 1
+	[rdi+0x388] = PlayerObject 2
+	[rdi+0x390] = LevelSettingsObject instance
+	[rdi+0x3a0] = CCArray of GameObject instances
+
+
+PlayLayer (GJBaseGameLayer): 0x4d0
+	[rdi+0x538] = some sort of CCArray. Unknown
+	[rdi+0x598] = CCParticleSystem instance
+	[rdi+0x5b8] = AudioEffectsLayer instance
+	[rdi+0x5c8] = GJGroundLayer instance
+	[rdi+0x5d0] = another GJGroundLayer instance
+	[rdi+0x660] = CCNode instance
+	[rdi+0x71c] = Level flip
+	[rdi+0x720] = UILayer instance
+	[rdi+0x728] = GJGameLevel instance
+	[rdi+0x738] = testmode boolean
+	[rdi+0x739] = practice mode boolean
+	[rdi+0x754] = attempt number
+	[rdi+0x760] = time
+
+PlayerObject (GameObject):
+	[rdi+0x5f8] = CCMotionStreak instance
+	[rdi+0x608] = player speed
+	[rdi+0x6b0] = CCAnimatedSprite instance
+	[rdi+0x6d0] = CCParticleSystem instance
+
+	[rdi+0x700] = also CCParticleSystem instance
+
+	[rdi+0x758] = robot can jump
+	[rdi+0x760] = y acceleration
+	[rdi+0x76f] = is cube
+	[rdi+0x770] = is ship
+	[rdi+0x771] = is ufo
+	[rdi+0x772] = is ball
+	[rdi+0x773] = is wave
+	[rdi+0x774] = is robot
+	[rdi+0x775] = is spider
+
+	[rdi+0x776] = is upside down
+	[rdi+0x777] = is dead
+
+	[rdi+0x778] = is on ground (only effects cube)
+	[rdi+0x77c] = vehicle size (1.0 for normal 0.6 for small)
+	[rdi+0x7b0] = CCArray of touched rings
+
+	[rdi+0x7c8] = CCPoint of player
+		[rdi+0x7c8] = x position
+		[rdi+0x7cc] = y position
+
+CheckpointObject (CCNode):
+	[rdi+0x128] = PlayerCheckpoint instance
+
+EditorUI:
+	[rdi+0x3e0] = some sort of boolean
+	[rdi+0x260] = array of objects
+
+GameStatsManager:
+	[rdi+0x218] = CCDictionary of unlocked items
+
+LevelSettingsObject:
+	[rdi+0x149] = whether upside down
+	[rdi+0x131] = whether dual
+	[rdi+0x150] = GJGameLevel instance
+
+GJGameLevel:
+	[rdi+0x138] = std string of level name
+    [rdi+0xf8] = levelid
+    [rdi+0x150] = std string of level author name
+    [rdi+0x1b0] = difficulty
+
+AccountManager:
+	[rdi+0x128] = password
+	[rdi+0x130] = username
+	

@@ -1,7 +1,5 @@
 # CacaoSDK
-CacaoSDK is a toolkit for Geometry Dash programming on the MacOS platform. To start, run the `create` file and specify a location
-
-For windows, see [CappuccinoSDK](https://github.com/AndreNIH/CappuccinoSDK)
+CacaoSDK is an extension of the [CappuccinoSDK](https://github.com/AndreNIH/CappuccinoSDK) toolkit for Geometry Dash programming on MacOS. To start, run the `create` file and specify a location
 
 ## Prerequisites
 

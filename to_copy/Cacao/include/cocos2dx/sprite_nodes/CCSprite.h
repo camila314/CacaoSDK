@@ -274,7 +274,11 @@ public:
      */
     inline ccBlendFunc getBlendFunc(void) { return m_sBlendFunc; }
     /// @}
-
+    
+    //Robtop Modification
+    virtual void setChildColor(const _ccColor3B&);
+    virtual void setChildOpacity(unsigned char);
+    
     /// @{
     /// @name Functions inherited from CCNode
     virtual void setScaleX(float fScaleX);
@@ -343,7 +347,8 @@ public:
      
     /// @} end of BatchNode methods
     
-    
+    //Robtop Modification:
+    virtual void refreshTextureRect(void);
     
     /// @{
     /// @name Texture methods
@@ -501,10 +506,26 @@ public:
     void setFlipY(bool bFlipY);
     
     /// @} End of Sprite properties getter/setters
+
+    //Robtop Modification:
+    float getBlVertexMod(void)const;
+    float getBrVertexMod(void)const;
+    bool getDontDraw(void)const;
+    float getTlVertexMod(void)const;
+    float getTrVertexMod(void)const;
+    CCPoint const& getUnflippedOffsetPosition(void);
+    void setBlVertexMod(float);
+    void setBrVertexMod(float);
+    void setDontDraw(bool);
+    void setTlVertexMod(float);
+    void setTrVertexMod(float);
+
+
     
 protected:
     void updateColor(void);
-    virtual void setTextureCoords(CCRect rect);
+    //Robtop Modification
+    virtual void setTextureCoords(const CCRect& rect);
     virtual void updateBlendFunc(void);
     virtual void setReorderChildDirtyRecursively(void);
     virtual void setDirtyRecursively(bool bValue);
@@ -548,7 +569,21 @@ protected:
 
     // image is flipped
     bool m_bFlipX;                              /// Whether the sprite is flipped horizaontally or not.
-    bool m_bFlipY;                              /// Whether the sprite is flipped vertically or not.
+    bool m_bFlipY;                              /// Whether the sprite is flipped vertically or not. //1BAh
+
+    //Robtop Modifications:
+    bool     m_bUnknown;  //0x1BB
+    uint32_t m_uUnknown0; //0x1BC
+    uint32_t m_uUnknown1; //0x1C0
+    uint32_t m_uUnknown2; //0x1C4
+    uint32_t m_uUnknown3; //0x1C8
+    uint32_t m_uUnknown4; //0x1CC
+    uint32_t m_uUnknown5; //0x1D0
+    uint32_t m_uUnknown6; //0x1D4
+    uint32_t m_uUnknown8; //0x1D8
+    uint8_t  m_uUnknown9; //0x1DC
+    uint32_t m_uUnknownA; //0x1E0
+
 };
 
 

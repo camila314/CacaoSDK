@@ -61,20 +61,36 @@ public:
 		usesEveryFrame = false;
 		everyFrame = NULL;
 
-		container = new ModContainer("MainEventLoop");
+		container = new ModContainer("MainEventLoop", "global");
 		container->registerHook(getBase()+0x249690,(func_t)EventLoop::runLoop);
 	}
 
 };
 EventLoop* EventLoop::shared = 0;
 
+#define CREATE_FUNC(__TYPE__) \
+static __TYPE__* create() \
+{ \
+    __TYPE__ *pRet = new(std::nothrow) __TYPE__(); \
+    if (pRet && pRet->inits()) \
+    { \
+        pRet->autorelease(); \
+        return pRet; \
+    } \
+    else \
+    { \
+        delete pRet; \
+        pRet = nullptr; \
+        return nullptr; \
+    } \
+}
 
 #define CLASS_PARAM(__TYPE__,__GETTER__, __OFFSET__) \
 	inline __TYPE__ _##__GETTER__() { \
 		if (this) {\
 			return *(__TYPE__*)((long)this+__OFFSET__); \
 		} else { \
-			return (__TYPE__)NULL; \
+			return NULL; \
 		}; \
 	}
 

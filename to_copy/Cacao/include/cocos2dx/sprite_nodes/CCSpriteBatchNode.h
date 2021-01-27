@@ -169,6 +169,14 @@ protected:
     It add the sprite to the children and descendants array, but it doesn't update add it to the texture atlas
     */
     CCSpriteBatchNode * addSpriteWithoutQuad(CCSprite*child, unsigned int z, int aTag);
+    
+    //Robtop Modification:
+    bool getManualSortChildren(void)const;
+    int getAtlasCapacity(void);
+    int getUsedAtlasCapacity(void);
+    void increaseAtlasCapacity(unsigned int);
+    void manualSortAllChildren(void);
+    void setManualSortChildren(bool);
 
 private:
     void updateAtlasIndex(CCSprite* sprite, int* curIndex);
@@ -181,6 +189,9 @@ protected:
 
     // all descendants: children, gran children, etc...
     CCArray* m_pobDescendants;
+    //Robtop Modification:
+    bool m_bManualSortChildren;
+    bool m_bManualSortAllChildren;
 };
 
 // end of sprite_nodes group

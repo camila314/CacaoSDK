@@ -30,7 +30,7 @@
 #include "ccConfig.h"
 #include "CCPlatformConfig.h"
 #include "CCPlatformDefine.h"
-
+//#define CC_FORMAT_PRINTF(formatPos, argPos)
 /**
  * define a create function for a specific type, such as CCLayer
  * @__TYPE__ class type to add create(), such as CCLayer
@@ -140,6 +140,24 @@ protected: varType varName;\
 public: virtual varType get##funName(void);\
 public: virtual void set##funName(varType var);
 
+//Andre Modification:
+#define CC_PROPERTY_NOVIRTUAL(varType, varName, funName)\
+protected: varType varName;\
+public: varType get##funName(void);\
+public: void set##funName(varType var);
+
+//Andre Modification:
+#define CC_PROPERTY_NOVIRTUAL_CONST(varType, varName, funName)\
+protected: varType varName;\
+public: varType get##funName(void) const;\
+public: void set##funName(varType var);
+
+//Andre Modification (Note from the future, this does the exact same thing as CC_SYNTHESIZE_RETAIN):
+#define CC_PROPERTY_CONST(varType, varName, funName)\
+protected: varType varName;\
+public: virtual varType get##funName(void) const;\
+public: virtual void set##funName(varType var);
+
 #define CC_PROPERTY_PASS_BY_REF(varType, varName, funName)\
 protected: varType varName;\
 public: virtual const varType& get##funName(void);\
@@ -194,6 +212,28 @@ public: virtual void set##funName(varType var)   \
         varName = var; \
     } \
 } 
+
+//ROBTOP DEVIRTUALIZATION MACROS
+
+#define ROB_CC_SYNTHESIZE_READONLY(varType, varName, funName)\
+protected: varType varName;\
+public: varType get##funName(void) const { return varName; }
+
+#define ROB_CC_SYNTHESIZE(varType, varName, funName)\
+protected: varType varName;\
+public: varType get##funName(void) const { return varName; }\
+public: void set##funName(varType var){ varName = var; }
+
+#define ROB_CC_PROPERTY_READONLY(varType, varName, funName)\
+protected: varType varName;\
+public: varType get##funName(void);
+
+#define ROB_CC_SYNTHESIZE_RETAIN(varType, varName, funName)    \
+private: varType varName; \
+public: varType get##funName(void) const { return varName; } \
+public: void set##funName(varType var);   \
+
+//END OF ROBTOP FUNCTION
 
 #define CC_SAFE_DELETE(p)            do { if(p) { delete (p); (p) = 0; } } while(0)
 #define CC_SAFE_DELETE_ARRAY(p)     do { if(p) { delete[] (p); (p) = 0; } } while(0)

@@ -38,40 +38,50 @@ class CCEGL;
 
 class CC_DLL CCEGLView : public CCEGLViewProtocol
 {
+protected:
+    //Robtop Modification
+    virtual ~CCEGLView();
 public:
     CCEGLView();
-    virtual ~CCEGLView();
 
     /* override functions */
     virtual bool isOpenGLReady();
     virtual void end();
     virtual void swapBuffers();
     virtual void setFrameSize(float width, float height);
-	virtual void setEditorFrameSize(float width, float height,HWND hWnd); 
+	
+    //Robtop Modification
+    //virtual void setEditorFrameSize(float width, float height,HWND hWnd); 
     virtual void setIMEKeyboardState(bool bOpen);
 
     void setMenuResource(LPCWSTR menu);
     void setWndProc(CUSTOM_WND_PROC proc);
 
 protected:
-    virtual bool Create();
+    //Robtop Modification
+    //virtual bool Create();
 public:
     bool initGL();
     void destroyGL();
 
-    virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
+    //Robtop Modification
+    //virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 
 	void setHWnd(HWND hWnd);
     // win32 platform function
     HWND getHWnd();
-    virtual void resize(int width, int height);
+    
+    //Robtop Modification
+    void resize(int width, int height);
 	
     /* 
      * Set zoom factor for frame. This method is for debugging big resolution (e.g.new ipad) app on desktop.
      */
     void setFrameZoomFactor(float fZoomFactor);
 	float getFrameZoomFactor();
-    virtual void centerWindow();
+    
+    //Robtop Modification
+    void centerWindow();
 
     typedef void (*LPFN_ACCELEROMETER_KEYHOOK)( UINT message,WPARAM wParam, LPARAM lParam );
     void setAccelerometerKeyHook( LPFN_ACCELEROMETER_KEYHOOK lpfnAccelerometerKeyHook );

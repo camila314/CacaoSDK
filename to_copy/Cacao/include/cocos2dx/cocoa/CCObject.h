@@ -30,7 +30,7 @@ THE SOFTWARE.
 #ifdef EMSCRIPTEN
 #include <GLES2/gl2.h>
 #endif // EMSCRIPTEN
-
+class DS_Dictionary;
 NS_CC_BEGIN
 
 /**
@@ -42,7 +42,8 @@ class CCZone;
 class CCObject;
 class CCNode;
 class CCEvent;
-
+enum  CCObjectType {
+};
 /**
  * @js NA
  * @lua NA
@@ -64,10 +65,16 @@ public:
     // Lua reference id
     int                 m_nLuaID;
 protected:
+    unsigned int        m_uTag;
     // count of references
     unsigned int        m_uReference;
+
+    CCObjectType        m_CCObjectType;
+    
     // count of autorelease
     unsigned int        m_uAutoReleaseCount;
+
+    unsigned int        m_uPadding;
 public:
     CCObject(void);
     /**
@@ -84,9 +91,12 @@ public:
     virtual bool isEqual(const CCObject* pObject);
 
     virtual void acceptVisitor(CCDataVisitor &visitor);
-
     virtual void update(float dt) {CC_UNUSED_PARAM(dt);};
-    
+    virtual void encodeWithCoder(DS_Dictionary*); //Robtop Modification
+    virtual bool canEncode();    //Robtop Modification
+    virtual int  getTag() const; //Robtop Modification
+    virtual void setTag(int);    //Robtop Modification
+
     friend class CCAutoreleasePool;
 };
 

@@ -259,6 +259,15 @@ public:
     void setFntFile(const char* fntFile);
     const char* getFntFile();
 	CCBMFontConfiguration* getConfiguration() const;
+
+    //Robtop Modifications:
+    static bool createBatched(char const*, char const*, CCArray*);
+    bool getIsBatched(void)const;
+    CCArray* getTargetArray(void)const;
+    void limitLabelWidth(float, float, float);
+    void setIsBatched(bool);
+    void setTargetArray(CCArray*);
+
 #if CC_LABELBMFONT_DEBUG_DRAW
     virtual void draw();
 #endif // CC_LABELBMFONT_DEBUG_DRAW
@@ -271,38 +280,51 @@ private:
 protected:
     virtual void setString(unsigned short *newString, bool needUpdateLabel);
     // string to render
-    unsigned short* m_sString;
+    unsigned short* m_sString; //0x10C
     
     // name of fntFile
-    std::string m_sFntFile;
-    
+    std::string m_sFntFile; //0x110
+
+    //m_sInitialString is placed continously after the 28 bytes of std::string(instead of +4 bytes of padding), in LE notatio operator&
+    //returns the address at with an offset of 4 bytes where the object actually is in memory, whenever std::string is aligned + other data type
+    //the formula is: T offset = (address of string) + 28 - sizeof(T)
+
     // initial string without line breaks
-    unsigned short* m_sInitialString;
-    std::string m_sInitialStringUTF8;
+    unsigned short* m_sInitialString; //0x128
+    std::string m_sInitialStringUTF8; //0x12C
     
     // alignment of all lines
-    CCTextAlignment m_pAlignment;
+    CCTextAlignment m_pAlignment; //0x144
     // max width until a line break is added
-    float m_fWidth;
+    float m_fWidth; //0x148
     
-    CCBMFontConfiguration *m_pConfiguration;
+    CCBMFontConfiguration *m_pConfiguration; //0x14C
     
-    bool m_bLineBreakWithoutSpaces;
+    bool m_bLineBreakWithoutSpaces; //0x150
     // offset of the texture atlas
-    CCPoint    m_tImageOffset;
+    CCPoint    m_tImageOffset; //0x154(padding)
     
     // reused char
-    CCSprite *m_pReusedChar;
+    CCSprite *m_pReusedChar; //0x15C
     
     // texture RGBA
-    GLubyte m_cDisplayedOpacity;
-    GLubyte m_cRealOpacity;
-    ccColor3B m_tDisplayedColor;
-    ccColor3B m_tRealColor;
-    bool m_bCascadeColorEnabled;
-    bool m_bCascadeOpacityEnabled;
+    GLubyte m_cDisplayedOpacity; //0x15D
+    GLubyte m_cRealOpacity;      //0x15E
+    //2 bytes padding
+
+    ccColor3B m_tDisplayedColor; //0x160
+    ccColor3B m_tRealColor;      //0x164
+    bool m_bCascadeColorEnabled; //0x165
+    bool m_bCascadeOpacityEnabled; //0x166
     /** conforms to CCRGBAProtocol protocol */
-    bool        m_bIsOpacityModifyRGB;
+    bool        m_bIsOpacityModifyRGB; //0x167, but this is actually 16A
+    //Robtop Modifications:
+    bool        m_bIsBatched;   //0x16B
+    CCArray*    m_pTargetArray; //16C
+    uint32_t    m_uUnknown;     //0x170
+
+    //CCLabelBMFont::getIsBatched  = 16B
+    //CLabelBMFont::getTargetArray = 16C
 
 };
 

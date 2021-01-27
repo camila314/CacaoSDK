@@ -434,6 +434,8 @@ public:
      */
     virtual const CCSize& getContentSize() const;
 
+    //Robtop Modification:
+    virtual CCSize getScaledContentSize();
     
     /**
      * Sets whether the node is visible
@@ -663,6 +665,9 @@ public:
      * @js removeFromParent
      */
     virtual void removeFromParentAndCleanup(bool cleanup);
+
+    //Robtop Modification
+    virtual void removeMeAndCleanup();
     /** 
      * Removes a child from the container with a cleanup
      *
@@ -782,7 +787,8 @@ public:
      *
      * @return A interger that identifies the node.
      */
-    virtual int getTag() const;
+     //Robtop Modification
+    //virtual int getTag() const;
     /**
      * Changes the tag that is used to identify the node easily.
      *
@@ -790,7 +796,9 @@ public:
      *
      * @param A interger that indentifies the node.
      */
-    virtual void setTag(int nTag);
+    
+    //Robtop Modification
+    //virtual void setTag(int nTag);
     
     /**
      * Returns a custom user data pointer
@@ -1246,13 +1254,15 @@ public:
      * Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.
      * The matrix is in Pixels.
      */
-    virtual CCAffineTransform nodeToParentTransform(void);
+    
+     //Robtop Modification
+    virtual const CCAffineTransform nodeToParentTransform(void);
 
     /** 
      * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.
      * The matrix is in Pixels.
      */
-    virtual CCAffineTransform parentToNodeTransform(void);
+    virtual const CCAffineTransform parentToNodeTransform(void);
 
     /** 
      * Returns the world affine transform matrix. The matrix is in Pixels.
@@ -1370,6 +1380,11 @@ public:
      *   removes a component by its name      
      */
     virtual bool removeComponent(const char *pName);
+
+    /** 
+     *   removes a component by its pointer      
+     */
+    virtual bool removeComponent(CCComponent *pComponent);
     
     /**
      *   removes all components
@@ -1377,6 +1392,8 @@ public:
     virtual void removeAllComponents();
     /// @} end of component functions
 
+    //Robtop Modification
+    virtual void updateTweenAction(float, char const*);
 private:
     /// lazy allocs
     void childrenAlloc(void);
@@ -1426,7 +1443,7 @@ protected:
     CCArray *m_pChildren;               ///< array of children nodes
     CCNode *m_pParent;                  ///< weak reference to parent node
     
-    int m_nTag;                         ///< a tag. Can be any number you assigned just to identify this node
+    //int m_nTag;                       ///< a tag. Can be any number you assigned just to identify this node
     
     void *m_pUserData;                  ///< A user assingned void pointer, Can be point to any cpp object
     CCObject *m_pUserObject;            ///< A user assigned CCObject
@@ -1461,7 +1478,9 @@ protected:
 
 };
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 //#pragma mark - CCNodeRGBA
+#endif
 
 /** CCNodeRGBA is a subclass of CCNode that implements the CCRGBAProtocol protocol.
  
