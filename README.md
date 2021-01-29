@@ -1,6 +1,7 @@
 # CacaoSDK
 CacaoSDK is an extension of the [CappuccinoSDK](https://github.com/AndreNIH/CappuccinoSDK) toolkit for Geometry Dash programming on MacOS. To start, run the `create` file and specify a location
 
+Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_route) and also uses [Zydis](https://github.com/zyantific/zydis) for function hooking.
 ## Prerequisites
 
 Cacao requires the GNU gcc that is not installed by default on macs. The best way to install it is to use brew, `brew install gcc@5`. While the version used is customizable in the makefile it's highly recommended that you use gcc 5.

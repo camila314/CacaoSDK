@@ -176,6 +176,12 @@ public: virtual void set##funName(const varType& var);
 protected: varType varName;\
 public: virtual varType get##funName(void) const { return varName; }
 
+
+// camden modification
+#define CC_SYNTHESIZE_READONLY_NOVIRTUAL(varType, varName, funName)\
+protected: varType varName;\
+public: varType get##funName(void) const { return varName; }
+
 #define CC_SYNTHESIZE_READONLY_PASS_BY_REF(varType, varName, funName)\
 protected: varType varName;\
 public: virtual const varType& get##funName(void) const { return varName; }
