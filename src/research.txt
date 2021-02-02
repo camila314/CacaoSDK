@@ -3,8 +3,10 @@ CCDirector:
 	[rdi+0xa0] = getTouchDispatcher()
 CCNode:
 	[rdi+0x1c0] = addChild(cocos2d::CCNode*, int)
+	[rdi+0xb8] = setPosition(cocos2d::CCPoint)
+	[rdi+0xa0] = setScale(float)
 FLAlertLayer:
-	[rdi+0x3c0] = registerWithTouchDispatcher()
+	[rdi+0x3c0] = registerWithTouchDispatcher(int)
 	[rdi+0x4e0] = show()
 CCLayer:
 	[rdi+0x408] = setKeypadEnabled(bool)
@@ -101,4 +103,9 @@ GJGameLevel:
 AccountManager:
 	[rdi+0x128] = password
 	[rdi+0x130] = username
-	
+
+ShareCommentLayer (FLAlertLayer):
+	[rdi+0x26c] = unknown
+	[rdi+0x268] = char limit
+	[rdi+0x270] = comment type
+	[rdi+0x220] = main layer

@@ -170,6 +170,9 @@ public:
      * @lua NA
      */
     void setPriority(int nPriority, CCTouchDelegate *pDelegate);
+
+    // Robtop modification
+    void incrementForcePrio(int nPrio);
     /**
      * @lua NA
      */

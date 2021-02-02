@@ -8,37 +8,44 @@
 namespace Cacao {
     typedef void (cocos2d::CCObject::* CC_SEL)(cocos2d::CCObject*);
 
-    cocos2d::CCPoint relativePosition(double x, double y) {
-        auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
-        float xp = winSize.width * (x/100.);
-        float yp = winSize.height * (y/100.);
-        return {.x = xp , .y = yp};
-    }
-    cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
-        auto image = new cocos2d::CCImage();
-        image->initWithImageData((void*)img, img_len, cocos2d::CCImage::kFmtPng,1,1,1);
+    cocos2d::CCPoint relativePosition(double x, double y);
+    cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
-        auto text = new cocos2d::CCTexture2D();
-        text->initWithImage(image);
+    CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, CC_SEL callback);
 
-        cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
 
-        std::cout << image->getWidth() << "\n";
-        std::cout << image->getHeight() << "\n";
+    class FLDialogHelper;
 
-        auto sprite = cocos2d::CCSprite::create();
-        sprite->initWithTexture(text, r);
+    class FLDialogDelegate {
+    protected:
+        virtual void onSubmit(FLDialogHelper* dl, const std::string& text);
+        virtual void onCancel(FLDialogHelper* dl);
+        virtual void onShow(FLDialogHelper* dl);
+        friend class FLDialogHelper;
+    };
 
-        sprite->setTexture(text);
+    class FLDialogHelper : public cocos2d::CCNode {
+     public:
+        static FLDialogHelper* create(FLDialogDelegate* del, char const* title, char const* submit, char const* cancel, char const* placeholder);
+        // convenience functions
+        static FLDialogHelper* create(FLDialogDelegate* del, char const* title, char const* submit, char const* cancel);
+        static FLDialogHelper* create(FLDialogDelegate* del, char const* title, char const* submit);
+        static FLDialogHelper* create(FLDialogDelegate* del, char const* title);
+        static FLDialogHelper* create(FLDialogDelegate* del);
+        static FLDialogHelper* create();
+        void close();
+        void show();
 
-        return sprite;
-    }
-
-    CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, CC_SEL callback) {
-        auto on = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
-        auto off = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
-        return CCMenuItemToggler::create(off, on, parent, callback);
-    }
+        bool initWithStuff(FLDialogDelegate* delegate, char const* title, char const* submit, char const* cancel, char const* placeholder);
+     protected:
+        FLAlertLayer* alertLayer;
+        cocos2d::CCLayer* mainLayer;
+        CCTextInputNode* textNode;
+        FLDialogDelegate* del;
+     private:
+        void onSubmit(cocos2d::CCObject*);
+        void onCancel(cocos2d::CCObject*);
+    };
 }  // namespace Cacao
 
 #endif

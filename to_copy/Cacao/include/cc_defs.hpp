@@ -10,6 +10,8 @@
 #include <cocos2dx/cocos2d.h>
 #include <cocos2dext/cocos-ext.h>
 
+void setupTypeinfos();
+
 typedef void(*queuefunc)(std::string);
 
 typedef struct GameModes {
@@ -45,8 +47,6 @@ class GDObj {
 public:
     void* valOffset(long offset);
     void setValOffset(long offset, void* setter);
-private:
-    char pad[0x1000];
 };
 
 class GJGameLevel : public GDObj {
@@ -144,6 +144,11 @@ public:
     static ObjectToolbox* sharedState();
 };
 
+class ButtonSprite : public cocos2d::CCSprite, public GDObj {
+public:
+    static ButtonSprite* create(char const* text, int width, int relativeWidth, float scale, bool relative);
+};
+
 class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
     FLAlertLayer();
@@ -152,8 +157,28 @@ public:
     static FLAlertLayer* create(char const* title, const std::string &desc, char const* btn) {
         return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);
     }
-    int show();
+    virtual ~FLAlertLayer();
+    virtual void onEnter(void);
+    virtual bool ccTouchBegan(cocos2d::CCTouch *,cocos2d::CCEvent *);
+    virtual void ccTouchMoved(cocos2d::CCTouch *,cocos2d::CCEvent *);
+    virtual void ccTouchEnded(cocos2d::CCTouch *,cocos2d::CCEvent *);
+    virtual void ccTouchCancelled(cocos2d::CCTouch *,cocos2d::CCEvent *);
+    virtual void registerWithTouchDispatcher(int);
+    virtual void keyBackClicked(void);
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    int show(void);
+    // todo: actually finish this
+    void* unknown_0;
+    char unknown_1[32];
+    cocos2d::CCLayer* mainLayer;
 };
+
+
+class TextArea : public ButtonSprite {
+public:
+    static TextArea* create(std::string a, char const*, float textSize, float maxWidth, cocos2d::CCPoint position, float returnSize, bool idk);
+};
+
 
 class MenuLayer : public cocos2d::CCLayer, public GDObj {
 public:
@@ -217,11 +242,6 @@ public:
     CLASS_PARAM(int, scene, 0x1f4);
 };
 
-class ButtonSprite : public cocos2d::CCSprite, public GDObj {
-public:
-    static ButtonSprite* create(char const* text, int width, int relativeWidth, float scale, bool relative);
-};
-
 class InfoLayer : public cocos2d::CCLayer, public GDObj {
 public:
     void loadPage(int type, bool yes);
@@ -237,4 +257,13 @@ public:
     void setSizeMult(float);
 };
 
+class CCTextInputNode : public cocos2d::CCNode, public cocos2d::CCIMEDelegate, public GDObj {
+public:
+    static CCTextInputNode* create(float x, float y, char const* placeholder, char const* font, int, char const*);
+    void setAllowedChars(std::string allowed);
+    void setMaxLabelScale(float max);
+    void setMaxLabelWidth(float max);
+    std::string getString();
+    char const* getString_s(); // modification, spooky
+};
 #endif
