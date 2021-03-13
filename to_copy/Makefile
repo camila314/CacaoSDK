@@ -1,14 +1,15 @@
 #customizable-kind of
-CXX=g++-5
+CXX=g++
 OUTPUT=dist/main.dylib
 
 # no touch
 
-LDFLAGS=-static-libstdc++
+#export CPLUS_INCLUDE_PATH=/Users/jakrillis/projects/builds/macosx-sdks/MacOSX10.7.sdk/usr/include
+export CPLUS_INCLUDE_PATH=~/MacOSX10.7.sdk/usr/include
+
 INCL=Cacao/include Cacao/include/cocos2dx Cacao/include/cocos2dx/include Cacao/include/cocos2dx/kazmath/include Cacao/include/cocos2dx/platform/mac Cacao/include/cocos2dx/platform/third_party/mac Cacao/include/cocos2dx/platform/third_party/mac/OGLES Cacao/include/cocos2dext Cacao/include/cocos2dx/custom/Sprites/CCMenuItemSpriteExtra
 CXX_INCL=$(INCL:%=-I%)
-CXX_FLAGS=-std=c++11 -DCC_TARGET_OS_MAC -lGDML -lCacao -LCacao/static -dynamiclib -o $(OUTPUT) -lSystem -lstdc++ -static -g Cacao/include/Cacao.cpp
-OSXINJ := $(shell command -v osxinj 2> /dev/null)
+CXX_FLAGS= -mmacosx-version-min=10.7 -isysroot ~/MacOSX10.7.sdk/usr/include -std=c++11 -DCC_TARGET_OS_MAC -lGDML -lCacao -LCacao/static -dynamiclib -o $(OUTPUT) -lSystem -lstdc++ -g Cacao/include/Cacao.cpp -Wno-deprecated
 
 main: dist
 	@echo "Building project..."
@@ -19,7 +20,4 @@ dist:
 clean: 
 	-@rm -rf dist 2>/dev/null || true
 inject:
-	ifndef OSXINJ
-	    $(error "Can't automatically inject without osxinj installed")
-	endif
 	sudo osxinj "Geometry Dash" $(OUTPUT)
