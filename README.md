@@ -4,16 +4,7 @@ CacaoSDK is an extension of the [CappuccinoSDK](https://github.com/AndreNIH/Capp
 Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_route) and also uses [Zydis](https://github.com/zyantific/zydis) for function hooking.
 ## Prerequisites
 
-Cacao requires the GNU gcc that is not installed by default on macs. The best way to install it is to use brew, `brew install gcc@5`. While the version used is customizable in the makefile it's highly recommended that you use gcc 5.
-
-### Compiler issues
-
-On MacOS 10.14 (Mojave), there are issues with headers not being found. To fix this, ensure that the command line developer tools are installed and run the following:
-
-```bash
-cd /Library/Developer/CommandLineTools/Packages/
-open macOS_SDK_headers_for_macOS_10.14.pkg
-```
+Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the makefile to add the path of the sdk, put respectively in the `SDK_LOCATION` variable.
 
 ## How to use
 
@@ -79,6 +70,6 @@ Instead of using `int main`, we are using `void inject`. The inject function is 
 
 ### Cacao
 
-For Cacao, all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()._playLayer()`.
+For Cacao, all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()._playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
 
-For a full list of functions, look at the Cacao.hpp header file.
+For a full list of helper functions, look at the Cacao.hpp header file.
