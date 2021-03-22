@@ -9,6 +9,32 @@
 #define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 namespace Cacao {
     typedef void (cocos2d::CCObject::* CC_SEL)(cocos2d::CCObject*);
+    typedef void (cocos2d::CCObject::* CC_SCHED)(float);
+
+    template <typename K>
+    void scheduleFunction(K func) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, 0, 0.0, false);
+    }
+    template <typename K>
+    void scheduleFunction(K func, float delay) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, 0, delay, false);
+    }
+
+    template <typename K>
+    void repeatFunction(K func, int times) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, times, 0.0, false);
+    }
+
+    template <typename T>
+    char const* tInfoName(T ptr) {
+        //printf("%p\n", ptr);
+        long vtable = *(long*)(ptr);
+        //printf("%p\n", vtable - getBase());
+        long typeinfo = *(long*)(vtable-8);
+        //printf("%p\n", typeinfo);
+        char const* infoname = *(char const**)(typeinfo + 8);
+        return infoname;
+    }
 
     cocos2d::CCPoint relativePosition(double x, double y);
     cocos2d::CCPoint addedPosition(double x, double y);

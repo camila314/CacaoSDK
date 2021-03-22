@@ -5,6 +5,7 @@
 using namespace cocos2d;
 
 namespace Cacao {
+
     cocos2d::CCPoint relativePosition(double x, double y) {
         auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
         float xp = winSize.width * (x/100.);
