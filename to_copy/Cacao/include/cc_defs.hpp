@@ -16,6 +16,7 @@
 #define LEL (GM->_editorLayer())
 #define PL (GM->_playLayer())
 #define GJBL (LEL ? static_cast<GJBaseGameLayer*>(LEL) : static_cast<GJBaseGameLayer*>(PL))
+#define WINSIZE (CCDirector::sharedDirector()->getWinSize())
 void setupTypeinfos();
 
 typedef void(*queuefunc)(std::string);
@@ -63,6 +64,23 @@ public:
     STRUCT_PARAM(LevelDifficulty, difficulty, 0x1b0);
 };
 
+class CCSpritePlus : public cocos2d::CCSprite {
+public:
+  virtual void setFlipX(bool);
+  virtual void setFlipY(bool);
+  virtual void setPosition(cocos2d::CCPoint const&);
+  virtual void setRotation(float);
+  virtual void setScale(float);
+  virtual void setScaleX(float);
+  virtual void setScaleY(float);
+protected:
+  cocos2d::CCArray *m_followers;
+  CCSpritePlus *m_followingSprite;
+  bool m_hasFollower;
+  bool m_propagateScaleChanges;
+  bool m_propagateFlipChanges;
+};
+
 class LevelSettingsObject : public GDObj {
 public:
     CLASS_PARAM(GJGameLevel*, level, 0x150);
@@ -88,7 +106,7 @@ public:
     virtual ~GameSoundManager();
 };
 
-class GameObject : public cocos2d::CCSprite, public GDObj{
+class GameObject : public CCSpritePlus, public GDObj{
 public:
     GameObject();
     void init(char const* frame);
@@ -98,6 +116,8 @@ public:
     void playShineEffect();
     CLASS_PARAM(int, type, 0x370);
     CLASS_PARAM(int, id, 0x3c4);
+    CLASS_PARAM(bool, inEditLayer, 0x279);
+    CLASS_PARAM(cocos2d::CCPoint, startPos, 0x37c);
     CLASS_PARAM(bool, touchTriggered, 0x378);
     CLASS_PARAM(bool, spawnTriggered, 0x379);
     CLASS_PARAM(int, uuid, 0x36c);
@@ -155,6 +175,7 @@ public:
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
 public:
     void spawnGroup(int group);
+    CLASS_PARAM(cocos2d::CCLayer*, mainLayer, 0x188);
     CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
     CLASS_PARAM(PlayerObject*, player1, 0x380);
     CLASS_PARAM(PlayerObject*, player2, 0x388);
@@ -176,6 +197,10 @@ class EditButtonBar : public cocos2d::CCNode, public GDObj {
     void loadFromItems(cocos2d::CCArray*, int, int, bool);
     CLASS_PARAM(cocos2d::CCArray*, objectSlots, 0x130);
 };
+
+class Slider : public cocos2d::CCLayer, public GDObj {
+
+};
 class EditorUI : public cocos2d::CCLayer, public GDObj {
 public:
     void pasteObjects(std::string str);
@@ -186,6 +211,8 @@ public:
     void selectObjects(cocos2d::CCArray* objs, bool keep);
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x408);
     CLASS_PARAM(cocos2d::CCArray*, editBars, 0x358);
+    CLASS_PARAM(cocos2d::CCNode*, locationSlider, 0x228);
+    CLASS_PARAM(std::string, clipboard, 0x458);
 };
 
 class PlayLayer : public GJBaseGameLayer {

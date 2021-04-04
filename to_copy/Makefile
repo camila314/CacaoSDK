@@ -10,7 +10,7 @@ CXX_FLAGS= -mmacosx-version-min=10.7 -isysroot $(SDK_LOCATION) -std=c++11 -DCC_T
 
 main: dist
 	@echo "Building project..."
-	@$(CXX) $(CXX_INCL) $(CXX_FLAGS) $(CXX_EXTRA) speed.cpp -o $(OUTPUT)
+	@$(CXX) $(CXX_INCL) $(CXX_FLAGS) $(CXX_EXTRA) main.cpp -o $(OUTPUT)
 	@echo "Finished"
 dist:
 	mkdir dist

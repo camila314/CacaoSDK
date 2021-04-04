@@ -224,7 +224,6 @@ public:
     void reverseObjects();
     /* Shrinks the array so the memory footprint corresponds with the number of items */
     void reduceMemoryFootprint();
-  
     /** override functions 
      *  @js NA
      *  @lua NA
