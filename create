@@ -1,11 +1,16 @@
 #!/bin/sh
 copypath="~"
+projname="Cacao Template"
 read -p "Where would you like to install?" copypath
+read -p "Name of the project:" projname
 copypath="${copypath//\\/}"
 if [ ! -d "$copypath" ]; then
 	echo "Unable to located path given: $copypath"
 else
 	echo "Copying files"
-	cp -r `dirname $0`/to_copy/* $copypath
+	cp `dirname $0`/to_copy/main.cpp $copypath
+	cp `dirname $0`/to_copy/Makefile $copypath
+	cp `dirname $0`/to_copy/CacaoProj.sublime-project $copypath/$projname.sublime-project
+	ln -s `dirname $0`/to_copy/Cacao $copypath/Cacao
 	echo "Done."
 fi

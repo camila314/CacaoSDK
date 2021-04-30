@@ -221,6 +221,10 @@ public:
     static CCLabelBMFont * create();
 
     bool init();
+
+    //camden314 modification
+    inline CCSprite* getReusedChar() {return m_pReusedChar;}
+
     /** init a bitmap font atlas with an initial string and the FNT file */
     bool initWithString(const char *str, const char *fntFile, float width = kCCLabelAutomaticWidth, CCTextAlignment alignment = kCCTextAlignmentLeft, CCPoint imageOffset = CCPointZero);
 
@@ -305,7 +309,7 @@ protected:
     CCPoint    m_tImageOffset; //0x154(padding)
     
     // reused char
-    CCSprite *m_pReusedChar; //0x15C
+    CCSprite* m_pReusedChar; //0x15C
     
     // texture RGBA
     GLubyte m_cDisplayedOpacity; //0x15D

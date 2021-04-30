@@ -1,6 +1,7 @@
 // Copyright camden314 2021
 #include <Cacao.hpp>
 #include <stdexcept>
+#include <set>
 
 using namespace cocos2d;
 
@@ -54,6 +55,55 @@ namespace Cacao {
 
         keyStr->setObject(strid, std::string(name));
         keyInt->setObject(strname, id);
+    }
+
+    std::vector<int> collapseGroups(GameObject* object) {
+         std::vector<int> gs;
+
+        int gid = 0;
+        int iter = 0;
+        do {
+            gid = object->getGroupID(iter);
+            iter++;
+            if (gid!=0)
+                gs.push_back(gid);
+        } while(gid!=0);
+        return gs;
+    }
+
+    int uniqueGroupToObjects(CCArray* objects, LevelEditorLayer* lel) {
+        std::vector<int> g;
+        for (auto obj : ccToVec<GameObject*>(lel->_objects())) {
+            auto ig = collapseGroups(obj);
+            g.insert(g.end(), ig.begin(), ig.end());
+        }
+        std::set<int> inclusiveG;
+        for (int group : g) {
+            if (std::count(g.begin(), g.end(), group) >= objects->count()) {
+                inclusiveG.insert(group);
+            }
+        }
+        std::set<int> uniqueG = inclusiveG;
+        for (auto obj : ccToVec<GameObject*>(lel->_objects())) {
+            if (objects->containsObject(obj) || obj->_zOrder()==314159) {
+                continue;
+            }
+            for (int group : inclusiveG) {
+                auto bad_groups = collapseGroups(obj);
+                if (std::count(bad_groups.begin(), bad_groups.end(), group)) {
+                    uniqueG.erase(group);
+                }
+            }
+        }
+        if (uniqueG.size()) {
+            return *uniqueG.begin();
+        } else {
+            int newG = lel->getNextFreeGroupID(lel->_objects());
+            for (auto obj : ccToVec<GameObject*>(objects)) {
+                obj->addToGroup(newG);
+            }
+            return newG;
+        }
     }
 
     CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, CC_SEL callback) {
@@ -334,5 +384,94 @@ namespace Cacao {
             });
         }
         EditorUIEditor::callbackInstance = this;
-    } 
+    }
+
+    void CacAlertLayer::keyBackClicked() {
+        onClose();
+        m_helper->keyBackClicked();
+        setKeypadEnabled(false);
+        setTouchEnabled(false);
+        removeFromParentAndCleanup(true);
+    }
+
+    bool CacAlertLayer::init(CCSize size) {
+        uint64_t ok1 = *((uint64_t*)this);
+        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+16;
+
+        uint64_t n_typinfo = getBase()+0x65d870;
+        MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();
+
+
+        if (CCLayerColor::initWithColor(ccc4(0,0,0,150))) { 
+            m_helper->m_buttonMenu->setVisible(false);
+            m_helper->m_mainLayer->setVisible(false);
+
+            m_mainLayer = CCLayer::create();
+            m_buttonMenu = CCMenu::create();
+            addChild(m_mainLayer);
+            m_mainLayer->addChild(m_buttonMenu);
+
+            auto scale9 = extension::CCScale9Sprite::create("GJ_square01.png");
+            scale9->setContentSize(size);
+            scale9->setPosition(Cacao::relativePosition(50,50));
+            m_mainLayer->addChild(scale9, -2);
+
+
+            auto close = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
+
+            m_closeButton = CCMenuItemSpriteExtra::create(close, NULL, this, menu_selector(CacAlertLayer::l_onClose));
+            m_closeButton->setPosition( - size.width / 2, size.height / 2 );
+            m_buttonMenu->addChild(m_closeButton);
+
+
+            m_title->limitLabelWidth(size.width*4, .75f, .2f);
+            m_title->setPosition(Cacao::addedPosition(0, size.height/2 - 25));
+            m_mainLayer->addChild(m_title);
+
+            alertInit();
+            return true;
+        }
+        return false;
+    }
+
+    void CacAlertLayer::show(void) {
+        m_helper->m_noElasticity = m_noElasticity;
+        m_helper->show();
+
+        registerWithTouchDispatcher();
+        CCDirector::sharedDirector()->getTouchDispatcher()->incrementForcePrio(2);
+
+        setTouchEnabled(true);
+        setKeypadEnabled(true);
+
+        FLAlertLayer::show();
+    }
+
+    CacTextContainer* CacTextContainer::create(cocos2d::CCSize const& size, TextInputDelegate* delegate, char const* font) {
+        auto pRet = new CacTextContainer();
+        if (pRet && pRet->init(size, 24, delegate, font)) {
+            pRet->autorelease();
+            return pRet;
+        }
+        CC_SAFE_DELETE(pRet);
+        return NULL;
+    }
+
+    bool CacTextContainer::init(cocos2d::CCSize size, float fontSize, TextInputDelegate* delegate, char const* font) {
+        float clampMult = fmin(1, size.height/40.0);
+        if ((m_textInputNode = CCTextInputNode::create(size.width, size.height, "", "Thonburi", fontSize, font))) {
+            m_textInputNode->m_delegate = delegate;
+            m_textInputNode->setLabelPlaceholderColor(ccc3(120, 170, 240));
+            addChild(m_textInputNode,2);
+            m_textInputNode->setMaxLabelScale(size.height/50.);
+            m_box = cocos2d::extension::CCScale9Sprite::create("square02b_small.png");
+            m_box->setOpacity(100);
+            m_box->setColor(ccc3(0,0,0));
+            m_box->setContentSize(CCSizeMake((size.width+10)/clampMult, fmax(size.height-10,40)));
+            m_box->setScale(clampMult);
+            addChild(m_box, 1);
+            return true;
+        }
+        return false;
+    }
 }  // namespace Cacao

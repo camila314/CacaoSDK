@@ -91,7 +91,7 @@ public:
      * @lua NA
      */
     void setPoint(float x, float y);
-    bool equals(const CCPoint& target) const;
+    inline bool equals(const CCPoint& target) const {return target.x==x && target.y==y;}
     
     /** @returns if points have fuzzy equality which means equal with some degree of variance.
      * @since v2.1.4

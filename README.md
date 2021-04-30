@@ -38,7 +38,7 @@ For `registerHook`, it is also easy to use:
 
 ```cpp
 	int64_t base = getBase(); // GDML base address function
-	m->registerHook(base+0x543210, (func_t)myHook);
+	m->registerHook(base+0x543210, myHook);
 ```
 
 You'll notice that in this snippet, we don't save the original function into a seperate variable. This is mainly for ease and to avoid having to define a bunch of function pointers to put them in. If you do, however, want to save the original function, you can use this:
@@ -53,7 +53,7 @@ The `getOriginal` function by default returns a type `func_t` (aka `void (*)()`)
 #include <Cacao.hpp>
 ModContainer* m;
 
-void hook(int param2, char param2) {
+void hook(int param1, char param2) {
 	// do stuff here
 	func_t orig = m->getOriginal(getBase()+0x314159);
 	return FCAST(hook, orig)(param1, param2);
@@ -61,7 +61,25 @@ void hook(int param2, char param2) {
 
 void inject() {
 	m = new ModContainer("test");
-	m->registerHook(getBase()+0x314159, (func_t)hook);
+	m->registerHook(getBase()+0x314159, hook);
+	m->enable();
+}
+```
+
+There is actually a more visually pleasing way of calling the original function using the macro `ORIG`. This macro only works if the ModContainer instance is named `m`. Here is an example:
+
+```cpp
+#include <Cacao.hpp>
+ModContainer* m;
+
+int cool(void* param1, char* param2) {
+	int ret_value = ORIG(cool, 0x314159)(param1, param2);
+	return ret_value * 2;
+}
+
+void inject() {
+	m = new ModContainer("test");
+	m->registerHook(getBase()+0x314159, hook);
 	m->enable();
 }
 ```
@@ -70,6 +88,6 @@ Instead of using `int main`, we are using `void inject`. The inject function is 
 
 ### Cacao
 
-For Cacao, all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()._playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
+For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()._playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
 
 For a full list of helper functions, look at the Cacao.hpp header file.

@@ -21,6 +21,27 @@ void setupTypeinfos();
 
 typedef void(*queuefunc)(std::string);
 
+
+//thanks pie
+enum SearchType {
+    kSearch          = 0x0,
+    kMostDownloaded  = 0x1,
+    kMostLiked       = 0x2,
+    kTrending        = 0x3,
+    kRecent          = 0x4,
+    kUsersLevels     = 0x5,
+    kFeatured        = 0x6,
+    kMagic           = 0x7,
+    kMapPacks        = 0x9,
+    kAwarded         = 0xB,
+    kFollowed        = 0xC,
+    kFriends         = 0xD,
+    kFindUsers       = 0xE,
+    kHallOfFame      = 0x10,
+    kMyLevels        = 0x62,
+    kSavedLevels     = 0x63
+};
+
 typedef struct GameModes {
     bool cube;
     bool ship;
@@ -46,13 +67,17 @@ typedef struct LevelDifficulty {
         return *(__TYPE__*)((long)this+__OFFSET__); \
     }
 
+int xCompSpeed(void const*, void const*);
+int xCompRealPos(void const*, void const*);
+
+
 class GDObj { 
 public:
     void* valOffset(long offset);
     void setValOffset(long offset, void* setter);
 };
 
-class GJGameLevel : public GDObj {
+class GJGameLevel : public cocos2d::CCNode, public GDObj {
 public:
     static GJGameLevel* create();
     CLASS_PARAM(std::string, name, 0x138);
@@ -61,7 +86,34 @@ public:
     CLASS_PARAM(int, bestPractice, 0x238);
     CLASS_PARAM(std::string, levelString, 0x148);
     CLASS_PARAM(std::string, author, 0x150);
+    CLASS_PARAM(int, songID, 0x190);
+    CLASS_PARAM(int, audioTrack, 0x18c);
+    CLASS_PARAM(bool, official, 0x324);
     STRUCT_PARAM(LevelDifficulty, difficulty, 0x1b0);
+    CLASS_PARAM(bool, lowDetail, 0x1c5);
+};
+
+
+class TextInputDelegate {
+    virtual void textChanged(void) {};
+    virtual void textInputOpened(void) {};
+    virtual void textInputClosed(void) {};
+    virtual void textInputShouldOffset(float) {};
+    virtual void textInputReturn(void) {};
+    virtual bool allowTextInput(void) {return true;};
+};
+
+class UploadActionDelegate {
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+};
+
+class UploadPopupDelegate {
+    virtual void onClosePopup(void);
+};
+
+class SetIDPopupDelegate {
+    virtual void setIDPopupClosed(int);
 };
 
 class CCSpritePlus : public cocos2d::CCSprite {
@@ -73,6 +125,9 @@ public:
   virtual void setScale(float);
   virtual void setScaleX(float);
   virtual void setScaleY(float);
+  inline CCSpritePlus* getFollowingSprite() {return m_followingSprite;}
+  inline void setFollowingSprite(CCSpritePlus* setter) {m_followingSprite = setter;}
+
 protected:
   cocos2d::CCArray *m_followers;
   CCSpritePlus *m_followingSprite;
@@ -81,9 +136,20 @@ protected:
   bool m_propagateFlipChanges;
 };
 
-class LevelSettingsObject : public GDObj {
+class GJBaseGameLayer;
+class GJEffectManager : public cocos2d::CCNode, public GDObj {
+ public:
+    CLASS_PARAM(GJBaseGameLayer*, gameLayer, 0x120);
+    CLASS_PARAM(cocos2d::CCArray*, spawnActions, 0x1c18);
+    void updateColors(cocos2d::_ccColor3B c1, cocos2d::_ccColor3B c2);
+};
+
+class LevelSettingsObject : public cocos2d::CCNode, public GDObj {
 public:
     CLASS_PARAM(GJGameLevel*, level, 0x150);
+    CLASS_PARAM(GJEffectManager*, effectManager, 0x120);
+    CLASS_PARAM(int, fontType, 0x144);
+    static LevelSettingsObject* objectFromString(std::string str);
 };
 
 class GameLevelManager : public GDObj {
@@ -106,6 +172,12 @@ public:
     virtual ~GameSoundManager();
 };
 
+class FMODAudioEngine : public cocos2d::CCNode, public GDObj {
+ public:
+    static FMODAudioEngine* sharedEngine();
+    CLASS_PARAM(float, backgroundVolume, 0x130);
+    CLASS_PARAM(float, sfxVolume, 0x134);
+};
 class GameObject : public CCSpritePlus, public GDObj{
 public:
     GameObject();
@@ -114,6 +186,8 @@ public:
     void destroyObject();
     int getGroupID(int index);
     void playShineEffect();
+    void setupCoinArt();
+    static GameObject* objectFromString(std::string str, bool ldm);
     CLASS_PARAM(int, type, 0x370);
     CLASS_PARAM(int, id, 0x3c4);
     CLASS_PARAM(bool, inEditLayer, 0x279);
@@ -122,6 +196,62 @@ public:
     CLASS_PARAM(bool, spawnTriggered, 0x379);
     CLASS_PARAM(int, uuid, 0x36c);
     CLASS_PARAM(int, colorID, 0x3bc);
+    CLASS_PARAM(int, zOrder, 0x42c);
+    CLASS_PARAM(int, unknownType, 0x3d4);
+    CLASS_PARAM(int, coinID, 0x3e8);
+    //void setStartPos(cocos2d::CCPoint p); // todo: make virtual
+    //void calculateSpawnXPos();
+
+
+    virtual void setFlipX(bool);
+    virtual void setFlipY(bool);
+    virtual void customSetup();
+    virtual void setupCustomSprites();
+    virtual void addMainSpriteToParent(bool);
+    virtual void resetObject();
+    virtual void triggerObject(GJBaseGameLayer*);
+    virtual void activateObject();
+    virtual void deactivateObject(bool);
+    virtual void getObjectRect();
+    virtual void getObjectRect(float, float);
+    virtual void getObjectRect2(float, float);
+    virtual void getObjectTextureRect();
+    virtual void getRealPosition();
+    virtual void setStartPos(cocos2d::CCPoint);
+    virtual void updateStartValues();
+    virtual void customObjectSetup(std::string&);
+    virtual std::string getSaveString();
+    virtual void isFlipX();
+    virtual void isFlipY();
+    virtual void setRScaleX(float);
+    virtual void setRScaleY(float);
+    virtual void setRScale(float);
+    virtual void getRScaleX();
+    virtual void getRScaleY();
+    virtual void calculateSpawnXPos();
+    virtual void triggerActivated(float);
+    virtual void powerOnObject();
+    virtual void powerOffObject();
+    virtual void setObjectColor(cocos2d::_ccColor3B const&);
+    virtual void setGlowColor(cocos2d::_ccColor3B const&);
+    virtual void getOrientedBox();
+    virtual void addToGroup(int);
+    virtual void removeFromGroup(int);
+    virtual void spawnXPosition();
+    virtual void getObjectRectDirty() const;
+    virtual void setObjectRectDirty(bool);
+    virtual void getOrientedRectDirty() const;
+    virtual void setOrientedRectDirty(bool);
+    virtual void getType() const;
+    virtual void setType(int);
+    virtual void getStartPos() const;
+    virtual void animationFinished(char const*);
+};
+
+class EndPortalObject : public GameObject {
+ public:
+    static EndPortalObject* create();
+    void updateColors(cocos2d::_ccColor3B c1);
 };
 
 class SpawnTriggerAction : public cocos2d::CCNode { // omg
@@ -158,6 +288,8 @@ public:
     void setSecondColor(cocos2d::_ccColor3B const&);
     void flipGravity(bool, bool);
     void pushButton(int);
+    CLASS_PARAM(cocos2d::_ccColor3B, pCol1, 0x7c2);
+    CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
     CLASS_PARAM(double, yAccel, 0x760);
     CLASS_PARAM(float, xPos, 0x7c8);
     CLASS_PARAM(float, yPos, 0x7cc);
@@ -175,7 +307,8 @@ public:
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
 public:
     void spawnGroup(int group);
-    CLASS_PARAM(cocos2d::CCLayer*, mainLayer, 0x188);
+    void addToSection(GameObject* ob);
+    CLASS_PARAM(cocos2d::CCLayer*, objectLayer, 0x188);
     CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
     CLASS_PARAM(PlayerObject*, player1, 0x380);
     CLASS_PARAM(PlayerObject*, player2, 0x388);
@@ -183,13 +316,20 @@ public:
     CLASS_PARAM(cocos2d::CCDictionary*, unknownDict, 0x398);
 };
 
+
+class EditorUI;
 class LevelEditorLayer : public GJBaseGameLayer {
 public:
-    void createObjectsFromString(std::string st, bool idk);
+    void createObjectsFromString(std::string st, bool undo);
+    GameObject* addObjectFromString(std::string st);
+    GameObject* createObject(int id, cocos2d::CCPoint p, bool undo);
+    int getNextFreeGroupID(cocos2d::CCArray* objects);
+    void removeObject(GameObject* o, bool undo);
     void removeAllObjects();
     void undoLastAction();
     void redoLastAction();
     CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
+    CLASS_PARAM(EditorUI*, editorUI, 0x5d8);
 };
 
 class EditButtonBar : public cocos2d::CCNode, public GDObj {
@@ -199,13 +339,28 @@ class EditButtonBar : public cocos2d::CCNode, public GDObj {
 };
 
 class Slider : public cocos2d::CCLayer, public GDObj {
-
+ public:
+    static Slider* create(cocos2d::CCNode*, void (cocos2d::CCObject::*)(cocos2d::CCObject*), char const*, char const*, char const*, char const*, float);
+    static Slider* create(cocos2d::CCNode*, void (cocos2d::CCObject::*)(cocos2d::CCObject*), float);
+    void setBarVisibility(bool);
+    float getValue();
+    void setValue(float);
 };
+
+class CreateMenuItem : public CCMenuItemSpriteExtra, public GDObj {
+public:
+    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*));
+};
+
 class EditorUI : public cocos2d::CCLayer, public GDObj {
 public:
     void pasteObjects(std::string str);
     void undoLastAction();
     void redoLastAction();
+    void deselectAll();
+    void onDuplicate(CCObject* stub);
+    void enableButton(CreateMenuItem* cmi);
+    void disableButton(CreateMenuItem* cmi);
     CCMenuItemSpriteExtra* getCreateBtn(int obid, int four);
     cocos2d::CCArray* getSelectedObjects();
     void selectObjects(cocos2d::CCArray* objs, bool keep);
@@ -220,9 +375,13 @@ public:
     static PlayLayer* create(GJGameLevel* l);
     static void switchToScene(GJGameLevel* l);
     void resetLevel();
+    void addObject(GameObject* gob);
     virtual void update(float);
     CLASS_PARAM(bool, gameStarted, 0x4dc);
+    CLASS_PARAM(EndPortalObject*, endPortal, 0x530);
     CLASS_PARAM(float, length, 0x5f8);
+    CLASS_PARAM(float, trueLength, 0x5fc);
+    CLASS_PARAM(GJGameLevel*, level, 0x728);
     CLASS_PARAM(int, attempt, 0x754);
     CLASS_PARAM(bool, practiceMode, 0x739);
     CLASS_PARAM(float, time, 0x760);
@@ -253,14 +412,14 @@ public:
     }
     virtual ~FLAlertLayer();
     virtual void onEnter(void);
-    virtual bool ccTouchBegan(cocos2d::CCTouch *cct,cocos2d::CCEvent *cce) {return true;};
+    virtual bool ccTouchBegan(cocos2d::CCTouch *cct,cocos2d::CCEvent *cce);
     virtual void ccTouchMoved(cocos2d::CCTouch *,cocos2d::CCEvent *);
     virtual void ccTouchEnded(cocos2d::CCTouch *,cocos2d::CCEvent *);
     virtual void ccTouchCancelled(cocos2d::CCTouch *,cocos2d::CCEvent *);
     virtual void registerWithTouchDispatcher(void);
     virtual void keyBackClicked(void);
     virtual void keyDown(cocos2d::enumKeyCodes);
-    int show(void);
+    virtual void show(void);
     CLASS_PARAM(cocos2d::CCLayer*, mainLayer, 0x220);
     CLASS_PARAM(cocos2d::CCMenu*, mainMenu, 0x1f8);
 
@@ -270,7 +429,7 @@ public:
     cocos2d::CCNode* m_scene; // 0x210
     bool m_reverseKeyBack; // 0x211
     cocos2d::ccColor3B m_color; // 0x212
-    cocos2d::CCLayer* m_mainLayer;
+    cocos2d::CCLayer* m_mainLayer; // 0x220
     int m_ZOrder;
     bool m_noElasticity;
     cocos2d::ccColor3B m_color2;
@@ -283,11 +442,18 @@ public:
 };
 
 
+class FLAlertLayerProtocol {
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool) {}
+};
+
 class TextArea : public ButtonSprite {
 public:
     static TextArea* create(std::string a, char const*, float textSize, float maxWidth, cocos2d::CCPoint position, float returnSize, bool idk);
 };
 
+class LevelInfoLayer : public cocos2d::CCLayer, public GDObj {
+
+};
 
 class MenuLayer : public cocos2d::CCLayer, public GDObj {
 public:
@@ -301,12 +467,14 @@ public:
 
 };
 
-class GJSearchObject : public GDObj {
+class GJSearchObject : public cocos2d::CCNode, public GDObj {
 public:
+    static GJSearchObject* create(SearchType);
     static GJSearchObject* create(int, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int);
+    SearchType m_searchType;
 };
 
-class LevelBrowserLayer : public GDObj {
+class LevelBrowserLayer : public cocos2d::CCLayer, public GDObj {
 public:
     static cocos2d::CCScene* scene(GJSearchObject* search);
 };
@@ -341,6 +509,7 @@ public:
     void reloadAll(bool a, bool b, bool c);
     void accountStatusChanged();
     void load();
+    void loadFont(int fkey);
 
     void setSecondColorIdx(int idx);
     void setFirstColorIdx(int idx);
@@ -369,21 +538,37 @@ public:
     void setSizeMult(float);
 };
 
-class CCTextInputNode : public cocos2d::CCNode, public cocos2d::CCIMEDelegate, public GDObj {
+class CCTextInputNode : public cocos2d::CCLayer, public cocos2d::CCIMEDelegate, public GDObj {
 public:
     static CCTextInputNode* create(float x, float y, char const* placeholder, char const* font, int, char const*);
+    bool init(float x, float y, char const* placeholder, char const* font, int, char const*);
     void setAllowedChars(std::string allowed);
     void setMaxLabelScale(float max);
     void setMaxLabelWidth(float max);
+    void setLabelPlaceholderColor(cocos2d::ccColor3B);
     std::string getString();
     char const* getString_s(); // modification, spooky
     void setString(std::string update);
-};
-
-class GJEffectManager : public cocos2d::CCNode, public GDObj {
- public:
-    CLASS_PARAM(GJBaseGameLayer*, gameLayer, 0x120);
-    CLASS_PARAM(cocos2d::CCArray*, spawnActions, 0x1c18);
+    CLASS_PARAM(TextInputDelegate*, inputDelegate, 0x1c8);
+ //protected:
+    void* m_unknown0;
+    void* m_unknown1;
+    std::string m_caption; // 0x188
+    bool m_selected; // 0x194
+    std::string m_allowedChars; // 0x198
+    float m_maxLabelWidth;
+    float m_maxLabelScale;
+    float m_placeholderScale;
+    cocos2d::ccColor3B m_placeholderColor;
+    cocos2d::ccColor3B m_textColor;
+    cocos2d::CCLabelBMFont* m_cursor;
+    cocos2d::CCTextFieldTTF* m_textField; // 0x1c0
+    TextInputDelegate* m_delegate; // TextInputDelegate vtable
+    int m_maxLabelLength;
+    cocos2d::CCLabelBMFont* m_placeholderLabel;
+    bool m_unknown2;
+    bool m_unknown3;
+    bool m_forceOffset;
 };
 
 class SetupSpawnPopup : public FLAlertLayer {
