@@ -87,6 +87,13 @@ public:
      * @lua NA
      */
     CCPoint operator/(float a) const;
+
+
+    // my modification
+        inline CCPoint operator*(const CCPoint& right) const {return CCPoint(x*right.x, y*right.y);}
+        inline CCPoint operator/(const CCPoint& right) const {return CCPoint(x/right.x, y/right.y);}
+    //314
+
     /**
      * @lua NA
      */

@@ -536,6 +536,7 @@ public:
     static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*));
     void toggle(bool t);
     void setSizeMult(float);
+    CLASS_PARAM(bool, toggled, 0x168);
 };
 
 class CCTextInputNode : public cocos2d::CCLayer, public cocos2d::CCIMEDelegate, public GDObj {
