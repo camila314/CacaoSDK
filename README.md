@@ -1,5 +1,5 @@
 # CacaoSDK
-CacaoSDK is an extension of the [CappuccinoSDK](https://github.com/AndreNIH/CappuccinoSDK) toolkit for Geometry Dash programming on MacOS. To start, run the `create` file and specify a location
+CacaoSDK is modding framework/toolkit for Geometry Dash. To start, run the `create` file and specify a location
 
 Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_route) and also uses [Zydis](https://github.com/zyantific/zydis) for function hooking.
 ## Prerequisites
