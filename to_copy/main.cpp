@@ -1,13 +1,13 @@
-// replace this code
+#include <CacKit>
 
-#include <Cacao.hpp>
-#include <iostream>
+class: public $PlayLayer {
+    void update(float dt) override {
+        std::cout << "hello!\n";
 
-ModContainer* m;
+        $PlayLayer::update(dt);
+    }
+} TemplateMod;
+
 void inject() {
-	m = new ModContainer("Template code");
-
-	auto gm = GameManager::sharedState();
-	std::cout << "Value of 0021: " << gm->getGameVariable("0021") << "\n";
-	// ...
+	//do some setup stuff
 }

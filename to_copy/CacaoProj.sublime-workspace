@@ -436,10 +436,13 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/jakrillis/projects/cacao/to_copy"
+		"/Users/jakrillis/projects/cacao/to_copy",
+		"/Users/jakrillis/projects/cacao/to_copy/Cacao",
+		"/Users/jakrillis/projects/cacao/to_copy/Cacao/include"
 	],
 	"file_history":
 	[
+		"/Users/jakrillis/projects/cacao/to_copy/main.cpp",
 		"/Users/jakrillis/projects/cacao/to_copy/CacaoProj.sublime-project",
 		"/Users/jakrillis/projects/gdmods/gdstdlib/research.txt",
 		"/Users/jakrillis/t.cpp",
@@ -566,8 +569,7 @@
 		"/Users/jakrillis/projects/external_launcher/gdml/lowLevel.cpp",
 		"/Users/jakrillis/projects/external_launcher/gdml/lowLevel.hpp",
 		"/Users/jakrillis/projects/external_launcher/MacDylib.cpp",
-		"/Users/jakrillis/projects/external_launcher/MacDylib.h",
-		"/Users/jakrillis/projects/external_launcher/t.cpp"
+		"/Users/jakrillis/projects/external_launcher/MacDylib.h"
 	],
 	"find":
 	{

@@ -362,6 +362,7 @@ public:
     void enableButton(CreateMenuItem* cmi);
     void disableButton(CreateMenuItem* cmi);
     CCMenuItemSpriteExtra* getCreateBtn(int obid, int four);
+    void updateButtons();
     cocos2d::CCArray* getSelectedObjects();
     void selectObjects(cocos2d::CCArray* objs, bool keep);
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x408);
