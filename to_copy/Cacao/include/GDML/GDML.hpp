@@ -28,6 +28,7 @@ public:
     virtual ~BaseContainer();
     void enable();
     void disable();
+    inline long getAddress() {return address;}
     friend class ModContainer;
 };
 
@@ -69,6 +70,7 @@ public:
     
     func_t getOriginal(long address);
     char const* getName();
+    inline vector<BaseContainer*> getMods() {return mods;};
 private:
     vector<BaseContainer*> mods;
     char const* containerName;

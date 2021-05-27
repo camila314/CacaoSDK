@@ -77,6 +77,14 @@ public:
     void setValOffset(long offset, void* setter);
 };
 
+class CreatorLayer : public cocos2d::CCLayer, public GDObj {
+
+};
+
+class GJListLayer : public GDObj {
+
+};
+
 class GJGameLevel : public cocos2d::CCNode, public GDObj {
 public:
     static GJGameLevel* create();
@@ -440,6 +448,36 @@ public:
     int m_joystickConnected;
     bool m_containsBorder;
     bool m_noAction;
+};
+
+class GJDropDownLayer : public cocos2d::CCLayerColor {
+ public:
+    bool init(char const*, float);
+    static GJDropDownLayer* create(char const*);
+
+    void registerWithTouchDispatcher() override {GJDropDownLayer::registerWithTouchDispatcher();}
+    void draw(void) override {GJDropDownLayer::draw();};
+
+    virtual ~GJDropDownLayer() {GJDropDownLayer::~GJDropDownLayer();};
+    virtual void customSetup() {GJDropDownLayer::customSetup();};
+    virtual void enterLayer() {GJDropDownLayer::enterLayer();};
+    virtual void exitLayer(cocos2d::CCObject* btn) {GJDropDownLayer::exitLayer(btn);};
+    virtual void showLayer(bool noTransition) {GJDropDownLayer::showLayer(noTransition);};
+    virtual void hideLayer(bool noTransition) {};
+    virtual void layerVisible() {};
+    virtual void layerHidden() {};
+    virtual void enterAnimFinished() {};
+    virtual void disableUI() {};
+    virtual void enableUI() {GJDropDownLayer::enableUI();};
+ protected:
+    cocos2d::CCPoint m_obEndPosition;
+    cocos2d::CCPoint m_obStartPosition;
+    cocos2d::CCMenu* m_buttonMenu;
+    GJListLayer* m_listLayer;
+    bool m_controllerEnabled; //?
+    cocos2d::CCLayer* m_mainLayer;
+    bool m_hidden; //?
+    void* m_unknown;
 };
 
 

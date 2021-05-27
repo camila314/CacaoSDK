@@ -6,6 +6,9 @@ ModContainer* m;
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
 #endif
+#define CAC_HOOKS void __cacinj() __attribute__((constructor)); void __cacinj() {
+#define END_CAC_HOOKS \
+    for(auto& i : __cackit::glob) {i->apply_hooks();};m->enable();}
 
 typedef char const* c_string;
 
@@ -33,14 +36,23 @@ template <typename F, class T>
 inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T) {
     return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
 };
+
+class $CacBase {
+ public:
+    virtual void apply_hooks() = 0; 
+};
+
+namespace __cackit {
+  std::vector<$CacBase*> glob;  
+}
  
-class $GameObject {
+
+class $GameObject : public $CacBase {
  public:
     $GameObject() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef GameObject* __thistype;
 
@@ -80,7 +92,7 @@ class $GameObject {
         return reinterpret_cast<bool(*)(decltype(this),char const* )>(m->getOriginal(getBase()+0x2f5520))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x33ae10, extract_virtual(this, &$GameObject::getGroupID));
 
         m->registerHook(getBase()+0x335850, extract_virtual(this, &$GameObject::setPosition));
@@ -101,13 +113,13 @@ class $GameObject {
     }
 };
 
-class $GameManager {
+
+class $GameManager : public $CacBase {
  public:
     $GameManager() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef GameManager* __thistype;
 
@@ -151,7 +163,7 @@ class $GameManager {
         return reinterpret_cast<void(*)(decltype(this),bool ,bool ,bool )>(m->getOriginal(getBase()+0x1d08a0))(this,p0,p1,p2);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x1cbc80, extract_virtual(this, &$GameManager::colorForIdx));
 
         m->registerHook(getBase()+0x1d0200, extract_virtual(this, &$GameManager::doQuickSave));
@@ -174,13 +186,13 @@ class $GameManager {
     }
 };
 
-class $PlayerObject {
+
+class $PlayerObject : public $CacBase {
  public:
     $PlayerObject() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef PlayerObject* __thistype;
 
@@ -208,7 +220,7 @@ class $PlayerObject {
         return reinterpret_cast<void(*)(decltype(this),float )>(m->getOriginal(getBase()+0x218bf0))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x22aa00, extract_virtual(this, &$PlayerObject::pushButton));
 
         m->registerHook(getBase()+0x21c090, extract_virtual(this, &$PlayerObject::flipGravity));
@@ -223,13 +235,13 @@ class $PlayerObject {
     }
 };
 
-class $ObjectToolbox {
+
+class $ObjectToolbox : public $CacBase {
  public:
     $ObjectToolbox() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef ObjectToolbox* __thistype;
 
@@ -237,18 +249,18 @@ class $ObjectToolbox {
         return reinterpret_cast<c_string(*)(decltype(this),int )>(m->getOriginal(getBase()+0x4173b0))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x4173b0, extract_virtual(this, &$ObjectToolbox::intKeyToFrame));
     }
 };
 
-class $CCTextInputNode {
+
+class $CCTextInputNode : public $CacBase {
  public:
     $CCTextInputNode() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef CCTextInputNode* __thistype;
 
@@ -276,7 +288,7 @@ class $CCTextInputNode {
         return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x5d3e0))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x5d360, extract_virtual(this, &$CCTextInputNode::setAllowedChars));
 
         m->registerHook(getBase()+0x5da30, extract_virtual(this, &$CCTextInputNode::setMaxLabelScale));
@@ -291,13 +303,13 @@ class $CCTextInputNode {
     }
 };
 
-class $EndPortalObject {
+
+class $EndPortalObject : public $CacBase {
  public:
     $EndPortalObject() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef EndPortalObject* __thistype;
 
@@ -305,18 +317,18 @@ class $EndPortalObject {
         return reinterpret_cast<void(*)(decltype(this),_ccColor3B )>(m->getOriginal(getBase()+0x1dacb0))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x1dacb0, extract_virtual(this, &$EndPortalObject::updateColors));
     }
 };
 
-class $GJBaseGameLayer {
+
+class $GJBaseGameLayer : public $CacBase {
  public:
     $GJBaseGameLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef GJBaseGameLayer* __thistype;
 
@@ -328,20 +340,20 @@ class $GJBaseGameLayer {
         return reinterpret_cast<void(*)(decltype(this),GameObject* )>(m->getOriginal(getBase()+0xb7b70))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0xb7050, extract_virtual(this, &$GJBaseGameLayer::spawnGroup));
 
         m->registerHook(getBase()+0xb7b70, extract_virtual(this, &$GJBaseGameLayer::addToSection));
     }
 };
 
-class $EditorPauseLayer {
+
+class $EditorPauseLayer : public $CacBase {
  public:
     $EditorPauseLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef EditorPauseLayer* __thistype;
 
@@ -349,18 +361,18 @@ class $EditorPauseLayer {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x13ebd0))(this);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x13ebd0, extract_virtual(this, &$EditorPauseLayer::saveLevel));
     }
 };
 
-class $GameSoundManager {
+
+class $GameSoundManager : public $CacBase {
  public:
     $GameSoundManager() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef GameSoundManager* __thistype;
 
@@ -368,18 +380,18 @@ class $GameSoundManager {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x362130))(this);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x362130, extract_virtual(this, &$GameSoundManager::stopBackgroundMusic));
     }
 };
 
-class $LevelEditorLayer {
+
+class $LevelEditorLayer : public $CacBase {
  public:
     $LevelEditorLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef LevelEditorLayer* __thistype;
 
@@ -419,7 +431,7 @@ class $LevelEditorLayer {
         return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x94730))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x957c0, extract_virtual(this, &$LevelEditorLayer::createObject));
 
         m->registerHook(getBase()+0x97020, extract_virtual(this, &$LevelEditorLayer::handleAction));
@@ -440,13 +452,13 @@ class $LevelEditorLayer {
     }
 };
 
-class $CCMenuItemToggler {
+
+class $CCMenuItemToggler : public $CacBase {
  public:
     $CCMenuItemToggler() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef CCMenuItemToggler* __thistype;
 
@@ -458,20 +470,20 @@ class $CCMenuItemToggler {
         return reinterpret_cast<void(*)(decltype(this),bool )>(m->getOriginal(getBase()+0x38950))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x38a40, extract_virtual(this, &$CCMenuItemToggler::setSizeMult));
 
         m->registerHook(getBase()+0x38950, extract_virtual(this, &$CCMenuItemToggler::toggle));
     }
 };
 
-class $CCMenuItemSpriteExtra {
+
+class $CCMenuItemSpriteExtra : public $CacBase {
  public:
     $CCMenuItemSpriteExtra() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef CCMenuItemSpriteExtra* __thistype;
 
@@ -479,18 +491,18 @@ class $CCMenuItemSpriteExtra {
         return reinterpret_cast<void(*)(decltype(this),float )>(m->getOriginal(getBase()+0x1255e0))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x1255e0, extract_virtual(this, &$CCMenuItemSpriteExtra::setSizeMult));
     }
 };
 
-class $MoreVideoOptionsLayer {
+
+class $MoreVideoOptionsLayer : public $CacBase {
  public:
     $MoreVideoOptionsLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef MoreVideoOptionsLayer* __thistype;
 
@@ -498,18 +510,18 @@ class $MoreVideoOptionsLayer {
         return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x444150))(this);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x444150, extract_virtual(this, &$MoreVideoOptionsLayer::init));
     }
 };
 
-class $Slider {
+
+class $Slider : public $CacBase {
  public:
     $Slider() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef Slider* __thistype;
 
@@ -525,7 +537,7 @@ class $Slider {
         return reinterpret_cast<void(*)(decltype(this),float )>(m->getOriginal(getBase()+0x18e170))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x18e280, extract_virtual(this, &$Slider::setBarVisibility));
 
         m->registerHook(getBase()+0x18e0c0, extract_virtual(this, &$Slider::getValue));
@@ -534,13 +546,13 @@ class $Slider {
     }
 };
 
-class $CCLabelBMFont {
+
+class $CCLabelBMFont : public $CacBase {
  public:
     $CCLabelBMFont() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef CCLabelBMFont* __thistype;
 
@@ -556,7 +568,7 @@ class $CCLabelBMFont {
         return reinterpret_cast<void(*)(decltype(this),char const* ,bool )>(m->getOriginal(getBase()+0x3489e0))(this,p0,p1);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x34a6e0, extract_virtual(this, &$CCLabelBMFont::limitLabelWidth));
 
         m->registerHook(getBase()+0x34a5d0, extract_virtual(this, &$CCLabelBMFont::setScale));
@@ -565,13 +577,13 @@ class $CCLabelBMFont {
     }
 };
 
-class $CCMouseDelegate {
+
+class $CCMouseDelegate : public $CacBase {
  public:
     $CCMouseDelegate() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef CCMouseDelegate* __thistype;
 
@@ -587,7 +599,7 @@ class $CCMouseDelegate {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x61b0))(this);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x61c0, extract_virtual(this, &$CCMouseDelegate::rightKeyUp));
 
         m->registerHook(getBase()+0x61d0, extract_virtual(this, &$CCMouseDelegate::scrollWheel));
@@ -596,13 +608,13 @@ class $CCMouseDelegate {
     }
 };
 
-class $CCNode {
+
+class $CCNode : public $CacBase {
  public:
     $CCNode() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef CCNode* __thistype;
 
@@ -706,7 +718,7 @@ class $CCNode {
         return reinterpret_cast<void(*)(decltype(this),CCSize )>(m->getOriginal(getBase()+0x122e50))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x122990, extract_virtual(this, &$CCNode::_setZOrder));
 
         m->registerHook(getBase()+0x1229e0, extract_virtual(this, &$CCNode::getVertexZ));
@@ -759,13 +771,13 @@ class $CCNode {
     }
 };
 
-class $EditorUI {
+
+class $EditorUI : public $CacBase {
  public:
     $EditorUI() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef EditorUI* __thistype;
 
@@ -813,7 +825,7 @@ class $EditorUI {
         return reinterpret_cast<CCArray*(*)(decltype(this))>(m->getOriginal(getBase()+0x23f30))(this);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x1f300, extract_virtual(this, &$EditorUI::deselectAll));
 
         m->registerHook(getBase()+0x18ba0, extract_virtual(this, &$EditorUI::onDuplicate));
@@ -838,13 +850,13 @@ class $EditorUI {
     }
 };
 
-class $InfoLayer {
+
+class $InfoLayer : public $CacBase {
  public:
     $InfoLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef InfoLayer* __thistype;
 
@@ -856,20 +868,20 @@ class $InfoLayer {
         return reinterpret_cast<void(*)(decltype(this),int ,bool )>(m->getOriginal(getBase()+0x458fb0))(this,p0,p1);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x459b60, extract_virtual(this, &$InfoLayer::onRefreshComments));
 
         m->registerHook(getBase()+0x458fb0, extract_virtual(this, &$InfoLayer::loadPage));
     }
 };
 
-class $MenuLayer {
+
+class $MenuLayer : public $CacBase {
  public:
     $MenuLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef MenuLayer* __thistype;
 
@@ -881,20 +893,45 @@ class $MenuLayer {
         return reinterpret_cast<void(*)(decltype(this),CCObject* )>(m->getOriginal(getBase()+0x1d2b40))(this,p0);
     }
 
-    void apply_hooks() {
+    virtual void onMoreGames(CCObject*  p0) {
+        return reinterpret_cast<void(*)(decltype(this),CCObject* )>(m->getOriginal(getBase()+0x1d2ad0))(this,p0);
+    }
+
+    void apply_hooks() override {
         m->registerHook(getBase()+0x1d3170, extract_virtual(this, &$MenuLayer::keyBackClicked));
 
         m->registerHook(getBase()+0x1d2b40, extract_virtual(this, &$MenuLayer::onQuit));
+
+        m->registerHook(getBase()+0x1d2ad0, extract_virtual(this, &$MenuLayer::onMoreGames));
     }
 };
 
-class $PlayLayer {
+
+class $CCKeyboardDispatcher : public $CacBase {
+ public:
+    $CCKeyboardDispatcher() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    typedef CCKeyboardDispatcher* __thistype;
+
+    virtual void dispatchKeyboardMSG(int  p0,bool  p1) {
+        return reinterpret_cast<void(*)(decltype(this),int ,bool )>(m->getOriginal(getBase()+0xe8190))(this,p0,p1);
+    }
+
+    void apply_hooks() override {
+        m->registerHook(getBase()+0xe8190, extract_virtual(this, &$CCKeyboardDispatcher::dispatchKeyboardMSG));
+    }
+};
+
+
+class $PlayLayer : public $CacBase {
  public:
     $PlayLayer() {
         if (!m)
             m = new ModContainer(CAC_PROJ_NAME);
-        apply_hooks();
-        m->enable();
+        __cackit::glob.push_back(this);
     }
     typedef PlayLayer* __thistype;
 
@@ -914,7 +951,7 @@ class $PlayLayer {
         return reinterpret_cast<void(*)(decltype(this),GameObject* )>(m->getOriginal(getBase()+0x70e50))(this,p0);
     }
 
-    void apply_hooks() {
+    void apply_hooks() override {
         m->registerHook(getBase()+0x71c50, extract_virtual(this, &$PlayLayer::resetLevel));
 
         m->registerHook(getBase()+0xe5d50, extract_virtual(this, &$PlayLayer::switchToScene));
@@ -925,3 +962,21 @@ class $PlayLayer {
     }
 };
 
+
+class $CreatorLayer : public $CacBase {
+ public:
+    $CreatorLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    typedef CreatorLayer* __thistype;
+
+    virtual bool init() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x141c10))(this);
+    }
+
+    void apply_hooks() override {
+        m->registerHook(getBase()+0x141c10, extract_virtual(this, &$CreatorLayer::init));
+    }
+};
