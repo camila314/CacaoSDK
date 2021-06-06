@@ -148,6 +148,7 @@ class GJBaseGameLayer;
 class GJEffectManager : public cocos2d::CCNode, public GDObj {
  public:
     CLASS_PARAM(GJBaseGameLayer*, gameLayer, 0x120);
+    CLASS_PARAM(int, itemValues, 0xa8c); //array but how what to do
     CLASS_PARAM(cocos2d::CCArray*, spawnActions, 0x1c18);
     void updateColors(cocos2d::_ccColor3B c1, cocos2d::_ccColor3B c2);
 };
@@ -196,6 +197,7 @@ public:
     void playShineEffect();
     void setupCoinArt();
     static GameObject* objectFromString(std::string str, bool ldm);
+    void updateCustomScale(float newScale);
     CLASS_PARAM(int, type, 0x370);
     CLASS_PARAM(int, id, 0x3c4);
     CLASS_PARAM(bool, inEditLayer, 0x279);
@@ -207,6 +209,8 @@ public:
     CLASS_PARAM(int, zOrder, 0x42c);
     CLASS_PARAM(int, unknownType, 0x3d4);
     CLASS_PARAM(int, coinID, 0x3e8);
+    CLASS_PARAM(float, scale, 0x3c0);
+    CLASS_PARAM(float, multiScaleMultiplier, 0x44c);
     //void setStartPos(cocos2d::CCPoint p); // todo: make virtual
     //void calculateSpawnXPos();
 
@@ -273,9 +277,14 @@ class SpawnTriggerAction : public cocos2d::CCNode { // omg
 
 class EffectGameObject : public GameObject {
 public:
+    CLASS_PARAM(int, targetGroup, 0x4F8);
+    CLASS_PARAM(bool, activateGroup, 0x578);
     CLASS_PARAM(bool, touchHoldMode, 0x579);
     CLASS_PARAM(float, spawnDelay, 0x588);
-
+    CLASS_PARAM(bool, multiTrigger, 0x594);
+    CLASS_PARAM(int, compareType, 0x5A0);
+    CLASS_PARAM(int, itemBlockBID, 0x5A8);
+    CLASS_PARAM(int, itemBlockID, 0x5B0);
 };
 
 class LabelGameObject : public GameObject {
@@ -314,8 +323,10 @@ public:
 
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
 public:
+    void toggleGroupTriggered(int group, bool activate);
     void spawnGroup(int group);
     void addToSection(GameObject* ob);
+    CLASS_PARAM(GJEffectManager *, effectManager, 0x180);
     CLASS_PARAM(cocos2d::CCLayer*, objectLayer, 0x188);
     CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
     CLASS_PARAM(PlayerObject*, player1, 0x380);
@@ -373,9 +384,11 @@ public:
     void updateButtons();
     cocos2d::CCArray* getSelectedObjects();
     void selectObjects(cocos2d::CCArray* objs, bool keep);
+    void moveObject(GameObject *go, cocos2d::CCPoint pos);
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x408);
     CLASS_PARAM(cocos2d::CCArray*, editBars, 0x358);
     CLASS_PARAM(cocos2d::CCNode*, locationSlider, 0x228);
+    CLASS_PARAM(GameObject*, lastSelectedObject, 0x440);
     CLASS_PARAM(std::string, clipboard, 0x458);
 };
 
@@ -542,6 +555,7 @@ public:
     static GameManager* sharedState();
     bool getGameVariable(char const* var);
     void setGameVariable(char const* var, bool val);
+    int getIntGameVariable(char const *var);
     void fadeInMusic(char const* ye);
     void reloadAllStep5();
     void doQuickSave();

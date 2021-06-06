@@ -137,15 +137,21 @@ namespace Cacao {
         }
 
         EditorUIEditor* addTriggerCallback(int ob, void(*callback)(GameObject*, GJBaseGameLayer*));
+        EditorUIEditor* addEditPopup(int ob, void(*callback)(EditorUI*));
+        EditorUIEditor* addSaveString(int ob, GameObject*(*fromString)(GameObject*, std::string), std::string(*toString)(GameObject*, std::string));
 
         void applyBars();
         void applyObjects();
         void applyCallbacks();
+        void applyPopups();
+        void applySaveStrings();
 
         inline void applyAll() {
             this->applyBars();
             this->applyObjects();
             this->applyCallbacks();
+            this->applyPopups();
+            this->applySaveStrings();
         }
 
      protected:
@@ -166,6 +172,14 @@ namespace Cacao {
         static bool appliedCallbacks;
         static EditorUIEditor* callbackInstance;
 
+        std::map<int, void(*)(EditorUI*)> editPopups;
+        static bool appliedPopups;
+        static EditorUIEditor* popupInstance;
+
+        std::map<int, GameObject*(*)(GameObject*, std::string)> saveFromStrings;
+        std::map<int, std::string(*)(GameObject*, std::string)> saveToStrings;
+        static bool appliedSaveStrings;
+        static EditorUIEditor* saveStringInstance;
     };
 
     class CacAlertLayer : public FLAlertLayer {
