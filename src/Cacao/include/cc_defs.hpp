@@ -124,6 +124,14 @@ class SetIDPopupDelegate {
     virtual void setIDPopupClosed(int);
 };
 
+class ColorPickerDelegate {
+    virtual void colorValueChanged(cocos2d::ccColor3B color);
+};
+
+class GJSpecialColorSelectDelegate {
+    virtual void colorSelectClosed(int);
+};
+
 class CCSpritePlus : public cocos2d::CCSprite {
 public:
   virtual void setFlipX(bool);
@@ -637,5 +645,19 @@ class SetupSpawnPopup : public FLAlertLayer {
     virtual void textChanged(CCTextInputNode*);
     virtual void textInputShouldOffset(CCTextInputNode*, float);
     virtual void textInputReturn(CCTextInputNode*);
+};
+
+class LoadingLayer {
+
+};
+
+class ColorAction : public cocos2d::CCNode {
+
+};
+
+
+
+class ColorSelectPopup : public FLAlertLayer, ColorPickerDelegate, TextInputDelegate, GJSpecialColorSelectDelegate  {
+
 };
 #endif

@@ -71,3 +71,9 @@ defit __ZN8EditorUI10moveObjectEP10GameObjectN7cocos2d7CCPointE, 0x24b10
 defit __ZN10GameObject17updateCustomScaleEf, 0x335eb0
 
 defit __ZNK7cocos2d7CCPointmlEf, 0x137180
+
+defit __ZN7cocos2d18CCSpriteFrameCache22sharedSpriteFrameCacheEv, 0x198970
+defit __ZN7cocos2d18CCSpriteFrameCache17spriteFrameByNameEPKc, 0x19a7e0
+defit __ZN7cocos2d18CCSpriteFrameCache23addSpriteFramesWithFileEPKc, 0x199a10
+
+defit __ZN12LoadingLayer10loadAssetsEv, 0x1dfb20

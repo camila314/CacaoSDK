@@ -797,9 +797,9 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<CreateMenuItem*(*)(decltype(this),int ,int )>(m->getOriginal(getBase()+0x1f6c0))(this,p0,p1);
     }
 
-    virtual void pasteObjects(std::string  p0) {
-        return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x232d0))(this,p0);
-    }
+    // virtual void pasteObjects(std::string  p0) {
+    //     return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x232d0))(this,p0);
+    // }
 
     virtual void disableButton(CreateMenuItem*  p0) {
         return reinterpret_cast<void(*)(decltype(this),CreateMenuItem* )>(m->getOriginal(getBase()+0x1c0f0))(this,p0);
@@ -838,7 +838,7 @@ class $EditorUI : public $CacBase {
 
         m->registerHook(getBase()+0x1f6c0, extract_virtual(this, &$EditorUI::getCreateBtn));
 
-        m->registerHook(getBase()+0x232d0, extract_virtual(this, &$EditorUI::pasteObjects));
+        // m->registerHook(getBase()+0x232d0, extract_virtual(this, &$EditorUI::pasteObjects));
 
         m->registerHook(getBase()+0x1c0f0, extract_virtual(this, &$EditorUI::disableButton));
 
@@ -986,3 +986,38 @@ class $CreatorLayer : public $CacBase {
         m->registerHook(getBase()+0x141c10, extract_virtual(this, &$CreatorLayer::init));
     }
 };
+
+
+class $ColorSelectPopup : public $CacBase {
+ public:
+    $ColorSelectPopup() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    typedef ColorSelectPopup* __thistype;
+
+    virtual bool init(EffectGameObject *p0, CCArray *p1, ColorAction *p2) {
+        return reinterpret_cast<bool(*)(decltype(this), EffectGameObject*, CCArray*, ColorAction*)>(m->getOriginal(getBase()+0x41ee70))(this, p0, p1, p2);
+    }
+
+    virtual void updateCopyColor() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x423b70))(this);
+    }
+
+    virtual void colorValueChanged() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x423320))(this);
+    }
+
+    virtual void dtor() { //idk
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x41e960))(this);
+    }
+
+    void apply_hooks() override {
+        m->registerHook(getBase()+0x41ee70, extract_virtual(this, &$ColorSelectPopup::init));
+        m->registerHook(getBase()+0x423b70, extract_virtual(this, &$ColorSelectPopup::updateCopyColor));
+        m->registerHook(getBase()+0x423320, extract_virtual(this, &$ColorSelectPopup::colorValueChanged));
+        m->registerHook(getBase()+0x41e960, extract_virtual(this, &$ColorSelectPopup::dtor));
+    }
+};
+
