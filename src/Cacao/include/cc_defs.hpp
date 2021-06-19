@@ -101,14 +101,15 @@ public:
     CLASS_PARAM(bool, lowDetail, 0x1c5);
 };
 
+class CCTextInputNode;
 
 class TextInputDelegate {
-    virtual void textChanged(void) {};
-    virtual void textInputOpened(void) {};
-    virtual void textInputClosed(void) {};
-    virtual void textInputShouldOffset(float) {};
-    virtual void textInputReturn(void) {};
-    virtual bool allowTextInput(void) {return true;};
+    virtual void textChanged(CCTextInputNode*) {};
+    virtual void textInputOpened(CCTextInputNode*) {};
+    virtual void textInputClosed(CCTextInputNode*) {};
+    virtual void textInputShouldOffset(CCTextInputNode*, float) {};
+    virtual void textInputReturn(CCTextInputNode*) {};
+    virtual bool allowTextInput(CCTextInputNode*) {return true;};
 };
 
 class UploadActionDelegate {
@@ -607,6 +608,7 @@ public:
     void setAllowedChars(std::string allowed);
     void setMaxLabelScale(float max);
     void setMaxLabelWidth(float max);
+    void setLabelPlaceholderScale(float max);
     void setLabelPlaceholderColor(cocos2d::ccColor3B);
     std::string getString();
     char const* getString_s(); // modification, spooky
@@ -655,9 +657,18 @@ class ColorAction : public cocos2d::CCNode {
 
 };
 
+class ColorSelectPopup : public FLAlertLayer, ColorPickerDelegate, TextInputDelegate, GJSpecialColorSelectDelegate {
+public:
+    CLASS_PARAM(cocos2d::extension::CCControlColourPicker*, colorPicker, 0x268);
+    CLASS_PARAM(bool, copyColor, 0x372);
+    CLASS_PARAM(bool, isColorTrigger, 0x2fd);
+};
 
-
-class ColorSelectPopup : public FLAlertLayer, ColorPickerDelegate, TextInputDelegate, GJSpecialColorSelectDelegate  {
-
+class SetupPulsePopup : public FLAlertLayer, ColorPickerDelegate, TextInputDelegate, GJSpecialColorSelectDelegate {
+public:
+    CLASS_PARAM(cocos2d::extension::CCControlColourPicker*, colorPicker, 0x268);
+    CLASS_PARAM(cocos2d::CCSprite*, currentColorSpr, 0x2d0);
+    CLASS_PARAM(cocos2d::CCSprite*, prevColorSpr, 0x2d8);
+    CLASS_PARAM(int, pulseMode, 0x38c);
 };
 #endif

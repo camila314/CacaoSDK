@@ -1021,3 +1021,36 @@ class $ColorSelectPopup : public $CacBase {
     }
 };
 
+class $SetupPulsePopup : public $CacBase {
+ public:
+    $SetupPulsePopup() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    typedef SetupPulsePopup* __thistype;
+
+    virtual bool init(EffectGameObject *p0, CCArray *p1) {
+        return reinterpret_cast<bool(*)(decltype(this), EffectGameObject*, CCArray*)>(m->getOriginal(getBase()+0x1e7010))(this, p0, p1);
+    }
+
+    virtual void onSelectPulseMode(CCObject *p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCObject*)>(m->getOriginal(getBase()+0x1eb020))(this, p0);
+    }
+
+    virtual void colorValueChanged() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1ec680))(this);
+    }
+
+    virtual void dtor() { //idk
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1e6b40))(this);
+    }
+
+    void apply_hooks() override {
+        m->registerHook(getBase()+0x1e7010, extract_virtual(this, &$SetupPulsePopup::init));
+        m->registerHook(getBase()+0x1eb020, extract_virtual(this, &$SetupPulsePopup::onSelectPulseMode));
+        m->registerHook(getBase()+0x1ec680, extract_virtual(this, &$SetupPulsePopup::colorValueChanged));
+        m->registerHook(getBase()+0x1e6b40, extract_virtual(this, &$SetupPulsePopup::dtor));
+    }
+};
+

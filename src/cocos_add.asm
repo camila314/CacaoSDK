@@ -72,8 +72,14 @@ defit __ZN10GameObject17updateCustomScaleEf, 0x335eb0
 
 defit __ZNK7cocos2d7CCPointmlEf, 0x137180
 
+defit __ZNK7cocos2d6CCSizedvEf, 0x1374e0
+
 defit __ZN7cocos2d18CCSpriteFrameCache22sharedSpriteFrameCacheEv, 0x198970
 defit __ZN7cocos2d18CCSpriteFrameCache17spriteFrameByNameEPKc, 0x19a7e0
 defit __ZN7cocos2d18CCSpriteFrameCache23addSpriteFramesWithFileEPKc, 0x199a10
 
 defit __ZN12LoadingLayer10loadAssetsEv, 0x1dfb20
+
+defit __ZN15CCTextInputNode24setLabelPlaceholderScaleEf, 0x5da70
+
+defit __ZN7cocos2d9extension21CCControlColourPicker13setColorValueERKNS_10_ccColor3BE, 0x1aac10
