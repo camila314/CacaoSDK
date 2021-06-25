@@ -200,6 +200,10 @@ class $PlayerObject : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0x22aa00))(this,p0);
     }
 
+    virtual void releaseButton(int  p0) {
+        return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0x22b6f0))(this,p0);
+    }
+
     virtual void flipGravity(bool  p0,bool  p1) {
         return reinterpret_cast<void(*)(decltype(this),bool ,bool )>(m->getOriginal(getBase()+0x21c090))(this,p0,p1);
     }
@@ -222,6 +226,8 @@ class $PlayerObject : public $CacBase {
 
     void apply_hooks() override {
         m->registerHook(getBase()+0x22aa00, extract_virtual(this, &$PlayerObject::pushButton));
+
+        m->registerHook(getBase()+0x22b6f0, extract_virtual(this, &$PlayerObject::releaseButton));
 
         m->registerHook(getBase()+0x21c090, extract_virtual(this, &$PlayerObject::flipGravity));
 
@@ -332,6 +338,14 @@ class $GJBaseGameLayer : public $CacBase {
     }
     typedef GJBaseGameLayer* __thistype;
 
+    virtual void pushButton(int p0, bool p1) {
+        return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0xb9920))(this, p0, p1);
+    }
+
+    virtual void releaseButton(int p0, bool p1) {
+        return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0xb9a00))(this, p0, p1);
+    }
+
     virtual void spawnGroup(int  p0) {
         return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0xb7050))(this,p0);
     }
@@ -341,6 +355,10 @@ class $GJBaseGameLayer : public $CacBase {
     }
 
     void apply_hooks() override {
+        m->registerHook(getBase()+0xb9920, extract_virtual(this, &$GJBaseGameLayer::pushButton));
+
+        m->registerHook(getBase()+0xb9a00, extract_virtual(this, &$GJBaseGameLayer::releaseButton));
+
         m->registerHook(getBase()+0xb7050, extract_virtual(this, &$GJBaseGameLayer::spawnGroup));
 
         m->registerHook(getBase()+0xb7b70, extract_virtual(this, &$GJBaseGameLayer::addToSection));

@@ -88,17 +88,22 @@ class GJListLayer : public GDObj {
 class GJGameLevel : public cocos2d::CCNode, public GDObj {
 public:
     static GJGameLevel* create();
-    CLASS_PARAM(std::string, name, 0x138);
+    
     CLASS_PARAM(int, levelId, 0x130);
-    CLASS_PARAM(int, bestNormal, 0x214);
-    CLASS_PARAM(int, bestPractice, 0x238);
+    CLASS_PARAM(std::string, name, 0x138);
     CLASS_PARAM(std::string, levelString, 0x148);
     CLASS_PARAM(std::string, author, 0x150);
-    CLASS_PARAM(int, songID, 0x190);
     CLASS_PARAM(int, audioTrack, 0x18c);
-    CLASS_PARAM(bool, official, 0x324);
-    STRUCT_PARAM(LevelDifficulty, difficulty, 0x1b0);
+    CLASS_PARAM(int, songID, 0x190);
+    STRUCT_PARAM(LevelDifficulty, difficulty, 0x1ac);
     CLASS_PARAM(bool, lowDetail, 0x1c5);
+    CLASS_PARAM(int, bestNormal, 0x214);
+    CLASS_PARAM(int, bestPractice, 0x238);
+    CLASS_PARAM(int, score, 0x248);
+    CLASS_PARAM(int, epic, 0x24c);
+    CLASS_PARAM(int, demon, 0x26c);
+    CLASS_PARAM(int, stars, 0x27c);
+    CLASS_PARAM(bool, official, 0x324);
 };
 
 class CCTextInputNode;
@@ -167,6 +172,7 @@ public:
     CLASS_PARAM(GJGameLevel*, level, 0x150);
     CLASS_PARAM(GJEffectManager*, effectManager, 0x120);
     CLASS_PARAM(int, fontType, 0x144);
+    CLASS_PARAM(bool, is2Player, 0x142);
     static LevelSettingsObject* objectFromString(std::string str);
 };
 
@@ -306,6 +312,16 @@ class GameToolbox : public cocos2d::CCNode {
     static std::map<std::string, std::string> stringSetupToMap(std::string st, char const* seperator);
 };
 
+// mat thank uwu
+class HardStreak : public cocos2d::CCDrawNode { 
+public:
+    cocos2d::CCArray* m_pointsArr; // 0x0160
+    cocos2d::CCPoint m_currentPoint; // 0x0168
+    float m_waveSize; // 0x0170
+    float m_pulseSize; // 0x0174
+    bool m_isSolid; // 0x0178
+};
+
 class PlayerObject : public GameObject { 
 public:
     static PlayerObject* create(int icn, int icon, cocos2d::CCLayer*);
@@ -328,6 +344,7 @@ public:
     CLASS_PARAM(bool, isSliding, 0x7a0);
     CLASS_PARAM(bool, dead, 0x777);
     CLASS_PARAM(double, speed, 0x608);
+    CLASS_PARAM(HardStreak *, waveStreak, 0x600);
 };
 
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {

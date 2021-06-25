@@ -83,3 +83,6 @@ defit __ZN12LoadingLayer10loadAssetsEv, 0x1dfb20
 defit __ZN15CCTextInputNode24setLabelPlaceholderScaleEf, 0x5da70
 
 defit __ZN7cocos2d9extension21CCControlColourPicker13setColorValueERKNS_10_ccColor3BE, 0x1aac10
+
+defit __ZN7cocos2d10CCDrawNode12getBlendFuncERKNS_12_ccBlendFuncE, 0x379ea0
+defit __ZN7cocos2d10CCDrawNode12setBlendFuncERKNS_12_ccBlendFuncE, 0x379eb0
