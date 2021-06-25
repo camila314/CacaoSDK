@@ -11,16 +11,18 @@ Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the cur
 
 ### CacKit
 
-Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing one of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. You'll notice that I do not assign a name to the class. This is optional, but I do this because i also assign a variable to it, which allows me to activate the hooking automatically. Example:
+Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. You'll notice that I do not assign a name to the class. This is optional, but I do this because i also assign a variable to it, which allows me to activate the hooking automatically. Example:
 ```cpp
 #include <CacKit>
 #include <iostream>
 
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
 ```
 
 If you want to call the original function, there is also an easy way to do that as well:
@@ -28,12 +30,14 @@ If you want to call the original function, there is also an easy way to do that 
 #include <CacKit>
 #include <iostream>
 
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
 ```
 
 Because this CacKit class is not technically a GD class, we need to cast `this` into the proper gd class to actually use it. Cacao provides us with a `cac_this` macro that automatically does this for us
@@ -41,26 +45,34 @@ Because this CacKit class is not technically a GD class, we need to cast `this` 
 #include <CacKit>
 #include <iostream>
 
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
 ```
 
-If you want, you can also use a function with the name `inject` to run code when the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
+If you want, you can also use a function with the name `inject` to run code after the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
 ```cpp
 #define CAC_PROJ_NAME "My first mod"
 #include <CacKit>
 #include <iostream>
 
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
+
+void inject() {
+	std::cout << "Bye bye!\n";
+}
 ```
 
 If theres a function/class you want to be added to the CacKit catalog just create an issue or tell me on discord.

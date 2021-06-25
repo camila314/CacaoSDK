@@ -1,15 +1,17 @@
 #include <CacKit>
 
 CAC_HOOKS
+// do some hooking
 class: public $PlayLayer {
     void update(float dt) override {
-        std::cout << "hello!\n";
+        std::cout << "hello!" << std::endl;
 
         $PlayLayer::update(dt);
     }
-} TemplateMod;
+} ExampleHook;
+
 END_CAC_HOOKS
 
 void inject() {
-	//do some setup stuff
+    // after hooking work
 }
