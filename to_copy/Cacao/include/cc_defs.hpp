@@ -85,6 +85,11 @@ class GJListLayer : public GDObj {
 
 };
 
+class OBB2D : public cocos2d::CCNode {
+ public:
+    cocos2d::CCRect getBoundingRect();
+};
+
 class GJGameLevel : public cocos2d::CCNode, public GDObj {
 public:
     static GJGameLevel* create();
@@ -198,6 +203,7 @@ public:
     static GameObject* objectFromString(std::string str, bool ldm);
     CLASS_PARAM(int, type, 0x370);
     CLASS_PARAM(int, id, 0x3c4);
+    CLASS_PARAM(OBB2D*, hitbox, 0x2b0);
     CLASS_PARAM(bool, inEditLayer, 0x279);
     CLASS_PARAM(cocos2d::CCPoint, startPos, 0x37c);
     CLASS_PARAM(bool, touchTriggered, 0x378);
@@ -220,7 +226,7 @@ public:
     virtual void triggerObject(GJBaseGameLayer*);
     virtual void activateObject();
     virtual void deactivateObject(bool);
-    virtual void getObjectRect();
+    virtual cocos2d::CCRect* getObjectRect();
     virtual void getObjectRect(float, float);
     virtual void getObjectRect2(float, float);
     virtual void getObjectTextureRect();
@@ -296,6 +302,7 @@ public:
     void setSecondColor(cocos2d::_ccColor3B const&);
     void flipGravity(bool, bool);
     void pushButton(int);
+    CLASS_PARAM(double, gravity, 0x618);
     CLASS_PARAM(cocos2d::_ccColor3B, pCol1, 0x7c2);
     CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
     CLASS_PARAM(double, yAccel, 0x760);
