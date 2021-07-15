@@ -207,9 +207,8 @@ class GJEffectManager : public cocos2d::CCNode, public GDObj {
     cocos2d::CCDictionary* m_f1c48;
     cocos2d::CCDictionary* m_f1c50;
     float m_time;
-    bool m_f1c5c;
-    bool m_f1c5d;
-    int m_f1c60;
+    float m_velocity;
+    float m_acceleration;
     bool m_moveOptimizationEnabled;
     void countChangedForItem(int item);
     void updateColors(cocos2d::_ccColor3B c1, cocos2d::_ccColor3B c2);
