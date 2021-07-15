@@ -55,6 +55,7 @@ global %1
 %endmacro
 
 defit __ZN7cocos2d12CCDictionary12objectForKeyEl, 0x190bb0
+defit __ZN7cocos2d12CCDictionary5countEv, 0x190430
 
 defit __ZN15GJBaseGameLayer14updateCountersEii, 0xb9bc0
 
@@ -62,6 +63,8 @@ defit __ZN15GJEffectManager11toggleGroupEib, 0xb75f0
 defit __ZN15GJEffectManager19countChangedForItemEi, 0x185a40
 
 defit __ZN15GJBaseGameLayer20toggleGroupTriggeredEib, 0xb75a0
+defit __ZN15GJBaseGameLayer10pushButtonEib, 0xb9920
+defit __ZN15GJBaseGameLayer13releaseButtonEib, 0xb9a00
 
 defit __ZN11GameManager18getIntGameVariableEPKc, 0x1cd1d0
 
@@ -86,3 +89,7 @@ defit __ZN7cocos2d9extension21CCControlColourPicker13setColorValueERKNS_10_ccCol
 
 defit __ZN7cocos2d10CCDrawNode12getBlendFuncERKNS_12_ccBlendFuncE, 0x379ea0
 defit __ZN7cocos2d10CCDrawNode12setBlendFuncERKNS_12_ccBlendFuncE, 0x379eb0
+
+defit __ZN7cocos2d7CCArray16fastRemoveObjectEPNS_8CCObjectE, 0x41a520
+defit __ZN7cocos2d7CCArray23fastRemoveObjectAtIndexEj, 0x41a500
+defit __ZN7cocos2d7CCArray26fastRemoveObjectAtIndexNewEj, 0x41a510
