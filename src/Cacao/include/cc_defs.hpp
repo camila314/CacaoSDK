@@ -85,6 +85,11 @@ class GJListLayer : public GDObj {
 
 };
 
+class OBB2D : public cocos2d::CCNode {
+ public:
+    cocos2d::CCRect getBoundingRect();
+};
+
 class GJGameLevel : public cocos2d::CCNode, public GDObj {
 public:
     static GJGameLevel* create();
@@ -103,6 +108,7 @@ public:
     CLASS_PARAM(int, epic, 0x24c);
     CLASS_PARAM(int, demon, 0x26c);
     CLASS_PARAM(int, stars, 0x27c);
+    CLASS_PARAM(OBB2D*, hitbox, 0x2b0);
     CLASS_PARAM(bool, official, 0x324);
 };
 
@@ -287,7 +293,7 @@ public:
     virtual void triggerObject(GJBaseGameLayer*);
     virtual void activateObject();
     virtual void deactivateObject(bool);
-    virtual void getObjectRect();
+    virtual cocos2d::CCRect* getObjectRect();
     virtual void getObjectRect(float, float);
     virtual void getObjectRect2(float, float);
     virtual void getObjectTextureRect();
@@ -380,21 +386,22 @@ public:
     void setSecondColor(cocos2d::_ccColor3B const&);
     void flipGravity(bool, bool);
     void pushButton(int);
-    CLASS_PARAM(cocos2d::_ccColor3B, pCol1, 0x7c2);
-    CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
-    CLASS_PARAM(double, yAccel, 0x760);
-    CLASS_PARAM(float, xPos, 0x7c8);
-    CLASS_PARAM(float, yPos, 0x7cc);
-    CLASS_PARAM(bool, isShip, 0x770);
-    CLASS_PARAM(bool, isUpsideDown, 0x776);
-    CLASS_PARAM(float, vSize, 0x77c);
+    CLASS_PARAM(HardStreak *, waveStreak, 0x600);
+    CLASS_PARAM(double, speed, 0x608);
+    CLASS_PARAM(double, gravity, 0x618);
     CLASS_PARAM(bool, isHolding, 0x745);
     CLASS_PARAM(bool, hasJustHeld, 0x746);
-    CLASS_PARAM(bool, onGround, 0x778);
-    CLASS_PARAM(bool, isSliding, 0x7a0);
+    CLASS_PARAM(double, yAccel, 0x760);
+    CLASS_PARAM(bool, isShip, 0x770);
+    CLASS_PARAM(bool, isUpsideDown, 0x776);
     CLASS_PARAM(bool, dead, 0x777);
-    CLASS_PARAM(double, speed, 0x608);
-    CLASS_PARAM(HardStreak *, waveStreak, 0x600);
+    CLASS_PARAM(bool, onGround, 0x778);
+    CLASS_PARAM(float, vSize, 0x77c);
+    CLASS_PARAM(bool, isSliding, 0x7a0);
+    CLASS_PARAM(cocos2d::_ccColor3B, pCol1, 0x7c2);
+    CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
+    CLASS_PARAM(float, xPos, 0x7c8);
+    CLASS_PARAM(float, yPos, 0x7cc);
 };
 
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
