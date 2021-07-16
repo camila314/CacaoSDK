@@ -66,11 +66,7 @@ namespace Cacao {
 
     template <typename T>
     std::vector<T> ccToVec(cocos2d::CCArray* arr) {
-        std::vector<T> vec;
-        for (int i = 0; i < arr->count(); i++) {
-            vec.push_back(reinterpret_cast<T>(arr->objectAtIndex(i)));
-        }
-        return vec;
+        return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
     }
 
     cocos2d::CCPoint relativePosition(double x, double y);

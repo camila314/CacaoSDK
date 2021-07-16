@@ -168,9 +168,19 @@ class InheritanceNode : public cocos2d::CCObject, public GDObj {
 
 };
 
+class PulseEffectAction : public cocos2d::CCNode, public GDObj {
+    CLASS_PARAM(int, group, 0x130);
+};
+
 class GJBaseGameLayer;
-class ColorAction;
-class ColorActionSprite;
+class ColorAction : public cocos2d::CCNode, public GDObj {
+    CLASS_PARAM(cocos2d::_ccColor3B, color, 0x12c);
+};
+class ColorActionSprite : public cocos2d::CCNode, public GDObj {
+    float m_opacity;
+    cocos2d::_ccColor3B m_f0124;
+    cocos2d::_ccColor3B m_activeColor;
+};
 class GJEffectManager : public cocos2d::CCNode, public GDObj {
  public:
     GJBaseGameLayer* m_gameLayer;
@@ -728,14 +738,6 @@ class SetupSpawnPopup : public FLAlertLayer {
 };
 
 class LoadingLayer {
-
-};
-
-class ColorAction : public cocos2d::CCNode {
-
-};
-
-class ColorActionSprite : public cocos2d::CCNode {
 
 };
 
