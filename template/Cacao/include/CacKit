@@ -37,6 +37,7 @@ inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T)
     return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
 };
 
+
 class $CacBase {
  public:
     virtual void apply_hooks() = 0; 
@@ -200,6 +201,10 @@ class $PlayerObject : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0x22aa00))(this,p0);
     }
 
+    virtual void updateJump(float  p0) {
+        return reinterpret_cast<void(*)(decltype(this),float )>(m->getOriginal(getBase()+0x219680))(this,p0);
+    }
+
     virtual void flipGravity(bool  p0,bool  p1) {
         return reinterpret_cast<void(*)(decltype(this),bool ,bool )>(m->getOriginal(getBase()+0x21c090))(this,p0,p1);
     }
@@ -222,6 +227,8 @@ class $PlayerObject : public $CacBase {
 
     void apply_hooks() override {
         m->registerHook(getBase()+0x22aa00, extract_virtual(this, &$PlayerObject::pushButton));
+
+        m->registerHook(getBase()+0x219680, extract_virtual(this, &$PlayerObject::updateJump));
 
         m->registerHook(getBase()+0x21c090, extract_virtual(this, &$PlayerObject::flipGravity));
 
