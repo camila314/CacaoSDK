@@ -1,10 +1,10 @@
 # CacaoSDK
-CacaoSDK is modding framework/toolkit for Geometry Dash. To start, run the `create` file and specify a location
+Cacao is a revolutionary Geometry Dash modding framework for MacOS users. Cacao (now) requires CMake so make sure you have that. To start, run the `create` file and specify a location
 
 Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_route) and also uses [Zydis](https://github.com/zyantific/zydis) for function hooking.
 ## Prerequisites
 
-Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the makefile to add the path of the sdk, put respectively in the `SDK_LOCATION` variable.
+Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the CMakeLists file to add the path of the sdk, put respectively in the `SDK_LOCATION` variable.
 
 ## How to use
 
@@ -16,37 +16,41 @@ Cacao comes with a neat little way to hook very quickly with a tool called CacKi
 #include <CacKit>
 #include <iostream>
 
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
 ```
 
 If you want to call the original function, there is also an easy way to do that as well:
 ```cpp
 #include <CacKit>
 #include <iostream>
-
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
 ```
 
 Because this CacKit class is not technically a GD class, we need to cast `this` into the proper gd class to actually use it. Cacao provides us with a `cac_this` macro that automatically does this for us
 ```cpp
 #include <CacKit>
 #include <iostream>
-
+CAC_HOOKS
 class: public $EditorUI {
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
+END_CAC_HOOKS
 ```
 
 If you want, you can also use a function with the name `inject` to run code when the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
@@ -145,6 +149,6 @@ Instead of using `int main`, we are using `void inject`. The inject function is 
 
 ### Cacao
 
-For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()._playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
+For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()->_playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
 
 For a full list of helper functions, look at the Cacao.hpp header file.

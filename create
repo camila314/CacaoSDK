@@ -8,9 +8,11 @@ if [ ! -d "$copypath" ]; then
 	echo "Unable to located path given: $copypath"
 else
 	echo "Copying files"
-	cp `dirname $0`/to_copy/main.cpp $copypath
-	cp `dirname $0`/to_copy/Makefile $copypath
-	cp `dirname $0`/to_copy/CacaoProj.sublime-project $copypath/$projname.sublime-project
-	ln -s `dirname $0`/to_copy/Cacao $copypath/Cacao
+	cp `dirname $0`/template/main.cpp $copypath
+	cp `dirname $0`/template/CMakeLists.txt $copypath
+	cp `dirname $0`/template/CacTemplate.sublime-project $copypath/$projname.sublime-project
+	ln -s `dirname $0`/template/Cacao $copypath/Cacao
+	sed -i '' "s/CacTemplate/$projname/g" $copypath/CMakeLists.txt
+	sed -i '' "s/CacTemplate/$projname/g" $copypath/$projname.sublime-project
 	echo "Done."
 fi
