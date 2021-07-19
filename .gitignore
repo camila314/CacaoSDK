@@ -30,11 +30,11 @@
 *.out
 *.app
 
+# Default projects folder of my fork
 Projects/
-**/.DS_Store
 
-# old cacao stuff that i keep so i don't fuck compatibility up
-to_copy/
+# Macos be like
+**/.DS_Store
 
 # CMake gitignore
 **/CMakeLists.txt.user
