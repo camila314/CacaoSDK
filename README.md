@@ -1,10 +1,10 @@
 # CacaoSDK
-CacaoSDK is modding framework/toolkit for Geometry Dash. To start, run the `create` file and specify a location
+Cacao is a revolutionary Geometry Dash modding framework for MacOS users. Cacao (now) requires CMake so make sure you have that. To start, run the `create` file and specify a location
 
 Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_route) and also uses [Zydis](https://github.com/zyantific/zydis) for function hooking.
 ## Prerequisites
 
-Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the makefile to add the path of the sdk, put respectively in the `SDK_LOCATION` variable.
+Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the CMakeLists file to add the path of the sdk, put respectively in the `SDK_LOCATION` variable.
 
 ## How to use
 
@@ -157,6 +157,6 @@ Instead of using `int main`, we are using `void inject`. The inject function is 
 
 ### Cacao
 
-For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()._playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
+For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()->_playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
 
 For a full list of helper functions, look at the Cacao.hpp header file.
