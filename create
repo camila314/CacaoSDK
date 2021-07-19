@@ -55,10 +55,13 @@ if (( $# + $OPTIND > 1 )); then
 		echo "Copying files"
 		touch "$copypath/main.cpp"
 		echo "#define CAC_PROJ_NAME \"$projname\"" >> "$copypath/main.cpp"
-		cat "$srcpath/to_copy/main.cpp" >> "$copypath/main.cpp"
-		cp "$srcpath/to_copy/.gitignore" "$copypath"
-		cp "$srcpath/to_copy/Makefile" "$copypath"
-		ln -s "$srcpath/src/Cacao" "$copypath/Cacao"
+		cat "$srcpath/template/main.cpp" >> "$copypath/main.cpp"
+		cp "$srcpath/template/.gitignore" "$copypath"
+		cp "$srcpath/template/CMakeLists.txt" "$copypath"
+		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath"
+		sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
+		sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
+		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
 	fi
 	echo "Done."
 else 
