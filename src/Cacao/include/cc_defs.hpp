@@ -416,12 +416,19 @@ public:
 
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
 public:
-    void toggleGroupTriggered(int group, bool activate);
     void pushButton(int, bool player2);
     void releaseButton(int, bool player2);
-    void spawnGroup(int group);
     void updateCounters(int item, int value);
-    void addToSection(GameObject* ob);
+    virtual void objectsCollided(int, int);
+    virtual void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int);
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+    virtual void flipGravity(PlayerObject*, bool, bool);
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+    virtual void toggleGroupTriggered(int, bool);
+    virtual void spawnGroup(int);
+    virtual void addToSection(GameObject*);
+    virtual void addToGroup(GameObject*, int, bool);
+    virtual void removeFromGroup(GameObject*, int);
     CLASS_PARAM(GJEffectManager *, effectManager, 0x180);
     CLASS_PARAM(cocos2d::CCLayer*, objectLayer, 0x188);
     CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
