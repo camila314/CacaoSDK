@@ -673,8 +673,6 @@ defit __ZN15GJDropDownLayerD1Ev, 0x351d00
 defit __ZN15GJDropDownLayerD0Ev, 0x351ea0
 defit __ZN15GJDropDownLayer6createEPKc, 0x352530
 
-<<<<<<< HEAD:src/cocos.asm
-=======
 defit __ZNK7cocos2d6CCRect7getMinXEv, 0x137750
 defit __ZNK7cocos2d6CCRect7getMaxXEv, 0x137710
 defit __ZNK7cocos2d6CCRect7getMaxYEv, 0x137760
@@ -682,7 +680,6 @@ defit __ZNK7cocos2d6CCRect7getMaxYEv, 0x137760
 defit __ZN10GameObject13getObjectRectEv, 0x3352b0
 defit __ZN5OBB2D15getBoundingRectEv, 0x35b2b0
 
->>>>>>> 456fc4519664b909ea43609ea6c476ef43ec2df5:template/Cacao/symtab.asm
 defit _sexyRender, 0x274b50
 
 global __ZTIN7cocos2d6CCNodeE
@@ -705,8 +702,4 @@ section .bss
 __ZTIN7cocos2d6CCNodeE: resq 5
 __ZTIN7cocos2d7CCLayerE: resq 5
 __ZTI12FLAlertLayer: resq 5
-<<<<<<< HEAD:src/cocos.asm
 __ZTIN7cocos2d12CCLayerColorE: resq 5
-=======
-__ZTIN7cocos2d12CCLayerColorE: resq 5
->>>>>>> 456fc4519664b909ea43609ea6c476ef43ec2df5:template/Cacao/symtab.asm

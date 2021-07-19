@@ -422,7 +422,7 @@ public:
     void updateCounters(int item, int value);
     virtual void objectsCollided(int, int);
     virtual void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int);
-    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, uint32_t, int, bool, int, EffectGameObject*); //too lazy to add hsvvalue rn cocos2d::_ccHSVValue
     virtual void flipGravity(PlayerObject*, bool, bool);
     virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
     virtual void toggleGroupTriggered(int, bool);
