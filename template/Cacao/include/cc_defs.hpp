@@ -697,7 +697,7 @@ public:
     CLASS_PARAM(bool, toggled, 0x168);
 };
 
-class CCTextInputNode : public cocos2d::CCLayer, public cocos2d::CCIMEDelegate, public GDObj {
+class CCTextInputNode : public cocos2d::CCLayer, public cocos2d::CCIMEDelegate, public cocos2d::CCTextFieldDelegate, public GDObj {
 public:
     static CCTextInputNode* create(float x, float y, char const* placeholder, char const* font, int, char const*);
     bool init(float x, float y, char const* placeholder, char const* font, int, char const*);
@@ -709,7 +709,6 @@ public:
     std::string getString();
     char const* getString_s(); // modification, spooky
     void setString(std::string update);
-    CLASS_PARAM(TextInputDelegate*, inputDelegate, 0x1c8);
  //protected:
     void* m_unknown0;
     void* m_unknown1;

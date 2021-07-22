@@ -28,11 +28,19 @@
         uint64_t n_typinfo = getBase()+addr; \
         MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable(); \
     }
+
+#define CAC_TYPEINFO_NUM(addr, num) { \
+        uint64_t ok1 = *((uint64_t*)this); \
+        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+24+num*16; \
+        uint64_t n_typinfo = getBase()+addr; \
+        MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable(); \
+    }
 namespace Cacao {
     typedef void (cocos2d::CCObject::* CC_SEL)(cocos2d::CCObject*);
     typedef void (cocos2d::CCObject::* CC_SCHED)(float);
 
     inline void printGeometry(cocos2d::CCPoint p) {std::cout << "X: " << p.x << " Y: " << p.y << "\n";}
+    inline void printGeometry(cocos2d::CCSize p) {std::cout << "Width: " << p.width << " Height: " << p.height << "\n";}
     inline void printGeometry(cocos2d::CCRect p) {std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";}
     template <typename K>
     void scheduleFunction(K func) {
