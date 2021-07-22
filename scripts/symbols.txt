@@ -36790,6 +36790,2510 @@ vtable for std::bad_alloc
 _ZTVSt9bad_alloc
 vtable for std::exception
 _ZTVSt9exception
+non-virtual thunk to PlayerObject::animationFinished(char const*)
+_ZThn1068_N12PlayerObject17animationFinishedEPKc
+non-virtual thunk to AnimatedGameObject::animationFinished(char const*)
+_ZThn1068_N18AnimatedGameObject17animationFinishedEPKc
+non-virtual thunk to AnimatedGameObject::displayFrameChanged(cocos2d::CCObject*, std::string)
+_ZThn1072_N18AnimatedGameObject19displayFrameChangedEPN7cocos2d8CCObjectESs
+non-virtual thunk to ArtistCell::~ArtistCell()
+_ZThn236_N10ArtistCellD0Ev
+non-virtual thunk to ArtistCell::~ArtistCell()
+_ZThn236_N10ArtistCellD1Ev
+non-virtual thunk to ButtonPage::~ButtonPage()
+_ZThn236_N10ButtonPageD0Ev
+non-virtual thunk to ButtonPage::~ButtonPage()
+_ZThn236_N10ButtonPageD1Ev
+non-virtual thunk to GJItemIcon::setOpacity(unsigned char)
+_ZThn236_N10GJItemIcon10setOpacityEh
+non-virtual thunk to GJUserCell::~GJUserCell()
+_ZThn236_N10GJUserCellD0Ev
+non-virtual thunk to GJUserCell::~GJUserCell()
+_ZThn236_N10GJUserCellD1Ev
+non-virtual thunk to GameObject::setOpacity(unsigned char)
+_ZThn236_N10GameObject10setOpacityEh
+non-virtual thunk to GaragePage::~GaragePage()
+_ZThn236_N10GaragePageD0Ev
+non-virtual thunk to GaragePage::~GaragePage()
+_ZThn236_N10GaragePageD1Ev
+non-virtual thunk to PauseLayer::~PauseLayer()
+_ZThn236_N10PauseLayerD0Ev
+non-virtual thunk to PauseLayer::~PauseLayer()
+_ZThn236_N10PauseLayerD1Ev
+non-virtual thunk to SetIDLayer::~SetIDLayer()
+_ZThn236_N10SetIDLayerD0Ev
+non-virtual thunk to SetIDLayer::~SetIDLayer()
+_ZThn236_N10SetIDLayerD1Ev
+non-virtual thunk to SetIDPopup::~SetIDPopup()
+_ZThn236_N10SetIDPopupD0Ev
+non-virtual thunk to SetIDPopup::~SetIDPopup()
+_ZThn236_N10SetIDPopupD1Ev
+non-virtual thunk to ShardsPage::~ShardsPage()
+_ZThn236_N10ShardsPageD0Ev
+non-virtual thunk to ShardsPage::~ShardsPage()
+_ZThn236_N10ShardsPageD1Ev
+non-virtual thunk to SongsLayer::~SongsLayer()
+_ZThn236_N10SongsLayerD0Ev
+non-virtual thunk to SongsLayer::~SongsLayer()
+_ZThn236_N10SongsLayerD1Ev
+non-virtual thunk to StatsLayer::~StatsLayer()
+_ZThn236_N10StatsLayerD0Ev
+non-virtual thunk to StatsLayer::~StatsLayer()
+_ZThn236_N10StatsLayerD1Ev
+non-virtual thunk to CCCountdown::setOpacity(unsigned char)
+_ZThn236_N11CCCountdown10setOpacityEh
+non-virtual thunk to CommentCell::~CommentCell()
+_ZThn236_N11CommentCellD0Ev
+non-virtual thunk to CommentCell::~CommentCell()
+_ZThn236_N11CommentCellD1Ev
+non-virtual thunk to DialogLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N11DialogLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to DialogLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N11DialogLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to DialogLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N11DialogLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to DialogLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N11DialogLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to DialogLayer::~DialogLayer()
+_ZThn236_N11DialogLayerD0Ev
+non-virtual thunk to DialogLayer::~DialogLayer()
+_ZThn236_N11DialogLayerD1Ev
+non-virtual thunk to GJListLayer::~GJListLayer()
+_ZThn236_N11GJListLayerD0Ev
+non-virtual thunk to GJListLayer::~GJListLayer()
+_ZThn236_N11GJListLayerD1Ev
+non-virtual thunk to GJScoreCell::~GJScoreCell()
+_ZThn236_N11GJScoreCellD0Ev
+non-virtual thunk to GJScoreCell::~GJScoreCell()
+_ZThn236_N11GJScoreCellD1Ev
+non-virtual thunk to GJShopLayer::~GJShopLayer()
+_ZThn236_N11GJShopLayerD0Ev
+non-virtual thunk to GJShopLayer::~GJShopLayer()
+_ZThn236_N11GJShopLayerD1Ev
+non-virtual thunk to MapPackCell::~MapPackCell()
+_ZThn236_N11MapPackCellD0Ev
+non-virtual thunk to MapPackCell::~MapPackCell()
+_ZThn236_N11MapPackCellD1Ev
+non-virtual thunk to ProfilePage::~ProfilePage()
+_ZThn236_N11ProfilePageD0Ev
+non-virtual thunk to ProfilePage::~ProfilePage()
+_ZThn236_N11ProfilePageD1Ev
+non-virtual thunk to RewardsPage::~RewardsPage()
+_ZThn236_N11RewardsPageD0Ev
+non-virtual thunk to RewardsPage::~RewardsPage()
+_ZThn236_N11RewardsPageD1Ev
+non-virtual thunk to SecretLayer::~SecretLayer()
+_ZThn236_N11SecretLayerD0Ev
+non-virtual thunk to SecretLayer::~SecretLayer()
+_ZThn236_N11SecretLayerD1Ev
+non-virtual thunk to UploadPopup::~UploadPopup()
+_ZThn236_N11UploadPopupD0Ev
+non-virtual thunk to UploadPopup::~UploadPopup()
+_ZThn236_N11UploadPopupD1Ev
+non-virtual thunk to AccountLayer::~AccountLayer()
+_ZThn236_N12AccountLayerD0Ev
+non-virtual thunk to AccountLayer::~AccountLayer()
+_ZThn236_N12AccountLayerD1Ev
+non-virtual thunk to BoomListView::~BoomListView()
+_ZThn236_N12BoomListViewD0Ev
+non-virtual thunk to BoomListView::~BoomListView()
+_ZThn236_N12BoomListViewD1Ev
+non-virtual thunk to CCBlockLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12CCBlockLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCBlockLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12CCBlockLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCBlockLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12CCBlockLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCBlockLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12CCBlockLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCBlockLayer::~CCBlockLayer()
+_ZThn236_N12CCBlockLayerD0Ev
+non-virtual thunk to CCBlockLayer::~CCBlockLayer()
+_ZThn236_N12CCBlockLayerD1Ev
+non-virtual thunk to CreatorLayer::~CreatorLayer()
+_ZThn236_N12CreatorLayerD0Ev
+non-virtual thunk to CreatorLayer::~CreatorLayer()
+_ZThn236_N12CreatorLayerD1Ev
+non-virtual thunk to FLAlertLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12FLAlertLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to FLAlertLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12FLAlertLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to FLAlertLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12FLAlertLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to FLAlertLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12FLAlertLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to FLAlertLayer::~FLAlertLayer()
+_ZThn236_N12FLAlertLayerD0Ev
+non-virtual thunk to FLAlertLayer::~FLAlertLayer()
+_ZThn236_N12FLAlertLayerD1Ev
+non-virtual thunk to LoadingLayer::~LoadingLayer()
+_ZThn236_N12LoadingLayerD0Ev
+non-virtual thunk to LoadingLayer::~LoadingLayer()
+_ZThn236_N12LoadingLayerD1Ev
+non-virtual thunk to OptionsLayer::~OptionsLayer()
+_ZThn236_N12OptionsLayerD0Ev
+non-virtual thunk to OptionsLayer::~OptionsLayer()
+_ZThn236_N12OptionsLayerD1Ev
+non-virtual thunk to PlayerObject::setOpacity(unsigned char)
+_ZThn236_N12PlayerObject10setOpacityEh
+non-virtual thunk to PlayerObject::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N12PlayerObject8setColorERKN7cocos2d10_ccColor3BE
+non-virtual thunk to SecretLayer2::~SecretLayer2()
+_ZThn236_N12SecretLayer2D0Ev
+non-virtual thunk to SecretLayer2::~SecretLayer2()
+_ZThn236_N12SecretLayer2D1Ev
+non-virtual thunk to SecretLayer3::~SecretLayer3()
+_ZThn236_N12SecretLayer3D0Ev
+non-virtual thunk to SecretLayer3::~SecretLayer3()
+_ZThn236_N12SecretLayer3D1Ev
+non-virtual thunk to SecretLayer4::~SecretLayer4()
+_ZThn236_N12SecretLayer4D0Ev
+non-virtual thunk to SecretLayer4::~SecretLayer4()
+_ZThn236_N12SecretLayer4D1Ev
+non-virtual thunk to SetTextPopup::~SetTextPopup()
+_ZThn236_N12SetTextPopupD0Ev
+non-virtual thunk to SetTextPopup::~SetTextPopup()
+_ZThn236_N12SetTextPopupD1Ev
+non-virtual thunk to SimplePlayer::setOpacity(unsigned char)
+_ZThn236_N12SimplePlayer10setOpacityEh
+non-virtual thunk to SimplePlayer::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N12SimplePlayer8setColorERKN7cocos2d10_ccColor3BE
+non-virtual thunk to SlideInLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12SlideInLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SlideInLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12SlideInLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SlideInLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12SlideInLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SlideInLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N12SlideInLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SlideInLayer::~SlideInLayer()
+_ZThn236_N12SlideInLayerD0Ev
+non-virtual thunk to SlideInLayer::~SlideInLayer()
+_ZThn236_N12SlideInLayerD1Ev
+non-virtual thunk to SupportLayer::~SupportLayer()
+_ZThn236_N12SupportLayerD0Ev
+non-virtual thunk to SupportLayer::~SupportLayer()
+_ZThn236_N12SupportLayerD1Ev
+non-virtual thunk to BoomListLayer::~BoomListLayer()
+_ZThn236_N13BoomListLayerD0Ev
+non-virtual thunk to BoomListLayer::~BoomListLayer()
+_ZThn236_N13BoomListLayerD1Ev
+non-virtual thunk to DrawGridLayer::~DrawGridLayer()
+_ZThn236_N13DrawGridLayerD0Ev
+non-virtual thunk to DrawGridLayer::~DrawGridLayer()
+_ZThn236_N13DrawGridLayerD1Ev
+non-virtual thunk to EndLevelLayer::~EndLevelLayer()
+_ZThn236_N13EndLevelLayerD0Ev
+non-virtual thunk to EndLevelLayer::~EndLevelLayer()
+_ZThn236_N13EndLevelLayerD1Ev
+non-virtual thunk to ExtendedLayer::~ExtendedLayer()
+_ZThn236_N13ExtendedLayerD0Ev
+non-virtual thunk to ExtendedLayer::~ExtendedLayer()
+_ZThn236_N13ExtendedLayerD1Ev
+non-virtual thunk to GJChestSprite::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N13GJChestSprite8setColorERKN7cocos2d10_ccColor3BE
+non-virtual thunk to GJGarageLayer::~GJGarageLayer()
+_ZThn236_N13GJGarageLayerD0Ev
+non-virtual thunk to GJGarageLayer::~GJGarageLayer()
+_ZThn236_N13GJGarageLayerD1Ev
+non-virtual thunk to GJGroundLayer::~GJGroundLayer()
+_ZThn236_N13GJGroundLayerD0Ev
+non-virtual thunk to GJGroundLayer::~GJGroundLayer()
+_ZThn236_N13GJGroundLayerD1Ev
+non-virtual thunk to GJMessageCell::~GJMessageCell()
+_ZThn236_N13GJMessageCellD0Ev
+non-virtual thunk to GJMessageCell::~GJMessageCell()
+_ZThn236_N13GJMessageCellD1Ev
+non-virtual thunk to GJRequestCell::~GJRequestCell()
+_ZThn236_N13GJRequestCellD0Ev
+non-virtual thunk to GJRequestCell::~GJRequestCell()
+_ZThn236_N13GJRequestCellD1Ev
+non-virtual thunk to GJRobotSprite::setOpacity(unsigned char)
+_ZThn236_N13GJRobotSprite10setOpacityEh
+non-virtual thunk to GJSongBrowser::~GJSongBrowser()
+_ZThn236_N13GJSongBrowserD0Ev
+non-virtual thunk to GJSongBrowser::~GJSongBrowser()
+_ZThn236_N13GJSongBrowserD1Ev
+non-virtual thunk to GauntletLayer::~GauntletLayer()
+_ZThn236_N13GauntletLayerD0Ev
+non-virtual thunk to GauntletLayer::~GauntletLayer()
+_ZThn236_N13GauntletLayerD1Ev
+non-virtual thunk to LikeItemLayer::~LikeItemLayer()
+_ZThn236_N13LikeItemLayerD0Ev
+non-virtual thunk to LikeItemLayer::~LikeItemLayer()
+_ZThn236_N13LikeItemLayerD1Ev
+non-virtual thunk to LoadingCircle::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13LoadingCircle12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LoadingCircle::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13LoadingCircle12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LoadingCircle::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13LoadingCircle12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LoadingCircle::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13LoadingCircle16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LoadingCircle::~LoadingCircle()
+_ZThn236_N13LoadingCircleD0Ev
+non-virtual thunk to LoadingCircle::~LoadingCircle()
+_ZThn236_N13LoadingCircleD1Ev
+non-virtual thunk to MenuGameLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13MenuGameLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to MenuGameLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13MenuGameLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to MenuGameLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13MenuGameLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to MenuGameLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N13MenuGameLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to MenuGameLayer::~MenuGameLayer()
+_ZThn236_N13MenuGameLayerD0Ev
+non-virtual thunk to MenuGameLayer::~MenuGameLayer()
+_ZThn236_N13MenuGameLayerD1Ev
+non-virtual thunk to MyLevelsLayer::~MyLevelsLayer()
+_ZThn236_N13MyLevelsLayerD0Ev
+non-virtual thunk to MyLevelsLayer::~MyLevelsLayer()
+_ZThn236_N13MyLevelsLayerD1Ev
+non-virtual thunk to SongInfoLayer::~SongInfoLayer()
+_ZThn236_N13SongInfoLayerD0Ev
+non-virtual thunk to SongInfoLayer::~SongInfoLayer()
+_ZThn236_N13SongInfoLayerD1Ev
+non-virtual thunk to TableViewCell::~TableViewCell()
+_ZThn236_N13TableViewCellD0Ev
+non-virtual thunk to TableViewCell::~TableViewCell()
+_ZThn236_N13TableViewCellD1Ev
+non-virtual thunk to TutorialLayer::~TutorialLayer()
+_ZThn236_N13TutorialLayerD0Ev
+non-virtual thunk to TutorialLayer::~TutorialLayer()
+_ZThn236_N13TutorialLayerD1Ev
+non-virtual thunk to TutorialPopup::~TutorialPopup()
+_ZThn236_N13TutorialPopupD0Ev
+non-virtual thunk to TutorialPopup::~TutorialPopup()
+_ZThn236_N13TutorialPopupD1Ev
+non-virtual thunk to AchievementBar::setOpacity(unsigned char)
+_ZThn236_N14AchievementBar10setOpacityEh
+non-virtual thunk to CCContentLayer::~CCContentLayer()
+_ZThn236_N14CCContentLayerD0Ev
+non-virtual thunk to CCContentLayer::~CCContentLayer()
+_ZThn236_N14CCContentLayerD1Ev
+non-virtual thunk to ChallengesPage::~ChallengesPage()
+_ZThn236_N14ChallengesPageD0Ev
+non-virtual thunk to ChallengesPage::~ChallengesPage()
+_ZThn236_N14ChallengesPageD1Ev
+non-virtual thunk to CustomListView::~CustomListView()
+_ZThn236_N14CustomListViewD0Ev
+non-virtual thunk to CustomListView::~CustomListView()
+_ZThn236_N14CustomListViewD1Ev
+non-virtual thunk to CustomSongCell::~CustomSongCell()
+_ZThn236_N14CustomSongCellD0Ev
+non-virtual thunk to CustomSongCell::~CustomSongCell()
+_ZThn236_N14CustomSongCellD1Ev
+non-virtual thunk to DailyLevelNode::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn236_N14DailyLevelNode15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to DailyLevelPage::~DailyLevelPage()
+_ZThn236_N14DailyLevelPageD0Ev
+non-virtual thunk to DailyLevelPage::~DailyLevelPage()
+_ZThn236_N14DailyLevelPageD1Ev
+non-virtual thunk to EditLevelLayer::~EditLevelLayer()
+_ZThn236_N14EditLevelLayerD0Ev
+non-virtual thunk to EditLevelLayer::~EditLevelLayer()
+_ZThn236_N14EditLevelLayerD1Ev
+non-virtual thunk to GJMessagePopup::~GJMessagePopup()
+_ZThn236_N14GJMessagePopupD0Ev
+non-virtual thunk to GJMessagePopup::~GJMessagePopup()
+_ZThn236_N14GJMessagePopupD1Ev
+non-virtual thunk to GJOptionsLayer::~GJOptionsLayer()
+_ZThn236_N14GJOptionsLayerD0Ev
+non-virtual thunk to GJOptionsLayer::~GJOptionsLayer()
+_ZThn236_N14GJOptionsLayerD1Ev
+non-virtual thunk to GJScaleControl::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14GJScaleControl12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJScaleControl::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14GJScaleControl12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJScaleControl::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14GJScaleControl12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJScaleControl::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14GJScaleControl16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJScaleControl::~GJScaleControl()
+_ZThn236_N14GJScaleControlD0Ev
+non-virtual thunk to GJScaleControl::~GJScaleControl()
+_ZThn236_N14GJScaleControlD1Ev
+non-virtual thunk to HSVWidgetPopup::~HSVWidgetPopup()
+_ZThn236_N14HSVWidgetPopupD0Ev
+non-virtual thunk to HSVWidgetPopup::~HSVWidgetPopup()
+_ZThn236_N14HSVWidgetPopupD1Ev
+non-virtual thunk to LevelInfoLayer::~LevelInfoLayer()
+_ZThn236_N14LevelInfoLayerD0Ev
+non-virtual thunk to LevelInfoLayer::~LevelInfoLayer()
+_ZThn236_N14LevelInfoLayerD1Ev
+non-virtual thunk to ListButtonPage::~ListButtonPage()
+_ZThn236_N14ListButtonPageD0Ev
+non-virtual thunk to ListButtonPage::~ListButtonPage()
+_ZThn236_N14ListButtonPageD1Ev
+non-virtual thunk to RateDemonLayer::~RateDemonLayer()
+_ZThn236_N14RateDemonLayerD0Ev
+non-virtual thunk to RateDemonLayer::~RateDemonLayer()
+_ZThn236_N14RateDemonLayerD1Ev
+non-virtual thunk to RateLevelLayer::~RateLevelLayer()
+_ZThn236_N14RateLevelLayerD0Ev
+non-virtual thunk to RateLevelLayer::~RateLevelLayer()
+_ZThn236_N14RateLevelLayerD1Ev
+non-virtual thunk to RateStarsLayer::~RateStarsLayer()
+_ZThn236_N14RateStarsLayerD0Ev
+non-virtual thunk to RateStarsLayer::~RateStarsLayer()
+_ZThn236_N14RateStarsLayerD1Ev
+non-virtual thunk to ScrollingLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14ScrollingLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to ScrollingLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14ScrollingLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to ScrollingLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14ScrollingLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to ScrollingLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N14ScrollingLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to ScrollingLayer::~ScrollingLayer()
+_ZThn236_N14ScrollingLayerD0Ev
+non-virtual thunk to ScrollingLayer::~ScrollingLayer()
+_ZThn236_N14ScrollingLayerD1Ev
+non-virtual thunk to SelectArtLayer::~SelectArtLayer()
+_ZThn236_N14SelectArtLayerD0Ev
+non-virtual thunk to SelectArtLayer::~SelectArtLayer()
+_ZThn236_N14SelectArtLayerD1Ev
+non-virtual thunk to SetFolderPopup::~SetFolderPopup()
+_ZThn236_N14SetFolderPopupD0Ev
+non-virtual thunk to SetFolderPopup::~SetFolderPopup()
+_ZThn236_N14SetFolderPopupD1Ev
+non-virtual thunk to SetItemIDLayer::~SetItemIDLayer()
+_ZThn236_N14SetItemIDLayerD0Ev
+non-virtual thunk to SetItemIDLayer::~SetItemIDLayer()
+_ZThn236_N14SetItemIDLayerD1Ev
+non-virtual thunk to WorldLevelPage::~WorldLevelPage()
+_ZThn236_N14WorldLevelPageD0Ev
+non-virtual thunk to WorldLevelPage::~WorldLevelPage()
+_ZThn236_N14WorldLevelPageD1Ev
+non-virtual thunk to AchievementCell::~AchievementCell()
+_ZThn236_N15AchievementCellD0Ev
+non-virtual thunk to AchievementCell::~AchievementCell()
+_ZThn236_N15AchievementCellD1Ev
+non-virtual thunk to BoomScrollLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15BoomScrollLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to BoomScrollLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15BoomScrollLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to BoomScrollLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15BoomScrollLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to BoomScrollLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15BoomScrollLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to BoomScrollLayer::~BoomScrollLayer()
+_ZThn236_N15BoomScrollLayerD0Ev
+non-virtual thunk to BoomScrollLayer::~BoomScrollLayer()
+_ZThn236_N15BoomScrollLayerD1Ev
+non-virtual thunk to CCTextInputNode::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15CCTextInputNode12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCTextInputNode::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15CCTextInputNode12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCTextInputNode::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15CCTextInputNode12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCTextInputNode::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15CCTextInputNode16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCTextInputNode::~CCTextInputNode()
+_ZThn236_N15CCTextInputNodeD0Ev
+non-virtual thunk to CCTextInputNode::~CCTextInputNode()
+_ZThn236_N15CCTextInputNodeD1Ev
+non-virtual thunk to CustomSongLayer::~CustomSongLayer()
+_ZThn236_N15CustomSongLayerD0Ev
+non-virtual thunk to CustomSongLayer::~CustomSongLayer()
+_ZThn236_N15CustomSongLayerD1Ev
+non-virtual thunk to GJBaseGameLayer::~GJBaseGameLayer()
+_ZThn236_N15GJBaseGameLayerD0Ev
+non-virtual thunk to GJBaseGameLayer::~GJBaseGameLayer()
+_ZThn236_N15GJBaseGameLayerD1Ev
+non-virtual thunk to GJDropDownLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15GJDropDownLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJDropDownLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15GJDropDownLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJDropDownLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15GJDropDownLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJDropDownLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N15GJDropDownLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJDropDownLayer::~GJDropDownLayer()
+_ZThn236_N15GJDropDownLayerD0Ev
+non-virtual thunk to GJDropDownLayer::~GJDropDownLayer()
+_ZThn236_N15GJDropDownLayerD1Ev
+non-virtual thunk to GJObjectDecoder::getDecodedObject(int, DS_Dictionary*)
+_ZThn236_N15GJObjectDecoder16getDecodedObjectEiP13DS_Dictionary
+non-virtual thunk to LabelGameObject::setOpacity(unsigned char)
+_ZThn236_N15LabelGameObject10setOpacityEh
+non-virtual thunk to MoreSearchLayer::~MoreSearchLayer()
+_ZThn236_N15MoreSearchLayerD0Ev
+non-virtual thunk to MoreSearchLayer::~MoreSearchLayer()
+_ZThn236_N15MoreSearchLayerD1Ev
+non-virtual thunk to RetryLevelLayer::~RetryLevelLayer()
+_ZThn236_N15RetryLevelLayerD0Ev
+non-virtual thunk to RetryLevelLayer::~RetryLevelLayer()
+_ZThn236_N15RetryLevelLayerD1Ev
+non-virtual thunk to SelectFontLayer::~SelectFontLayer()
+_ZThn236_N15SelectFontLayerD0Ev
+non-virtual thunk to SelectFontLayer::~SelectFontLayer()
+_ZThn236_N15SelectFontLayerD1Ev
+non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+_ZThn236_N15SetGroupIDLayerD0Ev
+non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+_ZThn236_N15SetGroupIDLayerD1Ev
+non-virtual thunk to SetupPulsePopup::~SetupPulsePopup()
+_ZThn236_N15SetupPulsePopupD0Ev
+non-virtual thunk to SetupPulsePopup::~SetupPulsePopup()
+_ZThn236_N15SetupPulsePopupD1Ev
+non-virtual thunk to SetupShakePopup::~SetupShakePopup()
+_ZThn236_N15SetupShakePopupD0Ev
+non-virtual thunk to SetupShakePopup::~SetupShakePopup()
+_ZThn236_N15SetupShakePopupD1Ev
+non-virtual thunk to SetupSpawnPopup::~SetupSpawnPopup()
+_ZThn236_N15SetupSpawnPopupD0Ev
+non-virtual thunk to SetupSpawnPopup::~SetupSpawnPopup()
+_ZThn236_N15SetupSpawnPopupD1Ev
+non-virtual thunk to ShareLevelLayer::~ShareLevelLayer()
+_ZThn236_N15ShareLevelLayerD0Ev
+non-virtual thunk to ShareLevelLayer::~ShareLevelLayer()
+_ZThn236_N15ShareLevelLayerD1Ev
+non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
+_ZThn236_N15TopArtistsLayerD0Ev
+non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
+_ZThn236_N15TopArtistsLayerD1Ev
+non-virtual thunk to AccountHelpLayer::~AccountHelpLayer()
+_ZThn236_N16AccountHelpLayerD0Ev
+non-virtual thunk to AccountHelpLayer::~AccountHelpLayer()
+_ZThn236_N16AccountHelpLayerD1Ev
+non-virtual thunk to CCAnimatedSprite::setOpacity(unsigned char)
+_ZThn236_N16CCAnimatedSprite10setOpacityEh
+non-virtual thunk to CCPartAnimSprite::setOpacity(unsigned char)
+_ZThn236_N16CCPartAnimSprite10setOpacityEh
+non-virtual thunk to CCScrollLayerExt::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16CCScrollLayerExt12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCScrollLayerExt::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16CCScrollLayerExt12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCScrollLayerExt::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16CCScrollLayerExt12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCScrollLayerExt::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16CCScrollLayerExt16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CCScrollLayerExt::~CCScrollLayerExt()
+_ZThn236_N16CCScrollLayerExtD0Ev
+non-virtual thunk to CCScrollLayerExt::~CCScrollLayerExt()
+_ZThn236_N16CCScrollLayerExtD1Ev
+non-virtual thunk to ColorSelectPopup::~ColorSelectPopup()
+_ZThn236_N16ColorSelectPopupD0Ev
+non-virtual thunk to ColorSelectPopup::~ColorSelectPopup()
+_ZThn236_N16ColorSelectPopupD1Ev
+non-virtual thunk to CustomSongWidget::songStateChanged()
+_ZThn236_N16CustomSongWidget16songStateChangedEv
+non-virtual thunk to CustomSongWidget::downloadSongFailed(int, GJSongError)
+_ZThn236_N16CustomSongWidget18downloadSongFailedEi11GJSongError
+non-virtual thunk to CustomSongWidget::loadSongInfoFailed(int, GJSongError)
+_ZThn236_N16CustomSongWidget18loadSongInfoFailedEi11GJSongError
+non-virtual thunk to CustomSongWidget::downloadSongFinished(SongInfoObject*)
+_ZThn236_N16CustomSongWidget20downloadSongFinishedEP14SongInfoObject
+non-virtual thunk to CustomSongWidget::loadSongInfoFinished(SongInfoObject*)
+_ZThn236_N16CustomSongWidget20loadSongInfoFinishedEP14SongInfoObject
+non-virtual thunk to EditorPauseLayer::~EditorPauseLayer()
+_ZThn236_N16EditorPauseLayerD0Ev
+non-virtual thunk to EditorPauseLayer::~EditorPauseLayer()
+_ZThn236_N16EditorPauseLayerD1Ev
+non-virtual thunk to FollowRewardPage::~FollowRewardPage()
+_ZThn236_N16FollowRewardPageD0Ev
+non-virtual thunk to FollowRewardPage::~FollowRewardPage()
+_ZThn236_N16FollowRewardPageD1Ev
+non-virtual thunk to GJFlyGroundLayer::~GJFlyGroundLayer()
+_ZThn236_N16GJFlyGroundLayerD0Ev
+non-virtual thunk to GJFlyGroundLayer::~GJFlyGroundLayer()
+_ZThn236_N16GJFlyGroundLayerD1Ev
+non-virtual thunk to GJLevelScoreCell::~GJLevelScoreCell()
+_ZThn236_N16GJLevelScoreCellD0Ev
+non-virtual thunk to GJLevelScoreCell::~GJLevelScoreCell()
+_ZThn236_N16GJLevelScoreCellD1Ev
+non-virtual thunk to GJMoreGamesLayer::~GJMoreGamesLayer()
+_ZThn236_N16GJMoreGamesLayerD0Ev
+non-virtual thunk to GJMoreGamesLayer::~GJMoreGamesLayer()
+_ZThn236_N16GJMoreGamesLayerD1Ev
+non-virtual thunk to KeybindingsLayer::~KeybindingsLayer()
+_ZThn236_N16KeybindingsLayerD0Ev
+non-virtual thunk to KeybindingsLayer::~KeybindingsLayer()
+_ZThn236_N16KeybindingsLayerD1Ev
+non-virtual thunk to LevelEditorLayer::~LevelEditorLayer()
+_ZThn236_N16LevelEditorLayerD0Ev
+non-virtual thunk to LevelEditorLayer::~LevelEditorLayer()
+_ZThn236_N16LevelEditorLayerD1Ev
+non-virtual thunk to LevelLeaderboard::~LevelLeaderboard()
+_ZThn236_N16LevelLeaderboardD0Ev
+non-virtual thunk to LevelLeaderboard::~LevelLeaderboard()
+_ZThn236_N16LevelLeaderboardD1Ev
+non-virtual thunk to LevelSearchLayer::~LevelSearchLayer()
+_ZThn236_N16LevelSearchLayerD0Ev
+non-virtual thunk to LevelSearchLayer::~LevelSearchLayer()
+_ZThn236_N16LevelSearchLayerD1Ev
+non-virtual thunk to LevelSelectLayer::~LevelSelectLayer()
+_ZThn236_N16LevelSelectLayerD0Ev
+non-virtual thunk to LevelSelectLayer::~LevelSelectLayer()
+_ZThn236_N16LevelSelectLayerD1Ev
+non-virtual thunk to MoreOptionsLayer::~MoreOptionsLayer()
+_ZThn236_N16MoreOptionsLayerD0Ev
+non-virtual thunk to MoreOptionsLayer::~MoreOptionsLayer()
+_ZThn236_N16MoreOptionsLayerD1Ev
+non-virtual thunk to NumberInputLayer::~NumberInputLayer()
+_ZThn236_N16NumberInputLayerD0Ev
+non-virtual thunk to NumberInputLayer::~NumberInputLayer()
+_ZThn236_N16NumberInputLayerD1Ev
+non-virtual thunk to SetTargetIDLayer::~SetTargetIDLayer()
+_ZThn236_N16SetTargetIDLayerD0Ev
+non-virtual thunk to SetTargetIDLayer::~SetTargetIDLayer()
+_ZThn236_N16SetTargetIDLayerD1Ev
+non-virtual thunk to SetupRotatePopup::~SetupRotatePopup()
+_ZThn236_N16SetupRotatePopupD0Ev
+non-virtual thunk to SetupRotatePopup::~SetupRotatePopup()
+_ZThn236_N16SetupRotatePopupD1Ev
+non-virtual thunk to SliderTouchLogic::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16SliderTouchLogic12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SliderTouchLogic::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16SliderTouchLogic12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SliderTouchLogic::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N16SliderTouchLogic12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to SliderTouchLogic::~SliderTouchLogic()
+_ZThn236_N16SliderTouchLogicD0Ev
+non-virtual thunk to SliderTouchLogic::~SliderTouchLogic()
+_ZThn236_N16SliderTouchLogicD1Ev
+non-virtual thunk to SongOptionsLayer::~SongOptionsLayer()
+_ZThn236_N16SongOptionsLayerD0Ev
+non-virtual thunk to SongOptionsLayer::~SongOptionsLayer()
+_ZThn236_N16SongOptionsLayerD1Ev
+non-virtual thunk to WorldSelectLayer::~WorldSelectLayer()
+_ZThn236_N16WorldSelectLayerD0Ev
+non-virtual thunk to WorldSelectLayer::~WorldSelectLayer()
+_ZThn236_N16WorldSelectLayerD1Ev
+non-virtual thunk to AccountLoginLayer::~AccountLoginLayer()
+_ZThn236_N17AccountLoginLayerD0Ev
+non-virtual thunk to AccountLoginLayer::~AccountLoginLayer()
+_ZThn236_N17AccountLoginLayerD1Ev
+non-virtual thunk to AchievementsLayer::~AchievementsLayer()
+_ZThn236_N17AchievementsLayerD0Ev
+non-virtual thunk to AchievementsLayer::~AchievementsLayer()
+_ZThn236_N17AchievementsLayerD1Ev
+non-virtual thunk to AudioEffectsLayer::~AudioEffectsLayer()
+_ZThn236_N17AudioEffectsLayerD0Ev
+non-virtual thunk to AudioEffectsLayer::~AudioEffectsLayer()
+_ZThn236_N17AudioEffectsLayerD1Ev
+non-virtual thunk to EditTriggersPopup::~EditTriggersPopup()
+_ZThn236_N17EditTriggersPopupD0Ev
+non-virtual thunk to EditTriggersPopup::~EditTriggersPopup()
+_ZThn236_N17EditTriggersPopupD1Ev
+non-virtual thunk to GJColorSetupLayer::~GJColorSetupLayer()
+_ZThn236_N17GJColorSetupLayerD0Ev
+non-virtual thunk to GJColorSetupLayer::~GJColorSetupLayer()
+_ZThn236_N17GJColorSetupLayerD1Ev
+non-virtual thunk to GJRotationControl::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17GJRotationControl12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJRotationControl::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17GJRotationControl12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJRotationControl::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17GJRotationControl12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJRotationControl::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17GJRotationControl16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to GJRotationControl::~GJRotationControl()
+_ZThn236_N17GJRotationControlD0Ev
+non-virtual thunk to GJRotationControl::~GJRotationControl()
+_ZThn236_N17GJRotationControlD1Ev
+non-virtual thunk to LeaderboardsLayer::~LeaderboardsLayer()
+_ZThn236_N17LeaderboardsLayerD0Ev
+non-virtual thunk to LeaderboardsLayer::~LeaderboardsLayer()
+_ZThn236_N17LeaderboardsLayerD1Ev
+non-virtual thunk to LevelBrowserLayer::~LevelBrowserLayer()
+_ZThn236_N17LevelBrowserLayerD0Ev
+non-virtual thunk to LevelBrowserLayer::~LevelBrowserLayer()
+_ZThn236_N17LevelBrowserLayerD1Ev
+non-virtual thunk to LevelFeatureLayer::~LevelFeatureLayer()
+_ZThn236_N17LevelFeatureLayerD0Ev
+non-virtual thunk to LevelFeatureLayer::~LevelFeatureLayer()
+_ZThn236_N17LevelFeatureLayerD1Ev
+non-virtual thunk to PromoInterstitial::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17PromoInterstitial12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to PromoInterstitial::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17PromoInterstitial12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to PromoInterstitial::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17PromoInterstitial12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to PromoInterstitial::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N17PromoInterstitial16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to PromoInterstitial::~PromoInterstitial()
+_ZThn236_N17PromoInterstitialD0Ev
+non-virtual thunk to PromoInterstitial::~PromoInterstitial()
+_ZThn236_N17PromoInterstitialD1Ev
+non-virtual thunk to PurchaseItemPopup::~PurchaseItemPopup()
+_ZThn236_N17PurchaseItemPopupD0Ev
+non-virtual thunk to PurchaseItemPopup::~PurchaseItemPopup()
+_ZThn236_N17PurchaseItemPopupD1Ev
+non-virtual thunk to RewardUnlockLayer::~RewardUnlockLayer()
+_ZThn236_N17RewardUnlockLayerD0Ev
+non-virtual thunk to RewardUnlockLayer::~RewardUnlockLayer()
+_ZThn236_N17RewardUnlockLayerD1Ev
+non-virtual thunk to SecretNumberLayer::~SecretNumberLayer()
+_ZThn236_N17SecretNumberLayerD0Ev
+non-virtual thunk to SecretNumberLayer::~SecretNumberLayer()
+_ZThn236_N17SecretNumberLayerD1Ev
+non-virtual thunk to SetupOpacityPopup::~SetupOpacityPopup()
+_ZThn236_N17SetupOpacityPopupD0Ev
+non-virtual thunk to SetupOpacityPopup::~SetupOpacityPopup()
+_ZThn236_N17SetupOpacityPopupD1Ev
+non-virtual thunk to ShareCommentLayer::~ShareCommentLayer()
+_ZThn236_N17ShareCommentLayerD0Ev
+non-virtual thunk to ShareCommentLayer::~ShareCommentLayer()
+_ZThn236_N17ShareCommentLayerD1Ev
+non-virtual thunk to UploadActionPopup::~UploadActionPopup()
+_ZThn236_N17UploadActionPopupD0Ev
+non-virtual thunk to UploadActionPopup::~UploadActionPopup()
+_ZThn236_N17UploadActionPopupD1Ev
+non-virtual thunk to VideoOptionsLayer::~VideoOptionsLayer()
+_ZThn236_N17VideoOptionsLayerD0Ev
+non-virtual thunk to VideoOptionsLayer::~VideoOptionsLayer()
+_ZThn236_N17VideoOptionsLayerD1Ev
+non-virtual thunk to AnimatedGameObject::setOpacity(unsigned char)
+_ZThn236_N18AnimatedGameObject10setOpacityEh
+non-virtual thunk to EditorOptionsLayer::~EditorOptionsLayer()
+_ZThn236_N18EditorOptionsLayerD0Ev
+non-virtual thunk to EditorOptionsLayer::~EditorOptionsLayer()
+_ZThn236_N18EditorOptionsLayerD1Ev
+non-virtual thunk to FriendRequestPopup::~FriendRequestPopup()
+_ZThn236_N18FriendRequestPopupD0Ev
+non-virtual thunk to FriendRequestPopup::~FriendRequestPopup()
+_ZThn236_N18FriendRequestPopupD1Ev
+non-virtual thunk to FriendsProfilePage::~FriendsProfilePage()
+_ZThn236_N18FriendsProfilePageD0Ev
+non-virtual thunk to FriendsProfilePage::~FriendsProfilePage()
+_ZThn236_N18FriendsProfilePageD1Ev
+non-virtual thunk to GJCommentListLayer::~GJCommentListLayer()
+_ZThn236_N18GJCommentListLayerD0Ev
+non-virtual thunk to GJCommentListLayer::~GJCommentListLayer()
+_ZThn236_N18GJCommentListLayerD1Ev
+non-virtual thunk to GJMoveCommandLayer::~GJMoveCommandLayer()
+_ZThn236_N18GJMoveCommandLayerD0Ev
+non-virtual thunk to GJMoveCommandLayer::~GJMoveCommandLayer()
+_ZThn236_N18GJMoveCommandLayerD1Ev
+non-virtual thunk to LevelSettingsLayer::~LevelSettingsLayer()
+_ZThn236_N18LevelSettingsLayerD0Ev
+non-virtual thunk to LevelSettingsLayer::~LevelSettingsLayer()
+_ZThn236_N18LevelSettingsLayerD1Ev
+non-virtual thunk to CollisionBlockPopup::~CollisionBlockPopup()
+_ZThn236_N19CollisionBlockPopupD0Ev
+non-virtual thunk to CollisionBlockPopup::~CollisionBlockPopup()
+_ZThn236_N19CollisionBlockPopupD1Ev
+non-virtual thunk to ConfigureValuePopup::~ConfigureValuePopup()
+_ZThn236_N19ConfigureValuePopupD0Ev
+non-virtual thunk to ConfigureValuePopup::~ConfigureValuePopup()
+_ZThn236_N19ConfigureValuePopupD1Ev
+non-virtual thunk to CurrencyRewardLayer::~CurrencyRewardLayer()
+_ZThn236_N19CurrencyRewardLayerD0Ev
+non-virtual thunk to CurrencyRewardLayer::~CurrencyRewardLayer()
+_ZThn236_N19CurrencyRewardLayerD1Ev
+non-virtual thunk to EditGameObjectPopup::~EditGameObjectPopup()
+_ZThn236_N19EditGameObjectPopupD0Ev
+non-virtual thunk to EditGameObjectPopup::~EditGameObjectPopup()
+_ZThn236_N19EditGameObjectPopupD1Ev
+non-virtual thunk to FRequestProfilePage::~FRequestProfilePage()
+_ZThn236_N19FRequestProfilePageD0Ev
+non-virtual thunk to FRequestProfilePage::~FRequestProfilePage()
+_ZThn236_N19FRequestProfilePageD1Ev
+non-virtual thunk to GJWriteMessagePopup::~GJWriteMessagePopup()
+_ZThn236_N19GJWriteMessagePopupD0Ev
+non-virtual thunk to GJWriteMessagePopup::~GJWriteMessagePopup()
+_ZThn236_N19GJWriteMessagePopupD1Ev
+non-virtual thunk to GauntletSelectLayer::~GauntletSelectLayer()
+_ZThn236_N19GauntletSelectLayerD0Ev
+non-virtual thunk to GauntletSelectLayer::~GauntletSelectLayer()
+_ZThn236_N19GauntletSelectLayerD1Ev
+non-virtual thunk to MessagesProfilePage::~MessagesProfilePage()
+_ZThn236_N19MessagesProfilePageD0Ev
+non-virtual thunk to MessagesProfilePage::~MessagesProfilePage()
+_ZThn236_N19MessagesProfilePageD1Ev
+non-virtual thunk to MultilineBitmapFont::setOpacity(unsigned char)
+_ZThn236_N19MultilineBitmapFont10setOpacityEh
+non-virtual thunk to SetupAnimationPopup::~SetupAnimationPopup()
+_ZThn236_N19SetupAnimationPopupD0Ev
+non-virtual thunk to SetupAnimationPopup::~SetupAnimationPopup()
+_ZThn236_N19SetupAnimationPopupD1Ev
+non-virtual thunk to AccountRegisterLayer::~AccountRegisterLayer()
+_ZThn236_N20AccountRegisterLayerD0Ev
+non-virtual thunk to AccountRegisterLayer::~AccountRegisterLayer()
+_ZThn236_N20AccountRegisterLayerD1Ev
+non-virtual thunk to CommunityCreditsPage::~CommunityCreditsPage()
+_ZThn236_N20CommunityCreditsPageD0Ev
+non-virtual thunk to CommunityCreditsPage::~CommunityCreditsPage()
+_ZThn236_N20CommunityCreditsPageD1Ev
+non-virtual thunk to CustomizeObjectLayer::~CustomizeObjectLayer()
+_ZThn236_N20CustomizeObjectLayerD0Ev
+non-virtual thunk to CustomizeObjectLayer::~CustomizeObjectLayer()
+_ZThn236_N20CustomizeObjectLayerD1Ev
+non-virtual thunk to GJFollowCommandLayer::~GJFollowCommandLayer()
+_ZThn236_N20GJFollowCommandLayerD0Ev
+non-virtual thunk to GJFollowCommandLayer::~GJFollowCommandLayer()
+_ZThn236_N20GJFollowCommandLayerD1Ev
+non-virtual thunk to GJRotateCommandLayer::~GJRotateCommandLayer()
+_ZThn236_N20GJRotateCommandLayerD0Ev
+non-virtual thunk to GJRotateCommandLayer::~GJRotateCommandLayer()
+_ZThn236_N20GJRotateCommandLayerD1Ev
+non-virtual thunk to GJSpecialColorSelect::~GJSpecialColorSelect()
+_ZThn236_N20GJSpecialColorSelectD0Ev
+non-virtual thunk to GJSpecialColorSelect::~GJSpecialColorSelect()
+_ZThn236_N20GJSpecialColorSelectD1Ev
+non-virtual thunk to ParentalOptionsLayer::~ParentalOptionsLayer()
+_ZThn236_N20ParentalOptionsLayerD0Ev
+non-virtual thunk to ParentalOptionsLayer::~ParentalOptionsLayer()
+_ZThn236_N20ParentalOptionsLayerD1Ev
+non-virtual thunk to CreateGuidelinesLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N21CreateGuidelinesLayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CreateGuidelinesLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N21CreateGuidelinesLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CreateGuidelinesLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N21CreateGuidelinesLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CreateGuidelinesLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N21CreateGuidelinesLayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to CreateGuidelinesLayer::~CreateGuidelinesLayer()
+_ZThn236_N21CreateGuidelinesLayerD0Ev
+non-virtual thunk to CreateGuidelinesLayer::~CreateGuidelinesLayer()
+_ZThn236_N21CreateGuidelinesLayerD1Ev
+non-virtual thunk to GJPFollowCommandLayer::~GJPFollowCommandLayer()
+_ZThn236_N21GJPFollowCommandLayerD0Ev
+non-virtual thunk to GJPFollowCommandLayer::~GJPFollowCommandLayer()
+_ZThn236_N21GJPFollowCommandLayerD1Ev
+non-virtual thunk to MoreVideoOptionsLayer::~MoreVideoOptionsLayer()
+_ZThn236_N21MoreVideoOptionsLayerD0Ev
+non-virtual thunk to MoreVideoOptionsLayer::~MoreVideoOptionsLayer()
+_ZThn236_N21MoreVideoOptionsLayerD1Ev
+non-virtual thunk to SetupTouchTogglePopup::~SetupTouchTogglePopup()
+_ZThn236_N21SetupTouchTogglePopupD0Ev
+non-virtual thunk to SetupTouchTogglePopup::~SetupTouchTogglePopup()
+_ZThn236_N21SetupTouchTogglePopupD1Ev
+non-virtual thunk to ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
+_ZThn236_N22ColorSelectLiveOverlayD0Ev
+non-virtual thunk to ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
+_ZThn236_N22ColorSelectLiveOverlayD1Ev
+non-virtual thunk to DemonFilterSelectLayer::~DemonFilterSelectLayer()
+_ZThn236_N22DemonFilterSelectLayerD0Ev
+non-virtual thunk to DemonFilterSelectLayer::~DemonFilterSelectLayer()
+_ZThn236_N22DemonFilterSelectLayerD1Ev
+non-virtual thunk to GJAccountSettingsLayer::~GJAccountSettingsLayer()
+_ZThn236_N22GJAccountSettingsLayerD0Ev
+non-virtual thunk to GJAccountSettingsLayer::~GJAccountSettingsLayer()
+_ZThn236_N22GJAccountSettingsLayerD1Ev
+non-virtual thunk to SetupAnimSettingsPopup::~SetupAnimSettingsPopup()
+_ZThn236_N22SetupAnimSettingsPopupD0Ev
+non-virtual thunk to SetupAnimSettingsPopup::~SetupAnimSettingsPopup()
+_ZThn236_N22SetupAnimSettingsPopupD1Ev
+non-virtual thunk to SetupCountTriggerPopup::~SetupCountTriggerPopup()
+_ZThn236_N22SetupCountTriggerPopupD0Ev
+non-virtual thunk to SetupCountTriggerPopup::~SetupCountTriggerPopup()
+_ZThn236_N22SetupCountTriggerPopupD1Ev
+non-virtual thunk to SetupInstantCountPopup::~SetupInstantCountPopup()
+_ZThn236_N22SetupInstantCountPopupD0Ev
+non-virtual thunk to SetupInstantCountPopup::~SetupInstantCountPopup()
+_ZThn236_N22SetupInstantCountPopupD1Ev
+non-virtual thunk to SetupObjectTogglePopup::~SetupObjectTogglePopup()
+_ZThn236_N22SetupObjectTogglePopupD0Ev
+non-virtual thunk to SetupObjectTogglePopup::~SetupObjectTogglePopup()
+_ZThn236_N22SetupObjectTogglePopupD1Ev
+non-virtual thunk to SetupPickupTriggerPopup::~SetupPickupTriggerPopup()
+_ZThn236_N23SetupPickupTriggerPopupD0Ev
+non-virtual thunk to SetupPickupTriggerPopup::~SetupPickupTriggerPopup()
+_ZThn236_N23SetupPickupTriggerPopupD1Ev
+non-virtual thunk to ShareLevelSettingsLayer::~ShareLevelSettingsLayer()
+_ZThn236_N23ShareLevelSettingsLayerD0Ev
+non-virtual thunk to ShareLevelSettingsLayer::~ShareLevelSettingsLayer()
+_ZThn236_N23ShareLevelSettingsLayerD1Ev
+non-virtual thunk to SetupInteractObjectPopup::~SetupInteractObjectPopup()
+_ZThn236_N24SetupInteractObjectPopupD0Ev
+non-virtual thunk to SetupInteractObjectPopup::~SetupInteractObjectPopup()
+_ZThn236_N24SetupInteractObjectPopupD1Ev
+non-virtual thunk to SetupCollisionTriggerPopup::~SetupCollisionTriggerPopup()
+_ZThn236_N26SetupCollisionTriggerPopupD0Ev
+non-virtual thunk to SetupCollisionTriggerPopup::~SetupCollisionTriggerPopup()
+_ZThn236_N26SetupCollisionTriggerPopupD1Ev
+non-virtual thunk to UpdateAccountSettingsPopup::~UpdateAccountSettingsPopup()
+_ZThn236_N26UpdateAccountSettingsPopupD0Ev
+non-virtual thunk to UpdateAccountSettingsPopup::~UpdateAccountSettingsPopup()
+_ZThn236_N26UpdateAccountSettingsPopupD1Ev
+non-virtual thunk to Slider::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N6Slider12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to Slider::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N6Slider12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to Slider::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N6Slider12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to Slider::~Slider()
+_ZThn236_N6SliderD0Ev
+non-virtual thunk to Slider::~Slider()
+_ZThn236_N6SliderD1Ev
+non-virtual thunk to UILayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7UILayer12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to UILayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7UILayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to UILayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7UILayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to UILayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7UILayer16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to UILayer::~UILayer()
+_ZThn236_N7UILayerD0Ev
+non-virtual thunk to UILayer::~UILayer()
+_ZThn236_N7UILayerD1Ev
+non-virtual thunk to cocos2d::CCNodeRGBA::getOpacity()
+_ZThn236_N7cocos2d10CCNodeRGBA10getOpacityEv
+non-virtual thunk to cocos2d::CCNodeRGBA::setOpacity(unsigned char)
+_ZThn236_N7cocos2d10CCNodeRGBA10setOpacityEh
+non-virtual thunk to cocos2d::CCNodeRGBA::getDisplayedColor()
+_ZThn236_N7cocos2d10CCNodeRGBA17getDisplayedColorEv
+non-virtual thunk to cocos2d::CCNodeRGBA::isOpacityModifyRGB()
+_ZThn236_N7cocos2d10CCNodeRGBA18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCNodeRGBA::getDisplayedOpacity()
+_ZThn236_N7cocos2d10CCNodeRGBA19getDisplayedOpacityEv
+non-virtual thunk to cocos2d::CCNodeRGBA::setOpacityModifyRGB(bool)
+_ZThn236_N7cocos2d10CCNodeRGBA19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCNodeRGBA::updateDisplayedColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d10CCNodeRGBA20updateDisplayedColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCNodeRGBA::isCascadeColorEnabled()
+_ZThn236_N7cocos2d10CCNodeRGBA21isCascadeColorEnabledEv
+non-virtual thunk to cocos2d::CCNodeRGBA::setCascadeColorEnabled(bool)
+_ZThn236_N7cocos2d10CCNodeRGBA22setCascadeColorEnabledEb
+non-virtual thunk to cocos2d::CCNodeRGBA::updateDisplayedOpacity(unsigned char)
+_ZThn236_N7cocos2d10CCNodeRGBA22updateDisplayedOpacityEh
+non-virtual thunk to cocos2d::CCNodeRGBA::isCascadeOpacityEnabled()
+_ZThn236_N7cocos2d10CCNodeRGBA23isCascadeOpacityEnabledEv
+non-virtual thunk to cocos2d::CCNodeRGBA::setCascadeOpacityEnabled(bool)
+_ZThn236_N7cocos2d10CCNodeRGBA24setCascadeOpacityEnabledEb
+non-virtual thunk to cocos2d::CCNodeRGBA::getColor()
+_ZThn236_N7cocos2d10CCNodeRGBA8getColorEv
+non-virtual thunk to cocos2d::CCNodeRGBA::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d10CCNodeRGBA8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCAtlasNode::setOpacity(unsigned char)
+_ZThn236_N7cocos2d11CCAtlasNode10setOpacityEh
+non-virtual thunk to cocos2d::CCAtlasNode::isOpacityModifyRGB()
+_ZThn236_N7cocos2d11CCAtlasNode18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCAtlasNode::setOpacityModifyRGB(bool)
+_ZThn236_N7cocos2d11CCAtlasNode19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCAtlasNode::getColor()
+_ZThn236_N7cocos2d11CCAtlasNode8getColorEv
+non-virtual thunk to cocos2d::CCAtlasNode::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d11CCAtlasNode8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLayerRGBA::~CCLayerRGBA()
+_ZThn236_N7cocos2d11CCLayerRGBAD0Ev
+non-virtual thunk to cocos2d::CCLayerRGBA::~CCLayerRGBA()
+_ZThn236_N7cocos2d11CCLayerRGBAD1Ev
+non-virtual thunk to cocos2d::CCLightning::getOpacity()
+_ZThn236_N7cocos2d11CCLightning10getOpacityEv
+non-virtual thunk to cocos2d::CCLightning::setOpacity(unsigned char)
+_ZThn236_N7cocos2d11CCLightning10setOpacityEh
+non-virtual thunk to cocos2d::CCLightning::getDisplayedColor()
+_ZThn236_N7cocos2d11CCLightning17getDisplayedColorEv
+non-virtual thunk to cocos2d::CCLightning::isOpacityModifyRGB()
+_ZThn236_N7cocos2d11CCLightning18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCLightning::getDisplayedOpacity()
+_ZThn236_N7cocos2d11CCLightning19getDisplayedOpacityEv
+non-virtual thunk to cocos2d::CCLightning::setOpacityModifyRGB(bool)
+_ZThn236_N7cocos2d11CCLightning19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCLightning::updateDisplayedColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d11CCLightning20updateDisplayedColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLightning::isCascadeColorEnabled()
+_ZThn236_N7cocos2d11CCLightning21isCascadeColorEnabledEv
+non-virtual thunk to cocos2d::CCLightning::setCascadeColorEnabled(bool)
+_ZThn236_N7cocos2d11CCLightning22setCascadeColorEnabledEb
+non-virtual thunk to cocos2d::CCLightning::updateDisplayedOpacity(unsigned char)
+_ZThn236_N7cocos2d11CCLightning22updateDisplayedOpacityEh
+non-virtual thunk to cocos2d::CCLightning::isCascadeOpacityEnabled()
+_ZThn236_N7cocos2d11CCLightning23isCascadeOpacityEnabledEv
+non-virtual thunk to cocos2d::CCLightning::setCascadeOpacityEnabled(bool)
+_ZThn236_N7cocos2d11CCLightning24setCascadeOpacityEnabledEb
+non-virtual thunk to cocos2d::CCLightning::getColor()
+_ZThn236_N7cocos2d11CCLightning8getColorEv
+non-virtual thunk to cocos2d::CCLightning::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d11CCLightning8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLayerColor::~CCLayerColor()
+_ZThn236_N7cocos2d12CCLayerColorD0Ev
+non-virtual thunk to cocos2d::CCLayerColor::~CCLayerColor()
+_ZThn236_N7cocos2d12CCLayerColorD1Ev
+non-virtual thunk to cocos2d::CCScrollLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d13CCScrollLayer12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCScrollLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d13CCScrollLayer12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCScrollLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d13CCScrollLayer12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCScrollLayer::~CCScrollLayer()
+_ZThn236_N7cocos2d13CCScrollLayerD0Ev
+non-virtual thunk to cocos2d::CCScrollLayer::~CCScrollLayer()
+_ZThn236_N7cocos2d13CCScrollLayerD1Ev
+non-virtual thunk to cocos2d::CCMotionStreak::getOpacity()
+_ZThn236_N7cocos2d14CCMotionStreak10getOpacityEv
+non-virtual thunk to cocos2d::CCMotionStreak::setOpacity(unsigned char)
+_ZThn236_N7cocos2d14CCMotionStreak10setOpacityEh
+non-virtual thunk to cocos2d::CCMotionStreak::isOpacityModifyRGB()
+_ZThn236_N7cocos2d14CCMotionStreak18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCMotionStreak::setOpacityModifyRGB(bool)
+_ZThn236_N7cocos2d14CCMotionStreak19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCLayerGradient::~CCLayerGradient()
+_ZThn236_N7cocos2d15CCLayerGradientD0Ev
+non-virtual thunk to cocos2d::CCLayerGradient::~CCLayerGradient()
+_ZThn236_N7cocos2d15CCLayerGradientD1Ev
+non-virtual thunk to cocos2d::CCProgressTimer::setOpacity(unsigned char)
+_ZThn236_N7cocos2d15CCProgressTimer10setOpacityEh
+non-virtual thunk to cocos2d::CCProgressTimer::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d15CCProgressTimer8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLayerMultiplex::~CCLayerMultiplex()
+_ZThn236_N7cocos2d16CCLayerMultiplexD0Ev
+non-virtual thunk to cocos2d::CCLayerMultiplex::~CCLayerMultiplex()
+_ZThn236_N7cocos2d16CCLayerMultiplexD1Ev
+non-virtual thunk to cocos2d::CCParticleSystem::getTexture()
+_ZThn236_N7cocos2d16CCParticleSystem10getTextureEv
+non-virtual thunk to cocos2d::CCParticleSystem::setTexture(cocos2d::CCTexture2D*)
+_ZThn236_N7cocos2d16CCParticleSystem10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCParticleSystem::getBlendFunc()
+_ZThn236_N7cocos2d16CCParticleSystem12getBlendFuncEv
+non-virtual thunk to cocos2d::CCParticleSystem::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn236_N7cocos2d16CCParticleSystem12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to cocos2d::CCSpriteBatchNode::getTexture()
+_ZThn236_N7cocos2d17CCSpriteBatchNode10getTextureEv
+non-virtual thunk to cocos2d::CCSpriteBatchNode::setTexture(cocos2d::CCTexture2D*)
+_ZThn236_N7cocos2d17CCSpriteBatchNode10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCSpriteBatchNode::getBlendFunc()
+_ZThn236_N7cocos2d17CCSpriteBatchNode12getBlendFuncEv
+non-virtual thunk to cocos2d::CCSpriteBatchNode::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn236_N7cocos2d17CCSpriteBatchNode12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to cocos2d::CCParticleBatchNode::getTexture()
+_ZThn236_N7cocos2d19CCParticleBatchNode10getTextureEv
+non-virtual thunk to cocos2d::CCParticleBatchNode::setTexture(cocos2d::CCTexture2D*)
+_ZThn236_N7cocos2d19CCParticleBatchNode10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCParticleBatchNode::getBlendFunc()
+_ZThn236_N7cocos2d19CCParticleBatchNode12getBlendFuncEv
+non-virtual thunk to cocos2d::CCParticleBatchNode::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn236_N7cocos2d19CCParticleBatchNode12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to cocos2d::CCParticleSystemQuad::setTexture(cocos2d::CCTexture2D*)
+_ZThn236_N7cocos2d20CCParticleSystemQuad10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCMenu::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d6CCMenu12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCMenu::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d6CCMenu12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCMenu::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d6CCMenu12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCMenu::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d6CCMenu16ccTouchCancelledEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCMenu::~CCMenu()
+_ZThn236_N7cocos2d6CCMenuD0Ev
+non-virtual thunk to cocos2d::CCMenu::~CCMenu()
+_ZThn236_N7cocos2d6CCMenuD1Ev
+non-virtual thunk to cocos2d::CCLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchesBegan(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer14ccTouchesBeganEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer14ccTouchesEndedEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchesMoved(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer14ccTouchesMovedEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer16ccTouchCancelledEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::ccTouchesCancelled(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d7CCLayer18ccTouchesCancelledEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCLayer::~CCLayer()
+_ZThn236_N7cocos2d7CCLayerD0Ev
+non-virtual thunk to cocos2d::CCLayer::~CCLayer()
+_ZThn236_N7cocos2d7CCLayerD1Ev
+non-virtual thunk to cocos2d::CCSprite::setOpacity(unsigned char)
+_ZThn236_N7cocos2d8CCSprite10setOpacityEh
+non-virtual thunk to cocos2d::CCSprite::isOpacityModifyRGB()
+_ZThn236_N7cocos2d8CCSprite18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCSprite::setOpacityModifyRGB(bool)
+_ZThn236_N7cocos2d8CCSprite19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCSprite::updateDisplayedColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d8CCSprite20updateDisplayedColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCSprite::updateDisplayedOpacity(unsigned char)
+_ZThn236_N7cocos2d8CCSprite22updateDisplayedOpacityEh
+non-virtual thunk to cocos2d::CCSprite::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d8CCSprite8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::extension::CCTableView::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension11CCTableView12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCTableView::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension11CCTableView12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCTableView::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension11CCTableView12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCTableView::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension11CCTableView16ccTouchCancelledEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCTableView::~CCTableView()
+_ZThn236_N7cocos2d9extension11CCTableViewD0Ev
+non-virtual thunk to cocos2d::extension::CCTableView::~CCTableView()
+_ZThn236_N7cocos2d9extension11CCTableViewD1Ev
+non-virtual thunk to cocos2d::extension::CCScrollView::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension12CCScrollView12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCScrollView::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension12CCScrollView12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCScrollView::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension12CCScrollView12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCScrollView::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension12CCScrollView16ccTouchCancelledEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCScrollView::~CCScrollView()
+_ZThn236_N7cocos2d9extension12CCScrollViewD0Ev
+non-virtual thunk to cocos2d::extension::CCScrollView::~CCScrollView()
+_ZThn236_N7cocos2d9extension12CCScrollViewD1Ev
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::getOpacity()
+_ZThn236_N7cocos2d9extension14CCScale9Sprite10getOpacityEv
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::setOpacity(unsigned char)
+_ZThn236_N7cocos2d9extension14CCScale9Sprite10setOpacityEh
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::isOpacityModifyRGB()
+_ZThn236_N7cocos2d9extension14CCScale9Sprite18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::setOpacityModifyRGB(bool)
+_ZThn236_N7cocos2d9extension14CCScale9Sprite19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::updateDisplayedColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d9extension14CCScale9Sprite20updateDisplayedColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::updateDisplayedOpacity(unsigned char)
+_ZThn236_N7cocos2d9extension14CCScale9Sprite22updateDisplayedOpacityEh
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::getColor()
+_ZThn236_N7cocos2d9extension14CCScale9Sprite8getColorEv
+non-virtual thunk to cocos2d::extension::CCScale9Sprite::setColor(cocos2d::_ccColor3B const&)
+_ZThn236_N7cocos2d9extension14CCScale9Sprite8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::extension::CCControlButton::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlButton12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlButton::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlButton12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlButton::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlButton12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlButton::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlButton16ccTouchCancelledEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlButton::~CCControlButton()
+_ZThn236_N7cocos2d9extension15CCControlButtonD0Ev
+non-virtual thunk to cocos2d::extension::CCControlButton::~CCControlButton()
+_ZThn236_N7cocos2d9extension15CCControlButtonD1Ev
+non-virtual thunk to cocos2d::extension::CCControlSlider::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSlider12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSlider::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSlider12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSlider::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSlider12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSlider::~CCControlSlider()
+_ZThn236_N7cocos2d9extension15CCControlSliderD0Ev
+non-virtual thunk to cocos2d::extension::CCControlSlider::~CCControlSlider()
+_ZThn236_N7cocos2d9extension15CCControlSliderD1Ev
+non-virtual thunk to cocos2d::extension::CCControlSwitch::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSwitch12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSwitch::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSwitch12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSwitch::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSwitch12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSwitch::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension15CCControlSwitch16ccTouchCancelledEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSwitch::~CCControlSwitch()
+_ZThn236_N7cocos2d9extension15CCControlSwitchD0Ev
+non-virtual thunk to cocos2d::extension::CCControlSwitch::~CCControlSwitch()
+_ZThn236_N7cocos2d9extension15CCControlSwitchD1Ev
+non-virtual thunk to cocos2d::extension::CCTableViewCell::getObjectID()
+_ZThn236_N7cocos2d9extension15CCTableViewCell11getObjectIDEv
+non-virtual thunk to cocos2d::extension::CCTableViewCell::setObjectID(unsigned int)
+_ZThn236_N7cocos2d9extension15CCTableViewCell11setObjectIDEj
+non-virtual thunk to cocos2d::extension::CCTableViewCell::~CCTableViewCell()
+_ZThn236_N7cocos2d9extension15CCTableViewCellD0Ev
+non-virtual thunk to cocos2d::extension::CCTableViewCell::~CCTableViewCell()
+_ZThn236_N7cocos2d9extension15CCTableViewCellD1Ev
+non-virtual thunk to cocos2d::extension::CCControlStepper::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension16CCControlStepper12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlStepper::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension16CCControlStepper12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlStepper::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension16CCControlStepper12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlStepper::~CCControlStepper()
+_ZThn236_N7cocos2d9extension16CCControlStepperD0Ev
+non-virtual thunk to cocos2d::extension::CCControlStepper::~CCControlStepper()
+_ZThn236_N7cocos2d9extension16CCControlStepperD1Ev
+non-virtual thunk to cocos2d::extension::CCControlHuePicker::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension18CCControlHuePicker12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlHuePicker::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension18CCControlHuePicker12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlHuePicker::~CCControlHuePicker()
+_ZThn236_N7cocos2d9extension18CCControlHuePickerD0Ev
+non-virtual thunk to cocos2d::extension::CCControlHuePicker::~CCControlHuePicker()
+_ZThn236_N7cocos2d9extension18CCControlHuePickerD1Ev
+non-virtual thunk to cocos2d::extension::CCControlColourPicker::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension21CCControlColourPicker12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlColourPicker::~CCControlColourPicker()
+_ZThn236_N7cocos2d9extension21CCControlColourPickerD0Ev
+non-virtual thunk to cocos2d::extension::CCControlColourPicker::~CCControlColourPicker()
+_ZThn236_N7cocos2d9extension21CCControlColourPickerD1Ev
+non-virtual thunk to cocos2d::extension::CCControlPotentiometer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension22CCControlPotentiometer12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlPotentiometer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension22CCControlPotentiometer12ccTouchEndedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlPotentiometer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension22CCControlPotentiometer12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlPotentiometer::~CCControlPotentiometer()
+_ZThn236_N7cocos2d9extension22CCControlPotentiometerD0Ev
+non-virtual thunk to cocos2d::extension::CCControlPotentiometer::~CCControlPotentiometer()
+_ZThn236_N7cocos2d9extension22CCControlPotentiometerD1Ev
+non-virtual thunk to cocos2d::extension::CCControlSaturationBrightnessPicker::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension35CCControlSaturationBrightnessPicker12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSaturationBrightnessPicker::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N7cocos2d9extension35CCControlSaturationBrightnessPicker12ccTouchMovedEPNS_7CCTouchEPNS_7CCEventE
+non-virtual thunk to cocos2d::extension::CCControlSaturationBrightnessPicker::~CCControlSaturationBrightnessPicker()
+_ZThn236_N7cocos2d9extension35CCControlSaturationBrightnessPickerD0Ev
+non-virtual thunk to cocos2d::extension::CCControlSaturationBrightnessPicker::~CCControlSaturationBrightnessPicker()
+_ZThn236_N7cocos2d9extension35CCControlSaturationBrightnessPickerD1Ev
+non-virtual thunk to cocos2d::extension::CCControl::~CCControl()
+_ZThn236_N7cocos2d9extension9CCControlD0Ev
+non-virtual thunk to cocos2d::extension::CCControl::~CCControl()
+_ZThn236_N7cocos2d9extension9CCControlD1Ev
+non-virtual thunk to cocos2d::extension::CCEditBox::~CCEditBox()
+_ZThn236_N7cocos2d9extension9CCEditBoxD0Ev
+non-virtual thunk to cocos2d::extension::CCEditBox::~CCEditBox()
+_ZThn236_N7cocos2d9extension9CCEditBoxD1Ev
+non-virtual thunk to EditorUI::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N8EditorUI12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to EditorUI::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N8EditorUI12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to EditorUI::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N8EditorUI12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to EditorUI::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N8EditorUI16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to EditorUI::~EditorUI()
+_ZThn236_N8EditorUID0Ev
+non-virtual thunk to EditorUI::~EditorUI()
+_ZThn236_N8EditorUID1Ev
+non-virtual thunk to GameCell::~GameCell()
+_ZThn236_N8GameCellD0Ev
+non-virtual thunk to GameCell::~GameCell()
+_ZThn236_N8GameCellD1Ev
+non-virtual thunk to ListCell::~ListCell()
+_ZThn236_N8ListCellD0Ev
+non-virtual thunk to ListCell::~ListCell()
+_ZThn236_N8ListCellD1Ev
+non-virtual thunk to SongCell::~SongCell()
+_ZThn236_N8SongCellD0Ev
+non-virtual thunk to SongCell::~SongCell()
+_ZThn236_N8SongCellD1Ev
+non-virtual thunk to TextArea::setOpacity(unsigned char)
+_ZThn236_N8TextArea10setOpacityEh
+non-virtual thunk to InfoLayer::~InfoLayer()
+_ZThn236_N9InfoLayerD0Ev
+non-virtual thunk to InfoLayer::~InfoLayer()
+_ZThn236_N9InfoLayerD1Ev
+non-virtual thunk to KeysLayer::~KeysLayer()
+_ZThn236_N9KeysLayerD0Ev
+non-virtual thunk to KeysLayer::~KeysLayer()
+_ZThn236_N9KeysLayerD1Ev
+non-virtual thunk to LevelCell::~LevelCell()
+_ZThn236_N9LevelCellD0Ev
+non-virtual thunk to LevelCell::~LevelCell()
+_ZThn236_N9LevelCellD1Ev
+non-virtual thunk to LevelPage::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9LevelPage12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LevelPage::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9LevelPage12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LevelPage::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9LevelPage12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LevelPage::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9LevelPage16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to LevelPage::~LevelPage()
+_ZThn236_N9LevelPageD0Ev
+non-virtual thunk to LevelPage::~LevelPage()
+_ZThn236_N9LevelPageD1Ev
+non-virtual thunk to MenuLayer::~MenuLayer()
+_ZThn236_N9MenuLayerD0Ev
+non-virtual thunk to MenuLayer::~MenuLayer()
+_ZThn236_N9MenuLayerD1Ev
+non-virtual thunk to PlayLayer::~PlayLayer()
+_ZThn236_N9PlayLayerD0Ev
+non-virtual thunk to PlayLayer::~PlayLayer()
+_ZThn236_N9PlayLayerD1Ev
+non-virtual thunk to StatsCell::~StatsCell()
+_ZThn236_N9StatsCellD0Ev
+non-virtual thunk to StatsCell::~StatsCell()
+_ZThn236_N9StatsCellD1Ev
+non-virtual thunk to TableView::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9TableView12ccTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to TableView::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9TableView12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to TableView::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9TableView12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to TableView::ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*)
+_ZThn236_N9TableView16ccTouchCancelledEPN7cocos2d7CCTouchEPNS0_7CCEventE
+non-virtual thunk to TableView::~TableView()
+_ZThn236_N9TableViewD0Ev
+non-virtual thunk to TableView::~TableView()
+_ZThn236_N9TableViewD1Ev
+non-virtual thunk to CustomSongWidget::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn240_N16CustomSongWidget15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to cocos2d::CCLayer::didAccelerate(cocos2d::CCAcceleration*)
+_ZThn240_N7cocos2d7CCLayer13didAccelerateEPNS_14CCAccelerationE
+non-virtual thunk to PauseLayer::keyBackClicked()
+_ZThn244_N10PauseLayer14keyBackClickedEv
+non-virtual thunk to SetIDLayer::keyBackClicked()
+_ZThn244_N10SetIDLayer14keyBackClickedEv
+non-virtual thunk to SetIDPopup::keyBackClicked()
+_ZThn244_N10SetIDPopup14keyBackClickedEv
+non-virtual thunk to ShardsPage::keyBackClicked()
+_ZThn244_N10ShardsPage14keyBackClickedEv
+non-virtual thunk to DialogLayer::keyBackClicked()
+_ZThn244_N11DialogLayer14keyBackClickedEv
+non-virtual thunk to GJShopLayer::keyBackClicked()
+_ZThn244_N11GJShopLayer14keyBackClickedEv
+non-virtual thunk to ProfilePage::keyBackClicked()
+_ZThn244_N11ProfilePage14keyBackClickedEv
+non-virtual thunk to RewardsPage::keyBackClicked()
+_ZThn244_N11RewardsPage14keyBackClickedEv
+non-virtual thunk to SecretLayer::keyBackClicked()
+_ZThn244_N11SecretLayer14keyBackClickedEv
+non-virtual thunk to UploadPopup::keyBackClicked()
+_ZThn244_N11UploadPopup14keyBackClickedEv
+non-virtual thunk to CCBlockLayer::keyBackClicked()
+_ZThn244_N12CCBlockLayer14keyBackClickedEv
+non-virtual thunk to CreatorLayer::keyBackClicked()
+_ZThn244_N12CreatorLayer14keyBackClickedEv
+non-virtual thunk to FLAlertLayer::keyBackClicked()
+_ZThn244_N12FLAlertLayer14keyBackClickedEv
+non-virtual thunk to SecretLayer2::keyBackClicked()
+_ZThn244_N12SecretLayer214keyBackClickedEv
+non-virtual thunk to SecretLayer3::keyBackClicked()
+_ZThn244_N12SecretLayer314keyBackClickedEv
+non-virtual thunk to SecretLayer4::keyBackClicked()
+_ZThn244_N12SecretLayer414keyBackClickedEv
+non-virtual thunk to SetTextPopup::keyBackClicked()
+_ZThn244_N12SetTextPopup14keyBackClickedEv
+non-virtual thunk to SlideInLayer::keyBackClicked()
+_ZThn244_N12SlideInLayer14keyBackClickedEv
+non-virtual thunk to EndLevelLayer::keyBackClicked()
+_ZThn244_N13EndLevelLayer14keyBackClickedEv
+non-virtual thunk to GJGarageLayer::keyBackClicked()
+_ZThn244_N13GJGarageLayer14keyBackClickedEv
+non-virtual thunk to GauntletLayer::keyBackClicked()
+_ZThn244_N13GauntletLayer14keyBackClickedEv
+non-virtual thunk to LikeItemLayer::keyBackClicked()
+_ZThn244_N13LikeItemLayer14keyBackClickedEv
+non-virtual thunk to MyLevelsLayer::keyBackClicked()
+_ZThn244_N13MyLevelsLayer14keyBackClickedEv
+non-virtual thunk to SongInfoLayer::keyBackClicked()
+_ZThn244_N13SongInfoLayer14keyBackClickedEv
+non-virtual thunk to TutorialLayer::keyBackClicked()
+_ZThn244_N13TutorialLayer14keyBackClickedEv
+non-virtual thunk to TutorialPopup::keyBackClicked()
+_ZThn244_N13TutorialPopup14keyBackClickedEv
+non-virtual thunk to ChallengesPage::keyBackClicked()
+_ZThn244_N14ChallengesPage14keyBackClickedEv
+non-virtual thunk to DailyLevelPage::keyBackClicked()
+_ZThn244_N14DailyLevelPage14keyBackClickedEv
+non-virtual thunk to EditLevelLayer::keyBackClicked()
+_ZThn244_N14EditLevelLayer14keyBackClickedEv
+non-virtual thunk to GJMessagePopup::keyBackClicked()
+_ZThn244_N14GJMessagePopup14keyBackClickedEv
+non-virtual thunk to GJOptionsLayer::keyBackClicked()
+_ZThn244_N14GJOptionsLayer14keyBackClickedEv
+non-virtual thunk to HSVWidgetPopup::keyBackClicked()
+_ZThn244_N14HSVWidgetPopup14keyBackClickedEv
+non-virtual thunk to LevelInfoLayer::keyBackClicked()
+_ZThn244_N14LevelInfoLayer14keyBackClickedEv
+non-virtual thunk to RateDemonLayer::keyBackClicked()
+_ZThn244_N14RateDemonLayer14keyBackClickedEv
+non-virtual thunk to RateLevelLayer::keyBackClicked()
+_ZThn244_N14RateLevelLayer14keyBackClickedEv
+non-virtual thunk to RateStarsLayer::keyBackClicked()
+_ZThn244_N14RateStarsLayer14keyBackClickedEv
+non-virtual thunk to SelectArtLayer::keyBackClicked()
+_ZThn244_N14SelectArtLayer14keyBackClickedEv
+non-virtual thunk to SetItemIDLayer::keyBackClicked()
+_ZThn244_N14SetItemIDLayer14keyBackClickedEv
+non-virtual thunk to WorldLevelPage::keyBackClicked()
+_ZThn244_N14WorldLevelPage14keyBackClickedEv
+non-virtual thunk to CustomSongLayer::keyBackClicked()
+_ZThn244_N15CustomSongLayer14keyBackClickedEv
+non-virtual thunk to GJDropDownLayer::keyBackClicked()
+_ZThn244_N15GJDropDownLayer14keyBackClickedEv
+non-virtual thunk to MoreSearchLayer::keyBackClicked()
+_ZThn244_N15MoreSearchLayer14keyBackClickedEv
+non-virtual thunk to RetryLevelLayer::keyBackClicked()
+_ZThn244_N15RetryLevelLayer14keyBackClickedEv
+non-virtual thunk to SelectFontLayer::keyBackClicked()
+_ZThn244_N15SelectFontLayer14keyBackClickedEv
+non-virtual thunk to SetGroupIDLayer::keyBackClicked()
+_ZThn244_N15SetGroupIDLayer14keyBackClickedEv
+non-virtual thunk to SetupPulsePopup::keyBackClicked()
+_ZThn244_N15SetupPulsePopup14keyBackClickedEv
+non-virtual thunk to SetupShakePopup::keyBackClicked()
+_ZThn244_N15SetupShakePopup14keyBackClickedEv
+non-virtual thunk to SetupSpawnPopup::keyBackClicked()
+_ZThn244_N15SetupSpawnPopup14keyBackClickedEv
+non-virtual thunk to ShareLevelLayer::keyBackClicked()
+_ZThn244_N15ShareLevelLayer14keyBackClickedEv
+non-virtual thunk to TopArtistsLayer::keyBackClicked()
+_ZThn244_N15TopArtistsLayer14keyBackClickedEv
+non-virtual thunk to ColorSelectPopup::keyBackClicked()
+_ZThn244_N16ColorSelectPopup14keyBackClickedEv
+non-virtual thunk to EditorPauseLayer::keyBackClicked()
+_ZThn244_N16EditorPauseLayer14keyBackClickedEv
+non-virtual thunk to FollowRewardPage::keyBackClicked()
+_ZThn244_N16FollowRewardPage14keyBackClickedEv
+non-virtual thunk to KeybindingsLayer::keyBackClicked()
+_ZThn244_N16KeybindingsLayer14keyBackClickedEv
+non-virtual thunk to LevelLeaderboard::keyBackClicked()
+_ZThn244_N16LevelLeaderboard14keyBackClickedEv
+non-virtual thunk to LevelSearchLayer::keyBackClicked()
+_ZThn244_N16LevelSearchLayer14keyBackClickedEv
+non-virtual thunk to LevelSelectLayer::keyBackClicked()
+_ZThn244_N16LevelSelectLayer14keyBackClickedEv
+non-virtual thunk to MoreOptionsLayer::keyBackClicked()
+_ZThn244_N16MoreOptionsLayer14keyBackClickedEv
+non-virtual thunk to NumberInputLayer::keyBackClicked()
+_ZThn244_N16NumberInputLayer14keyBackClickedEv
+non-virtual thunk to SetTargetIDLayer::keyBackClicked()
+_ZThn244_N16SetTargetIDLayer14keyBackClickedEv
+non-virtual thunk to SetupRotatePopup::keyBackClicked()
+_ZThn244_N16SetupRotatePopup14keyBackClickedEv
+non-virtual thunk to SongOptionsLayer::keyBackClicked()
+_ZThn244_N16SongOptionsLayer14keyBackClickedEv
+non-virtual thunk to WorldSelectLayer::keyBackClicked()
+_ZThn244_N16WorldSelectLayer14keyBackClickedEv
+non-virtual thunk to AccountLoginLayer::keyBackClicked()
+_ZThn244_N17AccountLoginLayer14keyBackClickedEv
+non-virtual thunk to EditTriggersPopup::keyBackClicked()
+_ZThn244_N17EditTriggersPopup14keyBackClickedEv
+non-virtual thunk to GJColorSetupLayer::keyBackClicked()
+_ZThn244_N17GJColorSetupLayer14keyBackClickedEv
+non-virtual thunk to LeaderboardsLayer::keyBackClicked()
+_ZThn244_N17LeaderboardsLayer14keyBackClickedEv
+non-virtual thunk to LevelBrowserLayer::keyBackClicked()
+_ZThn244_N17LevelBrowserLayer14keyBackClickedEv
+non-virtual thunk to LevelFeatureLayer::keyBackClicked()
+_ZThn244_N17LevelFeatureLayer14keyBackClickedEv
+non-virtual thunk to PromoInterstitial::keyBackClicked()
+_ZThn244_N17PromoInterstitial14keyBackClickedEv
+non-virtual thunk to PurchaseItemPopup::keyBackClicked()
+_ZThn244_N17PurchaseItemPopup14keyBackClickedEv
+non-virtual thunk to RewardUnlockLayer::keyBackClicked()
+_ZThn244_N17RewardUnlockLayer14keyBackClickedEv
+non-virtual thunk to SetupOpacityPopup::keyBackClicked()
+_ZThn244_N17SetupOpacityPopup14keyBackClickedEv
+non-virtual thunk to ShareCommentLayer::keyBackClicked()
+_ZThn244_N17ShareCommentLayer14keyBackClickedEv
+non-virtual thunk to UploadActionPopup::keyBackClicked()
+_ZThn244_N17UploadActionPopup14keyBackClickedEv
+non-virtual thunk to VideoOptionsLayer::keyBackClicked()
+_ZThn244_N17VideoOptionsLayer14keyBackClickedEv
+non-virtual thunk to FriendRequestPopup::keyBackClicked()
+_ZThn244_N18FriendRequestPopup14keyBackClickedEv
+non-virtual thunk to FriendsProfilePage::keyBackClicked()
+_ZThn244_N18FriendsProfilePage14keyBackClickedEv
+non-virtual thunk to GJMoveCommandLayer::keyBackClicked()
+_ZThn244_N18GJMoveCommandLayer14keyBackClickedEv
+non-virtual thunk to LevelSettingsLayer::keyBackClicked()
+_ZThn244_N18LevelSettingsLayer14keyBackClickedEv
+non-virtual thunk to CollisionBlockPopup::keyBackClicked()
+_ZThn244_N19CollisionBlockPopup14keyBackClickedEv
+non-virtual thunk to ConfigureValuePopup::keyBackClicked()
+_ZThn244_N19ConfigureValuePopup14keyBackClickedEv
+non-virtual thunk to EditGameObjectPopup::keyBackClicked()
+_ZThn244_N19EditGameObjectPopup14keyBackClickedEv
+non-virtual thunk to FRequestProfilePage::keyBackClicked()
+_ZThn244_N19FRequestProfilePage14keyBackClickedEv
+non-virtual thunk to GJWriteMessagePopup::keyBackClicked()
+_ZThn244_N19GJWriteMessagePopup14keyBackClickedEv
+non-virtual thunk to GauntletSelectLayer::keyBackClicked()
+_ZThn244_N19GauntletSelectLayer14keyBackClickedEv
+non-virtual thunk to MessagesProfilePage::keyBackClicked()
+_ZThn244_N19MessagesProfilePage14keyBackClickedEv
+non-virtual thunk to SetupAnimationPopup::keyBackClicked()
+_ZThn244_N19SetupAnimationPopup14keyBackClickedEv
+non-virtual thunk to AccountRegisterLayer::keyBackClicked()
+_ZThn244_N20AccountRegisterLayer14keyBackClickedEv
+non-virtual thunk to CommunityCreditsPage::keyBackClicked()
+_ZThn244_N20CommunityCreditsPage14keyBackClickedEv
+non-virtual thunk to CustomizeObjectLayer::keyBackClicked()
+_ZThn244_N20CustomizeObjectLayer14keyBackClickedEv
+non-virtual thunk to GJFollowCommandLayer::keyBackClicked()
+_ZThn244_N20GJFollowCommandLayer14keyBackClickedEv
+non-virtual thunk to GJRotateCommandLayer::keyBackClicked()
+_ZThn244_N20GJRotateCommandLayer14keyBackClickedEv
+non-virtual thunk to GJSpecialColorSelect::keyBackClicked()
+_ZThn244_N20GJSpecialColorSelect14keyBackClickedEv
+non-virtual thunk to ParentalOptionsLayer::keyBackClicked()
+_ZThn244_N20ParentalOptionsLayer14keyBackClickedEv
+non-virtual thunk to CreateGuidelinesLayer::keyBackClicked()
+_ZThn244_N21CreateGuidelinesLayer14keyBackClickedEv
+non-virtual thunk to GJPFollowCommandLayer::keyBackClicked()
+_ZThn244_N21GJPFollowCommandLayer14keyBackClickedEv
+non-virtual thunk to MoreVideoOptionsLayer::keyBackClicked()
+_ZThn244_N21MoreVideoOptionsLayer14keyBackClickedEv
+non-virtual thunk to SetupTouchTogglePopup::keyBackClicked()
+_ZThn244_N21SetupTouchTogglePopup14keyBackClickedEv
+non-virtual thunk to ColorSelectLiveOverlay::keyBackClicked()
+_ZThn244_N22ColorSelectLiveOverlay14keyBackClickedEv
+non-virtual thunk to DemonFilterSelectLayer::keyBackClicked()
+_ZThn244_N22DemonFilterSelectLayer14keyBackClickedEv
+non-virtual thunk to GJAccountSettingsLayer::keyBackClicked()
+_ZThn244_N22GJAccountSettingsLayer14keyBackClickedEv
+non-virtual thunk to SetupAnimSettingsPopup::keyBackClicked()
+_ZThn244_N22SetupAnimSettingsPopup14keyBackClickedEv
+non-virtual thunk to SetupCountTriggerPopup::keyBackClicked()
+_ZThn244_N22SetupCountTriggerPopup14keyBackClickedEv
+non-virtual thunk to SetupInstantCountPopup::keyBackClicked()
+_ZThn244_N22SetupInstantCountPopup14keyBackClickedEv
+non-virtual thunk to SetupObjectTogglePopup::keyBackClicked()
+_ZThn244_N22SetupObjectTogglePopup14keyBackClickedEv
+non-virtual thunk to SetupPickupTriggerPopup::keyBackClicked()
+_ZThn244_N23SetupPickupTriggerPopup14keyBackClickedEv
+non-virtual thunk to ShareLevelSettingsLayer::keyBackClicked()
+_ZThn244_N23ShareLevelSettingsLayer14keyBackClickedEv
+non-virtual thunk to SetupInteractObjectPopup::keyBackClicked()
+_ZThn244_N24SetupInteractObjectPopup14keyBackClickedEv
+non-virtual thunk to SetupCollisionTriggerPopup::keyBackClicked()
+_ZThn244_N26SetupCollisionTriggerPopup14keyBackClickedEv
+non-virtual thunk to UpdateAccountSettingsPopup::keyBackClicked()
+_ZThn244_N26UpdateAccountSettingsPopup14keyBackClickedEv
+non-virtual thunk to UILayer::keyBackClicked()
+_ZThn244_N7UILayer14keyBackClickedEv
+non-virtual thunk to cocos2d::CCLayer::keyBackClicked()
+_ZThn244_N7cocos2d7CCLayer14keyBackClickedEv
+non-virtual thunk to cocos2d::CCLayer::keyMenuClicked()
+_ZThn244_N7cocos2d7CCLayer14keyMenuClickedEv
+non-virtual thunk to EditorUI::keyBackClicked()
+_ZThn244_N8EditorUI14keyBackClickedEv
+non-virtual thunk to InfoLayer::keyBackClicked()
+_ZThn244_N9InfoLayer14keyBackClickedEv
+non-virtual thunk to KeysLayer::keyBackClicked()
+_ZThn244_N9KeysLayer14keyBackClickedEv
+non-virtual thunk to MenuLayer::keyBackClicked()
+_ZThn244_N9MenuLayer14keyBackClickedEv
+non-virtual thunk to PauseLayer::keyUp(cocos2d::enumKeyCodes)
+_ZThn248_N10PauseLayer5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to PauseLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N10PauseLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to DialogLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N11DialogLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to FLAlertLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N12FLAlertLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to EndLevelLayer::keyUp(cocos2d::enumKeyCodes)
+_ZThn248_N13EndLevelLayer5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to EndLevelLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N13EndLevelLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to EditLevelLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N14EditLevelLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to LevelInfoLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N14LevelInfoLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to RetryLevelLayer::keyUp(cocos2d::enumKeyCodes)
+_ZThn248_N15RetryLevelLayer5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to RetryLevelLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N15RetryLevelLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to EditorPauseLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N16EditorPauseLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to LevelSelectLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N16LevelSelectLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to AchievementsLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N17AchievementsLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to LevelBrowserLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N17LevelBrowserLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to CreateGuidelinesLayer::keyUp(cocos2d::enumKeyCodes)
+_ZThn248_N21CreateGuidelinesLayer5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to CreateGuidelinesLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N21CreateGuidelinesLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to UILayer::keyUp(cocos2d::enumKeyCodes)
+_ZThn248_N7UILayer5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to UILayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N7UILayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to cocos2d::CCLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N7cocos2d7CCLayer7keyDownENS_12enumKeyCodesE
+non-virtual thunk to EditorUI::keyUp(cocos2d::enumKeyCodes)
+_ZThn248_N8EditorUI5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to EditorUI::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N8EditorUI7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to MenuLayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn248_N9MenuLayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to CCPartAnimSprite::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn252_N16CCPartAnimSprite12setBlendFuncEN7cocos2d12_ccBlendFuncE
+non-virtual thunk to cocos2d::CCAtlasNode::getTexture()
+_ZThn252_N7cocos2d11CCAtlasNode10getTextureEv
+non-virtual thunk to cocos2d::CCAtlasNode::setTexture(cocos2d::CCTexture2D*)
+_ZThn252_N7cocos2d11CCAtlasNode10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCAtlasNode::getBlendFunc()
+_ZThn252_N7cocos2d11CCAtlasNode12getBlendFuncEv
+non-virtual thunk to cocos2d::CCAtlasNode::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn252_N7cocos2d11CCAtlasNode12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to cocos2d::CCMotionStreak::getTexture()
+_ZThn252_N7cocos2d14CCMotionStreak10getTextureEv
+non-virtual thunk to cocos2d::CCMotionStreak::setTexture(cocos2d::CCTexture2D*)
+_ZThn252_N7cocos2d14CCMotionStreak10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCMotionStreak::getBlendFunc()
+_ZThn252_N7cocos2d14CCMotionStreak12getBlendFuncEv
+non-virtual thunk to cocos2d::CCMotionStreak::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn252_N7cocos2d14CCMotionStreak12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to cocos2d::CCSprite::getTexture()
+_ZThn252_N7cocos2d8CCSprite10getTextureEv
+non-virtual thunk to cocos2d::CCSprite::setTexture(cocos2d::CCTexture2D*)
+_ZThn252_N7cocos2d8CCSprite10setTextureEPNS_11CCTexture2DE
+non-virtual thunk to cocos2d::CCSprite::getBlendFunc()
+_ZThn252_N7cocos2d8CCSprite12getBlendFuncEv
+non-virtual thunk to cocos2d::CCSprite::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn252_N7cocos2d8CCSprite12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to EditorUI::scrollWheel(float, float)
+_ZThn252_N8EditorUI11scrollWheelEff
+non-virtual thunk to TableView::scrollWheel(float, float)
+_ZThn252_N9TableView11scrollWheelEff
+non-virtual thunk to cocos2d::CCTransitionFadeTR::easeActionWithAction(cocos2d::CCActionInterval*)
+_ZThn256_N7cocos2d18CCTransitionFadeTR20easeActionWithActionEPNS_16CCActionIntervalE
+non-virtual thunk to cocos2d::CCTransitionMoveInL::easeActionWithAction(cocos2d::CCActionInterval*)
+_ZThn256_N7cocos2d19CCTransitionMoveInL20easeActionWithActionEPNS_16CCActionIntervalE
+non-virtual thunk to cocos2d::CCTransitionSlideInL::easeActionWithAction(cocos2d::CCActionInterval*)
+_ZThn256_N7cocos2d20CCTransitionSlideInL20easeActionWithActionEPNS_16CCActionIntervalE
+non-virtual thunk to cocos2d::CCTransitionSplitCols::easeActionWithAction(cocos2d::CCActionInterval*)
+_ZThn256_N7cocos2d21CCTransitionSplitCols20easeActionWithActionEPNS_16CCActionIntervalE
+non-virtual thunk to cocos2d::CCTransitionShrinkGrow::easeActionWithAction(cocos2d::CCActionInterval*)
+_ZThn256_N7cocos2d22CCTransitionShrinkGrow20easeActionWithActionEPNS_16CCActionIntervalE
+non-virtual thunk to cocos2d::CCTransitionTurnOffTiles::easeActionWithAction(cocos2d::CCActionInterval*)
+_ZThn256_N7cocos2d24CCTransitionTurnOffTiles20easeActionWithActionEPNS_16CCActionIntervalE
+non-virtual thunk to cocos2d::CCLabelBMFont::getString()
+_ZThn260_N7cocos2d13CCLabelBMFont9getStringEv
+non-virtual thunk to cocos2d::CCLabelBMFont::setString(char const*)
+_ZThn260_N7cocos2d13CCLabelBMFont9setStringEPKc
+non-virtual thunk to cocos2d::CCLabelBMFont::getOpacity()
+_ZThn264_N7cocos2d13CCLabelBMFont10getOpacityEv
+non-virtual thunk to cocos2d::CCLabelBMFont::setOpacity(unsigned char)
+_ZThn264_N7cocos2d13CCLabelBMFont10setOpacityEh
+non-virtual thunk to cocos2d::CCLabelBMFont::getDisplayedColor()
+_ZThn264_N7cocos2d13CCLabelBMFont17getDisplayedColorEv
+non-virtual thunk to cocos2d::CCLabelBMFont::isOpacityModifyRGB()
+_ZThn264_N7cocos2d13CCLabelBMFont18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCLabelBMFont::getDisplayedOpacity()
+_ZThn264_N7cocos2d13CCLabelBMFont19getDisplayedOpacityEv
+non-virtual thunk to cocos2d::CCLabelBMFont::setOpacityModifyRGB(bool)
+_ZThn264_N7cocos2d13CCLabelBMFont19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCLabelBMFont::updateDisplayedColor(cocos2d::_ccColor3B const&)
+_ZThn264_N7cocos2d13CCLabelBMFont20updateDisplayedColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLabelBMFont::isCascadeColorEnabled()
+_ZThn264_N7cocos2d13CCLabelBMFont21isCascadeColorEnabledEv
+non-virtual thunk to cocos2d::CCLabelBMFont::setCascadeColorEnabled(bool)
+_ZThn264_N7cocos2d13CCLabelBMFont22setCascadeColorEnabledEb
+non-virtual thunk to cocos2d::CCLabelBMFont::updateDisplayedOpacity(unsigned char)
+_ZThn264_N7cocos2d13CCLabelBMFont22updateDisplayedOpacityEh
+non-virtual thunk to cocos2d::CCLabelBMFont::isCascadeOpacityEnabled()
+_ZThn264_N7cocos2d13CCLabelBMFont23isCascadeOpacityEnabledEv
+non-virtual thunk to cocos2d::CCLabelBMFont::setCascadeOpacityEnabled(bool)
+_ZThn264_N7cocos2d13CCLabelBMFont24setCascadeOpacityEnabledEb
+non-virtual thunk to cocos2d::CCLabelBMFont::getColor()
+_ZThn264_N7cocos2d13CCLabelBMFont8getColorEv
+non-virtual thunk to cocos2d::CCLabelBMFont::setColor(cocos2d::_ccColor3B const&)
+_ZThn264_N7cocos2d13CCLabelBMFont8setColorERKNS_10_ccColor3BE
+non-virtual thunk to GaragePage::listButtonBarSwitchedPage(ListButtonBar*, int)
+_ZThn284_N10GaragePage25listButtonBarSwitchedPageEP13ListButtonBari
+non-virtual thunk to GJShopLayer::didPurchaseItem(GJStoreItem*)
+_ZThn284_N11GJShopLayer15didPurchaseItemEP11GJStoreItem
+non-virtual thunk to SecretLayer::textChanged(CCTextInputNode*)
+_ZThn284_N11SecretLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to SecretLayer::textInputClosed(CCTextInputNode*)
+_ZThn284_N11SecretLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SecretLayer::textInputOpened(CCTextInputNode*)
+_ZThn284_N11SecretLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to BoomListView::didSelectRowAtIndexPath(CCIndexPath&, TableView*)
+_ZThn284_N12BoomListView23didSelectRowAtIndexPathER11CCIndexPathP9TableView
+non-virtual thunk to BoomListView::cellHeightForRowAtIndexPath(CCIndexPath&, TableView*)
+_ZThn284_N12BoomListView27cellHeightForRowAtIndexPathER11CCIndexPathP9TableView
+non-virtual thunk to BoomListView::TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*)
+_ZThn284_N12BoomListView40TableViewWillReloadCellForRowAtIndexPathER11CCIndexPathP13TableViewCellP9TableView
+non-virtual thunk to BoomListView::TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*)
+_ZThn284_N12BoomListView41TableViewWillDisplayCellForRowAtIndexPathER11CCIndexPathP13TableViewCellP9TableView
+non-virtual thunk to CreatorLayer::sceneWillResume()
+_ZThn284_N12CreatorLayer15sceneWillResumeEv
+non-virtual thunk to SecretLayer2::textChanged(CCTextInputNode*)
+_ZThn284_N12SecretLayer211textChangedEP15CCTextInputNode
+non-virtual thunk to SecretLayer2::textInputClosed(CCTextInputNode*)
+_ZThn284_N12SecretLayer215textInputClosedEP15CCTextInputNode
+non-virtual thunk to SecretLayer2::textInputOpened(CCTextInputNode*)
+_ZThn284_N12SecretLayer215textInputOpenedEP15CCTextInputNode
+non-virtual thunk to SecretLayer3::dialogClosed(DialogLayer*)
+_ZThn284_N12SecretLayer312dialogClosedEP11DialogLayer
+non-virtual thunk to SecretLayer4::textChanged(CCTextInputNode*)
+_ZThn284_N12SecretLayer411textChangedEP15CCTextInputNode
+non-virtual thunk to SecretLayer4::textInputClosed(CCTextInputNode*)
+_ZThn284_N12SecretLayer415textInputClosedEP15CCTextInputNode
+non-virtual thunk to SecretLayer4::textInputOpened(CCTextInputNode*)
+_ZThn284_N12SecretLayer415textInputOpenedEP15CCTextInputNode
+non-virtual thunk to GJGarageLayer::textChanged(CCTextInputNode*)
+_ZThn284_N13GJGarageLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to GJGarageLayer::textInputClosed(CCTextInputNode*)
+_ZThn284_N13GJGarageLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to GJGarageLayer::textInputOpened(CCTextInputNode*)
+_ZThn284_N13GJGarageLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to GauntletLayer::loadLevelsFailed(char const*)
+_ZThn284_N13GauntletLayer16loadLevelsFailedEPKc
+non-virtual thunk to GauntletLayer::loadLevelsFinished(cocos2d::CCArray*, char const*)
+_ZThn284_N13GauntletLayer18loadLevelsFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to EditLevelLayer::textChanged(CCTextInputNode*)
+_ZThn284_N14EditLevelLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to EditLevelLayer::textInputClosed(CCTextInputNode*)
+_ZThn284_N14EditLevelLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to EditLevelLayer::textInputOpened(CCTextInputNode*)
+_ZThn284_N14EditLevelLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to LevelInfoLayer::levelDownloadFailed(int)
+_ZThn284_N14LevelInfoLayer19levelDownloadFailedEi
+non-virtual thunk to LevelInfoLayer::levelDownloadFinished(GJGameLevel*)
+_ZThn284_N14LevelInfoLayer21levelDownloadFinishedEP11GJGameLevel
+non-virtual thunk to CCTextInputNode::keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo&)
+_ZThn284_N15CCTextInputNode16keyboardWillHideERN7cocos2d29CCIMEKeyboardNotificationInfoE
+non-virtual thunk to CCTextInputNode::keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo&)
+_ZThn284_N15CCTextInputNode16keyboardWillShowERN7cocos2d29CCIMEKeyboardNotificationInfoE
+non-virtual thunk to CCTextInputNode::~CCTextInputNode()
+_ZThn284_N15CCTextInputNodeD0Ev
+non-virtual thunk to CCTextInputNode::~CCTextInputNode()
+_ZThn284_N15CCTextInputNodeD1Ev
+non-virtual thunk to GJBaseGameLayer::spawnGroup(int)
+_ZThn284_N15GJBaseGameLayer10spawnGroupEi
+non-virtual thunk to GJBaseGameLayer::toggleGroupTriggered(int, bool)
+_ZThn284_N15GJBaseGameLayer20toggleGroupTriggeredEib
+non-virtual thunk to LevelSearchLayer::textChanged(CCTextInputNode*)
+_ZThn284_N16LevelSearchLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to LevelSearchLayer::textInputClosed(CCTextInputNode*)
+_ZThn284_N16LevelSearchLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to LevelSearchLayer::textInputOpened(CCTextInputNode*)
+_ZThn284_N16LevelSearchLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to LevelSelectLayer::scrollLayerMoved(cocos2d::CCPoint)
+_ZThn284_N16LevelSelectLayer16scrollLayerMovedEN7cocos2d7CCPointE
+non-virtual thunk to WorldSelectLayer::scrollLayerMoved(cocos2d::CCPoint)
+_ZThn284_N16WorldSelectLayer16scrollLayerMovedEN7cocos2d7CCPointE
+non-virtual thunk to WorldSelectLayer::scrollLayerScrolledToPage(BoomScrollLayer*, int)
+_ZThn284_N16WorldSelectLayer25scrollLayerScrolledToPageEP15BoomScrollLayeri
+non-virtual thunk to WorldSelectLayer::scrollLayerWillScrollToPage(BoomScrollLayer*, int)
+_ZThn284_N16WorldSelectLayer27scrollLayerWillScrollToPageEP15BoomScrollLayeri
+non-virtual thunk to LeaderboardsLayer::loadLeaderboardFailed(char const*)
+_ZThn284_N17LeaderboardsLayer21loadLeaderboardFailedEPKc
+non-virtual thunk to LeaderboardsLayer::updateUserScoreFailed()
+_ZThn284_N17LeaderboardsLayer21updateUserScoreFailedEv
+non-virtual thunk to LeaderboardsLayer::loadLeaderboardFinished(cocos2d::CCArray*, char const*)
+_ZThn284_N17LeaderboardsLayer23loadLeaderboardFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to LeaderboardsLayer::updateUserScoreFinished()
+_ZThn284_N17LeaderboardsLayer23updateUserScoreFinishedEv
+non-virtual thunk to LevelBrowserLayer::setupPageInfo(std::string, char const*)
+_ZThn284_N17LevelBrowserLayer13setupPageInfoESsPKc
+non-virtual thunk to LevelBrowserLayer::loadLevelsFailed(char const*)
+_ZThn284_N17LevelBrowserLayer16loadLevelsFailedEPKc
+non-virtual thunk to LevelBrowserLayer::loadLevelsFinished(cocos2d::CCArray*, char const*)
+_ZThn284_N17LevelBrowserLayer18loadLevelsFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to GauntletSelectLayer::scrollLayerScrolledToPage(BoomScrollLayer*, int)
+_ZThn284_N19GauntletSelectLayer25scrollLayerScrolledToPageEP15BoomScrollLayeri
+non-virtual thunk to GauntletSelectLayer::scrollLayerWillScrollToPage(BoomScrollLayer*, int)
+_ZThn284_N19GauntletSelectLayer27scrollLayerWillScrollToPageEP15BoomScrollLayeri
+non-virtual thunk to cocos2d::CCLayerRGBA::getOpacity()
+_ZThn284_N7cocos2d11CCLayerRGBA10getOpacityEv
+non-virtual thunk to cocos2d::CCLayerRGBA::setOpacity(unsigned char)
+_ZThn284_N7cocos2d11CCLayerRGBA10setOpacityEh
+non-virtual thunk to cocos2d::CCLayerRGBA::getDisplayedColor()
+_ZThn284_N7cocos2d11CCLayerRGBA17getDisplayedColorEv
+non-virtual thunk to cocos2d::CCLayerRGBA::isOpacityModifyRGB()
+_ZThn284_N7cocos2d11CCLayerRGBA18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCLayerRGBA::getDisplayedOpacity()
+_ZThn284_N7cocos2d11CCLayerRGBA19getDisplayedOpacityEv
+non-virtual thunk to cocos2d::CCLayerRGBA::setOpacityModifyRGB(bool)
+_ZThn284_N7cocos2d11CCLayerRGBA19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::CCLayerRGBA::updateDisplayedColor(cocos2d::_ccColor3B const&)
+_ZThn284_N7cocos2d11CCLayerRGBA20updateDisplayedColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLayerRGBA::isCascadeColorEnabled()
+_ZThn284_N7cocos2d11CCLayerRGBA21isCascadeColorEnabledEv
+non-virtual thunk to cocos2d::CCLayerRGBA::setCascadeColorEnabled(bool)
+_ZThn284_N7cocos2d11CCLayerRGBA22setCascadeColorEnabledEb
+non-virtual thunk to cocos2d::CCLayerRGBA::updateDisplayedOpacity(unsigned char)
+_ZThn284_N7cocos2d11CCLayerRGBA22updateDisplayedOpacityEh
+non-virtual thunk to cocos2d::CCLayerRGBA::isCascadeOpacityEnabled()
+_ZThn284_N7cocos2d11CCLayerRGBA23isCascadeOpacityEnabledEv
+non-virtual thunk to cocos2d::CCLayerRGBA::setCascadeOpacityEnabled(bool)
+_ZThn284_N7cocos2d11CCLayerRGBA24setCascadeOpacityEnabledEb
+non-virtual thunk to cocos2d::CCLayerRGBA::getColor()
+_ZThn284_N7cocos2d11CCLayerRGBA8getColorEv
+non-virtual thunk to cocos2d::CCLayerRGBA::setColor(cocos2d::_ccColor3B const&)
+_ZThn284_N7cocos2d11CCLayerRGBA8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCLayerColor::setOpacity(unsigned char)
+_ZThn284_N7cocos2d12CCLayerColor10setOpacityEh
+non-virtual thunk to cocos2d::CCLayerColor::setColor(cocos2d::_ccColor3B const&)
+_ZThn284_N7cocos2d12CCLayerColor8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::CCMenu::isOpacityModifyRGB()
+_ZThn284_N7cocos2d6CCMenu18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::CCMenu::setOpacityModifyRGB(bool)
+_ZThn284_N7cocos2d6CCMenu19setOpacityModifyRGBEb
+non-virtual thunk to cocos2d::extension::CCControlButton::getOpacity()
+_ZThn284_N7cocos2d9extension15CCControlButton10getOpacityEv
+non-virtual thunk to cocos2d::extension::CCControlButton::setOpacity(unsigned char)
+_ZThn284_N7cocos2d9extension15CCControlButton10setOpacityEh
+non-virtual thunk to cocos2d::extension::CCControlButton::getColor()
+_ZThn284_N7cocos2d9extension15CCControlButton8getColorEv
+non-virtual thunk to cocos2d::extension::CCControlButton::setColor(cocos2d::_ccColor3B const&)
+_ZThn284_N7cocos2d9extension15CCControlButton8setColorERKNS_10_ccColor3BE
+non-virtual thunk to cocos2d::extension::CCControl::isOpacityModifyRGB()
+_ZThn284_N7cocos2d9extension9CCControl18isOpacityModifyRGBEv
+non-virtual thunk to cocos2d::extension::CCControl::setOpacityModifyRGB(bool)
+_ZThn284_N7cocos2d9extension9CCControl19setOpacityModifyRGBEb
+non-virtual thunk to EditorUI::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn284_N8EditorUI15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to KeysLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn284_N9KeysLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to LevelPage::dialogClosed(DialogLayer*)
+_ZThn284_N9LevelPage12dialogClosedEP11DialogLayer
+non-virtual thunk to MenuLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn284_N9MenuLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to SecretLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N11SecretLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to BoomListView::cellForRowAtIndexPath(CCIndexPath&, TableView*)
+_ZThn288_N12BoomListView21cellForRowAtIndexPathER11CCIndexPathP9TableView
+non-virtual thunk to BoomListView::numberOfRowsInSection(unsigned int, TableView*)
+_ZThn288_N12BoomListView21numberOfRowsInSectionEjP9TableView
+non-virtual thunk to BoomListView::numberOfSectionsInTableView(TableView*)
+_ZThn288_N12BoomListView27numberOfSectionsInTableViewEP9TableView
+non-virtual thunk to BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&)
+_ZThn288_N12BoomListView48TableViewCommitCellEditingStyleForRowAtIndexPathEP9TableView25TableViewCellEditingStyleR11CCIndexPath
+non-virtual thunk to CreatorLayer::dialogClosed(DialogLayer*)
+_ZThn288_N12CreatorLayer12dialogClosedEP11DialogLayer
+non-virtual thunk to SecretLayer2::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N12SecretLayer215FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to SecretLayer4::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N12SecretLayer415FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJGarageLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N13GJGarageLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to EditLevelLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N14EditLevelLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to LevelInfoLayer::levelUpdateFailed(int)
+_ZThn288_N14LevelInfoLayer17levelUpdateFailedEi
+non-virtual thunk to LevelInfoLayer::levelUpdateFinished(GJGameLevel*, UpdateResponse)
+_ZThn288_N14LevelInfoLayer19levelUpdateFinishedEP11GJGameLevel14UpdateResponse
+non-virtual thunk to CCTextInputNode::textChanged()
+_ZThn288_N15CCTextInputNode11textChangedEv
+non-virtual thunk to CCTextInputNode::onTextFieldInsertText(cocos2d::CCTextFieldTTF*, char const*, int)
+_ZThn288_N15CCTextInputNode21onTextFieldInsertTextEPN7cocos2d14CCTextFieldTTFEPKci
+non-virtual thunk to CCTextInputNode::onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF*)
+_ZThn288_N15CCTextInputNode24onTextFieldAttachWithIMEEPN7cocos2d14CCTextFieldTTFE
+non-virtual thunk to CCTextInputNode::onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF*)
+_ZThn288_N15CCTextInputNode24onTextFieldDetachWithIMEEPN7cocos2d14CCTextFieldTTFE
+non-virtual thunk to LevelSearchLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N16LevelSearchLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to LevelSelectLayer::updatePageWithObject(cocos2d::CCObject*, cocos2d::CCObject*)
+_ZThn288_N16LevelSelectLayer20updatePageWithObjectEPN7cocos2d8CCObjectES2_
+non-virtual thunk to LevelBrowserLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn288_N17LevelBrowserLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GauntletSelectLayer::loadLevelsFailed(char const*)
+_ZThn288_N19GauntletSelectLayer16loadLevelsFailedEPKc
+non-virtual thunk to GauntletSelectLayer::loadLevelsFinished(cocos2d::CCArray*, char const*)
+_ZThn288_N19GauntletSelectLayer18loadLevelsFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to EditorUI::colorSelectClosed(cocos2d::CCNode*)
+_ZThn288_N8EditorUI17colorSelectClosedEPN7cocos2d6CCNodeE
+non-virtual thunk to KeysLayer::dialogClosed(DialogLayer*)
+_ZThn288_N9KeysLayer12dialogClosedEP11DialogLayer
+non-virtual thunk to MenuLayer::googlePlaySignedIn()
+_ZThn288_N9MenuLayer18googlePlaySignedInEv
+non-virtual thunk to SecretLayer2::dialogClosed(DialogLayer*)
+_ZThn292_N12SecretLayer212dialogClosedEP11DialogLayer
+non-virtual thunk to SecretLayer4::dialogClosed(DialogLayer*)
+_ZThn292_N12SecretLayer412dialogClosedEP11DialogLayer
+non-virtual thunk to GJGarageLayer::updateRate()
+_ZThn292_N13GJGarageLayer10updateRateEv
+non-virtual thunk to EditLevelLayer::uploadActionFailed(int, int)
+_ZThn292_N14EditLevelLayer18uploadActionFailedEii
+non-virtual thunk to EditLevelLayer::uploadActionFinished(int, int)
+_ZThn292_N14EditLevelLayer20uploadActionFinishedEii
+non-virtual thunk to LevelInfoLayer::rateLevelClosed()
+_ZThn292_N14LevelInfoLayer15rateLevelClosedEv
+non-virtual thunk to LevelSearchLayer::demonFilterSelectClosed(int)
+_ZThn292_N16LevelSearchLayer23demonFilterSelectClosedEi
+non-virtual thunk to LevelBrowserLayer::setIDPopupClosed(SetIDPopup*, int)
+_ZThn292_N17LevelBrowserLayer16setIDPopupClosedEP10SetIDPopupi
+non-virtual thunk to EditorUI::angleChanged(float)
+_ZThn292_N8EditorUI12angleChangedEf
+non-virtual thunk to EditorUI::angleChangeBegin()
+_ZThn292_N8EditorUI16angleChangeBeginEv
+non-virtual thunk to EditorUI::angleChangeEnded()
+_ZThn292_N8EditorUI16angleChangeEndedEv
+non-virtual thunk to GJGarageLayer::listButtonBarSwitchedPage(ListButtonBar*, int)
+_ZThn296_N13GJGarageLayer25listButtonBarSwitchedPageEP13ListButtonBari
+non-virtual thunk to EditLevelLayer::onClosePopup(UploadActionPopup*)
+_ZThn296_N14EditLevelLayer12onClosePopupEP17UploadActionPopup
+non-virtual thunk to LevelInfoLayer::likedItem(LikeItemType, int, bool)
+_ZThn296_N14LevelInfoLayer9likedItemE12LikeItemTypeib
+non-virtual thunk to LevelBrowserLayer::setTextPopupClosed(SetTextPopup*, std::string)
+_ZThn296_N17LevelBrowserLayer18setTextPopupClosedEP12SetTextPopupSs
+non-virtual thunk to EditorUI::scaleChanged(float)
+_ZThn296_N8EditorUI12scaleChangedEf
+non-virtual thunk to EditorUI::scaleChangeBegin()
+_ZThn296_N8EditorUI16scaleChangeBeginEv
+non-virtual thunk to EditorUI::scaleChangeEnded()
+_ZThn296_N8EditorUI16scaleChangeEndedEv
+non-virtual thunk to GJGarageLayer::dialogClosed(DialogLayer*)
+_ZThn300_N13GJGarageLayer12dialogClosedEP11DialogLayer
+non-virtual thunk to EditLevelLayer::setIDPopupClosed(SetIDPopup*, int)
+_ZThn300_N14EditLevelLayer16setIDPopupClosedEP10SetIDPopupi
+non-virtual thunk to LevelInfoLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn300_N14LevelInfoLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to cocos2d::CCLayerColor::getBlendFunc()
+_ZThn300_N7cocos2d12CCLayerColor12getBlendFuncEv
+non-virtual thunk to cocos2d::CCLayerColor::setBlendFunc(cocos2d::_ccBlendFunc)
+_ZThn300_N7cocos2d12CCLayerColor12setBlendFuncENS_12_ccBlendFuncE
+non-virtual thunk to EditorUI::songStateChanged()
+_ZThn300_N8EditorUI16songStateChangedEv
+non-virtual thunk to LevelInfoLayer::levelDeleteFailed(int)
+_ZThn304_N14LevelInfoLayer17levelDeleteFailedEi
+non-virtual thunk to LevelInfoLayer::levelDeleteFinished(int)
+_ZThn304_N14LevelInfoLayer19levelDeleteFinishedEi
+non-virtual thunk to cocos2d::CCLabelAtlas::getString()
+_ZThn304_N7cocos2d12CCLabelAtlas9getStringEv
+non-virtual thunk to cocos2d::CCLabelAtlas::setString(char const*)
+_ZThn304_N7cocos2d12CCLabelAtlas9setStringEPKc
+non-virtual thunk to LevelInfoLayer::numberInputClosed(NumberInputLayer*)
+_ZThn308_N14LevelInfoLayer17numberInputClosedEP16NumberInputLayer
+non-virtual thunk to LevelInfoLayer::setIDPopupClosed(SetIDPopup*, int)
+_ZThn312_N14LevelInfoLayer16setIDPopupClosedEP10SetIDPopupi
+non-virtual thunk to cocos2d::CCDirector::getClassTypeInfo()
+_ZThn32_N7cocos2d10CCDirector16getClassTypeInfoEv
+non-virtual thunk to cocos2d::CCTMXMapInfo::endElement(void*, char const*)
+_ZThn32_N7cocos2d12CCTMXMapInfo10endElementEPvPKc
+non-virtual thunk to cocos2d::CCTMXMapInfo::textHandler(void*, char const*, int)
+_ZThn32_N7cocos2d12CCTMXMapInfo11textHandlerEPvPKci
+non-virtual thunk to cocos2d::CCTMXMapInfo::startElement(void*, char const*, char const**)
+_ZThn32_N7cocos2d12CCTMXMapInfo12startElementEPvPKcPS3_
+non-virtual thunk to cocos2d::CCTouchDispatcher::touchesBegan(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn32_N7cocos2d17CCTouchDispatcher12touchesBeganEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCTouchDispatcher::touchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn32_N7cocos2d17CCTouchDispatcher12touchesEndedEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCTouchDispatcher::touchesMoved(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn32_N7cocos2d17CCTouchDispatcher12touchesMovedEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCTouchDispatcher::touchesCancelled(cocos2d::CCSet*, cocos2d::CCEvent*)
+_ZThn32_N7cocos2d17CCTouchDispatcher16touchesCancelledEPNS_5CCSetEPNS_7CCEventE
+non-virtual thunk to cocos2d::CCTouchDispatcher::~CCTouchDispatcher()
+_ZThn32_N7cocos2d17CCTouchDispatcherD0Ev
+non-virtual thunk to cocos2d::CCTouchDispatcher::~CCTouchDispatcher()
+_ZThn32_N7cocos2d17CCTouchDispatcherD1Ev
+non-virtual thunk to cocos2d::extension::CCSortedObject::getObjectID()
+_ZThn32_N7cocos2d9extension14CCSortedObject11getObjectIDEv
+non-virtual thunk to cocos2d::extension::CCSortedObject::setObjectID(unsigned int)
+_ZThn32_N7cocos2d9extension14CCSortedObject11setObjectIDEj
+non-virtual thunk to cocos2d::extension::CCSortedObject::~CCSortedObject()
+_ZThn32_N7cocos2d9extension14CCSortedObjectD0Ev
+non-virtual thunk to cocos2d::extension::CCSortedObject::~CCSortedObject()
+_ZThn32_N7cocos2d9extension14CCSortedObjectD1Ev
+non-virtual thunk to GJUserCell::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn356_N10GJUserCell15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to CommentCell::likedItem(LikeItemType, int, bool)
+_ZThn356_N11CommentCell9likedItemE12LikeItemTypeib
+non-virtual thunk to GJScoreCell::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn356_N11GJScoreCell15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJMessageCell::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn356_N13GJMessageCell15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJRequestCell::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn356_N13GJRequestCell15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to TableView::scrollViewTouchMoving(CCScrollLayerExt*)
+_ZThn356_N9TableView21scrollViewTouchMovingEP16CCScrollLayerExt
+non-virtual thunk to TableView::scrollViewDidEndMoving(CCScrollLayerExt*)
+_ZThn356_N9TableView22scrollViewDidEndMovingEP16CCScrollLayerExt
+non-virtual thunk to TableView::scrollViewDidEndDecelerating(CCScrollLayerExt*)
+_ZThn356_N9TableView28scrollViewDidEndDeceleratingEP16CCScrollLayerExt
+non-virtual thunk to TableView::scrllViewWillBeginDecelerating(CCScrollLayerExt*)
+_ZThn356_N9TableView30scrllViewWillBeginDeceleratingEP16CCScrollLayerExt
+non-virtual thunk to GJUserCell::onClosePopup(UploadActionPopup*)
+_ZThn360_N10GJUserCell12onClosePopupEP17UploadActionPopup
+non-virtual thunk to CommentCell::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn360_N11CommentCell15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJMessageCell::onClosePopup(UploadActionPopup*)
+_ZThn360_N13GJMessageCell12onClosePopupEP17UploadActionPopup
+non-virtual thunk to GJRequestCell::onClosePopup(UploadActionPopup*)
+_ZThn360_N13GJRequestCell12onClosePopupEP17UploadActionPopup
+non-virtual thunk to GJUserCell::uploadActionFailed(int, int)
+_ZThn364_N10GJUserCell18uploadActionFailedEii
+non-virtual thunk to GJUserCell::uploadActionFinished(int, int)
+_ZThn364_N10GJUserCell20uploadActionFinishedEii
+non-virtual thunk to GJMessageCell::uploadActionFailed(int, int)
+_ZThn364_N13GJMessageCell18uploadActionFailedEii
+non-virtual thunk to GJMessageCell::uploadActionFinished(int, int)
+_ZThn364_N13GJMessageCell20uploadActionFinishedEii
+non-virtual thunk to GJRequestCell::uploadActionFailed(int, int)
+_ZThn364_N13GJRequestCell18uploadActionFailedEii
+non-virtual thunk to GJRequestCell::uploadActionFinished(int, int)
+_ZThn364_N13GJRequestCell20uploadActionFinishedEii
+non-virtual thunk to cocos2d::extension::CCEditBox::keyboardDidHide(cocos2d::CCIMEKeyboardNotificationInfo&)
+_ZThn400_N7cocos2d9extension9CCEditBox15keyboardDidHideERNS_29CCIMEKeyboardNotificationInfoE
+non-virtual thunk to cocos2d::extension::CCEditBox::keyboardDidShow(cocos2d::CCIMEKeyboardNotificationInfo&)
+_ZThn400_N7cocos2d9extension9CCEditBox15keyboardDidShowERNS_29CCIMEKeyboardNotificationInfoE
+non-virtual thunk to cocos2d::extension::CCEditBox::keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo&)
+_ZThn400_N7cocos2d9extension9CCEditBox16keyboardWillHideERNS_29CCIMEKeyboardNotificationInfoE
+non-virtual thunk to cocos2d::extension::CCEditBox::keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo&)
+_ZThn400_N7cocos2d9extension9CCEditBox16keyboardWillShowERNS_29CCIMEKeyboardNotificationInfoE
+non-virtual thunk to cocos2d::extension::CCEditBox::~CCEditBox()
+_ZThn400_N7cocos2d9extension9CCEditBoxD0Ev
+non-virtual thunk to cocos2d::extension::CCEditBox::~CCEditBox()
+_ZThn400_N7cocos2d9extension9CCEditBoxD1Ev
+non-virtual thunk to DialogLayer::fadeInTextFinished(TextArea*)
+_ZThn408_N11DialogLayer18fadeInTextFinishedEP8TextArea
+non-virtual thunk to UILayer::keyUp(cocos2d::enumKeyCodes)
+_ZThn408_N7UILayer5keyUpEN7cocos2d12enumKeyCodesE
+non-virtual thunk to UILayer::keyDown(cocos2d::enumKeyCodes)
+_ZThn408_N7UILayer7keyDownEN7cocos2d12enumKeyCodesE
+non-virtual thunk to EditorPauseLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn412_N16EditorPauseLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to cocos2d::extension::CCTableView::scrollViewDidZoom(cocos2d::extension::CCScrollView*)
+_ZThn428_N7cocos2d9extension11CCTableView17scrollViewDidZoomEPNS0_12CCScrollViewE
+non-virtual thunk to cocos2d::extension::CCTableView::scrollViewDidScroll(cocos2d::extension::CCScrollView*)
+_ZThn428_N7cocos2d9extension11CCTableView19scrollViewDidScrollEPNS0_12CCScrollViewE
+non-virtual thunk to cocos2d::extension::CCTableView::~CCTableView()
+_ZThn428_N7cocos2d9extension11CCTableViewD0Ev
+non-virtual thunk to cocos2d::extension::CCTableView::~CCTableView()
+_ZThn428_N7cocos2d9extension11CCTableViewD1Ev
+non-virtual thunk to AccountLayer::accountStatusChanged()
+_ZThn448_N12AccountLayer20accountStatusChangedEv
+non-virtual thunk to OptionsLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn448_N12OptionsLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to SupportLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn448_N12SupportLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJSongBrowser::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn448_N13GJSongBrowser15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to AccountHelpLayer::accountStatusChanged()
+_ZThn448_N16AccountHelpLayer20accountStatusChangedEv
+non-virtual thunk to AccountLayer::backupAccountFailed(BackupAccountError)
+_ZThn452_N12AccountLayer19backupAccountFailedE18BackupAccountError
+non-virtual thunk to AccountLayer::backupAccountFinished()
+_ZThn452_N12AccountLayer21backupAccountFinishedEv
+non-virtual thunk to SupportLayer::uploadActionFailed(int, int)
+_ZThn452_N12SupportLayer18uploadActionFailedEii
+non-virtual thunk to SupportLayer::uploadActionFinished(int, int)
+_ZThn452_N12SupportLayer20uploadActionFinishedEii
+non-virtual thunk to AccountHelpLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn452_N16AccountHelpLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to AccountLayer::syncAccountFailed(BackupAccountError)
+_ZThn456_N12AccountLayer17syncAccountFailedE18BackupAccountError
+non-virtual thunk to AccountLayer::syncAccountFinished()
+_ZThn456_N12AccountLayer19syncAccountFinishedEv
+non-virtual thunk to SupportLayer::onClosePopup(UploadActionPopup*)
+_ZThn456_N12SupportLayer12onClosePopupEP17UploadActionPopup
+non-virtual thunk to SetIDPopup::textChanged(CCTextInputNode*)
+_ZThn460_N10SetIDPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetIDPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N10SetIDPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to ProfilePage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N11ProfilePage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to RewardsPage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N11RewardsPage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to UploadPopup::levelUploadFailed(GJGameLevel*)
+_ZThn460_N11UploadPopup17levelUploadFailedEP11GJGameLevel
+non-virtual thunk to UploadPopup::levelUploadFinished(GJGameLevel*)
+_ZThn460_N11UploadPopup19levelUploadFinishedEP11GJGameLevel
+non-virtual thunk to AccountLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N12AccountLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to SetTextPopup::textChanged(CCTextInputNode*)
+_ZThn460_N12SetTextPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetTextPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N12SetTextPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to ChallengesPage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N14ChallengesPage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to DailyLevelPage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N14DailyLevelPage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJMessagePopup::uploadActionFailed(int, int)
+_ZThn460_N14GJMessagePopup18uploadActionFailedEii
+non-virtual thunk to GJMessagePopup::uploadActionFinished(int, int)
+_ZThn460_N14GJMessagePopup20uploadActionFinishedEii
+non-virtual thunk to RateDemonLayer::onClosePopup(UploadActionPopup*)
+_ZThn460_N14RateDemonLayer12onClosePopupEP17UploadActionPopup
+non-virtual thunk to RateStarsLayer::onClosePopup(UploadActionPopup*)
+_ZThn460_N14RateStarsLayer12onClosePopupEP17UploadActionPopup
+non-virtual thunk to SetItemIDLayer::textChanged(CCTextInputNode*)
+_ZThn460_N14SetItemIDLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to SetItemIDLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N14SetItemIDLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetItemIDLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N14SetItemIDLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetItemIDLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N14SetItemIDLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to CustomSongLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N15CustomSongLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to MoreSearchLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N15MoreSearchLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to MoreSearchLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N15MoreSearchLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetGroupIDLayer::textChanged(CCTextInputNode*)
+_ZThn460_N15SetGroupIDLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to SetGroupIDLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N15SetGroupIDLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupPulsePopup::colorValueChanged(cocos2d::_ccColor3B)
+_ZThn460_N15SetupPulsePopup17colorValueChangedEN7cocos2d10_ccColor3BE
+non-virtual thunk to SetupShakePopup::textChanged(CCTextInputNode*)
+_ZThn460_N15SetupShakePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupShakePopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N15SetupShakePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupShakePopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N15SetupShakePopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupShakePopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N15SetupShakePopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupSpawnPopup::textChanged(CCTextInputNode*)
+_ZThn460_N15SetupSpawnPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupSpawnPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N15SetupSpawnPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupSpawnPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N15SetupSpawnPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupSpawnPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N15SetupSpawnPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to TopArtistsLayer::setupPageInfo(std::string, char const*)
+_ZThn460_N15TopArtistsLayer13setupPageInfoESsPKc
+non-virtual thunk to TopArtistsLayer::loadListFailed(char const*)
+_ZThn460_N15TopArtistsLayer14loadListFailedEPKc
+non-virtual thunk to TopArtistsLayer::loadListFinished(cocos2d::CCArray*, char const*)
+_ZThn460_N15TopArtistsLayer16loadListFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to ColorSelectPopup::colorValueChanged(cocos2d::_ccColor3B)
+_ZThn460_N16ColorSelectPopup17colorValueChangedEN7cocos2d10_ccColor3BE
+non-virtual thunk to FollowRewardPage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N16FollowRewardPage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to LevelLeaderboard::loadLeaderboardFailed(char const*)
+_ZThn460_N16LevelLeaderboard21loadLeaderboardFailedEPKc
+non-virtual thunk to LevelLeaderboard::updateUserScoreFailed()
+_ZThn460_N16LevelLeaderboard21updateUserScoreFailedEv
+non-virtual thunk to LevelLeaderboard::loadLeaderboardFinished(cocos2d::CCArray*, char const*)
+_ZThn460_N16LevelLeaderboard23loadLeaderboardFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to LevelLeaderboard::updateUserScoreFinished()
+_ZThn460_N16LevelLeaderboard23updateUserScoreFinishedEv
+non-virtual thunk to MoreOptionsLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N16MoreOptionsLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to MoreOptionsLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N16MoreOptionsLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetTargetIDLayer::textChanged(CCTextInputNode*)
+_ZThn460_N16SetTargetIDLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to SetTargetIDLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N16SetTargetIDLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetTargetIDLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N16SetTargetIDLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetTargetIDLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N16SetTargetIDLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupRotatePopup::textChanged(CCTextInputNode*)
+_ZThn460_N16SetupRotatePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupRotatePopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N16SetupRotatePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupRotatePopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N16SetupRotatePopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupRotatePopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N16SetupRotatePopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to AccountLoginLayer::textChanged(CCTextInputNode*)
+_ZThn460_N17AccountLoginLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to AccountLoginLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N17AccountLoginLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to AccountLoginLayer::textInputOpened(CCTextInputNode*)
+_ZThn460_N17AccountLoginLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to GJColorSetupLayer::colorSelectClosed(cocos2d::CCNode*)
+_ZThn460_N17GJColorSetupLayer17colorSelectClosedEPN7cocos2d6CCNodeE
+non-virtual thunk to RewardUnlockLayer::currencyWillExit(CurrencyRewardLayer*)
+_ZThn460_N17RewardUnlockLayer16currencyWillExitEP19CurrencyRewardLayer
+non-virtual thunk to SetupOpacityPopup::textChanged(CCTextInputNode*)
+_ZThn460_N17SetupOpacityPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupOpacityPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N17SetupOpacityPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupOpacityPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N17SetupOpacityPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupOpacityPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N17SetupOpacityPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to ShareCommentLayer::textChanged(CCTextInputNode*)
+_ZThn460_N17ShareCommentLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to ShareCommentLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N17ShareCommentLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to ShareCommentLayer::textInputOpened(CCTextInputNode*)
+_ZThn460_N17ShareCommentLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to FriendRequestPopup::uploadActionFailed(int, int)
+_ZThn460_N18FriendRequestPopup18uploadActionFailedEii
+non-virtual thunk to FriendRequestPopup::uploadActionFinished(int, int)
+_ZThn460_N18FriendRequestPopup20uploadActionFinishedEii
+non-virtual thunk to GJMoveCommandLayer::textChanged(CCTextInputNode*)
+_ZThn460_N18GJMoveCommandLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to GJMoveCommandLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N18GJMoveCommandLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to GJMoveCommandLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N18GJMoveCommandLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to GJMoveCommandLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N18GJMoveCommandLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to LevelSettingsLayer::colorSelectClosed(cocos2d::CCNode*)
+_ZThn460_N18LevelSettingsLayer17colorSelectClosedEPN7cocos2d6CCNodeE
+non-virtual thunk to CollisionBlockPopup::textChanged(CCTextInputNode*)
+_ZThn460_N19CollisionBlockPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to CollisionBlockPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N19CollisionBlockPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to CollisionBlockPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N19CollisionBlockPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to CollisionBlockPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N19CollisionBlockPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to ConfigureValuePopup::textChanged(CCTextInputNode*)
+_ZThn460_N19ConfigureValuePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to ConfigureValuePopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N19ConfigureValuePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to FRequestProfilePage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N19FRequestProfilePage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJWriteMessagePopup::textChanged(CCTextInputNode*)
+_ZThn460_N19GJWriteMessagePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to GJWriteMessagePopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N19GJWriteMessagePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to GJWriteMessagePopup::textInputOpened(CCTextInputNode*)
+_ZThn460_N19GJWriteMessagePopup15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to GJWriteMessagePopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N19GJWriteMessagePopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to GJWriteMessagePopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N19GJWriteMessagePopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to MessagesProfilePage::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N19MessagesProfilePage15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to SetupAnimationPopup::textChanged(CCTextInputNode*)
+_ZThn460_N19SetupAnimationPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupAnimationPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N19SetupAnimationPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupAnimationPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N19SetupAnimationPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupAnimationPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N19SetupAnimationPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to AccountRegisterLayer::textChanged(CCTextInputNode*)
+_ZThn460_N20AccountRegisterLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to AccountRegisterLayer::allowTextInput(CCTextInputNode*)
+_ZThn460_N20AccountRegisterLayer14allowTextInputEP15CCTextInputNode
+non-virtual thunk to AccountRegisterLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N20AccountRegisterLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to AccountRegisterLayer::textInputOpened(CCTextInputNode*)
+_ZThn460_N20AccountRegisterLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to AccountRegisterLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N20AccountRegisterLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to AccountRegisterLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N20AccountRegisterLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to CustomizeObjectLayer::textChanged(CCTextInputNode*)
+_ZThn460_N20CustomizeObjectLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to CustomizeObjectLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N20CustomizeObjectLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to CustomizeObjectLayer::textInputOpened(CCTextInputNode*)
+_ZThn460_N20CustomizeObjectLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to GJFollowCommandLayer::textChanged(CCTextInputNode*)
+_ZThn460_N20GJFollowCommandLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to GJFollowCommandLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N20GJFollowCommandLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to GJFollowCommandLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N20GJFollowCommandLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to GJFollowCommandLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N20GJFollowCommandLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to GJRotateCommandLayer::textChanged(CCTextInputNode*)
+_ZThn460_N20GJRotateCommandLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to GJRotateCommandLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N20GJRotateCommandLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to GJRotateCommandLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N20GJRotateCommandLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to GJRotateCommandLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N20GJRotateCommandLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to CreateGuidelinesLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn460_N21CreateGuidelinesLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to GJPFollowCommandLayer::textChanged(CCTextInputNode*)
+_ZThn460_N21GJPFollowCommandLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to GJPFollowCommandLayer::textInputClosed(CCTextInputNode*)
+_ZThn460_N21GJPFollowCommandLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to GJPFollowCommandLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N21GJPFollowCommandLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to GJPFollowCommandLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N21GJPFollowCommandLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupTouchTogglePopup::textChanged(CCTextInputNode*)
+_ZThn460_N21SetupTouchTogglePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupTouchTogglePopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N21SetupTouchTogglePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupTouchTogglePopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N21SetupTouchTogglePopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupTouchTogglePopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N21SetupTouchTogglePopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to GJAccountSettingsLayer::textInputReturn(CCTextInputNode*)
+_ZThn460_N22GJAccountSettingsLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to GJAccountSettingsLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N22GJAccountSettingsLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupAnimSettingsPopup::textChanged(CCTextInputNode*)
+_ZThn460_N22SetupAnimSettingsPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupAnimSettingsPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N22SetupAnimSettingsPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupAnimSettingsPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N22SetupAnimSettingsPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupAnimSettingsPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N22SetupAnimSettingsPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupCountTriggerPopup::textChanged(CCTextInputNode*)
+_ZThn460_N22SetupCountTriggerPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupCountTriggerPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N22SetupCountTriggerPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupCountTriggerPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N22SetupCountTriggerPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupCountTriggerPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N22SetupCountTriggerPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupInstantCountPopup::textChanged(CCTextInputNode*)
+_ZThn460_N22SetupInstantCountPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupInstantCountPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N22SetupInstantCountPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupInstantCountPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N22SetupInstantCountPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupInstantCountPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N22SetupInstantCountPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupObjectTogglePopup::textChanged(CCTextInputNode*)
+_ZThn460_N22SetupObjectTogglePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupObjectTogglePopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N22SetupObjectTogglePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupObjectTogglePopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N22SetupObjectTogglePopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupObjectTogglePopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N22SetupObjectTogglePopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupPickupTriggerPopup::textChanged(CCTextInputNode*)
+_ZThn460_N23SetupPickupTriggerPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupPickupTriggerPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N23SetupPickupTriggerPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupPickupTriggerPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N23SetupPickupTriggerPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupPickupTriggerPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N23SetupPickupTriggerPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to ShareLevelSettingsLayer::numberInputClosed(NumberInputLayer*)
+_ZThn460_N23ShareLevelSettingsLayer17numberInputClosedEP16NumberInputLayer
+non-virtual thunk to SetupInteractObjectPopup::textChanged(CCTextInputNode*)
+_ZThn460_N24SetupInteractObjectPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupInteractObjectPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N24SetupInteractObjectPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupInteractObjectPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N24SetupInteractObjectPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupInteractObjectPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N24SetupInteractObjectPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupCollisionTriggerPopup::textChanged(CCTextInputNode*)
+_ZThn460_N26SetupCollisionTriggerPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupCollisionTriggerPopup::textInputClosed(CCTextInputNode*)
+_ZThn460_N26SetupCollisionTriggerPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupCollisionTriggerPopup::textInputReturn(CCTextInputNode*)
+_ZThn460_N26SetupCollisionTriggerPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupCollisionTriggerPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn460_N26SetupCollisionTriggerPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to UpdateAccountSettingsPopup::updateSettingsFailed()
+_ZThn460_N26UpdateAccountSettingsPopup20updateSettingsFailedEv
+non-virtual thunk to UpdateAccountSettingsPopup::updateSettingsFinished()
+_ZThn460_N26UpdateAccountSettingsPopup22updateSettingsFinishedEv
+non-virtual thunk to InfoLayer::setupPageInfo(std::string, char const*)
+_ZThn460_N9InfoLayer13setupPageInfoESsPKc
+non-virtual thunk to InfoLayer::loadCommentsFailed(char const*)
+_ZThn460_N9InfoLayer18loadCommentsFailedEPKc
+non-virtual thunk to InfoLayer::loadCommentsFinished(cocos2d::CCArray*, char const*)
+_ZThn460_N9InfoLayer20loadCommentsFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to InfoLayer::updateUserScoreFinished()
+_ZThn460_N9InfoLayer23updateUserScoreFinishedEv
+non-virtual thunk to ProfilePage::setupPageInfo(std::string, char const*)
+_ZThn464_N11ProfilePage13setupPageInfoESsPKc
+non-virtual thunk to ProfilePage::loadCommentsFailed(char const*)
+_ZThn464_N11ProfilePage18loadCommentsFailedEPKc
+non-virtual thunk to ProfilePage::loadCommentsFinished(cocos2d::CCArray*, char const*)
+_ZThn464_N11ProfilePage20loadCommentsFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to ProfilePage::updateUserScoreFinished()
+_ZThn464_N11ProfilePage23updateUserScoreFinishedEv
+non-virtual thunk to RewardsPage::rewardsStatusFailed()
+_ZThn464_N11RewardsPage19rewardsStatusFailedEv
+non-virtual thunk to RewardsPage::rewardsStatusFinished(int)
+_ZThn464_N11RewardsPage21rewardsStatusFinishedEi
+non-virtual thunk to ChallengesPage::challengeStatusFailed()
+_ZThn464_N14ChallengesPage21challengeStatusFailedEv
+non-virtual thunk to ChallengesPage::challengeStatusFinished()
+_ZThn464_N14ChallengesPage23challengeStatusFinishedEv
+non-virtual thunk to DailyLevelPage::dailyStatusFailed(bool)
+_ZThn464_N14DailyLevelPage17dailyStatusFailedEb
+non-virtual thunk to DailyLevelPage::dailyStatusFinished(bool)
+_ZThn464_N14DailyLevelPage19dailyStatusFinishedEb
+non-virtual thunk to GJMessagePopup::onClosePopup(UploadActionPopup*)
+_ZThn464_N14GJMessagePopup12onClosePopupEP17UploadActionPopup
+non-virtual thunk to RateDemonLayer::uploadActionFailed(int, int)
+_ZThn464_N14RateDemonLayer18uploadActionFailedEii
+non-virtual thunk to RateDemonLayer::uploadActionFinished(int, int)
+_ZThn464_N14RateDemonLayer20uploadActionFinishedEii
+non-virtual thunk to RateStarsLayer::uploadActionFailed(int, int)
+_ZThn464_N14RateStarsLayer18uploadActionFailedEii
+non-virtual thunk to RateStarsLayer::uploadActionFinished(int, int)
+_ZThn464_N14RateStarsLayer20uploadActionFinishedEii
+non-virtual thunk to CustomSongLayer::textChanged(CCTextInputNode*)
+_ZThn464_N15CustomSongLayer11textChangedEP15CCTextInputNode
+non-virtual thunk to CustomSongLayer::textInputClosed(CCTextInputNode*)
+_ZThn464_N15CustomSongLayer15textInputClosedEP15CCTextInputNode
+non-virtual thunk to CustomSongLayer::textInputOpened(CCTextInputNode*)
+_ZThn464_N15CustomSongLayer15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to CustomSongLayer::textInputReturn(CCTextInputNode*)
+_ZThn464_N15CustomSongLayer15textInputReturnEP15CCTextInputNode
+non-virtual thunk to CustomSongLayer::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn464_N15CustomSongLayer21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to SetupPulsePopup::textChanged(CCTextInputNode*)
+_ZThn464_N15SetupPulsePopup11textChangedEP15CCTextInputNode
+non-virtual thunk to SetupPulsePopup::textInputClosed(CCTextInputNode*)
+_ZThn464_N15SetupPulsePopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to SetupPulsePopup::textInputOpened(CCTextInputNode*)
+_ZThn464_N15SetupPulsePopup15textInputOpenedEP15CCTextInputNode
+non-virtual thunk to SetupPulsePopup::textInputReturn(CCTextInputNode*)
+_ZThn464_N15SetupPulsePopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to SetupPulsePopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn464_N15SetupPulsePopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to ColorSelectPopup::textChanged(CCTextInputNode*)
+_ZThn464_N16ColorSelectPopup11textChangedEP15CCTextInputNode
+non-virtual thunk to ColorSelectPopup::textInputClosed(CCTextInputNode*)
+_ZThn464_N16ColorSelectPopup15textInputClosedEP15CCTextInputNode
+non-virtual thunk to ColorSelectPopup::textInputReturn(CCTextInputNode*)
+_ZThn464_N16ColorSelectPopup15textInputReturnEP15CCTextInputNode
+non-virtual thunk to ColorSelectPopup::textInputShouldOffset(CCTextInputNode*, float)
+_ZThn464_N16ColorSelectPopup21textInputShouldOffsetEP15CCTextInputNodef
+non-virtual thunk to FollowRewardPage::updateRate()
+_ZThn464_N16FollowRewardPage10updateRateEv
+non-virtual thunk to MoreOptionsLayer::googlePlaySignedIn()
+_ZThn464_N16MoreOptionsLayer18googlePlaySignedInEv
+non-virtual thunk to AccountLoginLayer::loginAccountFailed(AccountError)
+_ZThn464_N17AccountLoginLayer18loginAccountFailedE12AccountError
+non-virtual thunk to AccountLoginLayer::loginAccountFinished(int, int)
+_ZThn464_N17AccountLoginLayer20loginAccountFinishedEii
+non-virtual thunk to ShareCommentLayer::uploadActionFailed(int, int)
+_ZThn464_N17ShareCommentLayer18uploadActionFailedEii
+non-virtual thunk to ShareCommentLayer::uploadActionFinished(int, int)
+_ZThn464_N17ShareCommentLayer20uploadActionFinishedEii
+non-virtual thunk to FriendRequestPopup::onClosePopup(UploadActionPopup*)
+_ZThn464_N18FriendRequestPopup12onClosePopupEP17UploadActionPopup
+non-virtual thunk to GJMoveCommandLayer::valuePopupClosed(ConfigureValuePopup*, float)
+_ZThn464_N18GJMoveCommandLayer16valuePopupClosedEP19ConfigureValuePopupf
+non-virtual thunk to LevelSettingsLayer::selectArtClosed(SelectArtLayer*)
+_ZThn464_N18LevelSettingsLayer15selectArtClosedEP14SelectArtLayer
+non-virtual thunk to FRequestProfilePage::uploadActionFailed(int, int)
+_ZThn464_N19FRequestProfilePage18uploadActionFailedEii
+non-virtual thunk to FRequestProfilePage::uploadActionFinished(int, int)
+_ZThn464_N19FRequestProfilePage20uploadActionFinishedEii
+non-virtual thunk to GJWriteMessagePopup::uploadMessageFailed(int)
+_ZThn464_N19GJWriteMessagePopup19uploadMessageFailedEi
+non-virtual thunk to GJWriteMessagePopup::uploadMessageFinished(int)
+_ZThn464_N19GJWriteMessagePopup21uploadMessageFinishedEi
+non-virtual thunk to MessagesProfilePage::uploadActionFailed(int, int)
+_ZThn464_N19MessagesProfilePage18uploadActionFailedEii
+non-virtual thunk to MessagesProfilePage::uploadActionFinished(int, int)
+_ZThn464_N19MessagesProfilePage20uploadActionFinishedEii
+non-virtual thunk to AccountRegisterLayer::registerAccountFailed(AccountError)
+_ZThn464_N20AccountRegisterLayer21registerAccountFailedE12AccountError
+non-virtual thunk to AccountRegisterLayer::registerAccountFinished()
+_ZThn464_N20AccountRegisterLayer23registerAccountFinishedEv
+non-virtual thunk to CustomizeObjectLayer::hsvPopupClosed(HSVWidgetPopup*, cocos2d::_ccHSVValue)
+_ZThn464_N20CustomizeObjectLayer14hsvPopupClosedEP14HSVWidgetPopupN7cocos2d11_ccHSVValueE
+non-virtual thunk to GJRotateCommandLayer::valuePopupClosed(ConfigureValuePopup*, float)
+_ZThn464_N20GJRotateCommandLayer16valuePopupClosedEP19ConfigureValuePopupf
+non-virtual thunk to InfoLayer::commentUploadFailed(int, CommentError)
+_ZThn464_N9InfoLayer19commentUploadFailedEi12CommentError
+non-virtual thunk to InfoLayer::commentUploadFinished(int)
+_ZThn464_N9InfoLayer21commentUploadFinishedEi
+non-virtual thunk to ProfilePage::commentDeleteFailed(int, int)
+_ZThn468_N11ProfilePage19commentDeleteFailedEii
+non-virtual thunk to ProfilePage::commentUploadFailed(int, CommentError)
+_ZThn468_N11ProfilePage19commentUploadFailedEi12CommentError
+non-virtual thunk to ProfilePage::commentUploadFinished(int)
+_ZThn468_N11ProfilePage21commentUploadFinishedEi
+non-virtual thunk to ChallengesPage::currencyWillExit(CurrencyRewardLayer*)
+_ZThn468_N14ChallengesPage16currencyWillExitEP19CurrencyRewardLayer
+non-virtual thunk to DailyLevelPage::levelDownloadFailed(int)
+_ZThn468_N14DailyLevelPage19levelDownloadFailedEi
+non-virtual thunk to DailyLevelPage::levelDownloadFinished(GJGameLevel*)
+_ZThn468_N14DailyLevelPage21levelDownloadFinishedEP11GJGameLevel
+non-virtual thunk to GJMessagePopup::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn468_N14GJMessagePopup15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to CustomSongLayer::dropDownLayerWillClose(GJDropDownLayer*)
+_ZThn468_N15CustomSongLayer22dropDownLayerWillCloseEP15GJDropDownLayer
+non-virtual thunk to SetupPulsePopup::colorSelectClosed(GJSpecialColorSelect*, int)
+_ZThn468_N15SetupPulsePopup17colorSelectClosedEP20GJSpecialColorSelecti
+non-virtual thunk to ColorSelectPopup::colorSelectClosed(GJSpecialColorSelect*, int)
+_ZThn468_N16ColorSelectPopup17colorSelectClosedEP20GJSpecialColorSelecti
+non-virtual thunk to AccountLoginLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn468_N17AccountLoginLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to ShareCommentLayer::onClosePopup(UploadActionPopup*)
+_ZThn468_N17ShareCommentLayer12onClosePopupEP17UploadActionPopup
+non-virtual thunk to FriendRequestPopup::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn468_N18FriendRequestPopup15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to LevelSettingsLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn468_N18LevelSettingsLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to FRequestProfilePage::onClosePopup(UploadActionPopup*)
+_ZThn468_N19FRequestProfilePage12onClosePopupEP17UploadActionPopup
+non-virtual thunk to GJWriteMessagePopup::onClosePopup(UploadActionPopup*)
+_ZThn468_N19GJWriteMessagePopup12onClosePopupEP17UploadActionPopup
+non-virtual thunk to MessagesProfilePage::onClosePopup(UploadActionPopup*)
+_ZThn468_N19MessagesProfilePage12onClosePopupEP17UploadActionPopup
+non-virtual thunk to AccountRegisterLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn468_N20AccountRegisterLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to CustomizeObjectLayer::colorSelectClosed(cocos2d::CCNode*)
+_ZThn468_N20CustomizeObjectLayer17colorSelectClosedEPN7cocos2d6CCNodeE
+non-virtual thunk to InfoLayer::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn468_N9InfoLayer15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to ProfilePage::userInfoChanged(GJUserScore*)
+_ZThn472_N11ProfilePage15userInfoChangedEP11GJUserScore
+non-virtual thunk to ProfilePage::getUserInfoFailed(int)
+_ZThn472_N11ProfilePage17getUserInfoFailedEi
+non-virtual thunk to ProfilePage::getUserInfoFinished(GJUserScore*)
+_ZThn472_N11ProfilePage19getUserInfoFinishedEP11GJUserScore
+non-virtual thunk to GJMessagePopup::downloadMessageFailed(int)
+_ZThn472_N14GJMessagePopup21downloadMessageFailedEi
+non-virtual thunk to GJMessagePopup::downloadMessageFinished(GJUserMessage*)
+_ZThn472_N14GJMessagePopup23downloadMessageFinishedEP13GJUserMessage
+non-virtual thunk to FriendsProfilePage::forceReloadList(UserListType)
+_ZThn472_N18FriendsProfilePage15forceReloadListE12UserListType
+non-virtual thunk to FriendsProfilePage::userListChanged(cocos2d::CCArray*, UserListType)
+_ZThn472_N18FriendsProfilePage15userListChangedEPN7cocos2d7CCArrayE12UserListType
+non-virtual thunk to FriendsProfilePage::getUserListFailed(UserListType, GJErrorCode)
+_ZThn472_N18FriendsProfilePage17getUserListFailedE12UserListType11GJErrorCode
+non-virtual thunk to FriendsProfilePage::getUserListFinished(cocos2d::CCArray*, UserListType)
+_ZThn472_N18FriendsProfilePage19getUserListFinishedEPN7cocos2d7CCArrayE12UserListType
+non-virtual thunk to LevelSettingsLayer::customSongLayerClosed()
+_ZThn472_N18LevelSettingsLayer21customSongLayerClosedEv
+non-virtual thunk to FRequestProfilePage::setupPageInfo(std::string, char const*)
+_ZThn472_N19FRequestProfilePage13setupPageInfoESsPKc
+non-virtual thunk to FRequestProfilePage::forceReloadRequests(bool)
+_ZThn472_N19FRequestProfilePage19forceReloadRequestsEb
+non-virtual thunk to FRequestProfilePage::loadFRequestsFailed(char const*, GJErrorCode)
+_ZThn472_N19FRequestProfilePage19loadFRequestsFailedEPKc11GJErrorCode
+non-virtual thunk to FRequestProfilePage::loadFRequestsFinished(cocos2d::CCArray*, char const*)
+_ZThn472_N19FRequestProfilePage21loadFRequestsFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to GJWriteMessagePopup::FLAlert_Clicked(FLAlertLayer*, bool)
+_ZThn472_N19GJWriteMessagePopup15FLAlert_ClickedEP12FLAlertLayerb
+non-virtual thunk to MessagesProfilePage::setupPageInfo(std::string, char const*)
+_ZThn472_N19MessagesProfilePage13setupPageInfoESsPKc
+non-virtual thunk to MessagesProfilePage::loadMessagesFailed(char const*, GJErrorCode)
+_ZThn472_N19MessagesProfilePage18loadMessagesFailedEPKc11GJErrorCode
+non-virtual thunk to MessagesProfilePage::forceReloadMessages(bool)
+_ZThn472_N19MessagesProfilePage19forceReloadMessagesEb
+non-virtual thunk to MessagesProfilePage::loadMessagesFinished(cocos2d::CCArray*, char const*)
+_ZThn472_N19MessagesProfilePage20loadMessagesFinishedEPN7cocos2d7CCArrayEPKc
+non-virtual thunk to CustomizeObjectLayer::colorSetupClosed(int)
+_ZThn472_N20CustomizeObjectLayer16colorSetupClosedEi
+non-virtual thunk to ProfilePage::uploadActionFailed(int, int)
+_ZThn476_N11ProfilePage18uploadActionFailedEii
+non-virtual thunk to ProfilePage::uploadActionFinished(int, int)
+_ZThn476_N11ProfilePage20uploadActionFinishedEii
+non-virtual thunk to ProfilePage::onClosePopup(UploadActionPopup*)
+_ZThn480_N11ProfilePage12onClosePopupEP17UploadActionPopup
+non-virtual thunk to ProfilePage::updateUserScoreFailed()
+_ZThn484_N11ProfilePage21updateUserScoreFailedEv
+non-virtual thunk to ProfilePage::updateUserScoreFinished()
+_ZThn484_N11ProfilePage23updateUserScoreFinishedEv
+non-virtual thunk to cocos2d::CCLabelTTF::getString()
+_ZThn484_N7cocos2d10CCLabelTTF9getStringEv
+non-virtual thunk to cocos2d::CCLabelTTF::setString(char const*)
+_ZThn484_N7cocos2d10CCLabelTTF9setStringEPKc
+non-virtual thunk to cocos2d::CCTextFieldTTF::getString()
+_ZThn484_N7cocos2d14CCTextFieldTTF9getStringEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::setString(char const*)
+_ZThn484_N7cocos2d14CCTextFieldTTF9setStringEPKc
+non-virtual thunk to cocos2d::extension::CCControlSwitchSprite::updateTweenAction(float, char const*)
+_ZThn484_N7cocos2d9extension21CCControlSwitchSprite17updateTweenActionEfPKc
+non-virtual thunk to cocos2d::extension::CCControlSwitchSprite::~CCControlSwitchSprite()
+_ZThn484_N7cocos2d9extension21CCControlSwitchSpriteD0Ev
+non-virtual thunk to cocos2d::extension::CCControlSwitchSprite::~CCControlSwitchSprite()
+_ZThn484_N7cocos2d9extension21CCControlSwitchSpriteD1Ev
+non-virtual thunk to SetFolderPopup::setTextPopupClosed(SetTextPopup*, std::string)
+_ZThn492_N14SetFolderPopup18setTextPopupClosedEP12SetTextPopupSs
+non-virtual thunk to AppDelegate::willSwitchToScene(cocos2d::CCScene*)
+_ZThn4_N11AppDelegate17willSwitchToSceneEPN7cocos2d7CCSceneE
+non-virtual thunk to cocos2d::CCTextFieldTTF::insertText(char const*, int)
+_ZThn548_N7cocos2d14CCTextFieldTTF10insertTextEPKci
+non-virtual thunk to cocos2d::CCTextFieldTTF::attachWithIME()
+_ZThn548_N7cocos2d14CCTextFieldTTF13attachWithIMEEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::detachWithIME()
+_ZThn548_N7cocos2d14CCTextFieldTTF13detachWithIMEEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::deleteBackward()
+_ZThn548_N7cocos2d14CCTextFieldTTF14deleteBackwardEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::getContentText()
+_ZThn548_N7cocos2d14CCTextFieldTTF14getContentTextEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::canAttachWithIME()
+_ZThn548_N7cocos2d14CCTextFieldTTF16canAttachWithIMEEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::canDetachWithIME()
+_ZThn548_N7cocos2d14CCTextFieldTTF16canDetachWithIMEEv
+non-virtual thunk to cocos2d::CCTextFieldTTF::~CCTextFieldTTF()
+_ZThn548_N7cocos2d14CCTextFieldTTFD0Ev
+non-virtual thunk to cocos2d::CCTextFieldTTF::~CCTextFieldTTF()
+_ZThn548_N7cocos2d14CCTextFieldTTFD1Ev
+non-virtual thunk to cocos2d::CCCallFuncN::getClassTypeInfo()
+_ZThn68_N7cocos2d11CCCallFuncN16getClassTypeInfoEv
+non-virtual thunk to cocos2d::CCCallFuncO::getClassTypeInfo()
+_ZThn68_N7cocos2d11CCCallFuncO16getClassTypeInfoEv
+non-virtual thunk to cocos2d::CCCallFuncND::getClassTypeInfo()
+_ZThn68_N7cocos2d12CCCallFuncND16getClassTypeInfoEv
+non-virtual thunk to LevelEditorLayer::levelSettingsUpdated()
+_ZThn716_N16LevelEditorLayer20levelSettingsUpdatedEv
+non-virtual thunk to PlayLayer::circleWaveWillBeRemoved(CCCircleWave*)
+_ZThn716_N9PlayLayer23circleWaveWillBeRemovedEP12CCCircleWave
+non-virtual thunk to PlayLayer::currencyWillExit(CurrencyRewardLayer*)
+_ZThn720_N9PlayLayer16currencyWillExitEP19CurrencyRewardLayer
+non-virtual thunk to PlayLayer::dialogClosed(DialogLayer*)
+_ZThn724_N9PlayLayer12dialogClosedEP11DialogLayer
 cocos2d::CCDirector::getClassTypeInfo()::id
 _ZZN7cocos2d10CCDirector16getClassTypeInfoEvE2id
 cocos2d::CCCallFuncN::getClassTypeInfo()::id

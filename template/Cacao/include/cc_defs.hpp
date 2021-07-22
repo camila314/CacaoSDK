@@ -529,10 +529,11 @@ public:
     static ButtonSprite* create(char const* text);
 };
 
+class FLAlertLayerProtocol;
 class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
     FLAlertLayer();
-    static FLAlertLayer* create(void* fdsg, char const* x, const std::string &thing, char const* l, char const* u, float f);
+    static FLAlertLayer* create(FLAlertLayerProtocol* fdsg, char const* x, const std::string &thing, char const* l, char const* u, float f);
     
     static FLAlertLayer* create(char const* title, const std::string &desc, char const* btn) {
         return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);

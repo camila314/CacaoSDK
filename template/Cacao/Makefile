@@ -180,15 +180,6 @@ symadd.asm.o:
 	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/symadd.asm.o
 .PHONY : symadd.asm.o
 
-symtab.o: symtab.asm.o
-
-.PHONY : symtab.o
-
-# target to build an object file
-symtab.asm.o:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/symtab.asm.o
-.PHONY : symtab.asm.o
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -202,7 +193,6 @@ help:
 	@echo "... Cacao.i"
 	@echo "... Cacao.s"
 	@echo "... symadd.o"
-	@echo "... symtab.o"
 .PHONY : help
 
 

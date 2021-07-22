@@ -12,8 +12,7 @@ with open(path, 'r') as sym:
 			output = cxxfilt.demangle(l[:-1])
 		except:
 			pass
-		if 'non-virtual thunk to' not in output:
-			file.write(f"{output}\n{l[:-1]}\n")
+		file.write(f"{output}\n{l[:-1]}\n")
 		a += 1
 		if a % 1000 == 0:
 			print(a)
