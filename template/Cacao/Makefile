@@ -67,10 +67,10 @@ RM = /usr/local/Cellar/cmake/3.19.6/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test"
+CMAKE_SOURCE_DIR = "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test"
+CMAKE_BINARY_DIR = "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,14 +99,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test/CMakeFiles" "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test/Cacao//CMakeFiles/progress.marks"
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test/CMakeFiles" 0
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger/CMakeFiles" "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger/Cacao//CMakeFiles/progress.marks"
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/clean
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/clean
 .PHONY : clean
 
 # The main clean target
@@ -116,22 +116,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/preinstall
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/preinstall
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Cacao/CMakeFiles/Cacao.dir/rule:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/CMakeFiles/Cacao.dir/rule
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Cacao/CMakeFiles/Cacao.dir/rule
 .PHONY : Cacao/CMakeFiles/Cacao.dir/rule
 
 # Convenience name for target.
@@ -141,7 +141,7 @@ Cacao: Cacao/CMakeFiles/Cacao.dir/rule
 
 # fast build rule for target.
 Cacao/fast:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/build
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/build
 .PHONY : Cacao/fast
 
 Cacao.o: Cacao.cpp.o
@@ -150,7 +150,7 @@ Cacao.o: Cacao.cpp.o
 
 # target to build an object file
 Cacao.cpp.o:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/Cacao.cpp.o
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/Cacao.cpp.o
 .PHONY : Cacao.cpp.o
 
 Cacao.i: Cacao.cpp.i
@@ -159,7 +159,7 @@ Cacao.i: Cacao.cpp.i
 
 # target to preprocess a source file
 Cacao.cpp.i:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/Cacao.cpp.i
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/Cacao.cpp.i
 .PHONY : Cacao.cpp.i
 
 Cacao.s: Cacao.cpp.s
@@ -168,7 +168,7 @@ Cacao.s: Cacao.cpp.s
 
 # target to generate assembly for a file
 Cacao.cpp.s:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/Cacao.cpp.s
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/Cacao.cpp.s
 .PHONY : Cacao.cpp.s
 
 symadd.o: symadd.asm.o
@@ -177,7 +177,7 @@ symadd.o: symadd.asm.o
 
 # target to build an object file
 symadd.asm.o:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/symadd.asm.o
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(MAKE) $(MAKESILENT) -f Cacao/CMakeFiles/Cacao.dir/build.make Cacao/CMakeFiles/Cacao.dir/symadd.asm.o
 .PHONY : symadd.asm.o
 
 # Help Target
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Test" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Projects/Trigger" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

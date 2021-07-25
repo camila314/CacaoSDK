@@ -1,15 +1,18 @@
-# symadd.asm ghidra script
+# export functions to the asm file
 # @author alk1m123
 # @category Cacao
 import os
 import re
 
 symbol_path = askFile('hi', 'symbol')
-save_path = askFile('hi', 'save')
+save_path = askFile('hi', 'asm')
 
 symbols = []
 addresses = []
 mangles = {}
+
+def getAddress(offset):
+    return currentProgram.getAddressFactory().getDefaultAddressSpace().getAddress(offset + 0x100000000)
 
 fm = currentProgram.getFunctionManager()
 funcs = list(fm.getFunctions(True)) # True means 'forward'
@@ -17,17 +20,8 @@ a = 0
 
 for i in currentProgram.getSymbolTable().getAllSymbols(False):
     n = i.getParentNamespace()
-    if (
-        i.getSymbolType() == ghidra.program.model.symbol.SymbolType.FUNCTION and 
-        not i.isGlobal() and 
-        n.getName() != 'std' and 
-        i.getSource() == ghidra.program.model.symbol.SourceType.USER_DEFINED
-        ):
-        q = funcs[a];
-        while i.getAddress().unsignedOffset != q.getEntryPoint().unsignedOffset:
-            a += 1
-            q = funcs[a]
-        symbols.append((i, q))
+    if (i.getSymbolType() == ghidra.program.model.symbol.SymbolType.FUNCTION and n.getName() != 'std'):
+        symbols.append((i, fm.getFunctionAt(i.getAddress())))
 
 def myfun(a):
     return '::'.join(a[0].getPath())
