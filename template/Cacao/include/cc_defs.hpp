@@ -357,6 +357,7 @@ class SpawnTriggerAction : public cocos2d::CCNode { // omg
 
 class EffectGameObject : public GameObject {
 public:
+    static EffectGameObject* create(char const* key);
     CLASS_PARAM(int, targetGroup, 0x4F8);
     CLASS_PARAM(bool, activateGroup, 0x578);
     CLASS_PARAM(bool, touchHoldMode, 0x579);

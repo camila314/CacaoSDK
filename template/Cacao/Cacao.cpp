@@ -371,8 +371,8 @@ namespace Cacao {
 
                 if(std::find(inst->effectObjects.begin(), inst->effectObjects.end(), key) != inst->effectObjects.end()) {
                     char const* frame = ObjectToolbox::sharedState()->intKeyToFrame(key);
-                    GameObject* gob = reinterpret_cast<GameObject*>(LabelGameObject::create(frame));
-                    gob->_id() = key;
+                    GameObject* gob = reinterpret_cast<GameObject*>(EffectGameObject::create(frame));
+                    gob->_id() = key; 
                     return gob;
                 } else {
                     return orig(key);
