@@ -272,19 +272,36 @@ namespace Cacao {
         return this;
     }
 
+    EditorUIEditor* EditorUIEditor::addEditPopup(int ob, void(*callback)(EditorUI*)) {
+        if (!this->editPopups.count(ob)) 
+            this->editPopups.insert(std::pair<int, void(*)(EditorUI*)>(ob, callback));
+        return this;
+    }
+
     EditorUIEditor* EditorUIEditor::addTriggerCallback(int ob, void(*callback)(GameObject*, GJBaseGameLayer*)) {
-        if (!this->triggerCallbacks.count(ob)) {
+        if (!this->triggerCallbacks.count(ob)) 
             this->triggerCallbacks.insert(std::pair<int, void(*)(GameObject*, GJBaseGameLayer*)>(ob, callback));
-        }
+        return this;
+    }
+
+    EditorUIEditor* EditorUIEditor::addSaveString(int ob, GameObject*(*fromString)(GameObject*, std::string), std::string(*toString)(GameObject*, std::string)) {
+        if (!this->saveFromStrings.count(ob)) 
+            this->saveFromStrings.insert(std::pair<int, GameObject*(*)(GameObject*, std::string)>(ob, fromString));
+        if (!this->saveToStrings.count(ob)) 
+            this->saveToStrings.insert(std::pair<int, std::string(*)(GameObject*, std::string)>(ob, toString));
         return this;
     }
 
     bool EditorUIEditor::appliedBars = false;
     bool EditorUIEditor::appliedObjects = false;
     bool EditorUIEditor::appliedCallbacks = false;
+    bool EditorUIEditor::appliedPopups = false;
+    bool EditorUIEditor::appliedSaveStrings = false;
     EditorUIEditor* EditorUIEditor::barInstance = nullptr;
     EditorUIEditor* EditorUIEditor::objectInstance = nullptr;
     EditorUIEditor* EditorUIEditor::callbackInstance = nullptr;
+    EditorUIEditor* EditorUIEditor::popupInstance = nullptr;
+    EditorUIEditor* EditorUIEditor::saveStringInstance = nullptr;
 
     void EditorUIEditor::applyBars() {
         if (!EditorUIEditor::appliedBars) {
@@ -316,7 +333,7 @@ namespace Cacao {
                             }
                             why->addObject(ob);
                         }
-                        theBar->loadFromItems(why, 6, 2, false);
+                        theBar->loadFromItems(why, GM->getIntGameVariable("0049"), GM->getIntGameVariable("0050"), false);
                     }
                 }
             });
@@ -354,8 +371,8 @@ namespace Cacao {
 
                 if(std::find(inst->effectObjects.begin(), inst->effectObjects.end(), key) != inst->effectObjects.end()) {
                     char const* frame = ObjectToolbox::sharedState()->intKeyToFrame(key);
-                    GameObject* gob = reinterpret_cast<GameObject*>(LabelGameObject::create(frame));
-                    gob->_id() = key;
+                    GameObject* gob = reinterpret_cast<GameObject*>(EffectGameObject::create(frame));
+                    gob->_id() = key; 
                     return gob;
                 } else {
                     return orig(key);
@@ -382,8 +399,87 @@ namespace Cacao {
                     orig(self, gjbgl);
                 }
             });
+
+            this->mc->registerHook(getBase() + 0x343a60, +[](GameObject* self) {
+                auto inst = EditorUIEditor::callbackInstance;
+                if (!inst) {
+                    throw std::runtime_error(std::string("No editor ui editor instance found!"));
+                }
+                auto orig = reinterpret_cast<bool(*)(GameObject*)>(inst->mc->getOriginal(getBase() + 0x343a60));
+                if (inst->triggerCallbacks.count(self->_id()) > 0) {
+                    return true;
+                } else {
+                    return orig(self);
+                }
+            });
         }
         EditorUIEditor::callbackInstance = this;
+    }
+
+    void EditorUIEditor::applyPopups() {
+        if (!EditorUIEditor::appliedPopups) {
+            EditorUIEditor::appliedPopups = true;
+            EditorUIEditor::popupInstance = this;
+            this->mc->registerHook(getBase() + 0x195a0, +[](EditorUI* self) {
+                auto inst = EditorUIEditor::popupInstance;
+                if (!inst) {
+                    throw std::runtime_error(std::string("No editor ui editor instance found!"));
+                }
+                auto orig = reinterpret_cast<void(*)(EditorUI*)>(inst->mc->getOriginal(getBase() + 0x195a0));
+                auto ob = self->_lastSelectedObject();
+                if (ob && inst->editPopups.count(ob->_id()) > 0) {
+                    inst->editPopups[ob->_id()](self);
+                } else {
+                    orig(self);
+                }
+            });
+
+            this->mc->registerHook(getBase() + 0x28f30, +[](EditorUI* self) {
+                auto inst = EditorUIEditor::popupInstance;
+                if (!inst) {
+                    throw std::runtime_error(std::string("No editor ui editor instance found!"));
+                }
+                auto orig = reinterpret_cast<bool(*)(EditorUI*)>(inst->mc->getOriginal(getBase() + 0x28f30));
+                auto ob = self->_lastSelectedObject();
+                if (ob && inst->editPopups.count(ob->_id()) > 0) {
+                    return true;
+                } else {
+                    return orig(self);
+                }
+            });
+        }
+        EditorUIEditor::popupInstance = this;
+    }
+
+    void EditorUIEditor::applySaveStrings() {
+        if (!EditorUIEditor::appliedSaveStrings) {
+            EditorUIEditor::appliedSaveStrings = true;
+            EditorUIEditor::saveStringInstance = this;
+            this->mc->registerHook(getBase() + 0x33d3d0, +[](GameObject* go) {
+                auto inst = EditorUIEditor::saveStringInstance;
+                if (!inst) {
+                    throw std::runtime_error(std::string("No editor ui editor instance found!"));
+                }
+                auto orig = reinterpret_cast<std::string(*)(GameObject*)>(inst->mc->getOriginal(getBase() + 0x33d3d0));
+                auto st = orig(go);
+                if (inst->saveToStrings.count(go->_id()) > 0) 
+                    return inst->saveToStrings[go->_id()](go, st);
+                return st;
+            });
+
+            this->mc->registerHook(getBase() + 0x33b720, +[](std::string st, bool idk) {
+                auto inst = EditorUIEditor::saveStringInstance;
+                if (!inst) {
+                    throw std::runtime_error(std::string("No editor ui editor instance found!"));
+                }
+                auto orig = reinterpret_cast<GameObject*(*)(std::string, bool)>(inst->mc->getOriginal(getBase() + 0x33b720));
+                auto go = orig(st, idk);
+                if (inst->saveFromStrings.count(go->_id()) > 0) 
+                    return inst->saveFromStrings[go->_id()](go, st);
+                return go;
+            });
+        }
+        EditorUIEditor::saveStringInstance = this;
     }
 
     void CacAlertLayer::keyBackClicked() {
