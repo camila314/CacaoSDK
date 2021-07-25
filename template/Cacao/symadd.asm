@@ -176,10 +176,8 @@ global __ZN12FLAlertLayerC2Ev
 __ZN12FLAlertLayerC2Ev:
 	push rbp
 	mov rbp, rsp
-	pushallnorax
-	push rsi
-	push rdi
-
+	push rbx
+	
 	mov rbx, rdi
 	call __ZN7cocos2d12CCLayerColorC2Ev
 
@@ -188,9 +186,7 @@ __ZN12FLAlertLayerC2Ev:
 	addvtable [rbx+0x130], 0x65d770
 	addvtable [rbx+0x138], 0x65d790
 
-	pop rdi
-	pop rsi
-	popallnorax
+	pop rbx
 	pop rbp
 	ret
 
