@@ -455,13 +455,13 @@ class $LevelEditorLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),GameObject* ,bool )>(m->getOriginal(getBase()+0x96890))(this,p0,p1);
     }
 
-    // virtual void redoLastAction() {
-    //     return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x97750))(this);
-    // }
+    virtual void redoLastAction() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x97750))(this);
+    }
 
-    // virtual void undoLastAction() {
-    //     return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x97770))(this);
-    // }
+    virtual void undoLastAction() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x97770))(this);
+    }
 
     virtual void removeAllObjects() {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x93d80))(this);
@@ -471,13 +471,13 @@ class $LevelEditorLayer : public $CacBase {
         return reinterpret_cast<int(*)(decltype(this),CCArray* )>(m->getOriginal(getBase()+0x9a1b0))(this,p0);
     }
 
-    // virtual GameObject* addObjectFromString(std::string  p0) {
-    //     return reinterpret_cast<GameObject*(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x94640))(this,p0);
-    // }
+    virtual GameObject* addObjectFromString(std::string  p0) {
+        return reinterpret_cast<GameObject*(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x94640))(this,p0);
+    }
 
-    // virtual void createObjectsFromString(std::string  p0) {
-    //     return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x94730))(this,p0);
-    // }
+    virtual void createObjectsFromString(std::string  p0) {
+        return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x94730))(this,p0);
+    }
 
     virtual void update(float  p0) {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0xa1b70))(this,p0);
@@ -490,17 +490,17 @@ class $LevelEditorLayer : public $CacBase {
 
         m->registerHook(getBase()+0x96890, extract_virtual(this, &$LevelEditorLayer::removeObject));
 
-        // m->registerHook(getBase()+0x97750, extract_virtual(this, &$LevelEditorLayer::redoLastAction));
+        m->registerHook(getBase()+0x97750, extract_virtual(this, &$LevelEditorLayer::redoLastAction));
 
-        // m->registerHook(getBase()+0x97770, extract_virtual(this, &$LevelEditorLayer::undoLastAction));
+        m->registerHook(getBase()+0x97770, extract_virtual(this, &$LevelEditorLayer::undoLastAction));
 
         m->registerHook(getBase()+0x93d80, extract_virtual(this, &$LevelEditorLayer::removeAllObjects));
 
         m->registerHook(getBase()+0x9a1b0, extract_virtual(this, &$LevelEditorLayer::getNextFreeGroupID));
 
-        // m->registerHook(getBase()+0x94640, extract_virtual(this, &$LevelEditorLayer::addObjectFromString));
+        m->registerHook(getBase()+0x94640, extract_virtual(this, &$LevelEditorLayer::addObjectFromString));
 
-        // m->registerHook(getBase()+0x94730, extract_virtual(this, &$LevelEditorLayer::createObjectsFromString));
+        m->registerHook(getBase()+0x94730, extract_virtual(this, &$LevelEditorLayer::createObjectsFromString));
 
         m->registerHook(getBase()+0xa1b70, extract_virtual(this, &$LevelEditorLayer::update));
     }
@@ -839,9 +839,9 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1f300))(this);
     }
 
-    // virtual void onDuplicate(CCObject*  p0) {
-    //     return reinterpret_cast<void(*)(decltype(this),CCObject* )>(m->getOriginal(getBase()+0x18ba0))(this,p0);
-    // }
+    virtual void onDuplicate(CCObject*  p0) {
+        return reinterpret_cast<void(*)(decltype(this),CCObject* )>(m->getOriginal(getBase()+0x18ba0))(this,p0);
+    }
 
     virtual void enableButton(CreateMenuItem*  p0) {
         return reinterpret_cast<void(*)(decltype(this),CreateMenuItem* )>(m->getOriginal(getBase()+0x1bff0))(this,p0);
@@ -851,9 +851,9 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<CreateMenuItem*(*)(decltype(this),int ,int )>(m->getOriginal(getBase()+0x1f6c0))(this,p0,p1);
     }
 
-    // virtual void pasteObjects(std::string  p0) {
-    //     return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x232d0))(this,p0);
-    // }
+    virtual void pasteObjects(std::string  p0) {
+        return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x232d0))(this,p0);
+    }
 
     virtual void disableButton(CreateMenuItem*  p0) {
         return reinterpret_cast<void(*)(decltype(this),CreateMenuItem* )>(m->getOriginal(getBase()+0x1c0f0))(this,p0);
@@ -875,9 +875,9 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0xb830))(this);
     }
 
-    // virtual CCArray* getSelectedObjects() {
-    //     return reinterpret_cast<CCArray*(*)(decltype(this))>(m->getOriginal(getBase()+0x23f30))(this);
-    // }
+    virtual CCArray* getSelectedObjects() {
+        return reinterpret_cast<CCArray*(*)(decltype(this))>(m->getOriginal(getBase()+0x23f30))(this);
+    }
 
     virtual void scaleObjects(CCArray *p0, float p1, CCPoint p2) {
         return reinterpret_cast<void(*)(decltype(this), CCArray*, float, CCPoint)>(m->getOriginal(getBase()+0x252e0))(this, p0, p1, p2);
@@ -886,13 +886,13 @@ class $EditorUI : public $CacBase {
     void apply_hooks() override {
         m->registerHook(getBase()+0x1f300, extract_virtual(this, &$EditorUI::deselectAll));
 
-        // m->registerHook(getBase()+0x18ba0, extract_virtual(this, &$EditorUI::onDuplicate));
+        m->registerHook(getBase()+0x18ba0, extract_virtual(this, &$EditorUI::onDuplicate));
 
         m->registerHook(getBase()+0x1bff0, extract_virtual(this, &$EditorUI::enableButton));
 
         m->registerHook(getBase()+0x1f6c0, extract_virtual(this, &$EditorUI::getCreateBtn));
 
-        // m->registerHook(getBase()+0x232d0, extract_virtual(this, &$EditorUI::pasteObjects));
+        m->registerHook(getBase()+0x232d0, extract_virtual(this, &$EditorUI::pasteObjects));
 
         m->registerHook(getBase()+0x1c0f0, extract_virtual(this, &$EditorUI::disableButton));
 
@@ -904,7 +904,7 @@ class $EditorUI : public $CacBase {
 
         m->registerHook(getBase()+0xb830, extract_virtual(this, &$EditorUI::undoLastAction));
 
-        // m->registerHook(getBase()+0x23f30, extract_virtual(this, &$EditorUI::getSelectedObjects));
+        m->registerHook(getBase()+0x23f30, extract_virtual(this, &$EditorUI::getSelectedObjects));
 
         m->registerHook(getBase()+0x252e0, extract_virtual(this, &$EditorUI::scaleObjects));
     }
