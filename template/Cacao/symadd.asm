@@ -177,8 +177,6 @@ __ZN12FLAlertLayerC2Ev:
 	push rbp
 	mov rbp, rsp
 	pushallnorax
-	pushmm xmm0
-	pushmm xmm1
 	push rsi
 	push rdi
 
@@ -192,8 +190,6 @@ __ZN12FLAlertLayerC2Ev:
 
 	pop rdi
 	pop rsi
-	popmm xmm1
-	popmm xmm0
 	popallnorax
 	pop rbp
 	ret
