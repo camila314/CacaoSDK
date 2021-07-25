@@ -165,10 +165,38 @@ __Z14setupTypeinfosv:
 	pop rbp
 	ret
 
+%macro addvtable 2
+	call __Z7getBasev
+	lea rax, [rax + %2]
+	mov %1, rax
+%endmacro
+
 ; haha funny optimizations
 global __ZN12FLAlertLayerC2Ev
 __ZN12FLAlertLayerC2Ev:
-	jmp __ZN7cocos2d12CCLayerColorC2Ev
+	push rbp
+	mov rbp, rsp
+	pushallnorax
+	pushmm xmm0
+	pushmm xmm1
+	push rsi
+	push rdi
+
+	mov rbx, rdi
+	call __ZN7cocos2d12CCLayerColorC2Ev
+
+	addvtable [rbx], 0x65d200
+	addvtable [rbx+0x120], 0x65d6f8
+	addvtable [rbx+0x130], 0x65d770
+	addvtable [rbx+0x138], 0x65d790
+
+	pop rdi
+	pop rsi
+	popmm xmm1
+	popmm xmm0
+	popallnorax
+	pop rbp
+	ret
 
 ; AnimatedGameObject::playAnimation(int)
 defit __ZN18AnimatedGameObject13playAnimationEi, 0xc93d0
@@ -4679,8 +4707,13 @@ defit __ZThn236_N12FLAlertLayerD0Ev, 0x25dde0
 ; GameObject::commonSetup()
 defit __ZN10GameObject11commonSetupEv, 0x2f5570
 
+; cocos2d::CCSpriteFrameCache::addSpriteFramesWithFile(char const*)
+defit __ZN7cocos2d18CCSpriteFrameCache23addSpriteFramesWithFileEPKc, 0x199a10
+
 section .bss
 __ZTIN7cocos2d6CCNodeE: resq 5
 __ZTIN7cocos2d7CCLayerE: resq 5
 __ZTI12FLAlertLayer: resq 5
 __ZTIN7cocos2d12CCLayerColorE: resq 5
+
+
