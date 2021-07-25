@@ -2,7 +2,8 @@ set(CMAKE_OSX_SYSROOT $ENV{HOME}/Desktop/Storage/SDK/MacOSX10.7.sdk/)
 
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 project(CacTemplate VERSION 0.1.0 LANGUAGES CXX)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated -std=c++17 -DCC_TARGET_OS_MAC -mmacosx-version-min=10.7 -lstdc++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated -std=c++17 -DCC_TARGET_OS_MAC -mmacosx-version-min=10.7")
+set(CMAKE_OSX_SYSROOT ${SDK_LOCATION})
 
 include_directories(
 	Cacao/
