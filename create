@@ -1,18 +1,74 @@
-#!/bin/sh
-copypath="~"
-projname="Cacao Template"
-read -p "Where would you like to install?" copypath
-read -p "Name of the project:" projname
-copypath="${copypath//\\/}"
-if [ ! -d "$copypath" ]; then
-	echo "Unable to located path given: $copypath"
-else
-	echo "Copying files"
-	cp `dirname $0`/template/main.cpp $copypath
-	cp `dirname $0`/template/CMakeLists.txt $copypath
-	cp `dirname $0`/template/CacTemplate.sublime-project $copypath/$projname.sublime-project
-	ln -s `dirname $0`/template/Cacao $copypath/Cacao
-	sed -i '' "s/CacTemplate/$projname/g" $copypath/CMakeLists.txt
-	sed -i '' "s/CacTemplate/$projname/g" $copypath/$projname.sublime-project
+#!/bin/bash
+
+srcpath="$( cd "$( dirname "$0" )" && pwd )"
+relink=''
+
+print_usage() {
+  printf "
+	Usage: projectName [-d destinationPath] [-l]
+
+	projectName               Name of the project
+	-d destinationPath        The destination path of the project, Projects/projectName if omitted
+	-l                        To relink the Cacao directory if it is broken
+	
+	For Example: 
+	./create
+	./create MyProject
+	./create -l -d ./cloned_path/cloned_project
+
+	-h                        Show the help text
+  "
+}
+
+while getopts 'd:lh' flag; do
+	case "${flag}" in
+		d) copypath="${OPTARG}" ;;
+		l) relink='true' ;;
+		h) print_usage
+			exit 0 ;;
+		*) print_usage
+			exit 1 ;;
+	esac
+done
+
+shift $((OPTIND-1))
+
+projname="${1:-Default Project}"
+if [ -z "$copypath" ]; then
+	copypath="$srcpath/Projects/$projname"
+fi
+
+
+if (( $# + $OPTIND > 1 )); then
+	echo $projname
+	if [ "$relink" = 'true' ]; then
+		echo "Fixing link"
+		if [ -d "$copypath/Cacao" ]; then
+			rm "$copypath/Cacao"
+		fi
+		ln -s "$srcpath/src/Cacao" "$copypath/Cacao"
+	else
+		if [ ! -d "$copypath" ]; then
+			echo "Creating folder"
+			mkdir -p "$copypath"
+		fi
+		echo "Copying files"
+
+		touch "$copypath/main.cpp"
+		echo "#define CAC_PROJ_NAME \"$projname\"" >> "$copypath/main.cpp"
+		cat "$srcpath/template/main.cpp" >> "$copypath/main.cpp"
+
+		cp "$srcpath/template/.gitignore" "$copypath"
+		echo "lib$projname.a" >> "$copypath/.gitignore"
+
+		cp "$srcpath/template/CMakeLists.txt" "$copypath"
+		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
+		sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
+		sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
+		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
+	fi
 	echo "Done."
+else 
+	print_usage
+	exit 1
 fi

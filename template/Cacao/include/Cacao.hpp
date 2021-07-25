@@ -28,11 +28,19 @@
         uint64_t n_typinfo = getBase()+addr; \
         MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable(); \
     }
+
+#define CAC_TYPEINFO_NUM(addr, num) { \
+        uint64_t ok1 = *((uint64_t*)this); \
+        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+24+num*16; \
+        uint64_t n_typinfo = getBase()+addr; \
+        MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable(); \
+    }
 namespace Cacao {
     typedef void (cocos2d::CCObject::* CC_SEL)(cocos2d::CCObject*);
     typedef void (cocos2d::CCObject::* CC_SCHED)(float);
 
     inline void printGeometry(cocos2d::CCPoint p) {std::cout << "X: " << p.x << " Y: " << p.y << "\n";}
+    inline void printGeometry(cocos2d::CCSize p) {std::cout << "Width: " << p.width << " Height: " << p.height << "\n";}
     inline void printGeometry(cocos2d::CCRect p) {std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";}
     template <typename K>
     void scheduleFunction(K func) {
@@ -66,11 +74,7 @@ namespace Cacao {
 
     template <typename T>
     std::vector<T> ccToVec(cocos2d::CCArray* arr) {
-        std::vector<T> vec;
-        for (int i = 0; i < arr->count(); i++) {
-            vec.push_back(reinterpret_cast<T>(arr->objectAtIndex(i)));
-        }
-        return vec;
+        return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
     }
 
     cocos2d::CCPoint relativePosition(double x, double y);
@@ -137,15 +141,21 @@ namespace Cacao {
         }
 
         EditorUIEditor* addTriggerCallback(int ob, void(*callback)(GameObject*, GJBaseGameLayer*));
+        EditorUIEditor* addEditPopup(int ob, void(*callback)(EditorUI*));
+        EditorUIEditor* addSaveString(int ob, GameObject*(*fromString)(GameObject*, std::string), std::string(*toString)(GameObject*, std::string));
 
         void applyBars();
         void applyObjects();
         void applyCallbacks();
+        void applyPopups();
+        void applySaveStrings();
 
         inline void applyAll() {
             this->applyBars();
             this->applyObjects();
             this->applyCallbacks();
+            this->applyPopups();
+            this->applySaveStrings();
         }
 
      protected:
@@ -166,6 +176,14 @@ namespace Cacao {
         static bool appliedCallbacks;
         static EditorUIEditor* callbackInstance;
 
+        std::map<int, void(*)(EditorUI*)> editPopups;
+        static bool appliedPopups;
+        static EditorUIEditor* popupInstance;
+
+        std::map<int, GameObject*(*)(GameObject*, std::string)> saveFromStrings;
+        std::map<int, std::string(*)(GameObject*, std::string)> saveToStrings;
+        static bool appliedSaveStrings;
+        static EditorUIEditor* saveStringInstance;
     };
 
     class CacAlertLayer : public FLAlertLayer {
@@ -200,7 +218,7 @@ namespace Cacao {
         inline CacTextContainer* allowedChars(char const* filter) {m_textInputNode->setAllowedChars(std::string(filter));return this;}
         inline CacTextContainer* charLimit(int limit) {m_textInputNode->m_maxLabelLength = limit;return this;}
         inline CacTextContainer* text(char const* text) {m_textInputNode->setString(text);return this;}
-        inline char const* text() {return m_textInputNode->getString().c_str();}
+        inline char const* text() {return m_textInputNode->getString_s();}
      protected:
         cocos2d::extension::CCScale9Sprite* m_box;
         CCTextInputNode* m_textInputNode;
