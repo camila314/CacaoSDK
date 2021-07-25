@@ -256,7 +256,7 @@ public:
     virtual void setObjectRectDirty(bool);
     virtual void getOrientedRectDirty() const;
     virtual void setOrientedRectDirty(bool);
-    virtual void getType() const;
+    virtual int getType() const;
     virtual void setType(int);
     virtual void getStartPos() const;
     virtual void animationFinished(char const*);

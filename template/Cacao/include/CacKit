@@ -347,10 +347,16 @@ class $GJBaseGameLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),GameObject* )>(m->getOriginal(getBase()+0xb7b70))(this,p0);
     }
 
+    virtual void playerTouchedRing(PlayerObject*  p0,GameObject*  p1) {
+        return reinterpret_cast<void(*)(decltype(this),PlayerObject* ,GameObject* )>(m->getOriginal(getBase()+0xb69e0))(this,p0,p1);
+    }
+
     void apply_hooks() override {
         m->registerHook(getBase()+0xb7050, extract_virtual(this, &$GJBaseGameLayer::spawnGroup));
 
         m->registerHook(getBase()+0xb7b70, extract_virtual(this, &$GJBaseGameLayer::addToSection));
+
+        m->registerHook(getBase()+0xb69e0, extract_virtual(this, &$GJBaseGameLayer::playerTouchedRing));
     }
 };
 
