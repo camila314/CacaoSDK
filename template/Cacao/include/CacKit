@@ -200,9 +200,7 @@ class $PlayerObject : public $CacBase {
     virtual void pushButton(int  p0) {
         return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0x22aa00))(this,p0);
     }
-    virtual void releaseButton(int  p0) {
-        return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0x22b6f0))(this,p0);
-    }
+
     virtual void updateJump(float  p0) {
         return reinterpret_cast<void(*)(decltype(this),float )>(m->getOriginal(getBase()+0x219680))(this,p0);
     }
@@ -230,7 +228,6 @@ class $PlayerObject : public $CacBase {
     void apply_hooks() override {
         m->registerHook(getBase()+0x22aa00, extract_virtual(this, &$PlayerObject::pushButton));
 
-        m->registerHook(getBase()+0x22b6f0, extract_virtual(this, &$PlayerObject::releaseButton));
         m->registerHook(getBase()+0x219680, extract_virtual(this, &$PlayerObject::updateJump));
 
         m->registerHook(getBase()+0x21c090, extract_virtual(this, &$PlayerObject::flipGravity));
@@ -342,14 +339,6 @@ class $GJBaseGameLayer : public $CacBase {
     }
     typedef GJBaseGameLayer* __thistype;
 
-    virtual void pushButton(int p0, bool p1) {
-        return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0xb9920))(this, p0, p1);
-    }
-
-    virtual void releaseButton(int p0, bool p1) {
-        return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0xb9a00))(this, p0, p1);
-    }
-
     virtual void spawnGroup(int  p0) {
         return reinterpret_cast<void(*)(decltype(this),int )>(m->getOriginal(getBase()+0xb7050))(this,p0);
     }
@@ -358,50 +347,16 @@ class $GJBaseGameLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),GameObject* )>(m->getOriginal(getBase()+0xb7b70))(this,p0);
     }
 
-<<<<<<< HEAD
     virtual void playerTouchedRing(PlayerObject*  p0,GameObject*  p1) {
         return reinterpret_cast<void(*)(decltype(this),PlayerObject* ,GameObject* )>(m->getOriginal(getBase()+0xb69e0))(this,p0,p1);
-=======
-    virtual void processMoveActionsStep() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0xb7ea0))(this);
-    }
-
-    virtual void processMoveActions() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0xb86c0))(this);
-    }
-
-    virtual void collectItem(int p0, int p1) {
-        return reinterpret_cast<void(*)(decltype(this), int, int)>(m->getOriginal(getBase()+0xb9e20))(this, p0, p1);
-    }
-
-    virtual void createMoveCommand(CCPoint p0, int p1, float p2, int p3, float p4, bool p5, bool p6, int p7) {
-        return reinterpret_cast<void(*)(decltype(this), CCPoint, int, float, int, float, bool, bool, int)>(m->getOriginal(getBase()+0xb73a0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
-    }
-
-    virtual void triggerMoveCommand(EffectGameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), EffectGameObject*)>(m->getOriginal(getBase()+0xb7290))(this, p0);
     }
 
     void apply_hooks() override {
-        m->registerHook(getBase()+0xb9920, extract_virtual(this, &$GJBaseGameLayer::pushButton));
-
-        m->registerHook(getBase()+0xb9a00, extract_virtual(this, &$GJBaseGameLayer::releaseButton));
-
         m->registerHook(getBase()+0xb7050, extract_virtual(this, &$GJBaseGameLayer::spawnGroup));
 
         m->registerHook(getBase()+0xb7b70, extract_virtual(this, &$GJBaseGameLayer::addToSection));
 
         m->registerHook(getBase()+0xb69e0, extract_virtual(this, &$GJBaseGameLayer::playerTouchedRing));
-
-        m->registerHook(getBase()+0xb7ea0, extract_virtual(this, &$GJBaseGameLayer::processMoveActionsStep));
-
-        m->registerHook(getBase()+0xb86c0, extract_virtual(this, &$GJBaseGameLayer::processMoveActions));
-
-        m->registerHook(getBase()+0xb9e20, extract_virtual(this, &$GJBaseGameLayer::collectItem));
-
-        m->registerHook(getBase()+0xb73a0, extract_virtual(this, &$GJBaseGameLayer::createMoveCommand));
-
-        m->registerHook(getBase()+0xb7290, extract_virtual(this, &$GJBaseGameLayer::triggerMoveCommand));
     }
 };
 
@@ -489,10 +444,6 @@ class $LevelEditorLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),std::string )>(m->getOriginal(getBase()+0x94730))(this,p0);
     }
 
-    virtual void update(float  p0) {
-        return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0xa1b70))(this,p0);
-    }
-
     void apply_hooks() override {
         m->registerHook(getBase()+0x957c0, extract_virtual(this, &$LevelEditorLayer::createObject));
 
@@ -511,8 +462,6 @@ class $LevelEditorLayer : public $CacBase {
         m->registerHook(getBase()+0x94640, extract_virtual(this, &$LevelEditorLayer::addObjectFromString));
 
         m->registerHook(getBase()+0x94730, extract_virtual(this, &$LevelEditorLayer::createObjectsFromString));
-
-        m->registerHook(getBase()+0xa1b70, extract_virtual(this, &$LevelEditorLayer::update));
     }
 };
 
@@ -889,10 +838,6 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<CCArray*(*)(decltype(this))>(m->getOriginal(getBase()+0x23f30))(this);
     }
 
-    virtual void scaleObjects(CCArray *p0, float p1, CCPoint p2) {
-        return reinterpret_cast<void(*)(decltype(this), CCArray*, float, CCPoint)>(m->getOriginal(getBase()+0x252e0))(this, p0, p1, p2);
-    }
-
     void apply_hooks() override {
         m->registerHook(getBase()+0x1f300, extract_virtual(this, &$EditorUI::deselectAll));
 
@@ -915,8 +860,6 @@ class $EditorUI : public $CacBase {
         m->registerHook(getBase()+0xb830, extract_virtual(this, &$EditorUI::undoLastAction));
 
         m->registerHook(getBase()+0x23f30, extract_virtual(this, &$EditorUI::getSelectedObjects));
-
-        m->registerHook(getBase()+0x252e0, extract_virtual(this, &$EditorUI::scaleObjects));
     }
 };
 
@@ -1009,20 +952,12 @@ class $PlayLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x71c50))(this);
     }
 
-    virtual bool init(GJGameLevel*  p0) {
-        return reinterpret_cast<bool(*)(decltype(this),GJGameLevel* )>(m->getOriginal(getBase()+0x6b5f0))(this,p0);
-    }
-
     virtual void switchToScene(GJGameLevel*  p0) {
         return reinterpret_cast<void(*)(decltype(this),GJGameLevel* )>(m->getOriginal(getBase()+0xe5d50))(this,p0);
     }
 
     virtual void update(float  p0) {
         return reinterpret_cast<void(*)(decltype(this),float )>(m->getOriginal(getBase()+0x77900))(this,p0);
-    }
-
-    virtual void updateVisibility() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x6fb90))(this);
     }
 
     virtual void addObject(GameObject*  p0) {
@@ -1032,13 +967,9 @@ class $PlayLayer : public $CacBase {
     void apply_hooks() override {
         m->registerHook(getBase()+0x71c50, extract_virtual(this, &$PlayLayer::resetLevel));
 
-        m->registerHook(getBase()+0x6b5f0, extract_virtual(this, &$PlayLayer::init));
-
         m->registerHook(getBase()+0xe5d50, extract_virtual(this, &$PlayLayer::switchToScene));
 
         m->registerHook(getBase()+0x77900, extract_virtual(this, &$PlayLayer::update));
-
-        m->registerHook(getBase()+0x6fb90, extract_virtual(this, &$PlayLayer::updateVisibility));
 
         m->registerHook(getBase()+0x70e50, extract_virtual(this, &$PlayLayer::addObject));
     }
@@ -1062,125 +993,3 @@ class $CreatorLayer : public $CacBase {
         m->registerHook(getBase()+0x141c10, extract_virtual(this, &$CreatorLayer::init));
     }
 };
-
-
-class $ColorSelectPopup : public $CacBase {
- public:
-    $ColorSelectPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
-        __cackit::glob.push_back(this);
-    }
-    typedef ColorSelectPopup* __thistype;
-
-    virtual bool init(EffectGameObject *p0, CCArray *p1, ColorAction *p2) {
-        return reinterpret_cast<bool(*)(decltype(this), EffectGameObject*, CCArray*, ColorAction*)>(m->getOriginal(getBase()+0x41ee70))(this, p0, p1, p2);
-    }
-
-    virtual void updateCopyColor() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x423b70))(this);
-    }
-
-    virtual void colorValueChanged() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x423320))(this);
-    }
-
-    virtual void dtor() { //idk
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x41e960))(this);
-    }
-
-    void apply_hooks() override {
-        m->registerHook(getBase()+0x41ee70, extract_virtual(this, &$ColorSelectPopup::init));
-        m->registerHook(getBase()+0x423b70, extract_virtual(this, &$ColorSelectPopup::updateCopyColor));
-        m->registerHook(getBase()+0x423320, extract_virtual(this, &$ColorSelectPopup::colorValueChanged));
-        m->registerHook(getBase()+0x41e960, extract_virtual(this, &$ColorSelectPopup::dtor));
-    }
-};
-
-class $SetupPulsePopup : public $CacBase {
- public:
-    $SetupPulsePopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
-        __cackit::glob.push_back(this);
-    }
-    typedef SetupPulsePopup* __thistype;
-
-    virtual bool init(EffectGameObject *p0, CCArray *p1) {
-        return reinterpret_cast<bool(*)(decltype(this), EffectGameObject*, CCArray*)>(m->getOriginal(getBase()+0x1e7010))(this, p0, p1);
-    }
-
-    virtual void onSelectPulseMode(CCObject *p0) {
-        return reinterpret_cast<void(*)(decltype(this), CCObject*)>(m->getOriginal(getBase()+0x1eb020))(this, p0);
-    }
-
-    virtual void colorValueChanged() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1ec680))(this);
-    }
-
-    virtual void dtor() { //idk
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1e6b40))(this);
-    }
-
-    void apply_hooks() override {
-        m->registerHook(getBase()+0x1e7010, extract_virtual(this, &$SetupPulsePopup::init));
-        m->registerHook(getBase()+0x1eb020, extract_virtual(this, &$SetupPulsePopup::onSelectPulseMode));
-        m->registerHook(getBase()+0x1ec680, extract_virtual(this, &$SetupPulsePopup::colorValueChanged));
-        m->registerHook(getBase()+0x1e6b40, extract_virtual(this, &$SetupPulsePopup::dtor));
-    }
-};
-
-class $GJEffectManager : public $CacBase {
- public:
-    $GJEffectManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
-        __cackit::glob.push_back(this);
-    }
-    typedef GJEffectManager* __thistype;
-
-    virtual void countChangedForItem(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x185a40))(this, p0);
-    }
-
-    virtual bool isGroupEnabled(int p0) {
-        return reinterpret_cast<bool(*)(decltype(this), int)>(m->getOriginal(getBase()+0x1853d0))(this, p0);
-    }
-
-    virtual bool init() {
-        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x180230))(this);
-    }
-
-    virtual void playerButton(bool p0, bool p1) {
-        return reinterpret_cast<void(*)(decltype(this), bool, bool)>(m->getOriginal(getBase()+0x1855a0))(this, p0, p1);
-    }
-
-    void apply_hooks() override {
-        m->registerHook(getBase()+0x185a40, extract_virtual(this, &$GJEffectManager::countChangedForItem));
-
-        m->registerHook(getBase()+0x1853d0, extract_virtual(this, &$GJEffectManager::isGroupEnabled));
-
-        m->registerHook(getBase()+0x180230, extract_virtual(this, &$GJEffectManager::init));
-
-        m->registerHook(getBase()+0x1855a0, extract_virtual(this, &$GJEffectManager::playerButton));
-    }
-};
-
-class $EffectGameObject : public $CacBase {
- public:
-    $EffectGameObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
-        __cackit::glob.push_back(this);
-    }
-    typedef EffectGameObject* __thistype;
-
-    virtual void triggerObject(GJBaseGameLayer* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GJBaseGameLayer*)>(m->getOriginal(getBase()+0xc9870))(this, p0);
-    }
-
-    void apply_hooks() override {
-        m->registerHook(getBase()+0xc9870, extract_virtual(this, &$EffectGameObject::triggerObject));
-    }
-};
-
