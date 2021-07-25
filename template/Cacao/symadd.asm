@@ -4548,9 +4548,6 @@ defit __ZN3fmt8internal12PrintfParserIwE6FormatERNS_11BasicWriterIwEENS_14BasicS
 ; cocos2d::CCLayer::CCLayer()
 defit __ZN7cocos2d7CCLayerC1Ev, 0x2726b0
 
-; cocos2d::CCLayer::~CCLayer()
-defit __ZN7cocos2d7CCLayerD1Ev, 0x272900
-
 ; cocos2d::CCLayerColor::CCLayerColor()
 defit __ZN7cocos2d12CCLayerColorC1Ev, 0x274320
 
@@ -4575,3 +4572,74 @@ defit __ZN7cocos2d11CCLayerRGBAC1Ev, 0x2738d0
 ; cocos2d::CCSprite::create()
 defit __ZN7cocos2d8CCSprite6createEv, 0x132df0
 
+; LabelGameObject::init()
+defit __ZN15LabelGameObject4initEv, 0x2f5520
+
+; Slerp2D(float, float, float)
+defit __Z7Slerp2Dfff, 0x12dce0
+
+; boxCompMax(void const*, void const*)
+defit __Z10boxCompMaxPKvS0_, 0x217080
+
+; boxCompMin(void const*, void const*)
+defit __Z10boxCompMinPKvS0_, 0x217020
+
+; randRange(float, float)
+defit __Z9randRangeff, 0xe18c0
+
+; xCompRealPos(void const*, void const*)
+defit __Z12xCompRealPosPKvS0_, 0x6b050
+
+; xCompSpeed(void const*, void const*)
+defit __Z10xCompSpeedPKvS0_, 0x6b030
+
+; CCMenuItemSpriteExtra::create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*))
+defit __ZN21CCMenuItemSpriteExtra6createEPN7cocos2d6CCNodeES2_PNS0_8CCObjectEMS3_FvS4_E, 0x1253c0
+
+; CCMenuItemToggler::create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*))
+defit __ZN17CCMenuItemToggler6createEPN7cocos2d6CCNodeES2_PNS0_8CCObjectEMS3_FvS4_E, 0x38400
+
+; CreateMenuItem::create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*))
+defit __ZN14CreateMenuItem6createEPN7cocos2d6CCNodeES2_PNS0_8CCObjectEMS3_FvS4_E, 0x1c580
+
+; FMOD::ChannelControl::setCallback(FMOD_RESULT (*)(FMOD_CHANNELCONTROL*, FMOD_CHANNELCONTROL_TYPE, FMOD_CHANNELCONTROL_CALLBACK_TYPE, void*, void*))
+defit __ZN4FMOD14ChannelControl11setCallbackEPF11FMOD_RESULTP19FMOD_CHANNELCONTROL24FMOD_CHANNELCONTROL_TYPE33FMOD_CHANNELCONTROL_CALLBACK_TYPEPvS6_E, 0x89c320
+
+; GameToolbox::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)
+defit __ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE, 0x28bdd0
+
+; SetupSpawnPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+defit __ZN15SetupSpawnPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE, 0x13b0e0
+
+; Slider::create(cocos2d::CCNode*, void (cocos2d::CCObject::*)(cocos2d::CCObject*), float)
+defit __ZN6Slider6createEPN7cocos2d6CCNodeEMNS0_8CCObjectEFvPS3_Ef, 0x18dc40
+
+; Slider::create(cocos2d::CCNode*, void (cocos2d::CCObject::*)(cocos2d::CCObject*), char const*, char const*, char const*, char const*, float)
+defit __ZN6Slider6createEPN7cocos2d6CCNodeEMNS0_8CCObjectEFvPS3_EPKcS8_S8_S8_f, 0x18dd80
+
+; cocos2d::CCNode::schedule(void (cocos2d::CCObject::*)(float))
+defit __ZN7cocos2d6CCNode8scheduleEMNS_8CCObjectEFvfE, 0x1240b0
+
+; cocos2d::CCNode::schedule(void (cocos2d::CCObject::*)(float), float)
+defit __ZN7cocos2d6CCNode8scheduleEMNS_8CCObjectEFvfEf, 0x124120
+
+; cocos2d::CCNode::unschedule(void (cocos2d::CCObject::*)(float))
+defit __ZN7cocos2d6CCNode10unscheduleEMNS_8CCObjectEFvfE, 0x124180
+
+; cocos2d::CCScheduler::scheduleSelector(void (cocos2d::CCObject::*)(float), cocos2d::CCObject*, float, unsigned int, float, bool)
+defit __ZN7cocos2d11CCScheduler16scheduleSelectorEMNS_8CCObjectEFvfEPS1_fjfb, 0x242b20
+
+; cocos2d::CCLayer::~CCLayer()
+defit __ZN7cocos2d7CCLayerD2Ev, 0x2727b0
+
+; cocos2d::CCLayer::~CCLayer()
+defit __ZN7cocos2d7CCLayerD1Ev, 0x272900
+
+; non-virtual thunk to cocos2d::CCLayer::~CCLayer()
+defit __ZThn236_N7cocos2d7CCLayerD1Ev, 0x272910
+
+; cocos2d::CCLayer::~CCLayer()
+defit __ZN7cocos2d7CCLayerD0Ev, 0x272930
+
+; non-virtual thunk to cocos2d::CCLayer::~CCLayer()
+defit __ZThn236_N7cocos2d7CCLayerD0Ev, 0x272960

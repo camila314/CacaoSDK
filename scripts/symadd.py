@@ -24,7 +24,7 @@ for i in currentProgram.getSymbolTable().getAllSymbols(False):
         symbols.append((i, fm.getFunctionAt(i.getAddress())))
 
 def myfun(a):
-    return '::'.join(a[0].getPath())
+    return a[0].getName(True)
 symbols.sort(key=myfun)
 
 if save_path and symbol_path:
@@ -44,18 +44,15 @@ if save_path and symbol_path:
                 if l == '':
                     break
                 m = sym.readline()
-                match = re.match("(?:non-virtual thunk to )?(.+)\\(.*\\)", l)
+                match = re.match("(?:non-virtual thunk to )?(.+?)\\(.*\\)", l)
                 if match:
                     if match.group(1) not in mangles:
                         mangles[match.group(1)] = []
                     mangles[match.group(1)].append((l[:-1], m[:-1]))
 
-    #print(mangles['cocos2d::CCPoint::operator-'])
-
     for s, f in symbols:
-        if '::'.join(s.getPath()) in mangles and hex(s.getAddress().unsignedOffset - 0x100000000)[:-1] not in addresses:
-            mngl = mangles['::'.join(s.getPath())]
-            print(len(mngl))
+        if s.getName(True) in mangles and hex(s.getAddress().unsignedOffset - 0x100000000)[:-1] not in addresses:
+            mngl = mangles[s.getName(True)]
             if len(mngl) > 1: 
                 file.write(';(' + ', '.join(str(a) for a in list(f.getParameters())) + ')\n')
             for l, m in mngl:
