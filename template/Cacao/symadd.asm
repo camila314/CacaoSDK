@@ -4702,10 +4702,14 @@ defit __ZN10GameObject11commonSetupEv, 0x2f5570
 ; cocos2d::CCSpriteFrameCache::addSpriteFramesWithFile(char const*)
 defit __ZN7cocos2d18CCSpriteFrameCache23addSpriteFramesWithFileEPKc, 0x199a10
 
+; MenuLayer::keyBackClicked()
+defit __ZN9MenuLayer14keyBackClickedEv, 0x1d3160
+
+; MenuLayer::onMoreGames(cocos2d::CCObject*)
+defit __ZN9MenuLayer11onMoreGamesEPN7cocos2d8CCObjectE, 0x1d2ad0
+
 section .bss
 __ZTIN7cocos2d6CCNodeE: resq 5
 __ZTIN7cocos2d7CCLayerE: resq 5
 __ZTI12FLAlertLayer: resq 5
 __ZTIN7cocos2d12CCLayerColorE: resq 5
-
-

@@ -803,4 +803,60 @@ class CountTriggerAction : public cocos2d::CCNode, public GDObj {
     bool m_activateGroup;
     CLASS_PARAM(bool, multiActivate, 0x138);
 };
+
+class DialogObject {
+
+};
+
+class OpacityEffectAction {
+
+};
+
+enum PulseEffectType {
+
+};
+
+enum TouchTriggerType {
+
+};
+
+class ConfigureValuePopup {
+
+};
+
+enum GameObjectType {
+
+};
+
+class CCCircleWave {
+
+};
+
+class CheckpointObject {
+
+};
+
+class CurrencyRewardLayer {
+
+};
+
+class DialogLayer {
+
+};
+
+enum PlayerButton {
+
+};
+
+class PlayerCheckpoint {
+
+};
+
+enum GhostType {
+
+};
+
+enum IconType {
+
+};
 #endif
