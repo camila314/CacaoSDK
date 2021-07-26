@@ -119,8 +119,7 @@ class ${cl} : public $CacBase {{
 """)
 
 			hooks += f"""
-		using tf{i} = void(${cl}::*)({param});
-        m->registerHook(getBase()+{add}, extract_virtual(this, tf{i}{{&${cl}::{fun}}}));
+        m->registerHook(getBase()+{add}, extract_virtual(this, (void(${cl}::*)({param})){{&${cl}::{fun}}}));
 """
 			i += 1
 		f.write("\nvoid apply_hooks() override {" + hooks + "    }\n};\n")
