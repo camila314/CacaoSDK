@@ -2746,158 +2746,6 @@ class $PlayLayer : public $CacBase {
     }
     typedef PlayLayer* __thistype;
 
-    virtual void addCircle(CCCircleWave* p0) {
-        return reinterpret_cast<void(*)(decltype(this), CCCircleWave*)>(m->getOriginal(getBase()+0x7e0f0))(this, p0);
-    }
-
-    virtual void addObject(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x70e50))(this, p0);
-    }
-
-    virtual void addToGroupOld(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x77680))(this, p0);
-    }
-
-    virtual void addToSpeedObjects(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x7cfc0))(this, p0);
-    }
-
-    virtual void animateInDualGround(GameObject* p0, float p1, bool p2) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*, float, bool)>(m->getOriginal(getBase()+0x7d710))(this, p0, p1, p2);
-    }
-
-    virtual void animateInGround(bool p0) {
-        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x7d9d0))(this, p0);
-    }
-
-    virtual void animateOutGround(bool p0) {
-        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x6f350))(this, p0);
-    }
-
-    virtual void applyEnterEffect(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x7c310))(this, p0);
-    }
-
-    virtual void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
-        return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)>(m->getOriginal(getBase()+0x7aa10))(this, p0, p1, p2, p3, p4, p5);
-    }
-
-    virtual void cameraMoveX(float p0, float p1, float p2) {
-        return reinterpret_cast<void(*)(decltype(this), float, float, float)>(m->getOriginal(getBase()+0x7cbe0))(this, p0, p1, p2);
-    }
-
-    virtual void cameraMoveY(float p0, float p1, float p2) {
-        return reinterpret_cast<void(*)(decltype(this), float, float, float)>(m->getOriginal(getBase()+0x7cc60))(this, p0, p1, p2);
-    }
-
-    virtual void checkCollisions(PlayerObject* p0, float p1) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*, float)>(m->getOriginal(getBase()+0x78c90))(this, p0, p1);
-    }
-
-    virtual void claimParticle(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x76ba0))(this, p0);
-    }
-
-    virtual void colorObject(int p0, cocos2d::_ccColor3B p1) {
-        return reinterpret_cast<void(*)(decltype(this), int, cocos2d::_ccColor3B)>(m->getOriginal(getBase()+0x77810))(this, p0, p1);
-    }
-
-    virtual void create(GJGameLevel* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GJGameLevel*)>(m->getOriginal(getBase()+0x6b590))(this, p0);
-    }
-
-    virtual void createObjectsFromSetup(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x6d130))(this, p0);
-    }
-
-    virtual void createParticle(int p0, char const* p1, int p2, cocos2d::tCCPositionType p3) {
-        return reinterpret_cast<void(*)(decltype(this), int, char const*, int, cocos2d::tCCPositionType)>(m->getOriginal(getBase()+0x76800))(this, p0, p1, p2, p3);
-    }
-
-    virtual void destroyPlayer(PlayerObject* p0, GameObject* p1) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*, GameObject*)>(m->getOriginal(getBase()+0x7ab80))(this, p0, p1);
-    }
-
-    virtual void enterDualMode(GameObject* p0, bool p1) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*, bool)>(m->getOriginal(getBase()+0x7d6a0))(this, p0, p1);
-    }
-
-    virtual void exitBirdMode(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7dd80))(this, p0);
-    }
-
-    virtual void exitDartMode(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7ddd0))(this, p0);
-    }
-
-    virtual void exitFlyMode(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7dcf0))(this, p0);
-    }
-
-    virtual void exitRobotMode(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7de20))(this, p0);
-    }
-
-    virtual void exitRollMode(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7de60))(this, p0);
-    }
-
-    virtual void exitSpiderMode(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7de40))(this, p0);
-    }
-
-    virtual void flipGravity(PlayerObject* p0, bool p1, bool p2) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*, bool, bool)>(m->getOriginal(getBase()+0x7cd10))(this, p0, p1, p2);
-    }
-
-    virtual void getOtherPlayer(PlayerObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), PlayerObject*)>(m->getOriginal(getBase()+0x7dcc0))(this, p0);
-    }
-
-    virtual void getParticleKey2(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x767b0))(this, p0);
-    }
-
-    virtual void getRelativeMod(cocos2d::CCPoint p0, float p1, float p2, float p3) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint, float, float, float)>(m->getOriginal(getBase()+0x7c2a0))(this, p0, p1, p2, p3);
-    }
-
-    virtual void hasItem(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x7cee0))(this, p0);
-    }
-
-    virtual void hasUniqueCoin(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x77510))(this, p0);
-    }
-
-    virtual void init(GJGameLevel* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GJGameLevel*)>(m->getOriginal(getBase()+0x6b5f0))(this, p0);
-    }
-
-    virtual void lightningFlash(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint, cocos2d::_ccColor3B)>(m->getOriginal(getBase()+0x75bf0))(this, p0, p1);
-    }
-
-    virtual void lightningFlash(cocos2d::CCPoint p0, cocos2d::CCPoint p1, cocos2d::_ccColor3B p2, float p3, float p4, int p5, bool p6, float p7) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, int, bool, float)>(m->getOriginal(getBase()+0x75cc0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
-    }
-
-    virtual void loadFromCheckpoint(CheckpointObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), CheckpointObject*)>(m->getOriginal(getBase()+0x7f000))(this, p0);
-    }
-
-    virtual void loadSavedObjectsState(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x7f3d0))(this, p0);
-    }
-
-    virtual void moveCameraToPos(cocos2d::CCPoint p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint)>(m->getOriginal(getBase()+0x7c980))(this, p0);
-    }
-
-    virtual void pauseGame(bool p0) {
-        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x802d0))(this, p0);
-    }
-
     virtual void pickupItem(GameObject* p0) {
         return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x7c1d0))(this, p0);
     }
@@ -2930,54 +2778,6 @@ class $PlayLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), PlayerObject*, GameObject*)>(m->getOriginal(getBase()+0x7b820))(this, p0, p1);
     }
 
-    virtual void recordAction(bool p0, PlayerObject* p1) {
-        return reinterpret_cast<void(*)(decltype(this), bool, PlayerObject*)>(m->getOriginal(getBase()+0x7e190))(this, p0, p1);
-    }
-
-    virtual void registerActiveObject(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x77620))(this, p0);
-    }
-
-    virtual void registerStateObject(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x777b0))(this, p0);
-    }
-
-    virtual void removeFromGroupOld(GameObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x77750))(this, p0);
-    }
-
-    virtual void saveRecordAction(bool p0, PlayerObject* p1) {
-        return reinterpret_cast<void(*)(decltype(this), bool, PlayerObject*)>(m->getOriginal(getBase()+0x78750))(this, p0, p1);
-    }
-
-    virtual void scene(GJGameLevel* p0) {
-        return reinterpret_cast<void(*)(decltype(this), GJGameLevel*)>(m->getOriginal(getBase()+0x6b500))(this, p0);
-    }
-
-    virtual void setupLevelStart(LevelSettingsObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), LevelSettingsObject*)>(m->getOriginal(getBase()+0x6f560))(this, p0);
-    }
-
-    virtual void setupReplay(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x7e1e0))(this, p0);
-    }
-
-    virtual void shakeCamera(float p0, float p1, float p2) {
-        return reinterpret_cast<void(*)(decltype(this), float, float, float)>(m->getOriginal(getBase()+0x744a0))(this, p0, p1, p2);
-    }
-
-    virtual void shouldBlend(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x771b0))(this, p0);
-    }
-
-    virtual void showNewBest(bool p0, int p1, int p2, bool p3, bool p4, bool p5) {
-        return reinterpret_cast<void(*)(decltype(this), bool, int, int, bool, bool, bool)>(m->getOriginal(getBase()+0x74580))(this, p0, p1, p2, p3, p4, p5);
-    }
-
-    virtual void spawnParticle(char const* p0, int p1, cocos2d::tCCPositionType p2, cocos2d::CCPoint p3) {
-        return reinterpret_cast<void(*)(decltype(this), char const*, int, cocos2d::tCCPositionType, cocos2d::CCPoint)>(m->getOriginal(getBase()+0x76330))(this, p0, p1, p2, p3);
-    }
-
     virtual void storeCheckpoint(CheckpointObject* p0) {
         return reinterpret_cast<void(*)(decltype(this), CheckpointObject*)>(m->getOriginal(getBase()+0x7ef10))(this, p0);
     }
@@ -3000,10 +2800,6 @@ class $PlayLayer : public $CacBase {
 
     virtual void timeForXPos(float p0) {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x7d120))(this, p0);
-    }
-
-    virtual void toggleBGEffectVisibility(bool p0) {
-        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x7fe80))(this, p0);
     }
 
     virtual void toggleDualMode(GameObject* p0, bool p1, PlayerObject* p2, bool p3) {
@@ -3046,10 +2842,6 @@ class $PlayLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x6e2b0))(this, p0);
     }
 
-    virtual void updateColor(cocos2d::_ccColor3B p0, float p1, int p2, bool p3, float p4, cocos2d::_ccHSVValue p5, int p6, bool p7, int p8, EffectGameObject* p9) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)>(m->getOriginal(getBase()+0x7c7f0))(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
-    }
-
     virtual void updateDualGround(PlayerObject* p0, int p1, bool p2) {
         return reinterpret_cast<void(*)(decltype(this), PlayerObject*, int, bool)>(m->getOriginal(getBase()+0x7caa0))(this, p0, p1, p2);
     }
@@ -3064,10 +2856,6 @@ class $PlayLayer : public $CacBase {
 
     virtual void updateTweenAction(float p0, char const* p1) {
         return reinterpret_cast<void(*)(decltype(this), float, char const*)>(m->getOriginal(getBase()+0x7ffb0))(this, p0, p1);
-    }
-
-    virtual void willSwitchToMode(int p0, PlayerObject* p1) {
-        return reinterpret_cast<void(*)(decltype(this), int, PlayerObject*)>(m->getOriginal(getBase()+0x7b9e0))(this, p0, p1);
     }
 
     virtual void xPosForTime(float p0) {
@@ -3087,82 +2875,6 @@ class $PlayLayer : public $CacBase {
     }
 
     void apply_hooks() override {
-        m->registerHook(getBase()+0x7e0f0, extract_virtual(this, (void($PlayLayer::*)(CCCircleWave*)){&$PlayLayer::addCircle}));
-
-        m->registerHook(getBase()+0x70e50, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::addObject}));
-
-        m->registerHook(getBase()+0x77680, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::addToGroupOld}));
-
-        m->registerHook(getBase()+0x7cfc0, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::addToSpeedObjects}));
-
-        m->registerHook(getBase()+0x7d710, extract_virtual(this, (void($PlayLayer::*)(GameObject*, float, bool)){&$PlayLayer::animateInDualGround}));
-
-        m->registerHook(getBase()+0x7d9d0, extract_virtual(this, (void($PlayLayer::*)(bool)){&$PlayLayer::animateInGround}));
-
-        m->registerHook(getBase()+0x6f350, extract_virtual(this, (void($PlayLayer::*)(bool)){&$PlayLayer::animateOutGround}));
-
-        m->registerHook(getBase()+0x7c310, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::applyEnterEffect}));
-
-        m->registerHook(getBase()+0x7aa10, extract_virtual(this, (void($PlayLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&$PlayLayer::calculateColorValues}));
-
-        m->registerHook(getBase()+0x7cbe0, extract_virtual(this, (void($PlayLayer::*)(float, float, float)){&$PlayLayer::cameraMoveX}));
-
-        m->registerHook(getBase()+0x7cc60, extract_virtual(this, (void($PlayLayer::*)(float, float, float)){&$PlayLayer::cameraMoveY}));
-
-        m->registerHook(getBase()+0x78c90, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, float)){&$PlayLayer::checkCollisions}));
-
-        m->registerHook(getBase()+0x76ba0, extract_virtual(this, (void($PlayLayer::*)(std::string)){&$PlayLayer::claimParticle}));
-
-        m->registerHook(getBase()+0x77810, extract_virtual(this, (void($PlayLayer::*)(int, cocos2d::_ccColor3B)){&$PlayLayer::colorObject}));
-
-        m->registerHook(getBase()+0x6b590, extract_virtual(this, (void($PlayLayer::*)(GJGameLevel*)){&$PlayLayer::create}));
-
-        m->registerHook(getBase()+0x6d130, extract_virtual(this, (void($PlayLayer::*)(std::string)){&$PlayLayer::createObjectsFromSetup}));
-
-        m->registerHook(getBase()+0x76800, extract_virtual(this, (void($PlayLayer::*)(int, char const*, int, cocos2d::tCCPositionType)){&$PlayLayer::createParticle}));
-
-        m->registerHook(getBase()+0x7ab80, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, GameObject*)){&$PlayLayer::destroyPlayer}));
-
-        m->registerHook(getBase()+0x7d6a0, extract_virtual(this, (void($PlayLayer::*)(GameObject*, bool)){&$PlayLayer::enterDualMode}));
-
-        m->registerHook(getBase()+0x7dd80, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::exitBirdMode}));
-
-        m->registerHook(getBase()+0x7ddd0, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::exitDartMode}));
-
-        m->registerHook(getBase()+0x7dcf0, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::exitFlyMode}));
-
-        m->registerHook(getBase()+0x7de20, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::exitRobotMode}));
-
-        m->registerHook(getBase()+0x7de60, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::exitRollMode}));
-
-        m->registerHook(getBase()+0x7de40, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::exitSpiderMode}));
-
-        m->registerHook(getBase()+0x7cd10, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, bool, bool)){&$PlayLayer::flipGravity}));
-
-        m->registerHook(getBase()+0x7dcc0, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*)){&$PlayLayer::getOtherPlayer}));
-
-        m->registerHook(getBase()+0x767b0, extract_virtual(this, (void($PlayLayer::*)(std::string)){&$PlayLayer::getParticleKey2}));
-
-        m->registerHook(getBase()+0x7c2a0, extract_virtual(this, (void($PlayLayer::*)(cocos2d::CCPoint, float, float, float)){&$PlayLayer::getRelativeMod}));
-
-        m->registerHook(getBase()+0x7cee0, extract_virtual(this, (void($PlayLayer::*)(int)){&$PlayLayer::hasItem}));
-
-        m->registerHook(getBase()+0x77510, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::hasUniqueCoin}));
-
-        m->registerHook(getBase()+0x6b5f0, extract_virtual(this, (void($PlayLayer::*)(GJGameLevel*)){&$PlayLayer::init}));
-
-        m->registerHook(getBase()+0x75bf0, extract_virtual(this, (void($PlayLayer::*)(cocos2d::CCPoint, cocos2d::_ccColor3B)){&$PlayLayer::lightningFlash}));
-
-        m->registerHook(getBase()+0x75cc0, extract_virtual(this, (void($PlayLayer::*)(cocos2d::CCPoint, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, int, bool, float)){&$PlayLayer::lightningFlash}));
-
-        m->registerHook(getBase()+0x7f000, extract_virtual(this, (void($PlayLayer::*)(CheckpointObject*)){&$PlayLayer::loadFromCheckpoint}));
-
-        m->registerHook(getBase()+0x7f3d0, extract_virtual(this, (void($PlayLayer::*)(std::string)){&$PlayLayer::loadSavedObjectsState}));
-
-        m->registerHook(getBase()+0x7c980, extract_virtual(this, (void($PlayLayer::*)(cocos2d::CCPoint)){&$PlayLayer::moveCameraToPos}));
-
-        m->registerHook(getBase()+0x802d0, extract_virtual(this, (void($PlayLayer::*)(bool)){&$PlayLayer::pauseGame}));
-
         m->registerHook(getBase()+0x7c1d0, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::pickupItem}));
 
         m->registerHook(getBase()+0x75930, extract_virtual(this, (void($PlayLayer::*)(int, int)){&$PlayLayer::playAnimationCommand}));
@@ -3179,30 +2891,6 @@ class $PlayLayer : public $CacBase {
 
         m->registerHook(getBase()+0x7b820, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, GameObject*)){&$PlayLayer::playerWillSwitchMode}));
 
-        m->registerHook(getBase()+0x7e190, extract_virtual(this, (void($PlayLayer::*)(bool, PlayerObject*)){&$PlayLayer::recordAction}));
-
-        m->registerHook(getBase()+0x77620, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::registerActiveObject}));
-
-        m->registerHook(getBase()+0x777b0, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::registerStateObject}));
-
-        m->registerHook(getBase()+0x77750, extract_virtual(this, (void($PlayLayer::*)(GameObject*)){&$PlayLayer::removeFromGroupOld}));
-
-        m->registerHook(getBase()+0x78750, extract_virtual(this, (void($PlayLayer::*)(bool, PlayerObject*)){&$PlayLayer::saveRecordAction}));
-
-        m->registerHook(getBase()+0x6b500, extract_virtual(this, (void($PlayLayer::*)(GJGameLevel*)){&$PlayLayer::scene}));
-
-        m->registerHook(getBase()+0x6f560, extract_virtual(this, (void($PlayLayer::*)(LevelSettingsObject*)){&$PlayLayer::setupLevelStart}));
-
-        m->registerHook(getBase()+0x7e1e0, extract_virtual(this, (void($PlayLayer::*)(std::string)){&$PlayLayer::setupReplay}));
-
-        m->registerHook(getBase()+0x744a0, extract_virtual(this, (void($PlayLayer::*)(float, float, float)){&$PlayLayer::shakeCamera}));
-
-        m->registerHook(getBase()+0x771b0, extract_virtual(this, (void($PlayLayer::*)(int)){&$PlayLayer::shouldBlend}));
-
-        m->registerHook(getBase()+0x74580, extract_virtual(this, (void($PlayLayer::*)(bool, int, int, bool, bool, bool)){&$PlayLayer::showNewBest}));
-
-        m->registerHook(getBase()+0x76330, extract_virtual(this, (void($PlayLayer::*)(char const*, int, cocos2d::tCCPositionType, cocos2d::CCPoint)){&$PlayLayer::spawnParticle}));
-
         m->registerHook(getBase()+0x7ef10, extract_virtual(this, (void($PlayLayer::*)(CheckpointObject*)){&$PlayLayer::storeCheckpoint}));
 
         m->registerHook(getBase()+0x7baf0, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, GameObject*, bool, int)){&$PlayLayer::switchToFlyMode}));
@@ -3214,8 +2902,6 @@ class $PlayLayer : public $CacBase {
         m->registerHook(getBase()+0x7bd20, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, GameObject*, bool)){&$PlayLayer::switchToSpiderMode}));
 
         m->registerHook(getBase()+0x7d120, extract_virtual(this, (void($PlayLayer::*)(float)){&$PlayLayer::timeForXPos}));
-
-        m->registerHook(getBase()+0x7fe80, extract_virtual(this, (void($PlayLayer::*)(bool)){&$PlayLayer::toggleBGEffectVisibility}));
 
         m->registerHook(getBase()+0x7bf90, extract_virtual(this, (void($PlayLayer::*)(GameObject*, bool, PlayerObject*, bool)){&$PlayLayer::toggleDualMode}));
 
@@ -3237,8 +2923,6 @@ class $PlayLayer : public $CacBase {
 
         m->registerHook(getBase()+0x6e2b0, extract_virtual(this, (void($PlayLayer::*)(float)){&$PlayLayer::updateCamera}));
 
-        m->registerHook(getBase()+0x7c7f0, extract_virtual(this, (void($PlayLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&$PlayLayer::updateColor}));
-
         m->registerHook(getBase()+0x7caa0, extract_virtual(this, (void($PlayLayer::*)(PlayerObject*, int, bool)){&$PlayLayer::updateDualGround}));
 
         m->registerHook(getBase()+0x78b60, extract_virtual(this, (void($PlayLayer::*)(float)){&$PlayLayer::updateReplay}));
@@ -3246,8 +2930,6 @@ class $PlayLayer : public $CacBase {
         m->registerHook(getBase()+0x786f0, extract_virtual(this, (void($PlayLayer::*)(float, bool)){&$PlayLayer::updateTimeMod}));
 
         m->registerHook(getBase()+0x7ffb0, extract_virtual(this, (void($PlayLayer::*)(float, char const*)){&$PlayLayer::updateTweenAction}));
-
-        m->registerHook(getBase()+0x7b9e0, extract_virtual(this, (void($PlayLayer::*)(int, PlayerObject*)){&$PlayLayer::willSwitchToMode}));
 
         m->registerHook(getBase()+0x7d140, extract_virtual(this, (void($PlayLayer::*)(float)){&$PlayLayer::xPosForTime}));
 
