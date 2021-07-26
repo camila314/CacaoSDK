@@ -16,14 +16,14 @@ Cacao comes with a neat little way to hook very quickly with a tool called CacKi
 #include <CacKit>
 #include <iostream>
 
-CAC_HOOKS
 class EditorUIHook: public $EditorUI<EditorUIHook> {
 public:
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 	}
 } MyEditorUIHook;
-END_CAC_HOOKS
+
+APPLY_HOOKS();
 ```
 
 If you want to call the original function, there is also an easy way to do that as well:
@@ -31,7 +31,6 @@ If you want to call the original function, there is also an easy way to do that 
 #include <CacKit>
 #include <iostream>
 
-CAC_HOOKS
 class EditorUIHook: public $EditorUI<EditorUIHook> {
 public:
 	void undoLastAction() override {
@@ -39,7 +38,8 @@ public:
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
-END_CAC_HOOKS
+
+APPLY_HOOKS();
 ```
 
 Because this CacKit class is not technically a GD class, we need to cast `this` into the proper gd class to actually use it. Cacao provides us with a `cac_this` macro that automatically does this for us
@@ -47,7 +47,6 @@ Because this CacKit class is not technically a GD class, we need to cast `this` 
 #include <CacKit>
 #include <iostream>
 
-CAC_HOOKS
 class EditorUIHook: public $EditorUI<EditorUIHook> {
 public:
 	void undoLastAction() override {
@@ -55,16 +54,16 @@ public:
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
-END_CAC_HOOKS
+
+APPLY_HOOKS();
 ```
 
-If you want, you can also use a function with the name `inject` to run code after the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
+If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
 ```cpp
 #define CAC_PROJ_NAME "My first mod"
 #include <CacKit>
 #include <iostream>
 
-CAC_HOOKS
 class EditorUIHook: public $EditorUI<EditorUIHook> {
 public:
 	void undoLastAction() override {
@@ -72,10 +71,11 @@ public:
 		$EditorUI::undoLastAction();
 	}
 } MyEditorUIHook;
-END_CAC_HOOKS
+
+APPLY_HOOKS();
 
 void inject() {
-	std::cout << "Bye bye!\n";
+	std::cout << "Hello!\n";
 }
 ```
 

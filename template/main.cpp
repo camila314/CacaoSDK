@@ -1,7 +1,5 @@
 #include <CacKit>
 
-CAC_HOOKS
-
 class MenuLayerHook: public $MenuLayer<MenuLayerHook> {
 public:
 	void onMoreGames(CCObject* ob) override {
@@ -9,4 +7,4 @@ public:
 	}
 } MyMenuLayerHook;
 
-END_CAC_HOOKS
+APPLY_HOOKS();
