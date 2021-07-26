@@ -41,7 +41,7 @@ import ply.lex as lex
 lexer = lex.lex()
 
 
-lexer.input(open("cackit.cac","r").read())
+lexer.input(open("test.cac","r").read())
 def ensure_next():
     tt = lexer.token()
     if not tt:
@@ -50,6 +50,8 @@ def ensure_next():
 
 def parse_func(curr_tok):
     last_tok = curr_tok
+    print(curr_tok.value)
+    print(curr_tok.type)
     if curr_tok.type != "IDENT":
         raise ValueError("bad return")
     fi = FunkyInfo(curr_tok.value, [], "", 0)
@@ -70,6 +72,8 @@ def parse_func(curr_tok):
     typeval = ""
     while 1:
         curr_tok = ensure_next()
+        print(curr_tok.value)
+        print(curr_tok.type)
         if curr_tok.type == "RPAREN":
             fi.args.append(typeval)
             typeval = ""
@@ -210,4 +214,5 @@ def build_cls(funky_cls):
     out += build_body2_end
     out += build_end
     return out
-open("../template/Cacao/include/CacKit", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
+#open("../template/Cacao/include/CacKit", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
+open("testCacKit.cpp", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
