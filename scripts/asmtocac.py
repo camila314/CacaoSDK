@@ -4,7 +4,7 @@ import re
 funcs = {}
 exist = {}
 
-with open("test.cac", "r") as f:
+with open("cackit.cac", "r") as f:
 	while True:
 		l = f.readline()
 		if not l:
