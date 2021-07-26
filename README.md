@@ -17,7 +17,6 @@ Cacao comes with a neat little way to hook very quickly with a tool called CacKi
 #include <iostream>
 
 class: public $EditorUI {
-public:
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 	}
@@ -32,7 +31,6 @@ If you want to call the original function, there is also an easy way to do that 
 #include <iostream>
 
 class: public $EditorUI {
-public:
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 		$EditorUI::undoLastAction();
@@ -48,7 +46,6 @@ Because this CacKit class is not technically a GD class, we need to cast `this` 
 #include <iostream>
 
 class: public $EditorUI {
-public:
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
@@ -65,7 +62,6 @@ If you want, you can also use a function with the name `inject` to run code befo
 #include <iostream>
 
 class: public $EditorUI {
-public:
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
