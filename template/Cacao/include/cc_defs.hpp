@@ -207,7 +207,8 @@ class GJEffectManager : public cocos2d::CCNode, public GDObj {
     bool m_f063c;
     bool m_opactiyExistsForGroup[1100];
     int m_itemValues[1100];
-    char m_p1bbc[12]; //padding
+    int m_unusued;
+    int* m_unused2;
     cocos2d::CCArray* m_f1bc8;
     cocos2d::CCArray* m_inheritanceChain;
     cocos2d::CCDictionary* m_f1bd8;

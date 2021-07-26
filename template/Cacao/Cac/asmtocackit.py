@@ -1,3 +1,63 @@
+import os
+import re
+import sys
+
+funcs = {}
+exist = {}
+
+with open(sys.argv[1], "r") as f:
+	while True:
+		l = f.readline()
+		if not l:
+			break
+		cl = l[11:-1]
+		exist[cl] = []
+		l = f.readline()
+		if not l:
+			break
+		while l != "@end\n":
+			exist[cl].append(l)
+			l = f.readline()
+			if not l:
+				break
+		l = f.readline()
+		if not l:
+			break
+
+with open(sys.argv[2], "r") as f:
+	data = f.read()
+	for m in re.finditer(r"; (?:cocos2d::)?(?:extension::)?([^(?:non)].+?)::(.+?)\((.+)\)\ndefit.+?, (0x[0-9a-f]+)", data):
+		cl, fun, param, add, ret = m.group(1), m.group(2), m.group(3), m.group(4), "void"
+		param = param.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "Cacao::CC_SEL").replace("void (cocos2d::CCObject::*)(float)", "Cacao::CC_SCHED")
+		#fuck it hardcoding
+		if (
+			"~" == fun[0] 
+			or cl == "cocos2d"
+			or cl in [fun, "fmt", "FMOD"] 
+			or "..." in param 
+			or "std::map" in param 
+			or "__va_list" in param 
+			or "operator" in fun): 
+			continue
+		if cl not in funcs:
+			funcs[cl] = []
+		funcs[cl].append((fun, param, add, ret))
+
+with open(sys.argv[1], "w") as f:
+	for cl in funcs:
+		f.write(f"@interface {cl}\n")
+		for fun, param, add, ret in funcs[cl]:
+			if cl in exist:
+				for l in exist[cl]:
+					if f"{fun}({param}) = {add};\n" in l:
+						f.write(l)
+						break
+				else:
+					f.write(f"    {ret} {fun}({param}) = {add};\n")
+			else:
+				f.write(f"    {ret} {fun}({param}) = {add};\n")
+		f.write(f"@end\n\n")
+
 tokens = ('CLASS','END','ASSIGN','ADDRESS','IDENT','LPAREN','RPAREN', 'WHITESPACE', 'SEMI', 'COMMA')
 
 class FunkyInfo:
@@ -42,7 +102,7 @@ import ply.lex as lex
 lexer = lex.lex()
 
 
-lexer.input(open("cackit.cac","r").read())
+lexer.input(open(sys.argv[1],"r").read())
 def ensure_next():
     tt = lexer.token()
     if not tt:
@@ -128,9 +188,9 @@ ModContainer* m;
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
 #endif
-#define CAC_HOOKS void __cacinj() __attribute__((constructor)); void __cacinj() {
-#define END_CAC_HOOKS \\
-    for(auto& i : __cackit::glob) {i->apply_hooks();};m->enable();}
+
+void __apply_hooks();
+#define APPLY_HOOKS() static int const __cachook = (__apply_hooks(), 0)
 
 typedef char const* c_string;
 
@@ -168,11 +228,15 @@ class $CacBase {
 namespace __cackit {
   std::vector<$CacBase*> glob;  
 }
+
+void __apply_hooks() {
+    for(auto& i : __cackit::glob) i->apply_hooks();
+    m->enable();
+}
 """
 
 build_start = """
 
-template <class $Derived>
 class ${cls} : public $CacBase {{
  public:
     ${cls}() {{
@@ -180,6 +244,7 @@ class ${cls} : public $CacBase {{
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }}
+    ${cls}(bool dont_push) {{}}
     typedef {cls}* __thistype;
 """
 
@@ -190,15 +255,19 @@ build_body1 = """
 """
 
 build_body2_start = """
-    void apply_hooks() override {"""
+    void apply_hooks() override {{
+        auto orig = ${cls}(true);"""
+    
 
 build_body2_body = """
-        if (({ret}($Derived::*)({params})){{&$Derived::{name}}} != ({ret}(${cls}::*)({params})){{&${cls}::{name}}})
+        if (extract_virtual(&orig, ({ret}(${cls}::*)({params})){{&${cls}::{name}}}) != extract_virtual(this, ({ret}(${cls}::*)({params})){{&${cls}::{name}}}))
             m->registerHook(getBase()+{addr}, extract_virtual(this, ({ret}(${cls}::*)({params})){{&${cls}::{name}}}));
 """
 
 build_body2_end = "    }\n"
 build_end = "};\n"
+
+ender_code = ""
 
 def build_cls(funky_cls):
     out = build_start.format(cls=funky_cls.name)
@@ -208,7 +277,7 @@ def build_cls(funky_cls):
             info.args = [a[:-1] for a in info.args]
         out += build_body1.format(name=info.name,ret=info.ret,params="" if info.args[0]=='' else ', '.join([f"{arg} p{i}"for i, arg in enumerate(info.args)]),cls=funky_cls.name,addr=info.addr, params2 = "" if info.args[0]=='' else f", {', '.join(info.args)}", params3 = "" if info.args[0]=='' else ", "+', '.join([f"p{i}"for i, _ in enumerate(info.args)]))
 
-    out += build_body2_start
+    out += build_body2_start.format(cls=funky_cls.name)
 
     for info in funky_cls.infos:
         out += build_body2_body.format(addr=info.addr, ret=info.ret, cls=funky_cls.name, name=info.name, params = ', '.join(info.args))
@@ -216,4 +285,4 @@ def build_cls(funky_cls):
     out += build_body2_end
     out += build_end
     return out
-open("../template/Cacao/include/CacKit", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
+open(sys.argv[3], "w").write(starter_code + ''.join(build_cls(cl) for cl in funky_classes) + ender_code)
