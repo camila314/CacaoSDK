@@ -41,7 +41,7 @@ import ply.lex as lex
 lexer = lex.lex()
 
 
-lexer.input(open("test.cac","r").read())
+lexer.input(open("cackit.cac","r").read())
 def ensure_next():
     tt = lexer.token()
     if not tt:
@@ -214,5 +214,4 @@ def build_cls(funky_cls):
     out += build_body2_end
     out += build_end
     return out
-#open("../template/Cacao/include/CacKit", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
-open("testCacKit.cpp", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
+open("../template/Cacao/include/CacKit", "w").write(starter_code + ' ' + ''.join(build_cls(cl) for cl in funky_classes))
