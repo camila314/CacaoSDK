@@ -442,7 +442,7 @@
     GameObject* addObjectFromString(std::string) = 0x94640;
     void createObject(int, cocos2d::CCPoint, bool) = 0x957c0;
     void createObjectsFromString(std::string, bool) = 0x94730;
-    void getNextFreeGroupID(cocos2d::CCArray*) = 0x9a1b0;
+    int getNextFreeGroupID(cocos2d::CCArray*) = 0x9a1b0;
     void handleAction(bool, cocos2d::CCArray*) = 0x97020;
     void removeObject(GameObject*, bool) = 0x96890;
 @end
@@ -913,7 +913,7 @@
     void convertToNodeSpace(cocos2d::CCPoint const&) = 0x124750;
     void convertToWorldSpace(cocos2d::CCPoint const&) = 0x124790;
     void getActionByTag(int) = 0x123ee0;
-    CCNode* getChildByTag(int) = 0x123220;
+    cocos2d::CCNode* getChildByTag(int) = 0x123220;
     void getPosition(float*, float*) = 0x122b90;
     void ignoreAnchorPointForPosition(bool) = 0x122f00;
     void registerScriptHandler(int) = 0x123d90;
