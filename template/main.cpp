@@ -2,10 +2,11 @@
 
 CAC_HOOKS
 
-class: public $MenuLayer {
+class MenuLayerHook: public $MenuLayer<MenuLayerHook> {
+public:
 	void onMoreGames(CCObject* ob) override {
 		FLAlertLayer::create("Cacao", "Hello from custom mod!", "OK")->show();
 	}
-} MenuLayerHook;
+} MyMenuLayerHook;
 
 END_CAC_HOOKS

@@ -11,13 +11,14 @@ Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the cur
 
 ### CacKit
 
-Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. You'll notice that I do not assign a name to the class. This is optional, but I do this because i also assign a variable to it, which allows me to activate the hooking automatically. Example:
+Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. You'll notice that I both assign a name to the class and assign a variable to it. This is because the variable allows me to activate the hooking automatically and the class allows me to check for hooked functions. Example:
 ```cpp
 #include <CacKit>
 #include <iostream>
 
 CAC_HOOKS
-class: public $EditorUI {
+class EditorUIHook: public $EditorUI<EditorUIHook> {
+public:
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 	}
@@ -31,7 +32,8 @@ If you want to call the original function, there is also an easy way to do that 
 #include <iostream>
 
 CAC_HOOKS
-class: public $EditorUI {
+class EditorUIHook: public $EditorUI<EditorUIHook> {
+public:
 	void undoLastAction() override {
 		std::cout << "Undo!\n";
 		$EditorUI::undoLastAction();
@@ -46,7 +48,8 @@ Because this CacKit class is not technically a GD class, we need to cast `this` 
 #include <iostream>
 
 CAC_HOOKS
-class: public $EditorUI {
+class EditorUIHook: public $EditorUI<EditorUIHook> {
+public:
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
@@ -62,7 +65,8 @@ If you want, you can also use a function with the name `inject` to run code afte
 #include <iostream>
 
 CAC_HOOKS
-class: public $EditorUI {
+class EditorUIHook: public $EditorUI<EditorUIHook> {
+public:
 	void undoLastAction() override {
 		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
 		$EditorUI::undoLastAction();
