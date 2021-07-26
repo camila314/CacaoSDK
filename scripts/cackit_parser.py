@@ -27,6 +27,7 @@ t_RPAREN = r"\)"
 t_SEMI = r";"
 t_COMMA = r","
 t_ignore_WHITESPACE = r"[\s\t]"
+t_ignore_COMMENT = r'//.*'
 
 def t_newline(t):
     r'\n+'

@@ -519,7 +519,7 @@
     void exitSpiderMode(PlayerObject*) = 0x7de40;
     void flipGravity(PlayerObject*, bool, bool) = 0x7cd10;
     void getOtherPlayer(PlayerObject*) = 0x7dcc0;
-    void getParticleKey(int, char const*, int, cocos2d::tCCPositionType) = 0x764d0;
+    //void getParticleKey(int, char const*, int, cocos2d::tCCPositionType) = 0x764d0;
     void getParticleKey2(std::string) = 0x767b0;
     void getRelativeMod(cocos2d::CCPoint, float, float, float) = 0x7c2a0;
     void hasItem(int) = 0x7cee0;
@@ -557,7 +557,7 @@
     void switchToRollMode(PlayerObject*, GameObject*, bool) = 0x7bbe0;
     void switchToSpiderMode(PlayerObject*, GameObject*, bool) = 0x7bd20;
     void timeForXPos(float) = 0x7d120;
-    void timeForXPos2(float, bool) = 0x293eb0;
+    //void timeForXPos2(float, bool) = 0x293eb0;
     void toggleBGEffectVisibility(bool) = 0x7fe80;
     void toggleDualMode(GameObject*, bool, PlayerObject*, bool) = 0x7bf90;
     void toggleFlipped(bool, bool) = 0x7bdc0;
