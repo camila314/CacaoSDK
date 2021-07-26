@@ -17,8 +17,8 @@ add_custom_command(
 	COMMENT "Generating Cackit"
 )
 
-add_custom_target(GenerateCackit ALL
+add_custom_target(Cackit ALL
    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/include/Cackit
 )
 
-ADD_DEPENDENCIES(Cacao GenerateCackit)
+ADD_DEPENDENCIES(Cacao Cackit)
