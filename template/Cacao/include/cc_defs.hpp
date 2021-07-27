@@ -207,7 +207,8 @@ class GJEffectManager : public cocos2d::CCNode, public GDObj {
     bool m_f063c;
     bool m_opactiyExistsForGroup[1100];
     int m_itemValues[1100];
-    char m_p1bbc[12]; //padding
+    int m_unusued;
+    int* m_unused2;
     cocos2d::CCArray* m_f1bc8;
     cocos2d::CCArray* m_inheritanceChain;
     cocos2d::CCDictionary* m_f1bd8;
@@ -802,5 +803,233 @@ class CountTriggerAction : public cocos2d::CCNode, public GDObj {
     int m_targetID;
     bool m_activateGroup;
     CLASS_PARAM(bool, multiActivate, 0x138);
+};
+
+class DialogObject {
+
+};
+
+class OpacityEffectAction {
+
+};
+
+enum PulseEffectType {
+
+};
+
+enum TouchTriggerType {
+
+};
+
+class ConfigureValuePopup {
+
+};
+
+enum GameObjectType {
+
+};
+
+class CCCircleWave {
+
+};
+
+class CheckpointObject {
+
+};
+
+class CurrencyRewardLayer {
+
+};
+
+class DialogLayer {
+
+};
+
+enum PlayerButton {
+
+};
+
+class PlayerCheckpoint {
+
+};
+
+enum GhostType {
+
+};
+
+enum IconType {
+
+};
+
+class AnimatedGameObject {
+
+};
+
+class AudioEffectsLayer {
+
+};
+
+class CCAnimatedSprite {
+
+};
+
+class CCLightFlash {
+
+};
+
+class CollisionBlockPopup {
+
+};
+
+class CollisionTriggerAction {
+
+};
+
+class ColorChannelSprite {
+
+};
+
+class CustomizeObjectLayer {
+
+};
+
+class DrawGridLayer {
+
+};
+
+class EditorOptionsLayer {
+
+};
+
+class GJFollowCommandLayer {
+
+};
+
+class GJGroundLayer {
+
+};
+
+class GJMoveCommandLayer {
+
+};
+
+class GJPFollowCommandLayer {
+
+};
+
+class GJRobotSprite {
+
+};
+
+class GJRotateCommandLayer {
+
+};
+
+class GameStatsManager {
+
+};
+
+class GravityEffectSprite {
+
+};
+
+class GroupCommandObject {
+
+};
+
+class LevelSettingsLayer {
+
+};
+
+class LevelTools {
+
+};
+
+class MenuGameLayer {
+
+};
+
+class MusicDownloadManager {
+
+};
+
+class SetIDLayer {
+
+};
+
+class SetTargetIDLayer {
+
+};
+
+class SetupAnimationPopup {
+
+};
+
+class SetupCollisionTriggerPopup {
+
+};
+
+class SetupCountTriggerPopup {
+
+};
+
+class SetupInstantCountPopup {
+
+};
+
+class SetupOpacityPopup {
+
+};
+
+class SetupPickupTriggerPopup {
+
+};
+
+class SetupShakePopup {
+
+};
+
+class SetupTouchTogglePopup {
+
+};
+
+class SimplePlayer {
+
+};
+
+class SpeedObject {
+
+};
+
+class TeleportPortalObject {
+
+};
+
+class ToggleTriggerAction {
+
+};
+
+class TouchToggleAction {
+
+};
+
+class UILayer {
+
+};
+
+class ZipUtils {
+
+};
+
+class CCControlColourPicker {
+
+};
+
+class CCControlUtils {
+
+};
+
+class CCScale9Sprite {
+
 };
 #endif
