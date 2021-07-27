@@ -224,7 +224,7 @@ mach_vm_size_t _image_size(void *image, mach_vm_size_t image_slide, mach_vm_addr
 }
 
 kern_return_t _island_jump_back(void* to, void* from) {
-    int jmp_back_offset = 30;
+    int jmp_back_offset = 16;
     ZydisDecoder decoder;
     ZydisDecoderInit(&decoder,
                      ZYDIS_MACHINE_MODE_LONG_64,

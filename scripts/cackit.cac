@@ -170,6 +170,7 @@
     void switchToScene(GJGameLevel*) = 0xe5d50;
     void update(float) = 0x77900;
     void addObject(GameObject*) = 0x70e50;
+    void flipGravity(PlayerObject*, bool, bool) = 0x7cd10;
 @end
 
 @interface CreatorLayer

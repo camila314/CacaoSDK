@@ -498,6 +498,8 @@ class $CCMenuItemSpriteExtra : public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    $CCMenuItemSpriteExtra(bool dont_push) {}
+
     typedef CCMenuItemSpriteExtra* __thistype;
 
     virtual void setSizeMult(float  p0) {
@@ -505,7 +507,10 @@ class $CCMenuItemSpriteExtra : public $CacBase {
     }
 
     void apply_hooks() override {
-        m->registerHook(getBase()+0x1255e0, extract_virtual(this, &$CCMenuItemSpriteExtra::setSizeMult));
+        auto _tmp = $CCMenuItemSpriteExtra(true);
+
+        if (extract_virtual(this, &$CCMenuItemSpriteExtra::setSizeMult) != extract_virtual(&_tmp, &$CCMenuItemSpriteExtra::setSizeMult))
+            m->registerHook(getBase()+0x1255e0, extract_virtual(this, &$CCMenuItemSpriteExtra::setSizeMult));
     }
 };
 
@@ -964,6 +969,10 @@ class $PlayLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this),GameObject* )>(m->getOriginal(getBase()+0x70e50))(this,p0);
     }
 
+    virtual void flipGravity(PlayerObject*  p0,bool  p1,bool  p2) {
+        return reinterpret_cast<void(*)(decltype(this),PlayerObject* ,bool ,bool )>(m->getOriginal(getBase()+0x7cd10))(this,p0,p1,p2);
+    }
+
     void apply_hooks() override {
         m->registerHook(getBase()+0x71c50, extract_virtual(this, &$PlayLayer::resetLevel));
 
@@ -972,6 +981,8 @@ class $PlayLayer : public $CacBase {
         m->registerHook(getBase()+0x77900, extract_virtual(this, &$PlayLayer::update));
 
         m->registerHook(getBase()+0x70e50, extract_virtual(this, &$PlayLayer::addObject));
+
+        m->registerHook(getBase()+0x7cd10, extract_virtual(this, &$PlayLayer::flipGravity));
     }
 };
 
