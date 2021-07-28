@@ -916,6 +916,7 @@
     void addObject(cocos2d::CCObject*) = 0x419f90;
     void addObjectNew(cocos2d::CCObject*) = 0x41a450;
     void addObjectsFromArray(cocos2d::CCArray*) = 0x41a2d0;
+    void containsObject(cocos2d::CCObject*) = 0x41a3e0;
     void createWithObject(cocos2d::CCObject*) = 0x419d50;
     void fastRemoveObject(cocos2d::CCObject*) = 0x41a520;
     void fastRemoveObjectAtIndex(unsigned int) = 0x41a500;
@@ -1134,6 +1135,16 @@
 
 @interface CCParticleSystemQuad
     void create(char const*) = 0x36b000;
+@end
+
+@interface CCPoint
+    void equals(cocos2d::CCPoint const&) = 0x1371d0;
+@end
+
+@interface CCRect
+    void containsPoint(cocos2d::CCPoint const&) = 0x1377b0;
+    void equals(cocos2d::CCRect const&) = 0x1376a0;
+    void intersectsRect(cocos2d::CCRect const&) = 0x137800;
 @end
 
 @interface CCRenderTexture
