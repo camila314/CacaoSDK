@@ -11,10 +11,10 @@ add_library(Cacao STATIC Cacao.cpp symtab.asm)
 target_link_libraries(Cacao GDML)
 
 add_custom_command(
-	COMMAND python3.8 ${CMAKE_CURRENT_BINARY_DIR}/Cac/asmtocackit.py "${CMAKE_CURRENT_BINARY_DIR}/Cac/cackit.m" "${CMAKE_CURRENT_BINARY_DIR}/symtab.asm" "${CMAKE_CURRENT_BINARY_DIR}/include/CacKit"
+	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Cac/asmtocackit.py "${CMAKE_CURRENT_SOURCE_DIR}/Cac/cackit.m" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
 	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/CacKit
-	DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/Cac/cackit.m
-	DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/symtab.asm
+#	DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/Cac/cackit.m
+#	DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/symtab.asm
 	COMMENT "Generating Cackit"
 )
 
