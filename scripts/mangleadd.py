@@ -4,7 +4,7 @@
 import os
 import re
 from ghidra.app.util.demangler import DemanglerOptions, DemanglerUtil
-from ghidra.program.model.symbol import SourceType
+from ghidra.program.model.symbol import SourceType, Namespace
 from ghidra.app.util import NamespaceUtils
 from ghidra.program.model.data import CategoryPath, StructureDataType, DataTypeConflictHandler
 
@@ -23,8 +23,9 @@ with open(str(symbol_path), "r") as f:
 				func = currentProgram.getFunctionManager().getFunctionAt(addr)
 				if func.getName() != "create":
 					func.setCallingConvention("__thiscall")
-				NamespaceUtils.convertNamespaceToClass(func.getParentNamespace())
-				currentProgram.getDataTypeManager().addDataType(StructureDataType(CategoryPath("/GeometryDash"), func.getParentNamespace().getName(), 0), DataTypeConflictHandler.DEFAULT_HANDLER)
+				if func.getParentNamespace().getID() != Namespace.GLOBAL_NAMESPACE_ID:
+					NamespaceUtils.convertNamespaceToClass(func.getParentNamespace())
+					currentProgram.getDataTypeManager().addDataType(StructureDataType(CategoryPath("/GeometryDash"), func.getParentNamespace().getName(), 0), DataTypeConflictHandler.DEFAULT_HANDLER)
 			else:
 				print("Unable to demangle: " + name);
 			

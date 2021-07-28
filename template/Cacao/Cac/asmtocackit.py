@@ -26,7 +26,7 @@ with open(sys.argv[1], "r") as f:
 
 with open(sys.argv[2], "r") as f:
 	data = f.read()
-	for m in re.finditer(r"; (?:cocos2d::)?(?:extension::)?([^(?:non)].+?)::(.+?)\((.+)\)\ndefit.+?, (0x[0-9a-f]+)", data):
+	for m in re.finditer(r"; (?:cocos2d::)?(?:extension::)?([^(?:non)].+?)::(.+?)\((.+)\)(?: const)?\ndefit.+?, (0x[0-9a-f]+)", data):
 		cl, fun, param, add, ret = m.group(1), m.group(2), m.group(3), m.group(4), "void"
 		param = param.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "Cacao::CC_SEL").replace("void (cocos2d::CCObject::*)(float)", "Cacao::CC_SCHED")
 		#fuck it hardcoding

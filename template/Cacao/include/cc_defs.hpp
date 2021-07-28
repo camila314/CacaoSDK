@@ -1032,4 +1032,16 @@ class CCControlUtils {
 class CCScale9Sprite {
 
 };
+
+class UndoObject {
+
+};
+
+class GameObjectCopy {
+
+};
+
+class UndoCommand {
+
+};
 #endif

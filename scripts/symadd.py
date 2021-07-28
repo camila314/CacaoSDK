@@ -23,9 +23,7 @@ for i in currentProgram.getSymbolTable().getAllSymbols(False):
     if (i.getSymbolType() == ghidra.program.model.symbol.SymbolType.FUNCTION and n.getName() != 'std'):
         symbols.append((i, fm.getFunctionAt(i.getAddress())))
 
-def myfun(a):
-    return a[0].getName(True)
-symbols.sort(key=myfun)
+symbols.sort(key=lambda a: a[0].getName(True))
 
 if save_path and symbol_path:
 
@@ -35,7 +33,13 @@ if save_path and symbol_path:
                 match = re.match(".+(0x[0-9a-f]+)", l)
                 if match:
                     addresses.append(match.group(1))
-    file = open(str(save_path), 'a')
+        with open(str(save_path), 'r') as prv:
+            d = prv.read()
+            sorder = re.findall(r"(; (?:non-virtual thunk to )?.+?\(.*\)\n.+\n\n)", d)
+            rem = re.split(r"; (?:non-virtual thunk to )?(.+?\(.*\)\n.+\n\n)", d)
+            print(rem[0])
+            print(rem[-1])
+    
 
     if os.path.exists(str(symbol_path)):
         with open(str(symbol_path), 'r') as sym:
@@ -44,7 +48,7 @@ if save_path and symbol_path:
                 if l == '':
                     break
                 m = sym.readline()
-                match = re.match("(?:non-virtual thunk to )?(.+?)\\(.*\\)", l)
+                match = re.match(r"(?:non-virtual thunk to )?(.+?)\(.*\)(?: const)?", l)
                 if match:
                     if match.group(1) not in mangles:
                         mangles[match.group(1)] = []
@@ -53,29 +57,24 @@ if save_path and symbol_path:
     for s, f in symbols:
         if s.getName(True) in mangles and hex(s.getAddress().unsignedOffset - 0x100000000)[:-1] not in addresses:
             mngl = mangles[s.getName(True)]
+            tx = ""
             if len(mngl) > 1: 
-                file.write(';(' + ', '.join(str(a) for a in list(f.getParameters())) + ')\n')
+                tx += ';(' + ', '.join(str(a) for a in list(f.getParameters())) + ')\n'
             for l, m in mngl:
+                tx += '; ' + l + '\n'
                 if len(mngl) > 1: 
-                    file.write('; ' + l + '\n')
-                    file.write(';defit _' + m + ', ' + hex(f.getEntryPoint().unsignedOffset - 0x100000000)[:-1] + '\n')
-                else:
-                    file.write('; ' + l + '\n')
-                    file.write('defit _' + m + ', ' + hex(f.getEntryPoint().unsignedOffset - 0x100000000)[:-1] + '\n')
-            file.write('\n')
+                    tx += ';'
+                tx += 'defit _' + m + ', ' + hex(f.getEntryPoint().unsignedOffset - 0x100000000)[:-1] + '\n'
+            tx += '\n'
+            sorder.append(tx)
 
-    # match = re.match("(.+)\\(.*\\)", l)
-    # if match:
-    #     funcs = [f for f in symbols if match.group(1) == '::'.join(f.getPath())]
-    #     if len(funcs) > 0 and hex(funcs[0].getAddress().unsignedOffset - 0x100000000)[:-1] not in addresses:
-    #         if len(funcs) > 1:
-    #             for s in funcs:
-    #                 f = [q for q in functions if s.getAddress().unsignedOffset == q.getEntryPoint().unsignedOffset][0]
-    #                 file.write(';clash defit _' + m[:-1] + ', ' + hex(f.getEntryPoint().unsignedOffset - 0x100000000)[:-1] + '\n')
-    #                 file.write(';param ' + str(list(f.getParameters())) + '\n')
-    #         else:
-    #             file.write('defit _' + m[:-1] + ', ' + hex(funcs[0].getAddress().unsignedOffset - 0x100000000)[:-1] + '\n')
-    file.close()
+    with open(str(save_path), 'w') as file:
+        def sfun(a):
+            m = re.search(r"; (?:non-virtual thunk to )?(.+?\(.*\)(?: const)?\n.+\n\n)", a)
+            print(a)
+            return m.group(1)
+        sorder.sort(key=sfun)
+        file.write(rem[0] + "".join(sorder) + rem[-1])
 else:
     popup('>~<')
 
