@@ -306,6 +306,9 @@
 
 @interface GJFollowCommandLayer
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x16a550;
+    void onUpdateGroupID(cocos2d::CCObject*) = 0x16cfe0;
+    void onUpdateGroupID2(cocos2d::CCObject*) = 0x16d1c0;
+    void textChanged(CCTextInputNode*) = 0x16d480;
 @end
 
 @interface GJGameLevel
@@ -335,6 +338,7 @@
 
 @interface GJPFollowCommandLayer
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x1aea20;
+    void textChanged(CCTextInputNode*) = 0x1b1dc0;
 @end
 
 @interface GJRobotSprite
@@ -344,6 +348,9 @@
 
 @interface GJRotateCommandLayer
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x1ba0;
+    void onUpdateGroupID(cocos2d::CCObject*) = 0x4bb0;
+    void onUpdateGroupID2(cocos2d::CCObject*) = 0x4ca0;
+    void textChanged(CCTextInputNode*) = 0x58d0;
 @end
 
 @interface GJSearchObject
@@ -766,22 +773,32 @@
 
 @interface SetupAnimationPopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x208b70;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x209fc0;
+    void textChanged(CCTextInputNode*) = 0x20ab30;
 @end
 
 @interface SetupCollisionTriggerPopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x1d6120;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x1d77b0;
+    void textChanged(CCTextInputNode*) = 0x1d84d0;
 @end
 
 @interface SetupCountTriggerPopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x15c6c0;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x15dd40;
+    void textChanged(CCTextInputNode*) = 0x15e9a0;
 @end
 
 @interface SetupInstantCountPopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x352c10;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x354520;
+    void textChanged(CCTextInputNode*) = 0x355270;
 @end
 
 @interface SetupOpacityPopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x32b70;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x340a0;
+    void textChanged(CCTextInputNode*) = 0x34a60;
 @end
 
 @interface SetupPickupTriggerPopup
@@ -804,6 +821,8 @@
 @interface SetupSpawnPopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x139790;
     void createToggleButton(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*) = 0x13b0e0;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x13ad80;
+    void textChanged(CCTextInputNode*) = 0x13b990;
 @end
 
 @interface SetupTouchTogglePopup
@@ -880,6 +899,7 @@
     void addObject(cocos2d::CCObject*) = 0x419f90;
     void addObjectNew(cocos2d::CCObject*) = 0x41a450;
     void addObjectsFromArray(cocos2d::CCArray*) = 0x41a2d0;
+    void containsObject(cocos2d::CCObject*) = 0x41a3e0;
     void createWithObject(cocos2d::CCObject*) = 0x419d50;
     void fastRemoveObject(cocos2d::CCObject*) = 0x41a520;
     void fastRemoveObjectAtIndex(unsigned int) = 0x41a500;
@@ -1098,6 +1118,16 @@
 
 @interface CCParticleSystemQuad
     void create(char const*) = 0x36b000;
+@end
+
+@interface CCPoint
+    void equals(cocos2d::CCPoint const&) = 0x1371d0;
+@end
+
+@interface CCRect
+    void containsPoint(cocos2d::CCPoint const&) = 0x1377b0;
+    void equals(cocos2d::CCRect const&) = 0x1376a0;
+    void intersectsRect(cocos2d::CCRect const&) = 0x137800;
 @end
 
 @interface CCRenderTexture
