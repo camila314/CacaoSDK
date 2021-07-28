@@ -145,6 +145,7 @@
     void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
     void pasteObjects(std::string) = 0x232d0;
     void redoLastAction(cocos2d::CCObject*) = 0xb8e0;
+    void replaceGroupID(GameObject*, int, int) = 0x27470;
     void scaleChanged(float) = 0x25490;
     void scaleObjects(cocos2d::CCArray*, float, cocos2d::CCPoint) = 0x252e0;
     void selectObjects(cocos2d::CCArray*, bool) = 0x23940;
@@ -769,6 +770,8 @@
 
 @interface SetTargetIDLayer
     void create(EffectGameObject*, cocos2d::CCArray*, std::string) = 0x159d20;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x15aed0;
+    void textChanged(CCTextInputNode*) = 0x15b6c0;
 @end
 
 @interface SetupAnimationPopup
@@ -793,6 +796,18 @@
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x352c10;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x354520;
     void textChanged(CCTextInputNode*) = 0x355270;
+@end
+
+@interface SetupInteractObjectPopup
+    void create(EffectGameObject*, cocos2d::CCArray*) = 0x29a400;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x29bbc0;
+    void textChanged(CCTextInputNode*) = 0x29c2b0;
+@end
+
+@interface SetupObjectTogglePopup
+    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1c0860;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x1c1c40;
+    void textChanged(CCTextInputNode*) = 0x1c2660;
 @end
 
 @interface SetupOpacityPopup
@@ -827,6 +842,8 @@
 
 @interface SetupTouchTogglePopup
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x1576a0;
+    void onTargetIDArrow(cocos2d::CCObject*) = 0x158b60;
+    void textChanged(CCTextInputNode*) = 0x1596a0;
 @end
 
 @interface SimplePlayer
@@ -899,7 +916,6 @@
     void addObject(cocos2d::CCObject*) = 0x419f90;
     void addObjectNew(cocos2d::CCObject*) = 0x41a450;
     void addObjectsFromArray(cocos2d::CCArray*) = 0x41a2d0;
-    void containsObject(cocos2d::CCObject*) = 0x41a3e0;
     void createWithObject(cocos2d::CCObject*) = 0x419d50;
     void fastRemoveObject(cocos2d::CCObject*) = 0x41a520;
     void fastRemoveObjectAtIndex(unsigned int) = 0x41a500;
@@ -1118,16 +1134,6 @@
 
 @interface CCParticleSystemQuad
     void create(char const*) = 0x36b000;
-@end
-
-@interface CCPoint
-    void equals(cocos2d::CCPoint const&) = 0x1371d0;
-@end
-
-@interface CCRect
-    void containsPoint(cocos2d::CCPoint const&) = 0x1377b0;
-    void equals(cocos2d::CCRect const&) = 0x1376a0;
-    void intersectsRect(cocos2d::CCRect const&) = 0x137800;
 @end
 
 @interface CCRenderTexture

@@ -1044,4 +1044,12 @@ class GameObjectCopy {
 class UndoCommand {
 
 };
+
+class SetupObjectTogglePopup {
+
+};
+
+class SetupInteractObjectPopup {
+
+};
 #endif
