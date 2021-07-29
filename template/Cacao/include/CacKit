@@ -1199,6 +1199,10 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x28f30))(this);
     }
 
+    virtual void init(LevelEditorLayer* p0) {
+        return reinterpret_cast<void(*)(decltype(this), LevelEditorLayer*)>(m->getOriginal(getBase()+0x8ae0))(this, p0);
+    }
+
     virtual void editObject(cocos2d::CCObject* p0) {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x195a0))(this, p0);
     }
@@ -1295,6 +1299,9 @@ class $EditorUI : public $CacBase {
 
         if (extract_virtual(&orig, (void($EditorUI::*)()){&$EditorUI::editButtonUsable}) != extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::editButtonUsable}))
             m->registerHook(getBase()+0x28f30, extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::editButtonUsable}));
+
+        if (extract_virtual(&orig, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}) != extract_virtual(this, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}))
+            m->registerHook(getBase()+0x8ae0, extract_virtual(this, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}));
 
         if (extract_virtual(&orig, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::editObject}) != extract_virtual(this, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::editObject}))
             m->registerHook(getBase()+0x195a0, extract_virtual(this, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::editObject}));

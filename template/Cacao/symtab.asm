@@ -559,6 +559,9 @@ defit __ZN8EditorUI13disableButtonEP14CreateMenuItem, 0x1c0f0
 ; EditorUI::editButtonUsable()
 defit __ZN8EditorUI16editButtonUsableEv, 0x28f30
 
+; EditorUI::init(LevelEditorLayer*)
+defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
+
 ; EditorUI::editObject(cocos2d::CCObject*)
 defit __ZN8EditorUI10editObjectEPN7cocos2d8CCObjectE, 0x195a0
 

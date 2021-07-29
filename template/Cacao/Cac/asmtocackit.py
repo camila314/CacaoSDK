@@ -39,6 +39,7 @@ with open(sys.argv[2], "r") as f:
             or "__va_list" in param 
             or "operator" in fun): 
             continue
+
         if cl not in funcs:
             funcs[cl] = []
         funcs[cl].append((fun, param, add, ret))

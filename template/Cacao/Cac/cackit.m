@@ -189,6 +189,7 @@
     void deselectAll() = 0x1f300;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
     void editButtonUsable() = 0x28f30;
+    void init(LevelEditorLayer*) = 0x8ae0;
     void editObject(cocos2d::CCObject*) = 0x195a0;
     void enableButton(CreateMenuItem*) = 0x1bff0;
     CreateMenuItem* getCreateBtn(int, int) = 0x1f6c0;
