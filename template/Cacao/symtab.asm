@@ -365,10 +365,10 @@ defit __ZN18ColorChannelSprite12updateValuesEP11ColorAction, 0x16e2e0
 defit __ZN22ColorSelectLiveOverlayC1Ev, 0x2e2580
 
 ; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
-defit __ZN22ColorSelectLiveOverlayD1Ev, 0x2e24c0
+defit __ZN22ColorSelectLiveOverlayD0Ev, 0x2e24f0
 
 ; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
-defit __ZN22ColorSelectLiveOverlayD0Ev, 0x2e24f0
+defit __ZN22ColorSelectLiveOverlayD1Ev, 0x2e24c0
 
 ; ColorSelectPopup::ColorSelectPopup()
 defit __ZN16ColorSelectPopupC1Ev, 0x41eb80
@@ -2416,11 +2416,23 @@ defit __ZN13ObjectToolbox13intKeyToFrameEi, 0x4173b0
 ; ObjectToolbox::sharedState()
 defit __ZN13ObjectToolbox11sharedStateEv, 0x3b2bc0
 
+; OpacityEffectAction::create(float, float, float, int)
+defit __ZN19OpacityEffectAction6createEfffi, 0x1789f0
+
 ; OpacityEffectAction::createFromString(std::string)
 defit __ZN19OpacityEffectAction16createFromStringESs, 0x178c10
 
+; OpacityEffectAction::init(float, float, float, int)
+defit __ZN19OpacityEffectAction4initEfffi, 0x178b00
+
 ; OpacityEffectAction::step(float)
 defit __ZN19OpacityEffectAction4stepEf, 0x178b90
+
+; OpacityEffectAction::~OpacityEffectAction()
+defit __ZN19OpacityEffectActionD1Ev, 0x18b710
+
+; OpacityEffectAction::~OpacityEffectAction()
+defit __ZN19OpacityEffectActionD0Ev, 0x18b720
 
 ; PauseLayer::create(bool)
 defit __ZN10PauseLayer6createEb, 0x20b1e0
@@ -3391,6 +3403,33 @@ defit __ZN17PulseEffectAction13getSaveStringEv, 0x17a850
 ; RetryLevelLayer::create()
 defit __ZN15RetryLevelLayer6createEv, 0x28dd60
 
+; SetGroupIDLayer::onNextGroupID1(cocos2d::CCObject*)
+defit __ZN15SetGroupIDLayer14onNextGroupID1EPN7cocos2d8CCObjectE, 0x1967a0
+
+; SetGroupIDLayer::textChanged(CCTextInputNode*)
+defit __ZN15SetGroupIDLayer11textChangedEP15CCTextInputNode, 0x197af0
+
+; non-virtual thunk to SetGroupIDLayer::textChanged(CCTextInputNode*)
+defit __ZThn592_N15SetGroupIDLayer11textChangedEP15CCTextInputNode, 0x197b90
+
+; SetGroupIDLayer::updateGroupIDLabel()
+defit __ZN15SetGroupIDLayer18updateGroupIDLabelEv, 0x197260
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD2Ev, 0x194410
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD1Ev, 0x194520
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD1Ev, 0x194530
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD0Ev, 0x194550
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD0Ev, 0x194580
+
 ; SetIDLayer::create(GameObject*)
 defit __ZN10SetIDLayer6createEP10GameObject, 0x168f20
 
@@ -3472,6 +3511,9 @@ defit __ZN24SetupInteractObjectPopup14updateTargetIDEv, 0x29c120
 ; SetupObjectTogglePopup::create(EffectGameObject*, cocos2d::CCArray*)
 defit __ZN22SetupObjectTogglePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x1c0860
 
+; SetupObjectTogglePopup::init(EffectGameObject*, cocos2d::CCArray*)
+defit __ZN22SetupObjectTogglePopup4initEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x1c0a40
+
 ; SetupObjectTogglePopup::onTargetIDArrow(cocos2d::CCObject*)
 defit __ZN22SetupObjectTogglePopup15onTargetIDArrowEPN7cocos2d8CCObjectE, 0x1c1c40
 
@@ -3523,9 +3565,6 @@ defit __ZN15SetupPulsePopup17onSelectPulseModeEPN7cocos2d8CCObjectE, 0x1eb020
 ; SetupPulsePopup::onSelectTargetMode(cocos2d::CCObject*)
 defit __ZN15SetupPulsePopup18onSelectTargetModeEPN7cocos2d8CCObjectE, 0x1eac30
 
-; SetupPulsePopup::updateTargetID()
-defit __ZN15SetupPulsePopup14updateTargetIDEv, 0x1ebbe0
-
 ; SetupPulsePopup::onUpdateCustomColor(cocos2d::CCObject*)
 defit __ZN15SetupPulsePopup19onUpdateCustomColorEPN7cocos2d8CCObjectE, 0x1eaef0
 
@@ -3540,6 +3579,9 @@ defit __ZN15SetupPulsePopup17updateEditorLabelEv, 0x1ec310
 
 ; SetupPulsePopup::updateFadeOutLabel(bool)
 defit __ZN15SetupPulsePopup18updateFadeOutLabelEb, 0x1eba20
+
+; SetupPulsePopup::updateTargetID()
+defit __ZN15SetupPulsePopup14updateTargetIDEv, 0x1ebbe0
 
 ; SetupPulsePopup::updateTextInputLabel()
 defit __ZN15SetupPulsePopup20updateTextInputLabelEv, 0x1eb8d0
