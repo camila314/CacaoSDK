@@ -5,6 +5,7 @@
 #include <cc_defs.hpp>
 #include <map>
 #include <vector>
+#include <tr1/type_traits>
 
 #define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 

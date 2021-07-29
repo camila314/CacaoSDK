@@ -136,6 +136,8 @@
 @interface EditorUI
     void create(LevelEditorLayer*) = 0x8a80;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
+    void init(LevelEditorLayer*) = 0x8ae0;
+    void setupCreateMenu(int) = 0xcb50;
     void editObject(cocos2d::CCObject*) = 0x195a0;
     void enableButton(CreateMenuItem*) = 0x1bff0;
     CreateMenuItem* getCreateBtn(int, int) = 0x1f6c0;

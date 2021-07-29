@@ -529,6 +529,12 @@ defit __ZN8EditorUI13disableButtonEP14CreateMenuItem, 0x1c0f0
 ; EditorUI::editButtonUsable()
 defit __ZN8EditorUI16editButtonUsableEv, 0x28f30
 
+; EditorUI::init(LevelEditorLayer*)
+defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
+
+; EditorUI::setupCreateMenu(int)
+defit __ZN8EditorUI15setupCreateMenuEv, 0xcb50
+
 ; EditorUI::editObject(cocos2d::CCObject*)
 defit __ZN8EditorUI10editObjectEPN7cocos2d8CCObjectE, 0x195a0
 
@@ -4464,6 +4470,9 @@ defit __ZN7cocos2d7CCPointC1Eff, 0x137000
 
 ; cocos2d::CCPoint::operator=(cocos2d::CCPoint const&)
 defit __ZN7cocos2d7CCPointaSERKS0_, 0x1370c0
+
+; cocos2d::CCPoint::operator+(cocos2d::CCPoint const&)
+defit __ZNK7cocos2d7CCPointplERKS0_, 0x1370f0
 
 ; cocos2d::CCRect::CCRect()
 defit __ZN7cocos2d6CCRectC1Ev, 0x1375a0
