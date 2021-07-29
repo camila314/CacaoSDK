@@ -1044,4 +1044,24 @@ class GameObjectCopy {
 class UndoCommand {
 
 };
+
+class SetupObjectTogglePopup {
+
+};
+
+class SetupInteractObjectPopup {
+
+};
+
+class GJSpecialColorSelect {
+
+};
+
+class SetIDPopup {
+
+};
+
+class SetItemIDLayer {
+
+};
 #endif

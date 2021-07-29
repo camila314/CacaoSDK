@@ -367,6 +367,10 @@ class $CCTextInputNode : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x5d3e0))(this, p0);
     }
 
+    virtual void updateLabel(std::string p0) {
+        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x5d4a0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $CCTextInputNode(true);
         if (extract_virtual(&orig, (void($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create}) != extract_virtual(this, (void($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create}))
@@ -389,6 +393,9 @@ class $CCTextInputNode : public $CacBase {
 
         if (extract_virtual(&orig, (void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setString}) != extract_virtual(this, (void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setString}))
             m->registerHook(getBase()+0x5d3e0, extract_virtual(this, (void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setString}));
+
+        if (extract_virtual(&orig, (void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::updateLabel}) != extract_virtual(this, (void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::updateLabel}))
+            m->registerHook(getBase()+0x5d4a0, extract_virtual(this, (void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::updateLabel}));
     }
 };
 
@@ -407,10 +414,17 @@ class $CollisionBlockPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x130010))(this, p0, p1);
     }
 
+    virtual void onNextItemID(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x130e60))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $CollisionBlockPopup(true);
         if (extract_virtual(&orig, (void($CollisionBlockPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$CollisionBlockPopup::create}) != extract_virtual(this, (void($CollisionBlockPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$CollisionBlockPopup::create}))
             m->registerHook(getBase()+0x130010, extract_virtual(this, (void($CollisionBlockPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$CollisionBlockPopup::create}));
+
+        if (extract_virtual(&orig, (void($CollisionBlockPopup::*)(cocos2d::CCObject*)){&$CollisionBlockPopup::onNextItemID}) != extract_virtual(this, (void($CollisionBlockPopup::*)(cocos2d::CCObject*)){&$CollisionBlockPopup::onNextItemID}))
+            m->registerHook(getBase()+0x130e60, extract_virtual(this, (void($CollisionBlockPopup::*)(cocos2d::CCObject*)){&$CollisionBlockPopup::onNextItemID}));
     }
 };
 
@@ -476,12 +490,33 @@ class $ColorChannelSprite : public $CacBase {
     $ColorChannelSprite(bool dont_push) {}
     typedef ColorChannelSprite* __thistype;
 
+    virtual void updateBlending(bool p0) {
+        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x16e1d0))(this, p0);
+    }
+
+    virtual void updateCopyLabel(int p0, bool p1) {
+        return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0x16ded0))(this, p0, p1);
+    }
+
+    virtual void updateOpacity(float p0) {
+        return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x16e080))(this, p0);
+    }
+
     virtual void updateValues(ColorAction* p0) {
         return reinterpret_cast<void(*)(decltype(this), ColorAction*)>(m->getOriginal(getBase()+0x16e2e0))(this, p0);
     }
 
     void apply_hooks() override {
         auto orig = $ColorChannelSprite(true);
+        if (extract_virtual(&orig, (void($ColorChannelSprite::*)(bool)){&$ColorChannelSprite::updateBlending}) != extract_virtual(this, (void($ColorChannelSprite::*)(bool)){&$ColorChannelSprite::updateBlending}))
+            m->registerHook(getBase()+0x16e1d0, extract_virtual(this, (void($ColorChannelSprite::*)(bool)){&$ColorChannelSprite::updateBlending}));
+
+        if (extract_virtual(&orig, (void($ColorChannelSprite::*)(int, bool)){&$ColorChannelSprite::updateCopyLabel}) != extract_virtual(this, (void($ColorChannelSprite::*)(int, bool)){&$ColorChannelSprite::updateCopyLabel}))
+            m->registerHook(getBase()+0x16ded0, extract_virtual(this, (void($ColorChannelSprite::*)(int, bool)){&$ColorChannelSprite::updateCopyLabel}));
+
+        if (extract_virtual(&orig, (void($ColorChannelSprite::*)(float)){&$ColorChannelSprite::updateOpacity}) != extract_virtual(this, (void($ColorChannelSprite::*)(float)){&$ColorChannelSprite::updateOpacity}))
+            m->registerHook(getBase()+0x16e080, extract_virtual(this, (void($ColorChannelSprite::*)(float)){&$ColorChannelSprite::updateOpacity}));
+
         if (extract_virtual(&orig, (void($ColorChannelSprite::*)(ColorAction*)){&$ColorChannelSprite::updateValues}) != extract_virtual(this, (void($ColorChannelSprite::*)(ColorAction*)){&$ColorChannelSprite::updateValues}))
             m->registerHook(getBase()+0x16e2e0, extract_virtual(this, (void($ColorChannelSprite::*)(ColorAction*)){&$ColorChannelSprite::updateValues}));
     }
@@ -620,6 +655,35 @@ class $CreateMenuItem : public $CacBase {
         auto orig = $CreateMenuItem(true);
         if (extract_virtual(&orig, (void($CreateMenuItem::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&$CreateMenuItem::create}) != extract_virtual(this, (void($CreateMenuItem::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&$CreateMenuItem::create}))
             m->registerHook(getBase()+0x1c580, extract_virtual(this, (void($CreateMenuItem::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&$CreateMenuItem::create}));
+    }
+};
+
+
+class $CreatorLayer : public $CacBase {
+ public:
+    $CreatorLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $CreatorLayer(bool dont_push) {}
+    typedef CreatorLayer* __thistype;
+
+    virtual void onMyLevels(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x142b70))(this, p0);
+    }
+
+    virtual void onSavedLevels(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x142860))(this, p0);
+    }
+
+    void apply_hooks() override {
+        auto orig = $CreatorLayer(true);
+        if (extract_virtual(&orig, (void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onMyLevels}) != extract_virtual(this, (void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onMyLevels}))
+            m->registerHook(getBase()+0x142b70, extract_virtual(this, (void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onMyLevels}));
+
+        if (extract_virtual(&orig, (void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onSavedLevels}) != extract_virtual(this, (void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onSavedLevels}))
+            m->registerHook(getBase()+0x142860, extract_virtual(this, (void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onSavedLevels}));
     }
 };
 
@@ -917,6 +981,10 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0xb8e0))(this, p0);
     }
 
+    virtual void replaceGroupID(GameObject* p0, int p1, int p2) {
+        return reinterpret_cast<void(*)(decltype(this), GameObject*, int, int)>(m->getOriginal(getBase()+0x27470))(this, p0, p1, p2);
+    }
+
     virtual void scaleChanged(float p0) {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x25490))(this, p0);
     }
@@ -977,6 +1045,9 @@ class $EditorUI : public $CacBase {
 
         if (extract_virtual(&orig, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::redoLastAction}) != extract_virtual(this, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::redoLastAction}))
             m->registerHook(getBase()+0xb8e0, extract_virtual(this, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::redoLastAction}));
+
+        if (extract_virtual(&orig, (void($EditorUI::*)(GameObject*, int, int)){&$EditorUI::replaceGroupID}) != extract_virtual(this, (void($EditorUI::*)(GameObject*, int, int)){&$EditorUI::replaceGroupID}))
+            m->registerHook(getBase()+0x27470, extract_virtual(this, (void($EditorUI::*)(GameObject*, int, int)){&$EditorUI::replaceGroupID}));
 
         if (extract_virtual(&orig, (void($EditorUI::*)(float)){&$EditorUI::scaleChanged}) != extract_virtual(this, (void($EditorUI::*)(float)){&$EditorUI::scaleChanged}))
             m->registerHook(getBase()+0x25490, extract_virtual(this, (void($EditorUI::*)(float)){&$EditorUI::scaleChanged}));
@@ -2032,10 +2103,31 @@ class $GJFollowCommandLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x16a550))(this, p0, p1);
     }
 
+    virtual void onUpdateGroupID(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x16cfe0))(this, p0);
+    }
+
+    virtual void onUpdateGroupID2(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x16d1c0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x16d480))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $GJFollowCommandLayer(true);
         if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJFollowCommandLayer::create}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJFollowCommandLayer::create}))
             m->registerHook(getBase()+0x16a550, extract_virtual(this, (void($GJFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJFollowCommandLayer::create}));
+
+        if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}))
+            m->registerHook(getBase()+0x16cfe0, extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}));
+
+        if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}))
+            m->registerHook(getBase()+0x16d1c0, extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}));
+
+        if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(CCTextInputNode*)){&$GJFollowCommandLayer::textChanged}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(CCTextInputNode*)){&$GJFollowCommandLayer::textChanged}))
+            m->registerHook(getBase()+0x16d480, extract_virtual(this, (void($GJFollowCommandLayer::*)(CCTextInputNode*)){&$GJFollowCommandLayer::textChanged}));
     }
 };
 
@@ -2211,10 +2303,17 @@ class $GJPFollowCommandLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x1aea20))(this, p0, p1);
     }
 
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x1b1dc0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $GJPFollowCommandLayer(true);
         if (extract_virtual(&orig, (void($GJPFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJPFollowCommandLayer::create}) != extract_virtual(this, (void($GJPFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJPFollowCommandLayer::create}))
             m->registerHook(getBase()+0x1aea20, extract_virtual(this, (void($GJPFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJPFollowCommandLayer::create}));
+
+        if (extract_virtual(&orig, (void($GJPFollowCommandLayer::*)(CCTextInputNode*)){&$GJPFollowCommandLayer::textChanged}) != extract_virtual(this, (void($GJPFollowCommandLayer::*)(CCTextInputNode*)){&$GJPFollowCommandLayer::textChanged}))
+            m->registerHook(getBase()+0x1b1dc0, extract_virtual(this, (void($GJPFollowCommandLayer::*)(CCTextInputNode*)){&$GJPFollowCommandLayer::textChanged}));
     }
 };
 
@@ -2262,10 +2361,31 @@ class $GJRotateCommandLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x1ba0))(this, p0, p1);
     }
 
+    virtual void onUpdateGroupID(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x4bb0))(this, p0);
+    }
+
+    virtual void onUpdateGroupID2(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x4ca0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x58d0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $GJRotateCommandLayer(true);
         if (extract_virtual(&orig, (void($GJRotateCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJRotateCommandLayer::create}) != extract_virtual(this, (void($GJRotateCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJRotateCommandLayer::create}))
             m->registerHook(getBase()+0x1ba0, extract_virtual(this, (void($GJRotateCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJRotateCommandLayer::create}));
+
+        if (extract_virtual(&orig, (void($GJRotateCommandLayer::*)(cocos2d::CCObject*)){&$GJRotateCommandLayer::onUpdateGroupID}) != extract_virtual(this, (void($GJRotateCommandLayer::*)(cocos2d::CCObject*)){&$GJRotateCommandLayer::onUpdateGroupID}))
+            m->registerHook(getBase()+0x4bb0, extract_virtual(this, (void($GJRotateCommandLayer::*)(cocos2d::CCObject*)){&$GJRotateCommandLayer::onUpdateGroupID}));
+
+        if (extract_virtual(&orig, (void($GJRotateCommandLayer::*)(cocos2d::CCObject*)){&$GJRotateCommandLayer::onUpdateGroupID2}) != extract_virtual(this, (void($GJRotateCommandLayer::*)(cocos2d::CCObject*)){&$GJRotateCommandLayer::onUpdateGroupID2}))
+            m->registerHook(getBase()+0x4ca0, extract_virtual(this, (void($GJRotateCommandLayer::*)(cocos2d::CCObject*)){&$GJRotateCommandLayer::onUpdateGroupID2}));
+
+        if (extract_virtual(&orig, (void($GJRotateCommandLayer::*)(CCTextInputNode*)){&$GJRotateCommandLayer::textChanged}) != extract_virtual(this, (void($GJRotateCommandLayer::*)(CCTextInputNode*)){&$GJRotateCommandLayer::textChanged}))
+            m->registerHook(getBase()+0x58d0, extract_virtual(this, (void($GJRotateCommandLayer::*)(CCTextInputNode*)){&$GJRotateCommandLayer::textChanged}));
     }
 };
 
@@ -2288,6 +2408,10 @@ class $GJSearchObject : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)>(m->getOriginal(getBase()+0x2dee30))(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18);
     }
 
+    virtual void getPageObject(int p0) {
+        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x2df9a0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $GJSearchObject(true);
         if (extract_virtual(&orig, (void($GJSearchObject::*)(SearchType)){&$GJSearchObject::create}) != extract_virtual(this, (void($GJSearchObject::*)(SearchType)){&$GJSearchObject::create}))
@@ -2295,6 +2419,31 @@ class $GJSearchObject : public $CacBase {
 
         if (extract_virtual(&orig, (void($GJSearchObject::*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create}) != extract_virtual(this, (void($GJSearchObject::*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create}))
             m->registerHook(getBase()+0x2dee30, extract_virtual(this, (void($GJSearchObject::*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create}));
+
+        if (extract_virtual(&orig, (void($GJSearchObject::*)(int)){&$GJSearchObject::getPageObject}) != extract_virtual(this, (void($GJSearchObject::*)(int)){&$GJSearchObject::getPageObject}))
+            m->registerHook(getBase()+0x2df9a0, extract_virtual(this, (void($GJSearchObject::*)(int)){&$GJSearchObject::getPageObject}));
+    }
+};
+
+
+class $GJSpecialColorSelect : public $CacBase {
+ public:
+    $GJSpecialColorSelect() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $GJSpecialColorSelect(bool dont_push) {}
+    typedef GJSpecialColorSelect* __thistype;
+
+    virtual void textForColorIdx(int p0) {
+        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x383a50))(this, p0);
+    }
+
+    void apply_hooks() override {
+        auto orig = $GJSpecialColorSelect(true);
+        if (extract_virtual(&orig, (void($GJSpecialColorSelect::*)(int)){&$GJSpecialColorSelect::textForColorIdx}) != extract_virtual(this, (void($GJSpecialColorSelect::*)(int)){&$GJSpecialColorSelect::textForColorIdx}))
+            m->registerHook(getBase()+0x383a50, extract_virtual(this, (void($GJSpecialColorSelect::*)(int)){&$GJSpecialColorSelect::textForColorIdx}));
     }
 };
 
@@ -2386,6 +2535,10 @@ class $GameManager : public $CacBase {
         return reinterpret_cast<int(*)(decltype(this), char const*, bool)>(m->getOriginal(getBase()+0x1cca80))(this, p0, p1);
     }
 
+    virtual void setIntGameVariable(char const* p0, int p1) {
+        return reinterpret_cast<void(*)(decltype(this), char const*, int)>(m->getOriginal(getBase()+0x1cd0e0))(this, p0, p1);
+    }
+
     virtual void setUGV(char const* p0, bool p1) {
         return reinterpret_cast<void(*)(decltype(this), char const*, bool)>(m->getOriginal(getBase()+0x1cce50))(this, p0, p1);
     }
@@ -2427,6 +2580,9 @@ class $GameManager : public $CacBase {
 
         if (extract_virtual(&orig, (int($GameManager::*)(char const*, bool)){&$GameManager::setGameVariable}) != extract_virtual(this, (int($GameManager::*)(char const*, bool)){&$GameManager::setGameVariable}))
             m->registerHook(getBase()+0x1cca80, extract_virtual(this, (int($GameManager::*)(char const*, bool)){&$GameManager::setGameVariable}));
+
+        if (extract_virtual(&orig, (void($GameManager::*)(char const*, int)){&$GameManager::setIntGameVariable}) != extract_virtual(this, (void($GameManager::*)(char const*, int)){&$GameManager::setIntGameVariable}))
+            m->registerHook(getBase()+0x1cd0e0, extract_virtual(this, (void($GameManager::*)(char const*, int)){&$GameManager::setIntGameVariable}));
 
         if (extract_virtual(&orig, (void($GameManager::*)(char const*, bool)){&$GameManager::setUGV}) != extract_virtual(this, (void($GameManager::*)(char const*, bool)){&$GameManager::setUGV}))
             m->registerHook(getBase()+0x1cce50, extract_virtual(this, (void($GameManager::*)(char const*, bool)){&$GameManager::setUGV}));
@@ -3105,14 +3261,28 @@ class $LevelBrowserLayer : public $CacBase {
     $LevelBrowserLayer(bool dont_push) {}
     typedef LevelBrowserLayer* __thistype;
 
+    virtual void loadPage(GJSearchObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), GJSearchObject*)>(m->getOriginal(getBase()+0x253650))(this, p0);
+    }
+
     virtual void scene(GJSearchObject* p0) {
         return reinterpret_cast<void(*)(decltype(this), GJSearchObject*)>(m->getOriginal(getBase()+0x2511d0))(this, p0);
     }
 
+    virtual void setIDPopupClosed(SetIDPopup* p0, int p1) {
+        return reinterpret_cast<void(*)(decltype(this), SetIDPopup*, int)>(m->getOriginal(getBase()+0x2554f0))(this, p0, p1);
+    }
+
     void apply_hooks() override {
         auto orig = $LevelBrowserLayer(true);
+        if (extract_virtual(&orig, (void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::loadPage}) != extract_virtual(this, (void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::loadPage}))
+            m->registerHook(getBase()+0x253650, extract_virtual(this, (void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::loadPage}));
+
         if (extract_virtual(&orig, (void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::scene}) != extract_virtual(this, (void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::scene}))
             m->registerHook(getBase()+0x2511d0, extract_virtual(this, (void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::scene}));
+
+        if (extract_virtual(&orig, (void($LevelBrowserLayer::*)(SetIDPopup*, int)){&$LevelBrowserLayer::setIDPopupClosed}) != extract_virtual(this, (void($LevelBrowserLayer::*)(SetIDPopup*, int)){&$LevelBrowserLayer::setIDPopupClosed}))
+            m->registerHook(getBase()+0x2554f0, extract_virtual(this, (void($LevelBrowserLayer::*)(SetIDPopup*, int)){&$LevelBrowserLayer::setIDPopupClosed}));
     }
 };
 
@@ -3183,8 +3353,16 @@ class $LevelEditorLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), PlayerObject*, bool, bool)>(m->getOriginal(getBase()+0xa04e0))(this, p0, p1, p2);
     }
 
+    virtual void getNextFreeBlockID(cocos2d::CCArray* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCArray*)>(m->getOriginal(getBase()+0x9a4e0))(this, p0);
+    }
+
     virtual int getNextFreeGroupID(cocos2d::CCArray* p0) {
         return reinterpret_cast<int(*)(decltype(this), cocos2d::CCArray*)>(m->getOriginal(getBase()+0x9a1b0))(this, p0);
+    }
+
+    virtual void getNextFreeItemID(cocos2d::CCArray* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCArray*)>(m->getOriginal(getBase()+0x9a390))(this, p0);
     }
 
     virtual void getObjectRect(GameObject* p0, bool p1) {
@@ -3335,8 +3513,14 @@ class $LevelEditorLayer : public $CacBase {
         if (extract_virtual(&orig, (void($LevelEditorLayer::*)(PlayerObject*, bool, bool)){&$LevelEditorLayer::flipGravity}) != extract_virtual(this, (void($LevelEditorLayer::*)(PlayerObject*, bool, bool)){&$LevelEditorLayer::flipGravity}))
             m->registerHook(getBase()+0xa04e0, extract_virtual(this, (void($LevelEditorLayer::*)(PlayerObject*, bool, bool)){&$LevelEditorLayer::flipGravity}));
 
+        if (extract_virtual(&orig, (void($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeBlockID}) != extract_virtual(this, (void($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeBlockID}))
+            m->registerHook(getBase()+0x9a4e0, extract_virtual(this, (void($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeBlockID}));
+
         if (extract_virtual(&orig, (int($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeGroupID}) != extract_virtual(this, (int($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeGroupID}))
             m->registerHook(getBase()+0x9a1b0, extract_virtual(this, (int($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeGroupID}));
+
+        if (extract_virtual(&orig, (void($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeItemID}) != extract_virtual(this, (void($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeItemID}))
+            m->registerHook(getBase()+0x9a390, extract_virtual(this, (void($LevelEditorLayer::*)(cocos2d::CCArray*)){&$LevelEditorLayer::getNextFreeItemID}));
 
         if (extract_virtual(&orig, (void($LevelEditorLayer::*)(GameObject*, bool)){&$LevelEditorLayer::getObjectRect}) != extract_virtual(this, (void($LevelEditorLayer::*)(GameObject*, bool)){&$LevelEditorLayer::getObjectRect}))
             m->registerHook(getBase()+0x96240, extract_virtual(this, (void($LevelEditorLayer::*)(GameObject*, bool)){&$LevelEditorLayer::getObjectRect}));
@@ -4994,6 +5178,28 @@ class $SetIDLayer : public $CacBase {
 };
 
 
+class $SetItemIDLayer : public $CacBase {
+ public:
+    $SetItemIDLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $SetItemIDLayer(bool dont_push) {}
+    typedef SetItemIDLayer* __thistype;
+
+    virtual void create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x5a830))(this, p0, p1);
+    }
+
+    void apply_hooks() override {
+        auto orig = $SetItemIDLayer(true);
+        if (extract_virtual(&orig, (void($SetItemIDLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetItemIDLayer::create}) != extract_virtual(this, (void($SetItemIDLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetItemIDLayer::create}))
+            m->registerHook(getBase()+0x5a830, extract_virtual(this, (void($SetItemIDLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetItemIDLayer::create}));
+    }
+};
+
+
 class $SetTargetIDLayer : public $CacBase {
  public:
     $SetTargetIDLayer() {
@@ -5008,10 +5214,24 @@ class $SetTargetIDLayer : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*, std::string)>(m->getOriginal(getBase()+0x159d20))(this, p0, p1, p2);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x15aed0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x15b6c0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetTargetIDLayer(true);
         if (extract_virtual(&orig, (void($SetTargetIDLayer::*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create}) != extract_virtual(this, (void($SetTargetIDLayer::*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create}))
             m->registerHook(getBase()+0x159d20, extract_virtual(this, (void($SetTargetIDLayer::*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create}));
+
+        if (extract_virtual(&orig, (void($SetTargetIDLayer::*)(cocos2d::CCObject*)){&$SetTargetIDLayer::onTargetIDArrow}) != extract_virtual(this, (void($SetTargetIDLayer::*)(cocos2d::CCObject*)){&$SetTargetIDLayer::onTargetIDArrow}))
+            m->registerHook(getBase()+0x15aed0, extract_virtual(this, (void($SetTargetIDLayer::*)(cocos2d::CCObject*)){&$SetTargetIDLayer::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetTargetIDLayer::*)(CCTextInputNode*)){&$SetTargetIDLayer::textChanged}) != extract_virtual(this, (void($SetTargetIDLayer::*)(CCTextInputNode*)){&$SetTargetIDLayer::textChanged}))
+            m->registerHook(getBase()+0x15b6c0, extract_virtual(this, (void($SetTargetIDLayer::*)(CCTextInputNode*)){&$SetTargetIDLayer::textChanged}));
     }
 };
 
@@ -5030,10 +5250,24 @@ class $SetupAnimationPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x208b70))(this, p0, p1);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x209fc0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x20ab30))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupAnimationPopup(true);
         if (extract_virtual(&orig, (void($SetupAnimationPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupAnimationPopup::create}) != extract_virtual(this, (void($SetupAnimationPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupAnimationPopup::create}))
             m->registerHook(getBase()+0x208b70, extract_virtual(this, (void($SetupAnimationPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupAnimationPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupAnimationPopup::*)(cocos2d::CCObject*)){&$SetupAnimationPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupAnimationPopup::*)(cocos2d::CCObject*)){&$SetupAnimationPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x209fc0, extract_virtual(this, (void($SetupAnimationPopup::*)(cocos2d::CCObject*)){&$SetupAnimationPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupAnimationPopup::*)(CCTextInputNode*)){&$SetupAnimationPopup::textChanged}) != extract_virtual(this, (void($SetupAnimationPopup::*)(CCTextInputNode*)){&$SetupAnimationPopup::textChanged}))
+            m->registerHook(getBase()+0x20ab30, extract_virtual(this, (void($SetupAnimationPopup::*)(CCTextInputNode*)){&$SetupAnimationPopup::textChanged}));
     }
 };
 
@@ -5052,10 +5286,24 @@ class $SetupCollisionTriggerPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x1d6120))(this, p0, p1);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x1d77b0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x1d84d0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupCollisionTriggerPopup(true);
         if (extract_virtual(&orig, (void($SetupCollisionTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCollisionTriggerPopup::create}) != extract_virtual(this, (void($SetupCollisionTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCollisionTriggerPopup::create}))
             m->registerHook(getBase()+0x1d6120, extract_virtual(this, (void($SetupCollisionTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCollisionTriggerPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupCollisionTriggerPopup::*)(cocos2d::CCObject*)){&$SetupCollisionTriggerPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupCollisionTriggerPopup::*)(cocos2d::CCObject*)){&$SetupCollisionTriggerPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x1d77b0, extract_virtual(this, (void($SetupCollisionTriggerPopup::*)(cocos2d::CCObject*)){&$SetupCollisionTriggerPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupCollisionTriggerPopup::*)(CCTextInputNode*)){&$SetupCollisionTriggerPopup::textChanged}) != extract_virtual(this, (void($SetupCollisionTriggerPopup::*)(CCTextInputNode*)){&$SetupCollisionTriggerPopup::textChanged}))
+            m->registerHook(getBase()+0x1d84d0, extract_virtual(this, (void($SetupCollisionTriggerPopup::*)(CCTextInputNode*)){&$SetupCollisionTriggerPopup::textChanged}));
     }
 };
 
@@ -5074,10 +5322,24 @@ class $SetupCountTriggerPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x15c6c0))(this, p0, p1);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x15dd40))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x15e9a0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupCountTriggerPopup(true);
         if (extract_virtual(&orig, (void($SetupCountTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCountTriggerPopup::create}) != extract_virtual(this, (void($SetupCountTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCountTriggerPopup::create}))
             m->registerHook(getBase()+0x15c6c0, extract_virtual(this, (void($SetupCountTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCountTriggerPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupCountTriggerPopup::*)(cocos2d::CCObject*)){&$SetupCountTriggerPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupCountTriggerPopup::*)(cocos2d::CCObject*)){&$SetupCountTriggerPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x15dd40, extract_virtual(this, (void($SetupCountTriggerPopup::*)(cocos2d::CCObject*)){&$SetupCountTriggerPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupCountTriggerPopup::*)(CCTextInputNode*)){&$SetupCountTriggerPopup::textChanged}) != extract_virtual(this, (void($SetupCountTriggerPopup::*)(CCTextInputNode*)){&$SetupCountTriggerPopup::textChanged}))
+            m->registerHook(getBase()+0x15e9a0, extract_virtual(this, (void($SetupCountTriggerPopup::*)(CCTextInputNode*)){&$SetupCountTriggerPopup::textChanged}));
     }
 };
 
@@ -5096,10 +5358,96 @@ class $SetupInstantCountPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x352c10))(this, p0, p1);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x354520))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x355270))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupInstantCountPopup(true);
         if (extract_virtual(&orig, (void($SetupInstantCountPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInstantCountPopup::create}) != extract_virtual(this, (void($SetupInstantCountPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInstantCountPopup::create}))
             m->registerHook(getBase()+0x352c10, extract_virtual(this, (void($SetupInstantCountPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInstantCountPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupInstantCountPopup::*)(cocos2d::CCObject*)){&$SetupInstantCountPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupInstantCountPopup::*)(cocos2d::CCObject*)){&$SetupInstantCountPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x354520, extract_virtual(this, (void($SetupInstantCountPopup::*)(cocos2d::CCObject*)){&$SetupInstantCountPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupInstantCountPopup::*)(CCTextInputNode*)){&$SetupInstantCountPopup::textChanged}) != extract_virtual(this, (void($SetupInstantCountPopup::*)(CCTextInputNode*)){&$SetupInstantCountPopup::textChanged}))
+            m->registerHook(getBase()+0x355270, extract_virtual(this, (void($SetupInstantCountPopup::*)(CCTextInputNode*)){&$SetupInstantCountPopup::textChanged}));
+    }
+};
+
+
+class $SetupInteractObjectPopup : public $CacBase {
+ public:
+    $SetupInteractObjectPopup() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $SetupInteractObjectPopup(bool dont_push) {}
+    typedef SetupInteractObjectPopup* __thistype;
+
+    virtual void create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x29a400))(this, p0, p1);
+    }
+
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x29bbc0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x29c2b0))(this, p0);
+    }
+
+    void apply_hooks() override {
+        auto orig = $SetupInteractObjectPopup(true);
+        if (extract_virtual(&orig, (void($SetupInteractObjectPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInteractObjectPopup::create}) != extract_virtual(this, (void($SetupInteractObjectPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInteractObjectPopup::create}))
+            m->registerHook(getBase()+0x29a400, extract_virtual(this, (void($SetupInteractObjectPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInteractObjectPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupInteractObjectPopup::*)(cocos2d::CCObject*)){&$SetupInteractObjectPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupInteractObjectPopup::*)(cocos2d::CCObject*)){&$SetupInteractObjectPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x29bbc0, extract_virtual(this, (void($SetupInteractObjectPopup::*)(cocos2d::CCObject*)){&$SetupInteractObjectPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupInteractObjectPopup::*)(CCTextInputNode*)){&$SetupInteractObjectPopup::textChanged}) != extract_virtual(this, (void($SetupInteractObjectPopup::*)(CCTextInputNode*)){&$SetupInteractObjectPopup::textChanged}))
+            m->registerHook(getBase()+0x29c2b0, extract_virtual(this, (void($SetupInteractObjectPopup::*)(CCTextInputNode*)){&$SetupInteractObjectPopup::textChanged}));
+    }
+};
+
+
+class $SetupObjectTogglePopup : public $CacBase {
+ public:
+    $SetupObjectTogglePopup() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $SetupObjectTogglePopup(bool dont_push) {}
+    typedef SetupObjectTogglePopup* __thistype;
+
+    virtual void create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x1c0860))(this, p0, p1);
+    }
+
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x1c1c40))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x1c2660))(this, p0);
+    }
+
+    void apply_hooks() override {
+        auto orig = $SetupObjectTogglePopup(true);
+        if (extract_virtual(&orig, (void($SetupObjectTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupObjectTogglePopup::create}) != extract_virtual(this, (void($SetupObjectTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupObjectTogglePopup::create}))
+            m->registerHook(getBase()+0x1c0860, extract_virtual(this, (void($SetupObjectTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupObjectTogglePopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupObjectTogglePopup::*)(cocos2d::CCObject*)){&$SetupObjectTogglePopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupObjectTogglePopup::*)(cocos2d::CCObject*)){&$SetupObjectTogglePopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x1c1c40, extract_virtual(this, (void($SetupObjectTogglePopup::*)(cocos2d::CCObject*)){&$SetupObjectTogglePopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupObjectTogglePopup::*)(CCTextInputNode*)){&$SetupObjectTogglePopup::textChanged}) != extract_virtual(this, (void($SetupObjectTogglePopup::*)(CCTextInputNode*)){&$SetupObjectTogglePopup::textChanged}))
+            m->registerHook(getBase()+0x1c2660, extract_virtual(this, (void($SetupObjectTogglePopup::*)(CCTextInputNode*)){&$SetupObjectTogglePopup::textChanged}));
     }
 };
 
@@ -5118,10 +5466,24 @@ class $SetupOpacityPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x32b70))(this, p0, p1);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x340a0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x34a60))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupOpacityPopup(true);
         if (extract_virtual(&orig, (void($SetupOpacityPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupOpacityPopup::create}) != extract_virtual(this, (void($SetupOpacityPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupOpacityPopup::create}))
             m->registerHook(getBase()+0x32b70, extract_virtual(this, (void($SetupOpacityPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupOpacityPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupOpacityPopup::*)(cocos2d::CCObject*)){&$SetupOpacityPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupOpacityPopup::*)(cocos2d::CCObject*)){&$SetupOpacityPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x340a0, extract_virtual(this, (void($SetupOpacityPopup::*)(cocos2d::CCObject*)){&$SetupOpacityPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupOpacityPopup::*)(CCTextInputNode*)){&$SetupOpacityPopup::textChanged}) != extract_virtual(this, (void($SetupOpacityPopup::*)(CCTextInputNode*)){&$SetupOpacityPopup::textChanged}))
+            m->registerHook(getBase()+0x34a60, extract_virtual(this, (void($SetupOpacityPopup::*)(CCTextInputNode*)){&$SetupOpacityPopup::textChanged}));
     }
 };
 
@@ -5140,10 +5502,31 @@ class $SetupPickupTriggerPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x35e70))(this, p0, p1);
     }
 
+    virtual void onItemIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x37100))(this, p0);
+    }
+
+    virtual void onNextItemID(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x37260))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x37ca0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupPickupTriggerPopup(true);
         if (extract_virtual(&orig, (void($SetupPickupTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPickupTriggerPopup::create}) != extract_virtual(this, (void($SetupPickupTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPickupTriggerPopup::create}))
             m->registerHook(getBase()+0x35e70, extract_virtual(this, (void($SetupPickupTriggerPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPickupTriggerPopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupPickupTriggerPopup::*)(cocos2d::CCObject*)){&$SetupPickupTriggerPopup::onItemIDArrow}) != extract_virtual(this, (void($SetupPickupTriggerPopup::*)(cocos2d::CCObject*)){&$SetupPickupTriggerPopup::onItemIDArrow}))
+            m->registerHook(getBase()+0x37100, extract_virtual(this, (void($SetupPickupTriggerPopup::*)(cocos2d::CCObject*)){&$SetupPickupTriggerPopup::onItemIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupPickupTriggerPopup::*)(cocos2d::CCObject*)){&$SetupPickupTriggerPopup::onNextItemID}) != extract_virtual(this, (void($SetupPickupTriggerPopup::*)(cocos2d::CCObject*)){&$SetupPickupTriggerPopup::onNextItemID}))
+            m->registerHook(getBase()+0x37260, extract_virtual(this, (void($SetupPickupTriggerPopup::*)(cocos2d::CCObject*)){&$SetupPickupTriggerPopup::onNextItemID}));
+
+        if (extract_virtual(&orig, (void($SetupPickupTriggerPopup::*)(CCTextInputNode*)){&$SetupPickupTriggerPopup::textChanged}) != extract_virtual(this, (void($SetupPickupTriggerPopup::*)(CCTextInputNode*)){&$SetupPickupTriggerPopup::textChanged}))
+            m->registerHook(getBase()+0x37ca0, extract_virtual(this, (void($SetupPickupTriggerPopup::*)(CCTextInputNode*)){&$SetupPickupTriggerPopup::textChanged}));
     }
 };
 
@@ -5174,12 +5557,20 @@ class $SetupPulsePopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x1eb020))(this, p0);
     }
 
-    virtual void updateFadeOutLabel(bool p0) {
-        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x1eba20))(this, p0);
+    virtual void onSelectTargetMode(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x1eac30))(this, p0);
     }
 
-    virtual void updateHoldLabel(bool p0) {
-        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x1eb8d0))(this, p0);
+    virtual void onUpdateCustomColor(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x1eaef0))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x1ec960))(this, p0);
+    }
+
+    virtual void updateFadeOutLabel(bool p0) {
+        return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x1eba20))(this, p0);
     }
 
     void apply_hooks() override {
@@ -5196,11 +5587,17 @@ class $SetupPulsePopup : public $CacBase {
         if (extract_virtual(&orig, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectPulseMode}) != extract_virtual(this, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectPulseMode}))
             m->registerHook(getBase()+0x1eb020, extract_virtual(this, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectPulseMode}));
 
+        if (extract_virtual(&orig, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectTargetMode}) != extract_virtual(this, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectTargetMode}))
+            m->registerHook(getBase()+0x1eac30, extract_virtual(this, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectTargetMode}));
+
+        if (extract_virtual(&orig, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onUpdateCustomColor}) != extract_virtual(this, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onUpdateCustomColor}))
+            m->registerHook(getBase()+0x1eaef0, extract_virtual(this, (void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onUpdateCustomColor}));
+
+        if (extract_virtual(&orig, (void($SetupPulsePopup::*)(CCTextInputNode*)){&$SetupPulsePopup::textChanged}) != extract_virtual(this, (void($SetupPulsePopup::*)(CCTextInputNode*)){&$SetupPulsePopup::textChanged}))
+            m->registerHook(getBase()+0x1ec960, extract_virtual(this, (void($SetupPulsePopup::*)(CCTextInputNode*)){&$SetupPulsePopup::textChanged}));
+
         if (extract_virtual(&orig, (void($SetupPulsePopup::*)(bool)){&$SetupPulsePopup::updateFadeOutLabel}) != extract_virtual(this, (void($SetupPulsePopup::*)(bool)){&$SetupPulsePopup::updateFadeOutLabel}))
             m->registerHook(getBase()+0x1eba20, extract_virtual(this, (void($SetupPulsePopup::*)(bool)){&$SetupPulsePopup::updateFadeOutLabel}));
-
-        if (extract_virtual(&orig, (void($SetupPulsePopup::*)(bool)){&$SetupPulsePopup::updateHoldLabel}) != extract_virtual(this, (void($SetupPulsePopup::*)(bool)){&$SetupPulsePopup::updateHoldLabel}))
-            m->registerHook(getBase()+0x1eb8d0, extract_virtual(this, (void($SetupPulsePopup::*)(bool)){&$SetupPulsePopup::updateHoldLabel}));
     }
 };
 
@@ -5245,6 +5642,14 @@ class $SetupSpawnPopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x13b0e0))(this, p0, p1, p2, p3, p4, p5);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x13ad80))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x13b990))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupSpawnPopup(true);
         if (extract_virtual(&orig, (void($SetupSpawnPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupSpawnPopup::create}) != extract_virtual(this, (void($SetupSpawnPopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupSpawnPopup::create}))
@@ -5252,6 +5657,12 @@ class $SetupSpawnPopup : public $CacBase {
 
         if (extract_virtual(&orig, (void($SetupSpawnPopup::*)(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton}) != extract_virtual(this, (void($SetupSpawnPopup::*)(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton}))
             m->registerHook(getBase()+0x13b0e0, extract_virtual(this, (void($SetupSpawnPopup::*)(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton}));
+
+        if (extract_virtual(&orig, (void($SetupSpawnPopup::*)(cocos2d::CCObject*)){&$SetupSpawnPopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupSpawnPopup::*)(cocos2d::CCObject*)){&$SetupSpawnPopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x13ad80, extract_virtual(this, (void($SetupSpawnPopup::*)(cocos2d::CCObject*)){&$SetupSpawnPopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupSpawnPopup::*)(CCTextInputNode*)){&$SetupSpawnPopup::textChanged}) != extract_virtual(this, (void($SetupSpawnPopup::*)(CCTextInputNode*)){&$SetupSpawnPopup::textChanged}))
+            m->registerHook(getBase()+0x13b990, extract_virtual(this, (void($SetupSpawnPopup::*)(CCTextInputNode*)){&$SetupSpawnPopup::textChanged}));
     }
 };
 
@@ -5270,10 +5681,24 @@ class $SetupTouchTogglePopup : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x1576a0))(this, p0, p1);
     }
 
+    virtual void onTargetIDArrow(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x158b60))(this, p0);
+    }
+
+    virtual void textChanged(CCTextInputNode* p0) {
+        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x1596a0))(this, p0);
+    }
+
     void apply_hooks() override {
         auto orig = $SetupTouchTogglePopup(true);
         if (extract_virtual(&orig, (void($SetupTouchTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupTouchTogglePopup::create}) != extract_virtual(this, (void($SetupTouchTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupTouchTogglePopup::create}))
             m->registerHook(getBase()+0x1576a0, extract_virtual(this, (void($SetupTouchTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupTouchTogglePopup::create}));
+
+        if (extract_virtual(&orig, (void($SetupTouchTogglePopup::*)(cocos2d::CCObject*)){&$SetupTouchTogglePopup::onTargetIDArrow}) != extract_virtual(this, (void($SetupTouchTogglePopup::*)(cocos2d::CCObject*)){&$SetupTouchTogglePopup::onTargetIDArrow}))
+            m->registerHook(getBase()+0x158b60, extract_virtual(this, (void($SetupTouchTogglePopup::*)(cocos2d::CCObject*)){&$SetupTouchTogglePopup::onTargetIDArrow}));
+
+        if (extract_virtual(&orig, (void($SetupTouchTogglePopup::*)(CCTextInputNode*)){&$SetupTouchTogglePopup::textChanged}) != extract_virtual(this, (void($SetupTouchTogglePopup::*)(CCTextInputNode*)){&$SetupTouchTogglePopup::textChanged}))
+            m->registerHook(getBase()+0x1596a0, extract_virtual(this, (void($SetupTouchTogglePopup::*)(CCTextInputNode*)){&$SetupTouchTogglePopup::textChanged}));
     }
 };
 
@@ -5678,6 +6103,10 @@ class $CCArray : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCArray*)>(m->getOriginal(getBase()+0x41a2d0))(this, p0);
     }
 
+    virtual void containsObject(cocos2d::CCObject* p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x41a3e0))(this, p0);
+    }
+
     virtual void createWithObject(cocos2d::CCObject* p0) {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x419d50))(this, p0);
     }
@@ -5724,6 +6153,9 @@ class $CCArray : public $CacBase {
 
         if (extract_virtual(&orig, (void($CCArray::*)(cocos2d::CCArray*)){&$CCArray::addObjectsFromArray}) != extract_virtual(this, (void($CCArray::*)(cocos2d::CCArray*)){&$CCArray::addObjectsFromArray}))
             m->registerHook(getBase()+0x41a2d0, extract_virtual(this, (void($CCArray::*)(cocos2d::CCArray*)){&$CCArray::addObjectsFromArray}));
+
+        if (extract_virtual(&orig, (void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::containsObject}) != extract_virtual(this, (void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::containsObject}))
+            m->registerHook(getBase()+0x41a3e0, extract_virtual(this, (void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::containsObject}));
 
         if (extract_virtual(&orig, (void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::createWithObject}) != extract_virtual(this, (void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::createWithObject}))
             m->registerHook(getBase()+0x419d50, extract_virtual(this, (void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::createWithObject}));
@@ -7052,6 +7484,64 @@ class $CCParticleSystemQuad : public $CacBase {
         auto orig = $CCParticleSystemQuad(true);
         if (extract_virtual(&orig, (void($CCParticleSystemQuad::*)(char const*)){&$CCParticleSystemQuad::create}) != extract_virtual(this, (void($CCParticleSystemQuad::*)(char const*)){&$CCParticleSystemQuad::create}))
             m->registerHook(getBase()+0x36b000, extract_virtual(this, (void($CCParticleSystemQuad::*)(char const*)){&$CCParticleSystemQuad::create}));
+    }
+};
+
+
+class $CCPoint : public $CacBase {
+ public:
+    $CCPoint() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $CCPoint(bool dont_push) {}
+    typedef CCPoint* __thistype;
+
+    virtual void equals(cocos2d::CCPoint const& p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint const&)>(m->getOriginal(getBase()+0x1371d0))(this, p0);
+    }
+
+    void apply_hooks() override {
+        auto orig = $CCPoint(true);
+        if (extract_virtual(&orig, (void($CCPoint::*)(cocos2d::CCPoint const&)){&$CCPoint::equals}) != extract_virtual(this, (void($CCPoint::*)(cocos2d::CCPoint const&)){&$CCPoint::equals}))
+            m->registerHook(getBase()+0x1371d0, extract_virtual(this, (void($CCPoint::*)(cocos2d::CCPoint const&)){&$CCPoint::equals}));
+    }
+};
+
+
+class $CCRect : public $CacBase {
+ public:
+    $CCRect() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    $CCRect(bool dont_push) {}
+    typedef CCRect* __thistype;
+
+    virtual void containsPoint(cocos2d::CCPoint const& p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint const&)>(m->getOriginal(getBase()+0x1377b0))(this, p0);
+    }
+
+    virtual void equals(cocos2d::CCRect const& p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCRect const&)>(m->getOriginal(getBase()+0x1376a0))(this, p0);
+    }
+
+    virtual void intersectsRect(cocos2d::CCRect const& p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCRect const&)>(m->getOriginal(getBase()+0x137800))(this, p0);
+    }
+
+    void apply_hooks() override {
+        auto orig = $CCRect(true);
+        if (extract_virtual(&orig, (void($CCRect::*)(cocos2d::CCPoint const&)){&$CCRect::containsPoint}) != extract_virtual(this, (void($CCRect::*)(cocos2d::CCPoint const&)){&$CCRect::containsPoint}))
+            m->registerHook(getBase()+0x1377b0, extract_virtual(this, (void($CCRect::*)(cocos2d::CCPoint const&)){&$CCRect::containsPoint}));
+
+        if (extract_virtual(&orig, (void($CCRect::*)(cocos2d::CCRect const&)){&$CCRect::equals}) != extract_virtual(this, (void($CCRect::*)(cocos2d::CCRect const&)){&$CCRect::equals}))
+            m->registerHook(getBase()+0x1376a0, extract_virtual(this, (void($CCRect::*)(cocos2d::CCRect const&)){&$CCRect::equals}));
+
+        if (extract_virtual(&orig, (void($CCRect::*)(cocos2d::CCRect const&)){&$CCRect::intersectsRect}) != extract_virtual(this, (void($CCRect::*)(cocos2d::CCRect const&)){&$CCRect::intersectsRect}))
+            m->registerHook(getBase()+0x137800, extract_virtual(this, (void($CCRect::*)(cocos2d::CCRect const&)){&$CCRect::intersectsRect}));
     }
 };
 

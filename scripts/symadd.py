@@ -35,8 +35,8 @@ if save_path and symbol_path:
                     addresses.append(match.group(1))
         with open(str(save_path), 'r') as prv:
             d = prv.read()
-            sorder = re.findall(r"(; (?:non-virtual thunk to )?.+?\(.*\)\n.+\n\n)", d)
-            rem = re.split(r"; (?:non-virtual thunk to )?(.+?\(.*\)\n.+\n\n)", d)
+            sorder = re.findall(r"(; (?:non-virtual thunk to )?.+?\(.*\)(?: const)?\n.+\n\n)", d)
+            rem = re.split(r"; (?:non-virtual thunk to )?(.+?\(.*\)(?: const)?\n.+\n\n)", d)
             print(rem[0])
             print(rem[-1])
     
