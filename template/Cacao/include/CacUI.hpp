@@ -14,7 +14,7 @@ namespace uiTests {
         void _onPress() {
             tester->onBtnPress(cac_this);
         }
-        void setupCreateMenu(int) override {
+        void setupCreateMenu() override {
             $EditorUI::setupCreateMenu();
 
             auto menu = cocos2d::CCMenu::create();
