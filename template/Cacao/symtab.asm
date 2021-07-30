@@ -50,6 +50,29 @@ extern _base
 	movss %1, [rsp]
 	add rsp, 16
 %endmacro
+
+%macro pushallxmm 0
+	pushmm xmm0
+	pushmm xmm1
+	pushmm xmm2
+	pushmm xmm3
+	; pushmm xmm4
+	; pushmm xmm5
+	; pushmm xmm6
+	; pushmm xmm7
+%endmacro
+
+%macro popallxmm 0
+	;popmm xmm7
+	;popmm xmm6
+	;popmm xmm5
+	;popmm xmm4
+	popmm xmm3
+	popmm xmm2
+	popmm xmm1
+	popmm xmm0
+%endmacro
+
 extern __Z7getBasev
 extern _memcpy
 %macro defit 2
@@ -58,8 +81,7 @@ global %1
 	push rbp
 	mov rbp, rsp
 	pushallnorax
-	pushmm xmm0
-	pushmm xmm1
+	pushallxmm
 	push rsi
 	push rdi
 
@@ -68,8 +90,7 @@ global %1
 
 	pop rdi
 	pop rsi
-	popmm xmm1
-	popmm xmm0
+	popallxmm
 	popallnorax
 	pop rbp
 	jmp rax
@@ -559,9 +580,6 @@ defit __ZN8EditorUI13disableButtonEP14CreateMenuItem, 0x1c0f0
 ; EditorUI::editButtonUsable()
 defit __ZN8EditorUI16editButtonUsableEv, 0x28f30
 
-; EditorUI::init(LevelEditorLayer*)
-defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
-
 ; EditorUI::editObject(cocos2d::CCObject*)
 defit __ZN8EditorUI10editObjectEPN7cocos2d8CCObjectE, 0x195a0
 
@@ -576,6 +594,9 @@ defit __ZN8EditorUI14getGroupCenterEPN7cocos2d7CCArrayEb, 0x23470
 
 ; EditorUI::getSelectedObjects()
 defit __ZN8EditorUI18getSelectedObjectsEv, 0x23f30
+
+; EditorUI::init(LevelEditorLayer*)
+defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
 
 ; EditorUI::keyDown(cocos2d::enumKeyCodes)
 defit __ZN8EditorUI7keyDownEN7cocos2d12enumKeyCodesE, 0x30790
@@ -615,6 +636,9 @@ defit __ZN8EditorUI14undoLastActionEPN7cocos2d8CCObjectE, 0xb830
 
 ; EditorUI::updateButtons()
 defit __ZN8EditorUI13updateButtonsEv, 0x1a300
+
+; EditorUI::updateObjectInfoLabel()
+defit __ZN8EditorUI21updateObjectInfoLabelEv, 0x1cb10
 
 ; EditorUI::updateSlider()
 defit __ZN8EditorUI12updateSliderEv, 0x18a90
@@ -1364,19 +1388,19 @@ defit __ZN15GJEffectManagerD2Ev, 0x17fe00
 defit __ZN20GJFollowCommandLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x16a550
 
 ; GJFollowCommandLayer::onUpdateGroupID(cocos2d::CCObject*)
-defit __ZN20GJFollowCommandLayer15onUpdateGroupIDEPN7cocos2d8CCObjectE, 0x16cfe0
+defit __ZN20GJFollowCommandLayer15onUpdateGroupIDEPN7cocos2d8CCObjectE, 0x16c8f0
 
 ; GJFollowCommandLayer::onUpdateGroupID2(cocos2d::CCObject*)
-defit __ZN20GJFollowCommandLayer16onUpdateGroupID2EPN7cocos2d8CCObjectE, 0x16d1c0
+defit __ZN20GJFollowCommandLayer16onUpdateGroupID2EPN7cocos2d8CCObjectE, 0x16c9e0
 
 ; GJFollowCommandLayer::textChanged(CCTextInputNode*)
 defit __ZN20GJFollowCommandLayer11textChangedEP15CCTextInputNode, 0x16d480
 
 ; GJFollowCommandLayer::updateTargetGroupID()
-defit __ZN20GJFollowCommandLayer19updateTargetGroupIDEv, 0x16c8f0
+defit __ZN20GJFollowCommandLayer19updateTargetGroupIDEv, 0x16cfe0
 
 ; GJFollowCommandLayer::updateTargetGroupID2()
-defit __ZN20GJFollowCommandLayer20updateTargetGroupID2Ev, 0x16c9e0
+defit __ZN20GJFollowCommandLayer20updateTargetGroupID2Ev, 0x16d1c0
 
 ; GJGameLevel::create()
 defit __ZN11GJGameLevel6createEv, 0x2b83e0
@@ -2413,6 +2437,9 @@ defit __ZN5OBB2D8overlapsEPS_, 0x35b0a0
 ; OBB2D::overlaps1Way(OBB2D*)
 defit __ZN5OBB2D12overlaps1WayEPS_, 0x35b0d0
 
+; ObjectToolbox::init()
+defit __ZN13ObjectToolbox4initEv, 0x3b2d80
+
 ; ObjectToolbox::intKeyToFrame(int)
 defit __ZN13ObjectToolbox13intKeyToFrameEi, 0x4173b0
 
@@ -2432,10 +2459,10 @@ defit __ZN19OpacityEffectAction4initEfffi, 0x178b00
 defit __ZN19OpacityEffectAction4stepEf, 0x178b90
 
 ; OpacityEffectAction::~OpacityEffectAction()
-defit __ZN19OpacityEffectActionD1Ev, 0x18b710
+defit __ZN19OpacityEffectActionD0Ev, 0x18b720
 
 ; OpacityEffectAction::~OpacityEffectAction()
-defit __ZN19OpacityEffectActionD0Ev, 0x18b720
+defit __ZN19OpacityEffectActionD1Ev, 0x18b710
 
 ; PauseLayer::create(bool)
 defit __ZN10PauseLayer6createEb, 0x20b1e0
@@ -3419,19 +3446,19 @@ defit __ZThn592_N15SetGroupIDLayer11textChangedEP15CCTextInputNode, 0x197b90
 defit __ZN15SetGroupIDLayer18updateGroupIDLabelEv, 0x197260
 
 ; SetGroupIDLayer::~SetGroupIDLayer()
-defit __ZN15SetGroupIDLayerD2Ev, 0x194410
+defit __ZN15SetGroupIDLayerD0Ev, 0x194550
 
 ; SetGroupIDLayer::~SetGroupIDLayer()
 defit __ZN15SetGroupIDLayerD1Ev, 0x194520
 
-; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
-defit __ZThn288_N15SetGroupIDLayerD1Ev, 0x194530
-
 ; SetGroupIDLayer::~SetGroupIDLayer()
-defit __ZN15SetGroupIDLayerD0Ev, 0x194550
+defit __ZN15SetGroupIDLayerD2Ev, 0x194410
 
 ; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
 defit __ZThn288_N15SetGroupIDLayerD0Ev, 0x194580
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD1Ev, 0x194530
 
 ; SetIDLayer::create(GameObject*)
 defit __ZN10SetIDLayer6createEP10GameObject, 0x168f20

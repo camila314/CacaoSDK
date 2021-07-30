@@ -189,12 +189,12 @@
     void deselectAll() = 0x1f300;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
     void editButtonUsable() = 0x28f30;
-    void init(LevelEditorLayer*) = 0x8ae0;
     void editObject(cocos2d::CCObject*) = 0x195a0;
     void enableButton(CreateMenuItem*) = 0x1bff0;
     CreateMenuItem* getCreateBtn(int, int) = 0x1f6c0;
     void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
     void getSelectedObjects() = 0x23f30;
+    void init(LevelEditorLayer*) = 0x8ae0;
     void keyDown(cocos2d::enumKeyCodes) = 0x30790;
     void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
     void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
@@ -208,6 +208,7 @@
     void setupCreateMenu() = 0xcb50;
     void undoLastAction(cocos2d::CCObject*) = 0xb830;
     void updateButtons() = 0x1a300;
+    void updateObjectInfoLabel() = 0x1cb10;
     void updateSlider() = 0x18a90;
     void updateZoom(float) = 0x248c0;
 @end
@@ -389,7 +390,7 @@
     void hasBeenTriggered(int) = 0x1853b0;
     void hasPulseEffectForGroupID(int) = 0x184f60;
     bool init() = 0x180230;
-    void isGroupEnabled(int) = 0x1853d0;
+    bool isGroupEnabled(int) = 0x1853d0;
     void keyForGroupIDColor(int, cocos2d::_ccColor3B const&, bool) = 0x184c90;
     void loadState(std::string) = 0x188db0;
     void objectsCollided(int, int) = 0x182a00;
@@ -443,11 +444,11 @@
 
 @interface GJFollowCommandLayer
     void create(EffectGameObject*, cocos2d::CCArray*) = 0x16a550;
-    void onUpdateGroupID(cocos2d::CCObject*) = 0x16cfe0;
-    void onUpdateGroupID2(cocos2d::CCObject*) = 0x16d1c0;
+    void onUpdateGroupID(cocos2d::CCObject*) = 0x16c8f0;
+    void onUpdateGroupID2(cocos2d::CCObject*) = 0x16c9e0;
     void textChanged(CCTextInputNode*) = 0x16d480;
-    void updateTargetGroupID() = 0x16c8f0;
-    void updateTargetGroupID2() = 0x16c9e0;
+    void updateTargetGroupID() = 0x16cfe0;
+    void updateTargetGroupID2() = 0x16d1c0;
 @end
 
 @interface GJGameLevel
@@ -868,12 +869,13 @@
 @end
 
 @interface ObjectToolbox
+    void init() = 0x3b2d80;
     c_string intKeyToFrame(int) = 0x4173b0;
     void sharedState() = 0x3b2bc0;
 @end
 
 @interface OpacityEffectAction
-    void create(float, float, float, int) = 0x1789f0;
+    OpacityEffectAction* create(float, float, float, int) = 0x1789f0;
     void createFromString(std::string) = 0x178c10;
     void init(float, float, float, int) = 0x178b00;
     void step(float) = 0x178b90;

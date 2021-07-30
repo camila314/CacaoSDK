@@ -231,6 +231,7 @@ class GJEffectManager : public cocos2d::CCNode, public GDObj {
     void updateColors(cocos2d::_ccColor3B c1, cocos2d::_ccColor3B c2);
     void toggleGroup(int group, bool activate);
     float opacityModForGroup(int);
+    bool isGroupEnabled(int);
 };
 
 class LevelSettingsObject : public cocos2d::CCNode, public GDObj {
@@ -814,10 +815,15 @@ class DialogObject {
 class OpacityEffectAction : public cocos2d::CCNode {
 public:
     static OpacityEffectAction* create(float, float, float, int);
-    CLASS_PARAM(bool, 12c, 0x12c);
-    CLASS_PARAM(int, group, 0x134);
-    CLASS_PARAM(float, opacity, 0x138);
-    CLASS_PARAM(int, 13c, 0x13c);
+    float m_time;
+    float m_beginOpacity;
+    float m_endOpacity;
+    bool m_finished;
+    float m_elapsed;
+    int m_group;
+    float m_opacity;
+    int m_uuid;
+    float m_delta;
 };
 
 enum PulseEffectType {

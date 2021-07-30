@@ -1199,10 +1199,6 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x28f30))(this);
     }
 
-    virtual void init(LevelEditorLayer* p0) {
-        return reinterpret_cast<void(*)(decltype(this), LevelEditorLayer*)>(m->getOriginal(getBase()+0x8ae0))(this, p0);
-    }
-
     virtual void editObject(cocos2d::CCObject* p0) {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x195a0))(this, p0);
     }
@@ -1221,6 +1217,10 @@ class $EditorUI : public $CacBase {
 
     virtual void getSelectedObjects() {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x23f30))(this);
+    }
+
+    virtual void init(LevelEditorLayer* p0) {
+        return reinterpret_cast<void(*)(decltype(this), LevelEditorLayer*)>(m->getOriginal(getBase()+0x8ae0))(this, p0);
     }
 
     virtual void keyDown(cocos2d::enumKeyCodes p0) {
@@ -1275,6 +1275,10 @@ class $EditorUI : public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1a300))(this);
     }
 
+    virtual void updateObjectInfoLabel() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1cb10))(this);
+    }
+
     virtual void updateSlider() {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x18a90))(this);
     }
@@ -1300,9 +1304,6 @@ class $EditorUI : public $CacBase {
         if (extract_virtual(&orig, (void($EditorUI::*)()){&$EditorUI::editButtonUsable}) != extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::editButtonUsable}))
             m->registerHook(getBase()+0x28f30, extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::editButtonUsable}));
 
-        if (extract_virtual(&orig, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}) != extract_virtual(this, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}))
-            m->registerHook(getBase()+0x8ae0, extract_virtual(this, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}));
-
         if (extract_virtual(&orig, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::editObject}) != extract_virtual(this, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::editObject}))
             m->registerHook(getBase()+0x195a0, extract_virtual(this, (void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::editObject}));
 
@@ -1317,6 +1318,9 @@ class $EditorUI : public $CacBase {
 
         if (extract_virtual(&orig, (void($EditorUI::*)()){&$EditorUI::getSelectedObjects}) != extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::getSelectedObjects}))
             m->registerHook(getBase()+0x23f30, extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::getSelectedObjects}));
+
+        if (extract_virtual(&orig, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}) != extract_virtual(this, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}))
+            m->registerHook(getBase()+0x8ae0, extract_virtual(this, (void($EditorUI::*)(LevelEditorLayer*)){&$EditorUI::init}));
 
         if (extract_virtual(&orig, (void($EditorUI::*)(cocos2d::enumKeyCodes)){&$EditorUI::keyDown}) != extract_virtual(this, (void($EditorUI::*)(cocos2d::enumKeyCodes)){&$EditorUI::keyDown}))
             m->registerHook(getBase()+0x30790, extract_virtual(this, (void($EditorUI::*)(cocos2d::enumKeyCodes)){&$EditorUI::keyDown}));
@@ -1356,6 +1360,9 @@ class $EditorUI : public $CacBase {
 
         if (extract_virtual(&orig, (void($EditorUI::*)()){&$EditorUI::updateButtons}) != extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::updateButtons}))
             m->registerHook(getBase()+0x1a300, extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::updateButtons}));
+
+        if (extract_virtual(&orig, (void($EditorUI::*)()){&$EditorUI::updateObjectInfoLabel}) != extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::updateObjectInfoLabel}))
+            m->registerHook(getBase()+0x1cb10, extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::updateObjectInfoLabel}));
 
         if (extract_virtual(&orig, (void($EditorUI::*)()){&$EditorUI::updateSlider}) != extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::updateSlider}))
             m->registerHook(getBase()+0x18a90, extract_virtual(this, (void($EditorUI::*)()){&$EditorUI::updateSlider}));
@@ -2446,8 +2453,8 @@ class $GJEffectManager : public $CacBase {
         return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x180230))(this);
     }
 
-    virtual void isGroupEnabled(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x1853d0))(this, p0);
+    virtual bool isGroupEnabled(int p0) {
+        return reinterpret_cast<bool(*)(decltype(this), int)>(m->getOriginal(getBase()+0x1853d0))(this, p0);
     }
 
     virtual void keyForGroupIDColor(int p0, cocos2d::_ccColor3B const& p1, bool p2) {
@@ -2750,8 +2757,8 @@ class $GJEffectManager : public $CacBase {
         if (extract_virtual(&orig, (bool($GJEffectManager::*)()){&$GJEffectManager::init}) != extract_virtual(this, (bool($GJEffectManager::*)()){&$GJEffectManager::init}))
             m->registerHook(getBase()+0x180230, extract_virtual(this, (bool($GJEffectManager::*)()){&$GJEffectManager::init}));
 
-        if (extract_virtual(&orig, (void($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled}) != extract_virtual(this, (void($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled}))
-            m->registerHook(getBase()+0x1853d0, extract_virtual(this, (void($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled}));
+        if (extract_virtual(&orig, (bool($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled}) != extract_virtual(this, (bool($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled}))
+            m->registerHook(getBase()+0x1853d0, extract_virtual(this, (bool($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled}));
 
         if (extract_virtual(&orig, (void($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::keyForGroupIDColor}) != extract_virtual(this, (void($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::keyForGroupIDColor}))
             m->registerHook(getBase()+0x184c90, extract_virtual(this, (void($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::keyForGroupIDColor}));
@@ -2918,11 +2925,11 @@ class $GJFollowCommandLayer : public $CacBase {
     }
 
     virtual void onUpdateGroupID(cocos2d::CCObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x16cfe0))(this, p0);
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x16c8f0))(this, p0);
     }
 
     virtual void onUpdateGroupID2(cocos2d::CCObject* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x16d1c0))(this, p0);
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x16c9e0))(this, p0);
     }
 
     virtual void textChanged(CCTextInputNode* p0) {
@@ -2930,11 +2937,11 @@ class $GJFollowCommandLayer : public $CacBase {
     }
 
     virtual void updateTargetGroupID() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x16c8f0))(this);
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x16cfe0))(this);
     }
 
     virtual void updateTargetGroupID2() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x16c9e0))(this);
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x16d1c0))(this);
     }
 
     void apply_hooks() override {
@@ -2943,19 +2950,19 @@ class $GJFollowCommandLayer : public $CacBase {
             m->registerHook(getBase()+0x16a550, extract_virtual(this, (void($GJFollowCommandLayer::*)(EffectGameObject*, cocos2d::CCArray*)){&$GJFollowCommandLayer::create}));
 
         if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}))
-            m->registerHook(getBase()+0x16cfe0, extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}));
+            m->registerHook(getBase()+0x16c8f0, extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID}));
 
         if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}))
-            m->registerHook(getBase()+0x16d1c0, extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}));
+            m->registerHook(getBase()+0x16c9e0, extract_virtual(this, (void($GJFollowCommandLayer::*)(cocos2d::CCObject*)){&$GJFollowCommandLayer::onUpdateGroupID2}));
 
         if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)(CCTextInputNode*)){&$GJFollowCommandLayer::textChanged}) != extract_virtual(this, (void($GJFollowCommandLayer::*)(CCTextInputNode*)){&$GJFollowCommandLayer::textChanged}))
             m->registerHook(getBase()+0x16d480, extract_virtual(this, (void($GJFollowCommandLayer::*)(CCTextInputNode*)){&$GJFollowCommandLayer::textChanged}));
 
         if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID}) != extract_virtual(this, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID}))
-            m->registerHook(getBase()+0x16c8f0, extract_virtual(this, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID}));
+            m->registerHook(getBase()+0x16cfe0, extract_virtual(this, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID}));
 
         if (extract_virtual(&orig, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID2}) != extract_virtual(this, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID2}))
-            m->registerHook(getBase()+0x16c9e0, extract_virtual(this, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID2}));
+            m->registerHook(getBase()+0x16d1c0, extract_virtual(this, (void($GJFollowCommandLayer::*)()){&$GJFollowCommandLayer::updateTargetGroupID2}));
     }
 };
 
@@ -5685,6 +5692,10 @@ class $ObjectToolbox : public $CacBase {
     $ObjectToolbox(bool dont_push) {}
     typedef ObjectToolbox* __thistype;
 
+    virtual void init() {
+        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3b2d80))(this);
+    }
+
     virtual c_string intKeyToFrame(int p0) {
         return reinterpret_cast<c_string(*)(decltype(this), int)>(m->getOriginal(getBase()+0x4173b0))(this, p0);
     }
@@ -5695,6 +5706,9 @@ class $ObjectToolbox : public $CacBase {
 
     void apply_hooks() override {
         auto orig = $ObjectToolbox(true);
+        if (extract_virtual(&orig, (void($ObjectToolbox::*)()){&$ObjectToolbox::init}) != extract_virtual(this, (void($ObjectToolbox::*)()){&$ObjectToolbox::init}))
+            m->registerHook(getBase()+0x3b2d80, extract_virtual(this, (void($ObjectToolbox::*)()){&$ObjectToolbox::init}));
+
         if (extract_virtual(&orig, (c_string($ObjectToolbox::*)(int)){&$ObjectToolbox::intKeyToFrame}) != extract_virtual(this, (c_string($ObjectToolbox::*)(int)){&$ObjectToolbox::intKeyToFrame}))
             m->registerHook(getBase()+0x4173b0, extract_virtual(this, (c_string($ObjectToolbox::*)(int)){&$ObjectToolbox::intKeyToFrame}));
 
@@ -5714,8 +5728,8 @@ class $OpacityEffectAction : public $CacBase {
     $OpacityEffectAction(bool dont_push) {}
     typedef OpacityEffectAction* __thistype;
 
-    virtual void create(float p0, float p1, float p2, int p3) {
-        return reinterpret_cast<void(*)(decltype(this), float, float, float, int)>(m->getOriginal(getBase()+0x1789f0))(this, p0, p1, p2, p3);
+    virtual OpacityEffectAction* create(float p0, float p1, float p2, int p3) {
+        return reinterpret_cast<OpacityEffectAction*(*)(decltype(this), float, float, float, int)>(m->getOriginal(getBase()+0x1789f0))(this, p0, p1, p2, p3);
     }
 
     virtual void createFromString(std::string p0) {
@@ -5732,8 +5746,8 @@ class $OpacityEffectAction : public $CacBase {
 
     void apply_hooks() override {
         auto orig = $OpacityEffectAction(true);
-        if (extract_virtual(&orig, (void($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::create}) != extract_virtual(this, (void($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::create}))
-            m->registerHook(getBase()+0x1789f0, extract_virtual(this, (void($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::create}));
+        if (extract_virtual(&orig, (OpacityEffectAction*($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::create}) != extract_virtual(this, (OpacityEffectAction*($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::create}))
+            m->registerHook(getBase()+0x1789f0, extract_virtual(this, (OpacityEffectAction*($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::create}));
 
         if (extract_virtual(&orig, (void($OpacityEffectAction::*)(std::string)){&$OpacityEffectAction::createFromString}) != extract_virtual(this, (void($OpacityEffectAction::*)(std::string)){&$OpacityEffectAction::createFromString}))
             m->registerHook(getBase()+0x178c10, extract_virtual(this, (void($OpacityEffectAction::*)(std::string)){&$OpacityEffectAction::createFromString}));
