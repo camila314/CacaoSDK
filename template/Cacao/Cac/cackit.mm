@@ -5,7 +5,7 @@
 
 @interface AppDelegate
     void bgScale() = 0x3aaab0;
-    void get() = 0x3aab10;
+    static AppDelegate* get() = 0x3aab10;
 @end
 
 @interface AudioEffectsLayer
@@ -65,7 +65,7 @@
 
 @interface CCTextInputNode
     static CCTextInputNode* create(float, float, char const*, char const*, int, char const*) = 0x5cfb0;
-    void getString() = 0x5d6f0;
+    std::string getString() = 0x5d6f0;
     void refreshLabel() = 0x5d730;
     void setAllowedChars(std::string) = 0x5d360;
     void setLabelPlaceholderColor(cocos2d::_ccColor3B) = 0x5da90;
@@ -192,7 +192,7 @@
     void editButtonUsable() = 0x28f30;
     void editObject(cocos2d::CCObject*) = 0x195a0;
     void enableButton(CreateMenuItem*) = 0x1bff0;
-    void getCreateBtn(int, int) = 0x1f6c0;
+    CCMenuItemSpriteExtra* getCreateBtn(int, int) = 0x1f6c0;
     void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
     cocos2d::CCArray* getSelectedObjects() = 0x23f30;
     void init(LevelEditorLayer*) = 0x8ae0;
@@ -253,7 +253,7 @@
     void resumeAllEffects() = 0x210440;
     void resumeBackgroundMusic() = 0x20fdf0;
     void setBackgroundMusicTime(float) = 0x20fe10;
-    void sharedEngine() = 0x20ef80;
+    static FMODAudioEngine* sharedEngine() = 0x20ef80;
 @end
 
 @interface FollowRewardPage
@@ -261,7 +261,7 @@
 @end
 
 @interface GJAccountManager
-    void sharedState() = 0x85070;
+    static GJAccountManager* sharedState() = 0x85070;
 @end
 
 @interface GJBaseGameLayer
@@ -379,8 +379,8 @@
     void createRotateCommand(int, float, int, int, int, float, bool, int) = 0x182df0;
     void getAllColorActions() = 0x180980;
     void getAllColorSprites() = 0x1809e0;
-    const _ccColor3B& getColorAction(int) = 0x180b00;
-    const _ccColor3B& getColorSprite(int) = 0x180d00;
+    const cocos2d::_ccColor3B& getColorAction(int) = 0x180b00;
+    const cocos2d::_ccColor3B& getColorSprite(int) = 0x180d00;
     void getCurrentStateString() = 0x1867e0;
     void getLoadedMoveOffset() = 0x184390;
     void getMixedColor(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) = 0x185d30;
@@ -391,12 +391,12 @@
     void hasBeenTriggered(int) = 0x1853b0;
     void hasPulseEffectForGroupID(int) = 0x184f60;
     bool init() = 0x180230;
-    void isGroupEnabled(int) = 0x1853d0;
+    bool isGroupEnabled(int) = 0x1853d0;
     void keyForGroupIDColor(int, cocos2d::_ccColor3B const&, bool) = 0x184c90;
     void loadState(std::string) = 0x188db0;
     void objectsCollided(int, int) = 0x182a00;
     void opacityForIndex(int) = 0x180c80;
-    void opacityModForGroup(int) = 0x184740;
+    float opacityModForGroup(int) = 0x184740;
     void playerButton(bool, bool) = 0x1855a0;
     void playerDied() = 0x185860;
     void postCollisionCheck() = 0x182720;
@@ -535,20 +535,20 @@
 @end
 
 @interface GameLevelManager
-    void createNewLevel() = 0x2b8180;
-    void sharedState() = 0x2a8340;
+    GJGameLevel* createNewLevel() = 0x2b8180;
+    static GameLevelManager* sharedState() = 0x2a8340;
 @end
 
 @interface GameManager
     void accountStatusChanged() = 0x1cdad0;
-    void colorForIdx(int) = 0x1cbc80;
+    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80;
     void didExitPlayscene() = 0x1d0230;
     void doQuickSave() = 0x1d0200;
     void fadeInMusic(char const*) = 0x1c2ff0;
     void getBGTexture(int) = 0x1cca00;
     void getFontFile(int) = 0x1cc5f0;
-    void getGameVariable(char const*) = 0x1cccd0;
-    void getIntGameVariable(char const*) = 0x1cd1d0;
+    bool getGameVariable(char const*) = 0x1cccd0;
+    int getIntGameVariable(char const*) = 0x1cd1d0;
     void getUGV(char const*) = 0x1ccfa0;
     void loadDeathEffect(int) = 0x1cc690;
     void loadFont(int) = 0x1cc550;
@@ -558,7 +558,7 @@
     void setGameVariable(char const*, bool) = 0x1cca80;
     void setIntGameVariable(char const*, int) = 0x1cd0e0;
     void setUGV(char const*, bool) = 0x1cce50;
-    void sharedState() = 0x1c2b30;
+    static GameManager* sharedState() = 0x1c2b30;
 @end
 
 @interface GameObject
@@ -584,7 +584,7 @@
     void getActiveColorForMode(int, bool) = 0x343860;
     void getBallFrame(int) = 0x341bf0;
     void getBoxOffset() = 0x3353d0;
-    const _ccColor3B& getColorIndex() = 0x343b90;
+    const cocos2d::_ccColor3B& getColorIndex() = 0x343b90;
     void getDidUpdateLastPosition() = 0x343a20;
     void getGroupID(int) = 0x33ae10;
     void getLastPosition() = 0x3439d0;
@@ -617,7 +617,7 @@
     void isFlipY() = 0x335a50;
     void isSpawnableTrigger() = 0x343a60;
     void isSpecialObject() = 0x343c40;
-    void objectFromString(std::string, bool) = 0x33b720;
+    static GameObject* objectFromString(std::string, bool) = 0x33b720;
     void playShineEffect() = 0x2fa9d0;
     void powerOffObject() = 0x3369c0;
     void powerOnObject() = 0x3369a0;
@@ -694,13 +694,13 @@
 @end
 
 @interface GameToolbox
-    void createToggleButton(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x28bdd0;
-    void getRelativeOffset(GameObject*, cocos2d::CCPoint) = 0x28c060;
-    void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) = 0x28cb90;
-    void stringSetupToDict(std::string, char const*) = 0x28d700;
+    static void createToggleButton(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x28bdd0;
+    static void getRelativeOffset(GameObject*, cocos2d::CCPoint) = 0x28c060;
+    static void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) = 0x28cb90;
+    static void stringSetupToDict(std::string, char const*) = 0x28d700;
     void stringSetupToMap(std::string, char const*) = 0x28d4c0;
-    void transformColor(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue) = 0x28c950;
-    void transformColor(cocos2d::_ccColor3B const&, float, float, float) = 0x28c930;
+    static void transformColor(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue) = 0x28c950;
+    static void transformColor(cocos2d::_ccColor3B const&, float, float, float) = 0x28c930;
 @end
 
 @interface GravityEffectSprite
@@ -737,13 +737,13 @@
 
 @interface LevelBrowserLayer
     void loadPage(GJSearchObject*) = 0x253650;
-    void scene(GJSearchObject*) = 0x2511d0;
+    static cocos2d::CCScene* scene(GJSearchObject*) = 0x2511d0;
     void setIDPopupClosed(SetIDPopup*, int) = 0x2554f0;
 @end
 
 @interface LevelEditorLayer
     void activateTriggerEffect(EffectGameObject*, float, float, float) = 0x9b520;
-    void addObjectFromString(std::string) = 0x94640;
+    GameObject* addObjectFromString(std::string) = 0x94640;
     void addSpecial(GameObject*) = 0x94f30;
     void addToGroup(GameObject*, int, bool) = 0x9dab0;
     void addToRedoList(UndoObject*) = 0x96f80;
@@ -754,7 +754,7 @@
     static LevelEditorLayer* create(GJGameLevel*) = 0x90fb0;
     void createBackground() = 0x929f0;
     void createGroundLayer() = 0x92840;
-    void createObject(int, cocos2d::CCPoint, bool) = 0x957c0;
+    GameObject* createObject(int, cocos2d::CCPoint, bool) = 0x957c0;
     void createObjectsFromSetup(std::string) = 0x92230;
     void createObjectsFromString(std::string, bool) = 0x94730;
     void draw() = 0xa2a70;
@@ -763,7 +763,7 @@
     void getLevelString() = 0x97790;
     void getNextColorChannel() = 0x9a610;
     void getNextFreeBlockID(cocos2d::CCArray*) = 0x9a4e0;
-    void getNextFreeGroupID(cocos2d::CCArray*) = 0x9a1b0;
+    int getNextFreeGroupID(cocos2d::CCArray*) = 0x9a1b0;
     void getNextFreeItemID(cocos2d::CCArray*) = 0x9a390;
     void getObjectRect(GameObject*, bool) = 0x96240;
     void getRelativeOffset(GameObject*) = 0x96840;
@@ -822,7 +822,7 @@
     static LevelSettingsObject* create() = 0x92760;
     bool init() = 0xa5690;
     void objectFromDict(cocos2d::CCDictionary*) = 0xa5810;
-    void objectFromString(std::string) = 0x945a0;
+    static LevelSettingsObject* objectFromString(std::string) = 0x945a0;
     void setupColorsFromLegacyMode(cocos2d::CCDictionary*) = 0xa6a30;
 @end
 
@@ -837,7 +837,7 @@
 @end
 
 @interface LocalLevelManager
-    void sharedState() = 0x35dd60;
+    static LocalLevelManager* sharedState() = 0x35dd60;
 @end
 
 @interface MenuGameLayer
@@ -858,7 +858,7 @@
 
 @interface MusicDownloadManager
     void incrementPriorityForSong(int) = 0x2ef750;
-    void sharedState() = 0x2ee4c0;
+    static MusicDownloadManager* sharedState() = 0x2ee4c0;
 @end
 
 @interface OBB2D
@@ -872,7 +872,7 @@
 @interface ObjectToolbox
     bool init() = 0x3b2d80;
     void intKeyToFrame(int) = 0x4173b0;
-    void sharedState() = 0x3b2bc0;
+    static ObjectToolbox* sharedState() = 0x3b2bc0;
 @end
 
 @interface OpacityEffectAction
@@ -1460,7 +1460,7 @@
     void pushScene(cocos2d::CCScene*) = 0x24a620;
     void replaceScene(cocos2d::CCScene*) = 0x24a6d0;
     void resetSmoothFixCounter() = 0x249bc0;
-    void sharedDirector() = 0x248cb0;
+    static cocos2d::CCDirector* sharedDirector() = 0x248cb0;
 @end
 
 @interface CCDrawNode
@@ -1727,8 +1727,8 @@
 @end
 
 @interface CCNodeRGBA
-    const _ccColor3B& getColor() = 0x125020;
-    const _ccColor3B& getDisplayedColor() = 0x125040;
+    const cocos2d::_ccColor3B& getColor() = 0x125020;
+    const cocos2d::_ccColor3B& getDisplayedColor() = 0x125040;
     uint8_t getDisplayedOpacity() = 0x124cf0;
     uint8_t getOpacity() = 0x124cd0;
     bool isCascadeColorEnabled() = 0x125320;
@@ -1864,14 +1864,14 @@
 @end
 
 @interface CCSpriteBatchNode
-    void createWithTexture(cocos2d::CCTexture2D*, unsigned int) = 0xbb310;
+    static cocos2d::CCSpriteBatchNode* createWithTexture(cocos2d::CCTexture2D*, unsigned int) = 0xbb310;
     void getUsedAtlasCapacity() = 0xbc6b0;
     void increaseAtlasCapacity(unsigned int) = 0xbc670;
 @end
 
 @interface CCSpriteFrameCache
     void addSpriteFramesWithFile(char const*) = 0x199a10;
-    void sharedSpriteFrameCache() = 0x198970;
+    static cocos2d::CCSpriteFrameCache* sharedSpriteFrameCache() = 0x198970;
     void spriteFrameByName(char const*) = 0x19a7e0;
 @end
 
@@ -1890,7 +1890,7 @@
 
 @interface CCTextureCache
     void addImage(char const*, bool) = 0x358120;
-    void sharedTextureCache() = 0x356e00;
+    static cocos2d::CCTextureCache* sharedTextureCache() = 0x356e00;
 @end
 
 @interface CCTintTo
@@ -1916,8 +1916,8 @@
 @end
 
 @interface CCControlUtils
-    void HSVfromRGB(cocos2d::extension::RGBA) = 0x1e6750;
-    void RGBfromHSV(cocos2d::extension::HSV) = 0x1e6850;
+    cocos2d::extension::HSV HSVfromRGB(cocos2d::extension::RGBA) = 0x1e6750;
+    cocos2d::extension::RGBA RGBfromHSV(cocos2d::extension::HSV) = 0x1e6850;
 @end
 
 @interface CCScale9Sprite

@@ -145,7 +145,6 @@ def parse_func(curr_tok):
     fi.ret += curr_tok.value
 
     curr_tok = ensure_next()
-
     if curr_tok.type != "IDENT":
         print(last_tok.value)
         raise ValueError("bad name")
@@ -293,7 +292,7 @@ build_body1 = """
     {ret} {name}({params}) {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
-        else return reinterpret_cast<{ret}(*)(decltype(this){params2})>(getBase()+{addr})(this{params3});
+        else return {cls}::{name}({params5});
     }}
 """
 
@@ -301,7 +300,7 @@ build_body1_virtual = """
     {ret} {name}({params}) override {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
-        else return reinterpret_cast<{ret}(*)(decltype(this){params2})>(getBase()+{addr})(this{params3});
+        else return {cls}::{name}({params5});
     }}
 """
 
@@ -309,7 +308,7 @@ build_body1_static = """
     static {ret} {name}({params}) {{
         if (({ret}(*)({params4})){{&${cls}::{name}}} != ({ret}(*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(getBase()+{addr}))({params3});
-        else return reinterpret_cast<{ret}(*)({params2})>(getBase()+{addr})({params3});
+        else return {cls}::{name}({params5});
     }}
 """
 
@@ -351,7 +350,8 @@ def build_cls(funky_cls):
             addr=info.addr, 
             params2 = '' if info.args[0]=='' else ('' if info.static else ', ') + ', '.join(info.args), 
             params3 = '' if info.args[0]=='' else ('' if info.static else ', ') + ', '.join([f"p{i}"for i, _ in enumerate(info.args)]),
-            params4 = ', '.join(info.args)
+            params4 = '' if info.args[0]=='' else ', '.join(info.args),
+            params5 = '' if info.args[0]=='' else ', '.join([f"p{i}"for i, _ in enumerate(info.args)])
         )
 
     out += build_body2_start.format(cls=funky_cls.name)

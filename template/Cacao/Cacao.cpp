@@ -145,7 +145,7 @@ namespace Cacao {
         alertLayer->keyBackClicked();
     }
     void FLDialogHelper::onSubmit(CCObject*) {
-        std::string text(textNode->getString_s());
+        std::string text(textNode->getString());
         del->onSubmit(this, text);
     }
 

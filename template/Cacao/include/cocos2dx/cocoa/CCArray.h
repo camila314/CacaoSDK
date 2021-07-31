@@ -176,6 +176,10 @@ public:
     unsigned int indexOfObject(CCObject* object) const;
     /** Returns an element with a certain index */
     CCObject* objectAtIndex(unsigned int index);
+    /** 
+     * Rob modification
+     * Returns an element with a certain index casted to CCString */
+    CCString* stringAtIndex(unsigned int index);
     /** Returns last element */
     CCObject* lastObject();
     /** Returns a random element */
@@ -188,6 +192,10 @@ public:
 
     /** Add a certain object */
     void addObject(CCObject* object);
+    /**
+     * Rob modification
+     * Add a certain object */
+    void addObjectNew(CCObject* object);
     /** Add all elements of an existing array */
     void addObjectsFromArray(CCArray* otherArray);
     /** Insert a certain object at a certain index */
@@ -209,6 +217,10 @@ public:
     void fastRemoveObject(CCObject* object);
     /** Fast way to remove an element with a certain index */
     void fastRemoveObjectAtIndex(unsigned int index);
+    /** 
+     * Rob modification
+     * Fast way to remove an element with a certain index */
+    void fastRemoveObjectAtIndexNew(unsigned int index);
 
     // Rearranging Content
 

@@ -219,7 +219,7 @@ namespace Cacao {
         inline CacTextContainer* allowedChars(char const* filter) {m_textInputNode->setAllowedChars(std::string(filter));return this;}
         inline CacTextContainer* charLimit(int limit) {m_textInputNode->m_maxLabelLength = limit;return this;}
         inline CacTextContainer* text(char const* text) {m_textInputNode->setString(text);return this;}
-        inline char const* text() {return m_textInputNode->getString_s();}
+        inline std::string text() {return m_textInputNode->getString();}
      protected:
         cocos2d::extension::CCScale9Sprite* m_box;
         CCTextInputNode* m_textInputNode;

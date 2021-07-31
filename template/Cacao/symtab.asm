@@ -160,16 +160,16 @@ __ZN11GameManager16setFirstColorIdxEi:
 	mov dword [rdi+0x258], 0
 	ret
 
-; my own modification
-global __ZN15CCTextInputNode11getString_sEv
-__ZN15CCTextInputNode11getString_sEv:
-	push rbp
-	mov rbp, rsp
-	mov rdi, [rdi+0x1c0]
-	mov rax, [rdi]
-	call [rax+0x4b8]
-	pop rbp
-	ret
+; ; my own modification
+; global __ZN15CCTextInputNode11getString_sEv
+; __ZN15CCTextInputNode11getString_sEv:
+; 	push rbp
+; 	mov rbp, rsp
+; 	mov rdi, [rdi+0x1c0]
+; 	mov rax, [rdi]
+; 	call [rax+0x4b8]
+; 	pop rbp
+; 	ret
 
 global __Z14setupTypeinfosv
 __Z14setupTypeinfosv:

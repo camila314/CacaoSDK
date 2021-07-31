@@ -173,6 +173,9 @@ public:
 
     // Robtop modification
     void incrementForcePrio(int nPrio);
+
+    // Robtop modification
+    void decrementForcePrio(int nPrio);
     /**
      * @lua NA
      */

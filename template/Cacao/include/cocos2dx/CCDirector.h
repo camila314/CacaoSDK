@@ -528,6 +528,7 @@ public:
     int getSmoothFixCounter(void) const;
     int levelForSceneInStack(CCScene*);
     void popSceneWithTransition(float, PopTransition);
+    void resetSmoothFixCounter();
     int sceneCount(void);
     //void setActualDeltaTime(float); //Already taken care of
     //void setDeltaTime(float);       //Already taken care of
