@@ -397,17 +397,13 @@ public:
     void setSecondColor(cocos2d::_ccColor3B const&);
     void flipGravity(bool, bool);
     void pushButton(int);
-<<<<<<< HEAD:template/Cacao/Cacao/include/cc_defs.hpp
     CLASS_PARAM(HardStreak *, waveStreak, 0x600);
     CLASS_PARAM(double, speed, 0x608);
     CLASS_PARAM(double, gravity, 0x618);
     CLASS_PARAM(bool, isHolding, 0x745);
     CLASS_PARAM(bool, hasJustHeld, 0x746);
-=======
-    CLASS_PARAM(double, gravity, 0x618);
     CLASS_PARAM(cocos2d::_ccColor3B, pCol1, 0x7c2);
     CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
->>>>>>> 456fc4519664b909ea43609ea6c476ef43ec2df5:template/Cacao/include/cc_defs.hpp
     CLASS_PARAM(double, yAccel, 0x760);
     CLASS_PARAM(bool, isShip, 0x770);
     CLASS_PARAM(bool, isUpsideDown, 0x776);
@@ -621,7 +617,7 @@ class LevelInfoLayer : public cocos2d::CCLayer, public GDObj {
 class MenuLayer : public cocos2d::CCLayer, public GDObj {
 public:
     void onQuit(cocos2d::CCObject*);
-    void keyBackClicked();
+    virtual void keyBackClicked();
 };
 class MoreVideoOptionsLayer : public FLAlertLayer {
 public:

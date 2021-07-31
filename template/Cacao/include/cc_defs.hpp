@@ -261,6 +261,8 @@ class GJEffectManager : public cocos2d::CCNode, public GDObj {
     void countChangedForItem(int item);
     void updateColors(cocos2d::_ccColor3B c1, cocos2d::_ccColor3B c2);
     void toggleGroup(int group, bool activate);
+    float opacityModForGroup(int);
+    bool isGroupEnabled(int);
 };
 
 class LevelSettingsObject : public cocos2d::CCNode, public GDObj {
@@ -814,6 +816,7 @@ public:
     CLASS_PARAM(cocos2d::CCSprite*, currentColorSpr, 0x2d0);
     CLASS_PARAM(cocos2d::CCSprite*, prevColorSpr, 0x2d8);
     CLASS_PARAM(int, pulseMode, 0x38c);
+    CLASS_PARAM(int, targetMode, 0x390);
 };
 
 class DS_Dictionary {
@@ -859,8 +862,18 @@ class DialogObject {
 
 };
 
-class OpacityEffectAction {
-
+class OpacityEffectAction : public cocos2d::CCNode {
+public:
+    static OpacityEffectAction* create(float, float, float, int);
+    float m_time;
+    float m_beginOpacity;
+    float m_endOpacity;
+    bool m_finished;
+    float m_elapsed;
+    int m_group;
+    float m_opacity;
+    int m_uuid;
+    float m_delta;
 };
 
 enum PulseEffectType {
@@ -1059,18 +1072,6 @@ class ZipUtils {
 
 };
 
-class CCControlColourPicker {
-
-};
-
-class CCControlUtils {
-
-};
-
-class CCScale9Sprite {
-
-};
-
 class UndoObject {
 
 };
@@ -1100,6 +1101,50 @@ class SetIDPopup {
 };
 
 class SetItemIDLayer {
+
+};
+
+class CCMoveCNode {
+
+};
+
+class CCNodeContainer {
+
+};
+
+class DelayedSpawnNode {
+
+};
+
+class EndLevelLayer {
+
+};
+
+class FollowRewardPage {
+
+};
+
+class GJColorSetupLayer {
+
+};
+
+class LocalLevelManager {
+
+};
+
+class PlatformToolbox {
+
+};
+
+class RetryLevelLayer {
+
+};
+
+class SliderThumb {
+
+};
+
+class SetGroupIDLayer {
 
 };
 #endif

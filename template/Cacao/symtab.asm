@@ -50,6 +50,29 @@ extern _base
 	movss %1, [rsp]
 	add rsp, 16
 %endmacro
+
+%macro pushallxmm 0
+	pushmm xmm0
+	pushmm xmm1
+	pushmm xmm2
+	pushmm xmm3
+	; pushmm xmm4
+	; pushmm xmm5
+	; pushmm xmm6
+	; pushmm xmm7
+%endmacro
+
+%macro popallxmm 0
+	;popmm xmm7
+	;popmm xmm6
+	;popmm xmm5
+	;popmm xmm4
+	popmm xmm3
+	popmm xmm2
+	popmm xmm1
+	popmm xmm0
+%endmacro
+
 extern __Z7getBasev
 extern _memcpy
 %macro defit 2
@@ -58,8 +81,7 @@ global %1
 	push rbp
 	mov rbp, rsp
 	pushallnorax
-	pushmm xmm0
-	pushmm xmm1
+	pushallxmm
 	push rsi
 	push rdi
 
@@ -68,8 +90,7 @@ global %1
 
 	pop rdi
 	pop rsi
-	popmm xmm1
-	popmm xmm0
+	popallxmm
 	popallnorax
 	pop rbp
 	jmp rax
@@ -151,7 +172,9 @@ __ZN15CCTextInputNode11getString_sEv:
 	ret
 
 global __ZTIN7cocos2d6CCNodeE
-;global __ZTI12FLAlertLayer
+global __ZTI9MenuLayer
+global __ZTV9MenuLayer
+global __ZTI12FLAlertLayer
 global __ZTIN7cocos2d7CCLayerE
 global __ZTIN7cocos2d12CCLayerColorE
 global __Z14setupTypeinfosv
@@ -189,8 +212,6 @@ __ZN12FLAlertLayerC2Ev:
 	pop rbx
 	pop rbp
 	ret
-global __ZTV9MenuLayer
-__ZTV9MenuLayer: dd 0
 
 ; AnimatedGameObject::playAnimation(int)
 defit __ZN18AnimatedGameObject13playAnimationEi, 0xc93d0
@@ -367,10 +388,10 @@ defit __ZN18ColorChannelSprite12updateValuesEP11ColorAction, 0x16e2e0
 defit __ZN22ColorSelectLiveOverlayC1Ev, 0x2e2580
 
 ; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
-defit __ZN22ColorSelectLiveOverlayD1Ev, 0x2e24c0
+defit __ZN22ColorSelectLiveOverlayD0Ev, 0x2e24f0
 
 ; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
-defit __ZN22ColorSelectLiveOverlayD0Ev, 0x2e24f0
+defit __ZN22ColorSelectLiveOverlayD1Ev, 0x2e24c0
 
 ; ColorSelectPopup::ColorSelectPopup()
 defit __ZN16ColorSelectPopupC1Ev, 0x41eb80
@@ -564,9 +585,6 @@ defit __ZN8EditorUI13disableButtonEP14CreateMenuItem, 0x1c0f0
 ; EditorUI::editButtonUsable()
 defit __ZN8EditorUI16editButtonUsableEv, 0x28f30
 
-; EditorUI::init(LevelEditorLayer*)
-defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
-
 ; EditorUI::editObject(cocos2d::CCObject*)
 defit __ZN8EditorUI10editObjectEPN7cocos2d8CCObjectE, 0x195a0
 
@@ -581,6 +599,9 @@ defit __ZN8EditorUI14getGroupCenterEPN7cocos2d7CCArrayEb, 0x23470
 
 ; EditorUI::getSelectedObjects()
 defit __ZN8EditorUI18getSelectedObjectsEv, 0x23f30
+
+; EditorUI::init(LevelEditorLayer*)
+defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
 
 ; EditorUI::keyDown(cocos2d::enumKeyCodes)
 defit __ZN8EditorUI7keyDownEN7cocos2d12enumKeyCodesE, 0x30790
@@ -620,6 +641,9 @@ defit __ZN8EditorUI14undoLastActionEPN7cocos2d8CCObjectE, 0xb830
 
 ; EditorUI::updateButtons()
 defit __ZN8EditorUI13updateButtonsEv, 0x1a300
+
+; EditorUI::updateObjectInfoLabel()
+defit __ZN8EditorUI21updateObjectInfoLabelEv, 0x1cb10
 
 ; EditorUI::updateSlider()
 defit __ZN8EditorUI12updateSliderEv, 0x18a90
@@ -1372,19 +1396,19 @@ defit __ZN15GJEffectManagerD2Ev, 0x17fe00
 defit __ZN20GJFollowCommandLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x16a550
 
 ; GJFollowCommandLayer::onUpdateGroupID(cocos2d::CCObject*)
-defit __ZN20GJFollowCommandLayer15onUpdateGroupIDEPN7cocos2d8CCObjectE, 0x16cfe0
+defit __ZN20GJFollowCommandLayer15onUpdateGroupIDEPN7cocos2d8CCObjectE, 0x16c8f0
 
 ; GJFollowCommandLayer::onUpdateGroupID2(cocos2d::CCObject*)
-defit __ZN20GJFollowCommandLayer16onUpdateGroupID2EPN7cocos2d8CCObjectE, 0x16d1c0
+defit __ZN20GJFollowCommandLayer16onUpdateGroupID2EPN7cocos2d8CCObjectE, 0x16c9e0
 
 ; GJFollowCommandLayer::textChanged(CCTextInputNode*)
 defit __ZN20GJFollowCommandLayer11textChangedEP15CCTextInputNode, 0x16d480
 
 ; GJFollowCommandLayer::updateTargetGroupID()
-defit __ZN20GJFollowCommandLayer19updateTargetGroupIDEv, 0x16c8f0
+defit __ZN20GJFollowCommandLayer19updateTargetGroupIDEv, 0x16cfe0
 
 ; GJFollowCommandLayer::updateTargetGroupID2()
-defit __ZN20GJFollowCommandLayer20updateTargetGroupID2Ev, 0x16c9e0
+defit __ZN20GJFollowCommandLayer20updateTargetGroupID2Ev, 0x16d1c0
 
 ; GJGameLevel::create()
 defit __ZN11GJGameLevel6createEv, 0x2b83e0
@@ -2421,17 +2445,32 @@ defit __ZN5OBB2D8overlapsEPS_, 0x35b0a0
 ; OBB2D::overlaps1Way(OBB2D*)
 defit __ZN5OBB2D12overlaps1WayEPS_, 0x35b0d0
 
+; ObjectToolbox::init()
+defit __ZN13ObjectToolbox4initEv, 0x3b2d80
+
 ; ObjectToolbox::intKeyToFrame(int)
 defit __ZN13ObjectToolbox13intKeyToFrameEi, 0x4173b0
 
 ; ObjectToolbox::sharedState()
 defit __ZN13ObjectToolbox11sharedStateEv, 0x3b2bc0
 
+; OpacityEffectAction::create(float, float, float, int)
+defit __ZN19OpacityEffectAction6createEfffi, 0x1789f0
+
 ; OpacityEffectAction::createFromString(std::string)
 defit __ZN19OpacityEffectAction16createFromStringESs, 0x178c10
 
+; OpacityEffectAction::init(float, float, float, int)
+defit __ZN19OpacityEffectAction4initEfffi, 0x178b00
+
 ; OpacityEffectAction::step(float)
 defit __ZN19OpacityEffectAction4stepEf, 0x178b90
+
+; OpacityEffectAction::~OpacityEffectAction()
+defit __ZN19OpacityEffectActionD0Ev, 0x18b720
+
+; OpacityEffectAction::~OpacityEffectAction()
+defit __ZN19OpacityEffectActionD1Ev, 0x18b710
 
 ; PauseLayer::create(bool)
 defit __ZN10PauseLayer6createEb, 0x20b1e0
@@ -3402,6 +3441,33 @@ defit __ZN17PulseEffectAction13getSaveStringEv, 0x17a850
 ; RetryLevelLayer::create()
 defit __ZN15RetryLevelLayer6createEv, 0x28dd60
 
+; SetGroupIDLayer::onNextGroupID1(cocos2d::CCObject*)
+defit __ZN15SetGroupIDLayer14onNextGroupID1EPN7cocos2d8CCObjectE, 0x1967a0
+
+; SetGroupIDLayer::textChanged(CCTextInputNode*)
+defit __ZN15SetGroupIDLayer11textChangedEP15CCTextInputNode, 0x197af0
+
+; non-virtual thunk to SetGroupIDLayer::textChanged(CCTextInputNode*)
+defit __ZThn592_N15SetGroupIDLayer11textChangedEP15CCTextInputNode, 0x197b90
+
+; SetGroupIDLayer::updateGroupIDLabel()
+defit __ZN15SetGroupIDLayer18updateGroupIDLabelEv, 0x197260
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD0Ev, 0x194550
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD1Ev, 0x194520
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD2Ev, 0x194410
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD0Ev, 0x194580
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD1Ev, 0x194530
+
 ; SetIDLayer::create(GameObject*)
 defit __ZN10SetIDLayer6createEP10GameObject, 0x168f20
 
@@ -3483,6 +3549,9 @@ defit __ZN24SetupInteractObjectPopup14updateTargetIDEv, 0x29c120
 ; SetupObjectTogglePopup::create(EffectGameObject*, cocos2d::CCArray*)
 defit __ZN22SetupObjectTogglePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x1c0860
 
+; SetupObjectTogglePopup::init(EffectGameObject*, cocos2d::CCArray*)
+defit __ZN22SetupObjectTogglePopup4initEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x1c0a40
+
 ; SetupObjectTogglePopup::onTargetIDArrow(cocos2d::CCObject*)
 defit __ZN22SetupObjectTogglePopup15onTargetIDArrowEPN7cocos2d8CCObjectE, 0x1c1c40
 
@@ -3534,9 +3603,6 @@ defit __ZN15SetupPulsePopup17onSelectPulseModeEPN7cocos2d8CCObjectE, 0x1eb020
 ; SetupPulsePopup::onSelectTargetMode(cocos2d::CCObject*)
 defit __ZN15SetupPulsePopup18onSelectTargetModeEPN7cocos2d8CCObjectE, 0x1eac30
 
-; SetupPulsePopup::updateTargetID()
-defit __ZN15SetupPulsePopup14updateTargetIDEv, 0x1ebbe0
-
 ; SetupPulsePopup::onUpdateCustomColor(cocos2d::CCObject*)
 defit __ZN15SetupPulsePopup19onUpdateCustomColorEPN7cocos2d8CCObjectE, 0x1eaef0
 
@@ -3551,6 +3617,9 @@ defit __ZN15SetupPulsePopup17updateEditorLabelEv, 0x1ec310
 
 ; SetupPulsePopup::updateFadeOutLabel(bool)
 defit __ZN15SetupPulsePopup18updateFadeOutLabelEb, 0x1eba20
+
+; SetupPulsePopup::updateTargetID()
+defit __ZN15SetupPulsePopup14updateTargetIDEv, 0x1ebbe0
 
 ; SetupPulsePopup::updateTextInputLabel()
 defit __ZN15SetupPulsePopup20updateTextInputLabelEv, 0x1eb8d0
@@ -5172,8 +5241,11 @@ defit __Z12xCompRealPosPKvS0_, 0x6b050
 ; xCompSpeed(void const*, void const*)
 defit __Z10xCompSpeedPKvS0_, 0x6b030
 
+__ZTV9MenuLayer dq 0x1006438d0
+__ZTI9MenuLayer dq 0x100643e40
+
 section .bss
 __ZTIN7cocos2d6CCNodeE: resq 5
 __ZTIN7cocos2d7CCLayerE: resq 5
-;__ZTI12FLAlertLayer: resq 5
+__ZTI12FLAlertLayer: resq 5
 __ZTIN7cocos2d12CCLayerColorE: resq 5
