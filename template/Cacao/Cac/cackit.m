@@ -145,9 +145,10 @@
 
 @interface EditorUI
     void create(LevelEditorLayer*) = 0x8a80;
+    void deselectAll(int) = 0x1f300;
+    void onDeselectAll(CCObject*) = 0x19cd0;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
     void init(LevelEditorLayer*) = 0x8ae0;
-    void setupCreateMenu(int) = 0xcb50;
     void editObject(cocos2d::CCObject*) = 0x195a0;
     void enableButton(CreateMenuItem*) = 0x1bff0;
     CreateMenuItem* getCreateBtn(int, int) = 0x1f6c0;
@@ -161,6 +162,7 @@
     void scaleChanged(float) = 0x25490;
     void scaleObjects(cocos2d::CCArray*, float, cocos2d::CCPoint) = 0x252e0;
     void selectObjects(cocos2d::CCArray*, bool) = 0x23940;
+    void setupCreateMenu(int) = 0xcb50;
     void undoLastAction(cocos2d::CCObject*) = 0xb830;
     void updateZoom(float) = 0x248c0;
 @end

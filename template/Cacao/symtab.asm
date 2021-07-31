@@ -107,7 +107,7 @@ global %1
 
 global __ZN5GDObj9valOffsetEl
 __ZN5GDObj9valOffsetEl:
-	mov rax, [rdi+rsi]
+	lea rax, [rdi+rsi]
 	ret
 
 global __ZN5GDObj12setValOffsetElPv
@@ -151,7 +151,7 @@ __ZN15CCTextInputNode11getString_sEv:
 	ret
 
 global __ZTIN7cocos2d6CCNodeE
-global __ZTI12FLAlertLayer
+;global __ZTI12FLAlertLayer
 global __ZTIN7cocos2d7CCLayerE
 global __ZTIN7cocos2d12CCLayerColorE
 global __Z14setupTypeinfosv
@@ -189,6 +189,8 @@ __ZN12FLAlertLayerC2Ev:
 	pop rbx
 	pop rbp
 	ret
+global __ZTV9MenuLayer
+__ZTV9MenuLayer: dd 0
 
 ; AnimatedGameObject::playAnimation(int)
 defit __ZN18AnimatedGameObject13playAnimationEi, 0xc93d0
@@ -550,8 +552,11 @@ defit __ZN8EditorUI26constrainGameLayerPositionEv, 0x1c6d0
 ; EditorUI::create(LevelEditorLayer*)
 defit __ZN8EditorUI6createEP16LevelEditorLayer, 0x8a80
 
-; EditorUI::deselectAll()
-defit __ZN8EditorUI11deselectAllEv, 0x1f300
+; EditorUI::deselectAll(int)
+defit __ZN8EditorUI11deselectAllEi, 0x1f300
+
+; EditorUI::onDeselectAll(CCObject*)
+defit __ZN8EditorUI13onDeselectAllEPN7cocos2d8CCObjectE, 0x19cd0
 
 ; EditorUI::disableButton(CreateMenuItem*)
 defit __ZN8EditorUI13disableButtonEP14CreateMenuItem, 0x1c0f0
@@ -561,9 +566,6 @@ defit __ZN8EditorUI16editButtonUsableEv, 0x28f30
 
 ; EditorUI::init(LevelEditorLayer*)
 defit __ZN8EditorUI4initEP16LevelEditorLayer, 0x8ae0
-
-; EditorUI::setupCreateMenu(int)
-defit __ZN8EditorUI15setupCreateMenuEv, 0xcb50
 
 ; EditorUI::editObject(cocos2d::CCObject*)
 defit __ZN8EditorUI10editObjectEPN7cocos2d8CCObjectE, 0x195a0
@@ -610,8 +612,8 @@ defit __ZN8EditorUI12scaleObjectsEPN7cocos2d7CCArrayEfNS0_7CCPointE, 0x252e0
 ; EditorUI::selectObjects(cocos2d::CCArray*, bool)
 defit __ZN8EditorUI13selectObjectsEPN7cocos2d7CCArrayEb, 0x23940
 
-; EditorUI::setupCreateMenu()
-defit __ZN8EditorUI15setupCreateMenuEv, 0xcb50
+; EditorUI::setupCreateMenu(int)
+defit __ZN8EditorUI15setupCreateMenuEi, 0xcb50
 
 ; EditorUI::undoLastAction(cocos2d::CCObject*)
 defit __ZN8EditorUI14undoLastActionEPN7cocos2d8CCObjectE, 0xb830
@@ -684,6 +686,9 @@ defit __ZN12FLAlertLayer4initEP20FLAlertLayerProtocolPKcSsS3_S3_fbf, 0x25e1b0
 
 ; FLAlertLayer::keyBackClicked()
 defit __ZN12FLAlertLayer14keyBackClickedEv, 0x25ed90
+
+; non-virtual thunk to FLAlertLayer::keyBackClicked()
+defit __ZThn304_N12FLAlertLayer14keyBackClickedEv, 0x25ee20
 
 ; FLAlertLayer::keyDown(cocos2d::enumKeyCodes)
 defit __ZN12FLAlertLayer7keyDownEN7cocos2d12enumKeyCodesE, 0x25ece0
@@ -4753,9 +4758,6 @@ defit __ZNK7cocos2d7CCPointdvEf, 0x1371a0
 ; cocos2d::CCPoint::operator=(cocos2d::CCPoint const&)
 defit __ZN7cocos2d7CCPointaSERKS0_, 0x1370c0
 
-; cocos2d::CCPoint::operator+(cocos2d::CCPoint const&)
-defit __ZNK7cocos2d7CCPointplERKS0_, 0x1370f0
-
 ; cocos2d::CCRect::CCRect()
 defit __ZN7cocos2d6CCRectC1Ev, 0x1375a0
 
@@ -5173,5 +5175,5 @@ defit __Z10xCompSpeedPKvS0_, 0x6b030
 section .bss
 __ZTIN7cocos2d6CCNodeE: resq 5
 __ZTIN7cocos2d7CCLayerE: resq 5
-__ZTI12FLAlertLayer: resq 5
+;__ZTI12FLAlertLayer: resq 5
 __ZTIN7cocos2d12CCLayerColorE: resq 5

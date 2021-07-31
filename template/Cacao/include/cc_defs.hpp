@@ -73,8 +73,13 @@ int xCompRealPos(void const*, void const*);
 
 class GDObj { 
 public:
+
     void* valOffset(long offset);
     void setValOffset(long offset, void* setter);
+    template <typename T>
+    T& __member(long offset) {
+        return *reinterpret_cast<T*>(valOffset(offset));
+    }
 };
 
 class CreatorLayer : public cocos2d::CCLayer, public GDObj {
@@ -140,8 +145,34 @@ class ColorPickerDelegate {
     virtual void colorValueChanged(cocos2d::ccColor3B color);
 };
 
+class CCCircleWaveDelegate {
+
+};
+
 class GJSpecialColorSelectDelegate {
     virtual void colorSelectClosed(int);
+};
+
+class CCAnimatedSprite : public cocos2d::CCSprite {
+ public:
+    void runAnimation(std::string name);
+};
+
+
+class GJRobotSprite : public CCAnimatedSprite {
+
+};
+
+class GJSpiderSprite : public CCAnimatedSprite {
+
+};
+
+class CCCircleWave : public cocos2d::CCNode {
+ public:
+    static CCCircleWave* create(float a, float b, float c, bool d);
+    void followObject(cocos2d::CCNode* tofollow, bool ok);
+    CLASS_PARAM(cocos2d::_ccColor3B, color, 0x134);
+    CLASS_PARAM(CCCircleWaveDelegate*, delegate, 0x150);
 };
 
 class CCSpritePlus : public cocos2d::CCSprite {
@@ -399,18 +430,35 @@ public:
     void setSecondColor(cocos2d::_ccColor3B const&);
     void flipGravity(bool, bool);
     void pushButton(int);
+    void activateStreak();
+    void runRotateAction(bool idk);
+
     CLASS_PARAM(HardStreak *, waveStreak, 0x600);
     CLASS_PARAM(double, speed, 0x608);
     CLASS_PARAM(double, gravity, 0x618);
+    CLASS_PARAM(bool, inPlayLayer, 0x62c);
+    CLASS_PARAM(GJRobotSprite*, robotSprite, 0x6a8);
+    CLASS_PARAM(GJSpiderSprite*, spiderSprite, 0x6b0);
     CLASS_PARAM(bool, isHolding, 0x745);
     CLASS_PARAM(bool, hasJustHeld, 0x746);
     CLASS_PARAM(double, yAccel, 0x760);
+
     CLASS_PARAM(bool, isShip, 0x770);
-    CLASS_PARAM(bool, isUpsideDown, 0x776);
+    CLASS_PARAM(bool, isBird, 0x771);
+    CLASS_PARAM(bool, isBall, 0x772);
+    CLASS_PARAM(bool, isDart, 0x773);
+    CLASS_PARAM(bool, isRobot, 0x774);
+    CLASS_PARAM(bool, isSpider, 0x775);
+
+    CLASS_PARAM(bool, upsideDown, 0x776);
     CLASS_PARAM(bool, dead, 0x777);
     CLASS_PARAM(bool, onGround, 0x778);
-    CLASS_PARAM(float, vSize, 0x77c);
+    CLASS_PARAM(float, vehicleSize, 0x77c);
+    CLASS_PARAM(cocos2d::CCPoint, lastPortalLocation, 0x78c);
     CLASS_PARAM(bool, isSliding, 0x7a0);
+    CLASS_PARAM(bool, isRising, 0x7a1);
+    CLASS_PARAM(cocos2d::CCPoint, lastHitGround, 0x7a4);
+    CLASS_PARAM(GameObject*, lastPortal, 0x7b8);
     CLASS_PARAM(cocos2d::_ccColor3B, pCol1, 0x7c2);
     CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
     CLASS_PARAM(float, xPos, 0x7c8);
@@ -498,12 +546,13 @@ public:
     CLASS_PARAM(std::string, clipboard, 0x458);
 };
 
-class PlayLayer : public GJBaseGameLayer {
+class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate {
 public:
     static PlayLayer* create(GJGameLevel* l);
     static void switchToScene(GJGameLevel* l);
     void resetLevel();
     void addObject(GameObject* gob);
+    void addCircle(CCCircleWave* circle);
     virtual void update(float);
     CLASS_PARAM(bool, gameStarted, 0x4dc);
     CLASS_PARAM(EndPortalObject*, endPortal, 0x530);
@@ -618,7 +667,7 @@ class LevelInfoLayer : public cocos2d::CCLayer, public GDObj {
 class MenuLayer : public cocos2d::CCLayer, public GDObj {
 public:
     void onQuit(cocos2d::CCObject*);
-    void keyBackClicked();
+    void keyBackClicked() override;
 };
 class MoreVideoOptionsLayer : public FLAlertLayer {
 public:
@@ -681,6 +730,7 @@ public:
     CLASS_PARAM(PlayLayer*, playLayer, 0x180);
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x188);
     CLASS_PARAM(int, scene, 0x1f4);
+    CLASS_PARAM(bool, ldm, 0x2a1);
 };
 
 class InfoLayer : public cocos2d::CCLayer, public GDObj {
@@ -829,10 +879,6 @@ enum GameObjectType {
 
 };
 
-class CCCircleWave {
-
-};
-
 class CheckpointObject {
 
 };
@@ -866,10 +912,6 @@ class AnimatedGameObject {
 };
 
 class AudioEffectsLayer {
-
-};
-
-class CCAnimatedSprite {
 
 };
 
@@ -914,10 +956,6 @@ class GJMoveCommandLayer {
 };
 
 class GJPFollowCommandLayer {
-
-};
-
-class GJRobotSprite {
 
 };
 
