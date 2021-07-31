@@ -172,6 +172,8 @@ __ZN15CCTextInputNode11getString_sEv:
 	ret
 
 global __ZTIN7cocos2d6CCNodeE
+global __ZTI9MenuLayer
+global __ZTV9MenuLayer
 global __ZTI12FLAlertLayer
 global __ZTIN7cocos2d7CCLayerE
 global __ZTIN7cocos2d12CCLayerColorE
@@ -5233,8 +5235,12 @@ defit __Z12xCompRealPosPKvS0_, 0x6b050
 ; xCompSpeed(void const*, void const*)
 defit __Z10xCompSpeedPKvS0_, 0x6b030
 
+__ZTV9MenuLayer dq 0x1006438d0
+__ZTI9MenuLayer dq 0x100643e40
+
 section .bss
 __ZTIN7cocos2d6CCNodeE: resq 5
 __ZTIN7cocos2d7CCLayerE: resq 5
 __ZTI12FLAlertLayer: resq 5
+; __ZTI9MenuLayer: resq 5
 __ZTIN7cocos2d12CCLayerColorE: resq 5

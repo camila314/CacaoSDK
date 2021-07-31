@@ -10,13 +10,13 @@
 
 @interface AudioEffectsLayer
     void audioStep(float) = 0x271f40;
-    void create(std::string) = 0x271a00;
+    static AudioEffectsLayer* create(std::string) = 0x271a00;
     void resetAudioVars() = 0x271ee0;
 @end
 
 @interface ButtonSprite
-    void create(char const*) = 0x4fa10;
-    void create(char const*, int, int, float, bool) = 0x4fa40;
+    static ButtonSprite* create(char const*) = 0x4fa10;
+    static ButtonSprite* create(char const*, int, int, float, bool) = 0x4fa40;
     void updateBGImage(char const*) = 0x502d0;
 @end
 
@@ -26,35 +26,35 @@
 @end
 
 @interface CCCircleWave
-    void create(float, float, float, bool) = 0xbd270;
-    void create(float, float, float, bool, bool) = 0xbd290;
+    static CCCircleWave* create(float, float, float, bool) = 0xbd270;
+    static CCCircleWave* create(float, float, float, bool, bool) = 0xbd290;
     void followObject(cocos2d::CCNode*, bool) = 0xbd670;
     void updatePosition(float) = 0xbd630;
 @end
 
 @interface CCLightFlash
-    void create() = 0x295870;
+    static CCLightFlash* create() = 0x295870;
     void playEffect(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float) = 0x295900;
 @end
 
 @interface CCMenuItemSpriteExtra
-    void create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x1253c0;
+    static CCMenuItemSpriteExtra* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x1253c0;
     void setSizeMult(float) = 0x1255e0;
 @end
 
 @interface CCMenuItemToggler
-    void create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x38400;
+    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x38400;
     void setSizeMult(float) = 0x38a40;
     void toggle(bool) = 0x38950;
 @end
 
 @interface CCMoveCNode
-    void create() = 0x1842a0;
+    static CCMoveCNode* create() = 0x1842a0;
     void init() = 0x18b3d0;
 @end
 
 @interface CCNodeContainer
-    void create() = 0xb1090;
+    static CCNodeContainer* create() = 0xb1090;
     void init() = 0xba950;
     void visit() = 0xba960;
 @end
@@ -64,7 +64,7 @@
 @end
 
 @interface CCTextInputNode
-    void create(float, float, char const*, char const*, int, char const*) = 0x5cfb0;
+    static CCTextInputNode* create(float, float, char const*, char const*, int, char const*) = 0x5cfb0;
     void getString() = 0x5d6f0;
     void refreshLabel() = 0x5d730;
     void setAllowedChars(std::string) = 0x5d360;
@@ -77,12 +77,12 @@
 @end
 
 @interface CheckpointObject
-    void create() = 0x7e7d0;
+    static CheckpointObject* create() = 0x7e7d0;
     void getObject() = 0x7ef50;
 @end
 
 @interface CollisionBlockPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x130010;
+    static CollisionBlockPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x130010;
     void onNextItemID(cocos2d::CCObject*) = 0x130e60;
 @end
 
@@ -105,7 +105,7 @@
 
 @interface ColorSelectPopup
     void colorValueChanged(cocos2d::_ccColor3B) = 0x423320;
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x41eb70;
+    static ColorSelectPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x41eb70;
     void init(EffectGameObject*, cocos2d::CCArray*, ColorAction*) = 0x41ee70;
     void onDefault(cocos2d::CCObject*) = 0x4220e0;
     void onMultiTrigger(cocos2d::CCObject*) = 0x422680;
@@ -129,7 +129,7 @@
 @end
 
 @interface CreateMenuItem
-    void create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x1c580;
+    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x1c580;
 @end
 
 @interface CreatorLayer
@@ -139,29 +139,29 @@
 
 @interface CustomizeObjectLayer
     void colorSelectClosed(cocos2d::CCNode*) = 0xe1050;
-    void create(GameObject*, cocos2d::CCArray*) = 0xdd340;
+    static CustomizeObjectLayer* create(GameObject*, cocos2d::CCArray*) = 0xdd340;
     void init(GameObject*, cocos2d::CCArray*) = 0xdd560;
     void textChanged(CCTextInputNode*) = 0xe1470;
     void textInputClosed(CCTextInputNode*) = 0xe1430;
 @end
 
 @interface DelayedSpawnNode
-    void create() = 0x9b360;
+    static DelayedSpawnNode* create() = 0x9b360;
 @end
 
 @interface DialogLayer
-    void create(DialogObject*, int) = 0x2047c0;
+    static DialogLayer* create(DialogObject*, int) = 0x2047c0;
 @end
 
 @interface DialogObject
-    void create(std::string, std::string, int, float, bool, cocos2d::_ccColor3B) = 0x204410;
+    static DialogObject* create(std::string, std::string, int, float, bool, cocos2d::_ccColor3B) = 0x204410;
 @end
 
 @interface DrawGridLayer
     void addPlayer2Point(cocos2d::CCPoint, bool) = 0xa25b0;
     void addPlayerPoint(cocos2d::CCPoint) = 0xa39c0;
     void addToSpeedObjects(GameObject*) = 0x99900;
-    void create(cocos2d::CCNode*, LevelEditorLayer*) = 0x920c0;
+    static DrawGridLayer* create(cocos2d::CCNode*, LevelEditorLayer*) = 0x920c0;
     void draw() = 0xa3c40;
     void init(cocos2d::CCNode*, LevelEditorLayer*) = 0xa36e0;
     void timeForXPos(float) = 0x9b330;
@@ -179,19 +179,19 @@
 @end
 
 @interface EditorPauseLayer
-    void create(LevelEditorLayer*) = 0x13c680;
+    static EditorPauseLayer* create(LevelEditorLayer*) = 0x13c680;
     void saveLevel() = 0x13ebd0;
 @end
 
 @interface EditorUI
     void constrainGameLayerPosition() = 0x1c6d0;
-    void create(LevelEditorLayer*) = 0x8a80;
+    static EditorUI* create(LevelEditorLayer*) = 0x8a80;
     void deselectAll() = 0x1f300;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
     void editButtonUsable() = 0x28f30;
     void editObject(cocos2d::CCObject*) = 0x195a0;
     void enableButton(CreateMenuItem*) = 0x1bff0;
-    CreateMenuItem* getCreateBtn(int, int) = 0x1f6c0;
+    void getCreateBtn(int, int) = 0x1f6c0;
     void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
     void getSelectedObjects() = 0x23f30;
     void init(LevelEditorLayer*) = 0x8ae0;
@@ -214,17 +214,17 @@
 @end
 
 @interface EffectGameObject
-    void create(char const*) = 0xc9790;
+    static EffectGameObject* create(char const*) = 0xc9790;
     void getTargetColorIndex() = 0xca1f0;
     void triggerObject(GJBaseGameLayer*) = 0xc9870;
 @end
 
 @interface EndLevelLayer
-    void create() = 0x2787d0;
+    static EndLevelLayer* create() = 0x2787d0;
 @end
 
 @interface EndPortalObject
-    void create() = 0x1da8f0;
+    static EndPortalObject* create() = 0x1da8f0;
     void updateColors(cocos2d::_ccColor3B) = 0x1dacb0;
 @end
 
@@ -233,8 +233,8 @@
     void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020;
     void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60;
     void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0;
-    void create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float) = 0x25e0e0;
-    void create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float) = 0x25dec0;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float) = 0x25e0e0;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float) = 0x25dec0;
     void init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float) = 0x25e1b0;
     void keyBackClicked() = 0x25ed90;
     void keyDown(cocos2d::enumKeyCodes) = 0x25ece0;
@@ -256,7 +256,7 @@
 @end
 
 @interface FollowRewardPage
-    void create() = 0x22f140;
+    static FollowRewardPage* create() = 0x22f140;
 @end
 
 @interface GJAccountManager
@@ -339,7 +339,7 @@
 @end
 
 @interface GJDropDownLayer
-    void create(char const*) = 0x352530;
+    static GJDropDownLayer* create(char const*) = 0x352530;
     void customSetup() = 0x352570;
     void disableUI() = 0x352580;
     void draw() = 0x352910;
@@ -371,7 +371,7 @@
     void colorForPulseEffect(cocos2d::_ccColor3B const&, PulseEffectAction*) = 0x181bf0;
     void countChangedForItem(int) = 0x185a40;
     void countForItem(int) = 0x185a10;
-    void create() = 0x1800f0;
+    static GJEffectManager* create() = 0x1800f0;
     void createFollowCommand(float, float, float, int, int, bool, int) = 0x182ed0;
     void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int) = 0x182cc0;
     void createPlayerFollowCommand(float, float, int, float, float, int, int) = 0x182fe0;
@@ -443,7 +443,7 @@
 @end
 
 @interface GJFollowCommandLayer
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x16a550;
+    static GJFollowCommandLayer* create(EffectGameObject*, cocos2d::CCArray*) = 0x16a550;
     void onUpdateGroupID(cocos2d::CCObject*) = 0x16c8f0;
     void onUpdateGroupID2(cocos2d::CCObject*) = 0x16c9e0;
     void textChanged(CCTextInputNode*) = 0x16d480;
@@ -452,7 +452,7 @@
 @end
 
 @interface GJGameLevel
-    void create() = 0x2b83e0;
+    static GJGameLevel* create() = 0x2b83e0;
     void getAudioFileName() = 0x2dbe70;
     void getCoinKey(int) = 0x2ce360;
     void getLengthKey(int) = 0x2dbba0;
@@ -462,7 +462,7 @@
 @end
 
 @interface GJGroundLayer
-    void create(int, int) = 0x355c00;
+    static GJGroundLayer* create(int, int) = 0x355c00;
     void deactivateGround() = 0x356a40;
     void getGroundY() = 0x356ac0;
     void updateGround01Color(cocos2d::_ccColor3B) = 0x356640;
@@ -472,7 +472,7 @@
 @end
 
 @interface GJMoveCommandLayer
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x36f8a0;
+    static GJMoveCommandLayer* create(EffectGameObject*, cocos2d::CCArray*) = 0x36f8a0;
     void init(EffectGameObject*, cocos2d::CCArray*) = 0x36fac0;
     void keyBackClicked() = 0x374970;
     void onUpdateGroupID(cocos2d::CCObject*) = 0x373350;
@@ -493,19 +493,19 @@
 @end
 
 @interface GJPFollowCommandLayer
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1aea20;
+    static GJPFollowCommandLayer* create(EffectGameObject*, cocos2d::CCArray*) = 0x1aea20;
     void textChanged(CCTextInputNode*) = 0x1b1dc0;
     void updateTargetGroupID() = 0x1b1a60;
 @end
 
 @interface GJRobotSprite
-    void create() = 0x34ac00;
+    static GJRobotSprite* create() = 0x34ac00;
     void updateColor02(cocos2d::_ccColor3B) = 0x34bbd0;
     void updateFrame(int) = 0x34bdd0;
 @end
 
 @interface GJRotateCommandLayer
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1ba0;
+    static GJRotateCommandLayer* create(EffectGameObject*, cocos2d::CCArray*) = 0x1ba0;
     void onUpdateGroupID(cocos2d::CCObject*) = 0x4bb0;
     void onUpdateGroupID2(cocos2d::CCObject*) = 0x4ca0;
     void textChanged(CCTextInputNode*) = 0x58d0;
@@ -514,8 +514,8 @@
 @end
 
 @interface GJSearchObject
-    void create(SearchType) = 0x2df120;
-    void create(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int) = 0x2dee30;
+    static GJSearchObject* create(SearchType) = 0x2df120;
+    static GJSearchObject* create(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int) = 0x2dee30;
     void getPageObject(int) = 0x2df9a0;
 @end
 
@@ -524,7 +524,7 @@
 @end
 
 @interface GJSpiderSprite
-    void create() = 0x34c5b0;
+    static GJSpiderSprite* create() = 0x34c5b0;
 @end
 
 @interface GManager
@@ -661,7 +661,7 @@
 @end
 
 @interface GameObjectCopy
-    void create(GameObject*) = 0x975a0;
+    static GameObjectCopy* create(GameObject*) = 0x975a0;
     void resetObject() = 0x976a0;
 @end
 
@@ -703,13 +703,13 @@
 @end
 
 @interface GravityEffectSprite
-    void create() = 0x6d0a0;
+    static GravityEffectSprite* create() = 0x6d0a0;
     void init() = 0x80b20;
     void updateSpritesColor(cocos2d::_ccColor3B) = 0x7ce30;
 @end
 
 @interface GroupCommandObject
-    void create() = 0x18b460;
+    static GroupCommandObject* create() = 0x18b460;
     void createFromString(std::string) = 0x16ece0;
     void easeToText(int) = 0x16ecb0;
     void getEasedAction(cocos2d::CCActionInterval*, int, float) = 0x16e7b0;
@@ -750,7 +750,7 @@
     void animateInDualGround(GameObject*, float, bool) = 0xa2780;
     void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0x9c590;
     void checkCollisions(PlayerObject*, float) = 0x9e620;
-    void create(GJGameLevel*) = 0x90fb0;
+    static LevelEditorLayer* create(GJGameLevel*) = 0x90fb0;
     void createBackground() = 0x929f0;
     void createGroundLayer() = 0x92840;
     void createObject(int, cocos2d::CCPoint, bool) = 0x957c0;
@@ -814,11 +814,11 @@
 @end
 
 @interface LevelSettingsLayer
-    void create(LevelSettingsObject*, LevelEditorLayer*) = 0xa7c30;
+    static LevelSettingsLayer* create(LevelSettingsObject*, LevelEditorLayer*) = 0xa7c30;
 @end
 
 @interface LevelSettingsObject
-    void create() = 0x92760;
+    static LevelSettingsObject* create() = 0x92760;
     void init() = 0xa5690;
     void objectFromDict(cocos2d::CCDictionary*) = 0xa5810;
     void objectFromString(std::string) = 0x945a0;
@@ -845,13 +845,13 @@
 @end
 
 @interface MenuLayer
-    void keyBackClicked() = 0x1d3160;
+    virtual void keyBackClicked() = 0x1d3160;
     void onMoreGames(cocos2d::CCObject*) = 0x1d2ad0;
     void onQuit(cocos2d::CCObject*) = 0x1d2b40;
 @end
 
 @interface MoreVideoOptionsLayer
-    void create() = 0x443c10;
+    static MoreVideoOptionsLayer* create() = 0x443c10;
     void init() = 0x444150;
 @end
 
@@ -862,7 +862,7 @@
 
 @interface OBB2D
     void calculateWithCenter(cocos2d::CCPoint, float, float, float) = 0x35a9c0;
-    void create(cocos2d::CCPoint, float, float, float) = 0x35a890;
+    static OBB2D* create(cocos2d::CCPoint, float, float, float) = 0x35a890;
     void getBoundingRect() = 0x35b2b0;
     void overlaps(OBB2D*) = 0x35b0a0;
     void overlaps1Way(OBB2D*) = 0x35b0d0;
@@ -875,14 +875,14 @@
 @end
 
 @interface OpacityEffectAction
-    OpacityEffectAction* create(float, float, float, int) = 0x1789f0;
+    static OpacityEffectAction* create(float, float, float, int) = 0x1789f0;
     void createFromString(std::string) = 0x178c10;
     void init(float, float, float, int) = 0x178b00;
     void step(float) = 0x178b90;
 @end
 
 @interface PauseLayer
-    void create(bool) = 0x20b1e0;
+    static PauseLayer* create(bool) = 0x20b1e0;
     void onEdit(cocos2d::CCObject*) = 0x20c630;
 @end
 
@@ -910,7 +910,7 @@
     void clearPickedUpItems() = 0x7cfa0;
     void colorObject(int, cocos2d::_ccColor3B) = 0x77810;
     void commitJumps() = 0x737e0;
-    void create(GJGameLevel*) = 0x6b590;
+    static PlayLayer* create(GJGameLevel*) = 0x6b590;
     void createCheckpoint() = 0x7e470;
     void createObjectsFromSetup(std::string) = 0x6d130;
     void createParticle(int, char const*, int, cocos2d::tCCPositionType) = 0x76800;
@@ -1046,7 +1046,7 @@
 @end
 
 @interface PlayerCheckpoint
-    void create() = 0x7e8c0;
+    static PlayerCheckpoint* create() = 0x7e8c0;
 @end
 
 @interface PlayerObject
@@ -1063,7 +1063,7 @@
     void collidedWithSlope(float, GameObject*, bool) = 0x21d8d0;
     void convertToClosestRotation(float) = 0x21c860;
     void copyAttributes(PlayerObject*) = 0x22dc70;
-    void create(int, int, cocos2d::CCLayer*) = 0x217260;
+    static PlayerObject* create(int, int, cocos2d::CCLayer*) = 0x217260;
     void deactivateParticle() = 0x21a540;
     void deactivateStreak(bool) = 0x218b30;
     void fadeOutStreak2(float) = 0x225890;
@@ -1206,7 +1206,7 @@
 @end
 
 @interface RetryLevelLayer
-    void create() = 0x28dd60;
+    static RetryLevelLayer* create() = 0x28dd60;
 @end
 
 @interface SetGroupIDLayer
@@ -1216,57 +1216,57 @@
 @end
 
 @interface SetIDLayer
-    void create(GameObject*) = 0x168f20;
+    static SetIDLayer* create(GameObject*) = 0x168f20;
 @end
 
 @interface SetItemIDLayer
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x5a830;
+    static SetItemIDLayer* create(EffectGameObject*, cocos2d::CCArray*) = 0x5a830;
 @end
 
 @interface SetTargetIDLayer
-    void create(EffectGameObject*, cocos2d::CCArray*, std::string) = 0x159d20;
+    static SetTargetIDLayer* create(EffectGameObject*, cocos2d::CCArray*, std::string) = 0x159d20;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x15aed0;
     void textChanged(CCTextInputNode*) = 0x15b6c0;
     void updateTargetID() = 0x15b4a0;
 @end
 
 @interface SetupAnimationPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x208b70;
+    static SetupAnimationPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x208b70;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x209fc0;
     void textChanged(CCTextInputNode*) = 0x20ab30;
     void updateTargetID() = 0x20a910;
 @end
 
 @interface SetupCollisionTriggerPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1d6120;
+    static SetupCollisionTriggerPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x1d6120;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x1d77b0;
     void textChanged(CCTextInputNode*) = 0x1d84d0;
     void updateTargetID() = 0x1d82b0;
 @end
 
 @interface SetupCountTriggerPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x15c6c0;
+    static SetupCountTriggerPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x15c6c0;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x15dd40;
     void textChanged(CCTextInputNode*) = 0x15e9a0;
     void updateTargetID() = 0x15e8a0;
 @end
 
 @interface SetupInstantCountPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x352c10;
+    static SetupInstantCountPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x352c10;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x354520;
     void textChanged(CCTextInputNode*) = 0x355270;
     void updateTargetID() = 0x355170;
 @end
 
 @interface SetupInteractObjectPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x29a400;
+    static SetupInteractObjectPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x29a400;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x29bbc0;
     void textChanged(CCTextInputNode*) = 0x29c2b0;
     void updateTargetID() = 0x29c120;
 @end
 
 @interface SetupObjectTogglePopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1c0860;
+    static SetupObjectTogglePopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x1c0860;
     void init(EffectGameObject*, cocos2d::CCArray*) = 0x1c0a40;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x1c1c40;
     void textChanged(CCTextInputNode*) = 0x1c2660;
@@ -1274,14 +1274,14 @@
 @end
 
 @interface SetupOpacityPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x32b70;
+    static SetupOpacityPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x32b70;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x340a0;
     void textChanged(CCTextInputNode*) = 0x34a60;
     void updateTargetID() = 0x34760;
 @end
 
 @interface SetupPickupTriggerPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x35e70;
+    static SetupPickupTriggerPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x35e70;
     void onItemIDArrow(cocos2d::CCObject*) = 0x37100;
     void onNextItemID(cocos2d::CCObject*) = 0x37260;
     void textChanged(CCTextInputNode*) = 0x37ca0;
@@ -1290,7 +1290,7 @@
 
 @interface SetupPulsePopup
     void colorValueChanged(cocos2d::_ccColor3B) = 0x1ec680;
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1e6d40;
+    static SetupPulsePopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x1e6d40;
     void init(EffectGameObject*, cocos2d::CCArray*) = 0x1e7010;
     void onSelectPulseMode(cocos2d::CCObject*) = 0x1eb020;
     void onSelectTargetMode(cocos2d::CCObject*) = 0x1eac30;
@@ -1304,11 +1304,11 @@
 @end
 
 @interface SetupShakePopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x3adc00;
+    static SetupShakePopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x3adc00;
 @end
 
 @interface SetupSpawnPopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x139790;
+    static SetupSpawnPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x139790;
     void createToggleButton(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*) = 0x13b0e0;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x13ad80;
     void textChanged(CCTextInputNode*) = 0x13b990;
@@ -1316,22 +1316,22 @@
 @end
 
 @interface SetupTouchTogglePopup
-    void create(EffectGameObject*, cocos2d::CCArray*) = 0x1576a0;
+    static SetupTouchTogglePopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x1576a0;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x158b60;
     void textChanged(CCTextInputNode*) = 0x1596a0;
     void updateTargetID() = 0x159480;
 @end
 
 @interface SimplePlayer
-    void create(int) = 0x1b6140;
+    static SimplePlayer* create(int) = 0x1b6140;
     void setSecondColor(cocos2d::_ccColor3B const&) = 0x1bace0;
     void updateColors() = 0x1ba1f0;
     void updatePlayerFrame(int, IconType) = 0x1b62f0;
 @end
 
 @interface Slider
-    void create(cocos2d::CCNode*, Cacao::CC_SEL, char const*, char const*, char const*, char const*, float) = 0x18dd80;
-    void create(cocos2d::CCNode*, Cacao::CC_SEL, float) = 0x18dc40;
+    static Slider* create(cocos2d::CCNode*, Cacao::CC_SEL, char const*, char const*, char const*, char const*, float) = 0x18dd80;
+    static Slider* create(cocos2d::CCNode*, Cacao::CC_SEL, float) = 0x18dc40;
     void getValue() = 0x18e0c0;
     void setBarVisibility(bool) = 0x18e280;
     void setValue(float) = 0x18e170;
@@ -1346,17 +1346,17 @@
 @end
 
 @interface SpeedObject
-    void create(GameObject*, int, float) = 0x77450;
+    static SpeedObject* create(GameObject*, int, float) = 0x77450;
     void init(GameObject*, int, float) = 0x77400;
 @end
 
 @interface TeleportPortalObject
-    void create(char const*) = 0xdaa50;
+    static TeleportPortalObject* create(char const*) = 0xdaa50;
     void getTeleportXOff(cocos2d::CCNode*) = 0xdac20;
 @end
 
 @interface TextArea
-    void create(std::string, char const*, float, float, cocos2d::CCPoint, float, bool) = 0x19eb40;
+    static TextArea* create(std::string, char const*, float, float, cocos2d::CCPoint, float, bool) = 0x19eb40;
 @end
 
 @interface TextInputDelegate
@@ -1373,7 +1373,7 @@
 @end
 
 @interface UILayer
-    void create() = 0x27fd10;
+    static UILayer* create() = 0x27fd10;
     void disableMenu() = 0x280960;
     void enableMenu() = 0x280940;
     void pCommand(cocos2d::CCNode*) = 0x280830;
@@ -1381,16 +1381,16 @@
 @end
 
 @interface UndoObject
-    void create(GameObject*, UndoCommand) = 0x94ea0;
+    static UndoObject* create(GameObject*, UndoCommand) = 0x94ea0;
     void createWithArray(cocos2d::CCArray*, UndoCommand) = 0x96ee0;
 @end
 
 @interface CCActionTween
-    void create(float, char const*, float, float) = 0x447590;
+    static CCActionTween* create(float, char const*, float, float) = 0x447590;
 @end
 
 @interface CCAnimate
-    void create(cocos2d::CCAnimation*) = 0x1f8fc0;
+    static CCAnimate* create(cocos2d::CCAnimation*) = 0x1f8fc0;
 @end
 
 @interface CCAnimation
@@ -1403,7 +1403,7 @@
     void addObjectsFromArray(cocos2d::CCArray*) = 0x41a2d0;
     void containsObject(cocos2d::CCObject*) = 0x41a3e0;
     void count() = 0x41a2f0;
-    void create() = 0x419cb0;
+    static CCArray* create() = 0x419cb0;
     void createWithObject(cocos2d::CCObject*) = 0x419d50;
     void fastRemoveObject(cocos2d::CCObject*) = 0x41a520;
     void fastRemoveObjectAtIndex(unsigned int) = 0x41a500;
@@ -1418,11 +1418,11 @@
 @end
 
 @interface CCBezierTo
-    void create(float, cocos2d::_ccBezierConfig const&) = 0x1f6c10;
+    static CCBezierTo* create(float, cocos2d::_ccBezierConfig const&) = 0x1f6c10;
 @end
 
 @interface CCCallFunc
-    void create(int) = 0x454d90;
+    static CCCallFunc* create(int) = 0x454d90;
 @end
 
 @interface CCCopying
@@ -1430,13 +1430,13 @@
 @end
 
 @interface CCDelayTime
-    void create(float) = 0x1f4380;
+    static CCDelayTime* create(float) = 0x1f4380;
 @end
 
 @interface CCDictionary
     void allKeys() = 0x190450;
     void count() = 0x190430;
-    void create() = 0x192650;
+    static CCDictionary* create() = 0x192650;
     void objectForKey(long) = 0x190bb0;
     void objectForKey(std::string const&) = 0x190870;
     void removeAllObjects() = 0x190220;
@@ -1464,7 +1464,7 @@
 
 @interface CCDrawNode
     void clear() = 0x379e80;
-    void create() = 0x378d00;
+    static CCDrawNode* create() = 0x378d00;
     void drawPolygon(cocos2d::CCPoint*, unsigned int, cocos2d::_ccColor4F const&, float, cocos2d::_ccColor4F const&) = 0x3797f0;
     void drawSegment(cocos2d::CCPoint const&, cocos2d::CCPoint const&, float, cocos2d::_ccColor4F const&) = 0x3792d0;
     void getBlendFunc() = 0x379ea0;
@@ -1473,31 +1473,31 @@
 @end
 
 @interface CCEaseElasticOut
-    void create(cocos2d::CCActionInterval*, float) = 0x2a3080;
+    static CCEaseElasticOut* create(cocos2d::CCActionInterval*, float) = 0x2a3080;
 @end
 
 @interface CCEaseIn
-    void create(cocos2d::CCActionInterval*, float) = 0x2a1960;
+    static CCEaseIn* create(cocos2d::CCActionInterval*, float) = 0x2a1960;
 @end
 
 @interface CCEaseInOut
-    void create(cocos2d::CCActionInterval*, float) = 0x2a1d80;
+    static CCEaseInOut* create(cocos2d::CCActionInterval*, float) = 0x2a1d80;
 @end
 
 @interface CCEaseOut
-    void create(cocos2d::CCActionInterval*, float) = 0x2a1b70;
+    static CCEaseOut* create(cocos2d::CCActionInterval*, float) = 0x2a1b70;
 @end
 
 @interface CCFadeOut
-    void create(float) = 0x1f7d80;
+    static CCFadeOut* create(float) = 0x1f7d80;
 @end
 
 @interface CCFadeTo
-    void create(float, unsigned char) = 0x1f7ff0;
+    static CCFadeTo* create(float, unsigned char) = 0x1f7ff0;
 @end
 
 @interface CCHide
-    void create() = 0x4543e0;
+    static CCHide* create() = 0x4543e0;
 @end
 
 @interface CCImage
@@ -1509,7 +1509,7 @@
 @end
 
 @interface CCLabelBMFont
-    void create(char const*, char const*) = 0x347660;
+    static CCLabelBMFont* create(char const*, char const*) = 0x347660;
     void limitLabelWidth(float, float, float) = 0x34a6e0;
     void setScale(float) = 0x34a5d0;
     void setString(char const*, bool) = 0x3489e0;
@@ -1524,7 +1524,7 @@
     void ccTouchesCancelled(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x273850;
     void ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x2737d0;
     void ccTouchesMoved(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x273750;
-    void create() = 0x272a00;
+    static CCLayer* create() = 0x272a00;
     void didAccelerate(cocos2d::CCAcceleration*) = 0x272ea0;
     void getTouchMode() = 0x272e10;
     void getTouchPriority() = 0x272e00;
@@ -1554,7 +1554,7 @@
 @end
 
 @interface CCLayerColor
-    void create(cocos2d::_ccColor4B const&, float, float) = 0x2745e0;
+    static CCLayerColor* create(cocos2d::_ccColor4B const&, float, float) = 0x2745e0;
     void draw() = 0x274b50;
     void getBlendFunc() = 0x274480;
     void init() = 0x274800;
@@ -1584,7 +1584,7 @@
 
 @interface CCMenu
     void alignItemsHorizontallyWithPadding(float) = 0x4393e0;
-    void create() = 0x438720;
+    static CCMenu* create() = 0x438720;
     void createWithArray(cocos2d::CCArray*) = 0x4387e0;
     void createWithItem(cocos2d::CCMenuItem*) = 0x438b80;
 @end
@@ -1602,11 +1602,11 @@
 @end
 
 @interface CCMoveBy
-    void create(float, cocos2d::CCPoint const&) = 0x1f50e0;
+    static CCMoveBy* create(float, cocos2d::CCPoint const&) = 0x1f50e0;
 @end
 
 @interface CCMoveTo
-    void create(float, cocos2d::CCPoint const&) = 0x1f54d0;
+    static CCMoveTo* create(float, cocos2d::CCPoint const&) = 0x1f54d0;
 @end
 
 @interface CCNode
@@ -1618,7 +1618,7 @@
     void cleanup() = 0x123100;
     void convertToNodeSpace(cocos2d::CCPoint const&) = 0x124750;
     void convertToWorldSpace(cocos2d::CCPoint const&) = 0x124790;
-    void create() = 0x1230a0;
+    static CCNode* create() = 0x1230a0;
     void draw() = 0x123840;
     void getActionByTag(int) = 0x123ee0;
     void getActionManager() = 0x123e50;
@@ -1756,7 +1756,7 @@
 @end
 
 @interface CCParticleSystemQuad
-    void create(char const*) = 0x36b000;
+    static CCParticleSystemQuad* create(char const*) = 0x36b000;
 @end
 
 @interface CCPoint
@@ -1775,26 +1775,26 @@
 
 @interface CCRenderTexture
     void begin() = 0x35ce10;
-    void create(int, int, cocos2d::CCTexture2DPixelFormat) = 0x35c720;
+    static CCRenderTexture* create(int, int, cocos2d::CCTexture2DPixelFormat) = 0x35c720;
     void end() = 0x35d2c0;
     void newCCImage(bool) = 0x35d7d0;
 @end
 
 @interface CCRepeatForever
-    void create(cocos2d::CCActionInterval*) = 0x1f3920;
+    static CCRepeatForever* create(cocos2d::CCActionInterval*) = 0x1f3920;
 @end
 
 @interface CCRotateBy
-    void create(float, float) = 0x1f4c50;
+    static CCRotateBy* create(float, float) = 0x1f4c50;
 @end
 
 @interface CCScaleTo
-    void create(float, float) = 0x1f6ff0;
-    void create(float, float, float) = 0x1f70f0;
+    static CCScaleTo* create(float, float) = 0x1f6ff0;
+    static CCScaleTo* create(float, float, float) = 0x1f70f0;
 @end
 
 @interface CCScene
-    void create() = 0x13c140;
+    static CCScene* create() = 0x13c140;
 @end
 
 @interface CCScheduler
@@ -1807,8 +1807,8 @@
     void addChild(cocos2d::CCNode*) = 0x134190;
     void addChild(cocos2d::CCNode*, int) = 0x1341a0;
     void addChild(cocos2d::CCNode*, int, int) = 0x1341b0;
-    void create() = 0x132df0;
-    void create(char const*) = 0x132a80;
+    static CCSprite* create() = 0x132df0;
+    static CCSprite* create(char const*) = 0x132a80;
     void createWithSpriteFrame(cocos2d::CCSpriteFrame*) = 0x132cb0;
     void createWithSpriteFrameName(char const*) = 0x132dc0;
     void displayFrame() = 0x135760;
@@ -1889,7 +1889,7 @@
 @end
 
 @interface CCTintTo
-    void create(float, unsigned char, unsigned char, unsigned char) = 0x1f82a0;
+    static CCTintTo* create(float, unsigned char, unsigned char, unsigned char) = 0x1f82a0;
 @end
 
 @interface CCTouchDispatcher
@@ -1898,7 +1898,7 @@
 @end
 
 @interface CCTransitionFade
-    void create(float, cocos2d::CCScene*) = 0x8ea30;
+    static CCTransitionFade* create(float, cocos2d::CCScene*) = 0x8ea30;
 @end
 
 @interface ZipUtils
@@ -1916,8 +1916,8 @@
 @end
 
 @interface CCScale9Sprite
-    void create(char const*) = 0x2130d0;
-    void create(char const*, cocos2d::CCRect) = 0x212ef0;
+    static CCScale9Sprite* create(char const*) = 0x2130d0;
+    static CCScale9Sprite* create(char const*, cocos2d::CCRect) = 0x212ef0;
     void setContentSize(cocos2d::CCSize const&) = 0x2127c0;
 @end
 

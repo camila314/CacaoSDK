@@ -617,7 +617,7 @@ class LevelInfoLayer : public cocos2d::CCLayer, public GDObj {
 class MenuLayer : public cocos2d::CCLayer, public GDObj {
 public:
     void onQuit(cocos2d::CCObject*);
-    void keyBackClicked();
+    virtual void keyBackClicked();
 };
 class MoreVideoOptionsLayer : public FLAlertLayer {
 public:
