@@ -194,9 +194,9 @@
     void enableButton(CreateMenuItem*) = 0x1bff0;
     void getCreateBtn(int, int) = 0x1f6c0;
     void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
-    void getSelectedObjects() = 0x23f30;
+    cocos2d::CCArray* getSelectedObjects() = 0x23f30;
     void init(LevelEditorLayer*) = 0x8ae0;
-    void keyDown(cocos2d::enumKeyCodes) = 0x30790;
+    virtual void keyDown(cocos2d::enumKeyCodes) = 0x30790;
     void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
     void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
     void pasteObjects(std::string) = 0x232d0;

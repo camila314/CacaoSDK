@@ -11,19 +11,19 @@ Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the cur
 
 ### CacKit
 
-Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. You'll notice that I both assign a name to the class and assign a variable to it. This is because the variable allows me to activate the hooking automatically and the class allows me to check for hooked functions. Example:
+Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$redirect`. To use it I give the macro the class I want to hook. You'll also notice that I assign a variable to it. This is because the variable allows me to activate the hooking automatically. And to apply all the hooks to the GD I use a macro called `$apply`. Example:
 ```cpp
 #include <CacKit>
 #include <iostream>
 
-class REDIRECT($EditorUI) {
+class $redirect(EditorUI) {
 public:
-	void undoLastAction() {
+	void undoLastAction(CCObject* p0) {
 		std::cout << "Undo!\n";
 	}
 } MyEditorUIHook;
 
-APPLY_HOOKS();
+$apply();
 ```
 
 If you want to call the original function, there is also an easy way to do that as well:
@@ -31,31 +31,30 @@ If you want to call the original function, there is also an easy way to do that 
 #include <CacKit>
 #include <iostream>
 
-class REDIRECT($EditorUI) {
+class $redirect(EditorUI) {
 public:
-	void undoLastAction() {
+	void undoLastAction(CCObject* p0) {
 		std::cout << "Undo!\n";
-		$EditorUI::undoLastAction();
+		$EditorUI::undoLastAction(p0);
 	}
 } MyEditorUIHook;
 
-APPLY_HOOKS();
+$apply();
 ```
-
-Because this CacKit class is not technically a GD class, we need to cast `this` into the proper gd class to actually use it. Cacao provides us with a `cac_this` macro that automatically does this for us
+Since the CacKit classes subclass the GD classes, we can use the members and functions like we would in a normal class. 
 ```cpp
 #include <CacKit>
 #include <iostream>
 
-class REDIRECT($EditorUI) {
+class $redirect(EditorUI) {
 public:
-	void undoLastAction() {
-		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
-		$EditorUI::undoLastAction();
+	void undoLastAction(CCObject* p0) {
+		std::cout << "We have " << getSelectedObjects()->count() << " objects selected\n";
+		$EditorUI::undoLastAction(p0);
 	}
 } MyEditorUIHook;
 
-APPLY_HOOKS();
+$apply();
 ```
 
 If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
@@ -64,15 +63,15 @@ If you want, you can also use a function with the name `inject` to run code befo
 #include <CacKit>
 #include <iostream>
 
-class REDIRECT($EditorUI) {
+class $redirect(EditorUI) {
 public:
-	void undoLastAction() {
-		std::cout << "We have " << cac_this->getSelectedObjects()->count() << " objects elected\n";
-		$EditorUI::undoLastAction();
+	void undoLastAction(CCObject* p0) {
+		std::cout << "We have " << getSelectedObjects()->count() << " objects selected\n";
+		$EditorUI::undoLastAction(p0);
 	}
 } MyEditorUIHook;
 
-APPLY_HOOKS();
+$apply();
 
 void inject() {
 	std::cout << "Hello!\n";

@@ -220,7 +220,8 @@ ModContainer* m;
 #endif
 
 void __apply_hooks();
-#define APPLY_HOOKS() static int const __cachook = (__apply_hooks(), 0)
+#define APPLY_HOOKS() static int const __cachook = (inject(), __apply_hooks(), 0)
+#define $apply() APPLY_HOOKS()
 
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
@@ -271,7 +272,7 @@ namespace __cackit {
 
 void __apply_hooks() {
     for(auto& i : __cackit::glob) i->apply_hooks();
-    m->enable();
+    if (__cackit::glob.size() > 0) m->enable();
 }
 """
 
@@ -290,19 +291,25 @@ class ${cls} : public {cls}, public $CacBase {{
 
 build_body1 = """
     {ret} {name}({params}) {{
-        return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
+        if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
+            return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
+        else return reinterpret_cast<{ret}(*)(decltype(this){params2})>(getBase()+{addr})(this{params3});
     }}
 """
 
 build_body1_virtual = """
     {ret} {name}({params}) override {{
-        return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
+        if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
+            return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
+        else return reinterpret_cast<{ret}(*)(decltype(this){params2})>(getBase()+{addr})(this{params3});
     }}
 """
 
 build_body1_static = """
     static {ret} {name}({params}) {{
-        return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(getBase()+{addr}))({params3});
+        if (({ret}(*)({params4})){{&${cls}::{name}}} != ({ret}(*)({params4})){{&D::{name}}})
+            return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(getBase()+{addr}))({params3});
+        else return reinterpret_cast<{ret}(*)({params2})>(getBase()+{addr})({params3});
     }}
 """
 
@@ -339,11 +346,12 @@ def build_cls(funky_cls):
         out += body1.format(
             name=info.name,
             ret=info.ret,
-            params="" if info.args[0]=='' else ', '.join([f"{arg} p{i}"for i, arg in enumerate(info.args)]),
+            params= '' if info.args[0]=='' else ', '.join([f"{arg} p{i}"for i, arg in enumerate(info.args)]),
             cls=funky_cls.name,
             addr=info.addr, 
-            params2 = "" if info.args[0]=='' else ('' if info.static else ', ') + ', '.join(info.args), 
-            params3 = "" if info.args[0]=='' else ('' if info.static else ', ') + ', '.join([f"p{i}"for i, _ in enumerate(info.args)])
+            params2 = '' if info.args[0]=='' else ('' if info.static else ', ') + ', '.join(info.args), 
+            params3 = '' if info.args[0]=='' else ('' if info.static else ', ') + ', '.join([f"p{i}"for i, _ in enumerate(info.args)]),
+            params4 = ', '.join(info.args)
         )
 
     out += build_body2_start.format(cls=funky_cls.name)
