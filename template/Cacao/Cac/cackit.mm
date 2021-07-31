@@ -87,7 +87,7 @@
 @end
 
 @interface CollisionTriggerAction
-    void createFromString(std::string) = 0x176ee0;
+    static CollisionTriggerAction* createFromString(std::string) = 0x176ee0;
 @end
 
 @interface ColorAction
@@ -125,7 +125,7 @@
 @end
 
 @interface CountTriggerAction
-    void createFromString(std::string) = 0x1754f0;
+    static CountTriggerAction* createFromString(std::string) = 0x1754f0;
 @end
 
 @interface CreateMenuItem
@@ -229,7 +229,7 @@
 @end
 
 @interface FLAlertLayer
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40;
+    bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40;
     void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020;
     void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60;
     void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0;
@@ -588,7 +588,7 @@
     void getGroupID(int) = 0x33ae10;
     void getLastPosition() = 0x3439d0;
     void getMainColorMode() = 0x334c30;
-    void getObjectRect() = 0x3352b0;
+    cocos2d::CCRect* getObjectRect() = 0x3352b0;
     void getObjectRect(float, float) = 0x3352d0;
     void getObjectRect2(float, float) = 0x3354e0;
     void getObjectRectDirty() = 0xdc1d0;
@@ -597,7 +597,7 @@
     void getOrientedRectDirty() = 0xdc1f0;
     void getRScaleX() = 0x335e50;
     void getRScaleY() = 0x335e80;
-    void getSaveString() = 0x33d3d0;
+    std::string getSaveString() = 0x33d3d0;
     void getSecondaryColorMode() = 0x341c20;
     void getSectionIdx() = 0x343a00;
     void getStartPos() = 0xdc230;
@@ -710,7 +710,7 @@
 
 @interface GroupCommandObject
     static GroupCommandObject* create() = 0x18b460;
-    void createFromString(std::string) = 0x16ece0;
+    static GroupCommandObject* createFromString(std::string) = 0x16ece0;
     void easeToText(int) = 0x16ecb0;
     void getEasedAction(cocos2d::CCActionInterval*, int, float) = 0x16e7b0;
     void runMoveCommand(cocos2d::CCPoint, float, int, float, bool, bool) = 0x16e640;
@@ -876,7 +876,7 @@
 
 @interface OpacityEffectAction
     static OpacityEffectAction* create(float, float, float, int) = 0x1789f0;
-    void createFromString(std::string) = 0x178c10;
+    static OpacityEffectAction* createFromString(std::string) = 0x178c10;
     bool init(float, float, float, int) = 0x178b00;
     void step(float) = 0x178b90;
 @end
@@ -1201,7 +1201,7 @@
 @end
 
 @interface PulseEffectAction
-    void createFromString(std::string) = 0x179e90;
+    static PulseEffectAction* createFromString(std::string) = 0x179e90;
     void getSaveString() = 0x17a850;
 @end
 
@@ -1342,7 +1342,7 @@
 @end
 
 @interface SpawnTriggerAction
-    void createFromString(std::string) = 0x17bf50;
+    static SpawnTriggerAction* createFromString(std::string) = 0x17bf50;
 @end
 
 @interface SpeedObject
@@ -1360,16 +1360,16 @@
 @end
 
 @interface TextInputDelegate
-    void allowTextInput(CCTextInputNode*) = 0x6210;
+    bool allowTextInput(CCTextInputNode*) = 0x6210;
     void textInputOpened(CCTextInputNode*) = 0x6200;
 @end
 
 @interface ToggleTriggerAction
-    void createFromString(std::string) = 0x1765e0;
+    static ToggleTriggerAction* createFromString(std::string) = 0x1765e0;
 @end
 
 @interface TouchToggleAction
-    void createFromString(std::string) = 0x177e10;
+    static TouchToggleAction* createFromString(std::string) = 0x177e10;
 @end
 
 @interface UILayer
@@ -1426,7 +1426,7 @@
 @end
 
 @interface CCCopying
-    void copyWithZone(cocos2d::CCZone*) = 0x250c90;
+    cocos2d::CCObject* copyWithZone(cocos2d::CCZone*) = 0x250c90;
 @end
 
 @interface CCDelayTime
@@ -1454,7 +1454,7 @@
     void getScreenScaleFactorH() = 0x24b1e0;
     void getScreenScaleFactorW() = 0x24b1f0;
     void getScreenTop() = 0x24b200;
-    void getTouchDispatcher() = 0x24afa0;
+    cocos2d::CCTouchDispatcher* getTouchDispatcher() = 0x24afa0;
     void getWinSize() = 0x24a0f0;
     void pushScene(cocos2d::CCScene*) = 0x24a620;
     void replaceScene(cocos2d::CCScene*) = 0x24a6d0;
@@ -1516,7 +1516,7 @@
 @end
 
 @interface CCLayer
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2734d0;
+    bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2734d0;
     void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x273650;
     void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2735d0;
     void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x273550;
@@ -1526,14 +1526,14 @@
     void ccTouchesMoved(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x273750;
     static CCLayer* create() = 0x272a00;
     void didAccelerate(cocos2d::CCAcceleration*) = 0x272ea0;
-    void getTouchMode() = 0x272e10;
-    void getTouchPriority() = 0x272e00;
+    int getTouchMode() = 0x272e10;
+    int getTouchPriority() = 0x272e00;
     bool init() = 0x2729a0;
-    void isAccelerometerEnabled() = 0x272e20;
-    void isKeyboardEnabled() = 0x273010;
-    void isKeypadEnabled() = 0x272f70;
-    void isMouseEnabled() = 0x273090;
-    void isTouchEnabled() = 0x272ce0;
+    bool isAccelerometerEnabled() = 0x272e20;
+    bool isKeyboardEnabled() = 0x273010;
+    bool isKeypadEnabled() = 0x272f70;
+    bool isMouseEnabled() = 0x273090;
+    bool isTouchEnabled() = 0x272ce0;
     void keyBackClicked() = 0x273160;
     void keyDown(cocos2d::enumKeyCodes) = 0x273280;
     void keyMenuClicked() = 0x273200;
@@ -1556,7 +1556,7 @@
 @interface CCLayerColor
     static CCLayerColor* create(cocos2d::_ccColor4B const&, float, float) = 0x2745e0;
     void draw() = 0x274b50;
-    void getBlendFunc() = 0x274480;
+    cocos2d::ccBlendFunc getBlendFunc() = 0x274480;
     bool init() = 0x274800;
     bool initWithColor(cocos2d::_ccColor4B const&) = 0x2749a0;
     bool initWithColor(cocos2d::_ccColor4B const&, float, float) = 0x274850;
@@ -1568,13 +1568,13 @@
 @end
 
 @interface CCLayerRGBA
-    void getColor() = 0x273d60;
-    void getDisplayedColor() = 0x273d80;
-    void getDisplayedOpacity() = 0x273c00;
-    void getOpacity() = 0x273be0;
-    void isCascadeColorEnabled() = 0x274230;
-    void isCascadeOpacityEnabled() = 0x2741f0;
-    void isOpacityModifyRGB() = 0x6190;
+    cocos2d::ccColor3B& getColor() = 0x273d60;
+    cocos2d::ccColor3B& getDisplayedColor() = 0x273d80;
+    GLubyte getDisplayedOpacity() = 0x273c00;
+    GLubyte getOpacity() = 0x273be0;
+    bool isCascadeColorEnabled() = 0x274230;
+    bool isCascadeOpacityEnabled() = 0x2741f0;
+    bool isOpacityModifyRGB() = 0x6190;
     void setCascadeColorEnabled(bool) = 0x274250;
     void setCascadeOpacityEnabled(bool) = 0x274210;
     void setOpacityModifyRGB(bool) = 0x6180;
@@ -1614,7 +1614,7 @@
     void addChild(cocos2d::CCNode*) = 0x1233d0;
     void addChild(cocos2d::CCNode*, int) = 0x1233b0;
     void addChild(cocos2d::CCNode*, int, int) = 0x1232a0;
-    void addComponent(cocos2d::CCComponent*) = 0x124a40;
+    bool addComponent(cocos2d::CCComponent*) = 0x124a40;
     void cleanup() = 0x123100;
     void convertToNodeSpace(cocos2d::CCPoint const&) = 0x124750;
     void convertToWorldSpace(cocos2d::CCPoint const&) = 0x124790;

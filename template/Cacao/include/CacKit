@@ -586,13 +586,13 @@ class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
     }
     typedef CollisionTriggerAction* __thistype;
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x176ee0))(this, p0);
+    static CollisionTriggerAction* createFromString(std::string p0) {
+        return reinterpret_cast<CollisionTriggerAction*(*)(std::string)>(m->getOriginal(getBase()+0x176ee0))(p0);
     }
 
     void apply_hooks() override {
-        if ((void($CollisionTriggerAction::*)(std::string)){&$CollisionTriggerAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x176ee0, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((CollisionTriggerAction*(*)(std::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x176ee0, (CollisionTriggerAction*(*)(std::string)){&D::createFromString});
     }
 };
 
@@ -824,13 +824,13 @@ class $CountTriggerAction : public CountTriggerAction, public $CacBase {
     }
     typedef CountTriggerAction* __thistype;
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x1754f0))(this, p0);
+    static CountTriggerAction* createFromString(std::string p0) {
+        return reinterpret_cast<CountTriggerAction*(*)(std::string)>(m->getOriginal(getBase()+0x1754f0))(p0);
     }
 
     void apply_hooks() override {
-        if ((void($CountTriggerAction::*)(std::string)){&$CountTriggerAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x1754f0, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((CountTriggerAction*(*)(std::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x1754f0, (CountTriggerAction*(*)(std::string)){&D::createFromString});
     }
 };
 
@@ -1447,8 +1447,8 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
     }
     typedef FLAlertLayer* __thistype;
 
-    void ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x25ee40))(this, p0, p1);
+    bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x25ee40))(this, p0, p1);
     }
 
     void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
@@ -1496,8 +1496,8 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(getBase()+0x25ee40, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+        if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
+            m->registerHook(getBase()+0x25ee40, extract((bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
             m->registerHook(getBase()+0x25f020, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
@@ -3732,8 +3732,8 @@ class $GameObject : public GameObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x334c30))(this);
     }
 
-    void getObjectRect() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3352b0))(this);
+    cocos2d::CCRect* getObjectRect() {
+        return reinterpret_cast<cocos2d::CCRect*(*)(decltype(this))>(m->getOriginal(getBase()+0x3352b0))(this);
     }
 
     void getObjectRect(float p0, float p1) {
@@ -3768,8 +3768,8 @@ class $GameObject : public GameObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x335e80))(this);
     }
 
-    void getSaveString() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x33d3d0))(this);
+    std::string getSaveString() {
+        return reinterpret_cast<std::string(*)(decltype(this))>(m->getOriginal(getBase()+0x33d3d0))(this);
     }
 
     void getSecondaryColorMode() {
@@ -4094,8 +4094,8 @@ class $GameObject : public GameObject, public $CacBase {
         if ((void($GameObject::*)()){&$GameObject::getMainColorMode} != (void(D::*)()){&D::getMainColorMode})
             m->registerHook(getBase()+0x334c30, extract((void(D::*)()){&D::getMainColorMode}));
 
-        if ((void($GameObject::*)()){&$GameObject::getObjectRect} != (void(D::*)()){&D::getObjectRect})
-            m->registerHook(getBase()+0x3352b0, extract((void(D::*)()){&D::getObjectRect}));
+        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectRect})
+            m->registerHook(getBase()+0x3352b0, extract((cocos2d::CCRect*(D::*)()){&D::getObjectRect}));
 
         if ((void($GameObject::*)(float, float)){&$GameObject::getObjectRect} != (void(D::*)(float, float)){&D::getObjectRect})
             m->registerHook(getBase()+0x3352d0, extract((void(D::*)(float, float)){&D::getObjectRect}));
@@ -4121,8 +4121,8 @@ class $GameObject : public GameObject, public $CacBase {
         if ((void($GameObject::*)()){&$GameObject::getRScaleY} != (void(D::*)()){&D::getRScaleY})
             m->registerHook(getBase()+0x335e80, extract((void(D::*)()){&D::getRScaleY}));
 
-        if ((void($GameObject::*)()){&$GameObject::getSaveString} != (void(D::*)()){&D::getSaveString})
-            m->registerHook(getBase()+0x33d3d0, extract((void(D::*)()){&D::getSaveString}));
+        if ((std::string($GameObject::*)()){&$GameObject::getSaveString} != (std::string(D::*)()){&D::getSaveString})
+            m->registerHook(getBase()+0x33d3d0, extract((std::string(D::*)()){&D::getSaveString}));
 
         if ((void($GameObject::*)()){&$GameObject::getSecondaryColorMode} != (void(D::*)()){&D::getSecondaryColorMode})
             m->registerHook(getBase()+0x341c20, extract((void(D::*)()){&D::getSecondaryColorMode}));
@@ -4622,8 +4622,8 @@ class $GroupCommandObject : public GroupCommandObject, public $CacBase {
         return reinterpret_cast<GroupCommandObject*(*)()>(m->getOriginal(getBase()+0x18b460))();
     }
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x16ece0))(this, p0);
+    static GroupCommandObject* createFromString(std::string p0) {
+        return reinterpret_cast<GroupCommandObject*(*)(std::string)>(m->getOriginal(getBase()+0x16ece0))(p0);
     }
 
     void easeToText(int p0) {
@@ -4646,8 +4646,8 @@ class $GroupCommandObject : public GroupCommandObject, public $CacBase {
         if ((GroupCommandObject*(*)()){&$GroupCommandObject::create} != (GroupCommandObject*(*)()){&D::create})
             m->registerHook(getBase()+0x18b460, (GroupCommandObject*(*)()){&D::create});
 
-        if ((void($GroupCommandObject::*)(std::string)){&$GroupCommandObject::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x16ece0, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((GroupCommandObject*(*)(std::string)){&$GroupCommandObject::createFromString} != (GroupCommandObject*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x16ece0, (GroupCommandObject*(*)(std::string)){&D::createFromString});
 
         if ((void($GroupCommandObject::*)(int)){&$GroupCommandObject::easeToText} != (void(D::*)(int)){&D::easeToText})
             m->registerHook(getBase()+0x16ecb0, extract((void(D::*)(int)){&D::easeToText}));
@@ -5665,8 +5665,8 @@ class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
         return reinterpret_cast<OpacityEffectAction*(*)(float, float, float, int)>(m->getOriginal(getBase()+0x1789f0))(p0, p1, p2, p3);
     }
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x178c10))(this, p0);
+    static OpacityEffectAction* createFromString(std::string p0) {
+        return reinterpret_cast<OpacityEffectAction*(*)(std::string)>(m->getOriginal(getBase()+0x178c10))(p0);
     }
 
     bool init(float p0, float p1, float p2, int p3) {
@@ -5681,8 +5681,8 @@ class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
         if ((OpacityEffectAction*(*)(float, float, float, int)){&$OpacityEffectAction::create} != (OpacityEffectAction*(*)(float, float, float, int)){&D::create})
             m->registerHook(getBase()+0x1789f0, (OpacityEffectAction*(*)(float, float, float, int)){&D::create});
 
-        if ((void($OpacityEffectAction::*)(std::string)){&$OpacityEffectAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x178c10, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((OpacityEffectAction*(*)(std::string)){&$OpacityEffectAction::createFromString} != (OpacityEffectAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x178c10, (OpacityEffectAction*(*)(std::string)){&D::createFromString});
 
         if ((bool($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::init} != (bool(D::*)(float, float, float, int)){&D::init})
             m->registerHook(getBase()+0x178b00, extract((bool(D::*)(float, float, float, int)){&D::init}));
@@ -7901,8 +7901,8 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
     }
     typedef PulseEffectAction* __thistype;
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x179e90))(this, p0);
+    static PulseEffectAction* createFromString(std::string p0) {
+        return reinterpret_cast<PulseEffectAction*(*)(std::string)>(m->getOriginal(getBase()+0x179e90))(p0);
     }
 
     void getSaveString() {
@@ -7910,8 +7910,8 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((void($PulseEffectAction::*)(std::string)){&$PulseEffectAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x179e90, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((PulseEffectAction*(*)(std::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x179e90, (PulseEffectAction*(*)(std::string)){&D::createFromString});
 
         if ((void($PulseEffectAction::*)()){&$PulseEffectAction::getSaveString} != (void(D::*)()){&D::getSaveString})
             m->registerHook(getBase()+0x17a850, extract((void(D::*)()){&D::getSaveString}));
@@ -8741,13 +8741,13 @@ class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
     }
     typedef SpawnTriggerAction* __thistype;
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x17bf50))(this, p0);
+    static SpawnTriggerAction* createFromString(std::string p0) {
+        return reinterpret_cast<SpawnTriggerAction*(*)(std::string)>(m->getOriginal(getBase()+0x17bf50))(p0);
     }
 
     void apply_hooks() override {
-        if ((void($SpawnTriggerAction::*)(std::string)){&$SpawnTriggerAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x17bf50, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((SpawnTriggerAction*(*)(std::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x17bf50, (SpawnTriggerAction*(*)(std::string)){&D::createFromString});
     }
 };
 
@@ -8839,8 +8839,8 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
     }
     typedef TextInputDelegate* __thistype;
 
-    void allowTextInput(CCTextInputNode* p0) {
-        return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x6210))(this, p0);
+    bool allowTextInput(CCTextInputNode* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x6210))(this, p0);
     }
 
     void textInputOpened(CCTextInputNode* p0) {
@@ -8848,8 +8848,8 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((void($TextInputDelegate::*)(CCTextInputNode*)){&$TextInputDelegate::allowTextInput} != (void(D::*)(CCTextInputNode*)){&D::allowTextInput})
-            m->registerHook(getBase()+0x6210, extract((void(D::*)(CCTextInputNode*)){&D::allowTextInput}));
+        if ((bool($TextInputDelegate::*)(CCTextInputNode*)){&$TextInputDelegate::allowTextInput} != (bool(D::*)(CCTextInputNode*)){&D::allowTextInput})
+            m->registerHook(getBase()+0x6210, extract((bool(D::*)(CCTextInputNode*)){&D::allowTextInput}));
 
         if ((void($TextInputDelegate::*)(CCTextInputNode*)){&$TextInputDelegate::textInputOpened} != (void(D::*)(CCTextInputNode*)){&D::textInputOpened})
             m->registerHook(getBase()+0x6200, extract((void(D::*)(CCTextInputNode*)){&D::textInputOpened}));
@@ -8867,13 +8867,13 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
     }
     typedef ToggleTriggerAction* __thistype;
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x1765e0))(this, p0);
+    static ToggleTriggerAction* createFromString(std::string p0) {
+        return reinterpret_cast<ToggleTriggerAction*(*)(std::string)>(m->getOriginal(getBase()+0x1765e0))(p0);
     }
 
     void apply_hooks() override {
-        if ((void($ToggleTriggerAction::*)(std::string)){&$ToggleTriggerAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x1765e0, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((ToggleTriggerAction*(*)(std::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x1765e0, (ToggleTriggerAction*(*)(std::string)){&D::createFromString});
     }
 };
 
@@ -8888,13 +8888,13 @@ class $TouchToggleAction : public TouchToggleAction, public $CacBase {
     }
     typedef TouchToggleAction* __thistype;
 
-    void createFromString(std::string p0) {
-        return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x177e10))(this, p0);
+    static TouchToggleAction* createFromString(std::string p0) {
+        return reinterpret_cast<TouchToggleAction*(*)(std::string)>(m->getOriginal(getBase()+0x177e10))(p0);
     }
 
     void apply_hooks() override {
-        if ((void($TouchToggleAction::*)(std::string)){&$TouchToggleAction::createFromString} != (void(D::*)(std::string)){&D::createFromString})
-            m->registerHook(getBase()+0x177e10, extract((void(D::*)(std::string)){&D::createFromString}));
+        if ((TouchToggleAction*(*)(std::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(std::string)){&D::createFromString})
+            m->registerHook(getBase()+0x177e10, (TouchToggleAction*(*)(std::string)){&D::createFromString});
     }
 };
 
@@ -9224,13 +9224,13 @@ class $CCCopying : public CCCopying, public $CacBase {
     }
     typedef CCCopying* __thistype;
 
-    void copyWithZone(cocos2d::CCZone* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCZone*)>(m->getOriginal(getBase()+0x250c90))(this, p0);
+    cocos2d::CCObject* copyWithZone(cocos2d::CCZone* p0) {
+        return reinterpret_cast<cocos2d::CCObject*(*)(decltype(this), cocos2d::CCZone*)>(m->getOriginal(getBase()+0x250c90))(this, p0);
     }
 
     void apply_hooks() override {
-        if ((void($CCCopying::*)(cocos2d::CCZone*)){&$CCCopying::copyWithZone} != (void(D::*)(cocos2d::CCZone*)){&D::copyWithZone})
-            m->registerHook(getBase()+0x250c90, extract((void(D::*)(cocos2d::CCZone*)){&D::copyWithZone}));
+        if ((cocos2d::CCObject*($CCCopying::*)(cocos2d::CCZone*)){&$CCCopying::copyWithZone} != (cocos2d::CCObject*(D::*)(cocos2d::CCZone*)){&D::copyWithZone})
+            m->registerHook(getBase()+0x250c90, extract((cocos2d::CCObject*(D::*)(cocos2d::CCZone*)){&D::copyWithZone}));
     }
 };
 
@@ -9381,8 +9381,8 @@ class $CCDirector : public CCDirector, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x24b200))(this);
     }
 
-    void getTouchDispatcher() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x24afa0))(this);
+    cocos2d::CCTouchDispatcher* getTouchDispatcher() {
+        return reinterpret_cast<cocos2d::CCTouchDispatcher*(*)(decltype(this))>(m->getOriginal(getBase()+0x24afa0))(this);
     }
 
     void getWinSize() {
@@ -9424,8 +9424,8 @@ class $CCDirector : public CCDirector, public $CacBase {
         if ((void($CCDirector::*)()){&$CCDirector::getScreenTop} != (void(D::*)()){&D::getScreenTop})
             m->registerHook(getBase()+0x24b200, extract((void(D::*)()){&D::getScreenTop}));
 
-        if ((void($CCDirector::*)()){&$CCDirector::getTouchDispatcher} != (void(D::*)()){&D::getTouchDispatcher})
-            m->registerHook(getBase()+0x24afa0, extract((void(D::*)()){&D::getTouchDispatcher}));
+        if ((cocos2d::CCTouchDispatcher*($CCDirector::*)()){&$CCDirector::getTouchDispatcher} != (cocos2d::CCTouchDispatcher*(D::*)()){&D::getTouchDispatcher})
+            m->registerHook(getBase()+0x24afa0, extract((cocos2d::CCTouchDispatcher*(D::*)()){&D::getTouchDispatcher}));
 
         if ((void($CCDirector::*)()){&$CCDirector::getWinSize} != (void(D::*)()){&D::getWinSize})
             m->registerHook(getBase()+0x24a0f0, extract((void(D::*)()){&D::getWinSize}));
@@ -9749,8 +9749,8 @@ class $CCLayer : public CCLayer, public $CacBase {
     }
     typedef CCLayer* __thistype;
 
-    void ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x2734d0))(this, p0, p1);
+    bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x2734d0))(this, p0, p1);
     }
 
     void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
@@ -9789,36 +9789,36 @@ class $CCLayer : public CCLayer, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCAcceleration*)>(m->getOriginal(getBase()+0x272ea0))(this, p0);
     }
 
-    void getTouchMode() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x272e10))(this);
+    int getTouchMode() {
+        return reinterpret_cast<int(*)(decltype(this))>(m->getOriginal(getBase()+0x272e10))(this);
     }
 
-    void getTouchPriority() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x272e00))(this);
+    int getTouchPriority() {
+        return reinterpret_cast<int(*)(decltype(this))>(m->getOriginal(getBase()+0x272e00))(this);
     }
 
     bool init() {
         return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x2729a0))(this);
     }
 
-    void isAccelerometerEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x272e20))(this);
+    bool isAccelerometerEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x272e20))(this);
     }
 
-    void isKeyboardEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x273010))(this);
+    bool isKeyboardEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x273010))(this);
     }
 
-    void isKeypadEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x272f70))(this);
+    bool isKeypadEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x272f70))(this);
     }
 
-    void isMouseEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x273090))(this);
+    bool isMouseEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x273090))(this);
     }
 
-    void isTouchEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x272ce0))(this);
+    bool isTouchEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x272ce0))(this);
     }
 
     void keyBackClicked() {
@@ -9890,8 +9890,8 @@ class $CCLayer : public CCLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((void($CCLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCLayer::ccTouchBegan} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(getBase()+0x2734d0, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+        if ((bool($CCLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
+            m->registerHook(getBase()+0x2734d0, extract((bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
 
         if ((void($CCLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
             m->registerHook(getBase()+0x273650, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
@@ -9920,29 +9920,29 @@ class $CCLayer : public CCLayer, public $CacBase {
         if ((void($CCLayer::*)(cocos2d::CCAcceleration*)){&$CCLayer::didAccelerate} != (void(D::*)(cocos2d::CCAcceleration*)){&D::didAccelerate})
             m->registerHook(getBase()+0x272ea0, extract((void(D::*)(cocos2d::CCAcceleration*)){&D::didAccelerate}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::getTouchMode} != (void(D::*)()){&D::getTouchMode})
-            m->registerHook(getBase()+0x272e10, extract((void(D::*)()){&D::getTouchMode}));
+        if ((int($CCLayer::*)()){&$CCLayer::getTouchMode} != (int(D::*)()){&D::getTouchMode})
+            m->registerHook(getBase()+0x272e10, extract((int(D::*)()){&D::getTouchMode}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::getTouchPriority} != (void(D::*)()){&D::getTouchPriority})
-            m->registerHook(getBase()+0x272e00, extract((void(D::*)()){&D::getTouchPriority}));
+        if ((int($CCLayer::*)()){&$CCLayer::getTouchPriority} != (int(D::*)()){&D::getTouchPriority})
+            m->registerHook(getBase()+0x272e00, extract((int(D::*)()){&D::getTouchPriority}));
 
         if ((bool($CCLayer::*)()){&$CCLayer::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x2729a0, extract((bool(D::*)()){&D::init}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::isAccelerometerEnabled} != (void(D::*)()){&D::isAccelerometerEnabled})
-            m->registerHook(getBase()+0x272e20, extract((void(D::*)()){&D::isAccelerometerEnabled}));
+        if ((bool($CCLayer::*)()){&$CCLayer::isAccelerometerEnabled} != (bool(D::*)()){&D::isAccelerometerEnabled})
+            m->registerHook(getBase()+0x272e20, extract((bool(D::*)()){&D::isAccelerometerEnabled}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::isKeyboardEnabled} != (void(D::*)()){&D::isKeyboardEnabled})
-            m->registerHook(getBase()+0x273010, extract((void(D::*)()){&D::isKeyboardEnabled}));
+        if ((bool($CCLayer::*)()){&$CCLayer::isKeyboardEnabled} != (bool(D::*)()){&D::isKeyboardEnabled})
+            m->registerHook(getBase()+0x273010, extract((bool(D::*)()){&D::isKeyboardEnabled}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::isKeypadEnabled} != (void(D::*)()){&D::isKeypadEnabled})
-            m->registerHook(getBase()+0x272f70, extract((void(D::*)()){&D::isKeypadEnabled}));
+        if ((bool($CCLayer::*)()){&$CCLayer::isKeypadEnabled} != (bool(D::*)()){&D::isKeypadEnabled})
+            m->registerHook(getBase()+0x272f70, extract((bool(D::*)()){&D::isKeypadEnabled}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::isMouseEnabled} != (void(D::*)()){&D::isMouseEnabled})
-            m->registerHook(getBase()+0x273090, extract((void(D::*)()){&D::isMouseEnabled}));
+        if ((bool($CCLayer::*)()){&$CCLayer::isMouseEnabled} != (bool(D::*)()){&D::isMouseEnabled})
+            m->registerHook(getBase()+0x273090, extract((bool(D::*)()){&D::isMouseEnabled}));
 
-        if ((void($CCLayer::*)()){&$CCLayer::isTouchEnabled} != (void(D::*)()){&D::isTouchEnabled})
-            m->registerHook(getBase()+0x272ce0, extract((void(D::*)()){&D::isTouchEnabled}));
+        if ((bool($CCLayer::*)()){&$CCLayer::isTouchEnabled} != (bool(D::*)()){&D::isTouchEnabled})
+            m->registerHook(getBase()+0x272ce0, extract((bool(D::*)()){&D::isTouchEnabled}));
 
         if ((void($CCLayer::*)()){&$CCLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
             m->registerHook(getBase()+0x273160, extract((void(D::*)()){&D::keyBackClicked}));
@@ -10016,8 +10016,8 @@ class $CCLayerColor : public CCLayerColor, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x274b50))(this);
     }
 
-    void getBlendFunc() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x274480))(this);
+    cocos2d::ccBlendFunc getBlendFunc() {
+        return reinterpret_cast<cocos2d::ccBlendFunc(*)(decltype(this))>(m->getOriginal(getBase()+0x274480))(this);
     }
 
     bool init() {
@@ -10059,8 +10059,8 @@ class $CCLayerColor : public CCLayerColor, public $CacBase {
         if ((void($CCLayerColor::*)()){&$CCLayerColor::draw} != (void(D::*)()){&D::draw})
             m->registerHook(getBase()+0x274b50, extract((void(D::*)()){&D::draw}));
 
-        if ((void($CCLayerColor::*)()){&$CCLayerColor::getBlendFunc} != (void(D::*)()){&D::getBlendFunc})
-            m->registerHook(getBase()+0x274480, extract((void(D::*)()){&D::getBlendFunc}));
+        if ((cocos2d::ccBlendFunc($CCLayerColor::*)()){&$CCLayerColor::getBlendFunc} != (cocos2d::ccBlendFunc(D::*)()){&D::getBlendFunc})
+            m->registerHook(getBase()+0x274480, extract((cocos2d::ccBlendFunc(D::*)()){&D::getBlendFunc}));
 
         if ((bool($CCLayerColor::*)()){&$CCLayerColor::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x274800, extract((bool(D::*)()){&D::init}));
@@ -10099,32 +10099,32 @@ class $CCLayerRGBA : public CCLayerRGBA, public $CacBase {
     }
     typedef CCLayerRGBA* __thistype;
 
-    void getColor() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x273d60))(this);
+    cocos2d::ccColor3B& getColor() {
+        return reinterpret_cast<cocos2d::ccColor3B&(*)(decltype(this))>(m->getOriginal(getBase()+0x273d60))(this);
     }
 
-    void getDisplayedColor() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x273d80))(this);
+    cocos2d::ccColor3B& getDisplayedColor() {
+        return reinterpret_cast<cocos2d::ccColor3B&(*)(decltype(this))>(m->getOriginal(getBase()+0x273d80))(this);
     }
 
-    void getDisplayedOpacity() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x273c00))(this);
+    GLubyte getDisplayedOpacity() {
+        return reinterpret_cast<GLubyte(*)(decltype(this))>(m->getOriginal(getBase()+0x273c00))(this);
     }
 
-    void getOpacity() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x273be0))(this);
+    GLubyte getOpacity() {
+        return reinterpret_cast<GLubyte(*)(decltype(this))>(m->getOriginal(getBase()+0x273be0))(this);
     }
 
-    void isCascadeColorEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x274230))(this);
+    bool isCascadeColorEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x274230))(this);
     }
 
-    void isCascadeOpacityEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x2741f0))(this);
+    bool isCascadeOpacityEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x2741f0))(this);
     }
 
-    void isOpacityModifyRGB() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x6190))(this);
+    bool isOpacityModifyRGB() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x6190))(this);
     }
 
     void setCascadeColorEnabled(bool p0) {
@@ -10148,26 +10148,26 @@ class $CCLayerRGBA : public CCLayerRGBA, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::getColor} != (void(D::*)()){&D::getColor})
-            m->registerHook(getBase()+0x273d60, extract((void(D::*)()){&D::getColor}));
+        if ((cocos2d::ccColor3B&($CCLayerRGBA::*)()){&$CCLayerRGBA::getColor} != (cocos2d::ccColor3B&(D::*)()){&D::getColor})
+            m->registerHook(getBase()+0x273d60, extract((cocos2d::ccColor3B&(D::*)()){&D::getColor}));
 
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::getDisplayedColor} != (void(D::*)()){&D::getDisplayedColor})
-            m->registerHook(getBase()+0x273d80, extract((void(D::*)()){&D::getDisplayedColor}));
+        if ((cocos2d::ccColor3B&($CCLayerRGBA::*)()){&$CCLayerRGBA::getDisplayedColor} != (cocos2d::ccColor3B&(D::*)()){&D::getDisplayedColor})
+            m->registerHook(getBase()+0x273d80, extract((cocos2d::ccColor3B&(D::*)()){&D::getDisplayedColor}));
 
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::getDisplayedOpacity} != (void(D::*)()){&D::getDisplayedOpacity})
-            m->registerHook(getBase()+0x273c00, extract((void(D::*)()){&D::getDisplayedOpacity}));
+        if ((GLubyte($CCLayerRGBA::*)()){&$CCLayerRGBA::getDisplayedOpacity} != (GLubyte(D::*)()){&D::getDisplayedOpacity})
+            m->registerHook(getBase()+0x273c00, extract((GLubyte(D::*)()){&D::getDisplayedOpacity}));
 
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::getOpacity} != (void(D::*)()){&D::getOpacity})
-            m->registerHook(getBase()+0x273be0, extract((void(D::*)()){&D::getOpacity}));
+        if ((GLubyte($CCLayerRGBA::*)()){&$CCLayerRGBA::getOpacity} != (GLubyte(D::*)()){&D::getOpacity})
+            m->registerHook(getBase()+0x273be0, extract((GLubyte(D::*)()){&D::getOpacity}));
 
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::isCascadeColorEnabled} != (void(D::*)()){&D::isCascadeColorEnabled})
-            m->registerHook(getBase()+0x274230, extract((void(D::*)()){&D::isCascadeColorEnabled}));
+        if ((bool($CCLayerRGBA::*)()){&$CCLayerRGBA::isCascadeColorEnabled} != (bool(D::*)()){&D::isCascadeColorEnabled})
+            m->registerHook(getBase()+0x274230, extract((bool(D::*)()){&D::isCascadeColorEnabled}));
 
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::isCascadeOpacityEnabled} != (void(D::*)()){&D::isCascadeOpacityEnabled})
-            m->registerHook(getBase()+0x2741f0, extract((void(D::*)()){&D::isCascadeOpacityEnabled}));
+        if ((bool($CCLayerRGBA::*)()){&$CCLayerRGBA::isCascadeOpacityEnabled} != (bool(D::*)()){&D::isCascadeOpacityEnabled})
+            m->registerHook(getBase()+0x2741f0, extract((bool(D::*)()){&D::isCascadeOpacityEnabled}));
 
-        if ((void($CCLayerRGBA::*)()){&$CCLayerRGBA::isOpacityModifyRGB} != (void(D::*)()){&D::isOpacityModifyRGB})
-            m->registerHook(getBase()+0x6190, extract((void(D::*)()){&D::isOpacityModifyRGB}));
+        if ((bool($CCLayerRGBA::*)()){&$CCLayerRGBA::isOpacityModifyRGB} != (bool(D::*)()){&D::isOpacityModifyRGB})
+            m->registerHook(getBase()+0x6190, extract((bool(D::*)()){&D::isOpacityModifyRGB}));
 
         if ((void($CCLayerRGBA::*)(bool)){&$CCLayerRGBA::setCascadeColorEnabled} != (void(D::*)(bool)){&D::setCascadeColorEnabled})
             m->registerHook(getBase()+0x274250, extract((void(D::*)(bool)){&D::setCascadeColorEnabled}));
@@ -10367,8 +10367,8 @@ class $CCNode : public CCNode, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCNode*, int, int)>(m->getOriginal(getBase()+0x1232a0))(this, p0, p1, p2);
     }
 
-    void addComponent(cocos2d::CCComponent* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCComponent*)>(m->getOriginal(getBase()+0x124a40))(this, p0);
+    bool addComponent(cocos2d::CCComponent* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCComponent*)>(m->getOriginal(getBase()+0x124a40))(this, p0);
     }
 
     void cleanup() {
@@ -10816,8 +10816,8 @@ class $CCNode : public CCNode, public $CacBase {
         if ((void($CCNode::*)(cocos2d::CCNode*, int, int)){&$CCNode::addChild} != (void(D::*)(cocos2d::CCNode*, int, int)){&D::addChild})
             m->registerHook(getBase()+0x1232a0, extract((void(D::*)(cocos2d::CCNode*, int, int)){&D::addChild}));
 
-        if ((void($CCNode::*)(cocos2d::CCComponent*)){&$CCNode::addComponent} != (void(D::*)(cocos2d::CCComponent*)){&D::addComponent})
-            m->registerHook(getBase()+0x124a40, extract((void(D::*)(cocos2d::CCComponent*)){&D::addComponent}));
+        if ((bool($CCNode::*)(cocos2d::CCComponent*)){&$CCNode::addComponent} != (bool(D::*)(cocos2d::CCComponent*)){&D::addComponent})
+            m->registerHook(getBase()+0x124a40, extract((bool(D::*)(cocos2d::CCComponent*)){&D::addComponent}));
 
         if ((void($CCNode::*)()){&$CCNode::cleanup} != (void(D::*)()){&D::cleanup})
             m->registerHook(getBase()+0x123100, extract((void(D::*)()){&D::cleanup}));
