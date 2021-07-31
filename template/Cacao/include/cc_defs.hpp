@@ -1034,18 +1034,6 @@ class ZipUtils {
 
 };
 
-class CCControlColourPicker {
-
-};
-
-class CCControlUtils {
-
-};
-
-class CCScale9Sprite {
-
-};
-
 class UndoObject {
 
 };
