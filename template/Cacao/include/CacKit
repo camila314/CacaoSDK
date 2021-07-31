@@ -15,7 +15,7 @@ void __apply_hooks();
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
 #define REDIRECT_(base, counter) CONCAT($hook, counter): public base<CONCAT($hook, counter)>
-#define REDIRECT(base) REDIRECT_(base, __COUNTER__)
+#define $redirect(base) REDIRECT_($##base, __COUNTER__)
 
 typedef char const* c_string;
 
@@ -1695,7 +1695,7 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), PlayerObject*, GameObject*)>(m->getOriginal(getBase()+0xb6860))(this, p0, p1);
     }
 
-    void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
+    void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) override {
         return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)>(m->getOriginal(getBase()+0xba9a0))(this, p0, p1, p2, p3, p4, p5);
     }
 
@@ -2382,12 +2382,12 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1809e0))(this);
     }
 
-    void getColorAction(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x180b00))(this, p0);
+    const _ccColor3B& getColorAction(int p0) {
+        return reinterpret_cast<const _ccColor3B&(*)(decltype(this), int)>(m->getOriginal(getBase()+0x180b00))(this, p0);
     }
 
-    void getColorSprite(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x180d00))(this, p0);
+    const _ccColor3B& getColorSprite(int p0) {
+        return reinterpret_cast<const _ccColor3B&(*)(decltype(this), int)>(m->getOriginal(getBase()+0x180d00))(this, p0);
     }
 
     void getCurrentStateString() {
@@ -2402,8 +2402,8 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)>(m->getOriginal(getBase()+0x185d30))(this, p0, p1, p2);
     }
 
-    void getOpacityActionForGroup(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x1845b0))(this, p0);
+    uint8_t getOpacityActionForGroup(int p0) {
+        return reinterpret_cast<uint8_t(*)(decltype(this), int)>(m->getOriginal(getBase()+0x1845b0))(this, p0);
     }
 
     void getSaveString() {
@@ -2697,11 +2697,11 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         if ((void($GJEffectManager::*)()){&$GJEffectManager::getAllColorSprites} != (void(D::*)()){&D::getAllColorSprites})
             m->registerHook(getBase()+0x1809e0, extract((void(D::*)()){&D::getAllColorSprites}));
 
-        if ((void($GJEffectManager::*)(int)){&$GJEffectManager::getColorAction} != (void(D::*)(int)){&D::getColorAction})
-            m->registerHook(getBase()+0x180b00, extract((void(D::*)(int)){&D::getColorAction}));
+        if ((const _ccColor3B&($GJEffectManager::*)(int)){&$GJEffectManager::getColorAction} != (const _ccColor3B&(D::*)(int)){&D::getColorAction})
+            m->registerHook(getBase()+0x180b00, extract((const _ccColor3B&(D::*)(int)){&D::getColorAction}));
 
-        if ((void($GJEffectManager::*)(int)){&$GJEffectManager::getColorSprite} != (void(D::*)(int)){&D::getColorSprite})
-            m->registerHook(getBase()+0x180d00, extract((void(D::*)(int)){&D::getColorSprite}));
+        if ((const _ccColor3B&($GJEffectManager::*)(int)){&$GJEffectManager::getColorSprite} != (const _ccColor3B&(D::*)(int)){&D::getColorSprite})
+            m->registerHook(getBase()+0x180d00, extract((const _ccColor3B&(D::*)(int)){&D::getColorSprite}));
 
         if ((void($GJEffectManager::*)()){&$GJEffectManager::getCurrentStateString} != (void(D::*)()){&D::getCurrentStateString})
             m->registerHook(getBase()+0x1867e0, extract((void(D::*)()){&D::getCurrentStateString}));
@@ -2712,8 +2712,8 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         if ((void($GJEffectManager::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)){&$GJEffectManager::getMixedColor} != (void(D::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)){&D::getMixedColor})
             m->registerHook(getBase()+0x185d30, extract((void(D::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)){&D::getMixedColor}));
 
-        if ((void($GJEffectManager::*)(int)){&$GJEffectManager::getOpacityActionForGroup} != (void(D::*)(int)){&D::getOpacityActionForGroup})
-            m->registerHook(getBase()+0x1845b0, extract((void(D::*)(int)){&D::getOpacityActionForGroup}));
+        if ((uint8_t($GJEffectManager::*)(int)){&$GJEffectManager::getOpacityActionForGroup} != (uint8_t(D::*)(int)){&D::getOpacityActionForGroup})
+            m->registerHook(getBase()+0x1845b0, extract((uint8_t(D::*)(int)){&D::getOpacityActionForGroup}));
 
         if ((void($GJEffectManager::*)()){&$GJEffectManager::getSaveString} != (void(D::*)()){&D::getSaveString})
             m->registerHook(getBase()+0x185e90, extract((void(D::*)()){&D::getSaveString}));
@@ -3719,8 +3719,8 @@ class $GameObject : public GameObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3353d0))(this);
     }
 
-    void getColorIndex() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x343b90))(this);
+    const _ccColor3B& getColorIndex() {
+        return reinterpret_cast<const _ccColor3B&(*)(decltype(this))>(m->getOriginal(getBase()+0x343b90))(this);
     }
 
     void getDidUpdateLastPosition() {
@@ -4086,8 +4086,8 @@ class $GameObject : public GameObject, public $CacBase {
         if ((void($GameObject::*)()){&$GameObject::getBoxOffset} != (void(D::*)()){&D::getBoxOffset})
             m->registerHook(getBase()+0x3353d0, extract((void(D::*)()){&D::getBoxOffset}));
 
-        if ((void($GameObject::*)()){&$GameObject::getColorIndex} != (void(D::*)()){&D::getColorIndex})
-            m->registerHook(getBase()+0x343b90, extract((void(D::*)()){&D::getColorIndex}));
+        if ((const _ccColor3B&($GameObject::*)()){&$GameObject::getColorIndex} != (const _ccColor3B&(D::*)()){&D::getColorIndex})
+            m->registerHook(getBase()+0x343b90, extract((const _ccColor3B&(D::*)()){&D::getColorIndex}));
 
         if ((void($GameObject::*)()){&$GameObject::getDidUpdateLastPosition} != (void(D::*)()){&D::getDidUpdateLastPosition})
             m->registerHook(getBase()+0x343a20, extract((void(D::*)()){&D::getDidUpdateLastPosition}));
@@ -5493,7 +5493,7 @@ class $MenuLayer : public MenuLayer, public $CacBase {
     }
     typedef MenuLayer* __thistype;
 
-    void keyBackClicked() {
+    void keyBackClicked() override {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1d3160))(this);
     }
 
@@ -6870,7 +6870,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(getBase()+0x22b800))(this, p0);
     }
 
-    void animationFinished(char const* p0) {
+    void animationFinished(char const* p0) override {
         return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x22e9d0))(this, p0);
     }
 
@@ -6950,11 +6950,11 @@ class $PlayerObject : public PlayerObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x21a830))(this, p0);
     }
 
-    void getOrientedBox() {
+    void getOrientedBox() override {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x22dee0))(this);
     }
 
-    void getRealPosition() {
+    void getRealPosition() override {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x22d5f0))(this);
     }
 
@@ -7114,7 +7114,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x21cc20))(this);
     }
 
-    void resetObject() {
+    void resetObject() override {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x223170))(this);
     }
 
@@ -7154,39 +7154,39 @@ class $PlayerObject : public PlayerObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), PlayerCheckpoint*)>(m->getOriginal(getBase()+0x22e2f0))(this, p0);
     }
 
-    void setColor(cocos2d::_ccColor3B const& p0) {
+    void setColor(cocos2d::_ccColor3B const& p0) override {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(getBase()+0x22cdf0))(this, p0);
     }
 
-    void setFlipX(bool p0) {
+    void setFlipX(bool p0) override {
         return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x22e720))(this, p0);
     }
 
-    void setFlipY(bool p0) {
+    void setFlipY(bool p0) override {
         return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x22e7b0))(this, p0);
     }
 
-    void setOpacity(unsigned char p0) {
+    void setOpacity(unsigned char p0) override {
         return reinterpret_cast<void(*)(decltype(this), unsigned char)>(m->getOriginal(getBase()+0x22d400))(this, p0);
     }
 
-    void setPosition(cocos2d::CCPoint const& p0) {
+    void setPosition(cocos2d::CCPoint const& p0) override {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint const&)>(m->getOriginal(getBase()+0x22c8b0))(this, p0);
     }
 
-    void setRotation(float p0) {
+    void setRotation(float p0) override {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x22e6e0))(this, p0);
     }
 
-    void setScale(float p0) {
+    void setScale(float p0) override {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x22e870))(this, p0);
     }
 
-    void setScaleX(float p0) {
+    void setScaleX(float p0) override {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x22e7f0))(this, p0);
     }
 
-    void setScaleY(float p0) {
+    void setScaleY(float p0) override {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x22e830))(this, p0);
     }
 
@@ -7194,7 +7194,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(getBase()+0x219610))(this, p0);
     }
 
-    void setVisible(bool p0) {
+    void setVisible(bool p0) override {
         return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x22e8b0))(this, p0);
     }
 
@@ -7314,7 +7314,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x21a950))(this);
     }
 
-    void update(float p0) {
+    void update(float p0) override {
         return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x218bf0))(this, p0);
     }
 
@@ -9478,8 +9478,8 @@ class $CCDrawNode : public CCDrawNode, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint const&, cocos2d::CCPoint const&, float, cocos2d::_ccColor4F const&)>(m->getOriginal(getBase()+0x3792d0))(this, p0, p1, p2, p3);
     }
 
-    void getBlendFunc() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x379ea0))(this);
+    _ccBlendFunc getBlendFunc() {
+        return reinterpret_cast<_ccBlendFunc(*)(decltype(this))>(m->getOriginal(getBase()+0x379ea0))(this);
     }
 
     bool init() {
@@ -9503,8 +9503,8 @@ class $CCDrawNode : public CCDrawNode, public $CacBase {
         if ((void($CCDrawNode::*)(cocos2d::CCPoint const&, cocos2d::CCPoint const&, float, cocos2d::_ccColor4F const&)){&$CCDrawNode::drawSegment} != (void(D::*)(cocos2d::CCPoint const&, cocos2d::CCPoint const&, float, cocos2d::_ccColor4F const&)){&D::drawSegment})
             m->registerHook(getBase()+0x3792d0, extract((void(D::*)(cocos2d::CCPoint const&, cocos2d::CCPoint const&, float, cocos2d::_ccColor4F const&)){&D::drawSegment}));
 
-        if ((void($CCDrawNode::*)()){&$CCDrawNode::getBlendFunc} != (void(D::*)()){&D::getBlendFunc})
-            m->registerHook(getBase()+0x379ea0, extract((void(D::*)()){&D::getBlendFunc}));
+        if ((_ccBlendFunc($CCDrawNode::*)()){&$CCDrawNode::getBlendFunc} != (_ccBlendFunc(D::*)()){&D::getBlendFunc})
+            m->registerHook(getBase()+0x379ea0, extract((_ccBlendFunc(D::*)()){&D::getBlendFunc}));
 
         if ((bool($CCDrawNode::*)()){&$CCDrawNode::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x378e00, extract((bool(D::*)()){&D::init}));
@@ -10043,7 +10043,7 @@ class $CCLayerColor : public CCLayerColor, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccBlendFunc)>(m->getOriginal(getBase()+0x2744a0))(this, p0);
     }
 
-    void setColor(cocos2d::_ccColor3B const& p0) {
+    void setColor(cocos2d::_ccColor3B const& p0) override {
         return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(getBase()+0x274c20))(this, p0);
     }
 
@@ -10402,128 +10402,128 @@ class $CCNode : public CCNode, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x123ee0))(this, p0);
     }
 
-    void getActionManager() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x123e50))(this);
+    CCActionManager* getActionManager() {
+        return reinterpret_cast<CCActionManager*(*)(decltype(this))>(m->getOriginal(getBase()+0x123e50))(this);
     }
 
-    void getAnchorPoint() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122d80))(this);
+    const CCPoint& getAnchorPoint() {
+        return reinterpret_cast<const CCPoint&(*)(decltype(this))>(m->getOriginal(getBase()+0x122d80))(this);
     }
 
-    void getAnchorPointInPoints() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122d70))(this);
+    const CCPoint& getAnchorPointInPoints() {
+        return reinterpret_cast<const CCPoint&(*)(decltype(this))>(m->getOriginal(getBase()+0x122d70))(this);
     }
 
-    void getCamera() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122cb0))(this);
+    CCCamera* getCamera() {
+        return reinterpret_cast<CCCamera*(*)(decltype(this))>(m->getOriginal(getBase()+0x122cb0))(this);
     }
 
-    void getChildByTag(int p0) {
-        return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x123220))(this, p0);
+    CCNode* getChildByTag(int p0) {
+        return reinterpret_cast<CCNode*(*)(decltype(this), int)>(m->getOriginal(getBase()+0x123220))(this, p0);
     }
 
-    void getChildren() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122c80))(this);
+    CCArray* getChildren() {
+        return reinterpret_cast<CCArray*(*)(decltype(this))>(m->getOriginal(getBase()+0x122c80))(this);
     }
 
-    void getChildrenCount() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122c90))(this);
+    CCArray* getChildrenCount() {
+        return reinterpret_cast<CCArray*(*)(decltype(this))>(m->getOriginal(getBase()+0x122c90))(this);
     }
 
     void getContentSize() {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122e00))(this);
     }
 
-    void getGLServerState() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122f90))(this);
+    ccGLServerState getGLServerState() {
+        return reinterpret_cast<ccGLServerState(*)(decltype(this))>(m->getOriginal(getBase()+0x122f90))(this);
     }
 
-    void getGrid() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122d00))(this);
+    CCGridBase* getGrid() {
+        return reinterpret_cast<CCGridBase*(*)(decltype(this))>(m->getOriginal(getBase()+0x122d00))(this);
     }
 
-    void getOrderOfArrival() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122f50))(this);
+    uint32_t getOrderOfArrival() {
+        return reinterpret_cast<uint32_t(*)(decltype(this))>(m->getOriginal(getBase()+0x122f50))(this);
     }
 
-    void getParent() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122ed0))(this);
+    CCNode* getParent() {
+        return reinterpret_cast<CCNode*(*)(decltype(this))>(m->getOriginal(getBase()+0x122ed0))(this);
     }
 
-    void getPosition() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122b60))(this);
+    const CCPoint& getPosition() {
+        return reinterpret_cast<const CCPoint&(*)(decltype(this))>(m->getOriginal(getBase()+0x122b60))(this);
     }
 
     void getPosition(float* p0, float* p1) {
         return reinterpret_cast<void(*)(decltype(this), float*, float*)>(m->getOriginal(getBase()+0x122b90))(this, p0, p1);
     }
 
-    void getPositionX() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122be0))(this);
+    float getPositionX() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122be0))(this);
     }
 
-    void getPositionY() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122bf0))(this);
+    float getPositionY() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122bf0))(this);
     }
 
-    void getRotation() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122a00))(this);
+    float getRotation() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122a00))(this);
     }
 
-    void getRotationX() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122a50))(this);
+    float getRotationX() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122a50))(this);
     }
 
-    void getRotationY() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122a80))(this);
+    float getRotationY() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122a80))(this);
     }
 
-    void getScale() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122ab0))(this);
+    float getScale() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122ab0))(this);
     }
 
-    void getScaleX() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122b00))(this);
+    float getScaleX() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122b00))(this);
     }
 
-    void getScaleY() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122b30))(this);
+    float getScaleY() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122b30))(this);
     }
 
-    void getScaledContentSize() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122e10))(this);
+    CCSize getScaledContentSize() {
+        return reinterpret_cast<CCSize(*)(decltype(this))>(m->getOriginal(getBase()+0x122e10))(this);
     }
 
-    void getScheduler() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x123f70))(this);
+    CCScheduler* getScheduler() {
+        return reinterpret_cast<CCScheduler*(*)(decltype(this))>(m->getOriginal(getBase()+0x123f70))(this);
     }
 
-    void getShaderProgram() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122f70))(this);
+    CCGLProgram* getShaderProgram() {
+        return reinterpret_cast<CCGLProgram*(*)(decltype(this))>(m->getOriginal(getBase()+0x122f70))(this);
     }
 
-    void getSkewX() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122920))(this);
+    float getSkewX() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122920))(this);
     }
 
-    void getSkewY() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122950))(this);
+    float getSkewY() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x122950))(this);
     }
 
-    void getUserData() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122f30))(this);
+    void* getUserData() {
+        return reinterpret_cast<void*(*)(decltype(this))>(m->getOriginal(getBase()+0x122f30))(this);
     }
 
-    void getUserObject() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122f80))(this);
+    CCObject* getUserObject() {
+        return reinterpret_cast<CCObject*(*)(decltype(this))>(m->getOriginal(getBase()+0x122f80))(this);
     }
 
-    void getVertexZ() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1229e0))(this);
+    float getVertexZ() {
+        return reinterpret_cast<float(*)(decltype(this))>(m->getOriginal(getBase()+0x1229e0))(this);
     }
 
-    void getZOrder() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122980))(this);
+    int getZOrder() {
+        return reinterpret_cast<int(*)(decltype(this))>(m->getOriginal(getBase()+0x122980))(this);
     }
 
     void ignoreAnchorPointForPosition(bool p0) {
@@ -10534,24 +10534,24 @@ class $CCNode : public CCNode, public $CacBase {
         return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x122910))(this);
     }
 
-    void isIgnoreAnchorPointForPosition() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122ef0))(this);
+    bool isIgnoreAnchorPointForPosition() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x122ef0))(this);
     }
 
-    void isRunning() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122ec0))(this);
+    bool isRunning() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x122ec0))(this);
     }
 
-    void isVisible() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x122d50))(this);
+    bool isVisible() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x122d50))(this);
     }
 
-    void nodeToParentTransform() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x124210))(this);
+    const CCAffineTransform nodeToParentTransform() {
+        return reinterpret_cast<const CCAffineTransform(*)(decltype(this))>(m->getOriginal(getBase()+0x124210))(this);
     }
 
-    void nodeToWorldTransform() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x124670))(this);
+    CCAffineTransform nodeToWorldTransform() {
+        return reinterpret_cast<CCAffineTransform(*)(decltype(this))>(m->getOriginal(getBase()+0x124670))(this);
     }
 
     void onEnter() {
@@ -10570,8 +10570,8 @@ class $CCNode : public CCNode, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x123c00))(this);
     }
 
-    void parentToNodeTransform() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x1245d0))(this);
+    const CCAffineTransform parentToNodeTransform() {
+        return reinterpret_cast<const CCAffineTransform(*)(decltype(this))>(m->getOriginal(getBase()+0x1245d0))(this);
     }
 
     void pauseSchedulerAndActions() {
@@ -10610,12 +10610,12 @@ class $CCNode : public CCNode, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0x1235c0))(this, p0, p1);
     }
 
-    void removeComponent(char const* p0) {
-        return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x124a60))(this, p0);
+    bool removeComponent(char const* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x124a60))(this, p0);
     }
 
-    void removeComponent(cocos2d::CCComponent* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCComponent*)>(m->getOriginal(getBase()+0x124a80))(this, p0);
+    bool removeComponent(cocos2d::CCComponent* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCComponent*)>(m->getOriginal(getBase()+0x124a80))(this, p0);
     }
 
     void removeFromParent() {
@@ -10806,8 +10806,8 @@ class $CCNode : public CCNode, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x123850))(this);
     }
 
-    void worldToNodeTransform() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x124710))(this);
+    CCAffineTransform worldToNodeTransform() {
+        return reinterpret_cast<CCAffineTransform(*)(decltype(this))>(m->getOriginal(getBase()+0x124710))(this);
     }
 
     void apply_hooks() override {
@@ -10844,98 +10844,98 @@ class $CCNode : public CCNode, public $CacBase {
         if ((void($CCNode::*)(int)){&$CCNode::getActionByTag} != (void(D::*)(int)){&D::getActionByTag})
             m->registerHook(getBase()+0x123ee0, extract((void(D::*)(int)){&D::getActionByTag}));
 
-        if ((void($CCNode::*)()){&$CCNode::getActionManager} != (void(D::*)()){&D::getActionManager})
-            m->registerHook(getBase()+0x123e50, extract((void(D::*)()){&D::getActionManager}));
+        if ((CCActionManager*($CCNode::*)()){&$CCNode::getActionManager} != (CCActionManager*(D::*)()){&D::getActionManager})
+            m->registerHook(getBase()+0x123e50, extract((CCActionManager*(D::*)()){&D::getActionManager}));
 
-        if ((void($CCNode::*)()){&$CCNode::getAnchorPoint} != (void(D::*)()){&D::getAnchorPoint})
-            m->registerHook(getBase()+0x122d80, extract((void(D::*)()){&D::getAnchorPoint}));
+        if ((const CCPoint&($CCNode::*)()){&$CCNode::getAnchorPoint} != (const CCPoint&(D::*)()){&D::getAnchorPoint})
+            m->registerHook(getBase()+0x122d80, extract((const CCPoint&(D::*)()){&D::getAnchorPoint}));
 
-        if ((void($CCNode::*)()){&$CCNode::getAnchorPointInPoints} != (void(D::*)()){&D::getAnchorPointInPoints})
-            m->registerHook(getBase()+0x122d70, extract((void(D::*)()){&D::getAnchorPointInPoints}));
+        if ((const CCPoint&($CCNode::*)()){&$CCNode::getAnchorPointInPoints} != (const CCPoint&(D::*)()){&D::getAnchorPointInPoints})
+            m->registerHook(getBase()+0x122d70, extract((const CCPoint&(D::*)()){&D::getAnchorPointInPoints}));
 
-        if ((void($CCNode::*)()){&$CCNode::getCamera} != (void(D::*)()){&D::getCamera})
-            m->registerHook(getBase()+0x122cb0, extract((void(D::*)()){&D::getCamera}));
+        if ((CCCamera*($CCNode::*)()){&$CCNode::getCamera} != (CCCamera*(D::*)()){&D::getCamera})
+            m->registerHook(getBase()+0x122cb0, extract((CCCamera*(D::*)()){&D::getCamera}));
 
-        if ((void($CCNode::*)(int)){&$CCNode::getChildByTag} != (void(D::*)(int)){&D::getChildByTag})
-            m->registerHook(getBase()+0x123220, extract((void(D::*)(int)){&D::getChildByTag}));
+        if ((CCNode*($CCNode::*)(int)){&$CCNode::getChildByTag} != (CCNode*(D::*)(int)){&D::getChildByTag})
+            m->registerHook(getBase()+0x123220, extract((CCNode*(D::*)(int)){&D::getChildByTag}));
 
-        if ((void($CCNode::*)()){&$CCNode::getChildren} != (void(D::*)()){&D::getChildren})
-            m->registerHook(getBase()+0x122c80, extract((void(D::*)()){&D::getChildren}));
+        if ((CCArray*($CCNode::*)()){&$CCNode::getChildren} != (CCArray*(D::*)()){&D::getChildren})
+            m->registerHook(getBase()+0x122c80, extract((CCArray*(D::*)()){&D::getChildren}));
 
-        if ((void($CCNode::*)()){&$CCNode::getChildrenCount} != (void(D::*)()){&D::getChildrenCount})
-            m->registerHook(getBase()+0x122c90, extract((void(D::*)()){&D::getChildrenCount}));
+        if ((CCArray*($CCNode::*)()){&$CCNode::getChildrenCount} != (CCArray*(D::*)()){&D::getChildrenCount})
+            m->registerHook(getBase()+0x122c90, extract((CCArray*(D::*)()){&D::getChildrenCount}));
 
         if ((void($CCNode::*)()){&$CCNode::getContentSize} != (void(D::*)()){&D::getContentSize})
             m->registerHook(getBase()+0x122e00, extract((void(D::*)()){&D::getContentSize}));
 
-        if ((void($CCNode::*)()){&$CCNode::getGLServerState} != (void(D::*)()){&D::getGLServerState})
-            m->registerHook(getBase()+0x122f90, extract((void(D::*)()){&D::getGLServerState}));
+        if ((ccGLServerState($CCNode::*)()){&$CCNode::getGLServerState} != (ccGLServerState(D::*)()){&D::getGLServerState})
+            m->registerHook(getBase()+0x122f90, extract((ccGLServerState(D::*)()){&D::getGLServerState}));
 
-        if ((void($CCNode::*)()){&$CCNode::getGrid} != (void(D::*)()){&D::getGrid})
-            m->registerHook(getBase()+0x122d00, extract((void(D::*)()){&D::getGrid}));
+        if ((CCGridBase*($CCNode::*)()){&$CCNode::getGrid} != (CCGridBase*(D::*)()){&D::getGrid})
+            m->registerHook(getBase()+0x122d00, extract((CCGridBase*(D::*)()){&D::getGrid}));
 
-        if ((void($CCNode::*)()){&$CCNode::getOrderOfArrival} != (void(D::*)()){&D::getOrderOfArrival})
-            m->registerHook(getBase()+0x122f50, extract((void(D::*)()){&D::getOrderOfArrival}));
+        if ((uint32_t($CCNode::*)()){&$CCNode::getOrderOfArrival} != (uint32_t(D::*)()){&D::getOrderOfArrival})
+            m->registerHook(getBase()+0x122f50, extract((uint32_t(D::*)()){&D::getOrderOfArrival}));
 
-        if ((void($CCNode::*)()){&$CCNode::getParent} != (void(D::*)()){&D::getParent})
-            m->registerHook(getBase()+0x122ed0, extract((void(D::*)()){&D::getParent}));
+        if ((CCNode*($CCNode::*)()){&$CCNode::getParent} != (CCNode*(D::*)()){&D::getParent})
+            m->registerHook(getBase()+0x122ed0, extract((CCNode*(D::*)()){&D::getParent}));
 
-        if ((void($CCNode::*)()){&$CCNode::getPosition} != (void(D::*)()){&D::getPosition})
-            m->registerHook(getBase()+0x122b60, extract((void(D::*)()){&D::getPosition}));
+        if ((const CCPoint&($CCNode::*)()){&$CCNode::getPosition} != (const CCPoint&(D::*)()){&D::getPosition})
+            m->registerHook(getBase()+0x122b60, extract((const CCPoint&(D::*)()){&D::getPosition}));
 
         if ((void($CCNode::*)(float*, float*)){&$CCNode::getPosition} != (void(D::*)(float*, float*)){&D::getPosition})
             m->registerHook(getBase()+0x122b90, extract((void(D::*)(float*, float*)){&D::getPosition}));
 
-        if ((void($CCNode::*)()){&$CCNode::getPositionX} != (void(D::*)()){&D::getPositionX})
-            m->registerHook(getBase()+0x122be0, extract((void(D::*)()){&D::getPositionX}));
+        if ((float($CCNode::*)()){&$CCNode::getPositionX} != (float(D::*)()){&D::getPositionX})
+            m->registerHook(getBase()+0x122be0, extract((float(D::*)()){&D::getPositionX}));
 
-        if ((void($CCNode::*)()){&$CCNode::getPositionY} != (void(D::*)()){&D::getPositionY})
-            m->registerHook(getBase()+0x122bf0, extract((void(D::*)()){&D::getPositionY}));
+        if ((float($CCNode::*)()){&$CCNode::getPositionY} != (float(D::*)()){&D::getPositionY})
+            m->registerHook(getBase()+0x122bf0, extract((float(D::*)()){&D::getPositionY}));
 
-        if ((void($CCNode::*)()){&$CCNode::getRotation} != (void(D::*)()){&D::getRotation})
-            m->registerHook(getBase()+0x122a00, extract((void(D::*)()){&D::getRotation}));
+        if ((float($CCNode::*)()){&$CCNode::getRotation} != (float(D::*)()){&D::getRotation})
+            m->registerHook(getBase()+0x122a00, extract((float(D::*)()){&D::getRotation}));
 
-        if ((void($CCNode::*)()){&$CCNode::getRotationX} != (void(D::*)()){&D::getRotationX})
-            m->registerHook(getBase()+0x122a50, extract((void(D::*)()){&D::getRotationX}));
+        if ((float($CCNode::*)()){&$CCNode::getRotationX} != (float(D::*)()){&D::getRotationX})
+            m->registerHook(getBase()+0x122a50, extract((float(D::*)()){&D::getRotationX}));
 
-        if ((void($CCNode::*)()){&$CCNode::getRotationY} != (void(D::*)()){&D::getRotationY})
-            m->registerHook(getBase()+0x122a80, extract((void(D::*)()){&D::getRotationY}));
+        if ((float($CCNode::*)()){&$CCNode::getRotationY} != (float(D::*)()){&D::getRotationY})
+            m->registerHook(getBase()+0x122a80, extract((float(D::*)()){&D::getRotationY}));
 
-        if ((void($CCNode::*)()){&$CCNode::getScale} != (void(D::*)()){&D::getScale})
-            m->registerHook(getBase()+0x122ab0, extract((void(D::*)()){&D::getScale}));
+        if ((float($CCNode::*)()){&$CCNode::getScale} != (float(D::*)()){&D::getScale})
+            m->registerHook(getBase()+0x122ab0, extract((float(D::*)()){&D::getScale}));
 
-        if ((void($CCNode::*)()){&$CCNode::getScaleX} != (void(D::*)()){&D::getScaleX})
-            m->registerHook(getBase()+0x122b00, extract((void(D::*)()){&D::getScaleX}));
+        if ((float($CCNode::*)()){&$CCNode::getScaleX} != (float(D::*)()){&D::getScaleX})
+            m->registerHook(getBase()+0x122b00, extract((float(D::*)()){&D::getScaleX}));
 
-        if ((void($CCNode::*)()){&$CCNode::getScaleY} != (void(D::*)()){&D::getScaleY})
-            m->registerHook(getBase()+0x122b30, extract((void(D::*)()){&D::getScaleY}));
+        if ((float($CCNode::*)()){&$CCNode::getScaleY} != (float(D::*)()){&D::getScaleY})
+            m->registerHook(getBase()+0x122b30, extract((float(D::*)()){&D::getScaleY}));
 
-        if ((void($CCNode::*)()){&$CCNode::getScaledContentSize} != (void(D::*)()){&D::getScaledContentSize})
-            m->registerHook(getBase()+0x122e10, extract((void(D::*)()){&D::getScaledContentSize}));
+        if ((CCSize($CCNode::*)()){&$CCNode::getScaledContentSize} != (CCSize(D::*)()){&D::getScaledContentSize})
+            m->registerHook(getBase()+0x122e10, extract((CCSize(D::*)()){&D::getScaledContentSize}));
 
-        if ((void($CCNode::*)()){&$CCNode::getScheduler} != (void(D::*)()){&D::getScheduler})
-            m->registerHook(getBase()+0x123f70, extract((void(D::*)()){&D::getScheduler}));
+        if ((CCScheduler*($CCNode::*)()){&$CCNode::getScheduler} != (CCScheduler*(D::*)()){&D::getScheduler})
+            m->registerHook(getBase()+0x123f70, extract((CCScheduler*(D::*)()){&D::getScheduler}));
 
-        if ((void($CCNode::*)()){&$CCNode::getShaderProgram} != (void(D::*)()){&D::getShaderProgram})
-            m->registerHook(getBase()+0x122f70, extract((void(D::*)()){&D::getShaderProgram}));
+        if ((CCGLProgram*($CCNode::*)()){&$CCNode::getShaderProgram} != (CCGLProgram*(D::*)()){&D::getShaderProgram})
+            m->registerHook(getBase()+0x122f70, extract((CCGLProgram*(D::*)()){&D::getShaderProgram}));
 
-        if ((void($CCNode::*)()){&$CCNode::getSkewX} != (void(D::*)()){&D::getSkewX})
-            m->registerHook(getBase()+0x122920, extract((void(D::*)()){&D::getSkewX}));
+        if ((float($CCNode::*)()){&$CCNode::getSkewX} != (float(D::*)()){&D::getSkewX})
+            m->registerHook(getBase()+0x122920, extract((float(D::*)()){&D::getSkewX}));
 
-        if ((void($CCNode::*)()){&$CCNode::getSkewY} != (void(D::*)()){&D::getSkewY})
-            m->registerHook(getBase()+0x122950, extract((void(D::*)()){&D::getSkewY}));
+        if ((float($CCNode::*)()){&$CCNode::getSkewY} != (float(D::*)()){&D::getSkewY})
+            m->registerHook(getBase()+0x122950, extract((float(D::*)()){&D::getSkewY}));
 
-        if ((void($CCNode::*)()){&$CCNode::getUserData} != (void(D::*)()){&D::getUserData})
-            m->registerHook(getBase()+0x122f30, extract((void(D::*)()){&D::getUserData}));
+        if ((void*($CCNode::*)()){&$CCNode::getUserData} != (void*(D::*)()){&D::getUserData})
+            m->registerHook(getBase()+0x122f30, extract((void*(D::*)()){&D::getUserData}));
 
-        if ((void($CCNode::*)()){&$CCNode::getUserObject} != (void(D::*)()){&D::getUserObject})
-            m->registerHook(getBase()+0x122f80, extract((void(D::*)()){&D::getUserObject}));
+        if ((CCObject*($CCNode::*)()){&$CCNode::getUserObject} != (CCObject*(D::*)()){&D::getUserObject})
+            m->registerHook(getBase()+0x122f80, extract((CCObject*(D::*)()){&D::getUserObject}));
 
-        if ((void($CCNode::*)()){&$CCNode::getVertexZ} != (void(D::*)()){&D::getVertexZ})
-            m->registerHook(getBase()+0x1229e0, extract((void(D::*)()){&D::getVertexZ}));
+        if ((float($CCNode::*)()){&$CCNode::getVertexZ} != (float(D::*)()){&D::getVertexZ})
+            m->registerHook(getBase()+0x1229e0, extract((float(D::*)()){&D::getVertexZ}));
 
-        if ((void($CCNode::*)()){&$CCNode::getZOrder} != (void(D::*)()){&D::getZOrder})
-            m->registerHook(getBase()+0x122980, extract((void(D::*)()){&D::getZOrder}));
+        if ((int($CCNode::*)()){&$CCNode::getZOrder} != (int(D::*)()){&D::getZOrder})
+            m->registerHook(getBase()+0x122980, extract((int(D::*)()){&D::getZOrder}));
 
         if ((void($CCNode::*)(bool)){&$CCNode::ignoreAnchorPointForPosition} != (void(D::*)(bool)){&D::ignoreAnchorPointForPosition})
             m->registerHook(getBase()+0x122f00, extract((void(D::*)(bool)){&D::ignoreAnchorPointForPosition}));
@@ -10943,20 +10943,20 @@ class $CCNode : public CCNode, public $CacBase {
         if ((bool($CCNode::*)()){&$CCNode::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x122910, extract((bool(D::*)()){&D::init}));
 
-        if ((void($CCNode::*)()){&$CCNode::isIgnoreAnchorPointForPosition} != (void(D::*)()){&D::isIgnoreAnchorPointForPosition})
-            m->registerHook(getBase()+0x122ef0, extract((void(D::*)()){&D::isIgnoreAnchorPointForPosition}));
+        if ((bool($CCNode::*)()){&$CCNode::isIgnoreAnchorPointForPosition} != (bool(D::*)()){&D::isIgnoreAnchorPointForPosition})
+            m->registerHook(getBase()+0x122ef0, extract((bool(D::*)()){&D::isIgnoreAnchorPointForPosition}));
 
-        if ((void($CCNode::*)()){&$CCNode::isRunning} != (void(D::*)()){&D::isRunning})
-            m->registerHook(getBase()+0x122ec0, extract((void(D::*)()){&D::isRunning}));
+        if ((bool($CCNode::*)()){&$CCNode::isRunning} != (bool(D::*)()){&D::isRunning})
+            m->registerHook(getBase()+0x122ec0, extract((bool(D::*)()){&D::isRunning}));
 
-        if ((void($CCNode::*)()){&$CCNode::isVisible} != (void(D::*)()){&D::isVisible})
-            m->registerHook(getBase()+0x122d50, extract((void(D::*)()){&D::isVisible}));
+        if ((bool($CCNode::*)()){&$CCNode::isVisible} != (bool(D::*)()){&D::isVisible})
+            m->registerHook(getBase()+0x122d50, extract((bool(D::*)()){&D::isVisible}));
 
-        if ((void($CCNode::*)()){&$CCNode::nodeToParentTransform} != (void(D::*)()){&D::nodeToParentTransform})
-            m->registerHook(getBase()+0x124210, extract((void(D::*)()){&D::nodeToParentTransform}));
+        if ((const CCAffineTransform($CCNode::*)()){&$CCNode::nodeToParentTransform} != (const CCAffineTransform(D::*)()){&D::nodeToParentTransform})
+            m->registerHook(getBase()+0x124210, extract((const CCAffineTransform(D::*)()){&D::nodeToParentTransform}));
 
-        if ((void($CCNode::*)()){&$CCNode::nodeToWorldTransform} != (void(D::*)()){&D::nodeToWorldTransform})
-            m->registerHook(getBase()+0x124670, extract((void(D::*)()){&D::nodeToWorldTransform}));
+        if ((CCAffineTransform($CCNode::*)()){&$CCNode::nodeToWorldTransform} != (CCAffineTransform(D::*)()){&D::nodeToWorldTransform})
+            m->registerHook(getBase()+0x124670, extract((CCAffineTransform(D::*)()){&D::nodeToWorldTransform}));
 
         if ((void($CCNode::*)()){&$CCNode::onEnter} != (void(D::*)()){&D::onEnter})
             m->registerHook(getBase()+0x123a90, extract((void(D::*)()){&D::onEnter}));
@@ -10970,8 +10970,8 @@ class $CCNode : public CCNode, public $CacBase {
         if ((void($CCNode::*)()){&$CCNode::onExitTransitionDidStart} != (void(D::*)()){&D::onExitTransitionDidStart})
             m->registerHook(getBase()+0x123c00, extract((void(D::*)()){&D::onExitTransitionDidStart}));
 
-        if ((void($CCNode::*)()){&$CCNode::parentToNodeTransform} != (void(D::*)()){&D::parentToNodeTransform})
-            m->registerHook(getBase()+0x1245d0, extract((void(D::*)()){&D::parentToNodeTransform}));
+        if ((const CCAffineTransform($CCNode::*)()){&$CCNode::parentToNodeTransform} != (const CCAffineTransform(D::*)()){&D::parentToNodeTransform})
+            m->registerHook(getBase()+0x1245d0, extract((const CCAffineTransform(D::*)()){&D::parentToNodeTransform}));
 
         if ((void($CCNode::*)()){&$CCNode::pauseSchedulerAndActions} != (void(D::*)()){&D::pauseSchedulerAndActions})
             m->registerHook(getBase()+0x123d60, extract((void(D::*)()){&D::pauseSchedulerAndActions}));
@@ -11000,11 +11000,11 @@ class $CCNode : public CCNode, public $CacBase {
         if ((void($CCNode::*)(int, bool)){&$CCNode::removeChildByTag} != (void(D::*)(int, bool)){&D::removeChildByTag})
             m->registerHook(getBase()+0x1235c0, extract((void(D::*)(int, bool)){&D::removeChildByTag}));
 
-        if ((void($CCNode::*)(char const*)){&$CCNode::removeComponent} != (void(D::*)(char const*)){&D::removeComponent})
-            m->registerHook(getBase()+0x124a60, extract((void(D::*)(char const*)){&D::removeComponent}));
+        if ((bool($CCNode::*)(char const*)){&$CCNode::removeComponent} != (bool(D::*)(char const*)){&D::removeComponent})
+            m->registerHook(getBase()+0x124a60, extract((bool(D::*)(char const*)){&D::removeComponent}));
 
-        if ((void($CCNode::*)(cocos2d::CCComponent*)){&$CCNode::removeComponent} != (void(D::*)(cocos2d::CCComponent*)){&D::removeComponent})
-            m->registerHook(getBase()+0x124a80, extract((void(D::*)(cocos2d::CCComponent*)){&D::removeComponent}));
+        if ((bool($CCNode::*)(cocos2d::CCComponent*)){&$CCNode::removeComponent} != (bool(D::*)(cocos2d::CCComponent*)){&D::removeComponent})
+            m->registerHook(getBase()+0x124a80, extract((bool(D::*)(cocos2d::CCComponent*)){&D::removeComponent}));
 
         if ((void($CCNode::*)()){&$CCNode::removeFromParent} != (void(D::*)()){&D::removeFromParent})
             m->registerHook(getBase()+0x1233f0, extract((void(D::*)()){&D::removeFromParent}));
@@ -11147,8 +11147,8 @@ class $CCNode : public CCNode, public $CacBase {
         if ((void($CCNode::*)()){&$CCNode::visit} != (void(D::*)()){&D::visit})
             m->registerHook(getBase()+0x123850, extract((void(D::*)()){&D::visit}));
 
-        if ((void($CCNode::*)()){&$CCNode::worldToNodeTransform} != (void(D::*)()){&D::worldToNodeTransform})
-            m->registerHook(getBase()+0x124710, extract((void(D::*)()){&D::worldToNodeTransform}));
+        if ((CCAffineTransform($CCNode::*)()){&$CCNode::worldToNodeTransform} != (CCAffineTransform(D::*)()){&D::worldToNodeTransform})
+            m->registerHook(getBase()+0x124710, extract((CCAffineTransform(D::*)()){&D::worldToNodeTransform}));
     }
 };
 
@@ -11163,28 +11163,28 @@ class $CCNodeRGBA : public CCNodeRGBA, public $CacBase {
     }
     typedef CCNodeRGBA* __thistype;
 
-    void getColor() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x125020))(this);
+    const _ccColor3B& getColor() {
+        return reinterpret_cast<const _ccColor3B&(*)(decltype(this))>(m->getOriginal(getBase()+0x125020))(this);
     }
 
-    void getDisplayedColor() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x125040))(this);
+    const _ccColor3B& getDisplayedColor() {
+        return reinterpret_cast<const _ccColor3B&(*)(decltype(this))>(m->getOriginal(getBase()+0x125040))(this);
     }
 
-    void getDisplayedOpacity() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x124cf0))(this);
+    uint8_t getDisplayedOpacity() {
+        return reinterpret_cast<uint8_t(*)(decltype(this))>(m->getOriginal(getBase()+0x124cf0))(this);
     }
 
-    void getOpacity() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x124cd0))(this);
+    uint8_t getOpacity() {
+        return reinterpret_cast<uint8_t(*)(decltype(this))>(m->getOriginal(getBase()+0x124cd0))(this);
     }
 
-    void isCascadeColorEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x125320))(this);
+    bool isCascadeColorEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x125320))(this);
     }
 
-    void isCascadeOpacityEnabled() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x124fe0))(this);
+    bool isCascadeOpacityEnabled() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x124fe0))(this);
     }
 
     void setCascadeColorEnabled(bool p0) {
@@ -11196,23 +11196,23 @@ class $CCNodeRGBA : public CCNodeRGBA, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((void($CCNodeRGBA::*)()){&$CCNodeRGBA::getColor} != (void(D::*)()){&D::getColor})
-            m->registerHook(getBase()+0x125020, extract((void(D::*)()){&D::getColor}));
+        if ((const _ccColor3B&($CCNodeRGBA::*)()){&$CCNodeRGBA::getColor} != (const _ccColor3B&(D::*)()){&D::getColor})
+            m->registerHook(getBase()+0x125020, extract((const _ccColor3B&(D::*)()){&D::getColor}));
 
-        if ((void($CCNodeRGBA::*)()){&$CCNodeRGBA::getDisplayedColor} != (void(D::*)()){&D::getDisplayedColor})
-            m->registerHook(getBase()+0x125040, extract((void(D::*)()){&D::getDisplayedColor}));
+        if ((const _ccColor3B&($CCNodeRGBA::*)()){&$CCNodeRGBA::getDisplayedColor} != (const _ccColor3B&(D::*)()){&D::getDisplayedColor})
+            m->registerHook(getBase()+0x125040, extract((const _ccColor3B&(D::*)()){&D::getDisplayedColor}));
 
-        if ((void($CCNodeRGBA::*)()){&$CCNodeRGBA::getDisplayedOpacity} != (void(D::*)()){&D::getDisplayedOpacity})
-            m->registerHook(getBase()+0x124cf0, extract((void(D::*)()){&D::getDisplayedOpacity}));
+        if ((uint8_t($CCNodeRGBA::*)()){&$CCNodeRGBA::getDisplayedOpacity} != (uint8_t(D::*)()){&D::getDisplayedOpacity})
+            m->registerHook(getBase()+0x124cf0, extract((uint8_t(D::*)()){&D::getDisplayedOpacity}));
 
-        if ((void($CCNodeRGBA::*)()){&$CCNodeRGBA::getOpacity} != (void(D::*)()){&D::getOpacity})
-            m->registerHook(getBase()+0x124cd0, extract((void(D::*)()){&D::getOpacity}));
+        if ((uint8_t($CCNodeRGBA::*)()){&$CCNodeRGBA::getOpacity} != (uint8_t(D::*)()){&D::getOpacity})
+            m->registerHook(getBase()+0x124cd0, extract((uint8_t(D::*)()){&D::getOpacity}));
 
-        if ((void($CCNodeRGBA::*)()){&$CCNodeRGBA::isCascadeColorEnabled} != (void(D::*)()){&D::isCascadeColorEnabled})
-            m->registerHook(getBase()+0x125320, extract((void(D::*)()){&D::isCascadeColorEnabled}));
+        if ((bool($CCNodeRGBA::*)()){&$CCNodeRGBA::isCascadeColorEnabled} != (bool(D::*)()){&D::isCascadeColorEnabled})
+            m->registerHook(getBase()+0x125320, extract((bool(D::*)()){&D::isCascadeColorEnabled}));
 
-        if ((void($CCNodeRGBA::*)()){&$CCNodeRGBA::isCascadeOpacityEnabled} != (void(D::*)()){&D::isCascadeOpacityEnabled})
-            m->registerHook(getBase()+0x124fe0, extract((void(D::*)()){&D::isCascadeOpacityEnabled}));
+        if ((bool($CCNodeRGBA::*)()){&$CCNodeRGBA::isCascadeOpacityEnabled} != (bool(D::*)()){&D::isCascadeOpacityEnabled})
+            m->registerHook(getBase()+0x124fe0, extract((bool(D::*)()){&D::isCascadeOpacityEnabled}));
 
         if ((void($CCNodeRGBA::*)(bool)){&$CCNodeRGBA::setCascadeColorEnabled} != (void(D::*)(bool)){&D::setCascadeColorEnabled})
             m->registerHook(getBase()+0x125340, extract((void(D::*)(bool)){&D::setCascadeColorEnabled}));
@@ -11241,8 +11241,8 @@ class $CCObject : public CCObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x250ed0))(this);
     }
 
-    void canEncode() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x250f90))(this);
+    bool canEncode() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x250f90))(this);
     }
 
     void encodeWithCoder(DS_Dictionary* p0) {
@@ -11253,8 +11253,8 @@ class $CCObject : public CCObject, public $CacBase {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x250f50))(this);
     }
 
-    void isEqual(cocos2d::CCObject const* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject const*)>(m->getOriginal(getBase()+0x250f20))(this, p0);
+    bool isEqual(cocos2d::CCObject const* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCObject const*)>(m->getOriginal(getBase()+0x250f20))(this, p0);
     }
 
     void release() {
@@ -11280,8 +11280,8 @@ class $CCObject : public CCObject, public $CacBase {
         if ((void($CCObject::*)()){&$CCObject::autorelease} != (void(D::*)()){&D::autorelease})
             m->registerHook(getBase()+0x250ed0, extract((void(D::*)()){&D::autorelease}));
 
-        if ((void($CCObject::*)()){&$CCObject::canEncode} != (void(D::*)()){&D::canEncode})
-            m->registerHook(getBase()+0x250f90, extract((void(D::*)()){&D::canEncode}));
+        if ((bool($CCObject::*)()){&$CCObject::canEncode} != (bool(D::*)()){&D::canEncode})
+            m->registerHook(getBase()+0x250f90, extract((bool(D::*)()){&D::canEncode}));
 
         if ((void($CCObject::*)(DS_Dictionary*)){&$CCObject::encodeWithCoder} != (void(D::*)(DS_Dictionary*)){&D::encodeWithCoder})
             m->registerHook(getBase()+0x250f70, extract((void(D::*)(DS_Dictionary*)){&D::encodeWithCoder}));
@@ -11289,8 +11289,8 @@ class $CCObject : public CCObject, public $CacBase {
         if ((void($CCObject::*)()){&$CCObject::getTag} != (void(D::*)()){&D::getTag})
             m->registerHook(getBase()+0x250f50, extract((void(D::*)()){&D::getTag}));
 
-        if ((void($CCObject::*)(cocos2d::CCObject const*)){&$CCObject::isEqual} != (void(D::*)(cocos2d::CCObject const*)){&D::isEqual})
-            m->registerHook(getBase()+0x250f20, extract((void(D::*)(cocos2d::CCObject const*)){&D::isEqual}));
+        if ((bool($CCObject::*)(cocos2d::CCObject const*)){&$CCObject::isEqual} != (bool(D::*)(cocos2d::CCObject const*)){&D::isEqual})
+            m->registerHook(getBase()+0x250f20, extract((bool(D::*)(cocos2d::CCObject const*)){&D::isEqual}));
 
         if ((void($CCObject::*)()){&$CCObject::release} != (void(D::*)()){&D::release})
             m->registerHook(getBase()+0x250ea0, extract((void(D::*)()){&D::release}));
@@ -11653,24 +11653,32 @@ class $CCSprite : public CCSprite, public $CacBase {
         return reinterpret_cast<CCSprite*(*)(char const*)>(m->getOriginal(getBase()+0x132dc0))(p0);
     }
 
-    void displayFrame() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x135760))(this);
+    CCSpriteFrame* displayFrame() {
+        return reinterpret_cast<CCSpriteFrame*(*)(decltype(this))>(m->getOriginal(getBase()+0x135760))(this);
+    }
+
+    void setChildColor(cocos2d::_ccColor3B const& p0) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(getBase()+0x135160))(this, p0);
+    }
+
+    bool init() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x132ef0))(this);
     }
 
     void draw() {
         return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x134070))(this);
     }
 
-    void getBatchNode() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x135910))(this);
+    CCSpriteBatchNode* getBatchNode() {
+        return reinterpret_cast<CCSpriteBatchNode*(*)(decltype(this))>(m->getOriginal(getBase()+0x135910))(this);
     }
 
-    void getBlendFunc() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x505a0))(this);
+    _ccBlendFunc getBlendFunc() {
+        return reinterpret_cast<_ccBlendFunc(*)(decltype(this))>(m->getOriginal(getBase()+0x505a0))(this);
     }
 
-    void getTexture() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x135c00))(this);
+    CCTexture2D* getTexture() {
+        return reinterpret_cast<CCTexture2D*(*)(decltype(this))>(m->getOriginal(getBase()+0x135c00))(this);
     }
 
     void ignoreAnchorPointForPosition(bool p0) {
@@ -11685,8 +11693,16 @@ class $CCSprite : public CCSprite, public $CacBase {
         return reinterpret_cast<bool(*)(decltype(this), char const*, cocos2d::CCRect const&)>(m->getOriginal(getBase()+0x133210))(this, p0, p1);
     }
 
+    bool initWithSpriteFrameName(char const* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x1332c0))(this, p0);
+    }
+
     bool initWithSpriteFrame(cocos2d::CCSpriteFrame* p0) {
         return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCSpriteFrame*)>(m->getOriginal(getBase()+0x133270))(this, p0);
+    }
+
+    bool initWithTexture(cocos2d::CCTexture2D* p0) override {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTexture2D*)>(m->getOriginal(getBase()+0x248690))(this, p0);
     }
 
     bool initWithTexture(cocos2d::CCTexture2D* p0, cocos2d::CCRect const& p1) {
@@ -11697,16 +11713,16 @@ class $CCSprite : public CCSprite, public $CacBase {
         return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool)>(m->getOriginal(getBase()+0x132f10))(this, p0, p1, p2);
     }
 
-    void isDirty() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x505b0))(this);
+    bool isDirty() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x505b0))(this);
     }
 
-    void isFrameDisplayed(cocos2d::CCSpriteFrame* p0) {
-        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCSpriteFrame*)>(m->getOriginal(getBase()+0x1356d0))(this, p0);
+    bool isFrameDisplayed(cocos2d::CCSpriteFrame* p0) {
+        return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCSpriteFrame*)>(m->getOriginal(getBase()+0x1356d0))(this, p0);
     }
 
-    void isOpacityModifyRGB() {
-        return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x135350))(this);
+    bool isOpacityModifyRGB() {
+        return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x135350))(this);
     }
 
     void refreshTextureRect() {
@@ -11855,20 +11871,26 @@ class $CCSprite : public CCSprite, public $CacBase {
         if ((CCSprite*(*)(char const*)){&$CCSprite::createWithSpriteFrameName} != (CCSprite*(*)(char const*)){&D::createWithSpriteFrameName})
             m->registerHook(getBase()+0x132dc0, (CCSprite*(*)(char const*)){&D::createWithSpriteFrameName});
 
-        if ((void($CCSprite::*)()){&$CCSprite::displayFrame} != (void(D::*)()){&D::displayFrame})
-            m->registerHook(getBase()+0x135760, extract((void(D::*)()){&D::displayFrame}));
+        if ((CCSpriteFrame*($CCSprite::*)()){&$CCSprite::displayFrame} != (CCSpriteFrame*(D::*)()){&D::displayFrame})
+            m->registerHook(getBase()+0x135760, extract((CCSpriteFrame*(D::*)()){&D::displayFrame}));
+
+        if ((void($CCSprite::*)(cocos2d::_ccColor3B const&)){&$CCSprite::setChildColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setChildColor})
+            m->registerHook(getBase()+0x135160, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setChildColor}));
+
+        if ((bool($CCSprite::*)()){&$CCSprite::init} != (bool(D::*)()){&D::init})
+            m->registerHook(getBase()+0x132ef0, extract((bool(D::*)()){&D::init}));
 
         if ((void($CCSprite::*)()){&$CCSprite::draw} != (void(D::*)()){&D::draw})
             m->registerHook(getBase()+0x134070, extract((void(D::*)()){&D::draw}));
 
-        if ((void($CCSprite::*)()){&$CCSprite::getBatchNode} != (void(D::*)()){&D::getBatchNode})
-            m->registerHook(getBase()+0x135910, extract((void(D::*)()){&D::getBatchNode}));
+        if ((CCSpriteBatchNode*($CCSprite::*)()){&$CCSprite::getBatchNode} != (CCSpriteBatchNode*(D::*)()){&D::getBatchNode})
+            m->registerHook(getBase()+0x135910, extract((CCSpriteBatchNode*(D::*)()){&D::getBatchNode}));
 
-        if ((void($CCSprite::*)()){&$CCSprite::getBlendFunc} != (void(D::*)()){&D::getBlendFunc})
-            m->registerHook(getBase()+0x505a0, extract((void(D::*)()){&D::getBlendFunc}));
+        if ((_ccBlendFunc($CCSprite::*)()){&$CCSprite::getBlendFunc} != (_ccBlendFunc(D::*)()){&D::getBlendFunc})
+            m->registerHook(getBase()+0x505a0, extract((_ccBlendFunc(D::*)()){&D::getBlendFunc}));
 
-        if ((void($CCSprite::*)()){&$CCSprite::getTexture} != (void(D::*)()){&D::getTexture})
-            m->registerHook(getBase()+0x135c00, extract((void(D::*)()){&D::getTexture}));
+        if ((CCTexture2D*($CCSprite::*)()){&$CCSprite::getTexture} != (CCTexture2D*(D::*)()){&D::getTexture})
+            m->registerHook(getBase()+0x135c00, extract((CCTexture2D*(D::*)()){&D::getTexture}));
 
         if ((void($CCSprite::*)(bool)){&$CCSprite::ignoreAnchorPointForPosition} != (void(D::*)(bool)){&D::ignoreAnchorPointForPosition})
             m->registerHook(getBase()+0x134b60, extract((void(D::*)(bool)){&D::ignoreAnchorPointForPosition}));
@@ -11879,8 +11901,14 @@ class $CCSprite : public CCSprite, public $CacBase {
         if ((bool($CCSprite::*)(char const*, cocos2d::CCRect const&)){&$CCSprite::initWithFile} != (bool(D::*)(char const*, cocos2d::CCRect const&)){&D::initWithFile})
             m->registerHook(getBase()+0x133210, extract((bool(D::*)(char const*, cocos2d::CCRect const&)){&D::initWithFile}));
 
+        if ((bool($CCSprite::*)(char const*)){&$CCSprite::initWithSpriteFrameName} != (bool(D::*)(char const*)){&D::initWithSpriteFrameName})
+            m->registerHook(getBase()+0x1332c0, extract((bool(D::*)(char const*)){&D::initWithSpriteFrameName}));
+
         if ((bool($CCSprite::*)(cocos2d::CCSpriteFrame*)){&$CCSprite::initWithSpriteFrame} != (bool(D::*)(cocos2d::CCSpriteFrame*)){&D::initWithSpriteFrame})
             m->registerHook(getBase()+0x133270, extract((bool(D::*)(cocos2d::CCSpriteFrame*)){&D::initWithSpriteFrame}));
+
+        if ((bool($CCSprite::*)(cocos2d::CCTexture2D*)){&$CCSprite::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture})
+            m->registerHook(getBase()+0x248690, extract((bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture}));
 
         if ((bool($CCSprite::*)(cocos2d::CCTexture2D*, cocos2d::CCRect const&)){&$CCSprite::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*, cocos2d::CCRect const&)){&D::initWithTexture})
             m->registerHook(getBase()+0x1330f0, extract((bool(D::*)(cocos2d::CCTexture2D*, cocos2d::CCRect const&)){&D::initWithTexture}));
@@ -11888,14 +11916,14 @@ class $CCSprite : public CCSprite, public $CacBase {
         if ((bool($CCSprite::*)(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool)){&$CCSprite::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool)){&D::initWithTexture})
             m->registerHook(getBase()+0x132f10, extract((bool(D::*)(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool)){&D::initWithTexture}));
 
-        if ((void($CCSprite::*)()){&$CCSprite::isDirty} != (void(D::*)()){&D::isDirty})
-            m->registerHook(getBase()+0x505b0, extract((void(D::*)()){&D::isDirty}));
+        if ((bool($CCSprite::*)()){&$CCSprite::isDirty} != (bool(D::*)()){&D::isDirty})
+            m->registerHook(getBase()+0x505b0, extract((bool(D::*)()){&D::isDirty}));
 
-        if ((void($CCSprite::*)(cocos2d::CCSpriteFrame*)){&$CCSprite::isFrameDisplayed} != (void(D::*)(cocos2d::CCSpriteFrame*)){&D::isFrameDisplayed})
-            m->registerHook(getBase()+0x1356d0, extract((void(D::*)(cocos2d::CCSpriteFrame*)){&D::isFrameDisplayed}));
+        if ((bool($CCSprite::*)(cocos2d::CCSpriteFrame*)){&$CCSprite::isFrameDisplayed} != (bool(D::*)(cocos2d::CCSpriteFrame*)){&D::isFrameDisplayed})
+            m->registerHook(getBase()+0x1356d0, extract((bool(D::*)(cocos2d::CCSpriteFrame*)){&D::isFrameDisplayed}));
 
-        if ((void($CCSprite::*)()){&$CCSprite::isOpacityModifyRGB} != (void(D::*)()){&D::isOpacityModifyRGB})
-            m->registerHook(getBase()+0x135350, extract((void(D::*)()){&D::isOpacityModifyRGB}));
+        if ((bool($CCSprite::*)()){&$CCSprite::isOpacityModifyRGB} != (bool(D::*)()){&D::isOpacityModifyRGB})
+            m->registerHook(getBase()+0x135350, extract((bool(D::*)()){&D::isOpacityModifyRGB}));
 
         if ((void($CCSprite::*)()){&$CCSprite::refreshTextureRect} != (void(D::*)()){&D::refreshTextureRect})
             m->registerHook(getBase()+0x133520, extract((void(D::*)()){&D::refreshTextureRect}));
@@ -12003,8 +12031,8 @@ class $CCSpriteBatchNode : public CCSpriteBatchNode, public $CacBase {
     }
     typedef CCSpriteBatchNode* __thistype;
 
-    static CCSpriteBatchNode* createWithTexture(cocos2d::CCTexture2D* p0, unsigned int p1) {
-        return reinterpret_cast<CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)>(m->getOriginal(getBase()+0xbb310))(p0, p1);
+    void createWithTexture(cocos2d::CCTexture2D* p0, unsigned int p1) {
+        return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTexture2D*, unsigned int)>(m->getOriginal(getBase()+0xbb310))(this, p0, p1);
     }
 
     void getUsedAtlasCapacity() {
@@ -12016,8 +12044,8 @@ class $CCSpriteBatchNode : public CCSpriteBatchNode, public $CacBase {
     }
 
     void apply_hooks() override {
-        if ((CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)){&$CCSpriteBatchNode::createWithTexture} != (CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)){&D::createWithTexture})
-            m->registerHook(getBase()+0xbb310, (CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)){&D::createWithTexture});
+        if ((void($CCSpriteBatchNode::*)(cocos2d::CCTexture2D*, unsigned int)){&$CCSpriteBatchNode::createWithTexture} != (void(D::*)(cocos2d::CCTexture2D*, unsigned int)){&D::createWithTexture})
+            m->registerHook(getBase()+0xbb310, extract((void(D::*)(cocos2d::CCTexture2D*, unsigned int)){&D::createWithTexture}));
 
         if ((void($CCSpriteBatchNode::*)()){&$CCSpriteBatchNode::getUsedAtlasCapacity} != (void(D::*)()){&D::getUsedAtlasCapacity})
             m->registerHook(getBase()+0xbc6b0, extract((void(D::*)()){&D::getUsedAtlasCapacity}));

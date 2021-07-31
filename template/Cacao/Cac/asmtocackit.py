@@ -69,6 +69,7 @@ if "cactest.mm" not in sys.argv[1]:
 reserved = {
     'static': 'STATIC',
     'virtual': 'VIRTUAL',
+    'const': 'CONST',
     '@interface': 'CLASS',
     '@end': 'END'
 }
@@ -80,6 +81,7 @@ class FunkyInfo:
         self.args = []
         self.static = False
         self.virtual = False
+        self.ret = ''
     def __repr__(self):
         return f"<method {'static ' if self.static else ''}{self.ret} {self.name}({', '.join(self.args)}) at address {self.addr}>"
 
@@ -133,9 +135,14 @@ def parse_func(curr_tok):
     if curr_tok.type == "VIRTUAL":
         fi.virtual = True
         curr_tok = ensure_next()
+    if curr_tok.type == "CONST":
+        fi.ret = "const "
+        curr_tok = ensure_next()
+
     if curr_tok.type != "IDENT":
         raise ValueError("bad return")
-    fi.ret = curr_tok.value
+
+    fi.ret += curr_tok.value
 
     curr_tok = ensure_next()
 
@@ -145,7 +152,7 @@ def parse_func(curr_tok):
     fi.name = curr_tok.value
 
     if ensure_next().type != "LPAREN":
-
+        print(curr_tok.lineno)
         raise ValueError("no (")
 
 
@@ -218,7 +225,7 @@ void __apply_hooks();
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
 #define REDIRECT_(base, counter) CONCAT($hook, counter): public base<CONCAT($hook, counter)>
-#define REDIRECT(base) REDIRECT_(base, __COUNTER__)
+#define $redirect(base) REDIRECT_($##base, __COUNTER__)
 
 typedef char const* c_string;
 

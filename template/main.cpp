@@ -1,6 +1,7 @@
 #include <CacKit>
 
-class REDIRECT($MenuLayer) {
+class $redirect(MenuLayer) {
+ public:
 	void onMoreGames(CCObject* ob) {
 		FLAlertLayer::create("Cacao", "Hello from custom mod!", "OK")->show();
 	} 

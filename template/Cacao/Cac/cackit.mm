@@ -271,7 +271,7 @@
     void addToSection(GameObject*) = 0xb7b70;
     void atlasValue(int) = 0xb21e0;
     void bumpPlayer(PlayerObject*, GameObject*) = 0xb6860;
-    void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0xba9a0;
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0xba9a0;
     void calculateOpacityValues(EffectGameObject*, EffectGameObject*, float, GJEffectManager*) = 0xb5be0;
     void checkSpawnObjects() = 0xb6f90;
     void collectItem(int, int) = 0xb9e20;
@@ -379,12 +379,12 @@
     void createRotateCommand(int, float, int, int, int, float, bool, int) = 0x182df0;
     void getAllColorActions() = 0x180980;
     void getAllColorSprites() = 0x1809e0;
-    void getColorAction(int) = 0x180b00;
-    void getColorSprite(int) = 0x180d00;
+    const _ccColor3B& getColorAction(int) = 0x180b00;
+    const _ccColor3B& getColorSprite(int) = 0x180d00;
     void getCurrentStateString() = 0x1867e0;
     void getLoadedMoveOffset() = 0x184390;
     void getMixedColor(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) = 0x185d30;
-    void getOpacityActionForGroup(int) = 0x1845b0;
+    uint8_t getOpacityActionForGroup(int) = 0x1845b0;
     void getSaveString() = 0x185e90;
     void handleObjectCollision(bool, int, int) = 0x1828f0;
     void hasActiveDualTouch() = 0x185540;
@@ -584,7 +584,7 @@
     void getActiveColorForMode(int, bool) = 0x343860;
     void getBallFrame(int) = 0x341bf0;
     void getBoxOffset() = 0x3353d0;
-    void getColorIndex() = 0x343b90;
+    const _ccColor3B& getColorIndex() = 0x343b90;
     void getDidUpdateLastPosition() = 0x343a20;
     void getGroupID(int) = 0x33ae10;
     void getLastPosition() = 0x3439d0;
@@ -846,7 +846,7 @@
 @end
 
 @interface MenuLayer
-    void keyBackClicked() = 0x1d3160;
+    virtual void keyBackClicked() = 0x1d3160;
     void onMoreGames(cocos2d::CCObject*) = 0x1d2ad0;
     void onQuit(cocos2d::CCObject*) = 0x1d2b40;
 @end
@@ -1054,7 +1054,7 @@
     void activateStreak() = 0x21aef0;
     void addAllParticles() = 0x2189b0;
     void addToTouchedRings(GameObject*) = 0x22b800;
-    void animationFinished(char const*) = 0x22e9d0;
+    virtual void animationFinished(char const*) = 0x22e9d0;
     void boostPlayer(float) = 0x21d6b0;
     void bumpPlayer(float, int) = 0x22d890;
     void buttonDown(PlayerButton) = 0x22b7e0;
@@ -1074,8 +1074,8 @@
     void getActiveMode() = 0x22b950;
     void getModifiedSlopeYVel() = 0x21bff0;
     void getOldPosition(float) = 0x21a830;
-    void getOrientedBox() = 0x22dee0;
-    void getRealPosition() = 0x22d5f0;
+    virtual void getOrientedBox() = 0x22dee0;
+    virtual void getRealPosition() = 0x22d5f0;
     void getSecondColor() = 0x22cee0;
     void gravityDown() = 0x22e930;
     void gravityUp() = 0x22e900;
@@ -1115,7 +1115,7 @@
     void removePendingCheckpoint() = 0x2237b0;
     void resetAllParticles() = 0x21adb0;
     void resetCollisionLog() = 0x21cc20;
-    void resetObject() = 0x223170;
+    virtual void resetObject() = 0x223170;
     void resetPlayerIcon() = 0x22be00;
     void resetStateVariables() = 0x223760;
     void resetStreak() = 0x21ae10;
@@ -1125,17 +1125,17 @@
     void runNormalRotation() = 0x21c960;
     void runRotateAction(bool) = 0x21c570;
     void saveToCheckpoint(PlayerCheckpoint*) = 0x22e2f0;
-    void setColor(cocos2d::_ccColor3B const&) = 0x22cdf0;
-    void setFlipX(bool) = 0x22e720;
-    void setFlipY(bool) = 0x22e7b0;
-    void setOpacity(unsigned char) = 0x22d400;
-    void setPosition(cocos2d::CCPoint const&) = 0x22c8b0;
-    void setRotation(float) = 0x22e6e0;
-    void setScale(float) = 0x22e870;
-    void setScaleX(float) = 0x22e7f0;
-    void setScaleY(float) = 0x22e830;
+    virtual void setColor(cocos2d::_ccColor3B const&) = 0x22cdf0;
+    virtual void setFlipX(bool) = 0x22e720;
+    virtual void setFlipY(bool) = 0x22e7b0;
+    virtual void setOpacity(unsigned char) = 0x22d400;
+    virtual void setPosition(cocos2d::CCPoint const&) = 0x22c8b0;
+    virtual void setRotation(float) = 0x22e6e0;
+    virtual void setScale(float) = 0x22e870;
+    virtual void setScaleX(float) = 0x22e7f0;
+    virtual void setScaleY(float) = 0x22e830;
     void setSecondColor(cocos2d::_ccColor3B const&) = 0x219610;
-    void setVisible(bool) = 0x22e8b0;
+    virtual void setVisible(bool) = 0x22e8b0;
     void setupStreak() = 0x218720;
     void spawnCircle() = 0x225480;
     void spawnCircle2() = 0x2252a0;
@@ -1165,7 +1165,7 @@
     void toggleVisibility(bool) = 0x21abf0;
     void touchedObject(GameObject*) = 0x22e660;
     void tryPlaceCheckpoint() = 0x21a950;
-    void update(float) = 0x218bf0;
+    virtual void update(float) = 0x218bf0;
     void updateCheckpointMode(bool) = 0x218980;
     void updateCheckpointTest() = 0x21a890;
     void updateCollide(bool, int) = 0x220f10;
@@ -1468,7 +1468,7 @@
     static CCDrawNode* create() = 0x378d00;
     void drawPolygon(cocos2d::CCPoint*, unsigned int, cocos2d::_ccColor4F const&, float, cocos2d::_ccColor4F const&) = 0x3797f0;
     void drawSegment(cocos2d::CCPoint const&, cocos2d::CCPoint const&, float, cocos2d::_ccColor4F const&) = 0x3792d0;
-    void getBlendFunc() = 0x379ea0;
+    _ccBlendFunc getBlendFunc() = 0x379ea0;
     bool init() = 0x378e00;
     void setBlendFunc(cocos2d::_ccBlendFunc const&) = 0x379eb0;
 @end
@@ -1562,7 +1562,7 @@
     bool initWithColor(cocos2d::_ccColor4B const&) = 0x2749a0;
     bool initWithColor(cocos2d::_ccColor4B const&, float, float) = 0x274850;
     void setBlendFunc(cocos2d::_ccBlendFunc) = 0x2744a0;
-    void setColor(cocos2d::_ccColor3B const&) = 0x274c20;
+    virtual void setColor(cocos2d::_ccColor3B const&) = 0x274c20;
     void setContentSize(cocos2d::CCSize const&) = 0x2749f0;
     void setOpacity(unsigned char) = 0x274db0;
     void updateColor() = 0x274ae0;
@@ -1622,49 +1622,49 @@
     static CCNode* create() = 0x1230a0;
     void draw() = 0x123840;
     void getActionByTag(int) = 0x123ee0;
-    void getActionManager() = 0x123e50;
-    void getAnchorPoint() = 0x122d80;
-    void getAnchorPointInPoints() = 0x122d70;
-    void getCamera() = 0x122cb0;
-    void getChildByTag(int) = 0x123220;
-    void getChildren() = 0x122c80;
-    void getChildrenCount() = 0x122c90;
+    CCActionManager* getActionManager() = 0x123e50;
+    const CCPoint& getAnchorPoint() = 0x122d80;
+    const CCPoint& getAnchorPointInPoints() = 0x122d70;
+    CCCamera* getCamera() = 0x122cb0;
+    CCNode* getChildByTag(int) = 0x123220;
+    CCArray* getChildren() = 0x122c80;
+    CCArray* getChildrenCount() = 0x122c90;
     void getContentSize() = 0x122e00;
-    void getGLServerState() = 0x122f90;
-    void getGrid() = 0x122d00;
-    void getOrderOfArrival() = 0x122f50;
-    void getParent() = 0x122ed0;
-    void getPosition() = 0x122b60;
+    ccGLServerState getGLServerState() = 0x122f90;
+    CCGridBase* getGrid() = 0x122d00;
+    uint32_t getOrderOfArrival() = 0x122f50;
+    CCNode* getParent() = 0x122ed0;
+    const CCPoint& getPosition() = 0x122b60;
     void getPosition(float*, float*) = 0x122b90;
-    void getPositionX() = 0x122be0;
-    void getPositionY() = 0x122bf0;
-    void getRotation() = 0x122a00;
-    void getRotationX() = 0x122a50;
-    void getRotationY() = 0x122a80;
-    void getScale() = 0x122ab0;
-    void getScaleX() = 0x122b00;
-    void getScaleY() = 0x122b30;
-    void getScaledContentSize() = 0x122e10;
-    void getScheduler() = 0x123f70;
-    void getShaderProgram() = 0x122f70;
-    void getSkewX() = 0x122920;
-    void getSkewY() = 0x122950;
-    void getUserData() = 0x122f30;
-    void getUserObject() = 0x122f80;
-    void getVertexZ() = 0x1229e0;
-    void getZOrder() = 0x122980;
+    float getPositionX() = 0x122be0;
+    float getPositionY() = 0x122bf0;
+    float getRotation() = 0x122a00;
+    float getRotationX() = 0x122a50;
+    float getRotationY() = 0x122a80;
+    float getScale() = 0x122ab0;
+    float getScaleX() = 0x122b00;
+    float getScaleY() = 0x122b30;
+    CCSize getScaledContentSize() = 0x122e10;
+    CCScheduler* getScheduler() = 0x123f70;
+    CCGLProgram* getShaderProgram() = 0x122f70;
+    float getSkewX() = 0x122920;
+    float getSkewY() = 0x122950;
+    void* getUserData() = 0x122f30;
+    CCObject* getUserObject() = 0x122f80;
+    float getVertexZ() = 0x1229e0;
+    int getZOrder() = 0x122980;
     void ignoreAnchorPointForPosition(bool) = 0x122f00;
     bool init() = 0x122910;
-    void isIgnoreAnchorPointForPosition() = 0x122ef0;
-    void isRunning() = 0x122ec0;
-    void isVisible() = 0x122d50;
-    void nodeToParentTransform() = 0x124210;
-    void nodeToWorldTransform() = 0x124670;
+    bool isIgnoreAnchorPointForPosition() = 0x122ef0;
+    bool isRunning() = 0x122ec0;
+    bool isVisible() = 0x122d50;
+    const CCAffineTransform nodeToParentTransform() = 0x124210;
+    CCAffineTransform nodeToWorldTransform() = 0x124670;
     void onEnter() = 0x123a90;
     void onEnterTransitionDidFinish() = 0x123b90;
     void onExit() = 0x123ca0;
     void onExitTransitionDidStart() = 0x123c00;
-    void parentToNodeTransform() = 0x1245d0;
+    const CCAffineTransform parentToNodeTransform() = 0x1245d0;
     void pauseSchedulerAndActions() = 0x123d60;
     void registerScriptHandler(int) = 0x123d90;
     void removeAllChildren() = 0x123600;
@@ -1674,8 +1674,8 @@
     void removeChild(cocos2d::CCNode*, bool) = 0x123480;
     void removeChildByTag(int) = 0x1235a0;
     void removeChildByTag(int, bool) = 0x1235c0;
-    void removeComponent(char const*) = 0x124a60;
-    void removeComponent(cocos2d::CCComponent*) = 0x124a80;
+    bool removeComponent(char const*) = 0x124a60;
+    bool removeComponent(cocos2d::CCComponent*) = 0x124a80;
     void removeFromParent() = 0x1233f0;
     void removeFromParentAndCleanup(bool) = 0x123410;
     void removeMeAndCleanup() = 0x123440;
@@ -1723,16 +1723,16 @@
     void updateTransform() = 0x1249d0;
     void updateTweenAction(float, char const*) = 0x1249c0;
     void visit() = 0x123850;
-    void worldToNodeTransform() = 0x124710;
+    CCAffineTransform worldToNodeTransform() = 0x124710;
 @end
 
 @interface CCNodeRGBA
-    void getColor() = 0x125020;
-    void getDisplayedColor() = 0x125040;
-    void getDisplayedOpacity() = 0x124cf0;
-    void getOpacity() = 0x124cd0;
-    void isCascadeColorEnabled() = 0x125320;
-    void isCascadeOpacityEnabled() = 0x124fe0;
+    const _ccColor3B& getColor() = 0x125020;
+    const _ccColor3B& getDisplayedColor() = 0x125040;
+    uint8_t getDisplayedOpacity() = 0x124cf0;
+    uint8_t getOpacity() = 0x124cd0;
+    bool isCascadeColorEnabled() = 0x125320;
+    bool isCascadeOpacityEnabled() = 0x124fe0;
     void setCascadeColorEnabled(bool) = 0x125340;
     void setCascadeOpacityEnabled(bool) = 0x125000;
 @end
@@ -1740,10 +1740,10 @@
 @interface CCObject
     void acceptVisitor(cocos2d::CCDataVisitor&) = 0x250f30;
     void autorelease() = 0x250ed0;
-    void canEncode() = 0x250f90;
+    bool canEncode() = 0x250f90;
     void encodeWithCoder(DS_Dictionary*) = 0x250f70;
     void getTag() = 0x250f50;
-    void isEqual(cocos2d::CCObject const*) = 0x250f20;
+    bool isEqual(cocos2d::CCObject const*) = 0x250f20;
     void release() = 0x250ea0;
     void retain() = 0x250ec0;
     void setTag(int) = 0x250f60;
@@ -1812,20 +1812,24 @@
     static CCSprite* create(char const*) = 0x132a80;
     static CCSprite* createWithSpriteFrame(cocos2d::CCSpriteFrame*) = 0x132cb0;
     static CCSprite* createWithSpriteFrameName(char const*) = 0x132dc0;
-    void displayFrame() = 0x135760;
+    CCSpriteFrame* displayFrame() = 0x135760;
+    void setChildColor(cocos2d::_ccColor3B const&) = 0x135160;
+    bool init() = 0x132ef0;
     void draw() = 0x134070;
-    void getBatchNode() = 0x135910;
-    void getBlendFunc() = 0x505a0;
-    void getTexture() = 0x135c00;
+    CCSpriteBatchNode* getBatchNode() = 0x135910;
+    _ccBlendFunc getBlendFunc() = 0x505a0;
+    CCTexture2D* getTexture() = 0x135c00;
     void ignoreAnchorPointForPosition(bool) = 0x134b60;
     bool initWithFile(char const*) = 0x133180;
     bool initWithFile(char const*, cocos2d::CCRect const&) = 0x133210;
+    bool initWithSpriteFrameName(char const*) = 0x1332c0;
     bool initWithSpriteFrame(cocos2d::CCSpriteFrame*) = 0x133270;
+    virtual bool initWithTexture(cocos2d::CCTexture2D*) = 0x248690;
     bool initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&) = 0x1330f0;
     bool initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool) = 0x132f10;
-    void isDirty() = 0x505b0;
-    void isFrameDisplayed(cocos2d::CCSpriteFrame*) = 0x1356d0;
-    void isOpacityModifyRGB() = 0x135350;
+    bool isDirty() = 0x505b0;
+    bool isFrameDisplayed(cocos2d::CCSpriteFrame*) = 0x1356d0;
+    bool isOpacityModifyRGB() = 0x135350;
     void refreshTextureRect() = 0x133520;
     void removeAllChildrenWithCleanup(bool) = 0x134340;
     void removeChild(cocos2d::CCNode*, bool) = 0x134300;
@@ -1860,7 +1864,7 @@
 @end
 
 @interface CCSpriteBatchNode
-    static CCSpriteBatchNode* createWithTexture(cocos2d::CCTexture2D*, unsigned int) = 0xbb310;
+    void createWithTexture(cocos2d::CCTexture2D*, unsigned int) = 0xbb310;
     void getUsedAtlasCapacity() = 0xbc6b0;
     void increaseAtlasCapacity(unsigned int) = 0xbc670;
 @end

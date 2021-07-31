@@ -171,12 +171,6 @@ __ZN15CCTextInputNode11getString_sEv:
 	pop rbp
 	ret
 
-global __ZTIN7cocos2d6CCNodeE
-global __ZTI9MenuLayer
-global __ZTV9MenuLayer
-global __ZTI12FLAlertLayer
-global __ZTIN7cocos2d7CCLayerE
-global __ZTIN7cocos2d12CCLayerColorE
 global __Z14setupTypeinfosv
 __Z14setupTypeinfosv:
 	push rbp
@@ -4947,6 +4941,18 @@ defit __ZN7cocos2d8CCSprite25createWithSpriteFrameNameEPKc, 0x132dc0
 ; cocos2d::CCSprite::displayFrame()
 defit __ZN7cocos2d8CCSprite12displayFrameEv, 0x135760
 
+; cocos2d::CCSprite::setChildColor(cocos2d::_ccColor3B const&)
+defit __ZN7cocos2d8CCSprite13setChildColorERKNS_10_ccColor3BE, 0x135160
+
+; cocos2d::CCSprite::init()
+defit __ZN7cocos2d8CCSprite4initEv, 0x132ef0
+
+; cocos2d::CCSprite::CCSprite()
+defit __ZN7cocos2d8CCSpriteC2Ev, 0x133300
+
+; cocos2d::CCSprite::~CCSprite()
+defit __ZN7cocos2d8CCSpriteD2Ev, 0x133430
+
 ; cocos2d::CCSprite::draw()
 defit __ZN7cocos2d8CCSprite4drawEv, 0x134070
 
@@ -4974,8 +4980,14 @@ defit __ZN7cocos2d8CCSprite12initWithFileEPKc, 0x133180
 ; cocos2d::CCSprite::initWithFile(char const*, cocos2d::CCRect const&)
 defit __ZN7cocos2d8CCSprite12initWithFileEPKcRKNS_6CCRectE, 0x133210
 
+; cocos2d::CCSprite::initWithSpriteFrameName(char const*)
+defit __ZN7cocos2d8CCSprite23initWithSpriteFrameNameEPKc, 0x1332c0
+
 ; cocos2d::CCSprite::initWithSpriteFrame(cocos2d::CCSpriteFrame*)
 defit __ZN7cocos2d8CCSprite19initWithSpriteFrameEPNS_13CCSpriteFrameE, 0x133270
+
+; cocos2d::CCSprite::initWithTexture(cocos2d::CCTexture2D*)
+defit __ZN7cocos2d8CCSprite15initWithTextureEPNS_11CCTexture2DE, 0x248690
 
 ; cocos2d::CCSprite::initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&)
 defit __ZN7cocos2d8CCSprite15initWithTextureEPNS_11CCTexture2DERKNS_6CCRectE, 0x1330f0
@@ -5241,11 +5253,26 @@ defit __Z12xCompRealPosPKvS0_, 0x6b050
 ; xCompSpeed(void const*, void const*)
 defit __Z10xCompSpeedPKvS0_, 0x6b030
 
-__ZTV9MenuLayer dq 0x1006438d0
-__ZTI9MenuLayer dq 0x100643e40
+%macro nul 1
+	global %1
+	%1: resq 5
+%endmacro
 
 section .bss
-__ZTIN7cocos2d6CCNodeE: resq 5
-__ZTIN7cocos2d7CCLayerE: resq 5
-__ZTI12FLAlertLayer: resq 5
-__ZTIN7cocos2d12CCLayerColorE: resq 5
+
+nul __ZTIN7cocos2d6CCNodeE
+nul __ZTIN7cocos2d7CCLayerE
+nul __ZTI12FLAlertLayer
+nul __ZTIN7cocos2d12CCLayerColorE
+nul __ZTV9MenuLayer
+nul __ZTI9MenuLayer
+nul __ZTI12PlayerObject
+nul __ZTV12PlayerObject
+nul __ZTV12CCSpritePlus
+nul __ZTV10GameObject
+nul __ZTI9PlayLayer
+nul __ZTV15GJBaseGameLayer
+nul __ZTV9PlayLayer
+
+
+

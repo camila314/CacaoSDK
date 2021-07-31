@@ -82,6 +82,11 @@ public:
     }
 };
 
+
+enum GameObjectType {
+
+};
+
 class CreatorLayer : public cocos2d::CCLayer, public GDObj {
 
 };
@@ -302,7 +307,6 @@ class FMODAudioEngine : public cocos2d::CCNode, public GDObj {
 };
 class GameObject : public CCSpritePlus, public GDObj{
 public:
-    GameObject();
     void init(char const* frame);
     void setPosition(cocos2d::CCPoint const& pt);
     void destroyObject();
@@ -345,7 +349,7 @@ public:
     virtual void getRealPosition();
     virtual void setStartPos(cocos2d::CCPoint);
     virtual void updateStartValues();
-    virtual void customObjectSetup(std::string&);
+    virtual void customObjectSetup(std::map<std::string, std::string>&);
     virtual std::string getSaveString();
     virtual void isFlipX();
     virtual void isFlipY();
@@ -369,7 +373,7 @@ public:
     virtual void getOrientedRectDirty() const;
     virtual void setOrientedRectDirty(bool);
     virtual int getType() const;
-    virtual void setType(int);
+    virtual void setType(GameObjectType);
     virtual void getStartPos() const;
     virtual void animationFinished(char const*);
 };
@@ -474,7 +478,7 @@ public:
     void updateCounters(int item, int value);
     virtual void objectsCollided(int, int);
     virtual void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int);
-    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, uint32_t, int, bool, int, EffectGameObject*); //too lazy to add hsvvalue rn cocos2d::_ccHSVValue
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*); //no longer lazy
     virtual void flipGravity(PlayerObject*, bool, bool);
     virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
     virtual void toggleGroupTriggered(int, bool);
@@ -885,10 +889,6 @@ enum TouchTriggerType {
 };
 
 class ConfigureValuePopup {
-
-};
-
-enum GameObjectType {
 
 };
 
