@@ -824,7 +824,7 @@ public:
 
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
 public:
-    char $pad[0x4a8 - sizeof(cocos2d::CCLayer)];
+    // char $pad[0x4a8 - sizeof(cocos2d::CCLayer)];
     void addObjectCounter(LabelGameObject*, int);
     void addToGroups(GameObject*, bool);
     void atlasValue(int);
@@ -1003,7 +1003,7 @@ public:
 
 class EditorUI : public cocos2d::CCLayer, public GDObj {
 public:
-    char $pad[0x4a8 - sizeof(cocos2d::CCLayer)];
+    // char $pad[0x4a8 - sizeof(cocos2d::CCLayer)];
     void constrainGameLayerPosition();
     void create(LevelEditorLayer*);
     void deselectAll(int);
@@ -1044,7 +1044,7 @@ class CurrencyRewardLayer;
 class DialogLayer;
 class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate {
 public:
-    char $pad[0x7f0 - sizeof(GJBaseGameLayer)];
+    // char $pad[0x7f0 - sizeof(GJBaseGameLayer)];
     void addCircle(CCCircleWave*);
     void addObject(GameObject*);
     void addToGroupOld(GameObject*);

@@ -228,6 +228,9 @@ defit __ZN17AudioEffectsLayer6createESs, 0x271a00
 ; AudioEffectsLayer::resetAudioVars()
 defit __ZN17AudioEffectsLayer14resetAudioVarsEv, 0x271ee0
 
+; BoomScrollLayer::BoomScrollLayer()
+defit __ZN15BoomScrollLayerC1Ev, 0x1e42f0
+
 ; ButtonSprite::create(char const*)
 defit __ZN12ButtonSprite6createEPKc, 0x4fa10
 
@@ -282,6 +285,15 @@ defit __ZN11CCMoveCNode6createEv, 0x1842a0
 ; CCMoveCNode::init()
 defit __ZN11CCMoveCNode4initEv, 0x18b3d0
 
+; CCMoveCNode::~CCMoveCNode()
+defit __ZN11CCMoveCNodeD0Ev, 0x18b360
+
+; CCMoveCNode::~CCMoveCNode()
+defit __ZN11CCMoveCNodeD1Ev, 0x18b310
+
+; CCMoveCNode::~CCMoveCNode()
+defit __ZN11CCMoveCNodeD2Ev, 0x18b2c0
+
 ; CCNodeContainer::create()
 defit __ZN15CCNodeContainer6createEv, 0xb1090
 
@@ -290,6 +302,12 @@ defit __ZN15CCNodeContainer4initEv, 0xba950
 
 ; CCNodeContainer::visit()
 defit __ZN15CCNodeContainer5visitEv, 0xba960
+
+; CCNodeContainer::~CCNodeContainer()
+defit __ZN15CCNodeContainerD0Ev, 0xba9c0
+
+; CCNodeContainer::~CCNodeContainer()
+defit __ZN15CCNodeContainerD1Ev, 0xba9b0
 
 ; CCSpritePlus::initWithSpriteFrameName(char const*)
 defit __ZN12CCSpritePlus23initWithSpriteFrameNameEPKc, 0x248670
@@ -360,6 +378,18 @@ defit __ZN18ColorChannelSprite13updateOpacityEf, 0x16e080
 ; ColorChannelSprite::updateValues(ColorAction*)
 defit __ZN18ColorChannelSprite12updateValuesEP11ColorAction, 0x16e2e0
 
+; ColorSelectLiveOverlay::ColorSelectLiveOverlay()
+defit __ZN22ColorSelectLiveOverlayC1Ev, 0x2e2580
+
+; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
+defit __ZN22ColorSelectLiveOverlayD0Ev, 0x2e24f0
+
+; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
+defit __ZN22ColorSelectLiveOverlayD1Ev, 0x2e24c0
+
+; ColorSelectPopup::ColorSelectPopup()
+defit __ZN16ColorSelectPopupC1Ev, 0x41eb80
+
 ; ColorSelectPopup::colorValueChanged(cocos2d::_ccColor3B)
 defit __ZN16ColorSelectPopup17colorValueChangedEN7cocos2d10_ccColor3BE, 0x423320
 
@@ -414,6 +444,21 @@ defit __ZN16ColorSelectPopup18updateOpacityLabelEv, 0x422000
 ; ColorSelectPopup::updateTouchTriggered()
 defit __ZN16ColorSelectPopup20updateTouchTriggeredEv, 0x423020
 
+; ColorSelectPopup::~ColorSelectPopup()
+defit __ZN16ColorSelectPopupD0Ev, 0x41eb00
+
+; ColorSelectPopup::~ColorSelectPopup()
+defit __ZN16ColorSelectPopupD1Ev, 0x41ead0
+
+; ColorSelectPopup::~ColorSelectPopup()
+defit __ZN16ColorSelectPopupD2Ev, 0x41e960
+
+; non-virtual thunk to ColorSelectPopup::~ColorSelectPopup()
+defit __ZThn288_N16ColorSelectPopupD0Ev, 0x41eb30
+
+; non-virtual thunk to ColorSelectPopup::~ColorSelectPopup()
+defit __ZThn288_N16ColorSelectPopupD1Ev, 0x41eae0
+
 ; CountTriggerAction::createFromString(std::string)
 defit __ZN18CountTriggerAction16createFromStringESs, 0x1754f0
 
@@ -440,6 +485,9 @@ defit __ZN20CustomizeObjectLayer11textChangedEP15CCTextInputNode, 0xe1470
 
 ; CustomizeObjectLayer::textInputClosed(CCTextInputNode*)
 defit __ZN20CustomizeObjectLayer15textInputClosedEP15CCTextInputNode, 0xe1430
+
+; DS_Dictionary::DS_Dictionary()
+defit __ZN13DS_DictionaryC1Ev, 0xbe9a0
 
 ; DelayedSpawnNode::create()
 defit __ZN16DelayedSpawnNode6createEv, 0x9b360
@@ -480,6 +528,21 @@ defit __ZN13DrawGridLayer17updateTimeMarkersEv, 0x92950
 ; DrawGridLayer::xPosForTime(float)
 defit __ZN13DrawGridLayer11xPosForTimeEf, 0x9c830
 
+; DrawGridLayer::~DrawGridLayer()
+defit __ZN13DrawGridLayerD0Ev, 0xa3670
+
+; DrawGridLayer::~DrawGridLayer()
+defit __ZN13DrawGridLayerD1Ev, 0xa3640
+
+; DrawGridLayer::~DrawGridLayer()
+defit __ZN13DrawGridLayerD2Ev, 0xa3480
+
+; non-virtual thunk to DrawGridLayer::~DrawGridLayer()
+defit __ZThn288_N13DrawGridLayerD0Ev, 0xa36a0
+
+; non-virtual thunk to DrawGridLayer::~DrawGridLayer()
+defit __ZThn288_N13DrawGridLayerD1Ev, 0xa3650
+
 ; EditButtonBar::loadFromItems(cocos2d::CCArray*, int, int, bool)
 defit __ZN13EditButtonBar13loadFromItemsEPN7cocos2d7CCArrayEiib, 0x351010
 
@@ -491,6 +554,12 @@ defit __ZN16EditorPauseLayer6createEP16LevelEditorLayer, 0x13c680
 
 ; EditorPauseLayer::saveLevel()
 defit __ZN16EditorPauseLayer9saveLevelEv, 0x13ebd0
+
+; EditorPauseLayer::~EditorPauseLayer()
+defit __ZN16EditorPauseLayerD0Ev, 0x13c570
+
+; EditorUI::EditorUI()
+defit __ZN8EditorUIC2Ev, 0x32220
 
 ; EditorUI::constrainGameLayerPosition()
 defit __ZN8EditorUI26constrainGameLayerPositionEv, 0x1c6d0
@@ -576,6 +645,9 @@ defit __ZN8EditorUI12updateSliderEv, 0x18a90
 ; EditorUI::updateZoom(float)
 defit __ZN8EditorUI10updateZoomEf, 0x248c0
 
+; EffectGameObject::EffectGameObject()
+defit __ZN16EffectGameObjectC1Ev, 0xdc2d0
+
 ; EffectGameObject::create(char const*)
 defit __ZN16EffectGameObject6createEPKc, 0xc9790
 
@@ -584,6 +656,9 @@ defit __ZN16EffectGameObject19getTargetColorIndexEv, 0xca1f0
 
 ; EffectGameObject::triggerObject(GJBaseGameLayer*)
 defit __ZN16EffectGameObject13triggerObjectEP15GJBaseGameLayer, 0xc9870
+
+; EndLevelLayer::EndLevelLayer()
+defit __ZN13EndLevelLayerC1Ev, 0x27be40
 
 ; EndLevelLayer::create()
 defit __ZN13EndLevelLayer6createEv, 0x2787d0
@@ -647,6 +722,21 @@ defit __ZN12FLAlertLayer27registerWithTouchDispatcherEv, 0x25f2e0
 
 ; FLAlertLayer::show()
 defit __ZN12FLAlertLayer4showEv, 0x25f120
+
+; FLAlertLayer::~FLAlertLayer()
+defit __ZN12FLAlertLayerD0Ev, 0x25dd00
+
+; FLAlertLayer::~FLAlertLayer()
+defit __ZN12FLAlertLayerD1Ev, 0x25db60
+
+; FLAlertLayer::~FLAlertLayer()
+defit __ZN12FLAlertLayerD2Ev, 0x25da90
+
+; non-virtual thunk to FLAlertLayer::~FLAlertLayer()
+defit __ZThn288_N12FLAlertLayerD0Ev, 0x25dde0
+
+; non-virtual thunk to FLAlertLayer::~FLAlertLayer()
+defit __ZThn288_N12FLAlertLayerD1Ev, 0x25dc30
 
 ; FMOD::Channel::getPosition(unsigned int*, unsigned int)
 defit __ZN4FMOD7Channel11getPositionEPjj, 0x89c3e0
@@ -969,6 +1059,21 @@ defit __ZN15GJBaseGameLayer10updateOBB2EN7cocos2d6CCRectE, 0xb63f0
 ; GJBaseGameLayer::updateQueuedLabels()
 defit __ZN15GJBaseGameLayer18updateQueuedLabelsEv, 0xb9f30
 
+; GJBaseGameLayer::~GJBaseGameLayer()
+defit __ZN15GJBaseGameLayerD0Ev, 0xafc20
+
+; GJBaseGameLayer::~GJBaseGameLayer()
+defit __ZN15GJBaseGameLayerD1Ev, 0xafbf0
+
+; GJBaseGameLayer::~GJBaseGameLayer()
+defit __ZN15GJBaseGameLayerD2Ev, 0xaf990
+
+; non-virtual thunk to GJBaseGameLayer::~GJBaseGameLayer()
+defit __ZThn288_N15GJBaseGameLayerD0Ev, 0xafc50
+
+; non-virtual thunk to GJBaseGameLayer::~GJBaseGameLayer()
+defit __ZThn288_N15GJBaseGameLayerD1Ev, 0xafc00
+
 ; GJColorSetupLayer::updateSpriteColors()
 defit __ZN17GJColorSetupLayer18updateSpriteColorsEv, 0xefe50
 
@@ -1013,6 +1118,12 @@ defit __ZN15GJDropDownLayer27registerWithTouchDispatcherEv, 0x3525f0
 
 ; GJDropDownLayer::showLayer(bool)
 defit __ZN15GJDropDownLayer9showLayerEb, 0x3526c0
+
+; GJDropDownLayer::~GJDropDownLayer()
+defit __ZN15GJDropDownLayerD0Ev, 0x351ea0
+
+; GJDropDownLayer::~GJDropDownLayer()
+defit __ZN15GJDropDownLayerD1Ev, 0x351d00
 
 ; GJEffectManager::activeColorForIndex(int)
 defit __ZN15GJEffectManager19activeColorForIndexEi, 0x180cb0
@@ -1266,6 +1377,15 @@ defit __ZN15GJEffectManager12wasFollowingEii, 0x185e60
 ; GJEffectManager::wouldCreateLoop(InheritanceNode*, int)
 defit __ZN15GJEffectManager15wouldCreateLoopEP15InheritanceNodei, 0x181820
 
+; GJEffectManager::~GJEffectManager()
+defit __ZN15GJEffectManagerD0Ev, 0x1800c0
+
+; GJEffectManager::~GJEffectManager()
+defit __ZN15GJEffectManagerD1Ev, 0x1800b0
+
+; GJEffectManager::~GJEffectManager()
+defit __ZN15GJEffectManagerD2Ev, 0x17fe00
+
 ; GJFollowCommandLayer::create(EffectGameObject*, cocos2d::CCArray*)
 defit __ZN20GJFollowCommandLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x16a550
 
@@ -1398,6 +1518,21 @@ defit __ZN18GJMoveCommandLayer16valuePopupClosedEP19ConfigureValuePopupf, 0x373c
 ; non-virtual thunk to GJMoveCommandLayer::valuePopupClosed(ConfigureValuePopup*, float)
 defit __ZThn600_N18GJMoveCommandLayer16valuePopupClosedEP19ConfigureValuePopupf, 0x373d50
 
+; GJMoveCommandLayer::~GJMoveCommandLayer()
+defit __ZN18GJMoveCommandLayerD0Ev, 0x36f830
+
+; GJMoveCommandLayer::~GJMoveCommandLayer()
+defit __ZN18GJMoveCommandLayerD1Ev, 0x36f800
+
+; GJMoveCommandLayer::~GJMoveCommandLayer()
+defit __ZN18GJMoveCommandLayerD2Ev, 0x36f6b0
+
+; non-virtual thunk to GJMoveCommandLayer::~GJMoveCommandLayer()
+defit __ZThn288_N18GJMoveCommandLayerD0Ev, 0x36f860
+
+; non-virtual thunk to GJMoveCommandLayer::~GJMoveCommandLayer()
+defit __ZThn288_N18GJMoveCommandLayerD1Ev, 0x36f810
+
 ; GJPFollowCommandLayer::create(EffectGameObject*, cocos2d::CCArray*)
 defit __ZN21GJPFollowCommandLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x1aea20
 
@@ -1520,6 +1655,18 @@ defit __ZN11GameManager6setUGVEPKcb, 0x1cce50
 
 ; GameManager::sharedState()
 defit __ZN11GameManager11sharedStateEv, 0x1c2b30
+
+; GameManager::~GameManager()
+defit __ZN11GameManagerD0Ev, 0x1d0ff0
+
+; GameManager::~GameManager()
+defit __ZN11GameManagerD1Ev, 0x1d0fe0
+
+; GameManager::~GameManager()
+defit __ZN11GameManagerD2Ev, 0x1d0e00
+
+; GameObject::GameObject()
+defit __ZN10GameObjectC1Ev, 0xdc4c0
 
 ; GameObject::activateObject()
 defit __ZN10GameObject14activateObjectEv, 0x2faf60
@@ -1821,6 +1968,15 @@ defit __ZN14GameObjectCopy6createEP10GameObject, 0x975a0
 ; GameObjectCopy::resetObject()
 defit __ZN14GameObjectCopy11resetObjectEv, 0x976a0
 
+; GameObjectCopy::~GameObjectCopy()
+defit __ZN14GameObjectCopyD0Ev, 0xa32e0
+
+; GameObjectCopy::~GameObjectCopy()
+defit __ZN14GameObjectCopyD1Ev, 0xa3290
+
+; GameObjectCopy::~GameObjectCopy()
+defit __ZN14GameObjectCopyD2Ev, 0x97710
+
 ; GameSoundManager::disableMetering()
 defit __ZN16GameSoundManager15disableMeteringEv, 0x362d80
 
@@ -1841,6 +1997,15 @@ defit __ZN16GameSoundManager13sharedManagerEv, 0x3610f0
 
 ; GameSoundManager::stopBackgroundMusic()
 defit __ZN16GameSoundManager19stopBackgroundMusicEv, 0x362130
+
+; GameSoundManager::~GameSoundManager()
+defit __ZN16GameSoundManagerD0Ev, 0x362cd0
+
+; GameSoundManager::~GameSoundManager()
+defit __ZN16GameSoundManagerD1Ev, 0x362cc0
+
+; GameSoundManager::~GameSoundManager()
+defit __ZN16GameSoundManagerD2Ev, 0x362c00
 
 ; GameStatsManager::awardCurrencyForLevel(GJGameLevel*)
 defit __ZN16GameStatsManager21awardCurrencyForLevelEP11GJGameLevel, 0x43600
@@ -1964,6 +2129,9 @@ defit __ZN17LevelBrowserLayer5sceneEP14GJSearchObject, 0x2511d0
 
 ; LevelBrowserLayer::setIDPopupClosed(SetIDPopup*, int)
 defit __ZN17LevelBrowserLayer16setIDPopupClosedEP10SetIDPopupi, 0x2554f0
+
+; LevelEditorLayer::LevelEditorLayer()
+defit __ZN16LevelEditorLayerC1Ev, 0xad500
 
 ; LevelEditorLayer::activateTriggerEffect(EffectGameObject*, float, float, float)
 defit __ZN16LevelEditorLayer21activateTriggerEffectEP16EffectGameObjectfff, 0x9b520
@@ -2178,6 +2346,21 @@ defit __ZN16LevelEditorLayer16updateVisibilityEf, 0x92c70
 ; LevelEditorLayer::xPosForTime(float)
 defit __ZN16LevelEditorLayer11xPosForTimeEf, 0x9c800
 
+; LevelEditorLayer::~LevelEditorLayer()
+defit __ZN16LevelEditorLayerD0Ev, 0x90eb0
+
+; LevelEditorLayer::~LevelEditorLayer()
+defit __ZN16LevelEditorLayerD1Ev, 0x90e80
+
+; LevelEditorLayer::~LevelEditorLayer()
+defit __ZN16LevelEditorLayerD2Ev, 0x90a00
+
+; non-virtual thunk to LevelEditorLayer::~LevelEditorLayer()
+defit __ZThn288_N16LevelEditorLayerD0Ev, 0x90ee0
+
+; non-virtual thunk to LevelEditorLayer::~LevelEditorLayer()
+defit __ZThn288_N16LevelEditorLayerD1Ev, 0x90e90
+
 ; LevelSettingsLayer::create(LevelSettingsObject*, LevelEditorLayer*)
 defit __ZN18LevelSettingsLayer6createEP19LevelSettingsObjectP16LevelEditorLayer, 0xa7c30
 
@@ -2277,6 +2460,12 @@ defit __ZN19OpacityEffectAction4initEfffi, 0x178b00
 ; OpacityEffectAction::step(float)
 defit __ZN19OpacityEffectAction4stepEf, 0x178b90
 
+; OpacityEffectAction::~OpacityEffectAction()
+defit __ZN19OpacityEffectActionD0Ev, 0x18b720
+
+; OpacityEffectAction::~OpacityEffectAction()
+defit __ZN19OpacityEffectActionD1Ev, 0x18b710
+
 ; PauseLayer::create(bool)
 defit __ZN10PauseLayer6createEb, 0x20b1e0
 
@@ -2288,6 +2477,9 @@ defit __ZN15PlatformToolbox10hideCursorEv, 0x27c340
 
 ; PlatformToolbox::showCursor()
 defit __ZN15PlatformToolbox10showCursorEv, 0x27c360
+
+; PlayLayer::PlayLayer()
+defit __ZN9PlayLayerC1Ev, 0x80e20
 
 ; PlayLayer::addCircle(CCCircleWave*)
 defit __ZN9PlayLayer9addCircleEP12CCCircleWave, 0x7e0f0
@@ -2751,8 +2943,26 @@ defit __ZN9PlayLayer16willSwitchToModeEiP12PlayerObject, 0x7b9e0
 ; PlayLayer::xPosForTime(float)
 defit __ZN9PlayLayer11xPosForTimeEf, 0x7d140
 
+; PlayLayer::~PlayLayer()
+defit __ZN9PlayLayerD0Ev, 0x6b490
+
+; PlayLayer::~PlayLayer()
+defit __ZN9PlayLayerD1Ev, 0x6b460
+
+; PlayLayer::~PlayLayer()
+defit __ZN9PlayLayerD2Ev, 0x6b090
+
+; non-virtual thunk to PlayLayer::~PlayLayer()
+defit __ZThn288_N9PlayLayerD0Ev, 0x6b4c0
+
+; non-virtual thunk to PlayLayer::~PlayLayer()
+defit __ZThn288_N9PlayLayerD1Ev, 0x6b470
+
 ; PlayerCheckpoint::create()
 defit __ZN16PlayerCheckpoint6createEv, 0x7e8c0
+
+; PlayerObject::PlayerObject()
+defit __ZN12PlayerObjectC1Ev, 0x22ecf0
 
 ; PlayerObject::activateStreak()
 defit __ZN12PlayerObject14activateStreakEv, 0x21aef0
@@ -3207,6 +3417,15 @@ defit __ZN12PlayerObject10yStartDownEv, 0x22e9b0
 ; PlayerObject::yStartUp()
 defit __ZN12PlayerObject8yStartUpEv, 0x22e990
 
+; PlayerObject::~PlayerObject()
+defit __ZN12PlayerObjectD0Ev, 0x217230
+
+; PlayerObject::~PlayerObject()
+defit __ZN12PlayerObjectD1Ev, 0x217220
+
+; PlayerObject::~PlayerObject()
+defit __ZN12PlayerObjectD2Ev, 0x217100
+
 ; PulseEffectAction::createFromString(std::string)
 defit __ZN17PulseEffectAction16createFromStringESs, 0x179e90
 
@@ -3227,6 +3446,21 @@ defit __ZThn592_N15SetGroupIDLayer11textChangedEP15CCTextInputNode, 0x197b90
 
 ; SetGroupIDLayer::updateGroupIDLabel()
 defit __ZN15SetGroupIDLayer18updateGroupIDLabelEv, 0x197260
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD0Ev, 0x194550
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD1Ev, 0x194520
+
+; SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZN15SetGroupIDLayerD2Ev, 0x194410
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD0Ev, 0x194580
+
+; non-virtual thunk to SetGroupIDLayer::~SetGroupIDLayer()
+defit __ZThn288_N15SetGroupIDLayerD1Ev, 0x194530
 
 ; SetIDLayer::create(GameObject*)
 defit __ZN10SetIDLayer6createEP10GameObject, 0x168f20
@@ -3384,6 +3618,21 @@ defit __ZN15SetupPulsePopup14updateTargetIDEv, 0x1ebbe0
 ; SetupPulsePopup::updateTextInputLabel()
 defit __ZN15SetupPulsePopup20updateTextInputLabelEv, 0x1eb8d0
 
+; SetupPulsePopup::~SetupPulsePopup()
+defit __ZN15SetupPulsePopupD0Ev, 0x1e6cd0
+
+; SetupPulsePopup::~SetupPulsePopup()
+defit __ZN15SetupPulsePopupD1Ev, 0x1e6ca0
+
+; SetupPulsePopup::~SetupPulsePopup()
+defit __ZN15SetupPulsePopupD2Ev, 0x1e6b40
+
+; non-virtual thunk to SetupPulsePopup::~SetupPulsePopup()
+defit __ZThn288_N15SetupPulsePopupD0Ev, 0x1e6d00
+
+; non-virtual thunk to SetupPulsePopup::~SetupPulsePopup()
+defit __ZThn288_N15SetupPulsePopupD1Ev, 0x1e6cb0
+
 ; SetupShakePopup::create(EffectGameObject*, cocos2d::CCArray*)
 defit __ZN15SetupShakePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE, 0x3adc00
 
@@ -3497,6 +3746,15 @@ defit __ZN10UndoObject6createEP10GameObject11UndoCommand, 0x94ea0
 
 ; UndoObject::createWithArray(cocos2d::CCArray*, UndoCommand)
 defit __ZN10UndoObject15createWithArrayEPN7cocos2d7CCArrayE11UndoCommand, 0x96ee0
+
+; UndoObject::~UndoObject()
+defit __ZN10UndoObjectD0Ev, 0xa3030
+
+; UndoObject::~UndoObject()
+defit __ZN10UndoObjectD1Ev, 0xa2fd0
+
+; UndoObject::~UndoObject()
+defit __ZN10UndoObjectD2Ev, 0xa2f70
 
 ; boxCompMax(void const*, void const*)
 defit __Z10boxCompMaxPKvS0_, 0x217080
@@ -3693,6 +3951,12 @@ defit __ZN7cocos2d8CCFadeTo6createEfh, 0x1f7ff0
 ; cocos2d::CCHide::create()
 defit __ZN7cocos2d6CCHide6createEv, 0x4543e0
 
+; cocos2d::CCImage::CCImage()
+defit __ZN7cocos2d7CCImageC1Ev, 0x24f9c0
+
+; cocos2d::CCImage::CCImage()
+defit __ZN7cocos2d7CCImageC2Ev, 0x24fa00
+
 ; cocos2d::CCImage::initWithImageData(void*, int, cocos2d::CCImage::EImageFormat, int, int, int)
 defit __ZN7cocos2d7CCImage17initWithImageDataEPviNS0_12EImageFormatEiii, 0x24fcb0
 
@@ -3710,6 +3974,12 @@ defit __ZN7cocos2d13CCLabelBMFont8setScaleEf, 0x34a5d0
 
 ; cocos2d::CCLabelBMFont::setString(char const*, bool)
 defit __ZN7cocos2d13CCLabelBMFont9setStringEPKcb, 0x3489e0
+
+; cocos2d::CCLayer::CCLayer()
+defit __ZN7cocos2d7CCLayerC1Ev, 0x2726b0
+
+; cocos2d::CCLayer::CCLayer()
+defit __ZN7cocos2d7CCLayerC2Ev, 0x2725b0
 
 ; cocos2d::CCLayer::ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
 defit __ZN7cocos2d7CCLayer12ccTouchBeganEPNS_7CCTouchEPNS_7CCEventE, 0x2734d0
@@ -3852,6 +4122,27 @@ defit __ZN7cocos2d7CCLayer16setTouchPriorityEi, 0x272db0
 ; cocos2d::CCLayer::unregisterScriptTouchHandler()
 defit __ZN7cocos2d7CCLayer28unregisterScriptTouchHandlerEv, 0x272c30
 
+; cocos2d::CCLayer::~CCLayer()
+defit __ZN7cocos2d7CCLayerD0Ev, 0x272930
+
+; cocos2d::CCLayer::~CCLayer()
+defit __ZN7cocos2d7CCLayerD1Ev, 0x272900
+
+; cocos2d::CCLayer::~CCLayer()
+defit __ZN7cocos2d7CCLayerD2Ev, 0x2727b0
+
+; non-virtual thunk to cocos2d::CCLayer::~CCLayer()
+defit __ZThn288_N7cocos2d7CCLayerD0Ev, 0x272960
+
+; non-virtual thunk to cocos2d::CCLayer::~CCLayer()
+defit __ZThn288_N7cocos2d7CCLayerD1Ev, 0x272910
+
+; cocos2d::CCLayerColor::CCLayerColor()
+defit __ZN7cocos2d12CCLayerColorC1Ev, 0x274270
+
+; cocos2d::CCLayerColor::CCLayerColor()
+defit __ZN7cocos2d12CCLayerColorC2Ev, 0x274320
+
 ; cocos2d::CCLayerColor::create(cocos2d::_ccColor4B const&, float, float)
 defit __ZN7cocos2d12CCLayerColor6createERKNS_10_ccColor4BEff, 0x2745e0
 
@@ -3896,6 +4187,24 @@ defit __ZThn368_N7cocos2d12CCLayerColor10setOpacityEh, 0x274e50
 
 ; cocos2d::CCLayerColor::updateColor()
 defit __ZN7cocos2d12CCLayerColor11updateColorEv, 0x274ae0
+
+; cocos2d::CCLayerColor::~CCLayerColor()
+defit __ZN7cocos2d12CCLayerColorD0Ev, 0x274410
+
+; cocos2d::CCLayerColor::~CCLayerColor()
+defit __ZN7cocos2d12CCLayerColorD1Ev, 0x2743e0
+
+; cocos2d::CCLayerColor::~CCLayerColor()
+defit __ZN7cocos2d12CCLayerColorD2Ev, 0x2743d0
+
+; non-virtual thunk to cocos2d::CCLayerColor::~CCLayerColor()
+defit __ZThn288_N7cocos2d12CCLayerColorD0Ev, 0x274440
+
+; non-virtual thunk to cocos2d::CCLayerColor::~CCLayerColor()
+defit __ZThn288_N7cocos2d12CCLayerColorD1Ev, 0x2743f0
+
+; cocos2d::CCLayerRGBA::CCLayerRGBA()
+defit __ZN7cocos2d11CCLayerRGBAC1Ev, 0x2738d0
 
 ; cocos2d::CCLayerRGBA::getColor()
 defit __ZN7cocos2d11CCLayerRGBA8getColorEv, 0x273d60
@@ -4007,6 +4316,12 @@ defit __ZN7cocos2d8CCMoveBy6createEfRKNS_7CCPointE, 0x1f50e0
 
 ; cocos2d::CCMoveTo::create(float, cocos2d::CCPoint const&)
 defit __ZN7cocos2d8CCMoveTo6createEfRKNS_7CCPointE, 0x1f54d0
+
+; cocos2d::CCNode::CCNode()
+defit __ZN7cocos2d6CCNodeC1Ev, 0x122550
+
+; cocos2d::CCNode::CCNode()
+defit __ZN7cocos2d6CCNodeC2Ev, 0x122550
 
 ; cocos2d::CCNode::_setZOrder(int)
 defit __ZN7cocos2d6CCNode10_setZOrderEi, 0x122990
@@ -4347,6 +4662,21 @@ defit __ZN7cocos2d6CCNode5visitEv, 0x123850
 ; cocos2d::CCNode::worldToNodeTransform()
 defit __ZN7cocos2d6CCNode20worldToNodeTransformEv, 0x124710
 
+; cocos2d::CCNode::~CCNode()
+defit __ZN7cocos2d6CCNodeD0Ev, 0x1228e0
+
+; cocos2d::CCNode::~CCNode()
+defit __ZN7cocos2d6CCNodeD1Ev, 0x1228d0
+
+; cocos2d::CCNode::~CCNode()
+defit __ZN7cocos2d6CCNodeD2Ev, 0x122750
+
+; cocos2d::CCNodeRGBA::CCNodeRGBA()
+defit __ZN7cocos2d10CCNodeRGBAC1Ev, 0x124ac0
+
+; cocos2d::CCNodeRGBA::CCNodeRGBA()
+defit __ZN7cocos2d10CCNodeRGBAC2Ev, 0x124b30
+
 ; cocos2d::CCNodeRGBA::getColor()
 defit __ZN7cocos2d10CCNodeRGBA8getColorEv, 0x125020
 
@@ -4395,6 +4725,18 @@ defit __ZN7cocos2d10CCNodeRGBA24setCascadeOpacityEnabledEb, 0x125000
 ; non-virtual thunk to cocos2d::CCNodeRGBA::setCascadeOpacityEnabled(bool)
 defit __ZThn288_N7cocos2d10CCNodeRGBA24setCascadeOpacityEnabledEb, 0x125010
 
+; cocos2d::CCNodeRGBA::~CCNodeRGBA()
+defit __ZN7cocos2d10CCNodeRGBAD0Ev, 0x124bc0
+
+; cocos2d::CCNodeRGBA::~CCNodeRGBA()
+defit __ZN7cocos2d10CCNodeRGBAD1Ev, 0x124bb0
+
+; cocos2d::CCNodeRGBA::~CCNodeRGBA()
+defit __ZN7cocos2d10CCNodeRGBAD2Ev, 0x124ba0
+
+; cocos2d::CCObject::CCObject()
+defit __ZN7cocos2d8CCObjectC1Ev, 0x250ca0
+
 ; cocos2d::CCObject::acceptVisitor(cocos2d::CCDataVisitor&)
 defit __ZN7cocos2d8CCObject13acceptVisitorERNS_13CCDataVisitorE, 0x250f30
 
@@ -4425,6 +4767,15 @@ defit __ZN7cocos2d8CCObject6setTagEi, 0x250f60
 ; cocos2d::CCObject::update(float)
 defit __ZN7cocos2d8CCObject6updateEf, 0x32660
 
+; cocos2d::CCObject::~CCObject()
+defit __ZN7cocos2d8CCObjectD0Ev, 0x250e00
+
+; cocos2d::CCObject::~CCObject()
+defit __ZN7cocos2d8CCObjectD1Ev, 0x250d90
+
+; cocos2d::CCObject::~CCObject()
+defit __ZN7cocos2d8CCObjectD2Ev, 0x250d20
+
 ; cocos2d::CCParticleSystem::resetSystem()
 defit __ZN7cocos2d16CCParticleSystem11resetSystemEv, 0x46bd50
 
@@ -4436,6 +4787,12 @@ defit __ZN7cocos2d16CCParticleSystem10stopSystemEv, 0x46bd10
 
 ; cocos2d::CCParticleSystemQuad::create(char const*)
 defit __ZN7cocos2d20CCParticleSystemQuad6createEPKc, 0x36b000
+
+; cocos2d::CCPoint::CCPoint()
+defit __ZN7cocos2d7CCPointC1Ev, 0x137060
+
+; cocos2d::CCPoint::CCPoint()
+defit __ZN7cocos2d7CCPointC2Ev, 0x137050
 
 ; cocos2d::CCPoint::CCPoint(cocos2d::CCPoint const&)
 defit __ZN7cocos2d7CCPointC1ERKS0_, 0x137090
@@ -4463,6 +4820,12 @@ defit __ZNK7cocos2d7CCPointdvEf, 0x1371a0
 
 ; cocos2d::CCPoint::operator=(cocos2d::CCPoint const&)
 defit __ZN7cocos2d7CCPointaSERKS0_, 0x1370c0
+
+; cocos2d::CCRect::CCRect()
+defit __ZN7cocos2d6CCRectC1Ev, 0x1375a0
+
+; cocos2d::CCRect::CCRect()
+defit __ZN7cocos2d6CCRectC2Ev, 0x137550
 
 ; cocos2d::CCRect::CCRect(cocos2d::CCRect const&)
 defit __ZN7cocos2d6CCRectC1ERKS0_, 0x137630
@@ -4533,6 +4896,12 @@ defit __ZN7cocos2d11CCScheduler22unscheduleAllForTargetEPNS_8CCObjectE, 0x243e40
 ; cocos2d::CCSequence::create(cocos2d::CCFiniteTimeAction*, ...)
 defit __ZN7cocos2d10CCSequence6createEPNS_18CCFiniteTimeActionEz, 0x1f2860
 
+; cocos2d::CCSize::CCSize()
+defit __ZN7cocos2d6CCSizeC1Ev, 0x1373d0
+
+; cocos2d::CCSize::CCSize()
+defit __ZN7cocos2d6CCSizeC2Ev, 0x1373c0
+
 ; cocos2d::CCSize::CCSize(cocos2d::CCSize const&)
 defit __ZN7cocos2d6CCSizeC1ERKS0_, 0x137400
 
@@ -4544,6 +4913,9 @@ defit __ZNK7cocos2d6CCSizedvEf, 0x1374e0
 
 ; cocos2d::CCSize::operator=(cocos2d::CCSize const&)
 defit __ZN7cocos2d6CCSizeaSERKS0_, 0x137430
+
+; cocos2d::CCSprite::CCSprite()
+defit __ZN7cocos2d8CCSpriteC1Ev, 0x133300
 
 ; cocos2d::CCSprite::addChild(cocos2d::CCNode*)
 defit __ZN7cocos2d8CCSprite8addChildEPNS_6CCNodeE, 0x134190
@@ -4574,6 +4946,12 @@ defit __ZN7cocos2d8CCSprite13setChildColorERKNS_10_ccColor3BE, 0x135160
 
 ; cocos2d::CCSprite::init()
 defit __ZN7cocos2d8CCSprite4initEv, 0x132ef0
+
+; cocos2d::CCSprite::CCSprite()
+defit __ZN7cocos2d8CCSpriteC2Ev, 0x133300
+
+; cocos2d::CCSprite::~CCSprite()
+defit __ZN7cocos2d8CCSpriteD2Ev, 0x133430
 
 ; cocos2d::CCSprite::draw()
 defit __ZN7cocos2d8CCSprite4drawEv, 0x134070
@@ -4776,6 +5154,9 @@ defit __ZNK7cocos2d8CCString10getCStringEv, 0x44c470
 ; cocos2d::CCString::intValue() const
 defit __ZNK7cocos2d8CCString8intValueEv, 0x44c780
 
+; cocos2d::CCTexture2D::CCTexture2D()
+defit __ZN7cocos2d11CCTexture2DC1Ev, 0x246280
+
 ; cocos2d::CCTexture2D::initWithImage(cocos2d::CCImage*)
 defit __ZN7cocos2d11CCTexture2D13initWithImageEPNS_7CCImageE, 0x246940
 
@@ -4821,6 +5202,9 @@ defit __ZN7cocos2d9extension14CCControlUtils10HSVfromRGBENS0_4RGBAE, 0x1e6750
 ; cocos2d::extension::CCControlUtils::RGBfromHSV(cocos2d::extension::HSV)
 defit __ZN7cocos2d9extension14CCControlUtils10RGBfromHSVENS0_3HSVE, 0x1e6850
 
+; cocos2d::extension::CCScale9Sprite::CCScale9Sprite()
+defit __ZN7cocos2d9extension14CCScale9SpriteC1Ev, 0x211330
+
 ; cocos2d::extension::CCScale9Sprite::create(char const*)
 defit __ZN7cocos2d9extension14CCScale9Sprite6createEPKc, 0x2130d0
 
@@ -4829,6 +5213,9 @@ defit __ZN7cocos2d9extension14CCScale9Sprite6createEPKcNS_6CCRectE, 0x212ef0
 
 ; cocos2d::extension::CCScale9Sprite::setContentSize(cocos2d::CCSize const&)
 defit __ZN7cocos2d9extension14CCScale9Sprite14setContentSizeERKNS_6CCSizeE, 0x2127c0
+
+; cocos2d::extension::CCScrollView::CCScrollView()
+defit __ZN7cocos2d9extension12CCScrollViewC1Ev, 0x214800
 
 ; fmt::BasicFormatter<char>::Format(fmt::BasicStringRef<char>, fmt::ArgList const&)
 defit __ZN3fmt14BasicFormatterIcE6FormatENS_14BasicStringRefIcEERKNS_7ArgListE, 0xf9e00
@@ -4853,6 +5240,9 @@ defit __ZN3fmt8internal12PrintfParserIwE6FormatERNS_11BasicWriterIwEENS_14BasicS
 
 ; pugi::xml_document::destroy()
 defit __ZN4pugi12xml_document7destroyEv, 0x393b50
+
+; pugi::xml_document::~xml_document()
+defit __ZN4pugi12xml_documentD1Ev, 0x393c30
 
 ; randRange(float, float)
 defit __Z9randRangeff, 0xe18c0
