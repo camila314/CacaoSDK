@@ -5947,7 +5947,7 @@ class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
         else return LevelEditorLayer::animateInDualGround(p0, p1, p2);
     }
 
-    void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
+    void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) override {
         if ((void($LevelEditorLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&$LevelEditorLayer::calculateColorValues} != (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues})
             return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)>(m->getOriginal(getBase()+0x9c590))(this, p0, p1, p2, p3, p4, p5);
         else return LevelEditorLayer::calculateColorValues(p0, p1, p2, p3, p4, p5);
@@ -7123,7 +7123,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::applyEnterEffect(p0);
     }
 
-    void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
+    void calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) override {
         if ((void($PlayLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&$PlayLayer::calculateColorValues} != (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues})
             return reinterpret_cast<void(*)(decltype(this), EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)>(m->getOriginal(getBase()+0x7aa10))(this, p0, p1, p2, p3, p4, p5);
         else return PlayLayer::calculateColorValues(p0, p1, p2, p3, p4, p5);
@@ -7225,7 +7225,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::dialogClosed(p0);
     }
 
-    void draw() {
+    void draw() override {
         if ((void($PlayLayer::*)()){&$PlayLayer::draw} != (void(D::*)()){&D::draw})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x7d160))(this);
         else return PlayLayer::draw();
@@ -7285,7 +7285,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::flipFinished();
     }
 
-    void flipGravity(PlayerObject* p0, bool p1, bool p2) {
+    void flipGravity(PlayerObject* p0, bool p1, bool p2) override {
         if ((void($PlayLayer::*)(PlayerObject*, bool, bool)){&$PlayLayer::flipGravity} != (void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity})
             return reinterpret_cast<void(*)(decltype(this), PlayerObject*, bool, bool)>(m->getOriginal(getBase()+0x7cd10))(this, p0, p1, p2);
         else return PlayLayer::flipGravity(p0, p1, p2);
@@ -7447,13 +7447,13 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::moveCameraToPos(p0);
     }
 
-    void onEnterTransitionDidFinish() {
+    void onEnterTransitionDidFinish() override {
         if ((void($PlayLayer::*)()){&$PlayLayer::onEnterTransitionDidFinish} != (void(D::*)()){&D::onEnterTransitionDidFinish})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x806e0))(this);
         else return PlayLayer::onEnterTransitionDidFinish();
     }
 
-    void onExit() {
+    void onExit() override {
         if ((void($PlayLayer::*)()){&$PlayLayer::onExit} != (void(D::*)()){&D::onExit})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x80710))(this);
         else return PlayLayer::onExit();
@@ -7867,7 +7867,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::unregisterStateObject(p0);
     }
 
-    void update(float p0) {
+    void update(float p0) override {
         if ((void($PlayLayer::*)(float)){&$PlayLayer::update} != (void(D::*)(float)){&D::update})
             return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x77900))(this, p0);
         else return PlayLayer::update(p0);
@@ -7885,7 +7885,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::updateCamera(p0);
     }
 
-    void updateColor(cocos2d::_ccColor3B p0, float p1, int p2, bool p3, float p4, cocos2d::_ccHSVValue p5, int p6, bool p7, int p8, EffectGameObject* p9) {
+    void updateColor(cocos2d::_ccColor3B p0, float p1, int p2, bool p3, float p4, cocos2d::_ccHSVValue p5, int p6, bool p7, int p8, EffectGameObject* p9) override {
         if ((void($PlayLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&$PlayLayer::updateColor} != (void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor})
             return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)>(m->getOriginal(getBase()+0x7c7f0))(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
         else return PlayLayer::updateColor(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
@@ -7933,7 +7933,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::updateTimeMod(p0, p1);
     }
 
-    void updateTweenAction(float p0, char const* p1) {
+    void updateTweenAction(float p0, char const* p1) override {
         if ((void($PlayLayer::*)(float, char const*)){&$PlayLayer::updateTweenAction} != (void(D::*)(float, char const*)){&D::updateTweenAction})
             return reinterpret_cast<void(*)(decltype(this), float, char const*)>(m->getOriginal(getBase()+0x7ffb0))(this, p0, p1);
         else return PlayLayer::updateTweenAction(p0, p1);
@@ -7951,7 +7951,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
         else return PlayLayer::vfDChk();
     }
 
-    void visit() {
+    void visit() override {
         if ((void($PlayLayer::*)()){&$PlayLayer::visit} != (void(D::*)()){&D::visit})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x75ef0))(this);
         else return PlayLayer::visit();

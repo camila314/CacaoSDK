@@ -398,7 +398,7 @@ public:
     CLASS_PARAM(GJGameLevel*, level, 0x150);
     CLASS_PARAM(GJEffectManager*, effectManager, 0x120);
     CLASS_PARAM(int, fontType, 0x144);
-    CLASS_PARAM(bool, is2Player, 0x142);
+    CLASS_PARAM(bool, is2Player, 0x132);
 };
 
 class GameLevelManager : public GDObj {
@@ -824,6 +824,7 @@ public:
 
 class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
 public:
+    char $pad[0x4a8 - sizeof(cocos2d::CCLayer)];
     void addObjectCounter(LabelGameObject*, int);
     void addToGroups(GameObject*, bool);
     void atlasValue(int);
@@ -1002,6 +1003,7 @@ public:
 
 class EditorUI : public cocos2d::CCLayer, public GDObj {
 public:
+    char $pad[0x4a8 - sizeof(cocos2d::CCLayer)];
     void constrainGameLayerPosition();
     void create(LevelEditorLayer*);
     void deselectAll(int);
@@ -1042,6 +1044,7 @@ class CurrencyRewardLayer;
 class DialogLayer;
 class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate {
 public:
+    char $pad[0x7f0 - sizeof(GJBaseGameLayer)];
     void addCircle(CCCircleWave*);
     void addObject(GameObject*);
     void addToGroupOld(GameObject*);
@@ -1251,15 +1254,15 @@ public:
     bool m_reverseKeyBack; // 0x211
     cocos2d::ccColor3B m_color; // 0x212
     cocos2d::CCLayer* m_mainLayer; // 0x220
-    int m_ZOrder;
-    bool m_noElasticity;
-    cocos2d::ccColor3B m_color2;
-    ButtonSprite* m_button1;
-    ButtonSprite* m_button2;
-    CCLayerColor* m_scrollingLayer;
-    int m_joystickConnected;
-    bool m_containsBorder;
-    bool m_noAction;
+    int m_ZOrder;  //0x228
+    bool m_noElasticity; //0x22c
+    cocos2d::ccColor3B m_color2; //0x230
+    ButtonSprite* m_button1; //0x238
+    ButtonSprite* m_button2; //0x240
+    CCLayerColor* m_scrollingLayer; //0x248
+    int m_joystickConnected; //0x250
+    bool m_containsBorder; //0x251
+    bool m_noAction; //0x252
 };
 
 class GJDropDownLayer : public cocos2d::CCLayerColor {

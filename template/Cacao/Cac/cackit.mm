@@ -749,7 +749,7 @@
     void addToRedoList(UndoObject*) = 0x96f80;
     void addToUndoList(UndoObject*, bool) = 0x94e20;
     void animateInDualGround(GameObject*, float, bool) = 0xa2780;
-    void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0x9c590;
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0x9c590;
     void checkCollisions(PlayerObject*, float) = 0x9e620;
     static LevelEditorLayer* create(GJGameLevel*) = 0x90fb0;
     void createBackground() = 0x929f0;
@@ -902,7 +902,7 @@
     void animateOutGround(bool) = 0x6f350;
     void animateOutGroundFinished() = 0x7de80;
     void applyEnterEffect(GameObject*) = 0x7c310;
-    void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0x7aa10;
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) = 0x7aa10;
     void cameraMoveX(float, float, float) = 0x7cbe0;
     void cameraMoveY(float, float, float) = 0x7cc60;
     void checkCollisions(PlayerObject*, float) = 0x78c90;
@@ -919,7 +919,7 @@
     void delayedResetLevel() = 0x7e050;
     void destroyPlayer(PlayerObject*, GameObject*) = 0x7ab80;
     void dialogClosed(DialogLayer*) = 0x7e0b0;
-    void draw() = 0x7d160;
+    virtual void draw() = 0x7d160;
     void enterDualMode(GameObject*, bool) = 0x7d6a0;
     void exitAirMode() = 0x7dd40;
     void exitBirdMode(PlayerObject*) = 0x7dd80;
@@ -929,7 +929,7 @@
     void exitRollMode(PlayerObject*) = 0x7de60;
     void exitSpiderMode(PlayerObject*) = 0x7de40;
     void flipFinished() = 0x7e150;
-    void flipGravity(PlayerObject*, bool, bool) = 0x7cd10;
+    virtual void flipGravity(PlayerObject*, bool, bool) = 0x7cd10;
     void flipObjects() = 0x76130;
     void fullReset() = 0x7f8e0;
     void getLastCheckpoint() = 0x7f840;
@@ -956,8 +956,8 @@
     void loadSavedObjectsState(std::string) = 0x7f3d0;
     void markCheckpoint() = 0x7ef60;
     void moveCameraToPos(cocos2d::CCPoint) = 0x7c980;
-    void onEnterTransitionDidFinish() = 0x806e0;
-    void onExit() = 0x80710;
+    virtual void onEnterTransitionDidFinish() = 0x806e0;
+    virtual void onExit() = 0x80710;
     void onQuit() = 0x72710;
     void optimizeColorGroups() = 0x6dad0;
     void optimizeOpacityGroups() = 0x6dc20;
@@ -1026,10 +1026,10 @@
     void unclaimParticle(char const*, cocos2d::CCParticleSystemQuad*) = 0x76e00;
     void unregisterActiveObject(GameObject*) = 0x77660;
     void unregisterStateObject(GameObject*) = 0x777f0;
-    void update(float) = 0x77900;
+    virtual void update(float) = 0x77900;
     void updateAttempts() = 0x7fcd0;
     void updateCamera(float) = 0x6e2b0;
-    void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) = 0x7c7f0;
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) = 0x7c7f0;
     void updateDualGround(PlayerObject*, int, bool) = 0x7caa0;
     void updateEffectPositions() = 0x7a6d0;
     void updateLevelColors() = 0x6f1e0;
@@ -1037,10 +1037,10 @@
     void updateProgressbar() = 0x6ed70;
     void updateReplay(float) = 0x78b60;
     void updateTimeMod(float, bool) = 0x786f0;
-    void updateTweenAction(float, char const*) = 0x7ffb0;
+    virtual void updateTweenAction(float, char const*) = 0x7ffb0;
     void updateVisibility() = 0x6fb90;
     void vfDChk() = 0x7fcb0;
-    void visit() = 0x75ef0;
+    virtual void visit() = 0x75ef0;
     void visitWithColorFlash() = 0x761f0;
     void willSwitchToMode(int, PlayerObject*) = 0x7b9e0;
     void xPosForTime(float) = 0x7d140;
