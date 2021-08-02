@@ -249,11 +249,12 @@ struct RemoveRef <M&>
 
 #define cac_this (reinterpret_cast<RemoveRef<decltype(*this)>::type::__thistype>(this))
 
-// you will be missed extract_virtual o7
-template <typename F, class T>
-inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T) {
-    return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
+// REVIVAL!!!
+template <class T>
+inline long extract_virtual(T instance) {
+    return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+8));
 };
+
 
 template <typename F>
 inline typename GetReturnType<F>::type (*extract(F func))() {
@@ -285,6 +286,7 @@ class ${cls} : public {cls}, public $CacBase {{
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }}
+    ~${cls}() {{}}
     typedef {cls}* __thistype;
 """
 
@@ -313,7 +315,9 @@ build_body1_static = """
 """
 
 build_body2_start = """
-    void apply_hooks() override {{"""
+    void apply_hooks() override {{
+    m->registerHook(extract_virtual(this), +[](){{}});
+"""
     
 
 build_body2_body = """

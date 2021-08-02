@@ -40,11 +40,12 @@ struct RemoveRef <M&>
 
 #define cac_this (reinterpret_cast<RemoveRef<decltype(*this)>::type::__thistype>(this))
 
-// you will be missed extract_virtual o7
-template <typename F, class T>
-inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T) {
-    return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
+// REVIVAL!!!
+template <class T>
+inline long extract_virtual(T instance) {
+    return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+8));
 };
+
 
 template <typename F>
 inline typename GetReturnType<F>::type (*extract(F func))() {
@@ -74,6 +75,7 @@ class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$AnimatedGameObject() {}
     typedef AnimatedGameObject* __thistype;
 
     void playAnimation(int p0) {
@@ -89,6 +91,8 @@ class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($AnimatedGameObject::*)(int)){&$AnimatedGameObject::playAnimation} != (void(D::*)(int)){&D::playAnimation})
             m->registerHook(getBase()+0xc93d0, extract((void(D::*)(int)){&D::playAnimation}));
 
@@ -106,6 +110,7 @@ class $AppDelegate : public AppDelegate, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$AppDelegate() {}
     typedef AppDelegate* __thistype;
 
     void bgScale() {
@@ -121,6 +126,8 @@ class $AppDelegate : public AppDelegate, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($AppDelegate::*)()){&$AppDelegate::bgScale} != (void(D::*)()){&D::bgScale})
             m->registerHook(getBase()+0x3aaab0, extract((void(D::*)()){&D::bgScale}));
 
@@ -138,6 +145,7 @@ class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$AudioEffectsLayer() {}
     typedef AudioEffectsLayer* __thistype;
 
     void audioStep(float p0) {
@@ -159,6 +167,8 @@ class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($AudioEffectsLayer::*)(float)){&$AudioEffectsLayer::audioStep} != (void(D::*)(float)){&D::audioStep})
             m->registerHook(getBase()+0x271f40, extract((void(D::*)(float)){&D::audioStep}));
 
@@ -179,6 +189,7 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ButtonSprite() {}
     typedef ButtonSprite* __thistype;
 
     static ButtonSprite* create(char const* p0) {
@@ -200,6 +211,8 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((ButtonSprite*(*)(char const*)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x4fa10, (ButtonSprite*(*)(char const*)){&D::create});
 
@@ -220,6 +233,7 @@ class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCAnimatedSprite() {}
     typedef CCAnimatedSprite* __thistype;
 
     void runAnimation(std::string p0) {
@@ -235,6 +249,8 @@ class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCAnimatedSprite::*)(std::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(std::string)){&D::runAnimation})
             m->registerHook(getBase()+0x1a6430, extract((void(D::*)(std::string)){&D::runAnimation}));
 
@@ -252,6 +268,7 @@ class $CCCircleWave : public CCCircleWave, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCCircleWave() {}
     typedef CCCircleWave* __thistype;
 
     static CCCircleWave* create(float p0, float p1, float p2, bool p3) {
@@ -279,6 +296,8 @@ class $CCCircleWave : public CCCircleWave, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCCircleWave*(*)(float, float, float, bool)){&$CCCircleWave::create} != (CCCircleWave*(*)(float, float, float, bool)){&D::create})
             m->registerHook(getBase()+0xbd270, (CCCircleWave*(*)(float, float, float, bool)){&D::create});
 
@@ -302,6 +321,7 @@ class $CCLightFlash : public CCLightFlash, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCLightFlash() {}
     typedef CCLightFlash* __thistype;
 
     static CCLightFlash* create() {
@@ -317,6 +337,8 @@ class $CCLightFlash : public CCLightFlash, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCLightFlash*(*)()){&$CCLightFlash::create} != (CCLightFlash*(*)()){&D::create})
             m->registerHook(getBase()+0x295870, (CCLightFlash*(*)()){&D::create});
 
@@ -334,6 +356,7 @@ class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMenuItemSpriteExtra() {}
     typedef CCMenuItemSpriteExtra* __thistype;
 
     static CCMenuItemSpriteExtra* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, Cacao::CC_SEL p3) {
@@ -349,6 +372,8 @@ class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&$CCMenuItemSpriteExtra::create} != (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&D::create})
             m->registerHook(getBase()+0x1253c0, (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&D::create});
 
@@ -366,6 +391,7 @@ class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMenuItemToggler() {}
     typedef CCMenuItemToggler* __thistype;
 
     static CCMenuItemToggler* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, Cacao::CC_SEL p3) {
@@ -387,6 +413,8 @@ class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&$CCMenuItemToggler::create} != (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&D::create})
             m->registerHook(getBase()+0x38400, (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&D::create});
 
@@ -407,6 +435,7 @@ class $CCMoveCNode : public CCMoveCNode, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMoveCNode() {}
     typedef CCMoveCNode* __thistype;
 
     static CCMoveCNode* create() {
@@ -422,6 +451,8 @@ class $CCMoveCNode : public CCMoveCNode, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCMoveCNode*(*)()){&$CCMoveCNode::create} != (CCMoveCNode*(*)()){&D::create})
             m->registerHook(getBase()+0x1842a0, (CCMoveCNode*(*)()){&D::create});
 
@@ -439,6 +470,7 @@ class $CCNodeContainer : public CCNodeContainer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCNodeContainer() {}
     typedef CCNodeContainer* __thistype;
 
     static CCNodeContainer* create() {
@@ -460,6 +492,8 @@ class $CCNodeContainer : public CCNodeContainer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCNodeContainer*(*)()){&$CCNodeContainer::create} != (CCNodeContainer*(*)()){&D::create})
             m->registerHook(getBase()+0xb1090, (CCNodeContainer*(*)()){&D::create});
 
@@ -480,6 +514,7 @@ class $CCSpritePlus : public CCSpritePlus, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCSpritePlus() {}
     typedef CCSpritePlus* __thistype;
 
     bool initWithSpriteFrameName(char const* p0) {
@@ -489,6 +524,8 @@ class $CCSpritePlus : public CCSpritePlus, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($CCSpritePlus::*)(char const*)){&$CCSpritePlus::initWithSpriteFrameName} != (bool(D::*)(char const*)){&D::initWithSpriteFrameName})
             m->registerHook(getBase()+0x248670, extract((bool(D::*)(char const*)){&D::initWithSpriteFrameName}));
     }
@@ -503,6 +540,7 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCTextInputNode() {}
     typedef CCTextInputNode* __thistype;
 
     static CCTextInputNode* create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
@@ -566,6 +604,8 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create} != (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create})
             m->registerHook(getBase()+0x5cfb0, (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create});
 
@@ -607,6 +647,7 @@ class $CheckpointObject : public CheckpointObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CheckpointObject() {}
     typedef CheckpointObject* __thistype;
 
     static CheckpointObject* create() {
@@ -622,6 +663,8 @@ class $CheckpointObject : public CheckpointObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CheckpointObject*(*)()){&$CheckpointObject::create} != (CheckpointObject*(*)()){&D::create})
             m->registerHook(getBase()+0x7e7d0, (CheckpointObject*(*)()){&D::create});
 
@@ -639,6 +682,7 @@ class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CollisionBlockPopup() {}
     typedef CollisionBlockPopup* __thistype;
 
     static CollisionBlockPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -654,6 +698,8 @@ class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CollisionBlockPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$CollisionBlockPopup::create} != (CollisionBlockPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x130010, (CollisionBlockPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -671,6 +717,7 @@ class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CollisionTriggerAction() {}
     typedef CollisionTriggerAction* __thistype;
 
     static CollisionTriggerAction* createFromString(std::string p0) {
@@ -680,6 +727,8 @@ class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CollisionTriggerAction*(*)(std::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x176ee0, (CollisionTriggerAction*(*)(std::string)){&D::createFromString});
     }
@@ -694,6 +743,7 @@ class $ColorAction : public ColorAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ColorAction() {}
     typedef ColorAction* __thistype;
 
     void getSaveString() {
@@ -715,6 +765,8 @@ class $ColorAction : public ColorAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($ColorAction::*)()){&$ColorAction::getSaveString} != (void(D::*)()){&D::getSaveString})
             m->registerHook(getBase()+0x17d080, extract((void(D::*)()){&D::getSaveString}));
 
@@ -735,6 +787,7 @@ class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ColorChannelSprite() {}
     typedef ColorChannelSprite* __thistype;
 
     void updateBlending(bool p0) {
@@ -762,6 +815,8 @@ class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($ColorChannelSprite::*)(bool)){&$ColorChannelSprite::updateBlending} != (void(D::*)(bool)){&D::updateBlending})
             m->registerHook(getBase()+0x16e1d0, extract((void(D::*)(bool)){&D::updateBlending}));
 
@@ -785,6 +840,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ColorSelectPopup() {}
     typedef ColorSelectPopup* __thistype;
 
     void colorValueChanged(cocos2d::_ccColor3B p0) {
@@ -896,6 +952,8 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($ColorSelectPopup::*)(cocos2d::_ccColor3B)){&$ColorSelectPopup::colorValueChanged} != (void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged})
             m->registerHook(getBase()+0x423320, extract((void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged}));
 
@@ -961,6 +1019,7 @@ class $CountTriggerAction : public CountTriggerAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CountTriggerAction() {}
     typedef CountTriggerAction* __thistype;
 
     static CountTriggerAction* createFromString(std::string p0) {
@@ -970,6 +1029,8 @@ class $CountTriggerAction : public CountTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CountTriggerAction*(*)(std::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x1754f0, (CountTriggerAction*(*)(std::string)){&D::createFromString});
     }
@@ -984,6 +1045,7 @@ class $CreateMenuItem : public CreateMenuItem, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CreateMenuItem() {}
     typedef CreateMenuItem* __thistype;
 
     static CreateMenuItem* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, Cacao::CC_SEL p3) {
@@ -993,6 +1055,8 @@ class $CreateMenuItem : public CreateMenuItem, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CreateMenuItem*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&$CreateMenuItem::create} != (CreateMenuItem*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&D::create})
             m->registerHook(getBase()+0x1c580, (CreateMenuItem*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL)){&D::create});
     }
@@ -1007,6 +1071,7 @@ class $CreatorLayer : public CreatorLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CreatorLayer() {}
     typedef CreatorLayer* __thistype;
 
     void onMyLevels(cocos2d::CCObject* p0) {
@@ -1022,6 +1087,8 @@ class $CreatorLayer : public CreatorLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onMyLevels} != (void(D::*)(cocos2d::CCObject*)){&D::onMyLevels})
             m->registerHook(getBase()+0x142b70, extract((void(D::*)(cocos2d::CCObject*)){&D::onMyLevels}));
 
@@ -1039,6 +1106,7 @@ class $CustomizeObjectLayer : public CustomizeObjectLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CustomizeObjectLayer() {}
     typedef CustomizeObjectLayer* __thistype;
 
     void colorSelectClosed(cocos2d::CCNode* p0) {
@@ -1072,6 +1140,8 @@ class $CustomizeObjectLayer : public CustomizeObjectLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CustomizeObjectLayer::*)(cocos2d::CCNode*)){&$CustomizeObjectLayer::colorSelectClosed} != (void(D::*)(cocos2d::CCNode*)){&D::colorSelectClosed})
             m->registerHook(getBase()+0xe1050, extract((void(D::*)(cocos2d::CCNode*)){&D::colorSelectClosed}));
 
@@ -1098,6 +1168,7 @@ class $DelayedSpawnNode : public DelayedSpawnNode, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$DelayedSpawnNode() {}
     typedef DelayedSpawnNode* __thistype;
 
     static DelayedSpawnNode* create() {
@@ -1107,6 +1178,8 @@ class $DelayedSpawnNode : public DelayedSpawnNode, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((DelayedSpawnNode*(*)()){&$DelayedSpawnNode::create} != (DelayedSpawnNode*(*)()){&D::create})
             m->registerHook(getBase()+0x9b360, (DelayedSpawnNode*(*)()){&D::create});
     }
@@ -1121,6 +1194,7 @@ class $DialogLayer : public DialogLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$DialogLayer() {}
     typedef DialogLayer* __thistype;
 
     static DialogLayer* create(DialogObject* p0, int p1) {
@@ -1130,6 +1204,8 @@ class $DialogLayer : public DialogLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((DialogLayer*(*)(DialogObject*, int)){&$DialogLayer::create} != (DialogLayer*(*)(DialogObject*, int)){&D::create})
             m->registerHook(getBase()+0x2047c0, (DialogLayer*(*)(DialogObject*, int)){&D::create});
     }
@@ -1144,6 +1220,7 @@ class $DialogObject : public DialogObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$DialogObject() {}
     typedef DialogObject* __thistype;
 
     static DialogObject* create(std::string p0, std::string p1, int p2, float p3, bool p4, cocos2d::_ccColor3B p5) {
@@ -1153,6 +1230,8 @@ class $DialogObject : public DialogObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&$DialogObject::create} != (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create})
             m->registerHook(getBase()+0x204410, (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create});
     }
@@ -1167,6 +1246,7 @@ class $DrawGridLayer : public DrawGridLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$DrawGridLayer() {}
     typedef DrawGridLayer* __thistype;
 
     void addPlayer2Point(cocos2d::CCPoint p0, bool p1) {
@@ -1230,6 +1310,8 @@ class $DrawGridLayer : public DrawGridLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($DrawGridLayer::*)(cocos2d::CCPoint, bool)){&$DrawGridLayer::addPlayer2Point} != (void(D::*)(cocos2d::CCPoint, bool)){&D::addPlayer2Point})
             m->registerHook(getBase()+0xa25b0, extract((void(D::*)(cocos2d::CCPoint, bool)){&D::addPlayer2Point}));
 
@@ -1271,6 +1353,7 @@ class $EditButtonBar : public EditButtonBar, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EditButtonBar() {}
     typedef EditButtonBar* __thistype;
 
     void loadFromItems(cocos2d::CCArray* p0, int p1, int p2, bool p3) {
@@ -1280,6 +1363,8 @@ class $EditButtonBar : public EditButtonBar, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($EditButtonBar::*)(cocos2d::CCArray*, int, int, bool)){&$EditButtonBar::loadFromItems} != (void(D::*)(cocos2d::CCArray*, int, int, bool)){&D::loadFromItems})
             m->registerHook(getBase()+0x351010, extract((void(D::*)(cocos2d::CCArray*, int, int, bool)){&D::loadFromItems}));
     }
@@ -1294,6 +1379,7 @@ class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EditorOptionsLayer() {}
     typedef EditorOptionsLayer* __thistype;
 
     void onButtonsPerRow(cocos2d::CCObject* p0) {
@@ -1303,6 +1389,8 @@ class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($EditorOptionsLayer::*)(cocos2d::CCObject*)){&$EditorOptionsLayer::onButtonsPerRow} != (void(D::*)(cocos2d::CCObject*)){&D::onButtonsPerRow})
             m->registerHook(getBase()+0x147b30, extract((void(D::*)(cocos2d::CCObject*)){&D::onButtonsPerRow}));
     }
@@ -1317,6 +1405,7 @@ class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EditorPauseLayer() {}
     typedef EditorPauseLayer* __thistype;
 
     static EditorPauseLayer* create(LevelEditorLayer* p0) {
@@ -1332,6 +1421,8 @@ class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((EditorPauseLayer*(*)(LevelEditorLayer*)){&$EditorPauseLayer::create} != (EditorPauseLayer*(*)(LevelEditorLayer*)){&D::create})
             m->registerHook(getBase()+0x13c680, (EditorPauseLayer*(*)(LevelEditorLayer*)){&D::create});
 
@@ -1349,6 +1440,7 @@ class $EditorUI : public EditorUI, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EditorUI() {}
     typedef EditorUI* __thistype;
 
     void constrainGameLayerPosition() {
@@ -1520,6 +1612,8 @@ class $EditorUI : public EditorUI, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($EditorUI::*)()){&$EditorUI::constrainGameLayerPosition} != (void(D::*)()){&D::constrainGameLayerPosition})
             m->registerHook(getBase()+0x1c6d0, extract((void(D::*)()){&D::constrainGameLayerPosition}));
 
@@ -1615,6 +1709,7 @@ class $EffectGameObject : public EffectGameObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EffectGameObject() {}
     typedef EffectGameObject* __thistype;
 
     static EffectGameObject* create(char const* p0) {
@@ -1636,6 +1731,8 @@ class $EffectGameObject : public EffectGameObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((EffectGameObject*(*)(char const*)){&$EffectGameObject::create} != (EffectGameObject*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0xc9790, (EffectGameObject*(*)(char const*)){&D::create});
 
@@ -1656,6 +1753,7 @@ class $EndLevelLayer : public EndLevelLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EndLevelLayer() {}
     typedef EndLevelLayer* __thistype;
 
     static EndLevelLayer* create() {
@@ -1665,6 +1763,8 @@ class $EndLevelLayer : public EndLevelLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((EndLevelLayer*(*)()){&$EndLevelLayer::create} != (EndLevelLayer*(*)()){&D::create})
             m->registerHook(getBase()+0x2787d0, (EndLevelLayer*(*)()){&D::create});
     }
@@ -1679,6 +1779,7 @@ class $EndPortalObject : public EndPortalObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$EndPortalObject() {}
     typedef EndPortalObject* __thistype;
 
     static EndPortalObject* create() {
@@ -1694,6 +1795,8 @@ class $EndPortalObject : public EndPortalObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((EndPortalObject*(*)()){&$EndPortalObject::create} != (EndPortalObject*(*)()){&D::create})
             m->registerHook(getBase()+0x1da8f0, (EndPortalObject*(*)()){&D::create});
 
@@ -1711,6 +1814,7 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$FLAlertLayer() {}
     typedef FLAlertLayer* __thistype;
 
     bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
@@ -1786,6 +1890,8 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
             m->registerHook(getBase()+0x25ee40, extract((bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
 
@@ -1833,6 +1939,7 @@ class $FMODAudioEngine : public FMODAudioEngine, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$FMODAudioEngine() {}
     typedef FMODAudioEngine* __thistype;
 
     void fadeBackgroundMusic(bool p0, float p1) {
@@ -1890,6 +1997,8 @@ class $FMODAudioEngine : public FMODAudioEngine, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($FMODAudioEngine::*)(bool, float)){&$FMODAudioEngine::fadeBackgroundMusic} != (void(D::*)(bool, float)){&D::fadeBackgroundMusic})
             m->registerHook(getBase()+0x20fd50, extract((void(D::*)(bool, float)){&D::fadeBackgroundMusic}));
 
@@ -1928,6 +2037,7 @@ class $FollowRewardPage : public FollowRewardPage, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$FollowRewardPage() {}
     typedef FollowRewardPage* __thistype;
 
     static FollowRewardPage* create() {
@@ -1937,6 +2047,8 @@ class $FollowRewardPage : public FollowRewardPage, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((FollowRewardPage*(*)()){&$FollowRewardPage::create} != (FollowRewardPage*(*)()){&D::create})
             m->registerHook(getBase()+0x22f140, (FollowRewardPage*(*)()){&D::create});
     }
@@ -1951,6 +2063,7 @@ class $GJAccountManager : public GJAccountManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJAccountManager() {}
     typedef GJAccountManager* __thistype;
 
     static GJAccountManager* sharedState() {
@@ -1960,6 +2073,8 @@ class $GJAccountManager : public GJAccountManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJAccountManager*(*)()){&$GJAccountManager::sharedState} != (GJAccountManager*(*)()){&D::sharedState})
             m->registerHook(getBase()+0x85070, (GJAccountManager*(*)()){&D::sharedState});
     }
@@ -1974,6 +2089,7 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJBaseGameLayer() {}
     typedef GJBaseGameLayer* __thistype;
 
     void addObjectCounter(LabelGameObject* p0, int p1) {
@@ -2385,6 +2501,8 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GJBaseGameLayer::*)(LabelGameObject*, int)){&$GJBaseGameLayer::addObjectCounter} != (void(D::*)(LabelGameObject*, int)){&D::addObjectCounter})
             m->registerHook(getBase()+0xb9eb0, extract((void(D::*)(LabelGameObject*, int)){&D::addObjectCounter}));
 
@@ -2600,6 +2718,7 @@ class $GJColorSetupLayer : public GJColorSetupLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJColorSetupLayer() {}
     typedef GJColorSetupLayer* __thistype;
 
     void updateSpriteColors() {
@@ -2609,6 +2728,8 @@ class $GJColorSetupLayer : public GJColorSetupLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GJColorSetupLayer::*)()){&$GJColorSetupLayer::updateSpriteColors} != (void(D::*)()){&D::updateSpriteColors})
             m->registerHook(getBase()+0xefe50, extract((void(D::*)()){&D::updateSpriteColors}));
     }
@@ -2623,6 +2744,7 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJDropDownLayer() {}
     typedef GJDropDownLayer* __thistype;
 
     static GJDropDownLayer* create(char const* p0) {
@@ -2710,6 +2832,8 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJDropDownLayer*(*)(char const*)){&$GJDropDownLayer::create} != (GJDropDownLayer*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x352530, (GJDropDownLayer*(*)(char const*)){&D::create});
 
@@ -2763,6 +2887,7 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJEffectManager() {}
     typedef GJEffectManager* __thistype;
 
     void activeColorForIndex(int p0) {
@@ -3270,6 +3395,8 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::activeColorForIndex} != (void(D::*)(int)){&D::activeColorForIndex})
             m->registerHook(getBase()+0x180cb0, extract((void(D::*)(int)){&D::activeColorForIndex}));
 
@@ -3533,6 +3660,7 @@ class $GJFollowCommandLayer : public GJFollowCommandLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJFollowCommandLayer() {}
     typedef GJFollowCommandLayer* __thistype;
 
     static GJFollowCommandLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -3572,6 +3700,8 @@ class $GJFollowCommandLayer : public GJFollowCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJFollowCommandLayer::create} != (GJFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x16a550, (GJFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -3601,6 +3731,7 @@ class $GJGameLevel : public GJGameLevel, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJGameLevel() {}
     typedef GJGameLevel* __thistype;
 
     static GJGameLevel* create() {
@@ -3646,6 +3777,8 @@ class $GJGameLevel : public GJGameLevel, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJGameLevel*(*)()){&$GJGameLevel::create} != (GJGameLevel*(*)()){&D::create})
             m->registerHook(getBase()+0x2b83e0, (GJGameLevel*(*)()){&D::create});
 
@@ -3678,6 +3811,7 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJGroundLayer() {}
     typedef GJGroundLayer* __thistype;
 
     static GJGroundLayer* create(int p0, int p1) {
@@ -3723,6 +3857,8 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJGroundLayer*(*)(int, int)){&$GJGroundLayer::create} != (GJGroundLayer*(*)(int, int)){&D::create})
             m->registerHook(getBase()+0x355c00, (GJGroundLayer*(*)(int, int)){&D::create});
 
@@ -3755,6 +3891,7 @@ class $GJMoveCommandLayer : public GJMoveCommandLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJMoveCommandLayer() {}
     typedef GJMoveCommandLayer* __thistype;
 
     static GJMoveCommandLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -3866,6 +4003,8 @@ class $GJMoveCommandLayer : public GJMoveCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJMoveCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJMoveCommandLayer::create} != (GJMoveCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x36f8a0, (GJMoveCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -3931,6 +4070,7 @@ class $GJPFollowCommandLayer : public GJPFollowCommandLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJPFollowCommandLayer() {}
     typedef GJPFollowCommandLayer* __thistype;
 
     static GJPFollowCommandLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -3952,6 +4092,8 @@ class $GJPFollowCommandLayer : public GJPFollowCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJPFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJPFollowCommandLayer::create} != (GJPFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1aea20, (GJPFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -3972,6 +4114,7 @@ class $GJRobotSprite : public GJRobotSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJRobotSprite() {}
     typedef GJRobotSprite* __thistype;
 
     static GJRobotSprite* create() {
@@ -3993,6 +4136,8 @@ class $GJRobotSprite : public GJRobotSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJRobotSprite*(*)()){&$GJRobotSprite::create} != (GJRobotSprite*(*)()){&D::create})
             m->registerHook(getBase()+0x34ac00, (GJRobotSprite*(*)()){&D::create});
 
@@ -4013,6 +4158,7 @@ class $GJRotateCommandLayer : public GJRotateCommandLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJRotateCommandLayer() {}
     typedef GJRotateCommandLayer* __thistype;
 
     static GJRotateCommandLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -4052,6 +4198,8 @@ class $GJRotateCommandLayer : public GJRotateCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJRotateCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJRotateCommandLayer::create} != (GJRotateCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1ba0, (GJRotateCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -4081,6 +4229,7 @@ class $GJSearchObject : public GJSearchObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJSearchObject() {}
     typedef GJSearchObject* __thistype;
 
     static GJSearchObject* create(SearchType p0) {
@@ -4102,6 +4251,8 @@ class $GJSearchObject : public GJSearchObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJSearchObject*(*)(SearchType)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType)){&D::create})
             m->registerHook(getBase()+0x2df120, (GJSearchObject*(*)(SearchType)){&D::create});
 
@@ -4122,6 +4273,7 @@ class $GJSpecialColorSelect : public GJSpecialColorSelect, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJSpecialColorSelect() {}
     typedef GJSpecialColorSelect* __thistype;
 
     void textForColorIdx(int p0) {
@@ -4131,6 +4283,8 @@ class $GJSpecialColorSelect : public GJSpecialColorSelect, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GJSpecialColorSelect::*)(int)){&$GJSpecialColorSelect::textForColorIdx} != (void(D::*)(int)){&D::textForColorIdx})
             m->registerHook(getBase()+0x383a50, extract((void(D::*)(int)){&D::textForColorIdx}));
     }
@@ -4145,6 +4299,7 @@ class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GJSpiderSprite() {}
     typedef GJSpiderSprite* __thistype;
 
     static GJSpiderSprite* create() {
@@ -4154,6 +4309,8 @@ class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJSpiderSprite*(*)()){&$GJSpiderSprite::create} != (GJSpiderSprite*(*)()){&D::create})
             m->registerHook(getBase()+0x34c5b0, (GJSpiderSprite*(*)()){&D::create});
     }
@@ -4168,6 +4325,7 @@ class $GManager : public GManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GManager() {}
     typedef GManager* __thistype;
 
     void save() {
@@ -4189,6 +4347,8 @@ class $GManager : public GManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GManager::*)()){&$GManager::save} != (void(D::*)()){&D::save})
             m->registerHook(getBase()+0x26f300, extract((void(D::*)()){&D::save}));
 
@@ -4209,6 +4369,7 @@ class $GameLevelManager : public GameLevelManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameLevelManager() {}
     typedef GameLevelManager* __thistype;
 
     GJGameLevel* createNewLevel() {
@@ -4224,6 +4385,8 @@ class $GameLevelManager : public GameLevelManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GJGameLevel*($GameLevelManager::*)()){&$GameLevelManager::createNewLevel} != (GJGameLevel*(D::*)()){&D::createNewLevel})
             m->registerHook(getBase()+0x2b8180, extract((GJGameLevel*(D::*)()){&D::createNewLevel}));
 
@@ -4241,6 +4404,7 @@ class $GameManager : public GameManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameManager() {}
     typedef GameManager* __thistype;
 
     void accountStatusChanged() {
@@ -4358,6 +4522,8 @@ class $GameManager : public GameManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GameManager::*)()){&$GameManager::accountStatusChanged} != (void(D::*)()){&D::accountStatusChanged})
             m->registerHook(getBase()+0x1cdad0, extract((void(D::*)()){&D::accountStatusChanged}));
 
@@ -4426,6 +4592,7 @@ class $GameObject : public GameObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameObject() {}
     typedef GameObject* __thistype;
 
     void activateObject() {
@@ -5011,6 +5178,8 @@ class $GameObject : public GameObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GameObject::*)()){&$GameObject::activateObject} != (void(D::*)()){&D::activateObject})
             m->registerHook(getBase()+0x2faf60, extract((void(D::*)()){&D::activateObject}));
 
@@ -5313,6 +5482,7 @@ class $GameObjectCopy : public GameObjectCopy, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameObjectCopy() {}
     typedef GameObjectCopy* __thistype;
 
     static GameObjectCopy* create(GameObject* p0) {
@@ -5328,6 +5498,8 @@ class $GameObjectCopy : public GameObjectCopy, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GameObjectCopy*(*)(GameObject*)){&$GameObjectCopy::create} != (GameObjectCopy*(*)(GameObject*)){&D::create})
             m->registerHook(getBase()+0x975a0, (GameObjectCopy*(*)(GameObject*)){&D::create});
 
@@ -5345,6 +5517,7 @@ class $GameSoundManager : public GameSoundManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameSoundManager() {}
     typedef GameSoundManager* __thistype;
 
     void disableMetering() {
@@ -5390,6 +5563,8 @@ class $GameSoundManager : public GameSoundManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GameSoundManager::*)()){&$GameSoundManager::disableMetering} != (void(D::*)()){&D::disableMetering})
             m->registerHook(getBase()+0x362d80, extract((void(D::*)()){&D::disableMetering}));
 
@@ -5422,6 +5597,7 @@ class $GameStatsManager : public GameStatsManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameStatsManager() {}
     typedef GameStatsManager* __thistype;
 
     void awardCurrencyForLevel(GJGameLevel* p0) {
@@ -5509,6 +5685,8 @@ class $GameStatsManager : public GameStatsManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($GameStatsManager::*)(GJGameLevel*)){&$GameStatsManager::awardCurrencyForLevel} != (void(D::*)(GJGameLevel*)){&D::awardCurrencyForLevel})
             m->registerHook(getBase()+0x43600, extract((void(D::*)(GJGameLevel*)){&D::awardCurrencyForLevel}));
 
@@ -5562,6 +5740,7 @@ class $GameToolbox : public GameToolbox, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GameToolbox() {}
     typedef GameToolbox* __thistype;
 
     static void createToggleButton(std::string p0, Cacao::CC_SEL p1, bool p2, cocos2d::CCMenu* p3, cocos2d::CCPoint p4, cocos2d::CCNode* p5, cocos2d::CCNode* p6, float p7, float p8, float p9, cocos2d::CCPoint p10, char const* p11, bool p12, int p13, cocos2d::CCArray* p14) {
@@ -5607,6 +5786,8 @@ class $GameToolbox : public GameToolbox, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void(*)(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&$GameToolbox::createToggleButton} != (void(*)(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton})
             m->registerHook(getBase()+0x28bdd0, (void(*)(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton});
 
@@ -5639,6 +5820,7 @@ class $GravityEffectSprite : public GravityEffectSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GravityEffectSprite() {}
     typedef GravityEffectSprite* __thistype;
 
     static GravityEffectSprite* create() {
@@ -5660,6 +5842,8 @@ class $GravityEffectSprite : public GravityEffectSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GravityEffectSprite*(*)()){&$GravityEffectSprite::create} != (GravityEffectSprite*(*)()){&D::create})
             m->registerHook(getBase()+0x6d0a0, (GravityEffectSprite*(*)()){&D::create});
 
@@ -5680,6 +5864,7 @@ class $GroupCommandObject : public GroupCommandObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$GroupCommandObject() {}
     typedef GroupCommandObject* __thistype;
 
     static GroupCommandObject* create() {
@@ -5719,6 +5904,8 @@ class $GroupCommandObject : public GroupCommandObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((GroupCommandObject*(*)()){&$GroupCommandObject::create} != (GroupCommandObject*(*)()){&D::create})
             m->registerHook(getBase()+0x18b460, (GroupCommandObject*(*)()){&D::create});
 
@@ -5748,6 +5935,7 @@ class $HardStreak : public HardStreak, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$HardStreak() {}
     typedef HardStreak* __thistype;
 
     void addPoint(cocos2d::CCPoint p0) {
@@ -5775,6 +5963,8 @@ class $HardStreak : public HardStreak, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($HardStreak::*)(cocos2d::CCPoint)){&$HardStreak::addPoint} != (void(D::*)(cocos2d::CCPoint)){&D::addPoint})
             m->registerHook(getBase()+0x5c950, extract((void(D::*)(cocos2d::CCPoint)){&D::addPoint}));
 
@@ -5798,6 +5988,7 @@ class $InfoLayer : public InfoLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$InfoLayer() {}
     typedef InfoLayer* __thistype;
 
     void loadPage(int p0, bool p1) {
@@ -5813,6 +6004,8 @@ class $InfoLayer : public InfoLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($InfoLayer::*)(int, bool)){&$InfoLayer::loadPage} != (void(D::*)(int, bool)){&D::loadPage})
             m->registerHook(getBase()+0x458fb0, extract((void(D::*)(int, bool)){&D::loadPage}));
 
@@ -5830,6 +6023,7 @@ class $LabelGameObject : public LabelGameObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LabelGameObject() {}
     typedef LabelGameObject* __thistype;
 
     bool init() {
@@ -5845,6 +6039,8 @@ class $LabelGameObject : public LabelGameObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($LabelGameObject::*)()){&$LabelGameObject::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x2f5520, extract((bool(D::*)()){&D::init}));
 
@@ -5862,6 +6058,7 @@ class $LevelBrowserLayer : public LevelBrowserLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LevelBrowserLayer() {}
     typedef LevelBrowserLayer* __thistype;
 
     void loadPage(GJSearchObject* p0) {
@@ -5883,6 +6080,8 @@ class $LevelBrowserLayer : public LevelBrowserLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::loadPage} != (void(D::*)(GJSearchObject*)){&D::loadPage})
             m->registerHook(getBase()+0x253650, extract((void(D::*)(GJSearchObject*)){&D::loadPage}));
 
@@ -5903,6 +6102,7 @@ class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LevelEditorLayer() {}
     typedef LevelEditorLayer* __thistype;
 
     void activateTriggerEffect(EffectGameObject* p0, float p1, float p2, float p3) {
@@ -6326,6 +6526,8 @@ class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($LevelEditorLayer::*)(EffectGameObject*, float, float, float)){&$LevelEditorLayer::activateTriggerEffect} != (void(D::*)(EffectGameObject*, float, float, float)){&D::activateTriggerEffect})
             m->registerHook(getBase()+0x9b520, extract((void(D::*)(EffectGameObject*, float, float, float)){&D::activateTriggerEffect}));
 
@@ -6547,6 +6749,7 @@ class $LevelSettingsLayer : public LevelSettingsLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LevelSettingsLayer() {}
     typedef LevelSettingsLayer* __thistype;
 
     static LevelSettingsLayer* create(LevelSettingsObject* p0, LevelEditorLayer* p1) {
@@ -6556,6 +6759,8 @@ class $LevelSettingsLayer : public LevelSettingsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((LevelSettingsLayer*(*)(LevelSettingsObject*, LevelEditorLayer*)){&$LevelSettingsLayer::create} != (LevelSettingsLayer*(*)(LevelSettingsObject*, LevelEditorLayer*)){&D::create})
             m->registerHook(getBase()+0xa7c30, (LevelSettingsLayer*(*)(LevelSettingsObject*, LevelEditorLayer*)){&D::create});
     }
@@ -6570,6 +6775,7 @@ class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LevelSettingsObject() {}
     typedef LevelSettingsObject* __thistype;
 
     static LevelSettingsObject* create() {
@@ -6603,6 +6809,8 @@ class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((LevelSettingsObject*(*)()){&$LevelSettingsObject::create} != (LevelSettingsObject*(*)()){&D::create})
             m->registerHook(getBase()+0x92760, (LevelSettingsObject*(*)()){&D::create});
 
@@ -6629,6 +6837,7 @@ class $LevelTools : public LevelTools, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LevelTools() {}
     typedef LevelTools* __thistype;
 
     void getAudioString(int p0) {
@@ -6650,6 +6859,8 @@ class $LevelTools : public LevelTools, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($LevelTools::*)(int)){&$LevelTools::getAudioString} != (void(D::*)(int)){&D::getAudioString})
             m->registerHook(getBase()+0x293880, extract((void(D::*)(int)){&D::getAudioString}));
 
@@ -6670,6 +6881,7 @@ class $LoadingLayer : public LoadingLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LoadingLayer() {}
     typedef LoadingLayer* __thistype;
 
     void loadAssets() {
@@ -6679,6 +6891,8 @@ class $LoadingLayer : public LoadingLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($LoadingLayer::*)()){&$LoadingLayer::loadAssets} != (void(D::*)()){&D::loadAssets})
             m->registerHook(getBase()+0x1dfb20, extract((void(D::*)()){&D::loadAssets}));
     }
@@ -6693,6 +6907,7 @@ class $LocalLevelManager : public LocalLevelManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$LocalLevelManager() {}
     typedef LocalLevelManager* __thistype;
 
     static LocalLevelManager* sharedState() {
@@ -6702,6 +6917,8 @@ class $LocalLevelManager : public LocalLevelManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((LocalLevelManager*(*)()){&$LocalLevelManager::sharedState} != (LocalLevelManager*(*)()){&D::sharedState})
             m->registerHook(getBase()+0x35dd60, (LocalLevelManager*(*)()){&D::sharedState});
     }
@@ -6716,6 +6933,7 @@ class $MenuGameLayer : public MenuGameLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$MenuGameLayer() {}
     typedef MenuGameLayer* __thistype;
 
     void resetPlayer() {
@@ -6731,6 +6949,8 @@ class $MenuGameLayer : public MenuGameLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($MenuGameLayer::*)()){&$MenuGameLayer::resetPlayer} != (void(D::*)()){&D::resetPlayer})
             m->registerHook(getBase()+0x28fdc0, extract((void(D::*)()){&D::resetPlayer}));
 
@@ -6748,6 +6968,7 @@ class $MenuLayer : public MenuLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$MenuLayer() {}
     typedef MenuLayer* __thistype;
 
     void keyBackClicked() override {
@@ -6769,6 +6990,8 @@ class $MenuLayer : public MenuLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
             m->registerHook(getBase()+0x1d3160, extract((void(D::*)()){&D::keyBackClicked}));
 
@@ -6789,6 +7012,7 @@ class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$MoreVideoOptionsLayer() {}
     typedef MoreVideoOptionsLayer* __thistype;
 
     static MoreVideoOptionsLayer* create() {
@@ -6804,6 +7028,8 @@ class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((MoreVideoOptionsLayer*(*)()){&$MoreVideoOptionsLayer::create} != (MoreVideoOptionsLayer*(*)()){&D::create})
             m->registerHook(getBase()+0x443c10, (MoreVideoOptionsLayer*(*)()){&D::create});
 
@@ -6821,6 +7047,7 @@ class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$MusicDownloadManager() {}
     typedef MusicDownloadManager* __thistype;
 
     void incrementPriorityForSong(int p0) {
@@ -6836,6 +7063,8 @@ class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($MusicDownloadManager::*)(int)){&$MusicDownloadManager::incrementPriorityForSong} != (void(D::*)(int)){&D::incrementPriorityForSong})
             m->registerHook(getBase()+0x2ef750, extract((void(D::*)(int)){&D::incrementPriorityForSong}));
 
@@ -6853,6 +7082,7 @@ class $OBB2D : public OBB2D, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$OBB2D() {}
     typedef OBB2D* __thistype;
 
     void calculateWithCenter(cocos2d::CCPoint p0, float p1, float p2, float p3) {
@@ -6886,6 +7116,8 @@ class $OBB2D : public OBB2D, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($OBB2D::*)(cocos2d::CCPoint, float, float, float)){&$OBB2D::calculateWithCenter} != (void(D::*)(cocos2d::CCPoint, float, float, float)){&D::calculateWithCenter})
             m->registerHook(getBase()+0x35a9c0, extract((void(D::*)(cocos2d::CCPoint, float, float, float)){&D::calculateWithCenter}));
 
@@ -6912,6 +7144,7 @@ class $ObjectToolbox : public ObjectToolbox, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ObjectToolbox() {}
     typedef ObjectToolbox* __thistype;
 
     bool init() {
@@ -6933,6 +7166,8 @@ class $ObjectToolbox : public ObjectToolbox, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($ObjectToolbox::*)()){&$ObjectToolbox::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x3b2d80, extract((bool(D::*)()){&D::init}));
 
@@ -6953,6 +7188,7 @@ class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$OpacityEffectAction() {}
     typedef OpacityEffectAction* __thistype;
 
     static OpacityEffectAction* create(float p0, float p1, float p2, int p3) {
@@ -6980,6 +7216,8 @@ class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((OpacityEffectAction*(*)(float, float, float, int)){&$OpacityEffectAction::create} != (OpacityEffectAction*(*)(float, float, float, int)){&D::create})
             m->registerHook(getBase()+0x1789f0, (OpacityEffectAction*(*)(float, float, float, int)){&D::create});
 
@@ -7003,6 +7241,7 @@ class $PauseLayer : public PauseLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$PauseLayer() {}
     typedef PauseLayer* __thistype;
 
     static PauseLayer* create(bool p0) {
@@ -7018,6 +7257,8 @@ class $PauseLayer : public PauseLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((PauseLayer*(*)(bool)){&$PauseLayer::create} != (PauseLayer*(*)(bool)){&D::create})
             m->registerHook(getBase()+0x20b1e0, (PauseLayer*(*)(bool)){&D::create});
 
@@ -7035,6 +7276,7 @@ class $PlatformToolbox : public PlatformToolbox, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$PlatformToolbox() {}
     typedef PlatformToolbox* __thistype;
 
     void hideCursor() {
@@ -7050,6 +7292,8 @@ class $PlatformToolbox : public PlatformToolbox, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($PlatformToolbox::*)()){&$PlatformToolbox::hideCursor} != (void(D::*)()){&D::hideCursor})
             m->registerHook(getBase()+0x27c340, extract((void(D::*)()){&D::hideCursor}));
 
@@ -7067,6 +7311,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$PlayLayer() {}
     typedef PlayLayer* __thistype;
 
     void addCircle(CCCircleWave* p0) {
@@ -7976,6 +8221,8 @@ class $PlayLayer : public PlayLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($PlayLayer::*)(CCCircleWave*)){&$PlayLayer::addCircle} != (void(D::*)(CCCircleWave*)){&D::addCircle})
             m->registerHook(getBase()+0x7e0f0, extract((void(D::*)(CCCircleWave*)){&D::addCircle}));
 
@@ -8440,6 +8687,7 @@ class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$PlayerCheckpoint() {}
     typedef PlayerCheckpoint* __thistype;
 
     static PlayerCheckpoint* create() {
@@ -8449,6 +8697,8 @@ class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((PlayerCheckpoint*(*)()){&$PlayerCheckpoint::create} != (PlayerCheckpoint*(*)()){&D::create})
             m->registerHook(getBase()+0x7e8c0, (PlayerCheckpoint*(*)()){&D::create});
     }
@@ -8463,6 +8713,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$PlayerObject() {}
     typedef PlayerObject* __thistype;
 
     void activateStreak() {
@@ -9354,6 +9605,8 @@ class $PlayerObject : public PlayerObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($PlayerObject::*)()){&$PlayerObject::activateStreak} != (void(D::*)()){&D::activateStreak})
             m->registerHook(getBase()+0x21aef0, extract((void(D::*)()){&D::activateStreak}));
 
@@ -9809,6 +10062,7 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$PulseEffectAction() {}
     typedef PulseEffectAction* __thistype;
 
     static PulseEffectAction* createFromString(std::string p0) {
@@ -9824,6 +10078,8 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((PulseEffectAction*(*)(std::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x179e90, (PulseEffectAction*(*)(std::string)){&D::createFromString});
 
@@ -9841,6 +10097,7 @@ class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$RetryLevelLayer() {}
     typedef RetryLevelLayer* __thistype;
 
     static RetryLevelLayer* create() {
@@ -9850,6 +10107,8 @@ class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((RetryLevelLayer*(*)()){&$RetryLevelLayer::create} != (RetryLevelLayer*(*)()){&D::create})
             m->registerHook(getBase()+0x28dd60, (RetryLevelLayer*(*)()){&D::create});
     }
@@ -9864,6 +10123,7 @@ class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetGroupIDLayer() {}
     typedef SetGroupIDLayer* __thistype;
 
     void onNextGroupID1(cocos2d::CCObject* p0) {
@@ -9885,6 +10145,8 @@ class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($SetGroupIDLayer::*)(cocos2d::CCObject*)){&$SetGroupIDLayer::onNextGroupID1} != (void(D::*)(cocos2d::CCObject*)){&D::onNextGroupID1})
             m->registerHook(getBase()+0x1967a0, extract((void(D::*)(cocos2d::CCObject*)){&D::onNextGroupID1}));
 
@@ -9905,6 +10167,7 @@ class $SetIDLayer : public SetIDLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetIDLayer() {}
     typedef SetIDLayer* __thistype;
 
     static SetIDLayer* create(GameObject* p0) {
@@ -9914,6 +10177,8 @@ class $SetIDLayer : public SetIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetIDLayer*(*)(GameObject*)){&$SetIDLayer::create} != (SetIDLayer*(*)(GameObject*)){&D::create})
             m->registerHook(getBase()+0x168f20, (SetIDLayer*(*)(GameObject*)){&D::create});
     }
@@ -9928,6 +10193,7 @@ class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetItemIDLayer() {}
     typedef SetItemIDLayer* __thistype;
 
     static SetItemIDLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -9937,6 +10203,8 @@ class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetItemIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetItemIDLayer::create} != (SetItemIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x5a830, (SetItemIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
     }
@@ -9951,6 +10219,7 @@ class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetTargetIDLayer() {}
     typedef SetTargetIDLayer* __thistype;
 
     static SetTargetIDLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1, std::string p2) {
@@ -9978,6 +10247,8 @@ class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create} != (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create})
             m->registerHook(getBase()+0x159d20, (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create});
 
@@ -10001,6 +10272,7 @@ class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupAnimationPopup() {}
     typedef SetupAnimationPopup* __thistype;
 
     static SetupAnimationPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10028,6 +10300,8 @@ class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupAnimationPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupAnimationPopup::create} != (SetupAnimationPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x208b70, (SetupAnimationPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10051,6 +10325,7 @@ class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $C
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupCollisionTriggerPopup() {}
     typedef SetupCollisionTriggerPopup* __thistype;
 
     static SetupCollisionTriggerPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10078,6 +10353,8 @@ class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $C
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupCollisionTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCollisionTriggerPopup::create} != (SetupCollisionTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1d6120, (SetupCollisionTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10101,6 +10378,7 @@ class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupCountTriggerPopup() {}
     typedef SetupCountTriggerPopup* __thistype;
 
     static SetupCountTriggerPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10128,6 +10406,8 @@ class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupCountTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCountTriggerPopup::create} != (SetupCountTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x15c6c0, (SetupCountTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10151,6 +10431,7 @@ class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupInstantCountPopup() {}
     typedef SetupInstantCountPopup* __thistype;
 
     static SetupInstantCountPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10178,6 +10459,8 @@ class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupInstantCountPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInstantCountPopup::create} != (SetupInstantCountPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x352c10, (SetupInstantCountPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10201,6 +10484,7 @@ class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBa
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupInteractObjectPopup() {}
     typedef SetupInteractObjectPopup* __thistype;
 
     static SetupInteractObjectPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10228,6 +10512,8 @@ class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBa
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupInteractObjectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInteractObjectPopup::create} != (SetupInteractObjectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x29a400, (SetupInteractObjectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10251,6 +10537,7 @@ class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupObjectTogglePopup() {}
     typedef SetupObjectTogglePopup* __thistype;
 
     static SetupObjectTogglePopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10284,6 +10571,8 @@ class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupObjectTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupObjectTogglePopup::create} != (SetupObjectTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1c0860, (SetupObjectTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10310,6 +10599,7 @@ class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupOpacityPopup() {}
     typedef SetupOpacityPopup* __thistype;
 
     static SetupOpacityPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10337,6 +10627,8 @@ class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupOpacityPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupOpacityPopup::create} != (SetupOpacityPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x32b70, (SetupOpacityPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10360,6 +10652,7 @@ class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupPickupTriggerPopup() {}
     typedef SetupPickupTriggerPopup* __thistype;
 
     static SetupPickupTriggerPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10393,6 +10686,8 @@ class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupPickupTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPickupTriggerPopup::create} != (SetupPickupTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x35e70, (SetupPickupTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10419,6 +10714,7 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupPulsePopup() {}
     typedef SetupPulsePopup* __thistype;
 
     void colorValueChanged(cocos2d::_ccColor3B p0) {
@@ -10494,6 +10790,8 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($SetupPulsePopup::*)(cocos2d::_ccColor3B)){&$SetupPulsePopup::colorValueChanged} != (void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged})
             m->registerHook(getBase()+0x1ec680, extract((void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged}));
 
@@ -10541,6 +10839,7 @@ class $SetupShakePopup : public SetupShakePopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupShakePopup() {}
     typedef SetupShakePopup* __thistype;
 
     static SetupShakePopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10550,6 +10849,8 @@ class $SetupShakePopup : public SetupShakePopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupShakePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupShakePopup::create} != (SetupShakePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x3adc00, (SetupShakePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
     }
@@ -10564,6 +10865,7 @@ class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupSpawnPopup() {}
     typedef SetupSpawnPopup* __thistype;
 
     static SetupSpawnPopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10597,6 +10899,8 @@ class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupSpawnPopup::create} != (SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x139790, (SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10623,6 +10927,7 @@ class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SetupTouchTogglePopup() {}
     typedef SetupTouchTogglePopup* __thistype;
 
     static SetupTouchTogglePopup* create(EffectGameObject* p0, cocos2d::CCArray* p1) {
@@ -10650,6 +10955,8 @@ class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SetupTouchTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupTouchTogglePopup::create} != (SetupTouchTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1576a0, (SetupTouchTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
@@ -10673,6 +10980,7 @@ class $SimplePlayer : public SimplePlayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SimplePlayer() {}
     typedef SimplePlayer* __thistype;
 
     static SimplePlayer* create(int p0) {
@@ -10700,6 +11008,8 @@ class $SimplePlayer : public SimplePlayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SimplePlayer*(*)(int)){&$SimplePlayer::create} != (SimplePlayer*(*)(int)){&D::create})
             m->registerHook(getBase()+0x1b6140, (SimplePlayer*(*)(int)){&D::create});
 
@@ -10723,6 +11033,7 @@ class $Slider : public Slider, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$Slider() {}
     typedef Slider* __thistype;
 
     static Slider* create(cocos2d::CCNode* p0, Cacao::CC_SEL p1, char const* p2, char const* p3, char const* p4, char const* p5, float p6) {
@@ -10756,6 +11067,8 @@ class $Slider : public Slider, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((Slider*(*)(cocos2d::CCNode*, Cacao::CC_SEL, char const*, char const*, char const*, char const*, float)){&$Slider::create} != (Slider*(*)(cocos2d::CCNode*, Cacao::CC_SEL, char const*, char const*, char const*, char const*, float)){&D::create})
             m->registerHook(getBase()+0x18dd80, (Slider*(*)(cocos2d::CCNode*, Cacao::CC_SEL, char const*, char const*, char const*, char const*, float)){&D::create});
 
@@ -10782,6 +11095,7 @@ class $SliderThumb : public SliderThumb, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SliderThumb() {}
     typedef SliderThumb* __thistype;
 
     void getValue() {
@@ -10791,6 +11105,8 @@ class $SliderThumb : public SliderThumb, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($SliderThumb::*)()){&$SliderThumb::getValue} != (void(D::*)()){&D::getValue})
             m->registerHook(getBase()+0x18ce80, extract((void(D::*)()){&D::getValue}));
     }
@@ -10805,6 +11121,7 @@ class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SpawnTriggerAction() {}
     typedef SpawnTriggerAction* __thistype;
 
     static SpawnTriggerAction* createFromString(std::string p0) {
@@ -10814,6 +11131,8 @@ class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SpawnTriggerAction*(*)(std::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x17bf50, (SpawnTriggerAction*(*)(std::string)){&D::createFromString});
     }
@@ -10828,6 +11147,7 @@ class $SpeedObject : public SpeedObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$SpeedObject() {}
     typedef SpeedObject* __thistype;
 
     static SpeedObject* create(GameObject* p0, int p1, float p2) {
@@ -10843,6 +11163,8 @@ class $SpeedObject : public SpeedObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((SpeedObject*(*)(GameObject*, int, float)){&$SpeedObject::create} != (SpeedObject*(*)(GameObject*, int, float)){&D::create})
             m->registerHook(getBase()+0x77450, (SpeedObject*(*)(GameObject*, int, float)){&D::create});
 
@@ -10860,6 +11182,7 @@ class $TeleportPortalObject : public TeleportPortalObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$TeleportPortalObject() {}
     typedef TeleportPortalObject* __thistype;
 
     static TeleportPortalObject* create(char const* p0) {
@@ -10875,6 +11198,8 @@ class $TeleportPortalObject : public TeleportPortalObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((TeleportPortalObject*(*)(char const*)){&$TeleportPortalObject::create} != (TeleportPortalObject*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0xdaa50, (TeleportPortalObject*(*)(char const*)){&D::create});
 
@@ -10892,6 +11217,7 @@ class $TextArea : public TextArea, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$TextArea() {}
     typedef TextArea* __thistype;
 
     static TextArea* create(std::string p0, char const* p1, float p2, float p3, cocos2d::CCPoint p4, float p5, bool p6) {
@@ -10901,6 +11227,8 @@ class $TextArea : public TextArea, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&$TextArea::create} != (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create})
             m->registerHook(getBase()+0x19eb40, (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create});
     }
@@ -10915,6 +11243,7 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$TextInputDelegate() {}
     typedef TextInputDelegate* __thistype;
 
     bool allowTextInput(CCTextInputNode* p0) {
@@ -10930,6 +11259,8 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($TextInputDelegate::*)(CCTextInputNode*)){&$TextInputDelegate::allowTextInput} != (bool(D::*)(CCTextInputNode*)){&D::allowTextInput})
             m->registerHook(getBase()+0x6210, extract((bool(D::*)(CCTextInputNode*)){&D::allowTextInput}));
 
@@ -10947,6 +11278,7 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ToggleTriggerAction() {}
     typedef ToggleTriggerAction* __thistype;
 
     static ToggleTriggerAction* createFromString(std::string p0) {
@@ -10956,6 +11288,8 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((ToggleTriggerAction*(*)(std::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x1765e0, (ToggleTriggerAction*(*)(std::string)){&D::createFromString});
     }
@@ -10970,6 +11304,7 @@ class $TouchToggleAction : public TouchToggleAction, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$TouchToggleAction() {}
     typedef TouchToggleAction* __thistype;
 
     static TouchToggleAction* createFromString(std::string p0) {
@@ -10979,6 +11314,8 @@ class $TouchToggleAction : public TouchToggleAction, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((TouchToggleAction*(*)(std::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x177e10, (TouchToggleAction*(*)(std::string)){&D::createFromString});
     }
@@ -10993,6 +11330,7 @@ class $UILayer : public UILayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$UILayer() {}
     typedef UILayer* __thistype;
 
     static UILayer* create() {
@@ -11026,6 +11364,8 @@ class $UILayer : public UILayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((UILayer*(*)()){&$UILayer::create} != (UILayer*(*)()){&D::create})
             m->registerHook(getBase()+0x27fd10, (UILayer*(*)()){&D::create});
 
@@ -11052,6 +11392,7 @@ class $UndoObject : public UndoObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$UndoObject() {}
     typedef UndoObject* __thistype;
 
     static UndoObject* create(GameObject* p0, UndoCommand p1) {
@@ -11067,6 +11408,8 @@ class $UndoObject : public UndoObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((UndoObject*(*)(GameObject*, UndoCommand)){&$UndoObject::create} != (UndoObject*(*)(GameObject*, UndoCommand)){&D::create})
             m->registerHook(getBase()+0x94ea0, (UndoObject*(*)(GameObject*, UndoCommand)){&D::create});
 
@@ -11084,6 +11427,7 @@ class $CCActionTween : public CCActionTween, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCActionTween() {}
     typedef CCActionTween* __thistype;
 
     static CCActionTween* create(float p0, char const* p1, float p2, float p3) {
@@ -11093,6 +11437,8 @@ class $CCActionTween : public CCActionTween, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCActionTween*(*)(float, char const*, float, float)){&$CCActionTween::create} != (CCActionTween*(*)(float, char const*, float, float)){&D::create})
             m->registerHook(getBase()+0x447590, (CCActionTween*(*)(float, char const*, float, float)){&D::create});
     }
@@ -11107,6 +11453,7 @@ class $CCAnimate : public CCAnimate, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCAnimate() {}
     typedef CCAnimate* __thistype;
 
     static CCAnimate* create(cocos2d::CCAnimation* p0) {
@@ -11116,6 +11463,8 @@ class $CCAnimate : public CCAnimate, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCAnimate*(*)(cocos2d::CCAnimation*)){&$CCAnimate::create} != (CCAnimate*(*)(cocos2d::CCAnimation*)){&D::create})
             m->registerHook(getBase()+0x1f8fc0, (CCAnimate*(*)(cocos2d::CCAnimation*)){&D::create});
     }
@@ -11130,6 +11479,7 @@ class $CCAnimation : public CCAnimation, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCAnimation() {}
     typedef CCAnimation* __thistype;
 
     static CCAnimation* createWithSpriteFrames(cocos2d::CCArray* p0, float p1) {
@@ -11139,6 +11489,8 @@ class $CCAnimation : public CCAnimation, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCAnimation*(*)(cocos2d::CCArray*, float)){&$CCAnimation::createWithSpriteFrames} != (CCAnimation*(*)(cocos2d::CCArray*, float)){&D::createWithSpriteFrames})
             m->registerHook(getBase()+0x140df0, (CCAnimation*(*)(cocos2d::CCArray*, float)){&D::createWithSpriteFrames});
     }
@@ -11153,6 +11505,7 @@ class $CCArray : public CCArray, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCArray() {}
     typedef CCArray* __thistype;
 
     void addObject(cocos2d::CCObject* p0) {
@@ -11258,6 +11611,8 @@ class $CCArray : public CCArray, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCArray::*)(cocos2d::CCObject*)){&$CCArray::addObject} != (void(D::*)(cocos2d::CCObject*)){&D::addObject})
             m->registerHook(getBase()+0x419f90, extract((void(D::*)(cocos2d::CCObject*)){&D::addObject}));
 
@@ -11320,6 +11675,7 @@ class $CCBezierTo : public CCBezierTo, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCBezierTo() {}
     typedef CCBezierTo* __thistype;
 
     static CCBezierTo* create(float p0, cocos2d::_ccBezierConfig const& p1) {
@@ -11329,6 +11685,8 @@ class $CCBezierTo : public CCBezierTo, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCBezierTo*(*)(float, cocos2d::_ccBezierConfig const&)){&$CCBezierTo::create} != (CCBezierTo*(*)(float, cocos2d::_ccBezierConfig const&)){&D::create})
             m->registerHook(getBase()+0x1f6c10, (CCBezierTo*(*)(float, cocos2d::_ccBezierConfig const&)){&D::create});
     }
@@ -11343,6 +11701,7 @@ class $CCCallFunc : public CCCallFunc, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCCallFunc() {}
     typedef CCCallFunc* __thistype;
 
     static CCCallFunc* create(int p0) {
@@ -11352,6 +11711,8 @@ class $CCCallFunc : public CCCallFunc, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCCallFunc*(*)(int)){&$CCCallFunc::create} != (CCCallFunc*(*)(int)){&D::create})
             m->registerHook(getBase()+0x454d90, (CCCallFunc*(*)(int)){&D::create});
     }
@@ -11366,6 +11727,7 @@ class $CCCopying : public CCCopying, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCCopying() {}
     typedef CCCopying* __thistype;
 
     cocos2d::CCObject* copyWithZone(cocos2d::CCZone* p0) {
@@ -11375,6 +11737,8 @@ class $CCCopying : public CCCopying, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((cocos2d::CCObject*($CCCopying::*)(cocos2d::CCZone*)){&$CCCopying::copyWithZone} != (cocos2d::CCObject*(D::*)(cocos2d::CCZone*)){&D::copyWithZone})
             m->registerHook(getBase()+0x250c90, extract((cocos2d::CCObject*(D::*)(cocos2d::CCZone*)){&D::copyWithZone}));
     }
@@ -11389,6 +11753,7 @@ class $CCDelayTime : public CCDelayTime, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCDelayTime() {}
     typedef CCDelayTime* __thistype;
 
     static CCDelayTime* create(float p0) {
@@ -11398,6 +11763,8 @@ class $CCDelayTime : public CCDelayTime, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCDelayTime*(*)(float)){&$CCDelayTime::create} != (CCDelayTime*(*)(float)){&D::create})
             m->registerHook(getBase()+0x1f4380, (CCDelayTime*(*)(float)){&D::create});
     }
@@ -11412,6 +11779,7 @@ class $CCDictionary : public CCDictionary, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCDictionary() {}
     typedef CCDictionary* __thistype;
 
     void allKeys() {
@@ -11481,6 +11849,8 @@ class $CCDictionary : public CCDictionary, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCDictionary::*)()){&$CCDictionary::allKeys} != (void(D::*)()){&D::allKeys})
             m->registerHook(getBase()+0x190450, extract((void(D::*)()){&D::allKeys}));
 
@@ -11525,6 +11895,7 @@ class $CCDirector : public CCDirector, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCDirector() {}
     typedef CCDirector* __thistype;
 
     void getScreenBottom() {
@@ -11600,6 +11971,8 @@ class $CCDirector : public CCDirector, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCDirector::*)()){&$CCDirector::getScreenBottom} != (void(D::*)()){&D::getScreenBottom})
             m->registerHook(getBase()+0x24b210, extract((void(D::*)()){&D::getScreenBottom}));
 
@@ -11647,6 +12020,7 @@ class $CCDrawNode : public CCDrawNode, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCDrawNode() {}
     typedef CCDrawNode* __thistype;
 
     void clear() {
@@ -11692,6 +12066,8 @@ class $CCDrawNode : public CCDrawNode, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCDrawNode::*)()){&$CCDrawNode::clear} != (void(D::*)()){&D::clear})
             m->registerHook(getBase()+0x379e80, extract((void(D::*)()){&D::clear}));
 
@@ -11724,6 +12100,7 @@ class $CCEaseElasticOut : public CCEaseElasticOut, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCEaseElasticOut() {}
     typedef CCEaseElasticOut* __thistype;
 
     static CCEaseElasticOut* create(cocos2d::CCActionInterval* p0, float p1) {
@@ -11733,6 +12110,8 @@ class $CCEaseElasticOut : public CCEaseElasticOut, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCEaseElasticOut*(*)(cocos2d::CCActionInterval*, float)){&$CCEaseElasticOut::create} != (CCEaseElasticOut*(*)(cocos2d::CCActionInterval*, float)){&D::create})
             m->registerHook(getBase()+0x2a3080, (CCEaseElasticOut*(*)(cocos2d::CCActionInterval*, float)){&D::create});
     }
@@ -11747,6 +12126,7 @@ class $CCEaseIn : public CCEaseIn, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCEaseIn() {}
     typedef CCEaseIn* __thistype;
 
     static CCEaseIn* create(cocos2d::CCActionInterval* p0, float p1) {
@@ -11756,6 +12136,8 @@ class $CCEaseIn : public CCEaseIn, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCEaseIn*(*)(cocos2d::CCActionInterval*, float)){&$CCEaseIn::create} != (CCEaseIn*(*)(cocos2d::CCActionInterval*, float)){&D::create})
             m->registerHook(getBase()+0x2a1960, (CCEaseIn*(*)(cocos2d::CCActionInterval*, float)){&D::create});
     }
@@ -11770,6 +12152,7 @@ class $CCEaseInOut : public CCEaseInOut, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCEaseInOut() {}
     typedef CCEaseInOut* __thistype;
 
     static CCEaseInOut* create(cocos2d::CCActionInterval* p0, float p1) {
@@ -11779,6 +12162,8 @@ class $CCEaseInOut : public CCEaseInOut, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCEaseInOut*(*)(cocos2d::CCActionInterval*, float)){&$CCEaseInOut::create} != (CCEaseInOut*(*)(cocos2d::CCActionInterval*, float)){&D::create})
             m->registerHook(getBase()+0x2a1d80, (CCEaseInOut*(*)(cocos2d::CCActionInterval*, float)){&D::create});
     }
@@ -11793,6 +12178,7 @@ class $CCEaseOut : public CCEaseOut, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCEaseOut() {}
     typedef CCEaseOut* __thistype;
 
     static CCEaseOut* create(cocos2d::CCActionInterval* p0, float p1) {
@@ -11802,6 +12188,8 @@ class $CCEaseOut : public CCEaseOut, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCEaseOut*(*)(cocos2d::CCActionInterval*, float)){&$CCEaseOut::create} != (CCEaseOut*(*)(cocos2d::CCActionInterval*, float)){&D::create})
             m->registerHook(getBase()+0x2a1b70, (CCEaseOut*(*)(cocos2d::CCActionInterval*, float)){&D::create});
     }
@@ -11816,6 +12204,7 @@ class $CCFadeOut : public CCFadeOut, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCFadeOut() {}
     typedef CCFadeOut* __thistype;
 
     static CCFadeOut* create(float p0) {
@@ -11825,6 +12214,8 @@ class $CCFadeOut : public CCFadeOut, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCFadeOut*(*)(float)){&$CCFadeOut::create} != (CCFadeOut*(*)(float)){&D::create})
             m->registerHook(getBase()+0x1f7d80, (CCFadeOut*(*)(float)){&D::create});
     }
@@ -11839,6 +12230,7 @@ class $CCFadeTo : public CCFadeTo, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCFadeTo() {}
     typedef CCFadeTo* __thistype;
 
     static CCFadeTo* create(float p0, unsigned char p1) {
@@ -11848,6 +12240,8 @@ class $CCFadeTo : public CCFadeTo, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCFadeTo*(*)(float, unsigned char)){&$CCFadeTo::create} != (CCFadeTo*(*)(float, unsigned char)){&D::create})
             m->registerHook(getBase()+0x1f7ff0, (CCFadeTo*(*)(float, unsigned char)){&D::create});
     }
@@ -11862,6 +12256,7 @@ class $CCHide : public CCHide, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCHide() {}
     typedef CCHide* __thistype;
 
     static CCHide* create() {
@@ -11871,6 +12266,8 @@ class $CCHide : public CCHide, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCHide*(*)()){&$CCHide::create} != (CCHide*(*)()){&D::create})
             m->registerHook(getBase()+0x4543e0, (CCHide*(*)()){&D::create});
     }
@@ -11885,6 +12282,7 @@ class $CCImage : public CCImage, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCImage() {}
     typedef CCImage* __thistype;
 
     bool initWithImageData(void* p0, int p1, cocos2d::CCImage::EImageFormat p2, int p3, int p4, int p5) {
@@ -11894,6 +12292,8 @@ class $CCImage : public CCImage, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($CCImage::*)(void*, int, cocos2d::CCImage::EImageFormat, int, int, int)){&$CCImage::initWithImageData} != (bool(D::*)(void*, int, cocos2d::CCImage::EImageFormat, int, int, int)){&D::initWithImageData})
             m->registerHook(getBase()+0x24fcb0, extract((bool(D::*)(void*, int, cocos2d::CCImage::EImageFormat, int, int, int)){&D::initWithImageData}));
     }
@@ -11908,6 +12308,7 @@ class $CCKeyboardDelegate : public CCKeyboardDelegate, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCKeyboardDelegate() {}
     typedef CCKeyboardDelegate* __thistype;
 
     void keyUp(cocos2d::enumKeyCodes p0) {
@@ -11917,6 +12318,8 @@ class $CCKeyboardDelegate : public CCKeyboardDelegate, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCKeyboardDelegate::*)(cocos2d::enumKeyCodes)){&$CCKeyboardDelegate::keyUp} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyUp})
             m->registerHook(getBase()+0x61a0, extract((void(D::*)(cocos2d::enumKeyCodes)){&D::keyUp}));
     }
@@ -11931,6 +12334,7 @@ class $CCLabelBMFont : public CCLabelBMFont, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCLabelBMFont() {}
     typedef CCLabelBMFont* __thistype;
 
     static CCLabelBMFont* create(char const* p0, char const* p1) {
@@ -11958,6 +12362,8 @@ class $CCLabelBMFont : public CCLabelBMFont, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCLabelBMFont*(*)(char const*, char const*)){&$CCLabelBMFont::create} != (CCLabelBMFont*(*)(char const*, char const*)){&D::create})
             m->registerHook(getBase()+0x347660, (CCLabelBMFont*(*)(char const*, char const*)){&D::create});
 
@@ -11981,6 +12387,7 @@ class $CCLayer : public CCLayer, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCLayer() {}
     typedef CCLayer* __thistype;
 
     bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
@@ -12194,6 +12601,8 @@ class $CCLayer : public CCLayer, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($CCLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
             m->registerHook(getBase()+0x2734d0, extract((bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
 
@@ -12310,6 +12719,7 @@ class $CCLayerColor : public CCLayerColor, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCLayerColor() {}
     typedef CCLayerColor* __thistype;
 
     static CCLayerColor* create(cocos2d::_ccColor4B const& p0, float p1, float p2) {
@@ -12379,6 +12789,8 @@ class $CCLayerColor : public CCLayerColor, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCLayerColor*(*)(cocos2d::_ccColor4B const&, float, float)){&$CCLayerColor::create} != (CCLayerColor*(*)(cocos2d::_ccColor4B const&, float, float)){&D::create})
             m->registerHook(getBase()+0x2745e0, (CCLayerColor*(*)(cocos2d::_ccColor4B const&, float, float)){&D::create});
 
@@ -12423,6 +12835,7 @@ class $CCLayerRGBA : public CCLayerRGBA, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCLayerRGBA() {}
     typedef CCLayerRGBA* __thistype;
 
     cocos2d::ccColor3B& getColor() {
@@ -12498,6 +12911,8 @@ class $CCLayerRGBA : public CCLayerRGBA, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((cocos2d::ccColor3B&($CCLayerRGBA::*)()){&$CCLayerRGBA::getColor} != (cocos2d::ccColor3B&(D::*)()){&D::getColor})
             m->registerHook(getBase()+0x273d60, extract((cocos2d::ccColor3B&(D::*)()){&D::getColor}));
 
@@ -12545,6 +12960,7 @@ class $CCMenu : public CCMenu, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMenu() {}
     typedef CCMenu* __thistype;
 
     void alignItemsHorizontallyWithPadding(float p0) {
@@ -12572,6 +12988,8 @@ class $CCMenu : public CCMenu, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCMenu::*)(float)){&$CCMenu::alignItemsHorizontallyWithPadding} != (void(D::*)(float)){&D::alignItemsHorizontallyWithPadding})
             m->registerHook(getBase()+0x4393e0, extract((void(D::*)(float)){&D::alignItemsHorizontallyWithPadding}));
 
@@ -12595,6 +13013,7 @@ class $CCMotionStreak : public CCMotionStreak, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMotionStreak() {}
     typedef CCMotionStreak* __thistype;
 
     void reset() {
@@ -12616,6 +13035,8 @@ class $CCMotionStreak : public CCMotionStreak, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCMotionStreak::*)()){&$CCMotionStreak::reset} != (void(D::*)()){&D::reset})
             m->registerHook(getBase()+0x2ee190, extract((void(D::*)()){&D::reset}));
 
@@ -12636,6 +13057,7 @@ class $CCMouseDelegate : public CCMouseDelegate, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMouseDelegate() {}
     typedef CCMouseDelegate* __thistype;
 
     void rightKeyDown() {
@@ -12657,6 +13079,8 @@ class $CCMouseDelegate : public CCMouseDelegate, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCMouseDelegate::*)()){&$CCMouseDelegate::rightKeyDown} != (void(D::*)()){&D::rightKeyDown})
             m->registerHook(getBase()+0x61b0, extract((void(D::*)()){&D::rightKeyDown}));
 
@@ -12677,6 +13101,7 @@ class $CCMoveBy : public CCMoveBy, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMoveBy() {}
     typedef CCMoveBy* __thistype;
 
     static CCMoveBy* create(float p0, cocos2d::CCPoint const& p1) {
@@ -12686,6 +13111,8 @@ class $CCMoveBy : public CCMoveBy, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCMoveBy*(*)(float, cocos2d::CCPoint const&)){&$CCMoveBy::create} != (CCMoveBy*(*)(float, cocos2d::CCPoint const&)){&D::create})
             m->registerHook(getBase()+0x1f50e0, (CCMoveBy*(*)(float, cocos2d::CCPoint const&)){&D::create});
     }
@@ -12700,6 +13127,7 @@ class $CCMoveTo : public CCMoveTo, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCMoveTo() {}
     typedef CCMoveTo* __thistype;
 
     static CCMoveTo* create(float p0, cocos2d::CCPoint const& p1) {
@@ -12709,6 +13137,8 @@ class $CCMoveTo : public CCMoveTo, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCMoveTo*(*)(float, cocos2d::CCPoint const&)){&$CCMoveTo::create} != (CCMoveTo*(*)(float, cocos2d::CCPoint const&)){&D::create})
             m->registerHook(getBase()+0x1f54d0, (CCMoveTo*(*)(float, cocos2d::CCPoint const&)){&D::create});
     }
@@ -12723,6 +13153,7 @@ class $CCNode : public CCNode, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCNode() {}
     typedef CCNode* __thistype;
 
     void _setZOrder(int p0) {
@@ -13404,6 +13835,8 @@ class $CCNode : public CCNode, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCNode::*)(int)){&$CCNode::_setZOrder} != (void(D::*)(int)){&D::_setZOrder})
             m->registerHook(getBase()+0x122990, extract((void(D::*)(int)){&D::_setZOrder}));
 
@@ -13754,6 +14187,7 @@ class $CCNodeRGBA : public CCNodeRGBA, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCNodeRGBA() {}
     typedef CCNodeRGBA* __thistype;
 
     const cocos2d::_ccColor3B& getColor() {
@@ -13805,6 +14239,8 @@ class $CCNodeRGBA : public CCNodeRGBA, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((const cocos2d::_ccColor3B&($CCNodeRGBA::*)()){&$CCNodeRGBA::getColor} != (const cocos2d::_ccColor3B&(D::*)()){&D::getColor})
             m->registerHook(getBase()+0x125020, extract((const cocos2d::_ccColor3B&(D::*)()){&D::getColor}));
 
@@ -13840,6 +14276,7 @@ class $CCObject : public CCObject, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCObject() {}
     typedef CCObject* __thistype;
 
     void acceptVisitor(cocos2d::CCDataVisitor& p0) {
@@ -13903,6 +14340,8 @@ class $CCObject : public CCObject, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCObject::*)(cocos2d::CCDataVisitor&)){&$CCObject::acceptVisitor} != (void(D::*)(cocos2d::CCDataVisitor&)){&D::acceptVisitor})
             m->registerHook(getBase()+0x250f30, extract((void(D::*)(cocos2d::CCDataVisitor&)){&D::acceptVisitor}));
 
@@ -13944,6 +14383,7 @@ class $CCParticleSystem : public CCParticleSystem, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCParticleSystem() {}
     typedef CCParticleSystem* __thistype;
 
     void resetSystem() {
@@ -13965,6 +14405,8 @@ class $CCParticleSystem : public CCParticleSystem, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCParticleSystem::*)()){&$CCParticleSystem::resetSystem} != (void(D::*)()){&D::resetSystem})
             m->registerHook(getBase()+0x46bd50, extract((void(D::*)()){&D::resetSystem}));
 
@@ -13985,6 +14427,7 @@ class $CCParticleSystemQuad : public CCParticleSystemQuad, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCParticleSystemQuad() {}
     typedef CCParticleSystemQuad* __thistype;
 
     static CCParticleSystemQuad* create(char const* p0) {
@@ -13994,6 +14437,8 @@ class $CCParticleSystemQuad : public CCParticleSystemQuad, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCParticleSystemQuad*(*)(char const*)){&$CCParticleSystemQuad::create} != (CCParticleSystemQuad*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x36b000, (CCParticleSystemQuad*(*)(char const*)){&D::create});
     }
@@ -14008,6 +14453,7 @@ class $CCPoint : public CCPoint, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCPoint() {}
     typedef CCPoint* __thistype;
 
     void equals(cocos2d::CCPoint const& p0) {
@@ -14017,6 +14463,8 @@ class $CCPoint : public CCPoint, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCPoint::*)(cocos2d::CCPoint const&)){&$CCPoint::equals} != (void(D::*)(cocos2d::CCPoint const&)){&D::equals})
             m->registerHook(getBase()+0x1371d0, extract((void(D::*)(cocos2d::CCPoint const&)){&D::equals}));
     }
@@ -14031,6 +14479,7 @@ class $CCRect : public CCRect, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCRect() {}
     typedef CCRect* __thistype;
 
     void containsPoint(cocos2d::CCPoint const& p0) {
@@ -14076,6 +14525,8 @@ class $CCRect : public CCRect, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCRect::*)(cocos2d::CCPoint const&)){&$CCRect::containsPoint} != (void(D::*)(cocos2d::CCPoint const&)){&D::containsPoint})
             m->registerHook(getBase()+0x1377b0, extract((void(D::*)(cocos2d::CCPoint const&)){&D::containsPoint}));
 
@@ -14108,6 +14559,7 @@ class $CCRenderTexture : public CCRenderTexture, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCRenderTexture() {}
     typedef CCRenderTexture* __thistype;
 
     void begin() {
@@ -14135,6 +14587,8 @@ class $CCRenderTexture : public CCRenderTexture, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCRenderTexture::*)()){&$CCRenderTexture::begin} != (void(D::*)()){&D::begin})
             m->registerHook(getBase()+0x35ce10, extract((void(D::*)()){&D::begin}));
 
@@ -14158,6 +14612,7 @@ class $CCRepeatForever : public CCRepeatForever, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCRepeatForever() {}
     typedef CCRepeatForever* __thistype;
 
     static CCRepeatForever* create(cocos2d::CCActionInterval* p0) {
@@ -14167,6 +14622,8 @@ class $CCRepeatForever : public CCRepeatForever, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCRepeatForever*(*)(cocos2d::CCActionInterval*)){&$CCRepeatForever::create} != (CCRepeatForever*(*)(cocos2d::CCActionInterval*)){&D::create})
             m->registerHook(getBase()+0x1f3920, (CCRepeatForever*(*)(cocos2d::CCActionInterval*)){&D::create});
     }
@@ -14181,6 +14638,7 @@ class $CCRotateBy : public CCRotateBy, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCRotateBy() {}
     typedef CCRotateBy* __thistype;
 
     static CCRotateBy* create(float p0, float p1) {
@@ -14190,6 +14648,8 @@ class $CCRotateBy : public CCRotateBy, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCRotateBy*(*)(float, float)){&$CCRotateBy::create} != (CCRotateBy*(*)(float, float)){&D::create})
             m->registerHook(getBase()+0x1f4c50, (CCRotateBy*(*)(float, float)){&D::create});
     }
@@ -14204,6 +14664,7 @@ class $CCScaleTo : public CCScaleTo, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCScaleTo() {}
     typedef CCScaleTo* __thistype;
 
     static CCScaleTo* create(float p0, float p1) {
@@ -14219,6 +14680,8 @@ class $CCScaleTo : public CCScaleTo, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCScaleTo*(*)(float, float)){&$CCScaleTo::create} != (CCScaleTo*(*)(float, float)){&D::create})
             m->registerHook(getBase()+0x1f6ff0, (CCScaleTo*(*)(float, float)){&D::create});
 
@@ -14236,6 +14699,7 @@ class $CCScene : public CCScene, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCScene() {}
     typedef CCScene* __thistype;
 
     static CCScene* create() {
@@ -14245,6 +14709,8 @@ class $CCScene : public CCScene, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCScene*(*)()){&$CCScene::create} != (CCScene*(*)()){&D::create})
             m->registerHook(getBase()+0x13c140, (CCScene*(*)()){&D::create});
     }
@@ -14259,6 +14725,7 @@ class $CCScheduler : public CCScheduler, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCScheduler() {}
     typedef CCScheduler* __thistype;
 
     void scheduleSelector(Cacao::CC_SCHED p0, cocos2d::CCObject* p1, float p2, unsigned int p3, float p4, bool p5) {
@@ -14280,6 +14747,8 @@ class $CCScheduler : public CCScheduler, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCScheduler::*)(Cacao::CC_SCHED, cocos2d::CCObject*, float, unsigned int, float, bool)){&$CCScheduler::scheduleSelector} != (void(D::*)(Cacao::CC_SCHED, cocos2d::CCObject*, float, unsigned int, float, bool)){&D::scheduleSelector})
             m->registerHook(getBase()+0x242b20, extract((void(D::*)(Cacao::CC_SCHED, cocos2d::CCObject*, float, unsigned int, float, bool)){&D::scheduleSelector}));
 
@@ -14300,6 +14769,7 @@ class $CCSprite : public CCSprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCSprite() {}
     typedef CCSprite* __thistype;
 
     void addChild(cocos2d::CCNode* p0) {
@@ -14639,6 +15109,8 @@ class $CCSprite : public CCSprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCSprite::*)(cocos2d::CCNode*)){&$CCSprite::addChild} != (void(D::*)(cocos2d::CCNode*)){&D::addChild})
             m->registerHook(getBase()+0x134190, extract((void(D::*)(cocos2d::CCNode*)){&D::addChild}));
 
@@ -14818,6 +15290,7 @@ class $CCSpriteBatchNode : public CCSpriteBatchNode, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCSpriteBatchNode() {}
     typedef CCSpriteBatchNode* __thistype;
 
     static cocos2d::CCSpriteBatchNode* createWithTexture(cocos2d::CCTexture2D* p0, unsigned int p1) {
@@ -14839,6 +15312,8 @@ class $CCSpriteBatchNode : public CCSpriteBatchNode, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((cocos2d::CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)){&$CCSpriteBatchNode::createWithTexture} != (cocos2d::CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)){&D::createWithTexture})
             m->registerHook(getBase()+0xbb310, (cocos2d::CCSpriteBatchNode*(*)(cocos2d::CCTexture2D*, unsigned int)){&D::createWithTexture});
 
@@ -14859,6 +15334,7 @@ class $CCSpriteFrameCache : public CCSpriteFrameCache, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCSpriteFrameCache() {}
     typedef CCSpriteFrameCache* __thistype;
 
     void addSpriteFramesWithFile(char const* p0) {
@@ -14880,6 +15356,8 @@ class $CCSpriteFrameCache : public CCSpriteFrameCache, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCSpriteFrameCache::*)(char const*)){&$CCSpriteFrameCache::addSpriteFramesWithFile} != (void(D::*)(char const*)){&D::addSpriteFramesWithFile})
             m->registerHook(getBase()+0x199a10, extract((void(D::*)(char const*)){&D::addSpriteFramesWithFile}));
 
@@ -14900,6 +15378,7 @@ class $CCString : public CCString, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCString() {}
     typedef CCString* __thistype;
 
     void boolValue() {
@@ -14933,6 +15412,8 @@ class $CCString : public CCString, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCString::*)()){&$CCString::boolValue} != (void(D::*)()){&D::boolValue})
             m->registerHook(getBase()+0x44c810, extract((void(D::*)()){&D::boolValue}));
 
@@ -14959,6 +15440,7 @@ class $CCTexture2D : public CCTexture2D, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCTexture2D() {}
     typedef CCTexture2D* __thistype;
 
     bool initWithImage(cocos2d::CCImage* p0) {
@@ -14974,6 +15456,8 @@ class $CCTexture2D : public CCTexture2D, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((bool($CCTexture2D::*)(cocos2d::CCImage*)){&$CCTexture2D::initWithImage} != (bool(D::*)(cocos2d::CCImage*)){&D::initWithImage})
             m->registerHook(getBase()+0x246940, extract((bool(D::*)(cocos2d::CCImage*)){&D::initWithImage}));
 
@@ -14991,6 +15475,7 @@ class $CCTextureCache : public CCTextureCache, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCTextureCache() {}
     typedef CCTextureCache* __thistype;
 
     void addImage(char const* p0, bool p1) {
@@ -15006,6 +15491,8 @@ class $CCTextureCache : public CCTextureCache, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCTextureCache::*)(char const*, bool)){&$CCTextureCache::addImage} != (void(D::*)(char const*, bool)){&D::addImage})
             m->registerHook(getBase()+0x358120, extract((void(D::*)(char const*, bool)){&D::addImage}));
 
@@ -15023,6 +15510,7 @@ class $CCTintTo : public CCTintTo, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCTintTo() {}
     typedef CCTintTo* __thistype;
 
     static CCTintTo* create(float p0, unsigned char p1, unsigned char p2, unsigned char p3) {
@@ -15032,6 +15520,8 @@ class $CCTintTo : public CCTintTo, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCTintTo*(*)(float, unsigned char, unsigned char, unsigned char)){&$CCTintTo::create} != (CCTintTo*(*)(float, unsigned char, unsigned char, unsigned char)){&D::create})
             m->registerHook(getBase()+0x1f82a0, (CCTintTo*(*)(float, unsigned char, unsigned char, unsigned char)){&D::create});
     }
@@ -15046,6 +15536,7 @@ class $CCTouchDispatcher : public CCTouchDispatcher, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCTouchDispatcher() {}
     typedef CCTouchDispatcher* __thistype;
 
     void decrementForcePrio(int p0) {
@@ -15061,6 +15552,8 @@ class $CCTouchDispatcher : public CCTouchDispatcher, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCTouchDispatcher::*)(int)){&$CCTouchDispatcher::decrementForcePrio} != (void(D::*)(int)){&D::decrementForcePrio})
             m->registerHook(getBase()+0x280f70, extract((void(D::*)(int)){&D::decrementForcePrio}));
 
@@ -15078,6 +15571,7 @@ class $CCTransitionFade : public CCTransitionFade, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCTransitionFade() {}
     typedef CCTransitionFade* __thistype;
 
     static CCTransitionFade* create(float p0, cocos2d::CCScene* p1) {
@@ -15087,6 +15581,8 @@ class $CCTransitionFade : public CCTransitionFade, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCTransitionFade*(*)(float, cocos2d::CCScene*)){&$CCTransitionFade::create} != (CCTransitionFade*(*)(float, cocos2d::CCScene*)){&D::create})
             m->registerHook(getBase()+0x8ea30, (CCTransitionFade*(*)(float, cocos2d::CCScene*)){&D::create});
     }
@@ -15101,6 +15597,7 @@ class $ZipUtils : public ZipUtils, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$ZipUtils() {}
     typedef ZipUtils* __thistype;
 
     void compressString(std::string p0, bool p1, int p2) {
@@ -15116,6 +15613,8 @@ class $ZipUtils : public ZipUtils, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($ZipUtils::*)(std::string, bool, int)){&$ZipUtils::compressString} != (void(D::*)(std::string, bool, int)){&D::compressString})
             m->registerHook(getBase()+0xe9a50, extract((void(D::*)(std::string, bool, int)){&D::compressString}));
 
@@ -15133,6 +15632,7 @@ class $CCControlColourPicker : public CCControlColourPicker, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCControlColourPicker() {}
     typedef CCControlColourPicker* __thistype;
 
     void setColorValue(cocos2d::_ccColor3B const& p0) {
@@ -15142,6 +15642,8 @@ class $CCControlColourPicker : public CCControlColourPicker, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((void($CCControlColourPicker::*)(cocos2d::_ccColor3B const&)){&$CCControlColourPicker::setColorValue} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setColorValue})
             m->registerHook(getBase()+0x1aac10, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setColorValue}));
     }
@@ -15156,6 +15658,7 @@ class $CCControlUtils : public CCControlUtils, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCControlUtils() {}
     typedef CCControlUtils* __thistype;
 
     cocos2d::extension::HSV HSVfromRGB(cocos2d::extension::RGBA p0) {
@@ -15171,6 +15674,8 @@ class $CCControlUtils : public CCControlUtils, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((cocos2d::extension::HSV($CCControlUtils::*)(cocos2d::extension::RGBA)){&$CCControlUtils::HSVfromRGB} != (cocos2d::extension::HSV(D::*)(cocos2d::extension::RGBA)){&D::HSVfromRGB})
             m->registerHook(getBase()+0x1e6750, extract((cocos2d::extension::HSV(D::*)(cocos2d::extension::RGBA)){&D::HSVfromRGB}));
 
@@ -15188,6 +15693,7 @@ class $CCScale9Sprite : public CCScale9Sprite, public $CacBase {
             m = new ModContainer(CAC_PROJ_NAME);
         __cackit::glob.push_back(this);
     }
+    ~$CCScale9Sprite() {}
     typedef CCScale9Sprite* __thistype;
 
     static CCScale9Sprite* create(char const* p0) {
@@ -15209,6 +15715,8 @@ class $CCScale9Sprite : public CCScale9Sprite, public $CacBase {
     }
 
     void apply_hooks() override {
+    m->registerHook(extract_virtual(this), +[](){});
+
         if ((CCScale9Sprite*(*)(char const*)){&$CCScale9Sprite::create} != (CCScale9Sprite*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x2130d0, (CCScale9Sprite*(*)(char const*)){&D::create});
 
