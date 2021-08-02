@@ -1044,7 +1044,6 @@ class CurrencyRewardLayer;
 class DialogLayer;
 class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate {
 public:
-    //char $pad[0x7f0 - sizeof(GJBaseGameLayer)];
     void addCircle(CCCircleWave*);
     void addObject(GameObject*);
     void addToGroupOld(GameObject*);
