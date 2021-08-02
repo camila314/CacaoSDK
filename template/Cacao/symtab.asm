@@ -188,24 +188,24 @@ __Z14setupTypeinfosv:
 	mov %1, rax
 %endmacro
 
-; haha funny optimizations
-global __ZN12FLAlertLayerC2Ev
-__ZN12FLAlertLayerC2Ev:
-	push rbp
-	mov rbp, rsp
-	push rbx
+; ; haha funny optimizations
+; global __ZN12FLAlertLayerC2Ev
+; __ZN12FLAlertLayerC2Ev:
+; 	push rbp
+; 	mov rbp, rsp
+; 	push rbx
 	
-	mov rbx, rdi
-	call __ZN7cocos2d12CCLayerColorC2Ev
+; 	mov rbx, rdi
+; 	call __ZN7cocos2d12CCLayerColorC2Ev
 
-	addvtable [rbx], 0x65d200
-	addvtable [rbx+0x120], 0x65d6f8
-	addvtable [rbx+0x130], 0x65d770
-	addvtable [rbx+0x138], 0x65d790
+; 	addvtable [rbx], 0x65d200
+; 	addvtable [rbx+0x120], 0x65d6f8
+; 	addvtable [rbx+0x130], 0x65d770
+; 	addvtable [rbx+0x138], 0x65d790
 
-	pop rbx
-	pop rbp
-	ret
+; 	pop rbx
+; 	pop rbp
+; 	ret
 
 ; AnimatedGameObject::playAnimation(int)
 defit __ZN18AnimatedGameObject13playAnimationEi, 0xc93d0
@@ -227,9 +227,6 @@ defit __ZN17AudioEffectsLayer6createESs, 0x271a00
 
 ; AudioEffectsLayer::resetAudioVars()
 defit __ZN17AudioEffectsLayer14resetAudioVarsEv, 0x271ee0
-
-; BoomScrollLayer::BoomScrollLayer()
-defit __ZN15BoomScrollLayerC1Ev, 0x1e42f0
 
 ; ButtonSprite::create(char const*)
 defit __ZN12ButtonSprite6createEPKc, 0x4fa10
@@ -378,17 +375,11 @@ defit __ZN18ColorChannelSprite13updateOpacityEf, 0x16e080
 ; ColorChannelSprite::updateValues(ColorAction*)
 defit __ZN18ColorChannelSprite12updateValuesEP11ColorAction, 0x16e2e0
 
-; ColorSelectLiveOverlay::ColorSelectLiveOverlay()
-defit __ZN22ColorSelectLiveOverlayC1Ev, 0x2e2580
-
 ; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
 defit __ZN22ColorSelectLiveOverlayD0Ev, 0x2e24f0
 
 ; ColorSelectLiveOverlay::~ColorSelectLiveOverlay()
 defit __ZN22ColorSelectLiveOverlayD1Ev, 0x2e24c0
-
-; ColorSelectPopup::ColorSelectPopup()
-defit __ZN16ColorSelectPopupC1Ev, 0x41eb80
 
 ; ColorSelectPopup::colorValueChanged(cocos2d::_ccColor3B)
 defit __ZN16ColorSelectPopup17colorValueChangedEN7cocos2d10_ccColor3BE, 0x423320
@@ -486,9 +477,6 @@ defit __ZN20CustomizeObjectLayer11textChangedEP15CCTextInputNode, 0xe1470
 ; CustomizeObjectLayer::textInputClosed(CCTextInputNode*)
 defit __ZN20CustomizeObjectLayer15textInputClosedEP15CCTextInputNode, 0xe1430
 
-; DS_Dictionary::DS_Dictionary()
-defit __ZN13DS_DictionaryC1Ev, 0xbe9a0
-
 ; DelayedSpawnNode::create()
 defit __ZN16DelayedSpawnNode6createEv, 0x9b360
 
@@ -557,9 +545,6 @@ defit __ZN16EditorPauseLayer9saveLevelEv, 0x13ebd0
 
 ; EditorPauseLayer::~EditorPauseLayer()
 defit __ZN16EditorPauseLayerD0Ev, 0x13c570
-
-; EditorUI::EditorUI()
-defit __ZN8EditorUIC2Ev, 0x32220
 
 ; EditorUI::constrainGameLayerPosition()
 defit __ZN8EditorUI26constrainGameLayerPositionEv, 0x1c6d0
@@ -645,9 +630,6 @@ defit __ZN8EditorUI12updateSliderEv, 0x18a90
 ; EditorUI::updateZoom(float)
 defit __ZN8EditorUI10updateZoomEf, 0x248c0
 
-; EffectGameObject::EffectGameObject()
-defit __ZN16EffectGameObjectC1Ev, 0xdc2d0
-
 ; EffectGameObject::create(char const*)
 defit __ZN16EffectGameObject6createEPKc, 0xc9790
 
@@ -656,9 +638,6 @@ defit __ZN16EffectGameObject19getTargetColorIndexEv, 0xca1f0
 
 ; EffectGameObject::triggerObject(GJBaseGameLayer*)
 defit __ZN16EffectGameObject13triggerObjectEP15GJBaseGameLayer, 0xc9870
-
-; EndLevelLayer::EndLevelLayer()
-defit __ZN13EndLevelLayerC1Ev, 0x27be40
 
 ; EndLevelLayer::create()
 defit __ZN13EndLevelLayer6createEv, 0x2787d0
@@ -1665,9 +1644,6 @@ defit __ZN11GameManagerD1Ev, 0x1d0fe0
 ; GameManager::~GameManager()
 defit __ZN11GameManagerD2Ev, 0x1d0e00
 
-; GameObject::GameObject()
-defit __ZN10GameObjectC1Ev, 0xdc4c0
-
 ; GameObject::activateObject()
 defit __ZN10GameObject14activateObjectEv, 0x2faf60
 
@@ -2130,9 +2106,6 @@ defit __ZN17LevelBrowserLayer5sceneEP14GJSearchObject, 0x2511d0
 ; LevelBrowserLayer::setIDPopupClosed(SetIDPopup*, int)
 defit __ZN17LevelBrowserLayer16setIDPopupClosedEP10SetIDPopupi, 0x2554f0
 
-; LevelEditorLayer::LevelEditorLayer()
-defit __ZN16LevelEditorLayerC1Ev, 0xad500
-
 ; LevelEditorLayer::activateTriggerEffect(EffectGameObject*, float, float, float)
 defit __ZN16LevelEditorLayer21activateTriggerEffectEP16EffectGameObjectfff, 0x9b520
 
@@ -2477,9 +2450,6 @@ defit __ZN15PlatformToolbox10hideCursorEv, 0x27c340
 
 ; PlatformToolbox::showCursor()
 defit __ZN15PlatformToolbox10showCursorEv, 0x27c360
-
-; PlayLayer::PlayLayer()
-defit __ZN9PlayLayerC1Ev, 0x80e20
 
 ; PlayLayer::addCircle(CCCircleWave*)
 defit __ZN9PlayLayer9addCircleEP12CCCircleWave, 0x7e0f0
@@ -2960,9 +2930,6 @@ defit __ZThn288_N9PlayLayerD1Ev, 0x6b470
 
 ; PlayerCheckpoint::create()
 defit __ZN16PlayerCheckpoint6createEv, 0x7e8c0
-
-; PlayerObject::PlayerObject()
-defit __ZN12PlayerObjectC1Ev, 0x22ecf0
 
 ; PlayerObject::activateStreak()
 defit __ZN12PlayerObject14activateStreakEv, 0x21aef0
