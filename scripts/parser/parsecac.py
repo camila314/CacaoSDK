@@ -21,6 +21,11 @@ class FunkyInfo:
         self.mang = None
         self.ret = ''
         self.thunk = None
+        self.clash = False
+    def getMangle(self):
+        if self.mang is not None:
+            return syms[int(self.mang)][1][:-1]
+        return None
     def __repr__(self):
         return f"<{f'method with mangle {self.mang}' if self.func else 'member'} {'static ' if self.static else ''}{'virtual ' if self.static else ''}{self.ret} {self.name}{'(' + ', '.join(self.args) + ')' if self.func else ''} at address {self.addr}{f' with thunk offset {self.thunk}' if self.thunk is not None else ''}>"
 
@@ -47,7 +52,7 @@ t_ignore_WHITESPACE = r"[\s\t]"
 t_ignore_COMMENT = r'//.*'
 
 def t_IDENT(t):
-    r'[a-zA-Z_@~][:a-zA-Z0-9_&\*<>]*'
+    r'[a-zA-Z_@~][:a-zA-Z0-9_&\[\]\*<>]*'
     t.type = reserved.get(t.value,'IDENT')
     return t
 
@@ -85,7 +90,6 @@ def parse_func(tok):
         tok = ensure_next()
     retlist = []
     while tok.type != "LPAREN" and tok.type != "ASSIGN" and tok.type != "SEMI":
-        print(tok.value)
         if tok.type != "IDENT":
             raise ValueError("bad type / name")
         retlist.append(tok.value)
@@ -96,7 +100,6 @@ def parse_func(tok):
 
     fi.ret = " ".join(retlist[:-1])
     fi.name = retlist[-1]
-    print(fi.name)
 
     if tok.type == "ASSIGN":
         # member variable
@@ -191,5 +194,41 @@ def parse(*files):
                 funky_classes[fc.name] = fc 
     return funky_classes
 
-d = parse("cacnew.mm")
-print(d)
+def write(file, funky_classes):
+    with open(file, "w") as f:
+        for name, cl in funky_classes.items():
+            f.write(f"@interface {cl.name}")
+            if len(cl.base) > 0:
+                f.write(" : ")
+                f.write(", ".join(f"public {b}" for b in cl.base))
+            f.write('\n')
+            for info in cl.infos:
+                static = "static " if info.static else ""
+                virtual = "virtual " if info.virtual else ""
+                ret = info.ret
+                name = info.name
+                addr = info.addr
+                if info.func:
+                    param = ', '.join(info.args)
+                    mang = info.mang
+                    thunk = info.thunk
+                    if self.clash:
+                        f.write('// ')
+                    if ret == '':
+                        f.write(f"    {name}({param}) = {addr}, {mang};\n")
+                    elif addr is not None and thunk is not None:
+                        f.write(f"    {static}{virtual}{ret} {name}({param}) = {addr}, {mang}, {thunk};\n")
+                    elif addr is not None:
+                        f.write(f"    {static}{virtual}{ret} {name}({param}) = {addr}, {mang};\n")
+                    else:
+                        f.write(f"    {static}{virtual}{ret} {name}({param});\n")
+                else:
+                    if addr is not None:
+                        f.write(f"    {static}{virtual}{ret} {name} = {addr};\n")
+                    else:
+                        f.write(f"    {static}{virtual}{ret} {name};\n")
+            f.write(f"@end\n\n")
+
+
+# d = parse("cacnew.mm")
+# write("caccopy.mm", d)
