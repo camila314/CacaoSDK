@@ -205,72 +205,72 @@ class UILayer;
 class UndoObject;
 
 
-class AnimatedGameObject {
+class AnimatedGameObject : public GDObj {
     void playAnimation(int);
     void updateChildSpriteColor(cocos2d::_ccColor3B);
 };
 
-class AppDelegate {
+class AppDelegate : public GDObj {
     void bgScale();
     static AppDelegate* get();
 };
 
-class AudioEffectsLayer {
+class AudioEffectsLayer : public GDObj {
     void audioStep(float);
     static AudioEffectsLayer* create(std::string);
     void resetAudioVars();
 };
 
-class ButtonSprite {
+class ButtonSprite : public GDObj {
     static ButtonSprite* create(char const*);
     static ButtonSprite* create(char const*, int, int, float, bool);
     void updateBGImage(char const*);
 };
 
-class CCAnimatedSprite {
+class CCAnimatedSprite : public GDObj {
     void runAnimation(std::string);
     void tweenToAnimation(std::string, float);
 };
 
-class CCCircleWave {
+class CCCircleWave : public GDObj {
     static CCCircleWave* create(float, float, float, bool);
     static CCCircleWave* create(float, float, float, bool, bool);
     void followObject(cocos2d::CCNode*, bool);
     void updatePosition(float);
 };
 
-class CCLightFlash {
+class CCLightFlash : public GDObj {
     static CCLightFlash* create();
     void playEffect(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
 };
 
-class CCMenuItemSpriteExtra {
+class CCMenuItemSpriteExtra : public GDObj {
     static CCMenuItemSpriteExtra* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO);
     void setSizeMult(float);
 };
 
-class CCMenuItemToggler {
+class CCMenuItemToggler : public GDObj {
     static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO);
     void setSizeMult(float);
 };
 
-class CCMoveCNode {
+class CCMoveCNode : public GDObj {
     static CCMoveCNode* create();
     bool init();
     ~CCMoveCNode();
 };
 
-class CCNodeContainer {
+class CCNodeContainer : public GDObj {
     static CCNodeContainer* create();
     bool init();
     void visit();
 };
 
-class CCSpritePlus {
+class CCSpritePlus : public GDObj {
     bool initWithSpriteFrameName(char const*);
 };
 
-class CCTextInputNode {
+class CCTextInputNode : public GDObj {
     static CCTextInputNode* create(float, float, char const*, char const*, int, char const*);
     std::string getString();
     void refreshLabel();
@@ -283,37 +283,37 @@ class CCTextInputNode {
     void updateLabel(std::string);
 };
 
-class CheckpointObject {
+class CheckpointObject : public GDObj {
     static CheckpointObject* create();
     void getObject();
 };
 
-class CollisionBlockPopup {
+class CollisionBlockPopup : public GDObj {
     static CollisionBlockPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onNextItemID(cocos2d::CCObject*);
 };
 
-class CollisionTriggerAction {
+class CollisionTriggerAction : public GDObj {
     static CollisionTriggerAction* createFromString(std::string);
 };
 
-class ColorAction {
+class ColorAction : public GDObj {
     void getSaveString();
     void setupFromDict(cocos2d::CCDictionary*);
     void setupFromString(std::string);
 };
 
-class ColorChannelSprite {
+class ColorChannelSprite : public GDObj {
     void updateBlending(bool);
     void updateCopyLabel(int, bool);
     void updateOpacity(float);
     void updateValues(ColorAction*);
 };
 
-class ColorSelectLiveOverlay {
+class ColorSelectLiveOverlay : public GDObj {
 };
 
-class ColorSelectPopup {
+class ColorSelectPopup : public GDObj {
     void colorValueChanged(cocos2d::_ccColor3B);
     static ColorSelectPopup* create(EffectGameObject*, cocos2d::CCArray*);
     bool init(EffectGameObject*, cocos2d::CCArray*, ColorAction*);
@@ -335,19 +335,19 @@ class ColorSelectPopup {
     ~ColorSelectPopup();
 };
 
-class CountTriggerAction {
+class CountTriggerAction : public GDObj {
     static CountTriggerAction* createFromString(std::string);
 };
 
-class CreateMenuItem {
+class CreateMenuItem : public GDObj {
 };
 
-class CreatorLayer {
+class CreatorLayer : public GDObj {
     void onMyLevels(cocos2d::CCObject*);
     void onSavedLevels(cocos2d::CCObject*);
 };
 
-class CustomizeObjectLayer {
+class CustomizeObjectLayer : public GDObj {
     void colorSelectClosed(cocos2d::CCNode*);
     static CustomizeObjectLayer* create(GameObject*, cocos2d::CCArray*);
     bool init(GameObject*, cocos2d::CCArray*);
@@ -355,19 +355,19 @@ class CustomizeObjectLayer {
     void textInputClosed(CCTextInputNode*);
 };
 
-class DelayedSpawnNode {
+class DelayedSpawnNode : public GDObj {
     static DelayedSpawnNode* create();
 };
 
-class DialogLayer {
+class DialogLayer : public GDObj {
     static DialogLayer* create(DialogObject*, int);
 };
 
-class DialogObject {
+class DialogObject : public GDObj {
     static DialogObject* create(std::string, std::string, int, float, bool, cocos2d::_ccColor3B);
 };
 
-class DrawGridLayer {
+class DrawGridLayer : public GDObj {
     void addPlayer2Point(cocos2d::CCPoint, bool);
     void addPlayerPoint(cocos2d::CCPoint);
     void addToSpeedObjects(GameObject*);
@@ -380,21 +380,21 @@ class DrawGridLayer {
     ~DrawGridLayer();
 };
 
-class EditButtonBar {
+class EditButtonBar : public GDObj {
     void loadFromItems(cocos2d::CCArray*, int, int, bool);
 };
 
-class EditorOptionsLayer {
+class EditorOptionsLayer : public GDObj {
     void onButtonsPerRow(cocos2d::CCObject*);
 };
 
-class EditorPauseLayer {
+class EditorPauseLayer : public GDObj {
     static EditorPauseLayer* create(LevelEditorLayer*);
     void saveLevel();
 };
 
-class EditorUI {
-    void constrainGameLayerPosition();
+class EditorUI : public cocos2d::CCLayer, public GDObj {
+    cocos2d::CCLayer constrainGameLayerPosition();
     void create(LevelEditorLayer*);
     void deselectAll();
     void onDeselectAll(CCObject*);
@@ -422,24 +422,29 @@ class EditorUI {
     void updateObjectInfoLabel();
     void updateSlider();
     void updateZoom(float);
+    CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x408);
+    CLASS_PARAM(cocos2d::CCArray*, editBars, 0x358);
+    CLASS_PARAM(cocos2d::CCNode*, locationSlider, 0x228);
+    CLASS_PARAM(GameObject*, lastSelectedObject, 0x440);
+    CLASS_PARAM(std::string, clipboard, 0x458);
 };
 
-class EffectGameObject {
+class EffectGameObject : public GDObj {
     static EffectGameObject* create(char const*);
     void getTargetColorIndex();
     void triggerObject(GJBaseGameLayer*);
 };
 
-class EndLevelLayer {
+class EndLevelLayer : public GDObj {
     static EndLevelLayer* create();
 };
 
-class EndPortalObject {
+class EndPortalObject : public GDObj {
     static EndPortalObject* create();
     void updateColors(cocos2d::_ccColor3B);
 };
 
-class FLAlertLayer {
+class FLAlertLayer : public GDObj {
     bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
     void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
     void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
@@ -455,15 +460,15 @@ class FLAlertLayer {
     ~FLAlertLayer();
 };
 
-class FollowRewardPage {
+class FollowRewardPage : public GDObj {
     static FollowRewardPage* create();
 };
 
-class GJAccountManager {
+class GJAccountManager : public GDObj {
     static GJAccountManager* sharedState();
 };
 
-class GJBaseGameLayer {
+class GJBaseGameLayer : public GDObj {
     void addObjectCounter(LabelGameObject*, int);
     void addToGroup(GameObject*, int, bool);
     void addToGroups(GameObject*, bool);
@@ -535,28 +540,36 @@ class GJBaseGameLayer {
     ~GJBaseGameLayer();
 };
 
-class GJColorSetupLayer {
+class GJColorSetupLayer : public GDObj {
     void updateSpriteColors();
 };
 
-class GJDropDownLayer {
-    static GJDropDownLayer* create(char const*);
-    void customSetup();
-    void disableUI();
+class GJDropDownLayer : public cocos2d::CCLayerColor, public GDObj {
+    cocos2d::CCLayerColor GJDropDownLayer* create(char const*);
+    virtual void customSetup();
+    virtual void enterLayer();
+    virtual void exitLayer(cocos2d::CCObject*);
+    virtual void showLayer(bool);
+    virtual void hideLayer(bool);
+    virtual void layerVisible();
+    virtual void layerHidden();
+    virtual void enterAnimFinished();
+    virtual void disableUI();
+    virtual void enableUI();
     void draw();
-    void enableUI();
-    void enterAnimFinished();
-    void enterLayer();
-    void exitLayer(cocos2d::CCObject*);
-    void hideLayer(bool);
     bool init(char const*, float);
-    void layerHidden();
-    void layerVisible();
     void registerWithTouchDispatcher();
-    void showLayer(bool);
+    cocos2d::CCPoint m_endPosition;
+    cocos2d::CCPoint m_startPosition;
+    cocos2d::CCMenu* m_buttonMenu;
+    GJListLayer* m_listLayer;
+    bool m_controllerEnabled;
+    cocos2d::CCLayer* m_mainLayer;
+    bool m_hidden;
+    void* m_unknown;
 };
 
-class GJEffectManager {
+class GJEffectManager : public GDObj {
     void activeColorForIndex(int);
     void activeOpacityForIndex(int);
     void addAllInheritedColorActions(cocos2d::CCArray*);
@@ -644,7 +657,7 @@ class GJEffectManager {
     ~GJEffectManager();
 };
 
-class GJFollowCommandLayer {
+class GJFollowCommandLayer : public GDObj {
     static GJFollowCommandLayer* create(EffectGameObject*, cocos2d::CCArray*);
     void onUpdateGroupID(cocos2d::CCObject*);
     void onUpdateGroupID2(cocos2d::CCObject*);
@@ -653,7 +666,7 @@ class GJFollowCommandLayer {
     void updateTargetGroupID2();
 };
 
-class GJGameLevel {
+class GJGameLevel : public GDObj {
     static GJGameLevel* create();
     void getAudioFileName();
     void getCoinKey(int);
@@ -663,7 +676,7 @@ class GJGameLevel {
     void savePercentage(int, bool, int, int, bool);
 };
 
-class GJGroundLayer {
+class GJGroundLayer : public GDObj {
     static GJGroundLayer* create(int, int);
     void deactivateGround();
     void getGroundY();
@@ -673,7 +686,7 @@ class GJGroundLayer {
     void updateGroundWidth();
 };
 
-class GJMoveCommandLayer {
+class GJMoveCommandLayer : public GDObj {
     static GJMoveCommandLayer* create(EffectGameObject*, cocos2d::CCArray*);
     bool init(EffectGameObject*, cocos2d::CCArray*);
     void keyBackClicked();
@@ -695,19 +708,19 @@ class GJMoveCommandLayer {
     ~GJMoveCommandLayer();
 };
 
-class GJPFollowCommandLayer {
+class GJPFollowCommandLayer : public GDObj {
     static GJPFollowCommandLayer* create(EffectGameObject*, cocos2d::CCArray*);
     void textChanged(CCTextInputNode*);
     void updateTargetGroupID();
 };
 
-class GJRobotSprite {
+class GJRobotSprite : public GDObj {
     static GJRobotSprite* create();
     void updateColor02(cocos2d::_ccColor3B);
     void updateFrame(int);
 };
 
-class GJRotateCommandLayer {
+class GJRotateCommandLayer : public GDObj {
     static GJRotateCommandLayer* create(EffectGameObject*, cocos2d::CCArray*);
     void onUpdateGroupID(cocos2d::CCObject*);
     void onUpdateGroupID2(cocos2d::CCObject*);
@@ -716,32 +729,32 @@ class GJRotateCommandLayer {
     void updateTargetGroupID2();
 };
 
-class GJSearchObject {
+class GJSearchObject : public GDObj {
     static GJSearchObject* create(SearchType);
     static GJSearchObject* create(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int);
     void getPageObject(int);
 };
 
-class GJSpecialColorSelect {
+class GJSpecialColorSelect : public GDObj {
     void textForColorIdx(int);
 };
 
-class GJSpiderSprite {
+class GJSpiderSprite : public GDObj {
     static GJSpiderSprite* create();
 };
 
-class GManager {
+class GManager : public GDObj {
     void save();
     void saveData(DS_Dictionary*, std::string);
     void saveGMTo(std::string);
 };
 
-class GameLevelManager {
+class GameLevelManager : public GDObj {
     GJGameLevel* createNewLevel();
     static GameLevelManager* sharedState();
 };
 
-class GameManager {
+class GameManager : public GDObj {
     void accountStatusChanged();
     const cocos2d::_ccColor3B& colorForIdx(int);
     void didExitPlayscene();
@@ -764,7 +777,7 @@ class GameManager {
     ~GameManager();
 };
 
-class GameObject {
+class GameObject : public GDObj {
     void activateObject();
     void activatedByPlayer(GameObject*);
     void addColorSprite();
@@ -864,13 +877,13 @@ class GameObject {
     void updateSyncedAnimation(float);
 };
 
-class GameObjectCopy {
+class GameObjectCopy : public GDObj {
     static GameObjectCopy* create(GameObject*);
     void resetObject();
     ~GameObjectCopy();
 };
 
-class GameSoundManager {
+class GameSoundManager : public GDObj {
     void disableMetering();
     void enableMetering();
     void getMeteringValue();
@@ -881,7 +894,7 @@ class GameSoundManager {
     ~GameSoundManager();
 };
 
-class GameStatsManager {
+class GameStatsManager : public GDObj {
     void awardCurrencyForLevel(GJGameLevel*);
     void awardDiamondsForLevel(GJGameLevel*);
     void awardSecretKey();
@@ -898,7 +911,7 @@ class GameStatsManager {
     void storeUserCoin(char const*);
 };
 
-class GameToolbox {
+class GameToolbox : public GDObj {
     void createToggleButton(std::string, cocos2d::SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*);
     static void getRelativeOffset(GameObject*, cocos2d::CCPoint);
     static void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float);
@@ -908,13 +921,13 @@ class GameToolbox {
     static void transformColor(cocos2d::_ccColor3B const&, float, float, float);
 };
 
-class GravityEffectSprite {
+class GravityEffectSprite : public GDObj {
     static GravityEffectSprite* create();
     bool init();
     void updateSpritesColor(cocos2d::_ccColor3B);
 };
 
-class GroupCommandObject {
+class GroupCommandObject : public GDObj {
     static GroupCommandObject* create();
     static GroupCommandObject* createFromString(std::string);
     void easeToText(int);
@@ -923,30 +936,30 @@ class GroupCommandObject {
     void runRotateCommand(float, float, int, float, bool);
 };
 
-class HardStreak {
+class HardStreak : public GDObj {
     void addPoint(cocos2d::CCPoint);
     void reset();
     void resumeStroke();
     void stopStroke();
 };
 
-class InfoLayer {
+class InfoLayer : public GDObj {
     void loadPage(int, bool);
     void onRefreshComments(cocos2d::CCObject*);
 };
 
-class LabelGameObject {
+class LabelGameObject : public GDObj {
     bool init();
     void setObjectColor(cocos2d::_ccColor3B const&);
 };
 
-class LevelBrowserLayer {
+class LevelBrowserLayer : public GDObj {
     void loadPage(GJSearchObject*);
     static cocos2d::CCScene* scene(GJSearchObject*);
     void setIDPopupClosed(SetIDPopup*, int);
 };
 
-class LevelEditorLayer {
+class LevelEditorLayer : public GDObj {
     void activateTriggerEffect(EffectGameObject*, float, float, float);
     GameObject* addObjectFromString(std::string);
     void addSpecial(GameObject*);
@@ -1020,11 +1033,11 @@ class LevelEditorLayer {
     ~LevelEditorLayer();
 };
 
-class LevelSettingsLayer {
+class LevelSettingsLayer : public GDObj {
     static LevelSettingsLayer* create(LevelSettingsObject*, LevelEditorLayer*);
 };
 
-class LevelSettingsObject {
+class LevelSettingsObject : public GDObj {
     static LevelSettingsObject* create();
     bool init();
     void objectFromDict(cocos2d::CCDictionary*);
@@ -1032,42 +1045,42 @@ class LevelSettingsObject {
     void setupColorsFromLegacyMode(cocos2d::CCDictionary*);
 };
 
-class LevelTools {
+class LevelTools : public GDObj {
     void getAudioString(int);
     void verifyLevelIntegrity(std::string, int);
     void xPosForTime(float, cocos2d::CCArray*, int);
 };
 
-class LoadingLayer {
+class LoadingLayer : public GDObj {
     void loadAssets();
 };
 
-class LocalLevelManager {
+class LocalLevelManager : public GDObj {
     static LocalLevelManager* sharedState();
 };
 
-class MenuGameLayer {
+class MenuGameLayer : public GDObj {
     void resetPlayer();
     void update(float);
 };
 
-class MenuLayer {
+class MenuLayer : public GDObj {
     virtual void keyBackClicked();
     void onMoreGames(cocos2d::CCObject*);
     void onQuit(cocos2d::CCObject*);
 };
 
-class MoreVideoOptionsLayer {
+class MoreVideoOptionsLayer : public GDObj {
     static MoreVideoOptionsLayer* create();
     bool init();
 };
 
-class MusicDownloadManager {
+class MusicDownloadManager : public GDObj {
     void incrementPriorityForSong(int);
     static MusicDownloadManager* sharedState();
 };
 
-class OBB2D : public cocos2d::CCNode {
+class OBB2D : public cocos2d::CCNode, public GDObj {
     cocos2d::CCNode calculateWithCenter(cocos2d::CCPoint, float, float, float);
     static OBB2D* create(cocos2d::CCPoint, float, float, float);
     void getBoundingRect();
@@ -1075,30 +1088,30 @@ class OBB2D : public cocos2d::CCNode {
     void overlaps1Way(OBB2D*);
 };
 
-class ObjectToolbox {
+class ObjectToolbox : public GDObj {
     bool init();
     void intKeyToFrame(int);
     static ObjectToolbox* sharedState();
 };
 
-class OpacityEffectAction {
+class OpacityEffectAction : public GDObj {
     static OpacityEffectAction* create(float, float, float, int);
     static OpacityEffectAction* createFromString(std::string);
     bool init(float, float, float, int);
     void step(float);
 };
 
-class PauseLayer {
+class PauseLayer : public GDObj {
     static PauseLayer* create(bool);
     void onEdit(cocos2d::CCObject*);
 };
 
-class PlatformToolbox {
+class PlatformToolbox : public GDObj {
     void hideCursor();
     void showCursor();
 };
 
-class PlayLayer {
+class PlayLayer : public GDObj {
     void addCircle(CCCircleWave*);
     void addObject(GameObject*);
     void addToGroupOld(GameObject*);
@@ -1253,11 +1266,11 @@ class PlayLayer {
     ~PlayLayer();
 };
 
-class PlayerCheckpoint {
+class PlayerCheckpoint : public GDObj {
     static PlayerCheckpoint* create();
 };
 
-class PlayerObject {
+class PlayerObject : public GDObj {
     void activateStreak();
     void addAllParticles();
     void addToTouchedRings(GameObject*);
@@ -1409,73 +1422,73 @@ class PlayerObject {
     ~PlayerObject();
 };
 
-class PulseEffectAction {
+class PulseEffectAction : public GDObj {
     static PulseEffectAction* createFromString(std::string);
     void getSaveString();
 };
 
-class RetryLevelLayer {
+class RetryLevelLayer : public GDObj {
     static RetryLevelLayer* create();
 };
 
-class SetGroupIDLayer {
+class SetGroupIDLayer : public GDObj {
     void onNextGroupID1(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateGroupIDLabel();
     ~SetGroupIDLayer();
 };
 
-class SetIDLayer {
+class SetIDLayer : public GDObj {
     static SetIDLayer* create(GameObject*);
 };
 
-class SetItemIDLayer {
+class SetItemIDLayer : public GDObj {
     static SetItemIDLayer* create(EffectGameObject*, cocos2d::CCArray*);
 };
 
-class SetTargetIDLayer {
+class SetTargetIDLayer : public GDObj {
     static SetTargetIDLayer* create(EffectGameObject*, cocos2d::CCArray*, std::string);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupAnimationPopup {
+class SetupAnimationPopup : public GDObj {
     static SetupAnimationPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupCollisionTriggerPopup {
+class SetupCollisionTriggerPopup : public GDObj {
     static SetupCollisionTriggerPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupCountTriggerPopup {
+class SetupCountTriggerPopup : public GDObj {
     static SetupCountTriggerPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupInstantCountPopup {
+class SetupInstantCountPopup : public GDObj {
     static SetupInstantCountPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupInteractObjectPopup {
+class SetupInteractObjectPopup : public GDObj {
     static SetupInteractObjectPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupObjectTogglePopup {
+class SetupObjectTogglePopup : public GDObj {
     static SetupObjectTogglePopup* create(EffectGameObject*, cocos2d::CCArray*);
     bool init(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
@@ -1483,14 +1496,14 @@ class SetupObjectTogglePopup {
     void updateTargetID();
 };
 
-class SetupOpacityPopup {
+class SetupOpacityPopup : public GDObj {
     static SetupOpacityPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SetupPickupTriggerPopup {
+class SetupPickupTriggerPopup : public GDObj {
     static SetupPickupTriggerPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onItemIDArrow(cocos2d::CCObject*);
     void onNextItemID(cocos2d::CCObject*);
@@ -1498,7 +1511,7 @@ class SetupPickupTriggerPopup {
     void updateItemID();
 };
 
-class SetupPulsePopup {
+class SetupPulsePopup : public GDObj {
     void colorValueChanged(cocos2d::_ccColor3B);
     static SetupPulsePopup* create(EffectGameObject*, cocos2d::CCArray*);
     bool init(EffectGameObject*, cocos2d::CCArray*);
@@ -1514,11 +1527,11 @@ class SetupPulsePopup {
     ~SetupPulsePopup();
 };
 
-class SetupShakePopup {
+class SetupShakePopup : public GDObj {
     static SetupShakePopup* create(EffectGameObject*, cocos2d::CCArray*);
 };
 
-class SetupSpawnPopup {
+class SetupSpawnPopup : public GDObj {
     static SetupSpawnPopup* create(EffectGameObject*, cocos2d::CCArray*);
     void createToggleButton(std::string, cocos2d::SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
@@ -1526,21 +1539,21 @@ class SetupSpawnPopup {
     void updateTargetID();
 };
 
-class SetupTouchTogglePopup {
+class SetupTouchTogglePopup : public GDObj {
     static SetupTouchTogglePopup* create(EffectGameObject*, cocos2d::CCArray*);
     void onTargetIDArrow(cocos2d::CCObject*);
     void textChanged(CCTextInputNode*);
     void updateTargetID();
 };
 
-class SimplePlayer {
+class SimplePlayer : public GDObj {
     static SimplePlayer* create(int);
     void setSecondColor(cocos2d::_ccColor3B const&);
     void updateColors();
     void updatePlayerFrame(int, IconType);
 };
 
-class Slider {
+class Slider : public GDObj {
     static Slider* create(cocos2d::CCNode*, cocos2d::SEL_CallFuncO, char const*, char const*, char const*, char const*, float);
     static Slider* create(cocos2d::CCNode*, cocos2d::SEL_CallFuncO, float);
     void getValue();
@@ -1548,42 +1561,42 @@ class Slider {
     void setValue(float);
 };
 
-class SliderThumb {
+class SliderThumb : public GDObj {
     void getValue();
 };
 
-class SpawnTriggerAction {
+class SpawnTriggerAction : public GDObj {
     static SpawnTriggerAction* createFromString(std::string);
 };
 
-class SpeedObject {
+class SpeedObject : public GDObj {
     static SpeedObject* create(GameObject*, int, float);
     bool init(GameObject*, int, float);
 };
 
-class TeleportPortalObject {
+class TeleportPortalObject : public GDObj {
     static TeleportPortalObject* create(char const*);
     void getTeleportXOff(cocos2d::CCNode*);
 };
 
-class TextArea {
+class TextArea : public GDObj {
     static TextArea* create(std::string, char const*, float, float, cocos2d::CCPoint, float, bool);
 };
 
-class TextInputDelegate {
+class TextInputDelegate : public GDObj {
     bool allowTextInput(CCTextInputNode*);
     void textInputOpened(CCTextInputNode*);
 };
 
-class ToggleTriggerAction {
+class ToggleTriggerAction : public GDObj {
     static ToggleTriggerAction* createFromString(std::string);
 };
 
-class TouchToggleAction {
+class TouchToggleAction : public GDObj {
     static TouchToggleAction* createFromString(std::string);
 };
 
-class UILayer {
+class UILayer : public GDObj {
     static UILayer* create();
     void disableMenu();
     void enableMenu();
@@ -1591,7 +1604,7 @@ class UILayer {
     void toggleCheckpointsMenu(bool);
 };
 
-class UndoObject {
+class UndoObject : public GDObj {
     static UndoObject* create(GameObject*, UndoCommand);
     static UndoObject* createWithArray(cocos2d::CCArray*, UndoCommand);
     ~UndoObject();

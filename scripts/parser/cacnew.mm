@@ -186,7 +186,7 @@
     void saveLevel() = 0x13ebd0, 1438;
 @end
 
-@interface EditorUI
+@interface EditorUI : cocos2d::CCLayer
     void constrainGameLayerPosition() = 0x1c6d0, 1479;
     void create(LevelEditorLayer*) = 0x8a80, 1481;
     void deselectAll() = 0x1f300, 1493;
@@ -215,6 +215,12 @@
     void updateObjectInfoLabel() = 0x1cb10, 1647;
     void updateSlider() = 0x18a90, 1650;
     void updateZoom(float) = 0x248c0, 1652;
+
+    LevelEditorLayer* editorLayer = 0x408;
+    cocos2d::CCArray* editBars = 0x358;
+    cocos2d::CCNode* locationSlider = 0x228;
+    GameObject* lastSelectedObject = 0x440;
+    std::string clipboard = 0x458;
 @end
 
 @interface EffectGameObject
@@ -332,21 +338,31 @@
     void updateSpriteColors() = 0xefe50, 2096;
 @end
 
-@interface GJDropDownLayer
+@interface GJDropDownLayer : cocos2d::CCLayerColor
     static GJDropDownLayer* create(char const*) = 0x352530, 2119;
-    void customSetup() = 0x352570, 2121;
-    void disableUI() = 0x352580, 2122;
+    virtual void customSetup() = 0x352570, 2121;
+    virtual void enterLayer() = 0x3525c0, 2126;
+    virtual void exitLayer(cocos2d::CCObject*) = 0x352670, 2127;
+    virtual void showLayer(bool) = 0x3526c0, 2135;
+    virtual void hideLayer(bool) = 0x3527b0, 2128;
+    virtual void layerVisible() = 0x3528b0, 2133;
+    virtual void layerHidden() = 0x3528d0, 2132;
+    virtual void enterAnimFinished() = 0x3528a0, 2125;
+    virtual void disableUI() = 0x352580, 2122;
+    virtual void enableUI() = 0x3525a0, 2124;
+
     void draw() = 0x352910, 2123;
-    void enableUI() = 0x3525a0, 2124;
-    void enterAnimFinished() = 0x3528a0, 2125;
-    void enterLayer() = 0x3525c0, 2126;
-    void exitLayer(cocos2d::CCObject*) = 0x352670, 2127;
-    void hideLayer(bool) = 0x3527b0, 2128;
     bool init(char const*, float) = 0x352100, 2130;
-    void layerHidden() = 0x3528d0, 2132;
-    void layerVisible() = 0x3528b0, 2133;
     void registerWithTouchDispatcher() = 0x3525f0, 2134;
-    void showLayer(bool) = 0x3526c0, 2135;
+
+    cocos2d::CCPoint endPosition;
+    cocos2d::CCPoint startPosition;
+    cocos2d::CCMenu* buttonMenu;
+    GJListLayer* listLayer;
+    bool controllerEnabled;
+    cocos2d::CCLayer* mainLayer;
+    bool hidden;
+    void* unknown;
 @end
 
 @interface GJEffectManager

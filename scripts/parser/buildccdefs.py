@@ -9,16 +9,17 @@ def build_cls(funky_cls):
     out = ""
     if "cocos2d" in funky_cls.name:
         return ""
-    out += f"class {funky_cls.name}"
+    out += f"class {funky_cls.name} : "
+    out += ", ".join(f"public {b}" for b in funky_cls.base)
     if len(funky_cls.base) > 0:
-        out += " : "
-        out += ", ".join(f"public {b}" for b in funky_cls.base)
-    out += " {\n"
+        out += ", "
+    out += "public GDObj {\n"
     for info in funky_cls.infos:
         static = "static " if info.static else ""
         virtual = "virtual " if info.virtual else ""
         ret = info.ret
         name = info.name
+        addr = info.addr
         if info.func:
             param = ', '.join(info.args)
             if ret == '':
