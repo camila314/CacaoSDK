@@ -6,31 +6,31 @@ funcs = {}
 exist = {}
 mangles = []
 
-with open("functions.txt", "r") as f:
+with open("../template/Cacao/Auto/functions.txt", "r") as f:
 	s = f.readlines()
 	for k, m in zip(s[0::2], s[1::2]):
 		mangles.append(m[:-1])
 
-with open("../template/Cacao/Cac/cackit.mm", "r") as f:
-    while True:
-        l = f.readline()
-        if not l:
-            break
-        cl = l[11:-1]
-        exist[cl] = []
-        l = f.readline()
-        if not l:
-            break
-        while l != "@end\n":
-            exist[cl].append(l)
-            l = f.readline()
-            if not l:
-                break
-        l = f.readline()
-        if not l:
-            break
+# with open("../template/Cacao/Cac/cackit.mm", "r") as f:
+#     while True:
+#         l = f.readline()
+#         if not l:
+#             break
+#         cl = l[11:-1]
+#         exist[cl] = []
+#         l = f.readline()
+#         if not l:
+#             break
+#         while l != "@end\n":
+#             exist[cl].append(l)
+#             l = f.readline()
+#             if not l:
+#                 break
+#         l = f.readline()
+#         if not l:
+#             break
 
-with open("../template/Cacao/symtab.asm", "r") as f:
+with open("symtab_old.asm", "r") as f:
     data = f.read()
     data = data.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "cocos2d::SEL_CallFuncO").replace("void (cocos2d::CCObject::*)(float)", "cocos2d::SEL_SCHEDULE")
     for m in re.finditer(r"; (?:cocos2d)?(?:::extension)?([^(?:non)].+)::(.+?)\((.*)\)(?: const)?\ndefit (.+?), (0x[0-9a-f]+)", data):
@@ -44,8 +44,10 @@ with open("../template/Cacao/symtab.asm", "r") as f:
             or "FMOD" in cl
             or "..." in param 
             or "std::map" in param
-            or "__va_list" in param 
-            or "operator" in fun): 
+            or "__va_list" in param): 
+            continue
+
+        if "operator" not in fun:
             continue
 
         print(cl)

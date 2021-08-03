@@ -48,6 +48,11 @@ inline long extract_destructor(T instance) {
     return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+8));
 };
 
+// Welcome back we missed you
+template <typename F, class T>
+inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T) {
+    return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
+};
 
 template <typename F>
 inline typename GetReturnType<F>::type (*extract(F func))() {

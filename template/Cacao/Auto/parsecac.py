@@ -65,7 +65,7 @@ def t_VOLATILE(t):
 t_volatile_VOLATILEDATA = r".+"
 
 def t_IDENT(t):
-    r'[a-zA-Z_@~][:a-zA-Z0-9_&\[\]\*<>]*'
+    r'[a-zA-Z_@~][:a-zA-Z0-9_&\[\]\*/+\-=%<>]*'
     if t.value == "volatile":
         return t_VOLATILE(t)
     t.type = reserved.get(t.value,'IDENT')

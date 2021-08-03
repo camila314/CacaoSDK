@@ -5,11 +5,12 @@ relink=''
 
 print_usage() {
   printf "
-	Usage: projectName [-d destinationPath] [-l]
+	Usage: projectName [-d destinationPath] [-l] [-u]
 
 	projectName               Name of the project
 	-d destinationPath        The destination path of the project, Projects/projectName if omitted
 	-l                        To relink the Cacao directory if it is broken
+	-u                        To update the old Cacao project to new
 	
 	For Example: 
 	./create
@@ -20,10 +21,11 @@ print_usage() {
   "
 }
 
-while getopts 'd:lh' flag; do
+while getopts 'd:lhu' flag; do
 	case "${flag}" in
 		d) copypath="${OPTARG}" ;;
 		l) relink='true' ;;
+		u) update='true' ;;
 		h) print_usage
 			exit 0 ;;
 		*) print_usage
@@ -46,7 +48,17 @@ if (( $# + $OPTIND > 1 )); then
 		if [ -d "$copypath/Cacao" ]; then
 			rm "$copypath/Cacao"
 		fi
-		ln -s "$srcpath/src/Cacao" "$copypath/Cacao"
+		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
+	elif [ "$update" = 'true' ]; then
+		echo "Updating project"
+		
+		cp "$srcpath/template/.gitignore" "$copypath"
+		echo "lib$projname.a" >> "$copypath/.gitignore"
+
+		cp "$srcpath/template/CMakeLists.txt" "$copypath"
+		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
+		sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
+		sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 	else
 		if [ ! -d "$copypath" ]; then
 			echo "Creating folder"

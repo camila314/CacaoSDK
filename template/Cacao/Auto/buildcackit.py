@@ -60,6 +60,11 @@ build_body2_body_static = """
             m->registerHook(getBase()+{addr}, ({ret}(*)({params})){{&D::{name}}});
 """
 
+build_body2_body_virtual = """
+        if (({ret}(${cls}::*)({params})){{&${cls}::{name}}} != ({ret}(D::*)({params})){{&D::{name}}})
+            m->registerHook(getBase()+{addr}, extract_virtual(this, ({ret}(D::*)({params})){{&D::{name}}}));
+"""
+
 build_body2_end = "    }\n"
 build_end = "};\n"
 
@@ -98,6 +103,8 @@ def build_cls(funky_cls):
             body2 = build_body2_body
             if info.static:
                 body2 = build_body2_body_static
+            elif info.virtual:
+                body2 = build_body2_body_virtual
             out += body2.format(
                 addr=info.addr, 
                 ret=info.ret, 

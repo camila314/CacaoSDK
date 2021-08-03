@@ -392,6 +392,10 @@ public:
 class CountTriggerAction : public cocos2d::CCNode, public GDObj {
 public:
     static CountTriggerAction* createFromString(std::string);
+    int m_previousCount;
+    int m_targetCount;
+    int m_targetID;
+    bool m_activateGroup;
     CLASS_PARAM(bool, multiActivate, 0x138);
 };
 
@@ -568,6 +572,7 @@ public:
     virtual void addToSection(GameObject*);
     virtual void addToGroup(GameObject*, int, bool);
     virtual void removeFromGroup(GameObject*, int);
+    virtual bool init();
     void addObjectCounter(LabelGameObject*, int);
     void addToGroups(GameObject*, bool);
     void atlasValue(int);
@@ -585,7 +590,6 @@ public:
     void getMoveDeltaForObjects(int, int);
     void getOptimizedGroup(int);
     void getStaticGroup(int);
-    bool init();
     void isGroupDisabledForObject(GameObject*);
     void isGroupDisabledForObjectFull(GameObject*, cocos2d::CCArray*);
     void loadUpToPosition(float);
@@ -669,6 +673,7 @@ public:
 
 class GJEffectManager : public cocos2d::CCNode, public GDObj {
 public:
+    virtual bool init();
     void activeColorForIndex(int);
     void activeOpacityForIndex(int);
     void addAllInheritedColorActions(cocos2d::CCArray*);
@@ -702,7 +707,6 @@ public:
     void hasActiveDualTouch();
     void hasBeenTriggered(int);
     void hasPulseEffectForGroupID(int);
-    bool init();
     bool isGroupEnabled(int);
     void keyForGroupIDColor(int, cocos2d::_ccColor3B const&, bool);
     void loadState(std::string);

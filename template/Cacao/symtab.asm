@@ -357,6 +357,7 @@ defit __ZN15GJBaseGameLayer10spawnGroupEi, 0xb7050
 defit __ZN15GJBaseGameLayer12addToSectionEP10GameObject, 0xb7b70
 defit __ZN15GJBaseGameLayer10addToGroupEP10GameObjectib, 0xb77f0
 defit __ZN15GJBaseGameLayer15removeFromGroupEP10GameObjecti, 0xb7a60
+defit __ZN15GJBaseGameLayer4initEv, 0xafc90
 defit __ZN15GJBaseGameLayer16addObjectCounterEP15LabelGameObjecti, 0xb9eb0
 defit __ZN15GJBaseGameLayer11addToGroupsEP10GameObjectb, 0xb7780
 defit __ZN15GJBaseGameLayer10atlasValueEi, 0xb21e0
@@ -374,7 +375,6 @@ defit __ZN15GJBaseGameLayer8getGroupEi, 0xb6f20
 defit __ZN15GJBaseGameLayer22getMoveDeltaForObjectsEii, 0xb6db0
 defit __ZN15GJBaseGameLayer17getOptimizedGroupEi, 0xb7940
 defit __ZN15GJBaseGameLayer14getStaticGroupEi, 0xb79a0
-defit __ZN15GJBaseGameLayer4initEv, 0xafc90
 defit __ZN15GJBaseGameLayer24isGroupDisabledForObjectEP10GameObject, 0xb5cc0
 defit __ZN15GJBaseGameLayer28isGroupDisabledForObjectFullEP10GameObjectPN7cocos2d7CCArrayE, 0xb5de0
 defit __ZN15GJBaseGameLayer16loadUpToPositionEf, 0xba680
@@ -431,6 +431,7 @@ defit __ZN15GJDropDownLayer4drawEv, 0x352910
 defit __ZN15GJDropDownLayer4initEPKcf, 0x352100
 defit __ZN15GJDropDownLayer27registerWithTouchDispatcherEv, 0x3525f0
 defit __ZN15GJDropDownLayer6createEPKc, 0x352530
+defit __ZN15GJEffectManager4initEv, 0x180230
 defit __ZN15GJEffectManager19activeColorForIndexEi, 0x180cb0
 defit __ZN15GJEffectManager21activeOpacityForIndexEi, 0x180e10
 defit __ZN15GJEffectManager27addAllInheritedColorActionsEPN7cocos2d7CCArrayE, 0x1817a0
@@ -464,7 +465,6 @@ defit __ZN15GJEffectManager21handleObjectCollisionEbii, 0x1828f0
 defit __ZN15GJEffectManager18hasActiveDualTouchEv, 0x185540
 defit __ZN15GJEffectManager16hasBeenTriggeredEi, 0x1853b0
 defit __ZN15GJEffectManager24hasPulseEffectForGroupIDEi, 0x184f60
-defit __ZN15GJEffectManager4initEv, 0x180230
 defit __ZN15GJEffectManager14isGroupEnabledEi, 0x1853d0
 defit __ZN15GJEffectManager18keyForGroupIDColorEiRKN7cocos2d10_ccColor3BEb, 0x184c90
 defit __ZN15GJEffectManager9loadStateESs, 0x188db0
@@ -1544,10 +1544,17 @@ defit __ZN7cocos2d20CCParticleSystemQuad6createEPKc, 0x36b000
 defit __ZN7cocos2d7CCPointC1Ev, 0x137050
 defit __ZN7cocos2d7CCPointC1ERKS0_, 0x137090
 defit __ZN7cocos2d7CCPointC1Eff, 0x137000
+defit __ZNK7cocos2d7CCPointmlEf, 0x137180
+defit __ZNK7cocos2d7CCPointplERKS0_, 0x1370f0
+defit __ZNK7cocos2d7CCPointngEv, 0x137150
+defit __ZNK7cocos2d7CCPointmiERKS0_, 0x137120
+defit __ZNK7cocos2d7CCPointdvEf, 0x1371a0
+defit __ZN7cocos2d7CCPointaSERKS0_, 0x1370c0
 defit __ZNK7cocos2d7CCPoint6equalsERKS0_, 0x1371d0
 defit __ZN7cocos2d6CCRectC1Ev, 0x137550
 defit __ZN7cocos2d6CCRectC1ERKS0_, 0x137630
 defit __ZN7cocos2d6CCRectC1Effff, 0x137020
+defit __ZN7cocos2d6CCRectaSERKS0_, 0x137670
 defit __ZNK7cocos2d6CCRect13containsPointERKNS_7CCPointE, 0x1377b0
 defit __ZNK7cocos2d6CCRect6equalsERKS0_, 0x1376a0
 defit __ZNK7cocos2d6CCRect7getMaxXEv, 0x137710
@@ -1569,6 +1576,8 @@ defit __ZN7cocos2d11CCScheduler22unscheduleAllForTargetEPNS_8CCObjectE, 0x243e40
 defit __ZN7cocos2d6CCSizeC1Ev, 0x1373c0
 defit __ZN7cocos2d6CCSizeC1ERKS0_, 0x137400
 defit __ZN7cocos2d6CCSizeC1Eff, 0x137010
+defit __ZNK7cocos2d6CCSizedvEf, 0x1374e0
+defit __ZN7cocos2d6CCSizeaSERKS0_, 0x137430
 defit __ZN7cocos2d8CCSpriteC2Ev, 0x133300
 defit __ZN7cocos2d8CCSprite8addChildEPNS_6CCNodeE, 0x134190
 defit __ZN7cocos2d8CCSprite8addChildEPNS_6CCNodeEi, 0x1341a0

@@ -48,6 +48,11 @@ inline long extract_destructor(T instance) {
     return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+8));
 };
 
+// Welcome back we missed you
+template <typename F, class T>
+inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T) {
+    return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
+};
 
 template <typename F>
 inline typename GetReturnType<F>::type (*extract(F func))() {
@@ -1514,7 +1519,7 @@ class $EditorUI : public EditorUI, public $CacBase {
             m->registerHook(getBase()+0x8ae0, extract((void(D::*)(LevelEditorLayer*)){&D::init}));
 
         if ((void($EditorUI::*)(cocos2d::enumKeyCodes)){&$EditorUI::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            m->registerHook(getBase()+0x30790, extract((void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
+            m->registerHook(getBase()+0x30790, extract_virtual(this, (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
 
         if ((void($EditorUI::*)(GameObject*, cocos2d::CCPoint)){&$EditorUI::moveObject} != (void(D::*)(GameObject*, cocos2d::CCPoint)){&D::moveObject})
             m->registerHook(getBase()+0x24b10, extract((void(D::*)(GameObject*, cocos2d::CCPoint)){&D::moveObject}));
@@ -1677,34 +1682,34 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
     m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::onEnter} != (void(D::*)()){&D::onEnter})
-            m->registerHook(getBase()+0x25f350, extract((void(D::*)()){&D::onEnter}));
+            m->registerHook(getBase()+0x25f350, extract_virtual(this, (void(D::*)()){&D::onEnter}));
 
         if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(getBase()+0x25ee40, extract((bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+            m->registerHook(getBase()+0x25ee40, extract_virtual(this, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            m->registerHook(getBase()+0x25f0a0, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
+            m->registerHook(getBase()+0x25f0a0, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(getBase()+0x25ef60, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
+            m->registerHook(getBase()+0x25ef60, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            m->registerHook(getBase()+0x25f020, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
+            m->registerHook(getBase()+0x25f020, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
 
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            m->registerHook(getBase()+0x25f2e0, extract((void(D::*)()){&D::registerWithTouchDispatcher}));
+            m->registerHook(getBase()+0x25f2e0, extract_virtual(this, (void(D::*)()){&D::registerWithTouchDispatcher}));
 
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            m->registerHook(getBase()+0x25ed90, extract((void(D::*)()){&D::keyBackClicked}));
+            m->registerHook(getBase()+0x25ed90, extract_virtual(this, (void(D::*)()){&D::keyBackClicked}));
 
         if ((void($FLAlertLayer::*)(cocos2d::enumKeyCodes)){&$FLAlertLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            m->registerHook(getBase()+0x25ece0, extract((void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
+            m->registerHook(getBase()+0x25ece0, extract_virtual(this, (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
 
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::show} != (void(D::*)()){&D::show})
-            m->registerHook(getBase()+0x25f120, extract((void(D::*)()){&D::show}));
+            m->registerHook(getBase()+0x25f120, extract_virtual(this, (void(D::*)()){&D::show}));
 
         if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init})
-            m->registerHook(getBase()+0x25e1b0, extract((bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init}));
+            m->registerHook(getBase()+0x25e1b0, extract_virtual(this, (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init}));
 
         if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create})
             m->registerHook(getBase()+0x25e0e0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create});
@@ -1872,6 +1877,12 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
         else return GJBaseGameLayer::removeFromGroup(p0, p1);
     }
 
+    bool init() override {
+        if ((bool($GJBaseGameLayer::*)()){&$GJBaseGameLayer::init} != (bool(D::*)()){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0xafc90))(this);
+        else return GJBaseGameLayer::init();
+    }
+
     void addObjectCounter(LabelGameObject* p0, int p1) {
         if ((void($GJBaseGameLayer::*)(LabelGameObject*, int)){&$GJBaseGameLayer::addObjectCounter} != (void(D::*)(LabelGameObject*, int)){&D::addObjectCounter})
             return reinterpret_cast<void(*)(decltype(this), LabelGameObject*, int)>(m->getOriginal(getBase()+0xb9eb0))(this, p0, p1);
@@ -1972,12 +1983,6 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
         if ((void($GJBaseGameLayer::*)(int)){&$GJBaseGameLayer::getStaticGroup} != (void(D::*)(int)){&D::getStaticGroup})
             return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0xb79a0))(this, p0);
         else return GJBaseGameLayer::getStaticGroup(p0);
-    }
-
-    bool init() {
-        if ((bool($GJBaseGameLayer::*)()){&$GJBaseGameLayer::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0xafc90))(this);
-        else return GJBaseGameLayer::init();
     }
 
     void isGroupDisabledForObject(GameObject* p0) {
@@ -2224,34 +2229,37 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
     m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJBaseGameLayer::*)(int, int)){&$GJBaseGameLayer::objectsCollided} != (void(D::*)(int, int)){&D::objectsCollided})
-            m->registerHook(getBase()+0xb6d90, extract((void(D::*)(int, int)){&D::objectsCollided}));
+            m->registerHook(getBase()+0xb6d90, extract_virtual(this, (void(D::*)(int, int)){&D::objectsCollided}));
 
         if ((void($GJBaseGameLayer::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int)){&$GJBaseGameLayer::createMoveCommand} != (void(D::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int)){&D::createMoveCommand})
-            m->registerHook(getBase()+0xb73a0, extract((void(D::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int)){&D::createMoveCommand}));
+            m->registerHook(getBase()+0xb73a0, extract_virtual(this, (void(D::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int)){&D::createMoveCommand}));
 
         if ((void($GJBaseGameLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&$GJBaseGameLayer::updateColor} != (void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor})
-            m->registerHook(getBase()+0xb7420, extract((void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor}));
+            m->registerHook(getBase()+0xb7420, extract_virtual(this, (void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor}));
 
         if ((void($GJBaseGameLayer::*)(PlayerObject*, bool, bool)){&$GJBaseGameLayer::flipGravity} != (void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity})
-            m->registerHook(getBase()+0xba990, extract((void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity}));
+            m->registerHook(getBase()+0xba990, extract_virtual(this, (void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity}));
 
         if ((void($GJBaseGameLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&$GJBaseGameLayer::calculateColorValues} != (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues})
-            m->registerHook(getBase()+0xba9a0, extract((void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues}));
+            m->registerHook(getBase()+0xba9a0, extract_virtual(this, (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues}));
 
         if ((void($GJBaseGameLayer::*)(int, bool)){&$GJBaseGameLayer::toggleGroupTriggered} != (void(D::*)(int, bool)){&D::toggleGroupTriggered})
-            m->registerHook(getBase()+0xb75a0, extract((void(D::*)(int, bool)){&D::toggleGroupTriggered}));
+            m->registerHook(getBase()+0xb75a0, extract_virtual(this, (void(D::*)(int, bool)){&D::toggleGroupTriggered}));
 
         if ((void($GJBaseGameLayer::*)(int)){&$GJBaseGameLayer::spawnGroup} != (void(D::*)(int)){&D::spawnGroup})
-            m->registerHook(getBase()+0xb7050, extract((void(D::*)(int)){&D::spawnGroup}));
+            m->registerHook(getBase()+0xb7050, extract_virtual(this, (void(D::*)(int)){&D::spawnGroup}));
 
         if ((void($GJBaseGameLayer::*)(GameObject*)){&$GJBaseGameLayer::addToSection} != (void(D::*)(GameObject*)){&D::addToSection})
-            m->registerHook(getBase()+0xb7b70, extract((void(D::*)(GameObject*)){&D::addToSection}));
+            m->registerHook(getBase()+0xb7b70, extract_virtual(this, (void(D::*)(GameObject*)){&D::addToSection}));
 
         if ((void($GJBaseGameLayer::*)(GameObject*, int, bool)){&$GJBaseGameLayer::addToGroup} != (void(D::*)(GameObject*, int, bool)){&D::addToGroup})
-            m->registerHook(getBase()+0xb77f0, extract((void(D::*)(GameObject*, int, bool)){&D::addToGroup}));
+            m->registerHook(getBase()+0xb77f0, extract_virtual(this, (void(D::*)(GameObject*, int, bool)){&D::addToGroup}));
 
         if ((void($GJBaseGameLayer::*)(GameObject*, int)){&$GJBaseGameLayer::removeFromGroup} != (void(D::*)(GameObject*, int)){&D::removeFromGroup})
-            m->registerHook(getBase()+0xb7a60, extract((void(D::*)(GameObject*, int)){&D::removeFromGroup}));
+            m->registerHook(getBase()+0xb7a60, extract_virtual(this, (void(D::*)(GameObject*, int)){&D::removeFromGroup}));
+
+        if ((bool($GJBaseGameLayer::*)()){&$GJBaseGameLayer::init} != (bool(D::*)()){&D::init})
+            m->registerHook(getBase()+0xafc90, extract_virtual(this, (bool(D::*)()){&D::init}));
 
         if ((void($GJBaseGameLayer::*)(LabelGameObject*, int)){&$GJBaseGameLayer::addObjectCounter} != (void(D::*)(LabelGameObject*, int)){&D::addObjectCounter})
             m->registerHook(getBase()+0xb9eb0, extract((void(D::*)(LabelGameObject*, int)){&D::addObjectCounter}));
@@ -2303,9 +2311,6 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
 
         if ((void($GJBaseGameLayer::*)(int)){&$GJBaseGameLayer::getStaticGroup} != (void(D::*)(int)){&D::getStaticGroup})
             m->registerHook(getBase()+0xb79a0, extract((void(D::*)(int)){&D::getStaticGroup}));
-
-        if ((bool($GJBaseGameLayer::*)()){&$GJBaseGameLayer::init} != (bool(D::*)()){&D::init})
-            m->registerHook(getBase()+0xafc90, extract((bool(D::*)()){&D::init}));
 
         if ((void($GJBaseGameLayer::*)(GameObject*)){&$GJBaseGameLayer::isGroupDisabledForObject} != (void(D::*)(GameObject*)){&D::isGroupDisabledForObject})
             m->registerHook(getBase()+0xb5cc0, extract((void(D::*)(GameObject*)){&D::isGroupDisabledForObject}));
@@ -2555,43 +2560,43 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
     m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::customSetup} != (void(D::*)()){&D::customSetup})
-            m->registerHook(getBase()+0x352570, extract((void(D::*)()){&D::customSetup}));
+            m->registerHook(getBase()+0x352570, extract_virtual(this, (void(D::*)()){&D::customSetup}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::enterLayer} != (void(D::*)()){&D::enterLayer})
-            m->registerHook(getBase()+0x3525c0, extract((void(D::*)()){&D::enterLayer}));
+            m->registerHook(getBase()+0x3525c0, extract_virtual(this, (void(D::*)()){&D::enterLayer}));
 
         if ((void($GJDropDownLayer::*)(cocos2d::CCObject*)){&$GJDropDownLayer::exitLayer} != (void(D::*)(cocos2d::CCObject*)){&D::exitLayer})
-            m->registerHook(getBase()+0x352670, extract((void(D::*)(cocos2d::CCObject*)){&D::exitLayer}));
+            m->registerHook(getBase()+0x352670, extract_virtual(this, (void(D::*)(cocos2d::CCObject*)){&D::exitLayer}));
 
         if ((void($GJDropDownLayer::*)(bool)){&$GJDropDownLayer::showLayer} != (void(D::*)(bool)){&D::showLayer})
-            m->registerHook(getBase()+0x3526c0, extract((void(D::*)(bool)){&D::showLayer}));
+            m->registerHook(getBase()+0x3526c0, extract_virtual(this, (void(D::*)(bool)){&D::showLayer}));
 
         if ((void($GJDropDownLayer::*)(bool)){&$GJDropDownLayer::hideLayer} != (void(D::*)(bool)){&D::hideLayer})
-            m->registerHook(getBase()+0x3527b0, extract((void(D::*)(bool)){&D::hideLayer}));
+            m->registerHook(getBase()+0x3527b0, extract_virtual(this, (void(D::*)(bool)){&D::hideLayer}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::layerVisible} != (void(D::*)()){&D::layerVisible})
-            m->registerHook(getBase()+0x3528b0, extract((void(D::*)()){&D::layerVisible}));
+            m->registerHook(getBase()+0x3528b0, extract_virtual(this, (void(D::*)()){&D::layerVisible}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::layerHidden} != (void(D::*)()){&D::layerHidden})
-            m->registerHook(getBase()+0x3528d0, extract((void(D::*)()){&D::layerHidden}));
+            m->registerHook(getBase()+0x3528d0, extract_virtual(this, (void(D::*)()){&D::layerHidden}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::enterAnimFinished} != (void(D::*)()){&D::enterAnimFinished})
-            m->registerHook(getBase()+0x3528a0, extract((void(D::*)()){&D::enterAnimFinished}));
+            m->registerHook(getBase()+0x3528a0, extract_virtual(this, (void(D::*)()){&D::enterAnimFinished}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::disableUI} != (void(D::*)()){&D::disableUI})
-            m->registerHook(getBase()+0x352580, extract((void(D::*)()){&D::disableUI}));
+            m->registerHook(getBase()+0x352580, extract_virtual(this, (void(D::*)()){&D::disableUI}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::enableUI} != (void(D::*)()){&D::enableUI})
-            m->registerHook(getBase()+0x3525a0, extract((void(D::*)()){&D::enableUI}));
+            m->registerHook(getBase()+0x3525a0, extract_virtual(this, (void(D::*)()){&D::enableUI}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::draw} != (void(D::*)()){&D::draw})
-            m->registerHook(getBase()+0x352910, extract((void(D::*)()){&D::draw}));
+            m->registerHook(getBase()+0x352910, extract_virtual(this, (void(D::*)()){&D::draw}));
 
         if ((bool($GJDropDownLayer::*)(char const*, float)){&$GJDropDownLayer::init} != (bool(D::*)(char const*, float)){&D::init})
-            m->registerHook(getBase()+0x352100, extract((bool(D::*)(char const*, float)){&D::init}));
+            m->registerHook(getBase()+0x352100, extract_virtual(this, (bool(D::*)(char const*, float)){&D::init}));
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            m->registerHook(getBase()+0x3525f0, extract((void(D::*)()){&D::registerWithTouchDispatcher}));
+            m->registerHook(getBase()+0x3525f0, extract_virtual(this, (void(D::*)()){&D::registerWithTouchDispatcher}));
 
         if ((GJDropDownLayer*(*)(char const*)){&$GJDropDownLayer::create} != (GJDropDownLayer*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x352530, (GJDropDownLayer*(*)(char const*)){&D::create});
@@ -2609,6 +2614,12 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
     }
     ~$GJEffectManager() {}
     typedef GJEffectManager* __thistype;
+
+    bool init() override {
+        if ((bool($GJEffectManager::*)()){&$GJEffectManager::init} != (bool(D::*)()){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x180230))(this);
+        else return GJEffectManager::init();
+    }
 
     void activeColorForIndex(int p0) {
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::activeColorForIndex} != (void(D::*)(int)){&D::activeColorForIndex})
@@ -2806,12 +2817,6 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::hasPulseEffectForGroupID} != (void(D::*)(int)){&D::hasPulseEffectForGroupID})
             return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x184f60))(this, p0);
         else return GJEffectManager::hasPulseEffectForGroupID(p0);
-    }
-
-    bool init() {
-        if ((bool($GJEffectManager::*)()){&$GJEffectManager::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x180230))(this);
-        else return GJEffectManager::init();
     }
 
     bool isGroupEnabled(int p0) {
@@ -3117,6 +3122,9 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
     void apply_hooks() override {
     m->registerHook(extract_destructor(this), +[](){});
 
+        if ((bool($GJEffectManager::*)()){&$GJEffectManager::init} != (bool(D::*)()){&D::init})
+            m->registerHook(getBase()+0x180230, extract_virtual(this, (bool(D::*)()){&D::init}));
+
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::activeColorForIndex} != (void(D::*)(int)){&D::activeColorForIndex})
             m->registerHook(getBase()+0x180cb0, extract((void(D::*)(int)){&D::activeColorForIndex}));
 
@@ -3215,9 +3223,6 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
 
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::hasPulseEffectForGroupID} != (void(D::*)(int)){&D::hasPulseEffectForGroupID})
             m->registerHook(getBase()+0x184f60, extract((void(D::*)(int)){&D::hasPulseEffectForGroupID}));
-
-        if ((bool($GJEffectManager::*)()){&$GJEffectManager::init} != (bool(D::*)()){&D::init})
-            m->registerHook(getBase()+0x180230, extract((bool(D::*)()){&D::init}));
 
         if ((bool($GJEffectManager::*)(int)){&$GJEffectManager::isGroupEnabled} != (bool(D::*)(int)){&D::isGroupEnabled})
             m->registerHook(getBase()+0x1853d0, extract((bool(D::*)(int)){&D::isGroupEnabled}));
@@ -6400,7 +6405,7 @@ class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
             m->registerHook(getBase()+0xa2780, extract((void(D::*)(GameObject*, float, bool)){&D::animateInDualGround}));
 
         if ((void($LevelEditorLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&$LevelEditorLayer::calculateColorValues} != (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues})
-            m->registerHook(getBase()+0x9c590, extract((void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues}));
+            m->registerHook(getBase()+0x9c590, extract_virtual(this, (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues}));
 
         if ((void($LevelEditorLayer::*)(PlayerObject*, float)){&$LevelEditorLayer::checkCollisions} != (void(D::*)(PlayerObject*, float)){&D::checkCollisions})
             m->registerHook(getBase()+0x9e620, extract((void(D::*)(PlayerObject*, float)){&D::checkCollisions}));
@@ -6860,7 +6865,7 @@ class $MenuLayer : public MenuLayer, public $CacBase {
     m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            m->registerHook(getBase()+0x1d3160, extract((void(D::*)()){&D::keyBackClicked}));
+            m->registerHook(getBase()+0x1d3160, extract_virtual(this, (void(D::*)()){&D::keyBackClicked}));
 
         if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
             m->registerHook(getBase()+0x1d2ad0, extract((void(D::*)(cocos2d::CCObject*)){&D::onMoreGames}));
@@ -8153,7 +8158,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x7c310, extract((void(D::*)(GameObject*)){&D::applyEnterEffect}));
 
         if ((void($PlayLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&$PlayLayer::calculateColorValues} != (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues})
-            m->registerHook(getBase()+0x7aa10, extract((void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues}));
+            m->registerHook(getBase()+0x7aa10, extract_virtual(this, (void(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*)){&D::calculateColorValues}));
 
         if ((void($PlayLayer::*)(float, float, float)){&$PlayLayer::cameraMoveX} != (void(D::*)(float, float, float)){&D::cameraMoveX})
             m->registerHook(getBase()+0x7cbe0, extract((void(D::*)(float, float, float)){&D::cameraMoveX}));
@@ -8204,7 +8209,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x7e0b0, extract((void(D::*)(DialogLayer*)){&D::dialogClosed}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::draw} != (void(D::*)()){&D::draw})
-            m->registerHook(getBase()+0x7d160, extract((void(D::*)()){&D::draw}));
+            m->registerHook(getBase()+0x7d160, extract_virtual(this, (void(D::*)()){&D::draw}));
 
         if ((void($PlayLayer::*)(GameObject*, bool)){&$PlayLayer::enterDualMode} != (void(D::*)(GameObject*, bool)){&D::enterDualMode})
             m->registerHook(getBase()+0x7d6a0, extract((void(D::*)(GameObject*, bool)){&D::enterDualMode}));
@@ -8234,7 +8239,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x7e150, extract((void(D::*)()){&D::flipFinished}));
 
         if ((void($PlayLayer::*)(PlayerObject*, bool, bool)){&$PlayLayer::flipGravity} != (void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity})
-            m->registerHook(getBase()+0x7cd10, extract((void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity}));
+            m->registerHook(getBase()+0x7cd10, extract_virtual(this, (void(D::*)(PlayerObject*, bool, bool)){&D::flipGravity}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::flipObjects} != (void(D::*)()){&D::flipObjects})
             m->registerHook(getBase()+0x76130, extract((void(D::*)()){&D::flipObjects}));
@@ -8315,10 +8320,10 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x7c980, extract((void(D::*)(cocos2d::CCPoint)){&D::moveCameraToPos}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::onEnterTransitionDidFinish} != (void(D::*)()){&D::onEnterTransitionDidFinish})
-            m->registerHook(getBase()+0x806e0, extract((void(D::*)()){&D::onEnterTransitionDidFinish}));
+            m->registerHook(getBase()+0x806e0, extract_virtual(this, (void(D::*)()){&D::onEnterTransitionDidFinish}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::onExit} != (void(D::*)()){&D::onExit})
-            m->registerHook(getBase()+0x80710, extract((void(D::*)()){&D::onExit}));
+            m->registerHook(getBase()+0x80710, extract_virtual(this, (void(D::*)()){&D::onExit}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::onQuit} != (void(D::*)()){&D::onQuit})
             m->registerHook(getBase()+0x72710, extract((void(D::*)()){&D::onQuit}));
@@ -8525,7 +8530,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x777f0, extract((void(D::*)(GameObject*)){&D::unregisterStateObject}));
 
         if ((void($PlayLayer::*)(float)){&$PlayLayer::update} != (void(D::*)(float)){&D::update})
-            m->registerHook(getBase()+0x77900, extract((void(D::*)(float)){&D::update}));
+            m->registerHook(getBase()+0x77900, extract_virtual(this, (void(D::*)(float)){&D::update}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::updateAttempts} != (void(D::*)()){&D::updateAttempts})
             m->registerHook(getBase()+0x7fcd0, extract((void(D::*)()){&D::updateAttempts}));
@@ -8534,7 +8539,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x6e2b0, extract((void(D::*)(float)){&D::updateCamera}));
 
         if ((void($PlayLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&$PlayLayer::updateColor} != (void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor})
-            m->registerHook(getBase()+0x7c7f0, extract((void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor}));
+            m->registerHook(getBase()+0x7c7f0, extract_virtual(this, (void(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*)){&D::updateColor}));
 
         if ((void($PlayLayer::*)(PlayerObject*, int, bool)){&$PlayLayer::updateDualGround} != (void(D::*)(PlayerObject*, int, bool)){&D::updateDualGround})
             m->registerHook(getBase()+0x7caa0, extract((void(D::*)(PlayerObject*, int, bool)){&D::updateDualGround}));
@@ -8558,7 +8563,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x786f0, extract((void(D::*)(float, bool)){&D::updateTimeMod}));
 
         if ((void($PlayLayer::*)(float, char const*)){&$PlayLayer::updateTweenAction} != (void(D::*)(float, char const*)){&D::updateTweenAction})
-            m->registerHook(getBase()+0x7ffb0, extract((void(D::*)(float, char const*)){&D::updateTweenAction}));
+            m->registerHook(getBase()+0x7ffb0, extract_virtual(this, (void(D::*)(float, char const*)){&D::updateTweenAction}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::updateVisibility} != (void(D::*)()){&D::updateVisibility})
             m->registerHook(getBase()+0x6fb90, extract((void(D::*)()){&D::updateVisibility}));
@@ -8567,7 +8572,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
             m->registerHook(getBase()+0x7fcb0, extract((void(D::*)()){&D::vfDChk}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::visit} != (void(D::*)()){&D::visit})
-            m->registerHook(getBase()+0x75ef0, extract((void(D::*)()){&D::visit}));
+            m->registerHook(getBase()+0x75ef0, extract_virtual(this, (void(D::*)()){&D::visit}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::visitWithColorFlash} != (void(D::*)()){&D::visitWithColorFlash})
             m->registerHook(getBase()+0x761f0, extract((void(D::*)()){&D::visitWithColorFlash}));
@@ -9519,7 +9524,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
             m->registerHook(getBase()+0x22b800, extract((void(D::*)(GameObject*)){&D::addToTouchedRings}));
 
         if ((void($PlayerObject::*)(char const*)){&$PlayerObject::animationFinished} != (void(D::*)(char const*)){&D::animationFinished})
-            m->registerHook(getBase()+0x22e9d0, extract((void(D::*)(char const*)){&D::animationFinished}));
+            m->registerHook(getBase()+0x22e9d0, extract_virtual(this, (void(D::*)(char const*)){&D::animationFinished}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::boostPlayer} != (void(D::*)(float)){&D::boostPlayer})
             m->registerHook(getBase()+0x21d6b0, extract((void(D::*)(float)){&D::boostPlayer}));
@@ -9579,10 +9584,10 @@ class $PlayerObject : public PlayerObject, public $CacBase {
             m->registerHook(getBase()+0x21a830, extract((void(D::*)(float)){&D::getOldPosition}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::getOrientedBox} != (void(D::*)()){&D::getOrientedBox})
-            m->registerHook(getBase()+0x22dee0, extract((void(D::*)()){&D::getOrientedBox}));
+            m->registerHook(getBase()+0x22dee0, extract_virtual(this, (void(D::*)()){&D::getOrientedBox}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::getRealPosition} != (void(D::*)()){&D::getRealPosition})
-            m->registerHook(getBase()+0x22d5f0, extract((void(D::*)()){&D::getRealPosition}));
+            m->registerHook(getBase()+0x22d5f0, extract_virtual(this, (void(D::*)()){&D::getRealPosition}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::getSecondColor} != (void(D::*)()){&D::getSecondColor})
             m->registerHook(getBase()+0x22cee0, extract((void(D::*)()){&D::getSecondColor}));
@@ -9702,7 +9707,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
             m->registerHook(getBase()+0x21cc20, extract((void(D::*)()){&D::resetCollisionLog}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::resetObject} != (void(D::*)()){&D::resetObject})
-            m->registerHook(getBase()+0x223170, extract((void(D::*)()){&D::resetObject}));
+            m->registerHook(getBase()+0x223170, extract_virtual(this, (void(D::*)()){&D::resetObject}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::resetPlayerIcon} != (void(D::*)()){&D::resetPlayerIcon})
             m->registerHook(getBase()+0x22be00, extract((void(D::*)()){&D::resetPlayerIcon}));
@@ -9732,37 +9737,37 @@ class $PlayerObject : public PlayerObject, public $CacBase {
             m->registerHook(getBase()+0x22e2f0, extract((void(D::*)(PlayerCheckpoint*)){&D::saveToCheckpoint}));
 
         if ((void($PlayerObject::*)(cocos2d::_ccColor3B const&)){&$PlayerObject::setColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setColor})
-            m->registerHook(getBase()+0x22cdf0, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setColor}));
+            m->registerHook(getBase()+0x22cdf0, extract_virtual(this, (void(D::*)(cocos2d::_ccColor3B const&)){&D::setColor}));
 
         if ((void($PlayerObject::*)(bool)){&$PlayerObject::setFlipX} != (void(D::*)(bool)){&D::setFlipX})
-            m->registerHook(getBase()+0x22e720, extract((void(D::*)(bool)){&D::setFlipX}));
+            m->registerHook(getBase()+0x22e720, extract_virtual(this, (void(D::*)(bool)){&D::setFlipX}));
 
         if ((void($PlayerObject::*)(bool)){&$PlayerObject::setFlipY} != (void(D::*)(bool)){&D::setFlipY})
-            m->registerHook(getBase()+0x22e7b0, extract((void(D::*)(bool)){&D::setFlipY}));
+            m->registerHook(getBase()+0x22e7b0, extract_virtual(this, (void(D::*)(bool)){&D::setFlipY}));
 
         if ((void($PlayerObject::*)(unsigned char)){&$PlayerObject::setOpacity} != (void(D::*)(unsigned char)){&D::setOpacity})
-            m->registerHook(getBase()+0x22d400, extract((void(D::*)(unsigned char)){&D::setOpacity}));
+            m->registerHook(getBase()+0x22d400, extract_virtual(this, (void(D::*)(unsigned char)){&D::setOpacity}));
 
         if ((void($PlayerObject::*)(cocos2d::CCPoint const&)){&$PlayerObject::setPosition} != (void(D::*)(cocos2d::CCPoint const&)){&D::setPosition})
-            m->registerHook(getBase()+0x22c8b0, extract((void(D::*)(cocos2d::CCPoint const&)){&D::setPosition}));
+            m->registerHook(getBase()+0x22c8b0, extract_virtual(this, (void(D::*)(cocos2d::CCPoint const&)){&D::setPosition}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::setRotation} != (void(D::*)(float)){&D::setRotation})
-            m->registerHook(getBase()+0x22e6e0, extract((void(D::*)(float)){&D::setRotation}));
+            m->registerHook(getBase()+0x22e6e0, extract_virtual(this, (void(D::*)(float)){&D::setRotation}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::setScale} != (void(D::*)(float)){&D::setScale})
-            m->registerHook(getBase()+0x22e870, extract((void(D::*)(float)){&D::setScale}));
+            m->registerHook(getBase()+0x22e870, extract_virtual(this, (void(D::*)(float)){&D::setScale}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::setScaleX} != (void(D::*)(float)){&D::setScaleX})
-            m->registerHook(getBase()+0x22e7f0, extract((void(D::*)(float)){&D::setScaleX}));
+            m->registerHook(getBase()+0x22e7f0, extract_virtual(this, (void(D::*)(float)){&D::setScaleX}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::setScaleY} != (void(D::*)(float)){&D::setScaleY})
-            m->registerHook(getBase()+0x22e830, extract((void(D::*)(float)){&D::setScaleY}));
+            m->registerHook(getBase()+0x22e830, extract_virtual(this, (void(D::*)(float)){&D::setScaleY}));
 
         if ((void($PlayerObject::*)(cocos2d::_ccColor3B const&)){&$PlayerObject::setSecondColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setSecondColor})
             m->registerHook(getBase()+0x219610, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setSecondColor}));
 
         if ((void($PlayerObject::*)(bool)){&$PlayerObject::setVisible} != (void(D::*)(bool)){&D::setVisible})
-            m->registerHook(getBase()+0x22e8b0, extract((void(D::*)(bool)){&D::setVisible}));
+            m->registerHook(getBase()+0x22e8b0, extract_virtual(this, (void(D::*)(bool)){&D::setVisible}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::setupStreak} != (void(D::*)()){&D::setupStreak})
             m->registerHook(getBase()+0x218720, extract((void(D::*)()){&D::setupStreak}));
@@ -9852,7 +9857,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
             m->registerHook(getBase()+0x21a950, extract((void(D::*)()){&D::tryPlaceCheckpoint}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::update} != (void(D::*)(float)){&D::update})
-            m->registerHook(getBase()+0x218bf0, extract((void(D::*)(float)){&D::update}));
+            m->registerHook(getBase()+0x218bf0, extract_virtual(this, (void(D::*)(float)){&D::update}));
 
         if ((void($PlayerObject::*)(bool)){&$PlayerObject::updateCheckpointMode} != (void(D::*)(bool)){&D::updateCheckpointMode})
             m->registerHook(getBase()+0x218980, extract((void(D::*)(bool)){&D::updateCheckpointMode}));

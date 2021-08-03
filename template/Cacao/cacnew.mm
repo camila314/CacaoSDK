@@ -160,6 +160,10 @@
 @interface CountTriggerAction : cocos2d::CCNode
     static CountTriggerAction* createFromString(std::string) = 0x1754f0, 918;
 
+    int m_previousCount;
+    int m_targetCount;
+    int m_targetID;
+    bool m_activateGroup;
     bool m_multiActivate = 0x138;
 @end
 
@@ -325,6 +329,7 @@
     virtual void addToSection(GameObject*) = 0xb7b70, 1994;
     virtual void addToGroup(GameObject*, int, bool) = 0xb77f0, 1992;
     virtual void removeFromGroup(GameObject*, int) = 0xb7a60, 2034;
+    virtual bool init() = 0xafc90, 2013;
 
     void addObjectCounter(LabelGameObject*, int) = 0xb9eb0, 1991;
     void addToGroups(GameObject*, bool) = 0xb7780, 1993;
@@ -343,7 +348,6 @@
     void getMoveDeltaForObjects(int, int) = 0xb6db0, 2010;
     void getOptimizedGroup(int) = 0xb7940, 2011;
     void getStaticGroup(int) = 0xb79a0, 2012;
-    bool init() = 0xafc90, 2013;
     void isGroupDisabledForObject(GameObject*) = 0xb5cc0, 2014;
     void isGroupDisabledForObjectFull(GameObject*, cocos2d::CCArray*) = 0xb5de0, 2015;
     void loadUpToPosition(float) = 0xba680, 2016;
@@ -427,6 +431,8 @@
 @end
 
 @interface GJEffectManager : cocos2d::CCNode
+    virtual bool init() = 0x180230, 2177;
+
     void activeColorForIndex(int) = 0x180cb0, 2142;
     void activeOpacityForIndex(int) = 0x180e10, 2143;
     void addAllInheritedColorActions(cocos2d::CCArray*) = 0x1817a0, 2144;
@@ -460,7 +466,6 @@
     void hasActiveDualTouch() = 0x185540, 2173;
     void hasBeenTriggered(int) = 0x1853b0, 2174;
     void hasPulseEffectForGroupID(int) = 0x184f60, 2175;
-    bool init() = 0x180230, 2177;
     bool isGroupEnabled(int) = 0x1853d0, 2178;
     void keyForGroupIDColor(int, cocos2d::_ccColor3B const&, bool) = 0x184c90, 2179;
     void loadState(std::string) = 0x188db0, 2180;
@@ -2058,6 +2063,14 @@
     CCPoint() = 0x137050, 9075;
     CCPoint(cocos2d::CCPoint const&) = 0x137090, 9073;
     CCPoint(float, float) = 0x137000, 9074;
+
+    cocos2d::CCPoint operator*(float) = 0x137180, 9084;
+    cocos2d::CCPoint operator+(cocos2d::CCPoint const&) = 0x1370f0, 9085;
+    cocos2d::CCPoint operator-() = 0x137150, 9087;
+    cocos2d::CCPoint operator-(cocos2d::CCPoint const&) = 0x137120, 9086;
+    cocos2d::CCPoint operator/(float) = 0x1371a0, 9088;
+    cocos2d::CCPoint operator=(cocos2d::CCPoint const&) = 0x1370c0, 9090;
+    
     void equals(cocos2d::CCPoint const&) = 0x1371d0, 9080;
 @end
 
@@ -2065,6 +2078,9 @@
     CCRect() = 0x137550, 9210;
     CCRect(cocos2d::CCRect const&) = 0x137630, 9208;
     CCRect(float, float, float, float) = 0x137020, 9209;
+
+    cocos2d::CCRect operator=(cocos2d::CCRect const&) = 0x137670, 9223;
+
     void containsPoint(cocos2d::CCPoint const&) = 0x1377b0, 9214;
     void equals(cocos2d::CCRect const&) = 0x1376a0, 9215;
     void getMaxX() = 0x137710, 9216;
@@ -2107,6 +2123,9 @@
     CCSize() = 0x1373c0, 9519;
     CCSize(cocos2d::CCSize const&) = 0x137400, 9517;
     CCSize(float, float) = 0x137010, 9518;
+
+    cocos2d::CCSize operator/(float) = 0x1374e0, 9528;
+    cocos2d::CCSize operator=(cocos2d::CCSize const&) = 0x137430, 9530;
 @end
 
 @interface cocos2d::CCSprite
