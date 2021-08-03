@@ -207,6 +207,18 @@ __Z14setupTypeinfosv:
 ; 	pop rbp
 ; 	ret
 
+%macro thunk 3
+global %1
+%1:
+	push rbp
+	mov rbp, rsp
+
+	add rdi, -%3
+
+	pop rbp
+	jmp %2
+%endmacro
+
 ; AnimatedGameObject::playAnimation(int)
 defit __ZN18AnimatedGameObject13playAnimationEi, 0xc93d0
 
@@ -552,8 +564,8 @@ defit __ZN8EditorUI26constrainGameLayerPositionEv, 0x1c6d0
 ; EditorUI::create(LevelEditorLayer*)
 defit __ZN8EditorUI6createEP16LevelEditorLayer, 0x8a80
 
-; EditorUI::deselectAll(int)
-defit __ZN8EditorUI11deselectAllEi, 0x1f300
+; EditorUI::deselectAll()
+defit __ZN8EditorUI11deselectAllEv, 0x1f300
 
 ; EditorUI::onDeselectAll(CCObject*)
 defit __ZN8EditorUI13onDeselectAllEPN7cocos2d8CCObjectE, 0x19cd0
@@ -612,8 +624,8 @@ defit __ZN8EditorUI12scaleObjectsEPN7cocos2d7CCArrayEfNS0_7CCPointE, 0x252e0
 ; EditorUI::selectObjects(cocos2d::CCArray*, bool)
 defit __ZN8EditorUI13selectObjectsEPN7cocos2d7CCArrayEb, 0x23940
 
-; EditorUI::setupCreateMenu(int)
-defit __ZN8EditorUI15setupCreateMenuEi, 0xcb50
+; EditorUI::setupCreateMenu()
+defit __ZN8EditorUI15setupCreateMenuEv, 0xcb50
 
 ; EditorUI::undoLastAction(cocos2d::CCObject*)
 defit __ZN8EditorUI14undoLastActionEPN7cocos2d8CCObjectE, 0xb830
@@ -4762,10 +4774,10 @@ defit __ZN7cocos2d7CCPointC1Ev, 0x137060
 defit __ZN7cocos2d7CCPointC2Ev, 0x137050
 
 ; cocos2d::CCPoint::CCPoint(cocos2d::CCPoint const&)
-defit __ZN7cocos2d7CCPointC1ERKS0_, 0x137090
+defit __ZN7cocos2d7CCPointC2ERKS0_, 0x137090
 
 ; cocos2d::CCPoint::CCPoint(float, float)
-defit __ZN7cocos2d7CCPointC1Eff, 0x137000
+defit __ZN7cocos2d7CCPointC2Eff, 0x137000
 
 ; cocos2d::CCPoint::equals(cocos2d::CCPoint const&) const
 defit __ZNK7cocos2d7CCPoint6equalsERKS0_, 0x1371d0
@@ -4795,10 +4807,10 @@ defit __ZN7cocos2d6CCRectC1Ev, 0x1375a0
 defit __ZN7cocos2d6CCRectC2Ev, 0x137550
 
 ; cocos2d::CCRect::CCRect(cocos2d::CCRect const&)
-defit __ZN7cocos2d6CCRectC1ERKS0_, 0x137630
+defit __ZN7cocos2d6CCRectC2ERKS0_, 0x137630
 
 ; cocos2d::CCRect::CCRect(float, float, float, float)
-defit __ZN7cocos2d6CCRectC1Effff, 0x137020
+defit __ZN7cocos2d6CCRectC2Effff, 0x137020
 
 ; cocos2d::CCRect::containsPoint(cocos2d::CCPoint const&) const
 defit __ZNK7cocos2d6CCRect13containsPointERKNS_7CCPointE, 0x1377b0
@@ -4870,10 +4882,10 @@ defit __ZN7cocos2d6CCSizeC1Ev, 0x1373d0
 defit __ZN7cocos2d6CCSizeC2Ev, 0x1373c0
 
 ; cocos2d::CCSize::CCSize(cocos2d::CCSize const&)
-defit __ZN7cocos2d6CCSizeC1ERKS0_, 0x137400
+defit __ZN7cocos2d6CCSizeC2ERKS0_, 0x137400
 
 ; cocos2d::CCSize::CCSize(float, float)
-defit __ZN7cocos2d6CCSizeC1Eff, 0x137010
+defit __ZN7cocos2d6CCSizeC2Eff, 0x137010
 
 ; cocos2d::CCSize::operator/(float) const
 defit __ZNK7cocos2d6CCSizedvEf, 0x1374e0
