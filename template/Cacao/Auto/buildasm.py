@@ -1,9 +1,10 @@
 import parsecac
 import os
+import sys
 
-starter_code = open("symtab.begin.asm", "r").read()
+starter_code = open(os.path.dirname(__file__) + "/base/symtab.begin.asm", "r").read()
 
-ender_code = open("symtab.end.asm", "r").read()
+ender_code = open(os.path.dirname(__file__) + "/base/symtab.end.asm", "r").read()
 
 build_data = """"""
 
@@ -22,4 +23,4 @@ def build_cls(funky_cls):
 
     return out
 
-open("symtab.asm", "w").write(starter_code + ''.join(build_cls(cl) for cl in parsecac.parse("cacnew.mm").values()) + ender_code)
+open(sys.argv[2], "w").write(starter_code + ''.join(build_cls(cl) for cl in parsecac.parse(sys.argv[1]).values()) + ender_code)

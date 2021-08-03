@@ -3485,7 +3485,7 @@ _ZN12FLAlertLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
 FLAlertLayer::create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*)
 _ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_
 FLAlertLayer::create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)
-_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcRKSsS3_S3_f
+_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_f
 FLAlertLayer::create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)
 _ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_fbf
 FLAlertLayer::init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)

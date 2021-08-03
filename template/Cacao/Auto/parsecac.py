@@ -8,7 +8,11 @@ reserved = {
     '@end': 'END'
 }
 
-tokens = ['ASSIGN','ADDRESS','IDENT','LPAREN','RPAREN', 'WHITESPACE', 'SEMI', 'COMMA', 'COLON', 'NUM'] + list(reserved.values())
+tokens = ['ASSIGN','ADDRESS','IDENT','LPAREN','RPAREN', 'WHITESPACE', 'SEMI', 'COMMA', 'COLON', 'NUM', 'VOLATILE', 'VOLATILEDATA'] + list(reserved.values())
+
+states = (
+    ('volatile','exclusive'),
+)
 
 class FunkyInfo:
     def __init__(self):
@@ -22,6 +26,8 @@ class FunkyInfo:
         self.ret = ''
         self.thunk = None
         self.clash = False
+        self.volatile = False
+        self.data = None
     def getMangle(self):
         if self.mang is not None:
             return syms[int(self.mang)][1][:-1]
@@ -51,8 +57,17 @@ t_COLON = r":"
 t_ignore_WHITESPACE = r"[\s\t]"
 t_ignore_COMMENT = r'//.*'
 
+def t_VOLATILE(t):
+    r"volatile"
+    t.lexer.begin('volatile')
+    return t
+
+t_volatile_VOLATILEDATA = r".+"
+
 def t_IDENT(t):
     r'[a-zA-Z_@~][:a-zA-Z0-9_&\[\]\*<>]*'
+    if t.value == "volatile":
+        return t_VOLATILE(t)
     t.type = reserved.get(t.value,'IDENT')
     return t
 
@@ -64,12 +79,15 @@ def t_error(t):
     # print("error!", t)
     raise ValueError("yeah it errored")
 
+def t_volatile_error(t):
+    # print("error!", t)
+    raise ValueError("yeah it errored")
 
 import ply.lex as lex
 lexer = lex.lex()
 
 syms = []
-with open("functions.txt", "r") as f:
+with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
     s = f.readlines()
     for k, m in zip(s[0::2], s[1::2]):
         syms.append((k, m))
@@ -82,6 +100,12 @@ def ensure_next():
 
 def parse_func(tok):
     fi = FunkyInfo()
+    if tok.type == "VOLATILE":
+        fi.volatile = True
+        tok = ensure_next()
+        fi.data = tok.value[1:]
+        lexer.begin('INITIAL')
+        return fi
     if tok.type == "STATIC":
         fi.static = True
         tok = ensure_next()
@@ -100,7 +124,7 @@ def parse_func(tok):
 
     fi.ret = " ".join(retlist[:-1])
     fi.name = retlist[-1]
-
+    fi.name = fi.name.replace('m_', '')
     if tok.type == "ASSIGN":
         # member variable
         tok = ensure_next()
@@ -165,13 +189,15 @@ def parse_class(funky_classes):
     else:
         fc = FunkyClass(tok.value)
     tok = ensure_next()
+
     if tok.type == "COLON":
         while 1:
             tok = ensure_next()
             if tok.type != "IDENT":
                 raise ValueError("bad base class")
             fc.base.append(tok.value)
-            if ensure_next().type != "COMMA":
+            tok = ensure_next()
+            if tok.type != "COMMA":
                 break
     while 1:
         if tok.type == "END":
