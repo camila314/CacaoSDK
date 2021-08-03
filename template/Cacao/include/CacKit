@@ -40,9 +40,11 @@ struct RemoveRef <M&>
 
 #define cac_this (reinterpret_cast<RemoveRef<decltype(*this)>::type::__thistype>(this))
 
-// REVIVAL!!!
+// "A destructor is used to destroy objects of its class type. The address of a destructor shall not be taken."
+// - C++ standard 12.4.2
+// Therefore, we shall not take the destructor of the class and replace it with an empty function. ~alk
 template <class T>
-inline long extract_virtual(T instance) {
+inline long extract_destructor(T instance) {
     return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+8));
 };
 
@@ -91,7 +93,7 @@ class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($AnimatedGameObject::*)(int)){&$AnimatedGameObject::playAnimation} != (void(D::*)(int)){&D::playAnimation})
             m->registerHook(getBase()+0xc93d0, extract((void(D::*)(int)){&D::playAnimation}));
@@ -126,7 +128,7 @@ class $AppDelegate : public AppDelegate, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($AppDelegate::*)()){&$AppDelegate::bgScale} != (void(D::*)()){&D::bgScale})
             m->registerHook(getBase()+0x3aaab0, extract((void(D::*)()){&D::bgScale}));
@@ -167,7 +169,7 @@ class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($AudioEffectsLayer::*)(float)){&$AudioEffectsLayer::audioStep} != (void(D::*)(float)){&D::audioStep})
             m->registerHook(getBase()+0x271f40, extract((void(D::*)(float)){&D::audioStep}));
@@ -211,7 +213,7 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((ButtonSprite*(*)(char const*)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x4fa10, (ButtonSprite*(*)(char const*)){&D::create});
@@ -249,7 +251,7 @@ class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($CCAnimatedSprite::*)(std::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(std::string)){&D::runAnimation})
             m->registerHook(getBase()+0x1a6430, extract((void(D::*)(std::string)){&D::runAnimation}));
@@ -296,7 +298,7 @@ class $CCCircleWave : public CCCircleWave, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCCircleWave*(*)(float, float, float, bool)){&$CCCircleWave::create} != (CCCircleWave*(*)(float, float, float, bool)){&D::create})
             m->registerHook(getBase()+0xbd270, (CCCircleWave*(*)(float, float, float, bool)){&D::create});
@@ -325,7 +327,7 @@ class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
     typedef CCCircleWaveDelegate* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -354,7 +356,7 @@ class $CCLightFlash : public CCLightFlash, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCLightFlash*(*)()){&$CCLightFlash::create} != (CCLightFlash*(*)()){&D::create})
             m->registerHook(getBase()+0x295870, (CCLightFlash*(*)()){&D::create});
@@ -389,7 +391,7 @@ class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO)){&$CCMenuItemSpriteExtra::create} != (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO)){&D::create})
             m->registerHook(getBase()+0x1253c0, (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO)){&D::create});
@@ -424,7 +426,7 @@ class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO)){&$CCMenuItemToggler::create} != (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO)){&D::create})
             m->registerHook(getBase()+0x38400, (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO)){&D::create});
@@ -459,7 +461,7 @@ class $CCMoveCNode : public CCMoveCNode, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCMoveCNode*(*)()){&$CCMoveCNode::create} != (CCMoveCNode*(*)()){&D::create})
             m->registerHook(getBase()+0x1842a0, (CCMoveCNode*(*)()){&D::create});
@@ -500,7 +502,7 @@ class $CCNodeContainer : public CCNodeContainer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCNodeContainer*(*)()){&$CCNodeContainer::create} != (CCNodeContainer*(*)()){&D::create})
             m->registerHook(getBase()+0xb1090, (CCNodeContainer*(*)()){&D::create});
@@ -532,7 +534,7 @@ class $CCSpritePlus : public CCSpritePlus, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((bool($CCSpritePlus::*)(char const*)){&$CCSpritePlus::initWithSpriteFrameName} != (bool(D::*)(char const*)){&D::initWithSpriteFrameName})
             m->registerHook(getBase()+0x248670, extract((bool(D::*)(char const*)){&D::initWithSpriteFrameName}));
@@ -612,7 +614,7 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create} != (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create})
             m->registerHook(getBase()+0x5cfb0, (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create});
@@ -671,7 +673,7 @@ class $CheckpointObject : public CheckpointObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CheckpointObject*(*)()){&$CheckpointObject::create} != (CheckpointObject*(*)()){&D::create})
             m->registerHook(getBase()+0x7e7d0, (CheckpointObject*(*)()){&D::create});
@@ -706,7 +708,7 @@ class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CollisionBlockPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$CollisionBlockPopup::create} != (CollisionBlockPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x130010, (CollisionBlockPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -735,7 +737,7 @@ class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CollisionTriggerAction*(*)(std::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x176ee0, (CollisionTriggerAction*(*)(std::string)){&D::createFromString});
@@ -773,7 +775,7 @@ class $ColorAction : public ColorAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($ColorAction::*)()){&$ColorAction::getSaveString} != (void(D::*)()){&D::getSaveString})
             m->registerHook(getBase()+0x17d080, extract((void(D::*)()){&D::getSaveString}));
@@ -799,7 +801,7 @@ class $ColorActionSprite : public ColorActionSprite, public $CacBase {
     typedef ColorActionSprite* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -840,7 +842,7 @@ class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($ColorChannelSprite::*)(bool)){&$ColorChannelSprite::updateBlending} != (void(D::*)(bool)){&D::updateBlending})
             m->registerHook(getBase()+0x16e1d0, extract((void(D::*)(bool)){&D::updateBlending}));
@@ -869,7 +871,7 @@ class $ColorPickerDelegate : public ColorPickerDelegate, public $CacBase {
     typedef ColorPickerDelegate* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -886,7 +888,7 @@ class $ColorSelectLiveOverlay : public ColorSelectLiveOverlay, public $CacBase {
     typedef ColorSelectLiveOverlay* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -903,7 +905,7 @@ class $ConfigureValuePopup : public ConfigureValuePopup, public $CacBase {
     typedef ConfigureValuePopup* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -926,7 +928,7 @@ class $CountTriggerAction : public CountTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((CountTriggerAction*(*)(std::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x1754f0, (CountTriggerAction*(*)(std::string)){&D::createFromString});
@@ -946,7 +948,7 @@ class $CreateMenuItem : public CreateMenuItem, public $CacBase {
     typedef CreateMenuItem* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -975,7 +977,7 @@ class $CreatorLayer : public CreatorLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($CreatorLayer::*)(cocos2d::CCObject*)){&$CreatorLayer::onMyLevels} != (void(D::*)(cocos2d::CCObject*)){&D::onMyLevels})
             m->registerHook(getBase()+0x142b70, extract((void(D::*)(cocos2d::CCObject*)){&D::onMyLevels}));
@@ -998,7 +1000,7 @@ class $CurrencyRewardLayer : public CurrencyRewardLayer, public $CacBase {
     typedef CurrencyRewardLayer* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -1045,7 +1047,7 @@ class $CustomizeObjectLayer : public CustomizeObjectLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($CustomizeObjectLayer::*)(cocos2d::CCNode*)){&$CustomizeObjectLayer::colorSelectClosed} != (void(D::*)(cocos2d::CCNode*)){&D::colorSelectClosed})
             m->registerHook(getBase()+0xe1050, extract((void(D::*)(cocos2d::CCNode*)){&D::colorSelectClosed}));
@@ -1083,7 +1085,7 @@ class $DelayedSpawnNode : public DelayedSpawnNode, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((DelayedSpawnNode*(*)()){&$DelayedSpawnNode::create} != (DelayedSpawnNode*(*)()){&D::create})
             m->registerHook(getBase()+0x9b360, (DelayedSpawnNode*(*)()){&D::create});
@@ -1109,7 +1111,7 @@ class $DialogLayer : public DialogLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((DialogLayer*(*)(DialogObject*, int)){&$DialogLayer::create} != (DialogLayer*(*)(DialogObject*, int)){&D::create})
             m->registerHook(getBase()+0x2047c0, (DialogLayer*(*)(DialogObject*, int)){&D::create});
@@ -1135,7 +1137,7 @@ class $DialogObject : public DialogObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&$DialogObject::create} != (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create})
             m->registerHook(getBase()+0x204410, (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create});
@@ -1209,7 +1211,7 @@ class $DrawGridLayer : public DrawGridLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($DrawGridLayer::*)(cocos2d::CCPoint, bool)){&$DrawGridLayer::addPlayer2Point} != (void(D::*)(cocos2d::CCPoint, bool)){&D::addPlayer2Point})
             m->registerHook(getBase()+0xa25b0, extract((void(D::*)(cocos2d::CCPoint, bool)){&D::addPlayer2Point}));
@@ -1259,7 +1261,7 @@ class $EditButtonBar : public EditButtonBar, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($EditButtonBar::*)(cocos2d::CCArray*, int, int, bool)){&$EditButtonBar::loadFromItems} != (void(D::*)(cocos2d::CCArray*, int, int, bool)){&D::loadFromItems})
             m->registerHook(getBase()+0x351010, extract((void(D::*)(cocos2d::CCArray*, int, int, bool)){&D::loadFromItems}));
@@ -1285,7 +1287,7 @@ class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($EditorOptionsLayer::*)(cocos2d::CCObject*)){&$EditorOptionsLayer::onButtonsPerRow} != (void(D::*)(cocos2d::CCObject*)){&D::onButtonsPerRow})
             m->registerHook(getBase()+0x147b30, extract((void(D::*)(cocos2d::CCObject*)){&D::onButtonsPerRow}));
@@ -1473,7 +1475,7 @@ class $EditorUI : public EditorUI, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($EditorUI::*)()){&$EditorUI::constrainGameLayerPosition} != (void(D::*)()){&D::constrainGameLayerPosition})
             m->registerHook(getBase()+0x1c6d0, extract((void(D::*)()){&D::constrainGameLayerPosition}));
@@ -1580,7 +1582,7 @@ class $EndLevelLayer : public EndLevelLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((EndLevelLayer*(*)()){&$EndLevelLayer::create} != (EndLevelLayer*(*)()){&D::create})
             m->registerHook(getBase()+0x2787d0, (EndLevelLayer*(*)()){&D::create});
@@ -1672,7 +1674,7 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::onEnter} != (void(D::*)()){&D::onEnter})
             m->registerHook(getBase()+0x25f350, extract((void(D::*)()){&D::onEnter}));
@@ -1725,7 +1727,7 @@ class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
     typedef FLAlertLayerProtocol* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -1742,7 +1744,7 @@ class $FMODAudioEngine : public FMODAudioEngine, public $CacBase {
     typedef FMODAudioEngine* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -1765,7 +1767,7 @@ class $FollowRewardPage : public FollowRewardPage, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((FollowRewardPage*(*)()){&$FollowRewardPage::create} != (FollowRewardPage*(*)()){&D::create})
             m->registerHook(getBase()+0x22f140, (FollowRewardPage*(*)()){&D::create});
@@ -1791,7 +1793,7 @@ class $GJAccountManager : public GJAccountManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJAccountManager*(*)()){&$GJAccountManager::sharedState} != (GJAccountManager*(*)()){&D::sharedState})
             m->registerHook(getBase()+0x85070, (GJAccountManager*(*)()){&D::sharedState});
@@ -2219,7 +2221,7 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJBaseGameLayer::*)(int, int)){&$GJBaseGameLayer::objectsCollided} != (void(D::*)(int, int)){&D::objectsCollided})
             m->registerHook(getBase()+0xb6d90, extract((void(D::*)(int, int)){&D::objectsCollided}));
@@ -2446,7 +2448,7 @@ class $GJColorSetupLayer : public GJColorSetupLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJColorSetupLayer::*)()){&$GJColorSetupLayer::updateSpriteColors} != (void(D::*)()){&D::updateSpriteColors})
             m->registerHook(getBase()+0xefe50, extract((void(D::*)()){&D::updateSpriteColors}));
@@ -2550,7 +2552,7 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::customSetup} != (void(D::*)()){&D::customSetup})
             m->registerHook(getBase()+0x352570, extract((void(D::*)()){&D::customSetup}));
@@ -3113,7 +3115,7 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::activeColorForIndex} != (void(D::*)(int)){&D::activeColorForIndex})
             m->registerHook(getBase()+0x180cb0, extract((void(D::*)(int)){&D::activeColorForIndex}));
@@ -3418,7 +3420,7 @@ class $GJFollowCommandLayer : public GJFollowCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJFollowCommandLayer::create} != (GJFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x16a550, (GJFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -3495,7 +3497,7 @@ class $GJGameLevel : public GJGameLevel, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJGameLevel*(*)()){&$GJGameLevel::create} != (GJGameLevel*(*)()){&D::create})
             m->registerHook(getBase()+0x2b83e0, (GJGameLevel*(*)()){&D::create});
@@ -3575,7 +3577,7 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJGroundLayer*(*)(int, int)){&$GJGroundLayer::create} != (GJGroundLayer*(*)(int, int)){&D::create})
             m->registerHook(getBase()+0x355c00, (GJGroundLayer*(*)(int, int)){&D::create});
@@ -3613,7 +3615,7 @@ class $GJListLayer : public GJListLayer, public $CacBase {
     typedef GJListLayer* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -3738,7 +3740,7 @@ class $GJMoveCommandLayer : public GJMoveCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJMoveCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJMoveCommandLayer::create} != (GJMoveCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x36f8a0, (GJMoveCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -3827,7 +3829,7 @@ class $GJPFollowCommandLayer : public GJPFollowCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJPFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJPFollowCommandLayer::create} != (GJPFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1aea20, (GJPFollowCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -3871,7 +3873,7 @@ class $GJRobotSprite : public GJRobotSprite, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJRobotSprite*(*)()){&$GJRobotSprite::create} != (GJRobotSprite*(*)()){&D::create})
             m->registerHook(getBase()+0x34ac00, (GJRobotSprite*(*)()){&D::create});
@@ -3933,7 +3935,7 @@ class $GJRotateCommandLayer : public GJRotateCommandLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJRotateCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$GJRotateCommandLayer::create} != (GJRotateCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1ba0, (GJRotateCommandLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -3986,7 +3988,7 @@ class $GJSearchObject : public GJSearchObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJSearchObject*(*)(SearchType)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType)){&D::create})
             m->registerHook(getBase()+0x2df120, (GJSearchObject*(*)(SearchType)){&D::create});
@@ -4018,7 +4020,7 @@ class $GJSpecialColorSelect : public GJSpecialColorSelect, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GJSpecialColorSelect::*)(int)){&$GJSpecialColorSelect::textForColorIdx} != (void(D::*)(int)){&D::textForColorIdx})
             m->registerHook(getBase()+0x383a50, extract((void(D::*)(int)){&D::textForColorIdx}));
@@ -4038,7 +4040,7 @@ class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, publi
     typedef GJSpecialColorSelectDelegate* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -4061,7 +4063,7 @@ class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJSpiderSprite*(*)()){&$GJSpiderSprite::create} != (GJSpiderSprite*(*)()){&D::create})
             m->registerHook(getBase()+0x34c5b0, (GJSpiderSprite*(*)()){&D::create});
@@ -4099,7 +4101,7 @@ class $GManager : public GManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GManager::*)()){&$GManager::save} != (void(D::*)()){&D::save})
             m->registerHook(getBase()+0x26f300, extract((void(D::*)()){&D::save}));
@@ -4137,7 +4139,7 @@ class $GameLevelManager : public GameLevelManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GJGameLevel*($GameLevelManager::*)()){&$GameLevelManager::createNewLevel} != (GJGameLevel*(D::*)()){&D::createNewLevel})
             m->registerHook(getBase()+0x2b8180, extract((GJGameLevel*(D::*)()){&D::createNewLevel}));
@@ -4274,7 +4276,7 @@ class $GameManager : public GameManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GameManager::*)()){&$GameManager::accountStatusChanged} != (void(D::*)()){&D::accountStatusChanged})
             m->registerHook(getBase()+0x1cdad0, extract((void(D::*)()){&D::accountStatusChanged}));
@@ -4930,7 +4932,7 @@ class $GameObject : public GameObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GameObject::*)()){&$GameObject::activateObject} != (void(D::*)()){&D::activateObject})
             m->registerHook(getBase()+0x2faf60, extract((void(D::*)()){&D::activateObject}));
@@ -5250,7 +5252,7 @@ class $GameObjectCopy : public GameObjectCopy, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GameObjectCopy*(*)(GameObject*)){&$GameObjectCopy::create} != (GameObjectCopy*(*)(GameObject*)){&D::create})
             m->registerHook(getBase()+0x975a0, (GameObjectCopy*(*)(GameObject*)){&D::create});
@@ -5315,7 +5317,7 @@ class $GameSoundManager : public GameSoundManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GameSoundManager::*)()){&$GameSoundManager::disableMetering} != (void(D::*)()){&D::disableMetering})
             m->registerHook(getBase()+0x362d80, extract((void(D::*)()){&D::disableMetering}));
@@ -5437,7 +5439,7 @@ class $GameStatsManager : public GameStatsManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($GameStatsManager::*)(GJGameLevel*)){&$GameStatsManager::awardCurrencyForLevel} != (void(D::*)(GJGameLevel*)){&D::awardCurrencyForLevel})
             m->registerHook(getBase()+0x43600, extract((void(D::*)(GJGameLevel*)){&D::awardCurrencyForLevel}));
@@ -5538,7 +5540,7 @@ class $GameToolbox : public GameToolbox, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void(*)(std::string, cocos2d::SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&$GameToolbox::createToggleButton} != (void(*)(std::string, cocos2d::SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton})
             m->registerHook(getBase()+0x28bdd0, (void(*)(std::string, cocos2d::SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton});
@@ -5594,7 +5596,7 @@ class $GravityEffectSprite : public GravityEffectSprite, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GravityEffectSprite*(*)()){&$GravityEffectSprite::create} != (GravityEffectSprite*(*)()){&D::create})
             m->registerHook(getBase()+0x6d0a0, (GravityEffectSprite*(*)()){&D::create});
@@ -5656,7 +5658,7 @@ class $GroupCommandObject : public GroupCommandObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((GroupCommandObject*(*)()){&$GroupCommandObject::create} != (GroupCommandObject*(*)()){&D::create})
             m->registerHook(getBase()+0x18b460, (GroupCommandObject*(*)()){&D::create});
@@ -5715,7 +5717,7 @@ class $HardStreak : public HardStreak, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($HardStreak::*)(cocos2d::CCPoint)){&$HardStreak::addPoint} != (void(D::*)(cocos2d::CCPoint)){&D::addPoint})
             m->registerHook(getBase()+0x5c950, extract((void(D::*)(cocos2d::CCPoint)){&D::addPoint}));
@@ -5756,7 +5758,7 @@ class $InfoLayer : public InfoLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($InfoLayer::*)(int, bool)){&$InfoLayer::loadPage} != (void(D::*)(int, bool)){&D::loadPage})
             m->registerHook(getBase()+0x458fb0, extract((void(D::*)(int, bool)){&D::loadPage}));
@@ -5779,7 +5781,7 @@ class $InheritanceNode : public InheritanceNode, public $CacBase {
     typedef InheritanceNode* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -5814,7 +5816,7 @@ class $EffectGameObject : public EffectGameObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((EffectGameObject*(*)(char const*)){&$EffectGameObject::create} != (EffectGameObject*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0xc9790, (EffectGameObject*(*)(char const*)){&D::create});
@@ -5852,7 +5854,7 @@ class $EndPortalObject : public EndPortalObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((EndPortalObject*(*)()){&$EndPortalObject::create} != (EndPortalObject*(*)()){&D::create})
             m->registerHook(getBase()+0x1da8f0, (EndPortalObject*(*)()){&D::create});
@@ -5887,7 +5889,7 @@ class $LabelGameObject : public LabelGameObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((bool($LabelGameObject::*)()){&$LabelGameObject::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x2f5520, extract((bool(D::*)()){&D::init}));
@@ -5928,7 +5930,7 @@ class $LevelBrowserLayer : public LevelBrowserLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($LevelBrowserLayer::*)(GJSearchObject*)){&$LevelBrowserLayer::loadPage} != (void(D::*)(GJSearchObject*)){&D::loadPage})
             m->registerHook(getBase()+0x253650, extract((void(D::*)(GJSearchObject*)){&D::loadPage}));
@@ -6374,7 +6376,7 @@ class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($LevelEditorLayer::*)(EffectGameObject*, float, float, float)){&$LevelEditorLayer::activateTriggerEffect} != (void(D::*)(EffectGameObject*, float, float, float)){&D::activateTriggerEffect})
             m->registerHook(getBase()+0x9b520, extract((void(D::*)(EffectGameObject*, float, float, float)){&D::activateTriggerEffect}));
@@ -6601,7 +6603,7 @@ class $LevelInfoLayer : public LevelInfoLayer, public $CacBase {
     typedef LevelInfoLayer* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -6624,7 +6626,7 @@ class $LevelSettingsLayer : public LevelSettingsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((LevelSettingsLayer*(*)(LevelSettingsObject*, LevelEditorLayer*)){&$LevelSettingsLayer::create} != (LevelSettingsLayer*(*)(LevelSettingsObject*, LevelEditorLayer*)){&D::create})
             m->registerHook(getBase()+0xa7c30, (LevelSettingsLayer*(*)(LevelSettingsObject*, LevelEditorLayer*)){&D::create});
@@ -6674,7 +6676,7 @@ class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((LevelSettingsObject*(*)()){&$LevelSettingsObject::create} != (LevelSettingsObject*(*)()){&D::create})
             m->registerHook(getBase()+0x92760, (LevelSettingsObject*(*)()){&D::create});
@@ -6724,7 +6726,7 @@ class $LevelTools : public LevelTools, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($LevelTools::*)(int)){&$LevelTools::getAudioString} != (void(D::*)(int)){&D::getAudioString})
             m->registerHook(getBase()+0x293880, extract((void(D::*)(int)){&D::getAudioString}));
@@ -6756,7 +6758,7 @@ class $LoadingLayer : public LoadingLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($LoadingLayer::*)()){&$LoadingLayer::loadAssets} != (void(D::*)()){&D::loadAssets})
             m->registerHook(getBase()+0x1dfb20, extract((void(D::*)()){&D::loadAssets}));
@@ -6782,7 +6784,7 @@ class $LocalLevelManager : public LocalLevelManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((LocalLevelManager*(*)()){&$LocalLevelManager::sharedState} != (LocalLevelManager*(*)()){&D::sharedState})
             m->registerHook(getBase()+0x35dd60, (LocalLevelManager*(*)()){&D::sharedState});
@@ -6814,7 +6816,7 @@ class $MenuGameLayer : public MenuGameLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($MenuGameLayer::*)()){&$MenuGameLayer::resetPlayer} != (void(D::*)()){&D::resetPlayer})
             m->registerHook(getBase()+0x28fdc0, extract((void(D::*)()){&D::resetPlayer}));
@@ -6855,7 +6857,7 @@ class $MenuLayer : public MenuLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
             m->registerHook(getBase()+0x1d3160, extract((void(D::*)()){&D::keyBackClicked}));
@@ -6893,7 +6895,7 @@ class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((MoreVideoOptionsLayer*(*)()){&$MoreVideoOptionsLayer::create} != (MoreVideoOptionsLayer*(*)()){&D::create})
             m->registerHook(getBase()+0x443c10, (MoreVideoOptionsLayer*(*)()){&D::create});
@@ -6928,7 +6930,7 @@ class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($MusicDownloadManager::*)(int)){&$MusicDownloadManager::incrementPriorityForSong} != (void(D::*)(int)){&D::incrementPriorityForSong})
             m->registerHook(getBase()+0x2ef750, extract((void(D::*)(int)){&D::incrementPriorityForSong}));
@@ -6981,7 +6983,7 @@ class $OBB2D : public OBB2D, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($OBB2D::*)(cocos2d::CCPoint, float, float, float)){&$OBB2D::calculateWithCenter} != (void(D::*)(cocos2d::CCPoint, float, float, float)){&D::calculateWithCenter})
             m->registerHook(getBase()+0x35a9c0, extract((void(D::*)(cocos2d::CCPoint, float, float, float)){&D::calculateWithCenter}));
@@ -7031,7 +7033,7 @@ class $ObjectToolbox : public ObjectToolbox, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((bool($ObjectToolbox::*)()){&$ObjectToolbox::init} != (bool(D::*)()){&D::init})
             m->registerHook(getBase()+0x3b2d80, extract((bool(D::*)()){&D::init}));
@@ -7081,7 +7083,7 @@ class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((OpacityEffectAction*(*)(float, float, float, int)){&$OpacityEffectAction::create} != (OpacityEffectAction*(*)(float, float, float, int)){&D::create})
             m->registerHook(getBase()+0x1789f0, (OpacityEffectAction*(*)(float, float, float, int)){&D::create});
@@ -7122,7 +7124,7 @@ class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((EditorPauseLayer*(*)(LevelEditorLayer*)){&$EditorPauseLayer::create} != (EditorPauseLayer*(*)(LevelEditorLayer*)){&D::create})
             m->registerHook(getBase()+0x13c680, (EditorPauseLayer*(*)(LevelEditorLayer*)){&D::create});
@@ -7157,7 +7159,7 @@ class $PauseLayer : public PauseLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((PauseLayer*(*)(bool)){&$PauseLayer::create} != (PauseLayer*(*)(bool)){&D::create})
             m->registerHook(getBase()+0x20b1e0, (PauseLayer*(*)(bool)){&D::create});
@@ -7192,7 +7194,7 @@ class $PlatformToolbox : public PlatformToolbox, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($PlatformToolbox::*)()){&$PlatformToolbox::hideCursor} != (void(D::*)()){&D::hideCursor})
             m->registerHook(getBase()+0x27c340, extract((void(D::*)()){&D::hideCursor}));
@@ -8121,7 +8123,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($PlayLayer::*)(CCCircleWave*)){&$PlayLayer::addCircle} != (void(D::*)(CCCircleWave*)){&D::addCircle})
             m->registerHook(getBase()+0x7e0f0, extract((void(D::*)(CCCircleWave*)){&D::addCircle}));
@@ -8597,7 +8599,7 @@ class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((PlayerCheckpoint*(*)()){&$PlayerCheckpoint::create} != (PlayerCheckpoint*(*)()){&D::create})
             m->registerHook(getBase()+0x7e8c0, (PlayerCheckpoint*(*)()){&D::create});
@@ -9505,7 +9507,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($PlayerObject::*)()){&$PlayerObject::activateStreak} != (void(D::*)()){&D::activateStreak})
             m->registerHook(getBase()+0x21aef0, extract((void(D::*)()){&D::activateStreak}));
@@ -9978,7 +9980,7 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((PulseEffectAction*(*)(std::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x179e90, (PulseEffectAction*(*)(std::string)){&D::createFromString});
@@ -10007,7 +10009,7 @@ class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((RetryLevelLayer*(*)()){&$RetryLevelLayer::create} != (RetryLevelLayer*(*)()){&D::create})
             m->registerHook(getBase()+0x28dd60, (RetryLevelLayer*(*)()){&D::create});
@@ -10045,7 +10047,7 @@ class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($SetGroupIDLayer::*)(cocos2d::CCObject*)){&$SetGroupIDLayer::onNextGroupID1} != (void(D::*)(cocos2d::CCObject*)){&D::onNextGroupID1})
             m->registerHook(getBase()+0x1967a0, extract((void(D::*)(cocos2d::CCObject*)){&D::onNextGroupID1}));
@@ -10077,7 +10079,7 @@ class $SetIDLayer : public SetIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetIDLayer*(*)(GameObject*)){&$SetIDLayer::create} != (SetIDLayer*(*)(GameObject*)){&D::create})
             m->registerHook(getBase()+0x168f20, (SetIDLayer*(*)(GameObject*)){&D::create});
@@ -10097,7 +10099,7 @@ class $SetIDPopup : public SetIDPopup, public $CacBase {
     typedef SetIDPopup* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -10120,7 +10122,7 @@ class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetItemIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetItemIDLayer::create} != (SetItemIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x5a830, (SetItemIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10164,7 +10166,7 @@ class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create} != (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create})
             m->registerHook(getBase()+0x159d20, (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create});
@@ -10217,7 +10219,7 @@ class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupAnimationPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupAnimationPopup::create} != (SetupAnimationPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x208b70, (SetupAnimationPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10270,7 +10272,7 @@ class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $C
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupCollisionTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCollisionTriggerPopup::create} != (SetupCollisionTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1d6120, (SetupCollisionTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10323,7 +10325,7 @@ class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupCountTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupCountTriggerPopup::create} != (SetupCountTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x15c6c0, (SetupCountTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10376,7 +10378,7 @@ class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupInstantCountPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInstantCountPopup::create} != (SetupInstantCountPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x352c10, (SetupInstantCountPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10429,7 +10431,7 @@ class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBa
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupInteractObjectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupInteractObjectPopup::create} != (SetupInteractObjectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x29a400, (SetupInteractObjectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10488,7 +10490,7 @@ class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupObjectTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupObjectTogglePopup::create} != (SetupObjectTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1c0860, (SetupObjectTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10544,7 +10546,7 @@ class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupOpacityPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupOpacityPopup::create} != (SetupOpacityPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x32b70, (SetupOpacityPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10603,7 +10605,7 @@ class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupPickupTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPickupTriggerPopup::create} != (SetupPickupTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x35e70, (SetupPickupTriggerPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10641,7 +10643,7 @@ class $SetupShakePopup : public SetupShakePopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupShakePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupShakePopup::create} != (SetupShakePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x3adc00, (SetupShakePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10691,7 +10693,7 @@ class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupSpawnPopup::create} != (SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x139790, (SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10747,7 +10749,7 @@ class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SetupTouchTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupTouchTogglePopup::create} != (SetupTouchTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(getBase()+0x1576a0, (SetupTouchTogglePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
@@ -10800,7 +10802,7 @@ class $SimplePlayer : public SimplePlayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SimplePlayer*(*)(int)){&$SimplePlayer::create} != (SimplePlayer*(*)(int)){&D::create})
             m->registerHook(getBase()+0x1b6140, (SimplePlayer*(*)(int)){&D::create});
@@ -10859,7 +10861,7 @@ class $Slider : public Slider, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((Slider*(*)(cocos2d::CCNode*, cocos2d::SEL_CallFuncO, char const*, char const*, char const*, char const*, float)){&$Slider::create} != (Slider*(*)(cocos2d::CCNode*, cocos2d::SEL_CallFuncO, char const*, char const*, char const*, char const*, float)){&D::create})
             m->registerHook(getBase()+0x18dd80, (Slider*(*)(cocos2d::CCNode*, cocos2d::SEL_CallFuncO, char const*, char const*, char const*, char const*, float)){&D::create});
@@ -10897,7 +10899,7 @@ class $SliderThumb : public SliderThumb, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($SliderThumb::*)()){&$SliderThumb::getValue} != (void(D::*)()){&D::getValue})
             m->registerHook(getBase()+0x18ce80, extract((void(D::*)()){&D::getValue}));
@@ -10923,7 +10925,7 @@ class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SpawnTriggerAction*(*)(std::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x17bf50, (SpawnTriggerAction*(*)(std::string)){&D::createFromString});
@@ -10955,7 +10957,7 @@ class $SpeedObject : public SpeedObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((SpeedObject*(*)(GameObject*, int, float)){&$SpeedObject::create} != (SpeedObject*(*)(GameObject*, int, float)){&D::create})
             m->registerHook(getBase()+0x77450, (SpeedObject*(*)(GameObject*, int, float)){&D::create});
@@ -10990,7 +10992,7 @@ class $TeleportPortalObject : public TeleportPortalObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((TeleportPortalObject*(*)(char const*)){&$TeleportPortalObject::create} != (TeleportPortalObject*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0xdaa50, (TeleportPortalObject*(*)(char const*)){&D::create});
@@ -11019,7 +11021,7 @@ class $TextArea : public TextArea, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&$TextArea::create} != (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create})
             m->registerHook(getBase()+0x19eb40, (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create});
@@ -11039,7 +11041,7 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
     typedef TextInputDelegate* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -11062,7 +11064,7 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((ToggleTriggerAction*(*)(std::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x1765e0, (ToggleTriggerAction*(*)(std::string)){&D::createFromString});
@@ -11088,7 +11090,7 @@ class $TouchToggleAction : public TouchToggleAction, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((TouchToggleAction*(*)(std::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x177e10, (TouchToggleAction*(*)(std::string)){&D::createFromString});
@@ -11138,7 +11140,7 @@ class $UILayer : public UILayer, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((UILayer*(*)()){&$UILayer::create} != (UILayer*(*)()){&D::create})
             m->registerHook(getBase()+0x27fd10, (UILayer*(*)()){&D::create});
@@ -11170,7 +11172,7 @@ class $UndoCommand : public UndoCommand, public $CacBase {
     typedef UndoCommand* __thistype;
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -11199,7 +11201,7 @@ class $UndoObject : public UndoObject, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((UndoObject*(*)(GameObject*, UndoCommand)){&$UndoObject::create} != (UndoObject*(*)(GameObject*, UndoCommand)){&D::create})
             m->registerHook(getBase()+0x94ea0, (UndoObject*(*)(GameObject*, UndoCommand)){&D::create});
@@ -11330,7 +11332,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($ColorSelectPopup::*)(cocos2d::_ccColor3B)){&$ColorSelectPopup::colorValueChanged} != (void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged})
             m->registerHook(getBase()+0x423320, extract((void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged}));
@@ -11473,7 +11475,7 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
     }
 
     void apply_hooks() override {
-    m->registerHook(extract_virtual(this), +[](){});
+    m->registerHook(extract_destructor(this), +[](){});
 
         if ((void($SetupPulsePopup::*)(cocos2d::_ccColor3B)){&$SetupPulsePopup::colorValueChanged} != (void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged})
             m->registerHook(getBase()+0x1ec680, extract((void(D::*)(cocos2d::_ccColor3B)){&D::colorValueChanged}));

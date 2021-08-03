@@ -46,7 +46,7 @@ build_body1_static = """
 
 build_body2_start = """
     void apply_hooks() override {{
-    m->registerHook(extract_virtual(this), +[](){{}});
+    m->registerHook(extract_destructor(this), +[](){{}});
 """
     
 

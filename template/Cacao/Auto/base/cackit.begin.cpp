@@ -40,9 +40,11 @@ struct RemoveRef <M&>
 
 #define cac_this (reinterpret_cast<RemoveRef<decltype(*this)>::type::__thistype>(this))
 
-// REVIVAL!!!
+// "A destructor is used to destroy objects of its class type. The address of a destructor shall not be taken."
+// - C++ standard 12.4.2
+// Therefore, we shall not take the destructor of the class and replace it with an empty function. ~alk
 template <class T>
-inline long extract_virtual(T instance) {
+inline long extract_destructor(T instance) {
     return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+8));
 };
 
