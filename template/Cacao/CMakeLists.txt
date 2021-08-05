@@ -17,13 +17,13 @@ add_custom_command(
 	COMMENT "Generating Cackit"
 )
 
-add_custom_command(
-	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
-   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm
-   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/functions.txt
-	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
-	COMMENT "Generating symbols"
-)
+# add_custom_command(
+# 	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
+#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm
+#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/functions.txt
+# 	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
+# 	COMMENT "Generating symbols"
+# )
 
 add_custom_command(
 	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
