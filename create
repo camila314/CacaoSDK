@@ -35,7 +35,7 @@ shift $((OPTIND-1))
 
 projname="${1:-Default Project}"
 if [ -z "$copypath" ]; then
-	copypath="$srcpath/Projects/$projname"
+	copypath="$projname"
 fi
 
 
