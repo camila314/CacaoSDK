@@ -270,8 +270,8 @@
     virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 1740, 288;
     virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020, 1739, 288;
     virtual void registerWithTouchDispatcher() = 0x25f2e0, 1751;
-    virtual void keyBackClicked() = 0x25ed90, 1746;
-    virtual void keyDown(cocos2d::enumKeyCodes) = 0x25ece0, 1747;
+    virtual void keyBackClicked() = 0x25ed90, 1746, 304;
+    virtual void keyDown(cocos2d::enumKeyCodes) = 0x25ece0, 1747, 312;
     virtual void show() = 0x25f120, 1752;
     virtual bool init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float) = 0x25e1b0, 1745;
     virtual ~FLAlertLayer() = 0x25da90, 1755;
@@ -443,7 +443,7 @@
     void colorActionChanged(ColorAction*) = 0x181dc0, 2149;
     void colorExists(int) = 0x181da0, 2150;
     void colorForEffect(cocos2d::_ccColor3B, cocos2d::_ccHSVValue) = 0x182650, 2151;
-    void colorForGroupID(int, cocos2d::_ccColor3B const&, bool) = 0x184f90, 2152;
+    cocos2d::_ccColor3B colorForGroupID(int, cocos2d::_ccColor3B const&, bool) = 0x184f90, 2152;
     void colorForIndex(int) = 0x180ad0, 2153;
     void colorForPulseEffect(cocos2d::_ccColor3B const&, PulseEffectAction*) = 0x181bf0, 2154;
     void countChangedForItem(int) = 0x185a40, 2155;
@@ -492,7 +492,7 @@
     void resetTriggeredIDs() = 0x182630, 2201;
     void runCountTrigger(int, int, bool, int, bool, int) = 0x1858d0, 2202;
     void runDeathTrigger(int, bool, int) = 0x1857a0, 2203;
-    void runOpacityActionOnGroup(int, float, float, int) = 0x1845d0, 2204;
+    OpacityEffectAction* runOpacityActionOnGroup(int, float, float, int) = 0x1845d0, 2204;
     void runPulseEffect(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int) = 0x184890, 2205;
     void runTouchTriggerCommand(int, bool, TouchTriggerType, bool, int) = 0x185460, 2206;
     void setColorAction(ColorAction*, int) = 0x181d00, 2207;
@@ -1848,32 +1848,32 @@
     CCLayerColor() = 0x274320, 8253;
     static cocos2d::CCLayerColor* create(cocos2d::_ccColor4B const&, float, float) = 0x2745e0, 8258;
     void draw() = 0x274b50, 8260;
-    void getBlendFunc() = 0x274480, 8261;
+    void getBlendFunc() = 0x274480, 8261, 392;
     bool init() = 0x274800, 8262;
     void initWithColor(cocos2d::_ccColor4B const&) = 0x2749a0, 8263;
     void initWithColor(cocos2d::_ccColor4B const&, float, float) = 0x274850, 8264;
-    void setBlendFunc(cocos2d::_ccBlendFunc) = 0x2744a0, 8265;
-    void setColor(cocos2d::_ccColor3B const&) = 0x274c20, 8266;
+    void setBlendFunc(cocos2d::_ccBlendFunc) = 0x2744a0, 8265, 392;
+    void setColor(cocos2d::_ccColor3B const&) = 0x274c20, 8266, 368;
     void setContentSize(cocos2d::CCSize const&) = 0x2749f0, 8267;
-    void setOpacity(unsigned char) = 0x274db0, 8268;
+    void setOpacity(unsigned char) = 0x274db0, 8268, 368;
     void updateColor() = 0x274ae0, 8269;
     ~CCLayerColor() = 0x2743d0, 8272;
 @end
 
 @interface cocos2d::CCLayerRGBA
     CCLayerRGBA() = 0x2738d0, 8312;
-    void getColor() = 0x273d60, 8313;
-    void getDisplayedColor() = 0x273d80, 8314;
-    void getDisplayedOpacity() = 0x273c00, 8315;
-    void getOpacity() = 0x273be0, 8316;
-    void isCascadeColorEnabled() = 0x274230, 8318;
-    void isCascadeOpacityEnabled() = 0x2741f0, 8319;
+    void getColor() = 0x273d60, 8313, 368;
+    void getDisplayedColor() = 0x273d80, 8314, 368;
+    void getDisplayedOpacity() = 0x273c00, 8315, 368;
+    void getOpacity() = 0x273be0, 8316, 368;
+    void isCascadeColorEnabled() = 0x274230, 8318, 368;
+    void isCascadeOpacityEnabled() = 0x2741f0, 8319, 368;
     void isOpacityModifyRGB() = 0x6190, 8320;
-    void setCascadeColorEnabled(bool) = 0x274250, 8321;
-    void setCascadeOpacityEnabled(bool) = 0x274210, 8322;
+    void setCascadeColorEnabled(bool) = 0x274250, 8321, 368;
+    void setCascadeOpacityEnabled(bool) = 0x274210, 8322, 368;
     void setOpacityModifyRGB(bool) = 0x6180, 8325;
-    void updateDisplayedColor(cocos2d::_ccColor3B const&) = 0x2740b0, 8326;
-    void updateDisplayedOpacity(unsigned char) = 0x273f20, 8327;
+    void updateDisplayedColor(cocos2d::_ccColor3B const&) = 0x2740b0, 8326, 368;
+    void updateDisplayedOpacity(unsigned char) = 0x273f20, 8327, 368;
 @end
 
 @interface cocos2d::CCMenu
@@ -2023,14 +2023,14 @@
 
 @interface cocos2d::CCNodeRGBA
     CCNodeRGBA() = 0x124b30, 8723;
-    void getColor() = 0x125020, 8725;
-    void getDisplayedColor() = 0x125040, 8726;
-    void getDisplayedOpacity() = 0x124cf0, 8727;
-    void getOpacity() = 0x124cd0, 8728;
-    void isCascadeColorEnabled() = 0x125320, 8730;
-    void isCascadeOpacityEnabled() = 0x124fe0, 8731;
-    void setCascadeColorEnabled(bool) = 0x125340, 8733;
-    void setCascadeOpacityEnabled(bool) = 0x125000, 8734;
+    void getColor() = 0x125020, 8725, 288;
+    void getDisplayedColor() = 0x125040, 8726, 288;
+    void getDisplayedOpacity() = 0x124cf0, 8727, 288;
+    void getOpacity() = 0x124cd0, 8728, 288;
+    void isCascadeColorEnabled() = 0x125320, 8730, 288;
+    void isCascadeOpacityEnabled() = 0x124fe0, 8731, 288;
+    void setCascadeColorEnabled(bool) = 0x125340, 8733, 288;
+    void setCascadeOpacityEnabled(bool) = 0x125000, 8734, 288;
     ~CCNodeRGBA() = 0x124ba0, 8742;
 @end
 
@@ -2144,7 +2144,7 @@
     void draw() = 0x134070, 9604;
     void getBatchNode() = 0x135910, 9605;
     void getBlendFunc() = 0x505a0, 9606;
-    void getTexture() = 0x135c00, 9607;
+    void getTexture() = 0x135c00, 9607, 312;
     void ignoreAnchorPointForPosition(bool) = 0x134b60, 9608;
     void initWithFile(char const*) = 0x133180, 9610;
     void initWithFile(char const*, cocos2d::CCRect const&) = 0x133210, 9611;
@@ -2155,7 +2155,7 @@
     void initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool) = 0x132f10, 9616;
     void isDirty() = 0x505b0, 9617;
     void isFrameDisplayed(cocos2d::CCSpriteFrame*) = 0x1356d0, 9620;
-    void isOpacityModifyRGB() = 0x135350, 9621;
+    void isOpacityModifyRGB() = 0x135350, 9621, 288;
     void refreshTextureRect() = 0x133520, 9622;
     void removeAllChildrenWithCleanup(bool) = 0x134340, 9623;
     void removeChild(cocos2d::CCNode*, bool) = 0x134300, 9624;
@@ -2169,14 +2169,14 @@
     void setDisplayFrame(cocos2d::CCSpriteFrame*) = 0x135610, 9634;
     void setDisplayFrameWithAnimationName(char const*, int) = 0x135680, 9635;
     void setFlipY(bool) = 0x134c30, 9637;
-    void setOpacityModifyRGB(bool) = 0x135200, 9639;
+    void setOpacityModifyRGB(bool) = 0x135200, 9639, 288;
     void setPosition(cocos2d::CCPoint const&) = 0x134650, 9640;
     void setReorderChildDirtyRecursively() = 0x134550, 9641;
     void setRotationX(float) = 0x134740, 9643;
     void setRotationY(float) = 0x1347b0, 9644;
     void setSkewX(float) = 0x134820, 9648;
     void setSkewY(float) = 0x134890, 9649;
-    void setTexture(cocos2d::CCTexture2D*) = 0x135a90, 9650;
+    void setTexture(cocos2d::CCTexture2D*) = 0x135a90, 9650, 312;
     void setTextureCoords(cocos2d::CCRect const&) = 0x133910, 9651;
     void setTextureRect(cocos2d::CCRect const&) = 0x133560, 9652;
     void setTextureRect(cocos2d::CCRect const&, bool, cocos2d::CCSize const&) = 0x133580, 9653;
@@ -2184,8 +2184,8 @@
     void setVertexZ(float) = 0x134a80, 9655;
     void sortAllChildren() = 0x1343f0, 9657;
     void updateBlendFunc() = 0x135a20, 9658;
-    void updateDisplayedColor(cocos2d::_ccColor3B const&) = 0x135370, 9660;
-    void updateDisplayedOpacity(unsigned char) = 0x1354c0, 9661;
+    void updateDisplayedColor(cocos2d::_ccColor3B const&) = 0x135370, 9660, 288;
+    void updateDisplayedOpacity(unsigned char) = 0x1354c0, 9661, 288;
     void updateTransform() = 0x133b70, 9662;
 @end
 
@@ -2262,7 +2262,7 @@
 @interface ColorSelectPopup : FLAlertLayer, ColorPickerDelegate, TextInputDelegate, GJSpecialColorSelectDelegate
     void colorValueChanged(cocos2d::_ccColor3B) = 0x423320, 793;
     static ColorSelectPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x41eb70, 795;
-    bool init(EffectGameObject*, cocos2d::CCArray*, ColorAction*) = 0x41ee70, 800;
+    virtual bool init(EffectGameObject*, cocos2d::CCArray*, ColorAction*) = 0x41ee70, 800;
     void onDefault(cocos2d::CCObject*) = 0x4220e0, 804;
     void onMultiTrigger(cocos2d::CCObject*) = 0x422680, 805;
     void onPlayerColor1(cocos2d::CCObject*) = 0x422500, 807;
@@ -2270,7 +2270,7 @@
     void onSpawnedByTrigger(cocos2d::CCObject*) = 0x4227f0, 810;
     void onToggleHSVMode(cocos2d::CCObject*) = 0x4227b0, 812;
     void onTouchTriggered(cocos2d::CCObject*) = 0x4228b0, 814;
-    void show() = 0x423570, 818;
+    virtual void show() = 0x423570, 818;
     void sliderChanged(cocos2d::CCObject*) = 0x421ca0, 819;
     void updateCopyColor() = 0x423b70, 825;
     void updateCopyColorTextInputLabel() = 0x422ed0, 826;
@@ -2288,11 +2288,11 @@
 @interface SetupPulsePopup : FLAlertLayer, ColorPickerDelegate, TextInputDelegate, GJSpecialColorSelectDelegate
     void colorValueChanged(cocos2d::_ccColor3B) = 0x1ec680, 6138;
     static SetupPulsePopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x1e6d40, 6139;
-    bool init(EffectGameObject*, cocos2d::CCArray*) = 0x1e7010, 6142;
+    virtual bool init(EffectGameObject*, cocos2d::CCArray*) = 0x1e7010, 6142;
     void onSelectPulseMode(cocos2d::CCObject*) = 0x1eb020, 6150;
     void onSelectTargetMode(cocos2d::CCObject*) = 0x1eac30, 6153;
     void onUpdateCustomColor(cocos2d::CCObject*) = 0x1eaef0, 6157;
-    void textChanged(CCTextInputNode*) = 0x1ec960, 6161;
+    virtual void textChanged(CCTextInputNode*) = 0x1ec960, 6161;
     void updateCopyColorTextInputLabel() = 0x1ebf20, 6168;
     void updateEditorLabel() = 0x1ec310, 6169;
     void updateFadeOutLabel(bool) = 0x1eba20, 6172;

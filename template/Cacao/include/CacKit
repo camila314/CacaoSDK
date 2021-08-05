@@ -2687,9 +2687,9 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         else return GJEffectManager::colorForEffect(p0, p1);
     }
 
-    void colorForGroupID(int p0, cocos2d::_ccColor3B const& p1, bool p2) {
-        if ((void($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::colorForGroupID} != (void(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::colorForGroupID})
-            return reinterpret_cast<void(*)(decltype(this), int, cocos2d::_ccColor3B const&, bool)>(m->getOriginal(getBase()+0x184f90))(this, p0, p1, p2);
+    cocos2d::_ccColor3B colorForGroupID(int p0, cocos2d::_ccColor3B const& p1, bool p2) {
+        if ((cocos2d::_ccColor3B($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::colorForGroupID} != (cocos2d::_ccColor3B(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::colorForGroupID})
+            return reinterpret_cast<cocos2d::_ccColor3B(*)(decltype(this), int, cocos2d::_ccColor3B const&, bool)>(m->getOriginal(getBase()+0x184f90))(this, p0, p1, p2);
         else return GJEffectManager::colorForGroupID(p0, p1, p2);
     }
 
@@ -2981,9 +2981,9 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         else return GJEffectManager::runDeathTrigger(p0, p1, p2);
     }
 
-    void runOpacityActionOnGroup(int p0, float p1, float p2, int p3) {
-        if ((void($GJEffectManager::*)(int, float, float, int)){&$GJEffectManager::runOpacityActionOnGroup} != (void(D::*)(int, float, float, int)){&D::runOpacityActionOnGroup})
-            return reinterpret_cast<void(*)(decltype(this), int, float, float, int)>(m->getOriginal(getBase()+0x1845d0))(this, p0, p1, p2, p3);
+    OpacityEffectAction* runOpacityActionOnGroup(int p0, float p1, float p2, int p3) {
+        if ((OpacityEffectAction*($GJEffectManager::*)(int, float, float, int)){&$GJEffectManager::runOpacityActionOnGroup} != (OpacityEffectAction*(D::*)(int, float, float, int)){&D::runOpacityActionOnGroup})
+            return reinterpret_cast<OpacityEffectAction*(*)(decltype(this), int, float, float, int)>(m->getOriginal(getBase()+0x1845d0))(this, p0, p1, p2, p3);
         else return GJEffectManager::runOpacityActionOnGroup(p0, p1, p2, p3);
     }
 
@@ -3161,8 +3161,8 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         if ((void($GJEffectManager::*)(cocos2d::_ccColor3B, cocos2d::_ccHSVValue)){&$GJEffectManager::colorForEffect} != (void(D::*)(cocos2d::_ccColor3B, cocos2d::_ccHSVValue)){&D::colorForEffect})
             m->registerHook(getBase()+0x182650, extract((void(D::*)(cocos2d::_ccColor3B, cocos2d::_ccHSVValue)){&D::colorForEffect}));
 
-        if ((void($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::colorForGroupID} != (void(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::colorForGroupID})
-            m->registerHook(getBase()+0x184f90, extract((void(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::colorForGroupID}));
+        if ((cocos2d::_ccColor3B($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::colorForGroupID} != (cocos2d::_ccColor3B(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::colorForGroupID})
+            m->registerHook(getBase()+0x184f90, extract((cocos2d::_ccColor3B(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::colorForGroupID}));
 
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::colorForIndex} != (void(D::*)(int)){&D::colorForIndex})
             m->registerHook(getBase()+0x180ad0, extract((void(D::*)(int)){&D::colorForIndex}));
@@ -3308,8 +3308,8 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
         if ((void($GJEffectManager::*)(int, bool, int)){&$GJEffectManager::runDeathTrigger} != (void(D::*)(int, bool, int)){&D::runDeathTrigger})
             m->registerHook(getBase()+0x1857a0, extract((void(D::*)(int, bool, int)){&D::runDeathTrigger}));
 
-        if ((void($GJEffectManager::*)(int, float, float, int)){&$GJEffectManager::runOpacityActionOnGroup} != (void(D::*)(int, float, float, int)){&D::runOpacityActionOnGroup})
-            m->registerHook(getBase()+0x1845d0, extract((void(D::*)(int, float, float, int)){&D::runOpacityActionOnGroup}));
+        if ((OpacityEffectAction*($GJEffectManager::*)(int, float, float, int)){&$GJEffectManager::runOpacityActionOnGroup} != (OpacityEffectAction*(D::*)(int, float, float, int)){&D::runOpacityActionOnGroup})
+            m->registerHook(getBase()+0x1845d0, extract((OpacityEffectAction*(D::*)(int, float, float, int)){&D::runOpacityActionOnGroup}));
 
         if ((void($GJEffectManager::*)(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int)){&$GJEffectManager::runPulseEffect} != (void(D::*)(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int)){&D::runPulseEffect})
             m->registerHook(getBase()+0x184890, extract((void(D::*)(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int)){&D::runPulseEffect}));
@@ -11246,7 +11246,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
         else return ColorSelectPopup::create(p0, p1);
     }
 
-    bool init(EffectGameObject* p0, cocos2d::CCArray* p1, ColorAction* p2) {
+    bool init(EffectGameObject* p0, cocos2d::CCArray* p1, ColorAction* p2) override {
         if ((bool($ColorSelectPopup::*)(EffectGameObject*, cocos2d::CCArray*, ColorAction*)){&$ColorSelectPopup::init} != (bool(D::*)(EffectGameObject*, cocos2d::CCArray*, ColorAction*)){&D::init})
             return reinterpret_cast<bool(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*, ColorAction*)>(m->getOriginal(getBase()+0x41ee70))(this, p0, p1, p2);
         else return ColorSelectPopup::init(p0, p1, p2);
@@ -11294,7 +11294,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
         else return ColorSelectPopup::onTouchTriggered(p0);
     }
 
-    void show() {
+    void show() override {
         if ((void($ColorSelectPopup::*)()){&$ColorSelectPopup::show} != (void(D::*)()){&D::show})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x423570))(this);
         else return ColorSelectPopup::show();
@@ -11352,7 +11352,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
             m->registerHook(getBase()+0x41eb70, (ColorSelectPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
         if ((bool($ColorSelectPopup::*)(EffectGameObject*, cocos2d::CCArray*, ColorAction*)){&$ColorSelectPopup::init} != (bool(D::*)(EffectGameObject*, cocos2d::CCArray*, ColorAction*)){&D::init})
-            m->registerHook(getBase()+0x41ee70, extract((bool(D::*)(EffectGameObject*, cocos2d::CCArray*, ColorAction*)){&D::init}));
+            m->registerHook(getBase()+0x41ee70, extract_virtual(this, (bool(D::*)(EffectGameObject*, cocos2d::CCArray*, ColorAction*)){&D::init}));
 
         if ((void($ColorSelectPopup::*)(cocos2d::CCObject*)){&$ColorSelectPopup::onDefault} != (void(D::*)(cocos2d::CCObject*)){&D::onDefault})
             m->registerHook(getBase()+0x4220e0, extract((void(D::*)(cocos2d::CCObject*)){&D::onDefault}));
@@ -11376,7 +11376,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
             m->registerHook(getBase()+0x4228b0, extract((void(D::*)(cocos2d::CCObject*)){&D::onTouchTriggered}));
 
         if ((void($ColorSelectPopup::*)()){&$ColorSelectPopup::show} != (void(D::*)()){&D::show})
-            m->registerHook(getBase()+0x423570, extract((void(D::*)()){&D::show}));
+            m->registerHook(getBase()+0x423570, extract_virtual(this, (void(D::*)()){&D::show}));
 
         if ((void($ColorSelectPopup::*)(cocos2d::CCObject*)){&$ColorSelectPopup::sliderChanged} != (void(D::*)(cocos2d::CCObject*)){&D::sliderChanged})
             m->registerHook(getBase()+0x421ca0, extract((void(D::*)(cocos2d::CCObject*)){&D::sliderChanged}));
@@ -11425,7 +11425,7 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
         else return SetupPulsePopup::create(p0, p1);
     }
 
-    bool init(EffectGameObject* p0, cocos2d::CCArray* p1) {
+    bool init(EffectGameObject* p0, cocos2d::CCArray* p1) override {
         if ((bool($SetupPulsePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPulsePopup::init} != (bool(D::*)(EffectGameObject*, cocos2d::CCArray*)){&D::init})
             return reinterpret_cast<bool(*)(decltype(this), EffectGameObject*, cocos2d::CCArray*)>(m->getOriginal(getBase()+0x1e7010))(this, p0, p1);
         else return SetupPulsePopup::init(p0, p1);
@@ -11449,7 +11449,7 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
         else return SetupPulsePopup::onUpdateCustomColor(p0);
     }
 
-    void textChanged(CCTextInputNode* p0) {
+    void textChanged(CCTextInputNode* p0) override {
         if ((void($SetupPulsePopup::*)(CCTextInputNode*)){&$SetupPulsePopup::textChanged} != (void(D::*)(CCTextInputNode*)){&D::textChanged})
             return reinterpret_cast<void(*)(decltype(this), CCTextInputNode*)>(m->getOriginal(getBase()+0x1ec960))(this, p0);
         else return SetupPulsePopup::textChanged(p0);
@@ -11495,7 +11495,7 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
             m->registerHook(getBase()+0x1e6d40, (SetupPulsePopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
         if ((bool($SetupPulsePopup::*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupPulsePopup::init} != (bool(D::*)(EffectGameObject*, cocos2d::CCArray*)){&D::init})
-            m->registerHook(getBase()+0x1e7010, extract((bool(D::*)(EffectGameObject*, cocos2d::CCArray*)){&D::init}));
+            m->registerHook(getBase()+0x1e7010, extract_virtual(this, (bool(D::*)(EffectGameObject*, cocos2d::CCArray*)){&D::init}));
 
         if ((void($SetupPulsePopup::*)(cocos2d::CCObject*)){&$SetupPulsePopup::onSelectPulseMode} != (void(D::*)(cocos2d::CCObject*)){&D::onSelectPulseMode})
             m->registerHook(getBase()+0x1eb020, extract((void(D::*)(cocos2d::CCObject*)){&D::onSelectPulseMode}));
@@ -11507,7 +11507,7 @@ class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
             m->registerHook(getBase()+0x1eaef0, extract((void(D::*)(cocos2d::CCObject*)){&D::onUpdateCustomColor}));
 
         if ((void($SetupPulsePopup::*)(CCTextInputNode*)){&$SetupPulsePopup::textChanged} != (void(D::*)(CCTextInputNode*)){&D::textChanged})
-            m->registerHook(getBase()+0x1ec960, extract((void(D::*)(CCTextInputNode*)){&D::textChanged}));
+            m->registerHook(getBase()+0x1ec960, extract_virtual(this, (void(D::*)(CCTextInputNode*)){&D::textChanged}));
 
         if ((void($SetupPulsePopup::*)()){&$SetupPulsePopup::updateCopyColorTextInputLabel} != (void(D::*)()){&D::updateCopyColorTextInputLabel})
             m->registerHook(getBase()+0x1ebf20, extract((void(D::*)()){&D::updateCopyColorTextInputLabel}));

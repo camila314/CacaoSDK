@@ -2,6 +2,7 @@
 
 srcpath="$( cd "$( dirname "$0" )" && pwd )"
 relink=''
+update=''
 
 print_usage() {
   printf "
@@ -45,16 +46,19 @@ if (( $# + $OPTIND > 1 )); then
 	echo $projname
 	if [ "$relink" = 'true' ]; then
 		echo "Fixing link"
-		if [ -d "$copypath/Cacao" ]; then
+		if [ -L "$copypath/Cacao" ]; then
 			rm "$copypath/Cacao"
 		fi
 		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
 	elif [ "$update" = 'true' ]; then
 		echo "Updating project"
+
+		if [ -L "$copypath/Cacao" ]; then
+			rm "$copypath/Cacao"
+		fi
+		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
 		
 		cp "$srcpath/template/.gitignore" "$copypath"
-		echo "lib$projname.a" >> "$copypath/.gitignore"
-
 		cp "$srcpath/template/CMakeLists.txt" "$copypath"
 		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
 		sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
@@ -71,7 +75,6 @@ if (( $# + $OPTIND > 1 )); then
 		cat "$srcpath/template/main.cpp" >> "$copypath/main.cpp"
 
 		cp "$srcpath/template/.gitignore" "$copypath"
-		echo "lib$projname.a" >> "$copypath/.gitignore"
 
 		cp "$srcpath/template/CMakeLists.txt" "$copypath"
 		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"

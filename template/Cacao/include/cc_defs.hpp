@@ -684,7 +684,7 @@ public:
     void colorActionChanged(ColorAction*);
     void colorExists(int);
     void colorForEffect(cocos2d::_ccColor3B, cocos2d::_ccHSVValue);
-    void colorForGroupID(int, cocos2d::_ccColor3B const&, bool);
+    cocos2d::_ccColor3B colorForGroupID(int, cocos2d::_ccColor3B const&, bool);
     void colorForIndex(int);
     void colorForPulseEffect(cocos2d::_ccColor3B const&, PulseEffectAction*);
     void countChangedForItem(int);
@@ -733,7 +733,7 @@ public:
     void resetTriggeredIDs();
     void runCountTrigger(int, int, bool, int, bool, int);
     void runDeathTrigger(int, bool, int);
-    void runOpacityActionOnGroup(int, float, float, int);
+    OpacityEffectAction* runOpacityActionOnGroup(int, float, float, int);
     void runPulseEffect(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int);
     void runTouchTriggerCommand(int, bool, TouchTriggerType, bool, int);
     void setColorAction(ColorAction*, int);
@@ -1981,7 +1981,7 @@ class ColorSelectPopup : public FLAlertLayer, public ColorPickerDelegate, public
 public:
     void colorValueChanged(cocos2d::_ccColor3B);
     static ColorSelectPopup* create(EffectGameObject*, cocos2d::CCArray*);
-    bool init(EffectGameObject*, cocos2d::CCArray*, ColorAction*);
+    virtual bool init(EffectGameObject*, cocos2d::CCArray*, ColorAction*);
     void onDefault(cocos2d::CCObject*);
     void onMultiTrigger(cocos2d::CCObject*);
     void onPlayerColor1(cocos2d::CCObject*);
@@ -1989,7 +1989,7 @@ public:
     void onSpawnedByTrigger(cocos2d::CCObject*);
     void onToggleHSVMode(cocos2d::CCObject*);
     void onTouchTriggered(cocos2d::CCObject*);
-    void show();
+    virtual void show();
     void sliderChanged(cocos2d::CCObject*);
     void updateCopyColor();
     void updateCopyColorTextInputLabel();
@@ -2007,11 +2007,11 @@ class SetupPulsePopup : public FLAlertLayer, public ColorPickerDelegate, public 
 public:
     void colorValueChanged(cocos2d::_ccColor3B);
     static SetupPulsePopup* create(EffectGameObject*, cocos2d::CCArray*);
-    bool init(EffectGameObject*, cocos2d::CCArray*);
+    virtual bool init(EffectGameObject*, cocos2d::CCArray*);
     void onSelectPulseMode(cocos2d::CCObject*);
     void onSelectTargetMode(cocos2d::CCObject*);
     void onUpdateCustomColor(cocos2d::CCObject*);
-    void textChanged(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
     void updateCopyColorTextInputLabel();
     void updateEditorLabel();
     void updateFadeOutLabel(bool);
