@@ -39,9 +39,9 @@ shift $((OPTIND-1))
 projname="${1:-Default Project}"
 if [ -z "$copypath" ]; then
 	if [[ -z "${CACAO_PROJECT_FOLDER}" ]]; then
-	  copypath="$projname"
+		copypath="$projname"
 	else
-	  copypath="${CACAO_PROJECT_FOLDER}/$projname"
+		copypath="${CACAO_PROJECT_FOLDER}/$projname"
 	fi
 fi
 
