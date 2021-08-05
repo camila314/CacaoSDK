@@ -9,8 +9,14 @@ ModContainer* m;
 #define CAC_PROJ_NAME "Default Cacao Project"
 #endif
 
-void __apply_hooks();
-#define APPLY_HOOKS() static int const __cachook = (inject(), __apply_hooks(), 0)
+#define APPLY_HOOKS() void __apply_hooks() {                \
+    __if_exists(inject) {                                   \
+        inject();                                           \
+    }                                                       \
+    for(auto& i : __cackit::glob) i->apply_hooks();         \
+    if (__cackit::glob.size() > 0) m->enable();             \
+}                                                           \
+static int const __cachook = (__apply_hooks(), 0)
 #define $apply() APPLY_HOOKS()
 
 #define CONCAT_(x, y) x##y
@@ -20,24 +26,29 @@ void __apply_hooks();
 
 typedef char const* c_string;
 
+// deprecated lol
 template <class F>
 struct GetReturnType;
 
+// deprecated lol
 template <class K>
 struct RemoveRef;
 
+// deprecated lol
 template <class R, class... A, class G>
 struct GetReturnType<R (G::*)(A...)>
 {
   typedef R type;
 };
 
+// deprecated lol
 template <class M>
 struct RemoveRef <M&>
 {
     typedef M type;
 };
 
+// deprecated lol
 #define cac_this (reinterpret_cast<RemoveRef<decltype(*this)>::type::__thistype>(this))
 
 // "A destructor is used to destroy objects of its class type. The address of a destructor shall not be taken."
@@ -50,27 +61,22 @@ inline long extract_destructor(T instance) {
 
 // Welcome back we missed you
 template <typename F, class T>
-inline typename GetReturnType<F>::type (*extract_virtual(T instance, F func))(T) {
-    return reinterpret_cast<typename GetReturnType<F>::type(*)(T)>(*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
+inline long extract_virtual(T instance, F func) {
+    return (*reinterpret_cast<long*>(*reinterpret_cast<long*>(instance)+*reinterpret_cast<long*>(&func)-1));
 };
 
 template <typename F>
-inline typename GetReturnType<F>::type (*extract(F func))() {
-    return reinterpret_cast<typename GetReturnType<F>::type(*)()>(*reinterpret_cast<long*>(&func));
+inline long extract(F func) {
+    return (*reinterpret_cast<long*>(&func));
 };
 
 class $CacBase {
- public:
+public:
     virtual void apply_hooks() = 0; 
 };
 
 namespace __cackit {
   std::vector<$CacBase*> glob;  
-}
-
-void __apply_hooks() {
-    for(auto& i : __cackit::glob) i->apply_hooks();
-    if (__cackit::glob.size() > 0) m->enable();
 }
 
 

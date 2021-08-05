@@ -19,7 +19,7 @@ Cacao comes with a neat little way to hook very quickly with a tool called CacKi
 class $redirect(EditorUI) {
 public:
 	void undoLastAction(CCObject* p0) {
-		std::cout << "Undo!\n";
+		std::cout << "Undo!" << std::endl;
 	}
 } MyEditorUIHook;
 
@@ -34,7 +34,7 @@ If you want to call the original function, there is also an easy way to do that 
 class $redirect(EditorUI) {
 public:
 	void undoLastAction(CCObject* p0) {
-		std::cout << "Undo!\n";
+		std::cout << "Undo!" << std::endl;
 		$EditorUI::undoLastAction(p0);
 	}
 } MyEditorUIHook;
@@ -49,7 +49,7 @@ Since the CacKit classes subclass the GD classes, we can use the members and fun
 class $redirect(EditorUI) {
 public:
 	void undoLastAction(CCObject* p0) {
-		std::cout << "We have " << getSelectedObjects()->count() << " objects selected\n";
+		std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
 		$EditorUI::undoLastAction(p0);
 	}
 } MyEditorUIHook;
@@ -57,7 +57,7 @@ public:
 $apply();
 ```
 
-If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
+If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The function needs to be declared before the `$apply` however. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
 ```cpp
 #define CAC_PROJ_NAME "My first mod"
 #include <CacKit>
@@ -66,16 +66,17 @@ If you want, you can also use a function with the name `inject` to run code befo
 class $redirect(EditorUI) {
 public:
 	void undoLastAction(CCObject* p0) {
-		std::cout << "We have " << getSelectedObjects()->count() << " objects selected\n";
+		std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
 		$EditorUI::undoLastAction(p0);
 	}
 } MyEditorUIHook;
 
+void inject() {
+	std::cout << "Hello!" << std::endl;
+}
+
 $apply();
 
-void inject() {
-	std::cout << "Hello!\n";
-}
 ```
 
 If theres a function/class you want to be added to the CacKit catalog just create an issue or tell me on discord.
@@ -134,8 +135,10 @@ void hook(int param1, char param2) {
 void inject() {
 	m = new ModContainer("test");
 	m->registerHook(getBase()+0x314159, hook);
-	m->enable();
 }
+
+$apply();
+
 ```
 
 There is actually a more visually pleasing way of calling the original function using the macro `ORIG`. This macro only works if the ModContainer instance is named `m`. Here is an example:
@@ -152,11 +155,13 @@ int cool(void* param1, char* param2) {
 void inject() {
 	m = new ModContainer("test");
 	m->registerHook(getBase()+0x314159, hook);
-	m->enable();
 }
+
+$apply();
+
 ```
 
-Instead of using `int main`, we are using `void inject`. The inject function is what is called when you inject the dylib file into gd. Also, we have to call `enable` for the mods to actually start working. There exists a `disable` function as well, which undoes all of the hooks and patches.
+Instead of using `int main`, we are using `void inject`. The inject function is what is called when you inject the dylib file into gd. `$apply` macro calls the `enable` method for us so we don't need to. There exists a `disable` function as well, which undoes all of the hooks and patches.
 
 ### Cacao
 
