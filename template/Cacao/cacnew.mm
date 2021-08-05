@@ -95,8 +95,8 @@
     void updateLabel(std::string) = 0x5d4a0, 662;
 
     void* m_unknown0;
-    void* m_unknown1;
     std::string m_caption; // 0x188
+    int m_unknown1;
     bool m_selected; // 0x194
     std::string m_allowedChars; // 0x198
     float m_maxLabelWidth;

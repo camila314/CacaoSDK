@@ -38,3 +38,7 @@ Projects/
 
 # Byte-compiled files
 template/Cacao/Auto/__pycache__/
+
+# Ignore build binaries
+template/Cacao/libCacao.a
+template/Cacao/GDML/libGDML.a

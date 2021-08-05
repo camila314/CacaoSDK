@@ -87,10 +87,10 @@ import ply.lex as lex
 lexer = lex.lex()
 
 syms = []
-with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
-    s = f.readlines()
-    for k, m in zip(s[0::2], s[1::2]):
-        syms.append((k, m))
+# with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
+#     s = f.readlines()
+#     for k, m in zip(s[0::2], s[1::2]):
+#         syms.append((k, m))
 
 def ensure_next():
     tt = lexer.token()

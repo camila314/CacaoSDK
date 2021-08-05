@@ -12,7 +12,7 @@ ModContainer* m;
 #define APPLY_HOOKS() void __apply_hooks() {                \
     __if_exists(inject) {                                   \
         inject();                                           \
-    };                                                       \
+    }                                                       \
     for(auto& i : __cackit::glob) i->apply_hooks();         \
     if (__cackit::glob.size() > 0) m->enable();             \
 }                                                           \

@@ -318,8 +318,8 @@ public:
     void setString(std::string);
     void updateLabel(std::string);
     void* m_unknown0;
-    void* m_unknown1;
     std::string m_caption;
+    int m_unknown1;
     bool m_selected;
     std::string m_allowedChars;
     float m_maxLabelWidth;
