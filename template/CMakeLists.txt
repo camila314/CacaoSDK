@@ -1,4 +1,4 @@
-set(CMAKE_OSX_SYSROOT $ENV{HOME}/Desktop/Storage/SDK/MacOSX10.7.sdk/)
+set(SDK_LOCATION $ENV{HOME}/Desktop/Storage/SDK/MacOSX10.7.sdk/) # keep pls, its for me
 
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 project(CacTemplate VERSION 0.1.0 LANGUAGES CXX)
