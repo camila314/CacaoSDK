@@ -94,6 +94,5 @@ struct ModNotFoundException : public exception
 
 long getBase();
 
-void inject(void) __attribute__((weak));
 #pragma GCC visibility pop
 #endif

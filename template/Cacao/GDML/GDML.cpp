@@ -111,6 +111,3 @@ func_t ModContainer::getOriginal(long addr) {
 long getBase() {
     return _dyld_get_image_vmaddr_slide(0)+0x100000000;
 }
-
-void inject() {}
-

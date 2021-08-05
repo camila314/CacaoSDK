@@ -38,12 +38,12 @@
 @end
 
 @interface CCMenuItemSpriteExtra
-    static CCMenuItemSpriteExtra* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x1253c0;
+    static CCMenuItemSpriteExtra* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, SEL_CallFuncO) = 0x1253c0;
     void setSizeMult(float) = 0x1255e0;
 @end
 
 @interface CCMenuItemToggler
-    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x38400;
+    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, SEL_CallFuncO) = 0x38400;
     void setSizeMult(float) = 0x38a40;
     void toggle(bool) = 0x38950;
 @end
@@ -129,7 +129,7 @@
 @end
 
 @interface CreateMenuItem
-    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, Cacao::CC_SEL) = 0x1c580;
+    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, SEL_CallFuncO) = 0x1c580;
 @end
 
 @interface CreatorLayer
@@ -186,7 +186,7 @@
 @interface EditorUI
     void constrainGameLayerPosition() = 0x1c6d0;
     void create(LevelEditorLayer*) = 0x8a80;
-    void deselectAll(int) = 0x1f300;
+    void deselectAll() = 0x1f300;
     void onDeselectAll(CCObject*) = 0x19cd0;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
     void editButtonUsable() = 0x28f30;
@@ -206,7 +206,7 @@
     void scaleChanged(float) = 0x25490;
     void scaleObjects(cocos2d::CCArray*, float, cocos2d::CCPoint) = 0x252e0;
     void selectObjects(cocos2d::CCArray*, bool) = 0x23940;
-    void setupCreateMenu(int) = 0xcb50;
+    void setupCreateMenu() = 0xcb50;
     void undoLastAction(cocos2d::CCObject*) = 0xb830;
     void updateButtons() = 0x1a300;
     void updateObjectInfoLabel() = 0x1cb10;
@@ -694,7 +694,7 @@
 @end
 
 @interface GameToolbox
-    static void createToggleButton(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x28bdd0;
+    void createToggleButton(std::string, SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x28bdd0;
     static void getRelativeOffset(GameObject*, cocos2d::CCPoint) = 0x28c060;
     static void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) = 0x28cb90;
     static void stringSetupToDict(std::string, char const*) = 0x28d700;
@@ -1310,7 +1310,7 @@
 
 @interface SetupSpawnPopup
     static SetupSpawnPopup* create(EffectGameObject*, cocos2d::CCArray*) = 0x139790;
-    void createToggleButton(std::string, Cacao::CC_SEL, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*) = 0x13b0e0;
+    void createToggleButton(std::string, SEL_CallFuncO, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*) = 0x13b0e0;
     void onTargetIDArrow(cocos2d::CCObject*) = 0x13ad80;
     void textChanged(CCTextInputNode*) = 0x13b990;
     void updateTargetID() = 0x13b770;
@@ -1331,8 +1331,8 @@
 @end
 
 @interface Slider
-    static Slider* create(cocos2d::CCNode*, Cacao::CC_SEL, char const*, char const*, char const*, char const*, float) = 0x18dd80;
-    static Slider* create(cocos2d::CCNode*, Cacao::CC_SEL, float) = 0x18dc40;
+    static Slider* create(cocos2d::CCNode*, SEL_CallFuncO, char const*, char const*, char const*, char const*, float) = 0x18dd80;
+    static Slider* create(cocos2d::CCNode*, SEL_CallFuncO, float) = 0x18dc40;
     void getValue() = 0x18e0c0;
     void setBarVisibility(bool) = 0x18e280;
     void setValue(float) = 0x18e170;
@@ -1682,8 +1682,8 @@
     void reorderChild(cocos2d::CCNode*, int) = 0x123760;
     void resumeSchedulerAndActions() = 0x123b60;
     void runAction(cocos2d::CCAction*) = 0x123e60;
-    void schedule(Cacao::CC_SCHED) = 0x1240b0;
-    void schedule(Cacao::CC_SCHED, float) = 0x124120;
+    void schedule(SEL_SCHEDULE) = 0x1240b0;
+    void schedule(SEL_SCHEDULE, float) = 0x124120;
     void scheduleUpdate() = 0x123f80;
     void setActionManager(cocos2d::CCActionManager*) = 0x123e00;
     void setAnchorPoint(cocos2d::CCPoint const&) = 0x122d90;
@@ -1716,7 +1716,7 @@
     void stopActionByTag(int) = 0x123ec0;
     void stopAllActions() = 0x123190;
     void unregisterScriptHandler() = 0x123dc0;
-    void unschedule(Cacao::CC_SCHED) = 0x124180;
+    void unschedule(SEL_SCHEDULE) = 0x124180;
     void unscheduleAllSelectors() = 0x1231b0;
     void unscheduleUpdate() = 0x124060;
     void update(float) = 0x1241a0;
@@ -1799,7 +1799,7 @@
 @end
 
 @interface CCScheduler
-    void scheduleSelector(Cacao::CC_SCHED, cocos2d::CCObject*, float, unsigned int, float, bool) = 0x242b20;
+    void scheduleSelector(SEL_SCHEDULE, cocos2d::CCObject*, float, unsigned int, float, bool) = 0x242b20;
     void scheduleUpdateForTarget(cocos2d::CCObject*, int, bool) = 0x2438d0;
     void unscheduleAllForTarget(cocos2d::CCObject*) = 0x243e40;
 @end

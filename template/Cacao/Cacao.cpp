@@ -162,9 +162,9 @@ namespace Cacao {
 
 
         alertLayer = FLAlertLayer::create("ok","ok","ok");
-        mainLayer = alertLayer->_mainLayer();
+        mainLayer = alertLayer->m_mainLayer;
 
-        CCArray* ch = alertLayer->_mainLayer()->getChildren();
+        CCArray* ch = alertLayer->m_mainLayer->getChildren();
 
         for (int i=0; i<ch->count(); i++) { 
             // im so sorry for this code ik its bad.
