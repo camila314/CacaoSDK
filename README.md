@@ -4,7 +4,7 @@ Cacao is a revolutionary Geometry Dash modding framework for MacOS users. Cacao 
 Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_route) and also uses [Zydis](https://github.com/zyantific/zydis) for function hooking.
 ## Prerequisites
 
-Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the CMakeLists file to add the path of the sdk, put respectively in the `SDK_LOCATION` variable.
+Cacao uses the MacOS 10.7 SDK for compiling, since it is compatible with the current version of Geometry Dash. You can easily get the 10.7 sdk from [this repository](https://github.com/phracker/MacOSX-SDKs). You also need to modify the CMakeLists file to add the path of the sdk, put respectively in the `CACAO_SDK_LOCATION` environment variable. You can do this by adding `export CACAO_SDK_LOCATION="path/to/sdk/location"` to your .bash_profile file. The projects are normally created with the `./create` are in the current working directory. To override this you can add a `CACAO_PROJECT_FOLDER` environment variable. You can do this by adding `export CACAO_PROJECT_FOLDER="path/to/project/folder"` to your .bash_profile file.
 
 ## How to use
 
