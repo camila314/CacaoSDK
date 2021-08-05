@@ -1,4 +1,4 @@
-set(SDK_LOCATION $ENV{HOME}/Desktop/Storage/SDK/MacOSX10.7.sdk/) # keep pls, its for me
+set(SDK_LOCATION $ENV{CACAO_SDK_LOCATION}) # pls work pls work
 
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 project(CacTemplate VERSION 0.1.0 LANGUAGES CXX)

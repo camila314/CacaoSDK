@@ -38,9 +38,8 @@ shift $((OPTIND-1))
 
 projname="${1:-Default Project}"
 if [ -z "$copypath" ]; then
-	copypath="$projname"
+	copypath="${CACAO_PROJECT_FOLDER}/$projname"
 fi
-
 
 if (( $# + $OPTIND > 1 )); then
 	echo $projname
