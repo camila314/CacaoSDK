@@ -88,5 +88,6 @@ enum TouchTriggerType {};
 enum PlayerButton {};
 enum GhostType {};
 enum IconType {};
-
+enum BoomListType {};
+enum TableViewCellEditingStyle {};
 

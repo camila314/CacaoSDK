@@ -151,6 +151,85 @@ class $AppDelegate : public AppDelegate, public $CacBase {
 
 
 template<class D>
+class $SongInfoObject : public SongInfoObject, public $CacBase {
+ public:
+    $SongInfoObject() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$SongInfoObject() {}
+    typedef SongInfoObject* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $ArtistCell : public ArtistCell, public $CacBase {
+ public:
+    $ArtistCell() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$ArtistCell() {}
+    typedef ArtistCell* __thistype;
+
+    void draw() {
+        if ((void($ArtistCell::*)()){&$ArtistCell::draw} != (void(D::*)()){&D::draw})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x11c980))(this);
+        else return ArtistCell::draw();
+    }
+
+    bool init() {
+        if ((bool($ArtistCell::*)()){&$ArtistCell::init} != (bool(D::*)()){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x11c7c0))(this);
+        else return ArtistCell::init();
+    }
+
+    void loadFromObject(SongInfoObject* p0) {
+        if ((void($ArtistCell::*)(SongInfoObject*)){&$ArtistCell::loadFromObject} != (void(D::*)(SongInfoObject*)){&D::loadFromObject})
+            return reinterpret_cast<void(*)(decltype(this), SongInfoObject*)>(m->getOriginal(getBase()+0x1118b0))(this, p0);
+        else return ArtistCell::loadFromObject(p0);
+    }
+
+    void onNewgrounds(cocos2d::CCObject* p0) {
+        if ((void($ArtistCell::*)(cocos2d::CCObject*)){&$ArtistCell::onNewgrounds} != (void(D::*)(cocos2d::CCObject*)){&D::onNewgrounds})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(getBase()+0x11c7e0))(this, p0);
+        else return ArtistCell::onNewgrounds(p0);
+    }
+
+    void updateBGColor(int p0) {
+        if ((void($ArtistCell::*)(int)){&$ArtistCell::updateBGColor} != (void(D::*)(int)){&D::updateBGColor})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x110460))(this, p0);
+        else return ArtistCell::updateBGColor(p0);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((void($ArtistCell::*)()){&$ArtistCell::draw} != (void(D::*)()){&D::draw})
+            m->registerHook(getBase()+0x11c980, extract((void(D::*)()){&D::draw}));
+
+        if ((bool($ArtistCell::*)()){&$ArtistCell::init} != (bool(D::*)()){&D::init})
+            m->registerHook(getBase()+0x11c7c0, extract((bool(D::*)()){&D::init}));
+
+        if ((void($ArtistCell::*)(SongInfoObject*)){&$ArtistCell::loadFromObject} != (void(D::*)(SongInfoObject*)){&D::loadFromObject})
+            m->registerHook(getBase()+0x1118b0, extract((void(D::*)(SongInfoObject*)){&D::loadFromObject}));
+
+        if ((void($ArtistCell::*)(cocos2d::CCObject*)){&$ArtistCell::onNewgrounds} != (void(D::*)(cocos2d::CCObject*)){&D::onNewgrounds})
+            m->registerHook(getBase()+0x11c7e0, extract((void(D::*)(cocos2d::CCObject*)){&D::onNewgrounds}));
+
+        if ((void($ArtistCell::*)(int)){&$ArtistCell::updateBGColor} != (void(D::*)(int)){&D::updateBGColor})
+            m->registerHook(getBase()+0x110460, extract((void(D::*)(int)){&D::updateBGColor}));
+    }
+};
+
+
+template<class D>
 class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
  public:
     $AudioEffectsLayer() {
@@ -190,6 +269,321 @@ class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
 
         if ((void($AudioEffectsLayer::*)()){&$AudioEffectsLayer::resetAudioVars} != (void(D::*)()){&D::resetAudioVars})
             m->registerHook(getBase()+0x271ee0, extract((void(D::*)()){&D::resetAudioVars}));
+    }
+};
+
+
+template<class D>
+class $CCIndexPath : public CCIndexPath, public $CacBase {
+ public:
+    $CCIndexPath() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$CCIndexPath() {}
+    typedef CCIndexPath* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $TableViewCell : public TableViewCell, public $CacBase {
+ public:
+    $TableViewCell() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$TableViewCell() {}
+    typedef TableViewCell* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $TableViewDelegate : public TableViewDelegate, public $CacBase {
+ public:
+    $TableViewDelegate() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$TableViewDelegate() {}
+    typedef TableViewDelegate* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $TableViewDataSource : public TableViewDataSource, public $CacBase {
+ public:
+    $TableViewDataSource() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$TableViewDataSource() {}
+    typedef TableViewDataSource* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
+ public:
+    $CCScrollLayerExt() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$CCScrollLayerExt() {}
+    typedef CCScrollLayerExt* __thistype;
+
+    void moveToTop() {
+        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::moveToTop} != (void(D::*)()){&D::moveToTop})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x235870))(this);
+        else return CCScrollLayerExt::moveToTop();
+    }
+
+    void moveToTopWithOffset(float p0) {
+        if ((void($CCScrollLayerExt::*)(float)){&$CCScrollLayerExt::moveToTopWithOffset} != (void(D::*)(float)){&D::moveToTopWithOffset})
+            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(getBase()+0x2357d0))(this, p0);
+        else return CCScrollLayerExt::moveToTopWithOffset(p0);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::moveToTop} != (void(D::*)()){&D::moveToTop})
+            m->registerHook(getBase()+0x235870, extract((void(D::*)()){&D::moveToTop}));
+
+        if ((void($CCScrollLayerExt::*)(float)){&$CCScrollLayerExt::moveToTopWithOffset} != (void(D::*)(float)){&D::moveToTopWithOffset})
+            m->registerHook(getBase()+0x2357d0, extract((void(D::*)(float)){&D::moveToTopWithOffset}));
+    }
+};
+
+
+template<class D>
+class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBase {
+ public:
+    $CCScrollLayerExtDelegate() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$CCScrollLayerExtDelegate() {}
+    typedef CCScrollLayerExtDelegate* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $TableView : public TableView, public $CacBase {
+ public:
+    $TableView() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$TableView() {}
+    typedef TableView* __thistype;
+
+    static TableView* create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
+        if ((TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&$TableView::create} != (TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&D::create})
+            return reinterpret_cast<TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)>(m->getOriginal(getBase()+0x37eb30))(p0, p1, p2);
+        else return TableView::create(p0, p1, p2);
+    }
+
+    void reloadData() {
+        if ((void($TableView::*)()){&$TableView::reloadData} != (void(D::*)()){&D::reloadData})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x37f970))(this);
+        else return TableView::reloadData();
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&$TableView::create} != (TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&D::create})
+            m->registerHook(getBase()+0x37eb30, (TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&D::create});
+
+        if ((void($TableView::*)()){&$TableView::reloadData} != (void(D::*)()){&D::reloadData})
+            m->registerHook(getBase()+0x37f970, extract((void(D::*)()){&D::reloadData}));
+    }
+};
+
+
+template<class D>
+class $BoomListView : public BoomListView, public $CacBase {
+ public:
+    $BoomListView() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$BoomListView() {}
+    typedef BoomListView* __thistype;
+
+    static BoomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+        if ((BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::create} != (BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
+            return reinterpret_cast<BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)>(m->getOriginal(getBase()+0x18ecb0))(p0, p1, p2, p3, p4);
+        else return BoomListView::create(p0, p1, p2, p3, p4);
+    }
+
+    bool init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+        if ((bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::init} != (bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCArray*, float, float, int, BoomListType)>(m->getOriginal(getBase()+0x18ee00))(this, p0, p1, p2, p3, p4);
+        else return BoomListView::init(p0, p1, p2, p3, p4);
+    }
+
+    void draw() {
+        if ((void($BoomListView::*)()){&$BoomListView::draw} != (void(D::*)()){&D::draw})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x18f790))(this);
+        else return BoomListView::draw();
+    }
+
+    void setupList() override {
+        if ((void($BoomListView::*)()){&$BoomListView::setupList} != (void(D::*)()){&D::setupList})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x18ef90))(this);
+        else return BoomListView::setupList();
+    }
+
+    void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) override {
+        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillDisplayCellForRowAtIndexPath})
+            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableViewCell*, TableView*)>(m->getOriginal(getBase()+0x18f030))(this, p0, p1, p2);
+        else return BoomListView::TableViewWillDisplayCellForRowAtIndexPath(p0, p1, p2);
+    }
+
+    void cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) override {
+        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellHeightForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellHeightForRowAtIndexPath})
+            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableView*)>(m->getOriginal(getBase()+0x18f070))(this, p0, p1);
+        else return BoomListView::cellHeightForRowAtIndexPath(p0, p1);
+    }
+
+    void didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) override {
+        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::didSelectRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::didSelectRowAtIndexPath})
+            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableView*)>(m->getOriginal(getBase()+0x18f090))(this, p0, p1);
+        else return BoomListView::didSelectRowAtIndexPath(p0, p1);
+    }
+
+    int numberOfRowsInSection(unsigned int p0, TableView* p1) override {
+        if ((int($BoomListView::*)(unsigned int, TableView*)){&$BoomListView::numberOfRowsInSection} != (int(D::*)(unsigned int, TableView*)){&D::numberOfRowsInSection})
+            return reinterpret_cast<int(*)(decltype(this), unsigned int, TableView*)>(m->getOriginal(getBase()+0x18f0b0))(this, p0, p1);
+        else return BoomListView::numberOfRowsInSection(p0, p1);
+    }
+
+    void numberOfSectionsInTableView(TableView* p0) override {
+        if ((void($BoomListView::*)(TableView*)){&$BoomListView::numberOfSectionsInTableView} != (void(D::*)(TableView*)){&D::numberOfSectionsInTableView})
+            return reinterpret_cast<void(*)(decltype(this), TableView*)>(m->getOriginal(getBase()+0x18f0e0))(this, p0);
+        else return BoomListView::numberOfSectionsInTableView(p0);
+    }
+
+    void cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) override {
+        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellForRowAtIndexPath})
+            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableView*)>(m->getOriginal(getBase()+0x18f100))(this, p0, p1);
+        else return BoomListView::cellForRowAtIndexPath(p0, p1);
+    }
+
+    void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) override {
+        if ((void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
+            return reinterpret_cast<void(*)(decltype(this), TableView*, TableViewCellEditingStyle, CCIndexPath&)>(m->getOriginal(getBase()+0x18f770))(this, p0, p1, p2);
+        else return BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath(p0, p1, p2);
+    }
+
+    void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) override {
+        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillReloadCellForRowAtIndexPath})
+            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableViewCell*, TableView*)>(m->getOriginal(getBase()+0x18f050))(this, p0, p1, p2);
+        else return BoomListView::TableViewWillReloadCellForRowAtIndexPath(p0, p1, p2);
+    }
+
+    TableViewCell* getListCell(char const* p0) override {
+        if ((TableViewCell*($BoomListView::*)(char const*)){&$BoomListView::getListCell} != (TableViewCell*(D::*)(char const*)){&D::getListCell})
+            return reinterpret_cast<TableViewCell*(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x18f200))(this, p0);
+        else return BoomListView::getListCell(p0);
+    }
+
+    void loadCell(TableViewCell* p0, int p1) override {
+        if ((void($BoomListView::*)(TableViewCell*, int)){&$BoomListView::loadCell} != (void(D::*)(TableViewCell*, int)){&D::loadCell})
+            return reinterpret_cast<void(*)(decltype(this), TableViewCell*, int)>(m->getOriginal(getBase()+0x18f4a0))(this, p0, p1);
+        else return BoomListView::loadCell(p0, p1);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::create} != (BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
+            m->registerHook(getBase()+0x18ecb0, (BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create});
+
+        if ((bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::init} != (bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::init})
+            m->registerHook(getBase()+0x18ee00, extract((bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::init}));
+
+        if ((void($BoomListView::*)()){&$BoomListView::draw} != (void(D::*)()){&D::draw})
+            m->registerHook(getBase()+0x18f790, extract((void(D::*)()){&D::draw}));
+
+        if ((void($BoomListView::*)()){&$BoomListView::setupList} != (void(D::*)()){&D::setupList})
+            m->registerHook(getBase()+0x18ef90, extract_virtual(this, (void(D::*)()){&D::setupList}));
+
+        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillDisplayCellForRowAtIndexPath})
+            m->registerHook(getBase()+0x18f030, extract_virtual(this, (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillDisplayCellForRowAtIndexPath}));
+
+        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellHeightForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellHeightForRowAtIndexPath})
+            m->registerHook(getBase()+0x18f070, extract_virtual(this, (void(D::*)(CCIndexPath&, TableView*)){&D::cellHeightForRowAtIndexPath}));
+
+        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::didSelectRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::didSelectRowAtIndexPath})
+            m->registerHook(getBase()+0x18f090, extract_virtual(this, (void(D::*)(CCIndexPath&, TableView*)){&D::didSelectRowAtIndexPath}));
+
+        if ((int($BoomListView::*)(unsigned int, TableView*)){&$BoomListView::numberOfRowsInSection} != (int(D::*)(unsigned int, TableView*)){&D::numberOfRowsInSection})
+            m->registerHook(getBase()+0x18f0b0, extract_virtual(this, (int(D::*)(unsigned int, TableView*)){&D::numberOfRowsInSection}));
+
+        if ((void($BoomListView::*)(TableView*)){&$BoomListView::numberOfSectionsInTableView} != (void(D::*)(TableView*)){&D::numberOfSectionsInTableView})
+            m->registerHook(getBase()+0x18f0e0, extract_virtual(this, (void(D::*)(TableView*)){&D::numberOfSectionsInTableView}));
+
+        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellForRowAtIndexPath})
+            m->registerHook(getBase()+0x18f100, extract_virtual(this, (void(D::*)(CCIndexPath&, TableView*)){&D::cellForRowAtIndexPath}));
+
+        if ((void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
+            m->registerHook(getBase()+0x18f770, extract_virtual(this, (void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
+
+        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillReloadCellForRowAtIndexPath})
+            m->registerHook(getBase()+0x18f050, extract_virtual(this, (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillReloadCellForRowAtIndexPath}));
+
+        if ((TableViewCell*($BoomListView::*)(char const*)){&$BoomListView::getListCell} != (TableViewCell*(D::*)(char const*)){&D::getListCell})
+            m->registerHook(getBase()+0x18f200, extract_virtual(this, (TableViewCell*(D::*)(char const*)){&D::getListCell}));
+
+        if ((void($BoomListView::*)(TableViewCell*, int)){&$BoomListView::loadCell} != (void(D::*)(TableViewCell*, int)){&D::loadCell})
+            m->registerHook(getBase()+0x18f4a0, extract_virtual(this, (void(D::*)(TableViewCell*, int)){&D::loadCell}));
+    }
+};
+
+
+template<class D>
+class $BoomScrollLayer : public BoomScrollLayer, public $CacBase {
+ public:
+    $BoomScrollLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$BoomScrollLayer() {}
+    typedef BoomScrollLayer* __thistype;
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
     }
 };
 
@@ -1012,6 +1406,32 @@ class $CurrencyRewardLayer : public CurrencyRewardLayer, public $CacBase {
 
     void apply_hooks() override {
     m->registerHook(extract_destructor(this), +[](){});
+    }
+};
+
+
+template<class D>
+class $CustomListView : public CustomListView, public $CacBase {
+ public:
+    $CustomListView() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$CustomListView() {}
+    typedef CustomListView* __thistype;
+
+    static CustomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+        if ((CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$CustomListView::create} != (CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
+            return reinterpret_cast<CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)>(m->getOriginal(getBase()+0x10d410))(p0, p1, p2, p3, p4);
+        else return CustomListView::create(p0, p1, p2, p3, p4);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$CustomListView::create} != (CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
+            m->registerHook(getBase()+0x10d410, (CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create});
     }
 };
 
@@ -11079,6 +11499,67 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
 
         if ((ToggleTriggerAction*(*)(std::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(std::string)){&D::createFromString})
             m->registerHook(getBase()+0x1765e0, (ToggleTriggerAction*(*)(std::string)){&D::createFromString});
+    }
+};
+
+
+template<class D>
+class $GJCommentListLayer : public GJCommentListLayer, public $CacBase {
+ public:
+    $GJCommentListLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$GJCommentListLayer() {}
+    typedef GJCommentListLayer* __thistype;
+
+    static GJCommentListLayer* create(BoomListView* p0, char const* p1, cocos2d::_ccColor4B p2, float p3, float p4, bool p5) {
+        if ((GJCommentListLayer*(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool)){&$GJCommentListLayer::create} != (GJCommentListLayer*(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool)){&D::create})
+            return reinterpret_cast<GJCommentListLayer*(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool)>(m->getOriginal(getBase()+0x147d00))(p0, p1, p2, p3, p4, p5);
+        else return GJCommentListLayer::create(p0, p1, p2, p3, p4, p5);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((GJCommentListLayer*(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool)){&$GJCommentListLayer::create} != (GJCommentListLayer*(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool)){&D::create})
+            m->registerHook(getBase()+0x147d00, (GJCommentListLayer*(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool)){&D::create});
+    }
+};
+
+
+template<class D>
+class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
+ public:
+    $TopArtistsLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$TopArtistsLayer() {}
+    typedef TopArtistsLayer* __thistype;
+
+    static TopArtistsLayer* create() {
+        if ((TopArtistsLayer*(*)()){&$TopArtistsLayer::create} != (TopArtistsLayer*(*)()){&D::create})
+            return reinterpret_cast<TopArtistsLayer*(*)()>(m->getOriginal(getBase()+0x192a90))();
+        else return TopArtistsLayer::create();
+    }
+
+    void setupLeaderboard(cocos2d::CCArray* p0) {
+        if ((void($TopArtistsLayer::*)(cocos2d::CCArray*)){&$TopArtistsLayer::setupLeaderboard} != (void(D::*)(cocos2d::CCArray*)){&D::setupLeaderboard})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCArray*)>(m->getOriginal(getBase()+0x193420))(this, p0);
+        else return TopArtistsLayer::setupLeaderboard(p0);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((TopArtistsLayer*(*)()){&$TopArtistsLayer::create} != (TopArtistsLayer*(*)()){&D::create})
+            m->registerHook(getBase()+0x192a90, (TopArtistsLayer*(*)()){&D::create});
+
+        if ((void($TopArtistsLayer::*)(cocos2d::CCArray*)){&$TopArtistsLayer::setupLeaderboard} != (void(D::*)(cocos2d::CCArray*)){&D::setupLeaderboard})
+            m->registerHook(getBase()+0x193420, extract((void(D::*)(cocos2d::CCArray*)){&D::setupLeaderboard}));
     }
 };
 

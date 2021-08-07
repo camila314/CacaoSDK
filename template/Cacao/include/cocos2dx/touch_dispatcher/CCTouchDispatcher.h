@@ -174,7 +174,6 @@ public:
     // Robtop modification
     void incrementForcePrio(int nPrio);
 
-    // Robtop modification
     void decrementForcePrio(int nPrio);
     /**
      * @lua NA
@@ -223,6 +222,10 @@ protected:
 
     // 4, 1 for each type of event
     struct ccTouchHandlerHelperData m_sHandlerHelperData[ccTouchMax];
+
+    // Robtop modification
+    CC_PROPERTY(bool, m_bForcePrio, ForcePrio);
+    CC_PROPERTY(int, m_nTargetPrio, TargetPrio);
 };
 
 // end of input group

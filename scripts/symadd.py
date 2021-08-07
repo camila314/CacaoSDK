@@ -37,8 +37,8 @@ if save_path and symbol_path:
             d = prv.read()
             sorder = re.findall(r"(; (?:non-virtual thunk to )?.+?\(.*\)(?: const)?\n.+\n\n)", d)
             rem = re.split(r"; (?:non-virtual thunk to )?(.+?\(.*\)(?: const)?\n.+\n\n)", d)
-            print(rem[0])
-            print(rem[-1])
+            # print(rem[0])
+            # print(rem[-1])
     
 
     if os.path.exists(str(symbol_path)):
@@ -55,6 +55,8 @@ if save_path and symbol_path:
                     mangles[match.group(1)].append((l[:-1], m[:-1]))
 
     for s, f in symbols:
+        if "CustomListView" in s.getName(True):
+            print(s, f)
         if s.getName(True) in mangles and hex(s.getAddress().unsignedOffset - 0x100000000)[:-1] not in addresses:
             mngl = mangles[s.getName(True)]
             tx = ""
@@ -71,7 +73,7 @@ if save_path and symbol_path:
     with open(str(save_path), 'w') as file:
         def sfun(a):
             m = re.search(r"; (?:non-virtual thunk to )?(.+?\(.*\)(?: const)?\n.+\n\n)", a)
-            print(a)
+            # print(a)
             return m.group(1)
         sorder.sort(key=sfun)
         file.write(rem[0] + "".join(sorder) + rem[-1])

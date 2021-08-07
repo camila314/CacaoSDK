@@ -10,10 +10,92 @@
     cocos2d::CCScene* m_runningScene = 0x28;
 @end
 
+@interface SongInfoObject
+@end
+
+@interface ArtistCell
+    ArtistCell(char const*, float, float) = 0x11c740, 228;
+    void draw() = 0x11c980, 229;
+    bool init() = 0x11c7c0, 230;
+    void loadFromObject(SongInfoObject*) = 0x1118b0, 231;
+    void onNewgrounds(cocos2d::CCObject*) = 0x11c7e0, 232;
+    void updateBGColor(int) = 0x110460, 234;
+
+    char pad[0x1e0];
+@end
+
 @interface AudioEffectsLayer
     void audioStep(float) = 0x271f40, 238;
     static AudioEffectsLayer* create(std::string) = 0x271a00, 239;
     void resetAudioVars() = 0x271ee0, 244;
+@end
+
+@interface CCIndexPath
+@end
+
+@interface TableViewCell
+@end
+
+@interface TableViewDelegate
+    volatile virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;}
+    volatile virtual void numberOfSectionsInTableView(TableView*) {}
+    volatile virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {}
+    volatile virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {}
+@end
+
+@interface TableViewDataSource
+    volatile virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    volatile virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {}
+    volatile virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    volatile virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    volatile virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    volatile virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {}
+    volatile virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {}
+@end
+
+@interface CCScrollLayerExt
+    void moveToTop() = 0x235870, 560;
+    void moveToTopWithOffset(float) = 0x2357d0, 561;
+@end
+
+@interface CCScrollLayerExtDelegate
+@end
+
+@interface TableView : CCScrollLayerExt, CCScrollLayerExtDelegate
+    static TableView* create(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect) = 0x37eb30, 6607;
+    void reloadData() = 0x37f970, 6616;
+
+    float m_unknown = 0x1c8;
+@end
+
+@interface BoomListView : cocos2d::CCLayer, TableViewDataSource, TableViewDelegate
+    static BoomListView* create(cocos2d::CCArray*, float, float, int, BoomListType) = 0x18ecb0, 273;
+    bool init(cocos2d::CCArray*, float, float, int, BoomListType) = 0x18ee00, 277;
+    void draw() = 0x18f790, 275;
+    
+    virtual void setupList() = 0x18ef90, 281;
+    virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) = 0x18f030, 269, 376;
+    virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) = 0x18f070, 272;
+    virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) = 0x18f090, 274;
+    virtual int numberOfRowsInSection(unsigned int, TableView*) = 0x18f0b0, 279;
+    virtual void numberOfSectionsInTableView(TableView*) = 0x18f0e0, 280, 368;
+    virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) = 0x18f100, 271;
+    virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) = 0x18f770, 268, 368;
+    virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) = 0x18f050, 270, 376;
+    virtual TableViewCell* getListCell(char const*) = 0x18f200, 276;
+    virtual void loadCell(TableViewCell*, int) = 0x18f4a0, 278;
+
+    TableView* m_tableView;
+    cocos2d::CCArray* m_content;
+    BoomListType m_type; 
+    float m_width;
+    float m_height;
+    float m_cellHeight;
+    int m_page;
+@end
+
+@interface BoomScrollLayer
+    BoomScrollLayer() = 0x1e42f0, 286;
 @end
 
 @interface ButtonSprite : cocos2d::CCSprite
@@ -176,6 +258,10 @@
 @end
 
 @interface CurrencyRewardLayer
+@end
+
+@interface CustomListView : cocos2d::CCLayerColor
+    static CustomListView* create(cocos2d::CCArray*, float, float, int, BoomListType) = 0x10d410, 1009;
 @end
 
 @interface CustomizeObjectLayer
@@ -1066,7 +1152,7 @@
     void update(float) = 0x28fa70, 4619;
 @end
 
-@interface MenuLayer : cocos2d::CCLayer
+@interface MenuLayer : cocos2d::CCLayer, FLAlertLayerProtocol
     virtual void keyBackClicked() = 0x1d3160, 4629;
     void onMoreGames(cocos2d::CCObject*) = 0x1d2ad0, 4642;
     void onQuit(cocos2d::CCObject*) = 0x1d2b40, 4648;
@@ -1652,6 +1738,18 @@
     static ToggleTriggerAction* createFromString(std::string) = 0x1765e0, 6692;
 @end
 
+@interface GJCommentListLayer : cocos2d::CCLayerColor
+    static GJCommentListLayer* create(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool) = 0x147d00, 2106;
+@end
+
+@interface TopArtistsLayer : FLAlertLayer
+    static TopArtistsLayer* create() = 0x192a90, 6698;
+    void setupLeaderboard(cocos2d::CCArray*) = 0x193420, 6709;
+
+    cocos2d::CCNode* m_unknown = 0x220;
+    GJCommentListLayer* m_commentLayer = 0x260;
+@end
+
 @interface TouchToggleAction
     static TouchToggleAction* createFromString(std::string) = 0x177e10, 6717;
 @end
@@ -1878,6 +1976,7 @@
 
 @interface cocos2d::CCMenu
     void alignItemsHorizontallyWithPadding(float) = 0x4393e0, 8380;
+    void alignItemsVerticallyWithPadding(float) = 0x439190, 8382;
     static cocos2d::CCMenu* create() = 0x438720, 8394;
     void createWithArray(cocos2d::CCArray*) = 0x4387e0, 8395;
     void createWithItem(cocos2d::CCMenuItem*) = 0x438b80, 8396;

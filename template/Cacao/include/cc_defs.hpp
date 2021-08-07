@@ -88,11 +88,23 @@ enum TouchTriggerType {};
 enum PlayerButton {};
 enum GhostType {};
 enum IconType {};
-
+enum BoomListType {};
+enum TableViewCellEditingStyle {};
 
 class AnimatedGameObject;
 class AppDelegate;
+class SongInfoObject;
+class ArtistCell;
 class AudioEffectsLayer;
+class CCIndexPath;
+class TableViewCell;
+class TableViewDelegate;
+class TableViewDataSource;
+class CCScrollLayerExt;
+class CCScrollLayerExtDelegate;
+class TableView;
+class BoomListView;
+class BoomScrollLayer;
 class ButtonSprite;
 class CCAnimatedSprite;
 class CCCircleWave;
@@ -117,6 +129,7 @@ class CountTriggerAction;
 class CreateMenuItem;
 class CreatorLayer;
 class CurrencyRewardLayer;
+class CustomListView;
 class CustomizeObjectLayer;
 class DelayedSpawnNode;
 class DialogLayer;
@@ -211,6 +224,8 @@ class TeleportPortalObject;
 class TextArea;
 class TextInputDelegate;
 class ToggleTriggerAction;
+class GJCommentListLayer;
+class TopArtistsLayer;
 class TouchToggleAction;
 class UILayer;
 class UndoCommand;
@@ -232,11 +247,100 @@ public:
     CLASS_PARAM(cocos2d::CCScene*, runningScene, 0x28);
 };
 
+class SongInfoObject : public GDObj {
+public:
+};
+
+class ArtistCell : public GDObj {
+public:
+    ArtistCell(char const*, float, float);
+    void draw();
+    bool init();
+    void loadFromObject(SongInfoObject*);
+    void onNewgrounds(cocos2d::CCObject*);
+    void updateBGColor(int);
+    char m_pad[0x1e0];
+};
+
 class AudioEffectsLayer : public GDObj {
 public:
     void audioStep(float);
     static AudioEffectsLayer* create(std::string);
     void resetAudioVars();
+};
+
+class CCIndexPath : public GDObj {
+public:
+};
+
+class TableViewCell : public GDObj {
+public:
+};
+
+class TableViewDelegate : public GDObj {
+public:
+    virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;}
+    virtual void numberOfSectionsInTableView(TableView*) {}
+    virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {}
+    virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {}
+};
+
+class TableViewDataSource : public GDObj {
+public:
+    virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {}
+    virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {}
+    virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {}
+};
+
+class CCScrollLayerExt : public GDObj {
+public:
+    void moveToTop();
+    void moveToTopWithOffset(float);
+};
+
+class CCScrollLayerExtDelegate : public GDObj {
+public:
+};
+
+class TableView : public CCScrollLayerExt, public CCScrollLayerExtDelegate{
+public:
+    static TableView* create(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    void reloadData();
+    CLASS_PARAM(float, unknown, 0x1c8);
+};
+
+class BoomListView : public cocos2d::CCLayer, public TableViewDataSource, public TableViewDelegate{
+public:
+    static BoomListView* create(cocos2d::CCArray*, float, float, int, BoomListType);
+    bool init(cocos2d::CCArray*, float, float, int, BoomListType);
+    void draw();
+    virtual void setupList();
+    virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
+    virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*);
+    virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*);
+    virtual int numberOfRowsInSection(unsigned int, TableView*);
+    virtual void numberOfSectionsInTableView(TableView*);
+    virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*);
+    virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&);
+    virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
+    virtual TableViewCell* getListCell(char const*);
+    virtual void loadCell(TableViewCell*, int);
+    TableView* m_tableView;
+    cocos2d::CCArray* m_content;
+    BoomListType m_type;
+    float m_width;
+    float m_height;
+    float m_cellHeight;
+    int m_page;
+};
+
+class BoomScrollLayer : public GDObj {
+public:
+    BoomScrollLayer();
 };
 
 class ButtonSprite : public cocos2d::CCSprite, public GDObj {
@@ -411,6 +515,11 @@ public:
 
 class CurrencyRewardLayer : public GDObj {
 public:
+};
+
+class CustomListView : public cocos2d::CCLayerColor, public GDObj {
+public:
+    static CustomListView* create(cocos2d::CCArray*, float, float, int, BoomListType);
 };
 
 class CustomizeObjectLayer : public GDObj {
@@ -1332,7 +1441,7 @@ public:
     void update(float);
 };
 
-class MenuLayer : public cocos2d::CCLayer, public GDObj {
+class MenuLayer : public cocos2d::CCLayer, public FLAlertLayerProtocol{
 public:
     virtual void keyBackClicked();
     void onMoreGames(cocos2d::CCObject*);
@@ -1950,6 +2059,19 @@ public:
 class ToggleTriggerAction : public GDObj {
 public:
     static ToggleTriggerAction* createFromString(std::string);
+};
+
+class GJCommentListLayer : public cocos2d::CCLayerColor, public GDObj {
+public:
+    static GJCommentListLayer* create(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool);
+};
+
+class TopArtistsLayer : public FLAlertLayer{
+public:
+    static TopArtistsLayer* create();
+    void setupLeaderboard(cocos2d::CCArray*);
+    CLASS_PARAM(cocos2d::CCNode*, unknown, 0x220);
+    CLASS_PARAM(GJCommentListLayer*, commentLayer, 0x260);
 };
 
 class TouchToggleAction : public GDObj {
