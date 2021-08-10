@@ -7,6 +7,16 @@ using namespace cocos2d;
 
 namespace Cacao {
 
+    cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay) {
+        auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+        float axp = cocos2d::CCDirector::sharedDirector()->getScreenLeft() + winSize.width * ax;
+        float ayp = cocos2d::CCDirector::sharedDirector()->getScreenBottom() + winSize.height * ay;
+        CCPoint ccp;
+        ccp.x = axp + x;
+        ccp.y = ayp + y;
+        return ccp;
+    }
+
     cocos2d::CCPoint relativePosition(double x, double y) {
         auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
         float xp = winSize.width * (x/100.);

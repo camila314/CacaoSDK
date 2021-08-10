@@ -225,6 +225,9 @@ global %1
 ; AchievementCell::loadFromDict(cocos2d::CCDictionary*)
 defit __ZN15AchievementCell12loadFromDictEPN7cocos2d12CCDictionaryE, 0x10eaa0
 
+; AchievementsLayer::customSetup()
+defit __ZN17AchievementsLayer11customSetupEv, 0x1bdea0
+
 ; AnimatedGameObject::playAnimation(int)
 defit __ZN18AnimatedGameObject13playAnimationEi, 0xc93d0
 
@@ -1401,8 +1404,11 @@ defit __ZN15GJDropDownLayer9hideLayerEb, 0x3527b0
 ; GJDropDownLayer::init(char const*, float)
 defit __ZN15GJDropDownLayer4initEPKcf, 0x352100
 
+; GJDropDownLayer::keyBackClicked()
+defit __ZN15GJDropDownLayer14keyBackClickedEv, 0x352630
+
 ; non-virtual thunk to GJDropDownLayer::keyBackClicked()
-;defit __ZThn244_N15GJDropDownLayer14keyBackClickedEv, 0x352630
+defit __ZThn304_N15GJDropDownLayer14keyBackClickedEv, 0x352650
 
 ; GJDropDownLayer::layerHidden()
 defit __ZN15GJDropDownLayer11layerHiddenEv, 0x3528d0
@@ -1937,6 +1943,21 @@ defit __ZN8GManager8saveGMToESs, 0x26f3b0
 
 ; GameLevelManager::createNewLevel()
 defit __ZN16GameLevelManager14createNewLevelEv, 0x2b8180
+
+; GameLevelManager::getPageInfo(char const*)
+defit __ZN16GameLevelManager11getPageInfoEPKc, 0x2c0050
+
+; GameLevelManager::getStoredOnlineLevels(char const*)
+defit __ZN16GameLevelManager21getStoredOnlineLevelsEPKc, 0x2bfe80
+
+; GameLevelManager::getTopArtists(int, int)
+defit __ZN16GameLevelManager13getTopArtistsEii, 0x2ce3d0
+
+; GameLevelManager::getTopArtistsKey(int)
+defit __ZN16GameLevelManager16getTopArtistsKeyEi, 0x2ce7a0
+
+; GameLevelManager::makeTimeStamp(char const*)
+defit __ZN16GameLevelManager13makeTimeStampEPKc, 0x2bfd90
 
 ; GameLevelManager::sharedState()
 defit __ZN16GameLevelManager11sharedStateEv, 0x2a8340
@@ -2792,6 +2813,9 @@ defit __ZN21MoreVideoOptionsLayer6createEv, 0x443c10
 
 ; MoreVideoOptionsLayer::init()
 defit __ZN21MoreVideoOptionsLayer4initEv, 0x444150
+
+; MusicDownloadManager::getSongInfoObject(int)
+defit __ZN20MusicDownloadManager17getSongInfoObjectEi, 0x2ef780
 
 ; MusicDownloadManager::incrementPriorityForSong(int)
 defit __ZN20MusicDownloadManager24incrementPriorityForSongEi, 0x2ef750
@@ -4095,6 +4119,12 @@ defit __ZN8SongCell14loadFromObjectEP10SongObject, 0x1113f0
 ; SongInfoObject::create(int, std::string, std::string, int, float, std::string, std::string, std::string, int)
 ;defit __ZN14SongInfoObject6createEiSsSsifSsSsSsi, 0x2f2080
 
+; SongInfoObject::create(int, std::string, std::string, int, float, std::string, std::string, std::string, int)
+;defit __ZN14SongInfoObject6createEiSsSsifSsSsSsi, 0x2f2320
+
+; SongInfoObject::init(int, std::string, std::string, int, float, std::string, std::string, std::string, int)
+defit __ZN14SongInfoObject4initEiSsSsifSsSsSsi, 0x2f2660
+
 ; SpawnTriggerAction::createFromString(std::string)
 defit __ZN18SpawnTriggerAction16createFromStringESs, 0x17bf50
 
@@ -4107,9 +4137,6 @@ defit __ZN11SpeedObject4initEP10GameObjectif, 0x77400
 ; StatsCell::loadFromObject(StatsObject*)
 defit __ZN9StatsCell14loadFromObjectEP11StatsObject, 0x1110d0
 
-;([undefined * * param_1@RDI:8], [undefined4 * param_2@RSI:8])
-; TableView::TableView(cocos2d::CCRect)
-;defit __ZN9TableViewC1EN7cocos2d6CCRectE, 0x37ebe0
 ; TableView::TableView(cocos2d::CCRect)
 ;defit __ZN9TableViewC2EN7cocos2d6CCRectE, 0x37ebe0
 
@@ -4152,42 +4179,27 @@ defit __ZN19ToggleTriggerAction16createFromStringESs, 0x1765e0
 ; TopArtistsLayer::create()
 defit __ZN15TopArtistsLayer6createEv, 0x192a90
 
+; TopArtistsLayer::init()
+defit __ZN15TopArtistsLayer4initEv, 0x192c30
+
+; non-virtual thunk to TopArtistsLayer::loadListFinished(cocos2d::CCArray*, char const*)
+;defit __ZThn460_N15TopArtistsLayer16loadListFinishedEPN7cocos2d7CCArrayEPKc, 0x193600
+
+; TopArtistsLayer::loadPage(int)
+defit __ZN15TopArtistsLayer8loadPageEi, 0x193b60
+
 ; TopArtistsLayer::setupLeaderboard(cocos2d::CCArray*)
 defit __ZN15TopArtistsLayer16setupLeaderboardEPN7cocos2d7CCArrayE, 0x193420
 
-;([undefined8 param_1@XMM0_Qa:8], [undefined8 param_2@XMM1_Qa:8], [undefined4 param_3@XMM2_Da:4], [undefined4 param_4@XMM3_Da:4], [undefined4 param_5@XMM4_Da:4], [undefined4 param_6@XMM5_Da:4], [undefined4 param_7@XMM6_Da:4], [undefined4 param_8@XMM7_Da:4], [undefined * * param_9@RDI:8], [undefined8 param_10@RSI:8], [undefined8 param_11@RDX:8], [undefined8 param_12@RCX:8], [undefined8 param_13@R8:8], [undefined8 param_14@R9:8])
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD0Ev, 0x1928f0
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD1Ev, 0x1928f0
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD2Ev, 0x1928f0
-; non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
-;defit __ZThn236_N15TopArtistsLayerD0Ev, 0x1928f0
+; TopArtistsLayer::setupPageInfo(std::string, char const*)
+defit __ZN15TopArtistsLayer13setupPageInfoESsPKc, 0x193730
+
 ; non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
 ;defit __ZThn236_N15TopArtistsLayerD1Ev, 0x1928f0
 
-;([undefined8 param_1@XMM0_Qa:8], [undefined8 param_2@XMM1_Qa:8], [undefined4 param_3@XMM2_Da:4], [undefined4 param_4@XMM3_Da:4], [undefined4 param_5@XMM4_Da:4], [undefined4 param_6@XMM5_Da:4], [undefined4 param_7@XMM6_Da:4], [undefined4 param_8@XMM7_Da:4], [undefined * * param_9@RDI:8], [undefined8 param_10@RSI:8], [undefined8 param_11@RDX:8], [undefined8 param_12@RCX:8], [undefined8 param_13@R8:8], [undefined8 param_14@R9:8])
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD0Ev, 0x1929f0
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD1Ev, 0x1929f0
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD2Ev, 0x1929f0
-; non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
-;defit __ZThn236_N15TopArtistsLayerD0Ev, 0x1929f0
 ; non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
 ;defit __ZThn236_N15TopArtistsLayerD1Ev, 0x1929f0
 
-;([undefined8 param_1@XMM0_Qa:8], [undefined8 param_2@XMM1_Qa:8], [undefined4 param_3@XMM2_Da:4], [undefined4 param_4@XMM3_Da:4], [undefined4 param_5@XMM4_Da:4], [undefined4 param_6@XMM5_Da:4], [undefined4 param_7@XMM6_Da:4], [undefined4 param_8@XMM7_Da:4], [undefined * * param_9@RDI:8], [undefined8 param_10@RSI:8], [undefined8 param_11@RDX:8], [undefined8 param_12@RCX:8], [undefined8 param_13@R8:8], [undefined8 param_14@R9:8])
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD0Ev, 0x192a20
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD1Ev, 0x192a20
-; TopArtistsLayer::~TopArtistsLayer()
-;defit __ZN15TopArtistsLayerD2Ev, 0x192a20
-; non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
-;defit __ZThn236_N15TopArtistsLayerD0Ev, 0x192a20
 ; non-virtual thunk to TopArtistsLayer::~TopArtistsLayer()
 ;defit __ZThn236_N15TopArtistsLayerD1Ev, 0x192a20
 
@@ -4490,6 +4502,9 @@ defit __ZN7cocos2d13CCLabelBMFont6createEPKcS2_, 0x347660
 
 ; cocos2d::CCLabelBMFont::limitLabelWidth(float, float, float)
 defit __ZN7cocos2d13CCLabelBMFont15limitLabelWidthEfff, 0x34a6e0
+
+; cocos2d::CCLabelBMFont::setAnchorPoint(cocos2d::CCPoint const&)
+defit __ZN7cocos2d13CCLabelBMFont14setAnchorPointERKNS_7CCPointE, 0x349440
 
 ; cocos2d::CCLabelBMFont::setScale(float)
 defit __ZN7cocos2d13CCLabelBMFont8setScaleEf, 0x34a5d0
@@ -5571,6 +5586,9 @@ defit __ZN7cocos2d8CCSprite15setDisplayFrameEPNS_13CCSpriteFrameE, 0x135610
 ; cocos2d::CCSprite::setDisplayFrameWithAnimationName(char const*, int)
 defit __ZN7cocos2d8CCSprite32setDisplayFrameWithAnimationNameEPKci, 0x135680
 
+; cocos2d::CCSprite::setFlipX(bool)
+defit __ZN7cocos2d8CCSprite8setFlipXEb, 0x134be0
+
 ; cocos2d::CCSprite::setFlipY(bool)
 defit __ZN7cocos2d8CCSprite8setFlipYEb, 0x134c30
 
@@ -5591,6 +5609,12 @@ defit __ZN7cocos2d8CCSprite12setRotationXEf, 0x134740
 
 ; cocos2d::CCSprite::setRotationY(float)
 defit __ZN7cocos2d8CCSprite12setRotationYEf, 0x1347b0
+
+; cocos2d::CCSprite::setScaleX(float)
+defit __ZN7cocos2d8CCSprite9setScaleXEf, 0x134900
+
+; cocos2d::CCSprite::setScaleY(float)
+defit __ZN7cocos2d8CCSprite9setScaleYEf, 0x134980
 
 ; cocos2d::CCSprite::setSkewX(float)
 defit __ZN7cocos2d8CCSprite8setSkewXEf, 0x134820

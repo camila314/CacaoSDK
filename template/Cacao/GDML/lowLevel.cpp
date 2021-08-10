@@ -10,6 +10,9 @@
 #include <Zydis/Zydis.h>
 
 void* _follow_jmp(void* addr) {
+#ifdef CAC_VERBOSE
+    printf("Follow jump %p\n", addr);
+#endif
     ZydisDecoder decoder;
     ZydisDecoderInit(&decoder,
                     ZYDIS_MACHINE_MODE_LONG_64,
@@ -23,12 +26,15 @@ void* _follow_jmp(void* addr) {
                         &instruction))
     ) {
         if (instruction.mnemonic == ZYDIS_MNEMONIC_JMP) { // follow the jump
+#ifdef CAC_VERBOSE
+            printf("go deeper uwu\n");
+#endif
             return _follow_jmp(*reinterpret_cast<void**>((long)addr + instruction.length));
         } else {
             return addr;
         }
     } else {
-        RDErrorLog("Could not parse assembly, this really shouldnt happen wtf");
+        RDErrorLog("Could not parse assembly at %p, this really shouldnt happen wtf", addr);
         return addr;
     }
 }
@@ -42,7 +48,7 @@ int dupe(void *function, void **duplicate)
     void *image = NULL;
     mach_vm_size_t image_slide = 0;
 
-    //function = _follow_jmp(function);
+    function = _follow_jmp(function);
 
     /* Obtain the macho header image which contains the function */
     Dl_info image_info = {0};
@@ -257,17 +263,21 @@ kern_return_t _island_jump_back(void* to, void* from) {
 
         if (ret == KERN_SUCCESS) {
             memcpy(from, &data, 64);
+#ifdef CAC_VERBOSE
             printf("Patched %p + %d with a jump to %p\n", from, jmp_back_offset, (void*)((uintptr_t)to + jmp_back_offset + 4));
+#endif
             return KERN_SUCCESS;
         } else {
+#ifdef CAC_VERBOSE
             printf("Jump back didn't work, reason is %s ; code %d ; patched to %p\n", mach_error_string(ret), ret, from);
+#endif
             return 3;
         }
       } else {
         return 3;
       }
     } else {
-      RDErrorLog("Could not parse assembly, this really shouldnt happen wtf");
+      RDErrorLog("Could not parse assembly at %p, this really shouldnt happen wtf", from);
       return 3;
     }
 }

@@ -2976,6 +2976,12 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
         else return GJDropDownLayer::registerWithTouchDispatcher();
     }
 
+    void keyBackClicked() override {
+        if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x352630))(this);
+        else return GJDropDownLayer::keyBackClicked();
+    }
+
     static GJDropDownLayer* create(char const* p0) {
         if ((GJDropDownLayer*(*)(char const*)){&$GJDropDownLayer::create} != (GJDropDownLayer*(*)(char const*)){&D::create})
             return reinterpret_cast<GJDropDownLayer*(*)(char const*)>(m->getOriginal(getBase()+0x352530))(p0);
@@ -3023,6 +3029,9 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
 
         if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
             m->registerHook(getBase()+0x3525f0, extract_virtual(this, (void(D::*)()){&D::registerWithTouchDispatcher}));
+
+        if ((void($GJDropDownLayer::*)()){&$GJDropDownLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
+            m->registerHook(getBase()+0x352630, extract_virtual(this, (void(D::*)()){&D::keyBackClicked}));
 
         if ((GJDropDownLayer*(*)(char const*)){&$GJDropDownLayer::create} != (GJDropDownLayer*(*)(char const*)){&D::create})
             m->registerHook(getBase()+0x352530, (GJDropDownLayer*(*)(char const*)){&D::create});
@@ -4569,6 +4578,36 @@ class $GameLevelManager : public GameLevelManager, public $CacBase {
         else return GameLevelManager::sharedState();
     }
 
+    void getPageInfo(char const* p0) {
+        if ((void($GameLevelManager::*)(char const*)){&$GameLevelManager::getPageInfo} != (void(D::*)(char const*)){&D::getPageInfo})
+            return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x2c0050))(this, p0);
+        else return GameLevelManager::getPageInfo(p0);
+    }
+
+    cocos2d::CCArray* getStoredOnlineLevels(char const* p0) {
+        if ((cocos2d::CCArray*($GameLevelManager::*)(char const*)){&$GameLevelManager::getStoredOnlineLevels} != (cocos2d::CCArray*(D::*)(char const*)){&D::getStoredOnlineLevels})
+            return reinterpret_cast<cocos2d::CCArray*(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x2bfe80))(this, p0);
+        else return GameLevelManager::getStoredOnlineLevels(p0);
+    }
+
+    void getTopArtists(int p0, int p1) {
+        if ((void($GameLevelManager::*)(int, int)){&$GameLevelManager::getTopArtists} != (void(D::*)(int, int)){&D::getTopArtists})
+            return reinterpret_cast<void(*)(decltype(this), int, int)>(m->getOriginal(getBase()+0x2ce3d0))(this, p0, p1);
+        else return GameLevelManager::getTopArtists(p0, p1);
+    }
+
+    void getTopArtistsKey(int p0) {
+        if ((void($GameLevelManager::*)(int)){&$GameLevelManager::getTopArtistsKey} != (void(D::*)(int)){&D::getTopArtistsKey})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x2ce7a0))(this, p0);
+        else return GameLevelManager::getTopArtistsKey(p0);
+    }
+
+    void makeTimeStamp(char const* p0) {
+        if ((void($GameLevelManager::*)(char const*)){&$GameLevelManager::makeTimeStamp} != (void(D::*)(char const*)){&D::makeTimeStamp})
+            return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x2bfd90))(this, p0);
+        else return GameLevelManager::makeTimeStamp(p0);
+    }
+
     void apply_hooks() override {
     m->registerHook(extract_destructor(this), +[](){});
 
@@ -4577,6 +4616,21 @@ class $GameLevelManager : public GameLevelManager, public $CacBase {
 
         if ((GameLevelManager*(*)()){&$GameLevelManager::sharedState} != (GameLevelManager*(*)()){&D::sharedState})
             m->registerHook(getBase()+0x2a8340, (GameLevelManager*(*)()){&D::sharedState});
+
+        if ((void($GameLevelManager::*)(char const*)){&$GameLevelManager::getPageInfo} != (void(D::*)(char const*)){&D::getPageInfo})
+            m->registerHook(getBase()+0x2c0050, extract((void(D::*)(char const*)){&D::getPageInfo}));
+
+        if ((cocos2d::CCArray*($GameLevelManager::*)(char const*)){&$GameLevelManager::getStoredOnlineLevels} != (cocos2d::CCArray*(D::*)(char const*)){&D::getStoredOnlineLevels})
+            m->registerHook(getBase()+0x2bfe80, extract((cocos2d::CCArray*(D::*)(char const*)){&D::getStoredOnlineLevels}));
+
+        if ((void($GameLevelManager::*)(int, int)){&$GameLevelManager::getTopArtists} != (void(D::*)(int, int)){&D::getTopArtists})
+            m->registerHook(getBase()+0x2ce3d0, extract((void(D::*)(int, int)){&D::getTopArtists}));
+
+        if ((void($GameLevelManager::*)(int)){&$GameLevelManager::getTopArtistsKey} != (void(D::*)(int)){&D::getTopArtistsKey})
+            m->registerHook(getBase()+0x2ce7a0, extract((void(D::*)(int)){&D::getTopArtistsKey}));
+
+        if ((void($GameLevelManager::*)(char const*)){&$GameLevelManager::makeTimeStamp} != (void(D::*)(char const*)){&D::makeTimeStamp})
+            m->registerHook(getBase()+0x2bfd90, extract((void(D::*)(char const*)){&D::makeTimeStamp}));
     }
 };
 
@@ -11552,6 +11606,24 @@ class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
         else return TopArtistsLayer::setupLeaderboard(p0);
     }
 
+    bool init() override {
+        if ((bool($TopArtistsLayer::*)()){&$TopArtistsLayer::init} != (bool(D::*)()){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x192c30))(this);
+        else return TopArtistsLayer::init();
+    }
+
+    void loadPage(int p0) {
+        if ((void($TopArtistsLayer::*)(int)){&$TopArtistsLayer::loadPage} != (void(D::*)(int)){&D::loadPage})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x193b60))(this, p0);
+        else return TopArtistsLayer::loadPage(p0);
+    }
+
+    void setupPageInfo(std::string p0, char const* p1) {
+        if ((void($TopArtistsLayer::*)(std::string, char const*)){&$TopArtistsLayer::setupPageInfo} != (void(D::*)(std::string, char const*)){&D::setupPageInfo})
+            return reinterpret_cast<void(*)(decltype(this), std::string, char const*)>(m->getOriginal(getBase()+0x193730))(this, p0, p1);
+        else return TopArtistsLayer::setupPageInfo(p0, p1);
+    }
+
     void apply_hooks() override {
     m->registerHook(extract_destructor(this), +[](){});
 
@@ -11560,6 +11632,15 @@ class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
 
         if ((void($TopArtistsLayer::*)(cocos2d::CCArray*)){&$TopArtistsLayer::setupLeaderboard} != (void(D::*)(cocos2d::CCArray*)){&D::setupLeaderboard})
             m->registerHook(getBase()+0x193420, extract((void(D::*)(cocos2d::CCArray*)){&D::setupLeaderboard}));
+
+        if ((bool($TopArtistsLayer::*)()){&$TopArtistsLayer::init} != (bool(D::*)()){&D::init})
+            m->registerHook(getBase()+0x192c30, extract_virtual(this, (bool(D::*)()){&D::init}));
+
+        if ((void($TopArtistsLayer::*)(int)){&$TopArtistsLayer::loadPage} != (void(D::*)(int)){&D::loadPage})
+            m->registerHook(getBase()+0x193b60, extract((void(D::*)(int)){&D::loadPage}));
+
+        if ((void($TopArtistsLayer::*)(std::string, char const*)){&$TopArtistsLayer::setupPageInfo} != (void(D::*)(std::string, char const*)){&D::setupPageInfo})
+            m->registerHook(getBase()+0x193730, extract((void(D::*)(std::string, char const*)){&D::setupPageInfo}));
     }
 };
 

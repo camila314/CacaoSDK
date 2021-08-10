@@ -247,8 +247,19 @@ public:
     CLASS_PARAM(cocos2d::CCScene*, runningScene, 0x28);
 };
 
-class SongInfoObject : public GDObj {
+class SongInfoObject : public cocos2d::CCNode, public GDObj {
 public:
+    int m_unknown0;
+    std::string m_unknown1;
+    std::string m_artist;
+    std::string m_unknown2;
+    std::string m_youtube;
+    std::string m_unknown3;
+    int m_unknown4;
+    float m_unknown5;
+    unsigned short m_pad;
+    unsigned short m_metadata;
+    int m_uuid;
 };
 
 class ArtistCell : public GDObj {
@@ -273,8 +284,14 @@ class CCIndexPath : public GDObj {
 public:
 };
 
-class TableViewCell : public GDObj {
+class TableViewCell : public cocos2d::CCLayer, public GDObj {
 public:
+    TableViewCell(char const*, float, float);
+    char pad[0x1c0-0x170];
+    float m_parentHeight;
+    float m_height;
+    cocos2d::CCLayerColor* m_backgroundLayer;
+    cocos2d::CCLayer* m_mainLayer;
 };
 
 class TableViewDelegate : public GDObj {
@@ -769,6 +786,7 @@ public:
     virtual void draw();
     virtual bool init(char const*, float);
     virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
     static GJDropDownLayer* create(char const*);
     cocos2d::CCPoint m_endPosition;
     cocos2d::CCPoint m_startPosition;
@@ -961,7 +979,7 @@ public:
     void updateGroundWidth();
 };
 
-class GJListLayer : public GDObj {
+class GJListLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
 };
 
@@ -1049,6 +1067,11 @@ class GameLevelManager : public GDObj {
 public:
     GJGameLevel* createNewLevel();
     static GameLevelManager* sharedState();
+    void getPageInfo(char const*);
+    cocos2d::CCArray* getStoredOnlineLevels(char const*);
+    void getTopArtists(int, int);
+    void getTopArtistsKey(int);
+    void makeTimeStamp(char const*);
     CLASS_PARAM(cocos2d::CCDictionary*, timerDict, 0x1e8);
 };
 
@@ -2070,6 +2093,9 @@ class TopArtistsLayer : public FLAlertLayer{
 public:
     static TopArtistsLayer* create();
     void setupLeaderboard(cocos2d::CCArray*);
+    virtual bool init();
+    void loadPage(int);
+    void setupPageInfo(std::string, char const*);
     CLASS_PARAM(cocos2d::CCNode*, unknown, 0x220);
     CLASS_PARAM(GJCommentListLayer*, commentLayer, 0x260);
 };

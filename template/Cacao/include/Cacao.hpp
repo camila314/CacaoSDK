@@ -23,18 +23,20 @@
     public: \
         inline auto name(type t) {m_##name = t;return this;}
 
-#define CAC_TYPEINFO(addr) { \
-        uint64_t ok1 = *((uint64_t*)this); \
-        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+16; \
-        uint64_t n_typinfo = getBase()+addr; \
-        MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable(); \
+#define CAC_TYPEINFO(addr) {                                                            \
+        uint64_t ok1 = *((uint64_t*)this);                                              \
+        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+16;                                      \
+        uint64_t n_typinfo = getBase()+addr;                                            \
+        if (*(uint64_t*)ok2 != n_typinfo)                                               \
+            MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();      \
     }
 
-#define CAC_TYPEINFO_NUM(addr, num) { \
-        uint64_t ok1 = *((uint64_t*)this); \
-        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+24+num*16; \
-        uint64_t n_typinfo = getBase()+addr; \
-        MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable(); \
+#define CAC_TYPEINFO_NUM(addr, num) {                                                   \
+        uint64_t ok1 = *((uint64_t*)this);                                              \
+        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+24+num*16;                               \
+        uint64_t n_typinfo = getBase()+addr;                                            \
+        if (*(uint64_t*)ok2 != n_typinfo)                                               \
+            MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();      \
     }
 namespace Cacao {
     typedef void (cocos2d::CCObject::* CC_SEL)(cocos2d::CCObject*);
@@ -78,6 +80,7 @@ namespace Cacao {
         return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
     }
 
+    cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay);
     cocos2d::CCPoint relativePosition(double x, double y);
     cocos2d::CCPoint addedPosition(double x, double y);
     cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);

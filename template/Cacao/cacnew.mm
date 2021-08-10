@@ -10,7 +10,18 @@
     cocos2d::CCScene* m_runningScene = 0x28;
 @end
 
-@interface SongInfoObject
+@interface SongInfoObject : cocos2d::CCNode
+    int m_unknown0;
+    std::string m_unknown1;
+    std::string m_artist;
+    std::string m_unknown2;
+    std::string m_youtube;
+    std::string m_unknown3;
+    int m_unknown4;
+    float m_unknown5;
+    unsigned short m_pad;
+    unsigned short m_metadata;
+    int m_uuid;
 @end
 
 @interface ArtistCell
@@ -33,7 +44,13 @@
 @interface CCIndexPath
 @end
 
-@interface TableViewCell
+@interface TableViewCell : cocos2d::CCLayer
+    TableViewCell(char const*, float, float) = 0x383de0, 6629;
+    volatile char pad[0x1c0-0x170];
+    float m_parentHeight;
+    float m_height;
+    cocos2d::CCLayerColor* m_backgroundLayer;
+    cocos2d::CCLayer* m_mainLayer;
 @end
 
 @interface TableViewDelegate
@@ -503,6 +520,7 @@
     virtual void draw() = 0x352910, 2123;
     virtual bool init(char const*, float) = 0x352100, 2130;
     virtual void registerWithTouchDispatcher() = 0x3525f0, 2134;
+    virtual void keyBackClicked() = 0x352630, 2131;
 
     static GJDropDownLayer* create(char const*) = 0x352530, 2119;
 
@@ -696,7 +714,7 @@
     void updateGroundWidth() = 0x356790, 2399;
 @end
 
-@interface GJListLayer
+@interface GJListLayer : cocos2d::CCLayerColor
 @end
 
 @interface GJMoveCommandLayer
@@ -776,6 +794,11 @@
 @interface GameLevelManager
     GJGameLevel* createNewLevel() = 0x2b8180, 2983;
     static GameLevelManager* sharedState() = 0x2a8340, 3209;
+    void getPageInfo(char const*) = 0x2c0050, 3052;
+    cocos2d::CCArray* getStoredOnlineLevels(char const*) = 0x2bfe80, 3067;
+    void getTopArtists(int, int) = 0x2ce3d0, 3072;
+    void getTopArtistsKey(int) = 0x2ce7a0, 3073;
+    void makeTimeStamp(char const*) = 0x2bfd90, 3106;
 
     cocos2d::CCDictionary* m_timerDict = 0x1e8;
 @end
@@ -1745,6 +1768,9 @@
 @interface TopArtistsLayer : FLAlertLayer
     static TopArtistsLayer* create() = 0x192a90, 6698;
     void setupLeaderboard(cocos2d::CCArray*) = 0x193420, 6709;
+    virtual bool init() = 0x192c30, 6699;
+    void loadPage(int) = 0x193b60, 6704;
+    void setupPageInfo(std::string, char const*) = 0x193730, 6710;
 
     cocos2d::CCNode* m_unknown = 0x220;
     GJCommentListLayer* m_commentLayer = 0x260;

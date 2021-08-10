@@ -178,6 +178,7 @@
 @end
 
 @interface MusicDownloadManager
+    void getSongInfoObject(int) = 0x2ef780, 4824;
     void isSongDownloaded(int) = 0x2f0e10, 4833;
     void showTOS(FLAlertLayerProtocol*) = 0x2f1ab0, 4846;
 @end
@@ -214,6 +215,10 @@
     void loadFromObject(SongObject*) = 0x1113f0, 6441;
 @end
 
+@interface SongInfoObject
+    bool init(int, std::string, std::string, int, float, std::string, std::string, std::string, int) = 0x2f2660, 6465;
+@end
+
 @interface StatsCell
     void loadFromObject(StatsObject*) = 0x1110d0, 6557;
 @end
@@ -234,7 +239,7 @@
 @end
 
 @interface TopArtistsLayer
-    static TopArtistsLayer* create() = 0x192a90, 6698;
+    
 @end
 
 @interface UndoObject

@@ -14,7 +14,9 @@
 vector<ModContainer*> ModContainer::containers;
 
 BaseContainer::~BaseContainer() {
-    std::cout<<"bye"<<endl;
+#ifdef CAC_VERBOSE
+    std::cout << "bye " << (void*)address << endl;
+#endif
 }
 
 MemoryContainer::MemoryContainer(long addr, size_t bytec, char* bytes) {
@@ -26,7 +28,9 @@ MemoryContainer::MemoryContainer(long addr, size_t bytec, char* bytes) {
     moddedBytes = bytes;
 }
 MemoryContainer::~MemoryContainer() {
-    std::cout<<"bye from memory"<<endl;
+#ifdef CAC_VERBOSE
+    std::cout << "bye from memory " << (void*)address << endl;
+#endif
 }
 
 HookContainer::HookContainer(long addr, func_t function) {
@@ -59,7 +63,9 @@ func_t HookContainer::getOriginal() {
 }
 
 HookContainer::~HookContainer() {
-    std::cout<<"bye from hook"<<endl;
+#ifdef CAC_VERBOSE
+    std::cout << "bye from hook " << (void*)address << endl;
+#endif
 }
 
 void BaseContainer::enable() {
