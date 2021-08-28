@@ -140,6 +140,7 @@ class EditorOptionsLayer;
 class EditorUI;
 class EndLevelLayer;
 class FLAlertLayer;
+class ScrollingLayer;
 class FLAlertLayerProtocol;
 class FMODAudioEngine;
 class FollowRewardPage;
@@ -364,6 +365,7 @@ class ButtonSprite : public cocos2d::CCSprite, public GDObj {
 public:
     static ButtonSprite* create(char const*);
     static ButtonSprite* create(char const*, int, int, float, bool);
+    static ButtonSprite* create(char const*, int, int, float, bool, char const*, char const*, float);
     void updateBGImage(char const*);
 };
 
@@ -633,10 +635,6 @@ public:
 class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
     virtual void onEnter();
-    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
     virtual void registerWithTouchDispatcher();
     virtual void keyBackClicked();
     virtual void keyDown(cocos2d::enumKeyCodes);
@@ -662,6 +660,11 @@ public:
     int m_joystickConnected;
     bool m_containsBorder;
     bool m_noAction;
+};
+
+class ScrollingLayer : public cocos2d::CCLayerColor, public GDObj {
+public:
+    static ScrollingLayer* create(cocos2d::CCSize, cocos2d::CCPoint, float);
 };
 
 class FLAlertLayerProtocol : public GDObj {

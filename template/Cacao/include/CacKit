@@ -611,6 +611,12 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
         else return ButtonSprite::create(p0, p1, p2, p3, p4);
     }
 
+    static ButtonSprite* create(char const* p0, int p1, int p2, float p3, bool p4, char const* p5, char const* p6, float p7) {
+        if ((ButtonSprite*(*)(char const*, int, int, float, bool, char const*, char const*, float)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, int, int, float, bool, char const*, char const*, float)){&D::create})
+            return reinterpret_cast<ButtonSprite*(*)(char const*, int, int, float, bool, char const*, char const*, float)>(m->getOriginal(getBase()+0x4fa90))(p0, p1, p2, p3, p4, p5, p6, p7);
+        else return ButtonSprite::create(p0, p1, p2, p3, p4, p5, p6, p7);
+    }
+
     void updateBGImage(char const* p0) {
         if ((void($ButtonSprite::*)(char const*)){&$ButtonSprite::updateBGImage} != (void(D::*)(char const*)){&D::updateBGImage})
             return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(getBase()+0x502d0))(this, p0);
@@ -625,6 +631,9 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
 
         if ((ButtonSprite*(*)(char const*, int, int, float, bool)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, int, int, float, bool)){&D::create})
             m->registerHook(getBase()+0x4fa40, (ButtonSprite*(*)(char const*, int, int, float, bool)){&D::create});
+
+        if ((ButtonSprite*(*)(char const*, int, int, float, bool, char const*, char const*, float)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, int, int, float, bool, char const*, char const*, float)){&D::create})
+            m->registerHook(getBase()+0x4fa90, (ButtonSprite*(*)(char const*, int, int, float, bool, char const*, char const*, float)){&D::create});
 
         if ((void($ButtonSprite::*)(char const*)){&$ButtonSprite::updateBGImage} != (void(D::*)(char const*)){&D::updateBGImage})
             m->registerHook(getBase()+0x502d0, extract((void(D::*)(char const*)){&D::updateBGImage}));
@@ -2038,30 +2047,6 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
         else return FLAlertLayer::onEnter();
     }
 
-    bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
-        if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x25ee40))(this, p0, p1);
-        else return FLAlertLayer::ccTouchBegan(p0, p1);
-    }
-
-    void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x25f0a0))(this, p0, p1);
-        else return FLAlertLayer::ccTouchMoved(p0, p1);
-    }
-
-    void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x25ef60))(this, p0, p1);
-        else return FLAlertLayer::ccTouchEnded(p0, p1);
-    }
-
-    void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x25f020))(this, p0, p1);
-        else return FLAlertLayer::ccTouchCancelled(p0, p1);
-    }
-
     void registerWithTouchDispatcher() override {
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x25f2e0))(this);
@@ -2110,18 +2095,6 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::onEnter} != (void(D::*)()){&D::onEnter})
             m->registerHook(getBase()+0x25f350, extract_virtual(this, (void(D::*)()){&D::onEnter}));
 
-        if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(getBase()+0x25ee40, extract_virtual(this, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
-
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            m->registerHook(getBase()+0x25f0a0, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
-
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(getBase()+0x25ef60, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
-
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            m->registerHook(getBase()+0x25f020, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
-
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
             m->registerHook(getBase()+0x25f2e0, extract_virtual(this, (void(D::*)()){&D::registerWithTouchDispatcher}));
 
@@ -2142,6 +2115,32 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
 
         if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create})
             m->registerHook(getBase()+0x25dec0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create});
+    }
+};
+
+
+template<class D>
+class $ScrollingLayer : public ScrollingLayer, public $CacBase {
+ public:
+    $ScrollingLayer() {
+        if (!m)
+            m = new ModContainer(CAC_PROJ_NAME);
+        __cackit::glob.push_back(this);
+    }
+    ~$ScrollingLayer() {}
+    typedef ScrollingLayer* __thistype;
+
+    static ScrollingLayer* create(cocos2d::CCSize p0, cocos2d::CCPoint p1, float p2) {
+        if ((ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&$ScrollingLayer::create} != (ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&D::create})
+            return reinterpret_cast<ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)>(m->getOriginal(getBase()+0x41a900))(p0, p1, p2);
+        else return ScrollingLayer::create(p0, p1, p2);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&$ScrollingLayer::create} != (ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&D::create})
+            m->registerHook(getBase()+0x41a900, (ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&D::create});
     }
 };
 

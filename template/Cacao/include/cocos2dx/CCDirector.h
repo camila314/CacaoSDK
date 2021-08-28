@@ -36,6 +36,7 @@ THE SOFTWARE.
 #include "kazmath/mat4.h"
 #include "label_nodes/CCLabelAtlas.h"
 #include "ccTypeInfo.h"
+#include "keyboard_dispatcher/CCKeyboardDispatcher.h"
 
 
 NS_CC_BEGIN
@@ -86,7 +87,6 @@ class CCScheduler;
 class CCActionManager;
 class CCTouchDispatcher;
 class CCKeypadDispatcher;
-class CCKeyboardDispatcher;
 class CCMouseDispatcher;
 class CCSceneDelegate;
 class CCAccelerometer;

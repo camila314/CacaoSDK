@@ -528,7 +528,7 @@ int z = a[0u].GetInt();				// This works too.
 		return *this;
 	}
 
-private:
+//private:
 	template <typename, typename>
 	friend class GenericDocument;
 

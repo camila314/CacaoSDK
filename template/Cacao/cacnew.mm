@@ -118,6 +118,7 @@
 @interface ButtonSprite : cocos2d::CCSprite
     static ButtonSprite* create(char const*) = 0x4fa10, 336;
     static ButtonSprite* create(char const*, int, int, float, bool) = 0x4fa40, 338;
+    static ButtonSprite* create(char const*, int, int, float, bool, char const*, char const*, float) = 0x4fa90, 6969;
     void updateBGImage(char const*) = 0x502d0, 348;
 @end
 
@@ -368,10 +369,10 @@
 @interface FLAlertLayer : cocos2d::CCLayerColor
 
     virtual void onEnter() = 0x25f350, 1750;
-    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40, 1738, 288;
-    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0, 1741, 288;
-    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 1740, 288;
-    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020, 1739, 288;
+    //virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40, 1738, 288;
+    //virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0, 1741, 288;
+    //virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 1740, 288;
+    //virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020, 1739, 288;
     virtual void registerWithTouchDispatcher() = 0x25f2e0, 1751;
     virtual void keyBackClicked() = 0x25ed90, 1746, 304;
     virtual void keyDown(cocos2d::enumKeyCodes) = 0x25ece0, 1747, 312;
@@ -400,6 +401,10 @@
     int m_joystickConnected; //0x250
     bool m_containsBorder; //0x251
     bool m_noAction; //0x252
+@end
+
+@interface ScrollingLayer : cocos2d::CCLayerColor
+    static ScrollingLayer* create(cocos2d::CCSize, cocos2d::CCPoint, float) = 0x41a900, 314158;
 @end
 
 @interface FLAlertLayerProtocol
@@ -1919,6 +1924,10 @@
 
 @interface cocos2d::CCKeyboardDelegate
     void keyUp(cocos2d::enumKeyCodes) = 0x61a0, 8068;
+@end
+
+@interface cocos2d::CCKeyboardDispatcher // :trol:
+    void dispatchKeyboardMSG(cocos2d::enumKeyCodes, bool) = 0xe8190, 9193848;
 @end
 
 @interface cocos2d::CCLabelBMFont

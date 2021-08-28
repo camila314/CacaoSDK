@@ -360,6 +360,9 @@ defit __ZN12ButtonSprite6createEPKciifb, 0x4fa40
 ; ButtonSprite::create(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)
 defit __ZN12ButtonSprite6createEPN7cocos2d8CCSpriteEiiffbPKcb, 0x4fa90
 
+; ButtonSprite::create(char const*, int, int, float, bool, char const*, char const*, float)
+defit __ZN12ButtonSprite6createEPKciifbS1_S1_f, 0x4fa90
+
 ; ButtonSprite::updateBGImage(char const*)
 defit __ZN12ButtonSprite13updateBGImageEPKc, 0x502d0
 
@@ -429,6 +432,9 @@ defit __ZN12CCBlockLayer27registerWithTouchDispatcherEv, 0x2a5ad0
 ; CCBlockLayer::showLayer(bool)
 defit __ZN12CCBlockLayer9showLayerEb, 0x2a5b90
 
+; cocos2d::CCKeyboardDispatcher::dispatchKeyboardMSG(cocos2d::enumKeyCodes, bool)
+defit __ZN7cocos2d20CCKeyboardDispatcher19dispatchKeyboardMSGENS_12enumKeyCodesEb, 0xe8190
+
 ; CCCircleWave::create(float, float, float, bool)
 defit __ZN12CCCircleWave6createEfffb, 0xbd270
 
@@ -485,6 +491,9 @@ defit __ZN11CCMoveCNodeD1Ev, 0x18b310
 
 ; CCMoveCNode::~CCMoveCNode()
 defit __ZN11CCMoveCNodeD2Ev, 0x18b2c0
+
+; ScrollingLayer::create(cocos2d::CCSize, cocos2d::CCPoint, float)
+defit __ZN14ScrollingLayer6createEN7cocos2d6CCSizeENS0_7CCPointEf, 0x41a900
 
 ; CCNodeContainer::create()
 defit __ZN15CCNodeContainer6createEv, 0xb1090
