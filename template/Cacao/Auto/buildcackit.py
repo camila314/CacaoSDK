@@ -8,11 +8,12 @@ starter_code = open(os.path.dirname(__file__) + "/base/cackit.begin.cpp", "r").r
 
 build_start = """
 
-template<class D>
+template<class D, void*** V>
 class ${cls} : public {cls}, public $CacBase {{
  public:
     ${cls}() {{            
         __cackit::glob.push_back(this);
+        std::cout << (V) << std::endl;
     }}
     ~${cls}() {{}}
     typedef {cls}* __thistype;
