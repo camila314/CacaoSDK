@@ -2,6 +2,16 @@
     void loadFromDict(cocos2d::CCDictionary*) = 0x10eaa0, 116;
 @end
 
+@interface AchievementManager
+    void getAllAchievements() = 0x434d60, 129;
+    void sharedState() = 0x424420, 143;
+@end
+
+@interface AchievementsLayer
+    void customSetup() = 0x1bdea0, 160;
+    void loadPage(int) = 0x1be190, 162;
+@end
+
 @interface ArtistCell
 @end
 
@@ -37,17 +47,10 @@
     bool init(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO) = 0x125450, 495;
 @end
 
-@interface CCMenuItemToggler
-@end
-
 @interface CCMoveCNode
 @end
 
 @interface CCNodeContainer
-@end
-
-@interface CCTextInputNode
-    void forceOffset() = 0x5ec70, 642;
 @end
 
 @interface ColorSelectLiveOverlay
@@ -108,10 +111,6 @@
 @interface GJEffectManager
 @end
 
-@interface GJGroundLayer
-    void loadGroundSprites(int, bool) = 0x3563d0, 2393;
-@end
-
 @interface GJLevelScoreCell
     void loadFromScore(GJUserScore*) = 0x114aa0, 2421;
 @end
@@ -148,8 +147,10 @@
 @end
 
 @interface GameManager
+    void getGTexture(int) = 0x1cca40, 3271;
     bool init() = 0x1c2ec0, 3283;
     void reportAchievementWithID(char const*, int, bool) = 0x1c6460, 3306;
+    void resolutionForKey(int) = 0x1d0b40, 3311;
     void update(float) = 0x1d0270, 3356;
 @end
 
@@ -157,6 +158,10 @@
 @end
 
 @interface GameSoundManager
+@end
+
+@interface InfoAlertButton
+    static InfoAlertButton* create(std::string, std::string, float) = 0x2ecad0, 3905;
 @end
 
 @interface LevelCell
@@ -177,6 +182,10 @@
     void loadFromMapPack(GJMapPack*) = 0x1104c0, 4597;
 @end
 
+@interface MenuLayer
+    void scene(bool) = 0x1d12d0, 4655;
+@end
+
 @interface MusicDownloadManager
     void getSongInfoObject(int) = 0x2ef780, 4824;
     void isSongDownloaded(int) = 0x2f0e10, 4833;
@@ -186,8 +195,14 @@
 @interface OpacityEffectAction
 @end
 
+@interface PauseLayer
+    void onResume(cocos2d::CCObject*) = 0x20c760, 5002;
+@end
+
 @interface PlatformToolbox
     void logEvent(char const*) = 0x27c290, 5029;
+    void resizeWindow(float, float) = 0x27cfe0, 5039;
+    void toggleFullScreen(bool) = 0x27cf90, 5053;
 @end
 
 @interface PlayLayer
@@ -196,10 +211,22 @@
 @interface PlayerObject
 @end
 
+@interface SelectFontLayer
+    static SelectFontLayer* create(LevelEditorLayer*) = 0x143c20, 5727;
+    bool init(LevelEditorLayer*) = 0x143db0, 5728;
+    void onChangeFont(cocos2d::CCObject*) = 0x144450, 5730;
+    void updateFontLabel() = 0x1444e0, 5732;
+@end
+
 @interface SetGroupIDLayer
 @end
 
 @interface SetupPulsePopup
+@end
+
+@interface SetupSpawnPopup
+    bool init(EffectGameObject*, cocos2d::CCArray*) = 0x139950, 6241;
+    void onClose(cocos2d::CCObject*) = 0x13ace0, 6243;
 @end
 
 @interface Slider
@@ -223,10 +250,6 @@
     void loadFromObject(StatsObject*) = 0x1110d0, 6557;
 @end
 
-@interface TableViewCell
-    TableViewCell(char const*, float, float) = 0x383de0, 6629;
-@end
-
 @interface TableViewDelegate
     void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) = 0x120480, 6636;
     void didEndTweenToIndexPath(CCIndexPath&, TableView*) = 0x120470, 6639;
@@ -238,11 +261,22 @@
     void textInputOpened(CCTextInputNode*) = 0x6200, 6688;
 @end
 
-@interface TopArtistsLayer
-    
+@interface UndoObject
 @end
 
-@interface UndoObject
+@interface VideoOptionsLayer
+    void onApply(cocos2d::CCObject*) = 0x443740, 6824;
+@end
+
+@interface cocos2d::CCApplication
+    void getCurrentLanguage() = 0x1a3f40, 7063;
+    void getTargetPlatform() = 0x1a3f20, 7064;
+    void openURL(char const*) = 0x1a4550, 7065;
+    void setAnimationInterval(double) = 0x1a3ee0, 7067;
+@end
+
+@interface cocos2d::CCApplicationProtocol
+    void gameDidSave() = 0x1a45f0, 7074;
 @end
 
 @interface cocos2d::CCArray
@@ -266,10 +300,36 @@
 @end
 
 @interface cocos2d::CCDirector
+    void calculateDeltaTime() = 0x2497a0, 7446;
+    void calculateMPF() = 0x19eac0, 7447;
     void convertToGL(cocos2d::CCPoint const&) = 0x24a210, 7449;
+    void drawScene() = 0x249690, 7452;
+    void setNextScene() = 0x2498d0, 7512;
+    void showStats() = 0x2499e0, 7522;
+    void updateContentScale(cocos2d::TextureQuality) = 0x249ff0, 7523;
+@end
+
+@interface cocos2d::CCIMEDelegate
+    CCIMEDelegate() = 0x277310, 7984;
+    void attachWithIME() = 0x2776a0, 7985;
+    void canAttachWithIME() = 0x5ef30, 7986;
+    void canDetachWithIME() = 0x5ef50, 7987;
+    void deleteBackward() = 0x5ef80, 7988;
+    void detachWithIME() = 0x277880, 7989;
+    void didAttachWithIME() = 0x5ef40, 7990;
+    void didDetachWithIME() = 0x5ef60, 7991;
+    void getContentText() = 0x5ef90, 7992;
+    void insertText(char const*, int) = 0x5ef70, 7993;
+    void keyboardDidHide(cocos2d::CCIMEKeyboardNotificationInfo&) = 0x5efb0, 7994;
+    void keyboardDidShow(cocos2d::CCIMEKeyboardNotificationInfo&) = 0x5efa0, 7995;
+    ~CCIMEDelegate() = 0x277500, 8000;
 @end
 
 @interface cocos2d::CCImage
+@end
+
+@interface cocos2d::CCLabelBMFont
+    void setAnchorPoint(cocos2d::CCPoint const&) = 0x349440, 8146;
 @end
 
 @interface cocos2d::CCLayer
@@ -290,6 +350,11 @@
 @interface cocos2d::CCPoint
 @end
 
+@interface cocos2d::CCPoolManager
+    void pop() = 0x214620, 9121;
+    void sharedPoolManager() = 0x2142c0, 9125;
+@end
+
 @interface cocos2d::CCRect
 @end
 
@@ -305,14 +370,27 @@
 @end
 
 @interface cocos2d::CCSize
+    void equals(cocos2d::CCSize const&) = 0x137510, 9524;
 @end
 
 @interface cocos2d::CCSprite
     void createWithTexture(cocos2d::CCTexture2D*) = 0x132790, 9601;
+    void setFlipX(bool) = 0x134be0, 9636;
+    void setScaleX(float) = 0x134900, 9646;
+    void setScaleY(float) = 0x134980, 9647;
+@end
+
+@interface cocos2d::CCSpriteBatchNode
+    static cocos2d::CCSpriteBatchNode* create(char const*, unsigned int) = 0xbb540, 9674;
 @end
 
 @interface cocos2d::CCString
     void createWithFormat(char const*, ...) = 0x44cab0, 9778;
+@end
+
+@interface cocos2d::CCTextFieldDelegate
+    void onDraw(cocos2d::CCTextFieldTTF*) = 0x5efd0, 9916;
+    void onTextFieldDeleteBackward(cocos2d::CCTextFieldTTF*, char const*, int) = 0x5efc0, 9918;
 @end
 
 @interface cocos2d::CCTexture2D

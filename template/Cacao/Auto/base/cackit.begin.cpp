@@ -3,11 +3,12 @@
 #include <Cacao.hpp>
 using namespace cocos2d;
 using namespace cocos2d::extension;
-ModContainer* m;
 
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
 #endif
+
+ModContainer* m = new ModContainer(CAC_PROJ_NAME);
 
 #define APPLY_HOOKS() void __apply_hooks() {                \
     __if_exists(inject) {                                   \

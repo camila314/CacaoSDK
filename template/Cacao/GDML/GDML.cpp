@@ -34,6 +34,9 @@ MemoryContainer::~MemoryContainer() {
 }
 
 HookContainer::HookContainer(long addr, func_t function) {
+#ifdef CAC_VERBOSE
+    printf("HookContainer address %p, function %p\n", (void*)addr, function);
+#endif
     
     address = addr;
 

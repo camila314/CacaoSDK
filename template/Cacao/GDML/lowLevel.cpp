@@ -41,6 +41,9 @@ void* _follow_jmp(void* addr) {
 
 int dupe(void *function, void **duplicate)
 {
+#ifdef CAC_VERBOSE
+    printf("dupe %p to %p\n", function, duplicate);
+#endif
     if (!function || !duplicate) {
         return (KERN_INVALID_ARGUMENT);
     }

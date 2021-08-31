@@ -3,11 +3,12 @@
 #include <Cacao.hpp>
 using namespace cocos2d;
 using namespace cocos2d::extension;
-ModContainer* m;
 
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
 #endif
+
+ModContainer* m = new ModContainer(CAC_PROJ_NAME);
 
 #define APPLY_HOOKS() void __apply_hooks() {                \
     __if_exists(inject) {                                   \
@@ -81,11 +82,42 @@ namespace __cackit {
 
 
 template<class D>
+class $AchievementNotifier : public AchievementNotifier, public $CacBase {
+ public:
+    $AchievementNotifier() {            
+        __cackit::glob.push_back(this);
+    }
+    ~$AchievementNotifier() {}
+    typedef AchievementNotifier* __thistype;
+
+    void sharedState() {
+        if ((void($AchievementNotifier::*)()){&$AchievementNotifier::sharedState} != (void(D::*)()){&D::sharedState})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x464e00))(this);
+        else return AchievementNotifier::sharedState();
+    }
+
+    void willSwitchToScene(cocos2d::CCScene* p0) {
+        if ((void($AchievementNotifier::*)(cocos2d::CCScene*)){&$AchievementNotifier::willSwitchToScene} != (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCScene*)>(m->getOriginal(getBase()+0x4650b0))(this, p0);
+        else return AchievementNotifier::willSwitchToScene(p0);
+    }
+
+    void apply_hooks() override {
+    m->registerHook(extract_destructor(this), +[](){});
+
+        if ((void($AchievementNotifier::*)()){&$AchievementNotifier::sharedState} != (void(D::*)()){&D::sharedState})
+            m->registerHook(getBase()+0x464e00, extract((void(D::*)()){&D::sharedState}));
+
+        if ((void($AchievementNotifier::*)(cocos2d::CCScene*)){&$AchievementNotifier::willSwitchToScene} != (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene})
+            m->registerHook(getBase()+0x4650b0, extract((void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene}));
+    }
+};
+
+
+template<class D>
 class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
  public:
-    $AnimatedGameObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $AnimatedGameObject() {            
         __cackit::glob.push_back(this);
     }
     ~$AnimatedGameObject() {}
@@ -118,9 +150,7 @@ class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
 template<class D>
 class $AppDelegate : public AppDelegate, public $CacBase {
  public:
-    $AppDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $AppDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$AppDelegate() {}
@@ -130,6 +160,48 @@ class $AppDelegate : public AppDelegate, public $CacBase {
         if ((void($AppDelegate::*)()){&$AppDelegate::bgScale} != (void(D::*)()){&D::bgScale})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3aaab0))(this);
         else return AppDelegate::bgScale();
+    }
+
+    bool applicationDidFinishLaunching() override {
+        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationDidFinishLaunching} != (bool(D::*)()){&D::applicationDidFinishLaunching})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x3aa900))(this);
+        else return AppDelegate::applicationDidFinishLaunching();
+    }
+
+    void applicationDidEnterBackground() override {
+        if ((void($AppDelegate::*)()){&$AppDelegate::applicationDidEnterBackground} != (void(D::*)()){&D::applicationDidEnterBackground})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3aabe0))(this);
+        else return AppDelegate::applicationDidEnterBackground();
+    }
+
+    void applicationWillEnterForeground() override {
+        if ((void($AppDelegate::*)()){&$AppDelegate::applicationWillEnterForeground} != (void(D::*)()){&D::applicationWillEnterForeground})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3aac80))(this);
+        else return AppDelegate::applicationWillEnterForeground();
+    }
+
+    bool applicationWillBecomeActive() override {
+        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillBecomeActive} != (bool(D::*)()){&D::applicationWillBecomeActive})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x3aab30))(this);
+        else return AppDelegate::applicationWillBecomeActive();
+    }
+
+    bool applicationWillResignActive() override {
+        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillResignActive} != (bool(D::*)()){&D::applicationWillResignActive})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(getBase()+0x3aab50))(this);
+        else return AppDelegate::applicationWillResignActive();
+    }
+
+    void trySaveGame() override {
+        if ((void($AppDelegate::*)()){&$AppDelegate::trySaveGame} != (void(D::*)()){&D::trySaveGame})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x3aaf10))(this);
+        else return AppDelegate::trySaveGame();
+    }
+
+    void willSwitchToScene(cocos2d::CCScene* p0) override {
+        if ((void($AppDelegate::*)(cocos2d::CCScene*)){&$AppDelegate::willSwitchToScene} != (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCScene*)>(m->getOriginal(getBase()+0x3aaf40))(this, p0);
+        else return AppDelegate::willSwitchToScene(p0);
     }
 
     static AppDelegate* get() {
@@ -144,6 +216,27 @@ class $AppDelegate : public AppDelegate, public $CacBase {
         if ((void($AppDelegate::*)()){&$AppDelegate::bgScale} != (void(D::*)()){&D::bgScale})
             m->registerHook(getBase()+0x3aaab0, extract((void(D::*)()){&D::bgScale}));
 
+        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationDidFinishLaunching} != (bool(D::*)()){&D::applicationDidFinishLaunching})
+            m->registerHook(getBase()+0x3aa900, extract_virtual(this, (bool(D::*)()){&D::applicationDidFinishLaunching}));
+
+        if ((void($AppDelegate::*)()){&$AppDelegate::applicationDidEnterBackground} != (void(D::*)()){&D::applicationDidEnterBackground})
+            m->registerHook(getBase()+0x3aabe0, extract_virtual(this, (void(D::*)()){&D::applicationDidEnterBackground}));
+
+        if ((void($AppDelegate::*)()){&$AppDelegate::applicationWillEnterForeground} != (void(D::*)()){&D::applicationWillEnterForeground})
+            m->registerHook(getBase()+0x3aac80, extract_virtual(this, (void(D::*)()){&D::applicationWillEnterForeground}));
+
+        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillBecomeActive} != (bool(D::*)()){&D::applicationWillBecomeActive})
+            m->registerHook(getBase()+0x3aab30, extract_virtual(this, (bool(D::*)()){&D::applicationWillBecomeActive}));
+
+        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillResignActive} != (bool(D::*)()){&D::applicationWillResignActive})
+            m->registerHook(getBase()+0x3aab50, extract_virtual(this, (bool(D::*)()){&D::applicationWillResignActive}));
+
+        if ((void($AppDelegate::*)()){&$AppDelegate::trySaveGame} != (void(D::*)()){&D::trySaveGame})
+            m->registerHook(getBase()+0x3aaf10, extract_virtual(this, (void(D::*)()){&D::trySaveGame}));
+
+        if ((void($AppDelegate::*)(cocos2d::CCScene*)){&$AppDelegate::willSwitchToScene} != (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene})
+            m->registerHook(getBase()+0x3aaf40, extract_virtual(this, (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene}));
+
         if ((AppDelegate*(*)()){&$AppDelegate::get} != (AppDelegate*(*)()){&D::get})
             m->registerHook(getBase()+0x3aab10, (AppDelegate*(*)()){&D::get});
     }
@@ -153,9 +246,7 @@ class $AppDelegate : public AppDelegate, public $CacBase {
 template<class D>
 class $SongInfoObject : public SongInfoObject, public $CacBase {
  public:
-    $SongInfoObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SongInfoObject() {            
         __cackit::glob.push_back(this);
     }
     ~$SongInfoObject() {}
@@ -170,9 +261,7 @@ class $SongInfoObject : public SongInfoObject, public $CacBase {
 template<class D>
 class $ArtistCell : public ArtistCell, public $CacBase {
  public:
-    $ArtistCell() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ArtistCell() {            
         __cackit::glob.push_back(this);
     }
     ~$ArtistCell() {}
@@ -232,9 +321,7 @@ class $ArtistCell : public ArtistCell, public $CacBase {
 template<class D>
 class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
  public:
-    $AudioEffectsLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $AudioEffectsLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$AudioEffectsLayer() {}
@@ -276,9 +363,7 @@ class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
 template<class D>
 class $CCIndexPath : public CCIndexPath, public $CacBase {
  public:
-    $CCIndexPath() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCIndexPath() {            
         __cackit::glob.push_back(this);
     }
     ~$CCIndexPath() {}
@@ -293,9 +378,7 @@ class $CCIndexPath : public CCIndexPath, public $CacBase {
 template<class D>
 class $TableViewCell : public TableViewCell, public $CacBase {
  public:
-    $TableViewCell() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TableViewCell() {            
         __cackit::glob.push_back(this);
     }
     ~$TableViewCell() {}
@@ -310,9 +393,7 @@ class $TableViewCell : public TableViewCell, public $CacBase {
 template<class D>
 class $TableViewDelegate : public TableViewDelegate, public $CacBase {
  public:
-    $TableViewDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TableViewDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$TableViewDelegate() {}
@@ -327,9 +408,7 @@ class $TableViewDelegate : public TableViewDelegate, public $CacBase {
 template<class D>
 class $TableViewDataSource : public TableViewDataSource, public $CacBase {
  public:
-    $TableViewDataSource() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TableViewDataSource() {            
         __cackit::glob.push_back(this);
     }
     ~$TableViewDataSource() {}
@@ -344,9 +423,7 @@ class $TableViewDataSource : public TableViewDataSource, public $CacBase {
 template<class D>
 class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
  public:
-    $CCScrollLayerExt() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCScrollLayerExt() {            
         __cackit::glob.push_back(this);
     }
     ~$CCScrollLayerExt() {}
@@ -379,9 +456,7 @@ class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
 template<class D>
 class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBase {
  public:
-    $CCScrollLayerExtDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCScrollLayerExtDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$CCScrollLayerExtDelegate() {}
@@ -396,9 +471,7 @@ class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBa
 template<class D>
 class $TableView : public TableView, public $CacBase {
  public:
-    $TableView() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TableView() {            
         __cackit::glob.push_back(this);
     }
     ~$TableView() {}
@@ -431,9 +504,7 @@ class $TableView : public TableView, public $CacBase {
 template<class D>
 class $BoomListView : public BoomListView, public $CacBase {
  public:
-    $BoomListView() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $BoomListView() {            
         __cackit::glob.push_back(this);
     }
     ~$BoomListView() {}
@@ -574,9 +645,7 @@ class $BoomListView : public BoomListView, public $CacBase {
 template<class D>
 class $BoomScrollLayer : public BoomScrollLayer, public $CacBase {
  public:
-    $BoomScrollLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $BoomScrollLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$BoomScrollLayer() {}
@@ -591,9 +660,7 @@ class $BoomScrollLayer : public BoomScrollLayer, public $CacBase {
 template<class D>
 class $ButtonSprite : public ButtonSprite, public $CacBase {
  public:
-    $ButtonSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ButtonSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$ButtonSprite() {}
@@ -635,9 +702,7 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
 template<class D>
 class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
  public:
-    $CCAnimatedSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCAnimatedSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$CCAnimatedSprite() {}
@@ -670,9 +735,7 @@ class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
 template<class D>
 class $CCCircleWave : public CCCircleWave, public $CacBase {
  public:
-    $CCCircleWave() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCCircleWave() {            
         __cackit::glob.push_back(this);
     }
     ~$CCCircleWave() {}
@@ -723,9 +786,7 @@ class $CCCircleWave : public CCCircleWave, public $CacBase {
 template<class D>
 class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
  public:
-    $CCCircleWaveDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCCircleWaveDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$CCCircleWaveDelegate() {}
@@ -740,9 +801,7 @@ class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
 template<class D>
 class $CCLightFlash : public CCLightFlash, public $CacBase {
  public:
-    $CCLightFlash() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCLightFlash() {            
         __cackit::glob.push_back(this);
     }
     ~$CCLightFlash() {}
@@ -775,9 +834,7 @@ class $CCLightFlash : public CCLightFlash, public $CacBase {
 template<class D>
 class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
  public:
-    $CCMenuItemSpriteExtra() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCMenuItemSpriteExtra() {            
         __cackit::glob.push_back(this);
     }
     ~$CCMenuItemSpriteExtra() {}
@@ -810,9 +867,7 @@ class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
 template<class D>
 class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
  public:
-    $CCMenuItemToggler() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCMenuItemToggler() {            
         __cackit::glob.push_back(this);
     }
     ~$CCMenuItemToggler() {}
@@ -845,9 +900,7 @@ class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
 template<class D>
 class $CCMoveCNode : public CCMoveCNode, public $CacBase {
  public:
-    $CCMoveCNode() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCMoveCNode() {            
         __cackit::glob.push_back(this);
     }
     ~$CCMoveCNode() {}
@@ -880,9 +933,7 @@ class $CCMoveCNode : public CCMoveCNode, public $CacBase {
 template<class D>
 class $CCNodeContainer : public CCNodeContainer, public $CacBase {
  public:
-    $CCNodeContainer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCNodeContainer() {            
         __cackit::glob.push_back(this);
     }
     ~$CCNodeContainer() {}
@@ -924,9 +975,7 @@ class $CCNodeContainer : public CCNodeContainer, public $CacBase {
 template<class D>
 class $CCSpritePlus : public CCSpritePlus, public $CacBase {
  public:
-    $CCSpritePlus() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCSpritePlus() {            
         __cackit::glob.push_back(this);
     }
     ~$CCSpritePlus() {}
@@ -950,9 +999,7 @@ class $CCSpritePlus : public CCSpritePlus, public $CacBase {
 template<class D>
 class $CCTextInputNode : public CCTextInputNode, public $CacBase {
  public:
-    $CCTextInputNode() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CCTextInputNode() {            
         __cackit::glob.push_back(this);
     }
     ~$CCTextInputNode() {}
@@ -980,6 +1027,12 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
         if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(std::string)){&D::setAllowedChars})
             return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(getBase()+0x5d360))(this, p0);
         else return CCTextInputNode::setAllowedChars(p0);
+    }
+
+    void setLabelNormalColor(cocos2d::_ccColor3B p0) {
+        if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelNormalColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B)>(m->getOriginal(getBase()+0x5dab0))(this, p0);
+        else return CCTextInputNode::setLabelNormalColor(p0);
     }
 
     void setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
@@ -1018,6 +1071,96 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
         else return CCTextInputNode::updateLabel(p0);
     }
 
+    void forceOffset() {
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::forceOffset} != (void(D::*)()){&D::forceOffset})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x5ec70))(this);
+        else return CCTextInputNode::forceOffset();
+    }
+
+    void registerWithTouchDispatcher() override {
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x5eec0))(this);
+        else return CCTextInputNode::registerWithTouchDispatcher();
+    }
+
+    bool init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
+        if ((bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::init} != (bool(D::*)(float, float, char const*, char const*, int, char const*)){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this), float, float, char const*, char const*, int, char const*)>(m->getOriginal(getBase()+0x5d180))(this, p0, p1, p2, p3, p4, p5);
+        else return CCTextInputNode::init(p0, p1, p2, p3, p4, p5);
+    }
+
+    void visit() override {
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::visit} != (void(D::*)()){&D::visit})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x5d380))(this);
+        else return CCTextInputNode::visit();
+    }
+
+    bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
+            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x5ec80))(this, p0, p1);
+        else return CCTextInputNode::ccTouchBegan(p0, p1);
+    }
+
+    void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x5ee80))(this, p0, p1);
+        else return CCTextInputNode::ccTouchCancelled(p0, p1);
+    }
+
+    void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x5ee60))(this, p0, p1);
+        else return CCTextInputNode::ccTouchEnded(p0, p1);
+    }
+
+    void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(getBase()+0x5eea0))(this, p0, p1);
+        else return CCTextInputNode::ccTouchMoved(p0, p1);
+    }
+
+    void textChanged() override {
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::textChanged} != (void(D::*)()){&D::textChanged})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x5dd70))(this);
+        else return CCTextInputNode::textChanged();
+    }
+
+    void onClickTrackNode(bool p0) override {
+        if ((void($CCTextInputNode::*)(bool)){&$CCTextInputNode::onClickTrackNode} != (void(D::*)(bool)){&D::onClickTrackNode})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(getBase()+0x5dd40))(this, p0);
+        else return CCTextInputNode::onClickTrackNode(p0);
+    }
+
+    void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) override {
+        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillShow} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillShow})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCIMEKeyboardNotificationInfo&)>(m->getOriginal(getBase()+0x5dad0))(this, p0);
+        else return CCTextInputNode::keyboardWillShow(p0);
+    }
+
+    void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) override {
+        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillHide} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillHide})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCIMEKeyboardNotificationInfo&)>(m->getOriginal(getBase()+0x5dc20))(this, p0);
+        else return CCTextInputNode::keyboardWillHide(p0);
+    }
+
+    bool onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) override {
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&$CCTextInputNode::onTextFieldInsertText} != (bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&D::onTextFieldInsertText})
+            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTextFieldTTF*, char const*, int)>(m->getOriginal(getBase()+0x5de50))(this, p0, p1, p2);
+        else return CCTextInputNode::onTextFieldInsertText(p0, p1, p2);
+    }
+
+    bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) override {
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldAttachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldAttachWithIME})
+            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTextFieldTTF*)>(m->getOriginal(getBase()+0x5e2c0))(this, p0);
+        else return CCTextInputNode::onTextFieldAttachWithIME(p0);
+    }
+
+    bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) override {
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldDetachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldDetachWithIME})
+            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTextFieldTTF*)>(m->getOriginal(getBase()+0x5e610))(this, p0);
+        else return CCTextInputNode::onTextFieldDetachWithIME(p0);
+    }
+
     void apply_hooks() override {
     m->registerHook(extract_destructor(this), +[](){});
 
@@ -1032,6 +1175,9 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 
         if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(std::string)){&D::setAllowedChars})
             m->registerHook(getBase()+0x5d360, extract((void(D::*)(std::string)){&D::setAllowedChars}));
+
+        if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelNormalColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor})
+            m->registerHook(getBase()+0x5dab0, extract((void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor}));
 
         if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelPlaceholderColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelPlaceholderColor})
             m->registerHook(getBase()+0x5da90, extract((void(D::*)(cocos2d::_ccColor3B)){&D::setLabelPlaceholderColor}));
@@ -1050,6 +1196,51 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 
         if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(std::string)){&D::updateLabel})
             m->registerHook(getBase()+0x5d4a0, extract((void(D::*)(std::string)){&D::updateLabel}));
+
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::forceOffset} != (void(D::*)()){&D::forceOffset})
+            m->registerHook(getBase()+0x5ec70, extract((void(D::*)()){&D::forceOffset}));
+
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
+            m->registerHook(getBase()+0x5eec0, extract_virtual(this, (void(D::*)()){&D::registerWithTouchDispatcher}));
+
+        if ((bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::init} != (bool(D::*)(float, float, char const*, char const*, int, char const*)){&D::init})
+            m->registerHook(getBase()+0x5d180, extract((bool(D::*)(float, float, char const*, char const*, int, char const*)){&D::init}));
+
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::visit} != (void(D::*)()){&D::visit})
+            m->registerHook(getBase()+0x5d380, extract_virtual(this, (void(D::*)()){&D::visit}));
+
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
+            m->registerHook(getBase()+0x5ec80, extract_virtual(this, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+
+        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
+            m->registerHook(getBase()+0x5ee80, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
+
+        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
+            m->registerHook(getBase()+0x5ee60, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
+
+        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
+            m->registerHook(getBase()+0x5eea0, extract_virtual(this, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
+
+        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::textChanged} != (void(D::*)()){&D::textChanged})
+            m->registerHook(getBase()+0x5dd70, extract_virtual(this, (void(D::*)()){&D::textChanged}));
+
+        if ((void($CCTextInputNode::*)(bool)){&$CCTextInputNode::onClickTrackNode} != (void(D::*)(bool)){&D::onClickTrackNode})
+            m->registerHook(getBase()+0x5dd40, extract_virtual(this, (void(D::*)(bool)){&D::onClickTrackNode}));
+
+        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillShow} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillShow})
+            m->registerHook(getBase()+0x5dad0, extract_virtual(this, (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillShow}));
+
+        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillHide} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillHide})
+            m->registerHook(getBase()+0x5dc20, extract_virtual(this, (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillHide}));
+
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&$CCTextInputNode::onTextFieldInsertText} != (bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&D::onTextFieldInsertText})
+            m->registerHook(getBase()+0x5de50, extract_virtual(this, (bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&D::onTextFieldInsertText}));
+
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldAttachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldAttachWithIME})
+            m->registerHook(getBase()+0x5e2c0, extract_virtual(this, (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldAttachWithIME}));
+
+        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldDetachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldDetachWithIME})
+            m->registerHook(getBase()+0x5e610, extract_virtual(this, (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldDetachWithIME}));
     }
 };
 
@@ -1057,9 +1248,7 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 template<class D>
 class $CheckpointObject : public CheckpointObject, public $CacBase {
  public:
-    $CheckpointObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CheckpointObject() {            
         __cackit::glob.push_back(this);
     }
     ~$CheckpointObject() {}
@@ -1092,9 +1281,7 @@ class $CheckpointObject : public CheckpointObject, public $CacBase {
 template<class D>
 class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
  public:
-    $CollisionBlockPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CollisionBlockPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$CollisionBlockPopup() {}
@@ -1127,9 +1314,7 @@ class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
 template<class D>
 class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
  public:
-    $CollisionTriggerAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CollisionTriggerAction() {            
         __cackit::glob.push_back(this);
     }
     ~$CollisionTriggerAction() {}
@@ -1153,9 +1338,7 @@ class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
 template<class D>
 class $ColorAction : public ColorAction, public $CacBase {
  public:
-    $ColorAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ColorAction() {            
         __cackit::glob.push_back(this);
     }
     ~$ColorAction() {}
@@ -1197,9 +1380,7 @@ class $ColorAction : public ColorAction, public $CacBase {
 template<class D>
 class $ColorActionSprite : public ColorActionSprite, public $CacBase {
  public:
-    $ColorActionSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ColorActionSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$ColorActionSprite() {}
@@ -1214,9 +1395,7 @@ class $ColorActionSprite : public ColorActionSprite, public $CacBase {
 template<class D>
 class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
  public:
-    $ColorChannelSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ColorChannelSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$ColorChannelSprite() {}
@@ -1267,9 +1446,7 @@ class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
 template<class D>
 class $ColorPickerDelegate : public ColorPickerDelegate, public $CacBase {
  public:
-    $ColorPickerDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ColorPickerDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$ColorPickerDelegate() {}
@@ -1284,9 +1461,7 @@ class $ColorPickerDelegate : public ColorPickerDelegate, public $CacBase {
 template<class D>
 class $ColorSelectLiveOverlay : public ColorSelectLiveOverlay, public $CacBase {
  public:
-    $ColorSelectLiveOverlay() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ColorSelectLiveOverlay() {            
         __cackit::glob.push_back(this);
     }
     ~$ColorSelectLiveOverlay() {}
@@ -1301,9 +1476,7 @@ class $ColorSelectLiveOverlay : public ColorSelectLiveOverlay, public $CacBase {
 template<class D>
 class $ConfigureValuePopup : public ConfigureValuePopup, public $CacBase {
  public:
-    $ConfigureValuePopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ConfigureValuePopup() {            
         __cackit::glob.push_back(this);
     }
     ~$ConfigureValuePopup() {}
@@ -1318,9 +1491,7 @@ class $ConfigureValuePopup : public ConfigureValuePopup, public $CacBase {
 template<class D>
 class $CountTriggerAction : public CountTriggerAction, public $CacBase {
  public:
-    $CountTriggerAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CountTriggerAction() {            
         __cackit::glob.push_back(this);
     }
     ~$CountTriggerAction() {}
@@ -1344,9 +1515,7 @@ class $CountTriggerAction : public CountTriggerAction, public $CacBase {
 template<class D>
 class $CreateMenuItem : public CreateMenuItem, public $CacBase {
  public:
-    $CreateMenuItem() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CreateMenuItem() {            
         __cackit::glob.push_back(this);
     }
     ~$CreateMenuItem() {}
@@ -1361,9 +1530,7 @@ class $CreateMenuItem : public CreateMenuItem, public $CacBase {
 template<class D>
 class $CreatorLayer : public CreatorLayer, public $CacBase {
  public:
-    $CreatorLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CreatorLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$CreatorLayer() {}
@@ -1396,9 +1563,7 @@ class $CreatorLayer : public CreatorLayer, public $CacBase {
 template<class D>
 class $CurrencyRewardLayer : public CurrencyRewardLayer, public $CacBase {
  public:
-    $CurrencyRewardLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CurrencyRewardLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$CurrencyRewardLayer() {}
@@ -1413,9 +1578,7 @@ class $CurrencyRewardLayer : public CurrencyRewardLayer, public $CacBase {
 template<class D>
 class $CustomListView : public CustomListView, public $CacBase {
  public:
-    $CustomListView() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CustomListView() {            
         __cackit::glob.push_back(this);
     }
     ~$CustomListView() {}
@@ -1439,9 +1602,7 @@ class $CustomListView : public CustomListView, public $CacBase {
 template<class D>
 class $CustomizeObjectLayer : public CustomizeObjectLayer, public $CacBase {
  public:
-    $CustomizeObjectLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $CustomizeObjectLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$CustomizeObjectLayer() {}
@@ -1501,9 +1662,7 @@ class $CustomizeObjectLayer : public CustomizeObjectLayer, public $CacBase {
 template<class D>
 class $DelayedSpawnNode : public DelayedSpawnNode, public $CacBase {
  public:
-    $DelayedSpawnNode() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $DelayedSpawnNode() {            
         __cackit::glob.push_back(this);
     }
     ~$DelayedSpawnNode() {}
@@ -1527,9 +1686,7 @@ class $DelayedSpawnNode : public DelayedSpawnNode, public $CacBase {
 template<class D>
 class $DialogLayer : public DialogLayer, public $CacBase {
  public:
-    $DialogLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $DialogLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$DialogLayer() {}
@@ -1553,9 +1710,7 @@ class $DialogLayer : public DialogLayer, public $CacBase {
 template<class D>
 class $DialogObject : public DialogObject, public $CacBase {
  public:
-    $DialogObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $DialogObject() {            
         __cackit::glob.push_back(this);
     }
     ~$DialogObject() {}
@@ -1579,9 +1734,7 @@ class $DialogObject : public DialogObject, public $CacBase {
 template<class D>
 class $DrawGridLayer : public DrawGridLayer, public $CacBase {
  public:
-    $DrawGridLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $DrawGridLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$DrawGridLayer() {}
@@ -1677,9 +1830,7 @@ class $DrawGridLayer : public DrawGridLayer, public $CacBase {
 template<class D>
 class $EditButtonBar : public EditButtonBar, public $CacBase {
  public:
-    $EditButtonBar() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EditButtonBar() {            
         __cackit::glob.push_back(this);
     }
     ~$EditButtonBar() {}
@@ -1703,9 +1854,7 @@ class $EditButtonBar : public EditButtonBar, public $CacBase {
 template<class D>
 class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
  public:
-    $EditorOptionsLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EditorOptionsLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$EditorOptionsLayer() {}
@@ -1729,9 +1878,7 @@ class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
 template<class D>
 class $EditorUI : public EditorUI, public $CacBase {
  public:
-    $EditorUI() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EditorUI() {            
         __cackit::glob.push_back(this);
     }
     ~$EditorUI() {}
@@ -1998,9 +2145,7 @@ class $EditorUI : public EditorUI, public $CacBase {
 template<class D>
 class $EndLevelLayer : public EndLevelLayer, public $CacBase {
  public:
-    $EndLevelLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EndLevelLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$EndLevelLayer() {}
@@ -2024,9 +2169,7 @@ class $EndLevelLayer : public EndLevelLayer, public $CacBase {
 template<class D>
 class $FLAlertLayer : public FLAlertLayer, public $CacBase {
  public:
-    $FLAlertLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $FLAlertLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$FLAlertLayer() {}
@@ -2149,9 +2292,7 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
 template<class D>
 class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
  public:
-    $FLAlertLayerProtocol() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $FLAlertLayerProtocol() {            
         __cackit::glob.push_back(this);
     }
     ~$FLAlertLayerProtocol() {}
@@ -2166,9 +2307,7 @@ class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
 template<class D>
 class $FMODAudioEngine : public FMODAudioEngine, public $CacBase {
  public:
-    $FMODAudioEngine() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $FMODAudioEngine() {            
         __cackit::glob.push_back(this);
     }
     ~$FMODAudioEngine() {}
@@ -2183,9 +2322,7 @@ class $FMODAudioEngine : public FMODAudioEngine, public $CacBase {
 template<class D>
 class $FollowRewardPage : public FollowRewardPage, public $CacBase {
  public:
-    $FollowRewardPage() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $FollowRewardPage() {            
         __cackit::glob.push_back(this);
     }
     ~$FollowRewardPage() {}
@@ -2209,9 +2346,7 @@ class $FollowRewardPage : public FollowRewardPage, public $CacBase {
 template<class D>
 class $GJAccountManager : public GJAccountManager, public $CacBase {
  public:
-    $GJAccountManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJAccountManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GJAccountManager() {}
@@ -2235,9 +2370,7 @@ class $GJAccountManager : public GJAccountManager, public $CacBase {
 template<class D>
 class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
  public:
-    $GJBaseGameLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJBaseGameLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJBaseGameLayer() {}
@@ -2864,9 +2997,7 @@ class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
 template<class D>
 class $GJColorSetupLayer : public GJColorSetupLayer, public $CacBase {
  public:
-    $GJColorSetupLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJColorSetupLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJColorSetupLayer() {}
@@ -2890,9 +3021,7 @@ class $GJColorSetupLayer : public GJColorSetupLayer, public $CacBase {
 template<class D>
 class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
  public:
-    $GJDropDownLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJDropDownLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJDropDownLayer() {}
@@ -3042,9 +3171,7 @@ class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
 template<class D>
 class $GJEffectManager : public GJEffectManager, public $CacBase {
  public:
-    $GJEffectManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJEffectManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GJEffectManager() {}
@@ -3815,9 +3942,7 @@ class $GJEffectManager : public GJEffectManager, public $CacBase {
 template<class D>
 class $GJFollowCommandLayer : public GJFollowCommandLayer, public $CacBase {
  public:
-    $GJFollowCommandLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJFollowCommandLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJFollowCommandLayer() {}
@@ -3886,9 +4011,7 @@ class $GJFollowCommandLayer : public GJFollowCommandLayer, public $CacBase {
 template<class D>
 class $GJGameLevel : public GJGameLevel, public $CacBase {
  public:
-    $GJGameLevel() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJGameLevel() {            
         __cackit::glob.push_back(this);
     }
     ~$GJGameLevel() {}
@@ -3966,9 +4089,7 @@ class $GJGameLevel : public GJGameLevel, public $CacBase {
 template<class D>
 class $GJGroundLayer : public GJGroundLayer, public $CacBase {
  public:
-    $GJGroundLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJGroundLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJGroundLayer() {}
@@ -3978,6 +4099,12 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
         if ((GJGroundLayer*(*)(int, int)){&$GJGroundLayer::create} != (GJGroundLayer*(*)(int, int)){&D::create})
             return reinterpret_cast<GJGroundLayer*(*)(int, int)>(m->getOriginal(getBase()+0x355c00))(p0, p1);
         else return GJGroundLayer::create(p0, p1);
+    }
+
+    void createLine(int p0) {
+        if ((void($GJGroundLayer::*)(int)){&$GJGroundLayer::createLine} != (void(D::*)(int)){&D::createLine})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(getBase()+0x356220))(this, p0);
+        else return GJGroundLayer::createLine(p0);
     }
 
     void deactivateGround() {
@@ -3990,6 +4117,18 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
         if ((void($GJGroundLayer::*)()){&$GJGroundLayer::getGroundY} != (void(D::*)()){&D::getGroundY})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(getBase()+0x356ac0))(this);
         else return GJGroundLayer::getGroundY();
+    }
+
+    bool init(int p0, int p1) {
+        if ((bool($GJGroundLayer::*)(int, int)){&$GJGroundLayer::init} != (bool(D::*)(int, int)){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this), int, int)>(m->getOriginal(getBase()+0x355d10))(this, p0, p1);
+        else return GJGroundLayer::init(p0, p1);
+    }
+
+    void loadGroundSprites(int p0, bool p1) {
+        if ((void($GJGroundLayer::*)(int, bool)){&$GJGroundLayer::loadGroundSprites} != (void(D::*)(int, bool)){&D::loadGroundSprites})
+            return reinterpret_cast<void(*)(decltype(this), int, bool)>(m->getOriginal(getBase()+0x3563d0))(this, p0, p1);
+        else return GJGroundLayer::loadGroundSprites(p0, p1);
     }
 
     void updateGround01Color(cocos2d::_ccColor3B p0) {
@@ -4022,11 +4161,20 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
         if ((GJGroundLayer*(*)(int, int)){&$GJGroundLayer::create} != (GJGroundLayer*(*)(int, int)){&D::create})
             m->registerHook(getBase()+0x355c00, (GJGroundLayer*(*)(int, int)){&D::create});
 
+        if ((void($GJGroundLayer::*)(int)){&$GJGroundLayer::createLine} != (void(D::*)(int)){&D::createLine})
+            m->registerHook(getBase()+0x356220, extract((void(D::*)(int)){&D::createLine}));
+
         if ((void($GJGroundLayer::*)()){&$GJGroundLayer::deactivateGround} != (void(D::*)()){&D::deactivateGround})
             m->registerHook(getBase()+0x356a40, extract((void(D::*)()){&D::deactivateGround}));
 
         if ((void($GJGroundLayer::*)()){&$GJGroundLayer::getGroundY} != (void(D::*)()){&D::getGroundY})
             m->registerHook(getBase()+0x356ac0, extract((void(D::*)()){&D::getGroundY}));
+
+        if ((bool($GJGroundLayer::*)(int, int)){&$GJGroundLayer::init} != (bool(D::*)(int, int)){&D::init})
+            m->registerHook(getBase()+0x355d10, extract((bool(D::*)(int, int)){&D::init}));
+
+        if ((void($GJGroundLayer::*)(int, bool)){&$GJGroundLayer::loadGroundSprites} != (void(D::*)(int, bool)){&D::loadGroundSprites})
+            m->registerHook(getBase()+0x3563d0, extract((void(D::*)(int, bool)){&D::loadGroundSprites}));
 
         if ((void($GJGroundLayer::*)(cocos2d::_ccColor3B)){&$GJGroundLayer::updateGround01Color} != (void(D::*)(cocos2d::_ccColor3B)){&D::updateGround01Color})
             m->registerHook(getBase()+0x356640, extract((void(D::*)(cocos2d::_ccColor3B)){&D::updateGround01Color}));
@@ -4046,9 +4194,7 @@ class $GJGroundLayer : public GJGroundLayer, public $CacBase {
 template<class D>
 class $GJListLayer : public GJListLayer, public $CacBase {
  public:
-    $GJListLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJListLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJListLayer() {}
@@ -4063,9 +4209,7 @@ class $GJListLayer : public GJListLayer, public $CacBase {
 template<class D>
 class $GJMoveCommandLayer : public GJMoveCommandLayer, public $CacBase {
  public:
-    $GJMoveCommandLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJMoveCommandLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJMoveCommandLayer() {}
@@ -4242,9 +4386,7 @@ class $GJMoveCommandLayer : public GJMoveCommandLayer, public $CacBase {
 template<class D>
 class $GJPFollowCommandLayer : public GJPFollowCommandLayer, public $CacBase {
  public:
-    $GJPFollowCommandLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJPFollowCommandLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJPFollowCommandLayer() {}
@@ -4286,9 +4428,7 @@ class $GJPFollowCommandLayer : public GJPFollowCommandLayer, public $CacBase {
 template<class D>
 class $GJRobotSprite : public GJRobotSprite, public $CacBase {
  public:
-    $GJRobotSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJRobotSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$GJRobotSprite() {}
@@ -4330,9 +4470,7 @@ class $GJRobotSprite : public GJRobotSprite, public $CacBase {
 template<class D>
 class $GJRotateCommandLayer : public GJRotateCommandLayer, public $CacBase {
  public:
-    $GJRotateCommandLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJRotateCommandLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJRotateCommandLayer() {}
@@ -4401,9 +4539,7 @@ class $GJRotateCommandLayer : public GJRotateCommandLayer, public $CacBase {
 template<class D>
 class $GJSearchObject : public GJSearchObject, public $CacBase {
  public:
-    $GJSearchObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJSearchObject() {            
         __cackit::glob.push_back(this);
     }
     ~$GJSearchObject() {}
@@ -4445,9 +4581,7 @@ class $GJSearchObject : public GJSearchObject, public $CacBase {
 template<class D>
 class $GJSpecialColorSelect : public GJSpecialColorSelect, public $CacBase {
  public:
-    $GJSpecialColorSelect() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJSpecialColorSelect() {            
         __cackit::glob.push_back(this);
     }
     ~$GJSpecialColorSelect() {}
@@ -4471,9 +4605,7 @@ class $GJSpecialColorSelect : public GJSpecialColorSelect, public $CacBase {
 template<class D>
 class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, public $CacBase {
  public:
-    $GJSpecialColorSelectDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJSpecialColorSelectDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$GJSpecialColorSelectDelegate() {}
@@ -4488,9 +4620,7 @@ class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, publi
 template<class D>
 class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
  public:
-    $GJSpiderSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJSpiderSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$GJSpiderSprite() {}
@@ -4514,9 +4644,7 @@ class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
 template<class D>
 class $GManager : public GManager, public $CacBase {
  public:
-    $GManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GManager() {}
@@ -4558,9 +4686,7 @@ class $GManager : public GManager, public $CacBase {
 template<class D>
 class $GameLevelManager : public GameLevelManager, public $CacBase {
  public:
-    $GameLevelManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameLevelManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GameLevelManager() {}
@@ -4638,9 +4764,7 @@ class $GameLevelManager : public GameLevelManager, public $CacBase {
 template<class D>
 class $GameManager : public GameManager, public $CacBase {
  public:
-    $GameManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GameManager() {}
@@ -4826,9 +4950,7 @@ class $GameManager : public GameManager, public $CacBase {
 template<class D>
 class $GameObject : public GameObject, public $CacBase {
  public:
-    $GameObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameObject() {            
         __cackit::glob.push_back(this);
     }
     ~$GameObject() {}
@@ -5716,9 +5838,7 @@ class $GameObject : public GameObject, public $CacBase {
 template<class D>
 class $GameObjectCopy : public GameObjectCopy, public $CacBase {
  public:
-    $GameObjectCopy() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameObjectCopy() {            
         __cackit::glob.push_back(this);
     }
     ~$GameObjectCopy() {}
@@ -5751,9 +5871,7 @@ class $GameObjectCopy : public GameObjectCopy, public $CacBase {
 template<class D>
 class $GameSoundManager : public GameSoundManager, public $CacBase {
  public:
-    $GameSoundManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameSoundManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GameSoundManager() {}
@@ -5831,9 +5949,7 @@ class $GameSoundManager : public GameSoundManager, public $CacBase {
 template<class D>
 class $GameStatsManager : public GameStatsManager, public $CacBase {
  public:
-    $GameStatsManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameStatsManager() {            
         __cackit::glob.push_back(this);
     }
     ~$GameStatsManager() {}
@@ -5974,9 +6090,7 @@ class $GameStatsManager : public GameStatsManager, public $CacBase {
 template<class D>
 class $GameToolbox : public GameToolbox, public $CacBase {
  public:
-    $GameToolbox() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GameToolbox() {            
         __cackit::glob.push_back(this);
     }
     ~$GameToolbox() {}
@@ -6054,9 +6168,7 @@ class $GameToolbox : public GameToolbox, public $CacBase {
 template<class D>
 class $GravityEffectSprite : public GravityEffectSprite, public $CacBase {
  public:
-    $GravityEffectSprite() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GravityEffectSprite() {            
         __cackit::glob.push_back(this);
     }
     ~$GravityEffectSprite() {}
@@ -6098,9 +6210,7 @@ class $GravityEffectSprite : public GravityEffectSprite, public $CacBase {
 template<class D>
 class $GroupCommandObject : public GroupCommandObject, public $CacBase {
  public:
-    $GroupCommandObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GroupCommandObject() {            
         __cackit::glob.push_back(this);
     }
     ~$GroupCommandObject() {}
@@ -6169,9 +6279,7 @@ class $GroupCommandObject : public GroupCommandObject, public $CacBase {
 template<class D>
 class $HardStreak : public HardStreak, public $CacBase {
  public:
-    $HardStreak() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $HardStreak() {            
         __cackit::glob.push_back(this);
     }
     ~$HardStreak() {}
@@ -6222,9 +6330,7 @@ class $HardStreak : public HardStreak, public $CacBase {
 template<class D>
 class $InfoLayer : public InfoLayer, public $CacBase {
  public:
-    $InfoLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $InfoLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$InfoLayer() {}
@@ -6257,9 +6363,7 @@ class $InfoLayer : public InfoLayer, public $CacBase {
 template<class D>
 class $InheritanceNode : public InheritanceNode, public $CacBase {
  public:
-    $InheritanceNode() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $InheritanceNode() {            
         __cackit::glob.push_back(this);
     }
     ~$InheritanceNode() {}
@@ -6274,9 +6378,7 @@ class $InheritanceNode : public InheritanceNode, public $CacBase {
 template<class D>
 class $EffectGameObject : public EffectGameObject, public $CacBase {
  public:
-    $EffectGameObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EffectGameObject() {            
         __cackit::glob.push_back(this);
     }
     ~$EffectGameObject() {}
@@ -6318,9 +6420,7 @@ class $EffectGameObject : public EffectGameObject, public $CacBase {
 template<class D>
 class $EndPortalObject : public EndPortalObject, public $CacBase {
  public:
-    $EndPortalObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EndPortalObject() {            
         __cackit::glob.push_back(this);
     }
     ~$EndPortalObject() {}
@@ -6353,9 +6453,7 @@ class $EndPortalObject : public EndPortalObject, public $CacBase {
 template<class D>
 class $LabelGameObject : public LabelGameObject, public $CacBase {
  public:
-    $LabelGameObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LabelGameObject() {            
         __cackit::glob.push_back(this);
     }
     ~$LabelGameObject() {}
@@ -6388,9 +6486,7 @@ class $LabelGameObject : public LabelGameObject, public $CacBase {
 template<class D>
 class $LevelBrowserLayer : public LevelBrowserLayer, public $CacBase {
  public:
-    $LevelBrowserLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LevelBrowserLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$LevelBrowserLayer() {}
@@ -6432,9 +6528,7 @@ class $LevelBrowserLayer : public LevelBrowserLayer, public $CacBase {
 template<class D>
 class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
  public:
-    $LevelEditorLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LevelEditorLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$LevelEditorLayer() {}
@@ -7079,9 +7173,7 @@ class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
 template<class D>
 class $LevelInfoLayer : public LevelInfoLayer, public $CacBase {
  public:
-    $LevelInfoLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LevelInfoLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$LevelInfoLayer() {}
@@ -7096,9 +7188,7 @@ class $LevelInfoLayer : public LevelInfoLayer, public $CacBase {
 template<class D>
 class $LevelSettingsLayer : public LevelSettingsLayer, public $CacBase {
  public:
-    $LevelSettingsLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LevelSettingsLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$LevelSettingsLayer() {}
@@ -7122,9 +7212,7 @@ class $LevelSettingsLayer : public LevelSettingsLayer, public $CacBase {
 template<class D>
 class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
  public:
-    $LevelSettingsObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LevelSettingsObject() {            
         __cackit::glob.push_back(this);
     }
     ~$LevelSettingsObject() {}
@@ -7184,9 +7272,7 @@ class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
 template<class D>
 class $LevelTools : public LevelTools, public $CacBase {
  public:
-    $LevelTools() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LevelTools() {            
         __cackit::glob.push_back(this);
     }
     ~$LevelTools() {}
@@ -7228,9 +7314,7 @@ class $LevelTools : public LevelTools, public $CacBase {
 template<class D>
 class $LoadingLayer : public LoadingLayer, public $CacBase {
  public:
-    $LoadingLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LoadingLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$LoadingLayer() {}
@@ -7254,9 +7338,7 @@ class $LoadingLayer : public LoadingLayer, public $CacBase {
 template<class D>
 class $LocalLevelManager : public LocalLevelManager, public $CacBase {
  public:
-    $LocalLevelManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $LocalLevelManager() {            
         __cackit::glob.push_back(this);
     }
     ~$LocalLevelManager() {}
@@ -7280,9 +7362,7 @@ class $LocalLevelManager : public LocalLevelManager, public $CacBase {
 template<class D>
 class $MenuGameLayer : public MenuGameLayer, public $CacBase {
  public:
-    $MenuGameLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $MenuGameLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$MenuGameLayer() {}
@@ -7315,9 +7395,7 @@ class $MenuGameLayer : public MenuGameLayer, public $CacBase {
 template<class D>
 class $MenuLayer : public MenuLayer, public $CacBase {
  public:
-    $MenuLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $MenuLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$MenuLayer() {}
@@ -7359,9 +7437,7 @@ class $MenuLayer : public MenuLayer, public $CacBase {
 template<class D>
 class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
  public:
-    $MoreVideoOptionsLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $MoreVideoOptionsLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$MoreVideoOptionsLayer() {}
@@ -7394,9 +7470,7 @@ class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
 template<class D>
 class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
  public:
-    $MusicDownloadManager() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $MusicDownloadManager() {            
         __cackit::glob.push_back(this);
     }
     ~$MusicDownloadManager() {}
@@ -7429,9 +7503,7 @@ class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
 template<class D>
 class $OBB2D : public OBB2D, public $CacBase {
  public:
-    $OBB2D() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $OBB2D() {            
         __cackit::glob.push_back(this);
     }
     ~$OBB2D() {}
@@ -7491,9 +7563,7 @@ class $OBB2D : public OBB2D, public $CacBase {
 template<class D>
 class $ObjectToolbox : public ObjectToolbox, public $CacBase {
  public:
-    $ObjectToolbox() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ObjectToolbox() {            
         __cackit::glob.push_back(this);
     }
     ~$ObjectToolbox() {}
@@ -7535,9 +7605,7 @@ class $ObjectToolbox : public ObjectToolbox, public $CacBase {
 template<class D>
 class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
  public:
-    $OpacityEffectAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $OpacityEffectAction() {            
         __cackit::glob.push_back(this);
     }
     ~$OpacityEffectAction() {}
@@ -7588,9 +7656,7 @@ class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
 template<class D>
 class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
  public:
-    $EditorPauseLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $EditorPauseLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$EditorPauseLayer() {}
@@ -7623,9 +7689,7 @@ class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
 template<class D>
 class $PauseLayer : public PauseLayer, public $CacBase {
  public:
-    $PauseLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $PauseLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$PauseLayer() {}
@@ -7658,9 +7722,7 @@ class $PauseLayer : public PauseLayer, public $CacBase {
 template<class D>
 class $PlatformToolbox : public PlatformToolbox, public $CacBase {
  public:
-    $PlatformToolbox() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $PlatformToolbox() {            
         __cackit::glob.push_back(this);
     }
     ~$PlatformToolbox() {}
@@ -7693,9 +7755,7 @@ class $PlatformToolbox : public PlatformToolbox, public $CacBase {
 template<class D>
 class $PlayLayer : public PlayLayer, public $CacBase {
  public:
-    $PlayLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $PlayLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$PlayLayer() {}
@@ -9069,9 +9129,7 @@ class $PlayLayer : public PlayLayer, public $CacBase {
 template<class D>
 class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
  public:
-    $PlayerCheckpoint() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $PlayerCheckpoint() {            
         __cackit::glob.push_back(this);
     }
     ~$PlayerCheckpoint() {}
@@ -9095,9 +9153,7 @@ class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
 template<class D>
 class $PlayerObject : public PlayerObject, public $CacBase {
  public:
-    $PlayerObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $PlayerObject() {            
         __cackit::glob.push_back(this);
     }
     ~$PlayerObject() {}
@@ -10444,9 +10500,7 @@ class $PlayerObject : public PlayerObject, public $CacBase {
 template<class D>
 class $PulseEffectAction : public PulseEffectAction, public $CacBase {
  public:
-    $PulseEffectAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $PulseEffectAction() {            
         __cackit::glob.push_back(this);
     }
     ~$PulseEffectAction() {}
@@ -10479,9 +10533,7 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
 template<class D>
 class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
  public:
-    $RetryLevelLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $RetryLevelLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$RetryLevelLayer() {}
@@ -10505,9 +10557,7 @@ class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
 template<class D>
 class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
  public:
-    $SetGroupIDLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetGroupIDLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$SetGroupIDLayer() {}
@@ -10549,9 +10599,7 @@ class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
 template<class D>
 class $SetIDLayer : public SetIDLayer, public $CacBase {
  public:
-    $SetIDLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetIDLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$SetIDLayer() {}
@@ -10575,9 +10623,7 @@ class $SetIDLayer : public SetIDLayer, public $CacBase {
 template<class D>
 class $SetIDPopup : public SetIDPopup, public $CacBase {
  public:
-    $SetIDPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetIDPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetIDPopup() {}
@@ -10592,9 +10638,7 @@ class $SetIDPopup : public SetIDPopup, public $CacBase {
 template<class D>
 class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
  public:
-    $SetItemIDLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetItemIDLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$SetItemIDLayer() {}
@@ -10618,9 +10662,7 @@ class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
 template<class D>
 class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
  public:
-    $SetTargetIDLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetTargetIDLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$SetTargetIDLayer() {}
@@ -10671,9 +10713,7 @@ class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
 template<class D>
 class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
  public:
-    $SetupAnimationPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupAnimationPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupAnimationPopup() {}
@@ -10724,9 +10764,7 @@ class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
 template<class D>
 class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $CacBase {
  public:
-    $SetupCollisionTriggerPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupCollisionTriggerPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupCollisionTriggerPopup() {}
@@ -10777,9 +10815,7 @@ class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $C
 template<class D>
 class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
  public:
-    $SetupCountTriggerPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupCountTriggerPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupCountTriggerPopup() {}
@@ -10830,9 +10866,7 @@ class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
 template<class D>
 class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
  public:
-    $SetupInstantCountPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupInstantCountPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupInstantCountPopup() {}
@@ -10883,9 +10917,7 @@ class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
 template<class D>
 class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBase {
  public:
-    $SetupInteractObjectPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupInteractObjectPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupInteractObjectPopup() {}
@@ -10936,9 +10968,7 @@ class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBa
 template<class D>
 class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
  public:
-    $SetupObjectTogglePopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupObjectTogglePopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupObjectTogglePopup() {}
@@ -10998,9 +11028,7 @@ class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
 template<class D>
 class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
  public:
-    $SetupOpacityPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupOpacityPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupOpacityPopup() {}
@@ -11051,9 +11079,7 @@ class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
 template<class D>
 class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase {
  public:
-    $SetupPickupTriggerPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupPickupTriggerPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupPickupTriggerPopup() {}
@@ -11113,9 +11139,7 @@ class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase
 template<class D>
 class $SetupShakePopup : public SetupShakePopup, public $CacBase {
  public:
-    $SetupShakePopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupShakePopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupShakePopup() {}
@@ -11139,9 +11163,7 @@ class $SetupShakePopup : public SetupShakePopup, public $CacBase {
 template<class D>
 class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
  public:
-    $SetupSpawnPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupSpawnPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupSpawnPopup() {}
@@ -11201,9 +11223,7 @@ class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
 template<class D>
 class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
  public:
-    $SetupTouchTogglePopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupTouchTogglePopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupTouchTogglePopup() {}
@@ -11254,9 +11274,7 @@ class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
 template<class D>
 class $SimplePlayer : public SimplePlayer, public $CacBase {
  public:
-    $SimplePlayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SimplePlayer() {            
         __cackit::glob.push_back(this);
     }
     ~$SimplePlayer() {}
@@ -11307,9 +11325,7 @@ class $SimplePlayer : public SimplePlayer, public $CacBase {
 template<class D>
 class $Slider : public Slider, public $CacBase {
  public:
-    $Slider() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $Slider() {            
         __cackit::glob.push_back(this);
     }
     ~$Slider() {}
@@ -11369,9 +11385,7 @@ class $Slider : public Slider, public $CacBase {
 template<class D>
 class $SliderThumb : public SliderThumb, public $CacBase {
  public:
-    $SliderThumb() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SliderThumb() {            
         __cackit::glob.push_back(this);
     }
     ~$SliderThumb() {}
@@ -11395,9 +11409,7 @@ class $SliderThumb : public SliderThumb, public $CacBase {
 template<class D>
 class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
  public:
-    $SpawnTriggerAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SpawnTriggerAction() {            
         __cackit::glob.push_back(this);
     }
     ~$SpawnTriggerAction() {}
@@ -11421,9 +11433,7 @@ class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
 template<class D>
 class $SpeedObject : public SpeedObject, public $CacBase {
  public:
-    $SpeedObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SpeedObject() {            
         __cackit::glob.push_back(this);
     }
     ~$SpeedObject() {}
@@ -11456,9 +11466,7 @@ class $SpeedObject : public SpeedObject, public $CacBase {
 template<class D>
 class $TeleportPortalObject : public TeleportPortalObject, public $CacBase {
  public:
-    $TeleportPortalObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TeleportPortalObject() {            
         __cackit::glob.push_back(this);
     }
     ~$TeleportPortalObject() {}
@@ -11491,9 +11499,7 @@ class $TeleportPortalObject : public TeleportPortalObject, public $CacBase {
 template<class D>
 class $TextArea : public TextArea, public $CacBase {
  public:
-    $TextArea() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TextArea() {            
         __cackit::glob.push_back(this);
     }
     ~$TextArea() {}
@@ -11517,9 +11523,7 @@ class $TextArea : public TextArea, public $CacBase {
 template<class D>
 class $TextInputDelegate : public TextInputDelegate, public $CacBase {
  public:
-    $TextInputDelegate() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TextInputDelegate() {            
         __cackit::glob.push_back(this);
     }
     ~$TextInputDelegate() {}
@@ -11534,9 +11538,7 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
 template<class D>
 class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
  public:
-    $ToggleTriggerAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ToggleTriggerAction() {            
         __cackit::glob.push_back(this);
     }
     ~$ToggleTriggerAction() {}
@@ -11560,9 +11562,7 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
 template<class D>
 class $GJCommentListLayer : public GJCommentListLayer, public $CacBase {
  public:
-    $GJCommentListLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $GJCommentListLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$GJCommentListLayer() {}
@@ -11586,9 +11586,7 @@ class $GJCommentListLayer : public GJCommentListLayer, public $CacBase {
 template<class D>
 class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
  public:
-    $TopArtistsLayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TopArtistsLayer() {            
         __cackit::glob.push_back(this);
     }
     ~$TopArtistsLayer() {}
@@ -11648,9 +11646,7 @@ class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
 template<class D>
 class $TouchToggleAction : public TouchToggleAction, public $CacBase {
  public:
-    $TouchToggleAction() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $TouchToggleAction() {            
         __cackit::glob.push_back(this);
     }
     ~$TouchToggleAction() {}
@@ -11674,9 +11670,7 @@ class $TouchToggleAction : public TouchToggleAction, public $CacBase {
 template<class D>
 class $UILayer : public UILayer, public $CacBase {
  public:
-    $UILayer() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $UILayer() {            
         __cackit::glob.push_back(this);
     }
     ~$UILayer() {}
@@ -11736,9 +11730,7 @@ class $UILayer : public UILayer, public $CacBase {
 template<class D>
 class $UndoCommand : public UndoCommand, public $CacBase {
  public:
-    $UndoCommand() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $UndoCommand() {            
         __cackit::glob.push_back(this);
     }
     ~$UndoCommand() {}
@@ -11753,9 +11745,7 @@ class $UndoCommand : public UndoCommand, public $CacBase {
 template<class D>
 class $UndoObject : public UndoObject, public $CacBase {
  public:
-    $UndoObject() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $UndoObject() {            
         __cackit::glob.push_back(this);
     }
     ~$UndoObject() {}
@@ -11788,9 +11778,7 @@ class $UndoObject : public UndoObject, public $CacBase {
 template<class D>
 class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
  public:
-    $ColorSelectPopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $ColorSelectPopup() {            
         __cackit::glob.push_back(this);
     }
     ~$ColorSelectPopup() {}
@@ -11967,9 +11955,7 @@ class $ColorSelectPopup : public ColorSelectPopup, public $CacBase {
 template<class D>
 class $SetupPulsePopup : public SetupPulsePopup, public $CacBase {
  public:
-    $SetupPulsePopup() {
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    $SetupPulsePopup() {            
         __cackit::glob.push_back(this);
     }
     ~$SetupPulsePopup() {}

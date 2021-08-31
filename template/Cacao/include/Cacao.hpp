@@ -67,6 +67,14 @@ namespace Cacao {
         return infoname;
     }
 
+    template <typename T>
+    char const* typeinfoNameFor(T ptr) {
+        long vtable = *(long*)(ptr);
+        long typeinfo = *(long*)(vtable-8);
+        char const* infoname = *(char const**)(typeinfo + 8);
+        return infoname;
+    }
+
     std::vector<int> collapseGroups(GameObject* object);
     int uniqueGroupToObjects(cocos2d::CCArray* objects, LevelEditorLayer* lel);
     inline int uniqueGroupToObject(GameObject* obj, LevelEditorLayer* lel) {

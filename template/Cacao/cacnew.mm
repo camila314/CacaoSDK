@@ -1,3 +1,8 @@
+@interface AchievementNotifier : cocos2d::CCNode
+    void sharedState() = 0x464e00, 151;
+    void willSwitchToScene(cocos2d::CCScene*) = 0x4650b0, 153;
+@end
+
 @interface AnimatedGameObject
     void playAnimation(int) = 0xc93d0, 187;
     void updateChildSpriteColor(cocos2d::_ccColor3B) = 0xc8450, 193;
@@ -5,6 +10,13 @@
 
 @interface AppDelegate
     void bgScale() = 0x3aaab0, 210;
+    virtual bool applicationDidFinishLaunching() = 0x3aa900, 206;
+    virtual void applicationDidEnterBackground() = 0x3aabe0, 205;
+    virtual void applicationWillEnterForeground() = 0x3aac80, 208;
+    virtual bool applicationWillBecomeActive() = 0x3aab30, 207;
+    virtual bool applicationWillResignActive() = 0x3aab50, 209;
+    virtual void trySaveGame() = 0x3aaf10, 222;
+    virtual void willSwitchToScene(cocos2d::CCScene*) = 0x3aaf40, 223;
     static AppDelegate* get() = 0x3aab10, 212;
 
     cocos2d::CCScene* m_runningScene = 0x28;
@@ -149,11 +161,15 @@
     void setSizeMult(float) = 0x1255e0, 497;
 @end
 
-@interface CCMenuItemToggler : cocos2d::CCNodeRGBA
+@interface CCMenuItemToggler : cocos2d::CCMenuItem
     static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO) = 0x38400, 505;
     void setSizeMult(float) = 0x38a40, 511;
+    void toggle(bool) = 0x38950, 512;
 
-    bool m_toggled = 0x168;
+    CCMenuItemSpriteExtra* m_onButton;
+    CCMenuItemSpriteExtra* m_offButton;
+    bool m_toggled;
+    bool m_notClickable;
 @end
 
 @interface CCMoveCNode
@@ -186,12 +202,30 @@
     std::string getString() = 0x5d6f0, 643;
     void refreshLabel() = 0x5d730, 651;
     void setAllowedChars(std::string) = 0x5d360, 653;
+    void setLabelNormalColor(cocos2d::_ccColor3B) = 0x5dab0, 654;
     void setLabelPlaceholderColor(cocos2d::_ccColor3B) = 0x5da90, 655;
     void setLabelPlaceholderScale(float) = 0x5da70, 656;
     void setMaxLabelScale(float) = 0x5da30, 657;
     void setMaxLabelWidth(float) = 0x5da50, 658;
     void setString(std::string) = 0x5d3e0, 659;
     void updateLabel(std::string) = 0x5d4a0, 662;
+    void forceOffset() = 0x5ec70, 642;
+    
+    virtual void registerWithTouchDispatcher() = 0x5eec0, 652;
+
+    bool init(float, float, char const*, char const*, int, char const*) = 0x5d180, 644;
+    virtual void visit() = 0x5d380, 663;
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x5ec80, 637;
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x5ee80, 638;
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x5ee60, 639;
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x5eea0, 640;
+    virtual void textChanged() = 0x5dd70, 660;
+    virtual void onClickTrackNode(bool) = 0x5dd40, 647;
+    virtual void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo&) = 0x5dad0, 646;
+    virtual void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo&) = 0x5dc20, 645;
+    virtual bool onTextFieldInsertText(cocos2d::CCTextFieldTTF*, char const*, int) = 0x5de50, 650;
+    virtual bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF*) = 0x5e2c0, 648;
+    virtual bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF*) = 0x5e610, 649;
 
     void* m_unknown0;
     std::string m_caption; // 0x188
@@ -403,6 +437,7 @@
 @end
 
 @interface FLAlertLayerProtocol
+    volatile virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
 @end
 
 @interface FMODAudioEngine : cocos2d::CCNode
@@ -706,8 +741,11 @@
 
 @interface GJGroundLayer
     static GJGroundLayer* create(int, int) = 0x355c00, 2383;
+    void createLine(int) = 0x356220, 2384;
     void deactivateGround() = 0x356a40, 2385;
     void getGroundY() = 0x356ac0, 2390;
+    bool init(int, int) = 0x355d10, 2392;
+    void loadGroundSprites(int, bool) = 0x3563d0, 2393;
     void updateGround01Color(cocos2d::_ccColor3B) = 0x356640, 2396;
     void updateGround02Color(cocos2d::_ccColor3B) = 0x356710, 2397;
     void updateGroundPos(cocos2d::CCPoint) = 0x3566c0, 2398;

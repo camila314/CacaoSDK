@@ -11,9 +11,7 @@ build_start = """
 template<class D>
 class ${cls} : public {cls}, public $CacBase {{
  public:
-    ${cls}() {{
-        if (!m)
-            m = new ModContainer(CAC_PROJ_NAME);
+    ${cls}() {{            
         __cackit::glob.push_back(this);
     }}
     ~${cls}() {{}}
