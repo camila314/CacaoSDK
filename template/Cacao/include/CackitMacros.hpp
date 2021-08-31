@@ -7,9 +7,14 @@
     if (__cackit::glob.size() > 0) m->enable();             \
 }                                                           \
 static int const __cachook = (__apply_hooks(), 0)
-#define $apply(...) __VA_ARGS__
+// comment this after implementing vtable in constructor
+#define $apply(...) APPLY_HOOKS()
 
-#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
+// uncomment this after implementing vtable in constructor
+// #define $apply(...) __VA_ARGS__
+
+// uncomment this after implementing vtable in constructor
+// #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
