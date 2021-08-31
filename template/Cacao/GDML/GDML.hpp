@@ -6,6 +6,7 @@
 //  Copyright © 2020 camden314. All rights reserved.
 //
 #include <vector>
+#include "lowLevel.hpp"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ typedef void(*func_t)();
 
 class BaseContainer {
 protected:
-    long address;
+    uintptr_t address;
     size_t byteCount;
     char* originalBytes;
     char* moddedBytes;
@@ -28,19 +29,19 @@ public:
     virtual ~BaseContainer();
     void enable();
     void disable();
-    inline long getAddress() {return address;}
+    inline uintptr_t getAddress() {return address;}
     friend class ModContainer;
 };
 
 class MemoryContainer : public BaseContainer{
 public:
-    MemoryContainer(long address, size_t byteCount, char* bytes);
+    MemoryContainer(uintptr_t address, size_t byteCount, char* bytes);
     ~MemoryContainer();
 };
 
 class HookContainer : public BaseContainer {
 public:
-    HookContainer(long address, func_t function);
+    HookContainer(uintptr_t address, func_t function);
     func_t getOriginal();
     ~HookContainer();
 private:
@@ -59,16 +60,16 @@ public:
     ~ModContainer();
     void enable();
     void disable();
-    void registerWrite(long address, size_t byteCount, char* bytes);
+    void registerWrite(uintptr_t address, size_t byteCount, char* bytes);
 
     template <typename F>
-    F registerHook(long address, F function) {
+    F registerHook(uintptr_t address, F function) {
         HookContainer* hook = new HookContainer(address, (func_t)function);
         mods.push_back(hook);
         return (F)hook->getOriginal();
     }
     
-    func_t getOriginal(long address);
+    func_t getOriginal(uintptr_t address);
     char const* getName();
     inline vector<BaseContainer*> getMods() {return mods;};
 private:
@@ -92,7 +93,8 @@ struct ModNotFoundException : public exception
   }
 };
 
-long getBase();
+uintptr_t getBase();
+
 
 #pragma GCC visibility pop
 #endif

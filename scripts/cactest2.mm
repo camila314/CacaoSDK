@@ -332,6 +332,10 @@
     void setAnchorPoint(cocos2d::CCPoint const&) = 0x349440, 8146;
 @end
 
+@interface cocos2d::CCLabelTTF
+    void updateTexture() = 0x1fadc0, 8202;
+@end
+
 @interface cocos2d::CCLayer
 @end
 

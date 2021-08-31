@@ -1,130 +1,139 @@
+
+; %macro getaddr 1
+;     mov r11, [rel _base]
+;     add r11,  %1
+; %endmacro
+; %macro relcall 1
+;     getaddr %1
+;     call r11
+; %endmacro
+
+; %macro pushallnorax 0
+;     push rbx
+;     push rdi
+;     push rsi
+;     push rdx
+;     push rcx
+;     push r8
+;     push r9
+;     push r10
+;     push r11
+;     push r12
+;     push r13
+;     push r14
+;     push r15
+; %endmacro
+
+; %macro popallnorax 0
+;     pop r15
+;     pop r14
+;     pop r13
+;     pop r12
+;     pop r11
+;     pop r10
+;     pop r9
+;     pop r8
+;     pop rcx
+;     pop rdx
+;     pop rsi
+;     pop rdi
+;     pop rbx
+; %endmacro
+
+
+; %macro pushmm 1
+;     sub rsp, 16
+;     movss [rsp], %1
+; %endmacro
+
+; %macro popmm 1
+;     movss %1, [rsp]
+;     add rsp, 16
+; %endmacro
+
+; %macro pushallxmm 0
+;     pushmm xmm0
+;     pushmm xmm1
+;     pushmm xmm2
+;     pushmm xmm3
+;     ; pushmm xmm4
+;     ; pushmm xmm5
+;     ; pushmm xmm6
+;     ; pushmm xmm7
+; %endmacro
+
+; %macro popallxmm 0
+;     ;popmm xmm7
+;     ;popmm xmm6
+;     ;popmm xmm5
+;     ;popmm xmm4
+;     popmm xmm3
+;     popmm xmm2
+;     popmm xmm1
+;     popmm xmm0
+; %endmacro
+
+
+; extern __Z7getBasev
+; %macro defit 2
+; global %1
+; %1:
+;     push rbp
+;     mov rbp, rsp
+;     pushallnorax
+;     pushallxmm
+;     push rsi
+;     push rdi
+
+;     call __Z7getBasev
+;     add rax, %2
+
+;     pop rdi
+;     pop rsi
+;     popallxmm
+;     popallnorax
+;     pop rbp
+;     jmp rax
+; %endmacro
+
 extern _base
-%macro getaddr 1
-    mov r11, [rel _base]
-    add r11,  %1
-%endmacro
-%macro relcall 1
-    getaddr %1
-    call r11
-%endmacro
-
-%macro pushallnorax 0
-    push rbx
-    push rdi
-    push rsi
-    push rdx
-    push rcx
-    push r8
-    push r9
-    push r10
-    push r11
-    push r12
-    push r13
-    push r14
-    push r15
-%endmacro
-
-%macro popallnorax 0
-    pop r15
-    pop r14
-    pop r13
-    pop r12
-    pop r11
-    pop r10
-    pop r9
-    pop r8
-    pop rcx
-    pop rdx
-    pop rsi
-    pop rdi
-    pop rbx
-%endmacro
-
-
-%macro pushmm 1
-    sub rsp, 16
-    movss [rsp], %1
-%endmacro
-
-%macro popmm 1
-    movss %1, [rsp]
-    add rsp, 16
-%endmacro
-
-%macro pushallxmm 0
-    pushmm xmm0
-    pushmm xmm1
-    pushmm xmm2
-    pushmm xmm3
-    ; pushmm xmm4
-    ; pushmm xmm5
-    ; pushmm xmm6
-    ; pushmm xmm7
-%endmacro
-
-%macro popallxmm 0
-    ;popmm xmm7
-    ;popmm xmm6
-    ;popmm xmm5
-    ;popmm xmm4
-    popmm xmm3
-    popmm xmm2
-    popmm xmm1
-    popmm xmm0
-%endmacro
-
-extern __Z7getBasev
-extern _memcpy
 %macro defit 2
 global %1
 %1:
-    push rbp
-    mov rbp, rsp
-    pushallnorax
-    pushallxmm
-    push rsi
-    push rdi
-
-    call __Z7getBasev
+    mov rax, [rel _base]
     add rax, %2
-
-    pop rdi
-    pop rsi
-    popallxmm
-    popallnorax
-    pop rbp
     jmp rax
 %endmacro
 
-%macro virt 2
-global %1
-%1:
-    push rbp
-    mov rbp, rsp
-    mov rax, [rdi]
-    call [rax+%2]
-    pop rbp
-    ret
-%endmacro
+; %macro virt 2
+; global %1
+; %1:
+;     push rbp
+;     mov rbp, rsp
+;     mov rax, [rdi]
+;     call [rax+%2]
+;     pop rbp
+;     ret
+; %endmacro
 
-%macro classvar 2
-global %1
-%1:
-    push rbp
-    mov rbp, rsp
-    mov rax, [rdi+%2]
-    pop rbp
-    ret
-%endmacro
+; %macro classvar 2
+; global %1
+; %1:
+;     push rbp
+;     mov rbp, rsp
+;     mov rax, [rdi+%2]
+;     pop rbp
+;     ret
+; %endmacro
 
-%macro typeinfo 3
-    call __Z7getBasev
-    add rax, %2
-    mov rsi, rax
-    lea rdi, [rel %1]
-    mov rdx, %3
-    call _memcpy
-%endmacro
+; %macro typeinfo 3
+;     call __Z7getBasev
+;     add rax, %2
+;     mov rsi, rax
+;     lea rdi, [rel %1]
+;     mov rdx, %3
+;     call _memcpy
+; %endmacro
 
 global __ZN5GDObj9valOffsetEl
 __ZN5GDObj9valOffsetEl:
@@ -4803,6 +4812,15 @@ defit __ZN7cocos2d13CCLabelBMFont8setScaleEf, 0x34a5d0
 ; cocos2d::CCLabelBMFont::setString(char const*, bool)
 defit __ZN7cocos2d13CCLabelBMFont9setStringEPKcb, 0x3489e0
 
+;([long * param_1@RDI:8], [char * param_2@RSI:8])
+; cocos2d::CCLabelTTF::setString(char const*)
+;defit __ZN7cocos2d10CCLabelTTF9setStringEPKc, 0x1fad70
+; non-virtual thunk to cocos2d::CCLabelTTF::setString(char const*)
+;defit __ZThn484_N7cocos2d10CCLabelTTF9setStringEPKc, 0x1fad70
+
+; cocos2d::CCLabelTTF::updateTexture()
+defit __ZN7cocos2d10CCLabelTTF13updateTextureEv, 0x1fadc0
+
 ; cocos2d::CCLayer::CCLayer()
 defit __ZN7cocos2d7CCLayerC1Ev, 0x2726b0
 
@@ -5123,6 +5141,15 @@ defit __ZN7cocos2d6CCMenu14createWithItemEPNS_10CCMenuItemE, 0x438b80
 
 ; cocos2d::CCMenu::createWithItems(cocos2d::CCMenuItem*, std::__va_list)
 defit __ZN7cocos2d6CCMenu15createWithItemsEPNS_10CCMenuItemESt9__va_list, 0x438730
+
+; cocos2d::CCMenuItemSprite::create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCNode*)
+defit __ZN7cocos2d16CCMenuItemSprite6createEPNS_6CCNodeES2_S2_, 0x1fd120
+
+; cocos2d::CCMenuItemSprite::create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*))
+defit __ZN7cocos2d16CCMenuItemSprite6createEPNS_6CCNodeES2_S2_PNS_8CCObjectEMS3_FvS4_E, 0x1fd140
+
+; cocos2d::CCMenuItemSprite::create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, void (cocos2d::CCObject::*)(cocos2d::CCObject*))
+defit __ZN7cocos2d16CCMenuItemSprite6createEPNS_6CCNodeES2_PNS_8CCObjectEMS3_FvS4_E, 0x1fd2d0
 
 ; cocos2d::CCMotionStreak::reset()
 defit __ZN7cocos2d14CCMotionStreak5resetEv, 0x2ee190

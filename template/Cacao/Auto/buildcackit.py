@@ -22,7 +22,7 @@ class ${cls} : public {cls}, public $CacBase {{
 build_body1 = """
     {ret} {name}({params}) {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
+            return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(base+{addr}))(this{params3});
         else return {cls}::{name}({params5});
     }}
 """
@@ -30,7 +30,7 @@ build_body1 = """
 build_body1_virtual = """
     {ret} {name}({params}) override {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(getBase()+{addr}))(this{params3});
+            return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(base+{addr}))(this{params3});
         else return {cls}::{name}({params5});
     }}
 """
@@ -38,7 +38,7 @@ build_body1_virtual = """
 build_body1_static = """
     static {ret} {name}({params}) {{
         if (({ret}(*)({params4})){{&${cls}::{name}}} != ({ret}(*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(getBase()+{addr}))({params3});
+            return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(base+{addr}))({params3});
         else return {cls}::{name}({params5});
     }}
 """
@@ -51,17 +51,17 @@ build_body2_start = """
 
 build_body2_body = """
         if (({ret}(${cls}::*)({params})){{&${cls}::{name}}} != ({ret}(D::*)({params})){{&D::{name}}})
-            m->registerHook(getBase()+{addr}, extract(({ret}(D::*)({params})){{&D::{name}}}));
+            m->registerHook(base+{addr}, extract(({ret}(D::*)({params})){{&D::{name}}}));
 """
 
 build_body2_body_static = """
         if (({ret}(*)({params})){{&${cls}::{name}}} != ({ret}(*)({params})){{&D::{name}}})
-            m->registerHook(getBase()+{addr}, ({ret}(*)({params})){{&D::{name}}});
+            m->registerHook(base+{addr}, ({ret}(*)({params})){{&D::{name}}});
 """
 
 build_body2_body_virtual = """
         if (({ret}(${cls}::*)({params})){{&${cls}::{name}}} != ({ret}(D::*)({params})){{&D::{name}}})
-            m->registerHook(getBase()+{addr}, extract_virtual(this, ({ret}(D::*)({params})){{&D::{name}}}));
+            m->registerHook(base+{addr}, extract_virtual(this, ({ret}(D::*)({params})){{&D::{name}}}));
 """
 
 build_body2_end = "    }\n"
