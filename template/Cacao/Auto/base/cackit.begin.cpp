@@ -7,8 +7,6 @@ volatile uintptr_t base = getBase();
 
 #include <Cacao.hpp>
 #include <CackitMacros.hpp>
-using namespace cocos2d;
-using namespace cocos2d::extension;
 
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
