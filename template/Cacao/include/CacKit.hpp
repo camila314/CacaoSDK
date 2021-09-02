@@ -1209,7 +1209,7 @@ public:
     static void getRelativeOffset(GameObject*, cocos2d::CCPoint);
     static void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float);
     static void stringSetupToDict(std::string, char const*);
-    static void stringSetupToMap(std::string, char const*);
+    static std::map<std::string, std::string> stringSetupToMap(std::string, char const*);
     static void transformColor(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue);
     static void transformColor(cocos2d::_ccColor3B const&, float, float, float);
 };

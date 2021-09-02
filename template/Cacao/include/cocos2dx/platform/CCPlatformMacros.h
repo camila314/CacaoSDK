@@ -177,7 +177,7 @@ protected: varType varName;\
 public: virtual varType get##funName(void) const { return varName; }
 
 
-// camden modification
+// camila modification
 #define CC_SYNTHESIZE_READONLY_NOVIRTUAL(varType, varName, funName)\
 protected: varType varName;\
 public: varType get##funName(void) const { return varName; }

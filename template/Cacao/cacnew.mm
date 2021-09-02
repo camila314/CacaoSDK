@@ -1023,7 +1023,7 @@
     static void getRelativeOffset(GameObject*, cocos2d::CCPoint) = 0x28c060, 3770;
     static void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) = 0x28cb90, 3777;
     static void stringSetupToDict(std::string, char const*) = 0x28d700, 3783;
-    static void stringSetupToMap(std::string, char const*) = 0x28d4c0, 3784;
+    static std::map<std::string, std::string> stringSetupToMap(std::string, char const*) = 0x28d4c0, 3784;
     static void transformColor(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue) = 0x28c950, 3786;
     static void transformColor(cocos2d::_ccColor3B const&, float, float, float) = 0x28c930, 3787;
 @end

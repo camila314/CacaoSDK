@@ -6171,8 +6171,8 @@ $GameToolbox<D, V>::$GameToolbox() {
     if ((void(*)(std::string, char const*)){&$GameToolbox::stringSetupToDict} != (void(*)(std::string, char const*)){&D::stringSetupToDict})
         m->registerHook(base+0x28d700, (void(*)(std::string, char const*)){&D::stringSetupToDict});
 
-    if ((void(*)(std::string, char const*)){&$GameToolbox::stringSetupToMap} != (void(*)(std::string, char const*)){&D::stringSetupToMap})
-        m->registerHook(base+0x28d4c0, (void(*)(std::string, char const*)){&D::stringSetupToMap});
+    if ((std::map<std::string, std::string>(*)(std::string, char const*)){&$GameToolbox::stringSetupToMap} != (std::map<std::string, std::string>(*)(std::string, char const*)){&D::stringSetupToMap})
+        m->registerHook(base+0x28d4c0, (std::map<std::string, std::string>(*)(std::string, char const*)){&D::stringSetupToMap});
 
     if ((void(*)(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)){&$GameToolbox::transformColor} != (void(*)(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)){&D::transformColor})
         m->registerHook(base+0x28c950, (void(*)(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)){&D::transformColor});
@@ -6210,9 +6210,9 @@ void $GameToolbox<D, V>::stringSetupToDict(std::string p0, char const* p1) {
 }
 
 template<class D, void*** V>
-void $GameToolbox<D, V>::stringSetupToMap(std::string p0, char const* p1) {
-    if ((void(*)(std::string, char const*)){&$GameToolbox::stringSetupToMap} != (void(*)(std::string, char const*)){&D::stringSetupToMap})
-        return reinterpret_cast<void(*)(std::string, char const*)>(m->getOriginal(base+0x28d4c0))(p0, p1);
+std::map<std::string, std::string> $GameToolbox<D, V>::stringSetupToMap(std::string p0, char const* p1) {
+    if ((std::map<std::string, std::string>(*)(std::string, char const*)){&$GameToolbox::stringSetupToMap} != (std::map<std::string, std::string>(*)(std::string, char const*)){&D::stringSetupToMap})
+        return reinterpret_cast<std::map<std::string, std::string>(*)(std::string, char const*)>(m->getOriginal(base+0x28d4c0))(p0, p1);
     else return GameToolbox::stringSetupToMap(p0, p1);
 }
 
