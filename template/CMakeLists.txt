@@ -10,16 +10,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_WARN_DEPRECATED FALSE)
 
 include_directories(
-	Cacao/
-	Cacao/include
-	Cacao/include/cocos2dx
-	Cacao/include/cocos2dx/include
-	Cacao/include/cocos2dx/kazmath/include
-	Cacao/include/cocos2dx/platform/mac
-	Cacao/include/cocos2dx/platform/third_party/mac
-	Cacao/include/cocos2dx/platform/third_party/mac/OGLES
-	Cacao/include/cocos2dext
-	Cacao/include/cocos2dx/custom/Sprites/CCMenuItemSpriteExtra
+    Cacao/
+    Cacao/include
+    Cacao/include/cocos2dx
+    Cacao/include/cocos2dx/include
+    Cacao/include/cocos2dx/kazmath/include
+    Cacao/include/cocos2dx/platform/mac
+    Cacao/include/cocos2dx/platform/third_party/mac
+    Cacao/include/cocos2dx/platform/third_party/mac/OGLES
+    Cacao/include/cocos2dext
+    Cacao/include/cocos2dx/custom/Sprites/CCMenuItemSpriteExtra
 )
 
 add_subdirectory(Cacao)
@@ -29,7 +29,7 @@ target_link_directories(${PROJECT_NAME} PRIVATE Cacao)
 target_link_libraries(${PROJECT_NAME} Cacao)
 
 add_custom_command(
-	TARGET  ${PROJECT_NAME}
+    TARGET  ${PROJECT_NAME}
     COMMAND sudo osxinj \"Geometry Dash\" *.dylib || true
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Injecting"
