@@ -1,1 +1,6 @@
+#include <stdint.h>
+
+uintptr_t getBase();
+volatile const uintptr_t base = getBase();
+
 #include <CacKit.hpp>

@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 uintptr_t getBase();
-volatile uintptr_t const base = getBase();
+extern volatile const uintptr_t base;
 
 #include <Cacao.hpp>
 #include <CackitMacros.hpp>

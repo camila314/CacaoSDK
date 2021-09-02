@@ -21,7 +21,7 @@ header_end = "};\n"
 
 ender_header = open(os.path.dirname(__file__) + "/base/cackit.end.hpp", "r").read()
 
-starter_source = "#include <CacKit>\n"
+starter_source = "#include <CacKit.hpp>\n"
 
 source_start = """
 
@@ -39,7 +39,6 @@ source_apply_normal = """
 source_apply_virtual = """
     if (({ret}(${cls}::*)({params})){{&${cls}::{name}}} != ({ret}(D::*)({params})){{&D::{name}}})
         m->registerHook(base+{addr}, extract_virtual(V, ({ret}(D::*)({params})){{&D::{name}}}));
-    std::cout << "{name}: " << (void*)extract_virtual(V, ({ret}(D::*)({params})){{&D::{name}}}) << std::endl;
 """
 source_apply_static = """
     if (({ret}(*)({params})){{&${cls}::{name}}} != ({ret}(*)({params})){{&D::{name}}})

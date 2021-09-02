@@ -6,6 +6,7 @@
 #include <map>
 #include <vector>
 #include <tr1/type_traits>
+#include <CacKit.hpp>
 
 #define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 
