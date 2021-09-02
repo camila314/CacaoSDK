@@ -18,9 +18,9 @@ Cacao comes with a neat little way to hook very quickly with a tool called CacKi
 
 class $redirect(EditorUI) {
 public:
-	void undoLastAction(CCObject* p0) {
-		std::cout << "Undo!" << std::endl;
-	}
+    void undoLastAction(CCObject* p0) {
+        std::cout << "Undo!" << std::endl;
+    }
 } MyEditorUIHook;
 
 $apply();
@@ -33,10 +33,10 @@ If you want to call the original function, there is also an easy way to do that 
 
 class $redirect(EditorUI) {
 public:
-	void undoLastAction(CCObject* p0) {
-		std::cout << "Undo!" << std::endl;
-		$EditorUI::undoLastAction(p0);
-	}
+    void undoLastAction(CCObject* p0) {
+        std::cout << "Undo!" << std::endl;
+        $EditorUI::undoLastAction(p0);
+    }
 } MyEditorUIHook;
 
 $apply();
@@ -48,10 +48,10 @@ Since the CacKit classes subclass the GD classes, we can use the members and fun
 
 class $redirect(EditorUI) {
 public:
-	void undoLastAction(CCObject* p0) {
-		std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
-		$EditorUI::undoLastAction(p0);
-	}
+    void undoLastAction(CCObject* p0) {
+        std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
+        $EditorUI::undoLastAction(p0);
+    }
 } MyEditorUIHook;
 
 $apply();
@@ -65,14 +65,14 @@ If you want, you can also use a function with the name `inject` to run code befo
 
 class $redirect(EditorUI) {
 public:
-	void undoLastAction(CCObject* p0) {
-		std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
-		$EditorUI::undoLastAction(p0);
-	}
+    void undoLastAction(CCObject* p0) {
+        std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
+        $EditorUI::undoLastAction(p0);
+    }
 } MyEditorUIHook;
 
 void inject() {
-	std::cout << "Hello!" << std::endl;
+    std::cout << "Hello!" << std::endl;
 }
 
 $apply();
@@ -101,8 +101,8 @@ ModContainer::containerByName(name).enable();
 In order to create memory patches and hooks, there are 2 methods for you. `ModContainer::registerWrite` and `ModContainer::registerHook`. Here is how to use `registerWrite`:
 
 ```cpp
-	int64_t base = getBase(); // GDML base address function
-	m->registerWrite(base+0x123456, 4, "\x90\x90\x90\x90")
+    int64_t base = getBase(); // GDML base address function
+    m->registerWrite(base+0x123456, 4, "\x90\x90\x90\x90")
 ```
 
 With the above example, once enabled, the program will write the 4 bytes `90909090` into the address `base+0x123456`.
@@ -110,8 +110,8 @@ With the above example, once enabled, the program will write the 4 bytes `909090
 For `registerHook`, it is also easy to use:
 
 ```cpp
-	int64_t base = getBase(); // GDML base address function
-	m->registerHook(base+0x543210, myHook);
+    int64_t base = getBase(); // GDML base address function
+    m->registerHook(base+0x543210, myHook);
 ```
 
 You'll notice that in this snippet, we don't save the original function into a seperate variable. This is mainly for ease and to avoid having to define a bunch of function pointers to put them in. If you do, however, want to save the original function, you can use this:
@@ -127,14 +127,14 @@ The `getOriginal` function by default returns a type `func_t` (aka `void (*)()`)
 ModContainer* m;
 
 void hook(int param1, char param2) {
-	// do stuff here
-	func_t orig = m->getOriginal(getBase()+0x314159);
-	return FCAST(hook, orig)(param1, param2);
+    // do stuff here
+    func_t orig = m->getOriginal(getBase()+0x314159);
+    return FCAST(hook, orig)(param1, param2);
 }
 
 void inject() {
-	m = new ModContainer("test");
-	m->registerHook(getBase()+0x314159, hook);
+    m = new ModContainer("test");
+    m->registerHook(getBase()+0x314159, hook);
 }
 
 $apply();
@@ -148,13 +148,13 @@ There is actually a more visually pleasing way of calling the original function 
 ModContainer* m;
 
 int cool(void* param1, char* param2) {
-	int ret_value = ORIG(cool, 0x314159)(param1, param2);
-	return ret_value * 2;
+    int ret_value = ORIG(cool, 0x314159)(param1, param2);
+    return ret_value * 2;
 }
 
 void inject() {
-	m = new ModContainer("test");
-	m->registerHook(getBase()+0x314159, hook);
+    m = new ModContainer("test");
+    m->registerHook(getBase()+0x314159, hook);
 }
 
 $apply();
