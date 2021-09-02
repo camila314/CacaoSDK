@@ -1,4 +1,4 @@
-// Copyright camden314 2021
+// Copyright camila314 2021
 #ifndef __CACAO_HPP__
 #define __CACAO_HPP__
 
@@ -6,6 +6,7 @@
 #include <map>
 #include <vector>
 #include <tr1/type_traits>
+#include <CacKit>
 
 #define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 

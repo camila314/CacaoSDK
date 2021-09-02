@@ -10,32 +10,40 @@ add_library(Cacao STATIC Cacao.cpp symtab.asm)
 
 target_link_libraries(Cacao GDML)
 
-add_custom_command(
-	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
-	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm
-	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit
-	COMMENT "Generating Cackit"
-)
-
 # add_custom_command(
-# 	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
-#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm
-#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/functions.txt
-# 	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
-# 	COMMENT "Generating symbols"
+#     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
+#     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.cpp
+#     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit 
+#     COMMENT "Generating Cackit"
 # )
 
 add_custom_command(
-	COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
-   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm
-	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
-	COMMENT "Generating headers"
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackitnew.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit.hpp" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit.cpp"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackitnew.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.end.hpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit.hpp
+    COMMENT "Generating Cackit new"
+)
+
+# add_custom_command(
+#   COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
+#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm
+#    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/functions.txt
+#   OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
+#   COMMENT "Generating symbols"
+# )
+
+add_custom_command(
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.end.hpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
+    COMMENT "Generating headers"
 )
 
 add_custom_target(Cackit ALL
-   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit
-   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
-   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit.cpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit.hpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
 )
 
-ADD_DEPENDENCIES(Cacao Cackit)
+# ADD_DEPENDENCIES(Cacao Cackit)

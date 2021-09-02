@@ -1,20 +1,10 @@
+#ifndef __CACKIT_MACROS_HPP__
+#define __CACKIT_MACROS_HPP__
+
 // deprecated
-#define APPLY_HOOKS() void __apply_hooks() {                \
-    __if_exists(inject) {                                   \
-        inject();                                           \
-    }                                                       \
-    for(auto& i : __cackit::glob) i->apply_hooks();         \
-    if (__cackit::glob.size() > 0) m->enable();             \
-}                                                           \
-static int const __cachook = (__apply_hooks(), 0)
-// comment this after implementing vtable in constructor
-#define $apply(...) APPLY_HOOKS()
+#define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
 
-// uncomment this after implementing vtable in constructor
-// #define $apply(...) __VA_ARGS__
-
-// uncomment this after implementing vtable in constructor
-// #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
+#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
@@ -23,8 +13,6 @@ static int const __cachook = (__apply_hooks(), 0)
 #define CONCAT3(x, y, z) CONCAT3_(x, y, z)
 
 #define VTABLE(cl) CONCAT(v, cl)
-// old hopefully
-#define REDIRECT_(base, counter) CONCAT($hook, counter): public base<CONCAT($hook, counter)>
 
 #define IMPLEMENT___(base, derived, vtable) derived: public base<derived, vtable>
 #define IMPLEMENT__(base, derived) IMPLEMENT___(base, derived, VTABLE(derived))
@@ -55,3 +43,5 @@ VADD(7, 80); VADD(7, 81); VADD(7, 82); VADD(7, 83); VADD(7, 84);
 VADD(7, 85); VADD(7, 86); VADD(7, 87); VADD(7, 88); VADD(7, 89);
 VADD(7, 90); VADD(7, 91); VADD(7, 92); VADD(7, 93); VADD(7, 94); 
 VADD(7, 95); VADD(7, 96); VADD(7, 97); VADD(7, 98); VADD(7, 99);
+
+#endif

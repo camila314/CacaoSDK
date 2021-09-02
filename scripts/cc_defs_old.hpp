@@ -1,4 +1,4 @@
-// Copyright camden314 2021
+// Copyright camila314 2021
 #ifndef __CC_DEFS_HPP__
 #define __CC_DEFS_HPP__
 

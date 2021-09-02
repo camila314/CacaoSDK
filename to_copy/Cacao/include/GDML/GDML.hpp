@@ -3,7 +3,7 @@
 //  GDML
 //
 //  Created by Full Name on 7/17/20.
-//  Copyright © 2020 camden314. All rights reserved.
+//  Copyright © 2020 camila314. All rights reserved.
 //
 #include <vector>
 
