@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+name: C++
+file_extensions:
+  - cpp
+  - cc
+  - cp
+  - cxx
+  - c++
+  - C
+  - h
+  - hh
+  - hpp
+  - hxx
+  - h++
+  - inl
+  - ipp
+scope: source.c++
+extends: Packages/C++/C.sublime-syntax
+
+variables:
+  identifier: \b[[:alpha:]_$][[:alnum:]_]*\b # upper and lowercase and dollar sign uwu
+
+  compiler_directive: 'dupable|inline|restrict|__restrict__|__restrict'
+
+  unique-variables:
+    - match: \bthis\b
+      scope: variable.language.c++
+    # common C++ instance var naming idiom -- fMemberName
+    - match: '\b(f|m)[[:upper:]]\w*\b'
+      scope: variable.other.readwrite.member.c++
+    # common C++ instance var naming idiom -- m_member_name
+    - match: '\bm_[[:alnum:]_]+\b'
+      scope: variable.other.readwrite.member.c++
+    # common C++ instance var naming idiom -- g_member_name
+    - match: '\bg_[[:alnum:]_]+\b'
+      scope: variable.other.readwrite.member.c++

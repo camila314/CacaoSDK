@@ -1,0 +1,110 @@
+#ifndef __CACKIT_PLATFORM_HPP__
+#define __CACKIT_PLATFORM_HPP__
+
+#include <stdint.h>
+
+uintptr_t getBase();
+inline volatile const uintptr_t base = getBase();
+
+#include <GDML/GDML.hpp>
+
+#ifndef CAC_PROJ_NAME
+#define CAC_PROJ_NAME "Default Cacao Project"
+#endif
+
+inline ModContainer* const m = new ModContainer(CAC_PROJ_NAME);
+
+inline volatile bool $lock = false;
+
+// "A destructor is used to destroy objects of its class type. The address of a destructor shall not be taken."
+// - C++ standard 12.4.2
+// Therefore, we shall not take the destructor of the class and replace it with an empty function.  ~alk
+//
+// 0x18 from 0x10 + 0x8, the vtable pointer is offset by 0x10 and the destructor is at the address vtable + 0x8
+//
+// update: vtable is no longer 0x10 off
+template <typename V>
+inline uintptr_t extract_destructor(V vtable) {
+    return *reinterpret_cast<uintptr_t*>(reinterpret_cast<uintptr_t>(vtable)+0x8);
+};
+
+// Even more advanced this time
+//
+// 0xf is from 0x10 - 1, the vtable pointer is offset by 0x10 and -1 comes from the address of a virtual func being 1 off
+//
+// update: vtable is no longer 0x10 off
+template <typename F, typename V>
+inline uintptr_t extract_virtual(V vtable, F func) { 
+    return *reinterpret_cast<uintptr_t*>(reinterpret_cast<uintptr_t>(vtable)+reinterpret_cast<uintptr_t&>(func)-0x1);
+};
+
+// it’s actually kinda sick because you can use the ref cast thingy to convert almost anything to anything else  ~camila
+template <typename F>
+inline uintptr_t extract(F func) {
+    return reinterpret_cast<uintptr_t&>(func);
+};
+
+// holy shit this is hacky af 
+template <typename F>
+inline uintptr_t getWrapped(F func) {
+    return base + (uintptr_t)*reinterpret_cast<int*>(reinterpret_cast<uintptr_t&>(func) + 0x9);
+}
+
+// Just in case if we ever need to add shared implementations
+class $CacBase {
+public:
+    virtual ~$CacBase() {}
+};
+
+
+// deprecated
+#define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
+
+#define dupable inline __attribute__((noinline))
+
+#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
+
+#define CONCAT_(x, y) x##y
+#define CONCAT(x, y) CONCAT_(x, y)
+
+// #define CONCAT3_(x, y, z) x##y##z
+// #define CONCAT3(x, y, z) CONCAT3_(x, y, z)
+
+// #define VTABLE(cl) CONCAT(v, cl)
+
+// #define IMPLEMENT___(base, derived, vtable) derived: public base<derived, vtable>
+// #define IMPLEMENT__(base, derived) IMPLEMENT___(base, derived, VTABLE(derived))
+// #define IMPLEMENT_(base, counter) IMPLEMENT__(base, CONCAT($hook, counter))
+
+#define REDIRECT__(base, derived) derived: public base<derived>
+#define REDIRECT_(base, counter) REDIRECT__(base, CONCAT($hook, counter))
+#define REDIRECT(base) REDIRECT_($##base, __COUNTER__)
+
+#define $redirect(base) REDIRECT_($##base, __COUNTER__)
+#define $implement(base, derived) REDIRECT__(base, derived)
+
+// #define VADD_(len, cls) extern "C" void** CONCAT3(_ZTV, len, cls); constexpr auto CONCAT(v, cls) = &CONCAT3(_ZTV, len, cls);
+// #define VADD(len, num) VADD_(len, CONCAT($hook, num))
+
+// VADD(6, 0);  VADD(6, 1);  VADD(6, 2);  VADD(6, 3);  VADD(6, 4);
+// VADD(6, 5);  VADD(6, 6);  VADD(6, 7);  VADD(6, 8);  VADD(6, 9);
+// VADD(7, 10); VADD(7, 11); VADD(7, 12); VADD(7, 13); VADD(7, 14);
+// VADD(7, 15); VADD(7, 16); VADD(7, 17); VADD(7, 18); VADD(7, 19);
+// VADD(7, 20); VADD(7, 21); VADD(7, 22); VADD(7, 23); VADD(7, 24); 
+// VADD(7, 25); VADD(7, 26); VADD(7, 27); VADD(7, 28); VADD(7, 29);
+// VADD(7, 30); VADD(7, 31); VADD(7, 32); VADD(7, 33); VADD(7, 34); 
+// VADD(7, 35); VADD(7, 36); VADD(7, 37); VADD(7, 38); VADD(7, 39);
+// VADD(7, 40); VADD(7, 41); VADD(7, 42); VADD(7, 43); VADD(7, 44); 
+// VADD(7, 45); VADD(7, 46); VADD(7, 47); VADD(7, 48); VADD(7, 49);
+// VADD(7, 50); VADD(7, 51); VADD(7, 52); VADD(7, 53); VADD(7, 54); 
+// VADD(7, 55); VADD(7, 56); VADD(7, 57); VADD(7, 58); VADD(7, 59);
+// VADD(7, 60); VADD(7, 61); VADD(7, 62); VADD(7, 63); VADD(7, 64); 
+// VADD(7, 65); VADD(7, 66); VADD(7, 67); VADD(7, 68); VADD(7, 69);
+// VADD(7, 70); VADD(7, 71); VADD(7, 72); VADD(7, 73); VADD(7, 74); 
+// VADD(7, 75); VADD(7, 76); VADD(7, 77); VADD(7, 78); VADD(7, 79);
+// VADD(7, 80); VADD(7, 81); VADD(7, 82); VADD(7, 83); VADD(7, 84); 
+// VADD(7, 85); VADD(7, 86); VADD(7, 87); VADD(7, 88); VADD(7, 89);
+// VADD(7, 90); VADD(7, 91); VADD(7, 92); VADD(7, 93); VADD(7, 94); 
+// VADD(7, 95); VADD(7, 96); VADD(7, 97); VADD(7, 98); VADD(7, 99);
+
+#endif

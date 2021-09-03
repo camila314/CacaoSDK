@@ -34,7 +34,7 @@ with open("../template/Cacao/Auto/functions.txt", "r") as f:
 
 
 addresses = list(itertools.chain(*[[a.addr for a in c.infos] for c in parsecac.parse("../template/Cacao/cacnew.mm").values()]))
-with open("../template/Cacao/symtab.asm", "r") as f:
+with open("../template/Cacao/symtab2.asm", "r") as f:
     data = f.read()
     data = data.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "cocos2d::SEL_CallFuncO").replace("void (cocos2d::CCObject::*)(float)", "cocos2d::SEL_SCHEDULE")
     for m in re.finditer(r"; (?:cocos2d)?(?:::extension)?([^(?:non)].+)::(.+?)\((.*)\)(?: const)?\ndefit (.+?), (0x[0-9a-f]+)", data):

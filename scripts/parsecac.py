@@ -28,10 +28,20 @@ class FunkyInfo:
         self.clash = False
         self.volatile = False
         self.data = None
-    def getMangle(self):
-        if self.mang is not None:
-            return syms[int(self.mang)][1][:-1]
-        return None
+        self.parent = None
+    def getMangles(self):
+        if self.name == "":
+            return None
+        # if self.mang is not None:
+        #     return syms[int(self.mang)][1][:-1]
+        # return None
+        try:
+            n = f"{self.parent.name}::{self.name}({','.join(self.args)})".replace(" ", "").replace("const", "").replace("cocos2d::SEL_SCHEDULE", "").replace("cocos2d::SEL_MenuHandler", "")
+            return [a[1] for a in filter(lambda x: n == x[0], syms[self.parent.name])]
+        except ValueError:
+            # print(syms2[self.parent.name])
+            # print("errored", repr(self))
+            return None
     def __repr__(self):
         return f"<{f'method with mangle {self.mang}' if self.func else 'member'} {'static ' if self.static else ''}{'virtual ' if self.static else ''}{self.ret} {self.name}{'(' + ', '.join(self.args) + ')' if self.func else ''} at address {self.addr}{f' with thunk offset {self.thunk}' if self.thunk is not None else ''}>"
 
@@ -65,7 +75,7 @@ def t_VOLATILE(t):
 t_volatile_VOLATILEDATA = r".+"
 
 def t_IDENT(t):
-    r'[a-zA-Z_@~][:a-zA-Z0-9_&\[\]\*/+\-=%<>]*'
+    r'[a-zA-Z_@~.][:a-zA-Z0-9_&\[\]\*/+\-=%<>.]*'
     if t.value == "volatile":
         return t_VOLATILE(t)
     t.type = reserved.get(t.value,'IDENT')
@@ -86,11 +96,25 @@ def t_volatile_error(t):
 import ply.lex as lex
 lexer = lex.lex()
 
-syms = []
+syms = {}
+syms2 = {}
+syms3 = {}
 # with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
 #     s = f.readlines()
 #     for k, m in zip(s[0::2], s[1::2]):
-#         syms.append((k, m))
+#         k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "")
+
+#         t = k.split("::")
+#         ke = t[0]
+#         if ke == "cocos2d":
+#             ke += "::" + t[1]
+
+#         if ke == "cocos2d::extension":
+#             ke += "::" + t[2]
+
+#         if ke not in syms:
+#             syms[ke] = []
+#         syms[ke].append((k[:-1], m[:-1]))
 
 def ensure_next():
     tt = lexer.token()
@@ -113,10 +137,13 @@ def parse_func(tok):
         fi.virtual = True
         tok = ensure_next()
     retlist = []
-    while tok.type != "LPAREN" and tok.type != "ASSIGN" and tok.type != "SEMI":
-        if tok.type != "IDENT":
+    while tok.type not in ["LPAREN", "ASSIGN", "SEMI"]:
+        if tok.type not in ["IDENT", "COMMA"]:
             raise ValueError("bad type / name")
-        retlist.append(tok.value)
+        if tok.type == "COMMA":
+            retlist[-1] += tok.value
+        else:
+            retlist.append(tok.value)
         tok = ensure_next()
 
     # if len(retlist) < 2 and retlist[0][0] != "~":
@@ -167,14 +194,14 @@ def parse_func(tok):
                 tok = ensure_next()
                 if tok.type != "NUM":
                     raise ValueError("Expected num")
-                fi.mang = tok.value
+                fi.thunk = tok.value
                 tok = ensure_next()
-                if tok.type == "COMMA":
-                    tok = ensure_next()
-                    if tok.type != "NUM":
-                        raise ValueError("Expected num")
-                    fi.thunk = tok.value
-                    tok = ensure_next()
+                # if tok.type == "COMMA":
+                #     tok = ensure_next()
+                #     if tok.type != "NUM":
+                #         raise ValueError("Expected num")
+                #     fi.thunk = tok.value
+                #     tok = ensure_next()
         if tok.type != "SEMI":
             raise ValueError("Expected semicolon")
         return fi
@@ -201,7 +228,9 @@ def parse_class(funky_classes):
     while 1:
         if tok.type == "END":
             return fc
-        fc.infos.append(parse_func(tok))
+        fi = parse_func(tok)
+        fi.parent = fc
+        fc.infos.append(fi)
         tok = ensure_next()
 
 
@@ -244,9 +273,9 @@ def write(file, funky_classes):
                     if ret == '':
                         f.write(f"    {name}({param}) = {addr}, {mang};\n")
                     elif addr is not None and thunk is not None:
-                        f.write(f"    {static}{virtual}{ret} {name}({param}) = {addr}, {mang}, {thunk};\n")
+                        f.write(f"    {static}{virtual}{ret} {name}({param}) = {addr}, {thunk};\n")
                     elif addr is not None:
-                        f.write(f"    {static}{virtual}{ret} {name}({param}) = {addr}, {mang};\n")
+                        f.write(f"    {static}{virtual}{ret} {name}({param}) = {addr};\n")
                     else:
                         f.write(f"    {static}{virtual}{ret} {name}({param});\n")
                 else:
