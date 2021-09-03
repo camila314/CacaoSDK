@@ -189,14 +189,6 @@ public:
      */
     inline bool isSendCleanupToScene(void) { return m_bSendCleanupToScene; }
 
-    /** This object will be visited after the main scene is visited.
-     This object MUST implement the "visit" selector.
-     Useful to hook a notification object, like CCNotifications (http://github.com/manucorporat/CCNotifications)
-     @since v0.99.5
-     */
-    CCNode* getNotificationNode();
-    void setNotificationNode(CCNode* node);
-
     /** CCDirector delegate. It shall implemente the CCDirectorDelegate protocol
      @since v0.99.5
      */
@@ -360,28 +352,28 @@ public:
     /** CCScheduler associated with this director
      @since v2.0
      */
-    CC_PROPERTY(CCScheduler*, m_pScheduler, Scheduler);  //0x48
+    CC_PROPERTY(CCScheduler*, m_pScheduler, Scheduler);  //0x58
 
     /** CCActionManager associated with this director
      @since v2.0
      */
-    CC_PROPERTY(CCActionManager*, m_pActionManager, ActionManager); //0x4C
+    CC_PROPERTY(CCActionManager*, m_pActionManager, ActionManager); //0x60
 
     /** CCTouchDispatcher associated with this director
      @since v2.0
      */
-    CC_PROPERTY(CCTouchDispatcher*, m_pTouchDispatcher, TouchDispatcher); //0x50
+    CC_PROPERTY(CCTouchDispatcher*, m_pTouchDispatcher, TouchDispatcher); //0x68
 
     /** CCKeypadDispatcher associated with this director
      @since v2.0
      */
-    CC_PROPERTY(CCKeypadDispatcher*, m_pKeypadDispatcher, KeypadDispatcher); //0x54
+    CC_PROPERTY(CCKeypadDispatcher*, m_pKeypadDispatcher, KeypadDispatcher); //0x70
 
     //Robtop Modification: add getter/setter macros for CCKeyboardDispatcher
-    CC_PROPERTY(CCKeyboardDispatcher*, m_pKeyboardDispatcher, KeyboardDispatcher); //0x58
+    CC_PROPERTY(CCKeyboardDispatcher*, m_pKeyboardDispatcher, KeyboardDispatcher); //0x78
 
     //Robtop Modification: add getter/setter macros for CCMouseDispatcher
-    CC_PROPERTY(CCMouseDispatcher*, m_pMouseDispatcher, MouseDispatcher); //0x5C
+    CC_PROPERTY(CCMouseDispatcher*, m_pMouseDispatcher, MouseDispatcher); //0x80
 
 
     /** CCAccelerometer associated with this director
@@ -389,9 +381,9 @@ public:
      @js NA
      @lua NA
      */
-    CC_PROPERTY(CCAccelerometer*, m_pAccelerometer, Accelerometer); //0x60
+    CC_PROPERTY(CCAccelerometer*, m_pAccelerometer, Accelerometer); //0x88
 protected:
-    float m_fDeltaTime; //0x64
+    float m_fDeltaTime; //0x90
 public:
     /* delta time since last tick to main loop */
     virtual float getDeltaTime(void);
@@ -399,9 +391,9 @@ public:
     
     //CC_PROPERTY(float, m_fDeltaTime, DeltaTime); //0x64
 
-    CC_PROPERTY_NOVIRTUAL(float, m_fActualDeltaTime, ActualDeltaTime); //0x68;
+    CC_PROPERTY_NOVIRTUAL(float, m_fActualDeltaTime, ActualDeltaTime); //0x94;
 
-    CC_SYNTHESIZE_READONLY(bool, m_bIsTransitioning, IsTransitioning) //0x6C;
+    CC_SYNTHESIZE_READONLY_NOVIRTUAL(bool, m_bIsTransitioning, IsTransitioning) //0x98;
     
 
 public:
@@ -413,7 +405,7 @@ public:
 protected:
     
     void purgeDirector();
-    bool m_bPurgeDirecotorInNextLoop; // this flag will be set to true in end() //0x70
+    bool m_bPurgeDirecotorInNextLoop; // this flag will be set to true in end() //0x99
 
     void setNextScene(void);
 
@@ -425,81 +417,85 @@ protected:
     /** calculates delta time since last time it was called */
     void calculateDeltaTime();
 protected:
-    uint32_t m_uPadding00[2]; //0x74
+    uint64_t m_uPadding00; //0xa0
     /* The CCEGLView, where everything is rendered */
-    CCEGLView* m_pobOpenGLView; //0x78
-    
-    uint32_t m_uPadding01; //0x7C
-    
-    double m_dAnimationInterval; //0x80
-    double m_dOldAnimationInterval; //0x88
+    CCEGLView* m_pobOpenGLView; //0xa8
+        
+    double m_dAnimationInterval; //0xb0
+    double m_dOldAnimationInterval; //0xb8
 
     /* landscape mode ? */
-    bool m_bLandscape; //0x89, struct alignment takes care of the rest
-    //uint32_t m_uPadding02; //0x8D
+    bool m_bLandscape; //0xc0, struct alignment takes care of the rest
+    uint16_t m_uPadding02; //0xc2
 
-    bool m_bDisplayStats; //0x91
-    float m_fAccumDt;     //0x94, struct alignment
-    float m_fFrameRate;   //0x98
+    bool m_bDisplayStats; //0xc4
+    float m_fAccumDt;     //0xc8, struct alignment
+    float m_fFrameRate;   //0xcc
 
-    CCLabelAtlas* m_pFPSLabel;   //0x9C
-    CCLabelAtlas* m_pSPFLabel;   //0xA0
-    CCLabelAtlas* m_pDrawsLabel; //0xA4
+    CCLabelAtlas* m_pFPSLabel;   //0xd0
+    CCLabelAtlas* m_pSPFLabel;   //0xd8
+    CCLabelAtlas* m_pDrawsLabel; //0xe0
 
     /** Whether or not the Director is paused */
-    bool m_bPaused; //0xA8
+    bool m_bPaused; //0xe8
 
     /* How many frames were called since the director started */
-    unsigned int m_uTotalFrames; //0xAC
-    unsigned int m_uFrames;      //0xB0
-    float m_fSecondsPerFrame;    //0xB4
+    unsigned int m_uTotalFrames; //0xec
+    unsigned int m_uFrames;      //0xf0
+    float m_fSecondsPerFrame;    //0xf4
 
     /* The running scene */
-    CCScene* m_pRunningScene;   //0xB8
+    CCScene* m_pRunningScene;   //0xf8
 
     /* will be the next 'runningScene' in the next frame
      nextScene is a weak reference. */
-    CCScene* m_pNextScene;      //0xBC
+    CCScene* m_pNextScene;      //0x100
 
     /* If YES, then "old" scene will receive the cleanup message */
-    bool    m_bSendCleanupToScene; //0xC0
+    bool    m_bSendCleanupToScene; //0x108
 
     /* scheduled scenes */
-    CCArray* m_pobScenesStack; //0xC4
+    CCArray* m_pobScenesStack; //0x110
 
     /* last time the main loop was updated */
-    struct cc_timeval* m_pLastUpdate; //0xC8
+    struct cc_timeval* m_pLastUpdate; //0x118
 
     /* whether or not the next delta time will be zero */
-    bool m_bNextDeltaTimeZero; //0xCC
+    bool m_bNextDeltaTimeZero; //0x120
 
     /* projection used */
-    ccDirectorProjection m_eProjection; //0xD0
+    ccDirectorProjection m_eProjection; //0x128
 
     /* window size in points */
-    CCSize    m_obWinSizeInPoints; //0xD4
+    CCSize    m_obWinSizeInPoints; //0x12c
 
     /* content scale factor */
-    float    m_fContentScaleFactor; //0xDC
+    float    m_fContentScaleFactor; //0x134
 
     /* store the fps string */
-    char* m_pszFPS; //0xE0
+    char* m_pszFPS; //0x138
 
+    /** This object will be visited after the main scene is visited.
+     This object MUST implement the "visit" selector.
+     Useful to hook a notification object, like CCNotifications (http://github.com/manucorporat/CCNotifications)
+     @since v0.99.5
+     */
     /* This object will be visited after the scene. Useful to hook a notification node */
-    CCNode* m_pNotificationNode; //0xE4
+    ROB_CC_SYNTHESIZE(CCNode*, m_pNotificationNode, NotificationNode); //0x140
+protected:
 
     /* Projection protocol delegate */
-    CCDirectorDelegate* m_pProjectionDelegate; //0xE8
+    CCDirectorDelegate* m_pProjectionDelegate; //0x148
 
     //I'm opting to replace this with a cocos macro
-    //CCSceneDelegate* m_pSceneDelegate; //0xEC
+    //CCSceneDelegate* m_pSceneDelegate; //0x150
     CC_PROPERTY_CONST(CCSceneDelegate*, m_pSceneDelegate, SceneDelegate);
 protected:    
-    CCSize m_sUnknown04; //0xF0  //These are referenced in CCDirector::updateScreenScale, no idea what they do
-    CCSize m_sUnknown05; //0xF8
+    CCSize m_sUnknown04; //0x158  //These are referenced in CCDirector::updateScreenScale, no idea what they do
+    CCSize m_sUnknown05; //0x160
     
-    TextureQuality m_eTextureQuality; //0x100
-    bool m_bWillSwitchToScene;
+    TextureQuality m_eTextureQuality; //0x168
+    bool m_bWillSwitchToScene; //0x16c
     
 
     // CCEGLViewProtocol will recreate stats labels to fit visible rect

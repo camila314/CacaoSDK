@@ -222,7 +222,7 @@ public:
 
     bool init();
 
-    //camden314 modification
+    //camila314 modification
     inline CCSprite* getReusedChar() {return m_pReusedChar;}
 
     /** init a bitmap font atlas with an initial string and the FNT file */

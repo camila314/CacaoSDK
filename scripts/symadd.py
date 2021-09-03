@@ -31,7 +31,8 @@ if save_path and symbol_path:
         with open(str(save_path), 'r') as prv:
             for l in prv.readlines():
                 match = re.match(".+(0x[0-9a-f]+)", l)
-                if match:
+                match2 = re.match(".+(-0x[0-9a-f]+)", l)
+                if match and not match2:
                     addresses.append(match.group(1))
         with open(str(save_path), 'r') as prv:
             d = prv.read()

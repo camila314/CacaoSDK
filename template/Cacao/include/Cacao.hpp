@@ -1,4 +1,4 @@
-// Copyright camden314 2021
+// Copyright camila314 2021
 #ifndef __CACAO_HPP__
 #define __CACAO_HPP__
 
@@ -6,6 +6,7 @@
 #include <map>
 #include <vector>
 #include <tr1/type_traits>
+#include <CacKit.hpp>
 
 #define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 
@@ -66,6 +67,14 @@ namespace Cacao {
 
     template <typename T>
     char const* typeinfo_name_for(T ptr) {
+        long vtable = *(long*)(ptr);
+        long typeinfo = *(long*)(vtable-8);
+        char const* infoname = *(char const**)(typeinfo + 8);
+        return infoname;
+    }
+
+    template <typename T>
+    char const* typeinfoNameFor(T ptr) {
         long vtable = *(long*)(ptr);
         long typeinfo = *(long*)(vtable-8);
         char const* infoname = *(char const**)(typeinfo + 8);

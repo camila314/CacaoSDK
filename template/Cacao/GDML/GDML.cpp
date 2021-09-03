@@ -3,13 +3,12 @@
 //  GDML
 //
 //  Created by Full Name on 7/17/20.
-//  Copyright © 2020 camden314. All rights reserved.
+//  Copyright © 2020 camila314. All rights reserved.
 //
 
 #include <iostream>
 #include <algorithm>
 #include "GDML.hpp"
-#include "lowLevel.hpp"
 
 vector<ModContainer*> ModContainer::containers;
 
@@ -19,7 +18,7 @@ BaseContainer::~BaseContainer() {
 #endif
 }
 
-MemoryContainer::MemoryContainer(long addr, size_t bytec, char* bytes) {
+MemoryContainer::MemoryContainer(uintptr_t addr, size_t bytec, char* bytes) {
     address = addr;
     byteCount = bytec;
     char buf[byteCount];
@@ -33,7 +32,10 @@ MemoryContainer::~MemoryContainer() {
 #endif
 }
 
-HookContainer::HookContainer(long addr, func_t function) {
+HookContainer::HookContainer(uintptr_t addr, func_t function) {
+#ifdef CAC_VERBOSE
+    printf("HookContainer address %p, function %p\n", (void*)addr, function);
+#endif
     
     address = addr;
 
@@ -98,12 +100,12 @@ ModContainer::~ModContainer() {
 char const* ModContainer::getName() {
     return containerName;
 }
-void ModContainer::registerWrite(long address, size_t byteCount, char* bytes) {
+void ModContainer::registerWrite(uintptr_t address, size_t byteCount, char* bytes) {
     MemoryContainer* write = new MemoryContainer(address, byteCount, bytes);
     mods.push_back(write);
 }
 
-func_t ModContainer::getOriginal(long addr) {
+func_t ModContainer::getOriginal(uintptr_t addr) {
     
     for(BaseContainer* i : mods) {
         if(i->address == addr) {
@@ -114,6 +116,6 @@ func_t ModContainer::getOriginal(long addr) {
     return NULL;
 }
 
-long getBase() {
+uintptr_t getBase() {
     return _dyld_get_image_vmaddr_slide(0)+0x100000000;
 }

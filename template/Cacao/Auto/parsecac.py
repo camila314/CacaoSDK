@@ -113,10 +113,13 @@ def parse_func(tok):
         fi.virtual = True
         tok = ensure_next()
     retlist = []
-    while tok.type != "LPAREN" and tok.type != "ASSIGN" and tok.type != "SEMI":
-        if tok.type != "IDENT":
+    while tok.type not in ["LPAREN", "ASSIGN", "SEMI"]:
+        if tok.type not in ["IDENT", "COMMA"]:
             raise ValueError("bad type / name")
-        retlist.append(tok.value)
+        if tok.type == "COMMA":
+            retlist[-1] += tok.value
+        else:
+            retlist.append(tok.value)
         tok = ensure_next()
 
     # if len(retlist) < 2 and retlist[0][0] != "~":

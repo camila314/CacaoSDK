@@ -1,4 +1,4 @@
-// Copyright camden314 2021
+// Copyright camila314 2021
 #include <Cacao.hpp>
 #include <stdexcept>
 #include <set>
@@ -317,6 +317,9 @@ namespace Cacao {
         if (!EditorUIEditor::appliedBars) {
             EditorUIEditor::appliedBars = true;
             EditorUIEditor::barInstance = this;
+
+            // oh right this is not a global class so the thing that makes the stuff work wont work
+            // class $redirect(EditorUI);
             this->mc->registerHook(getBase() + 0xcb50, +[](EditorUI* self) {
                 auto inst = EditorUIEditor::barInstance;
 

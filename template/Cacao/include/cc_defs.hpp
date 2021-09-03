@@ -1,4 +1,4 @@
-// Copyright camden314 2021
+// Copyright camila314 2021
 // me toooooooooo
 #ifndef __CC_DEFS_HPP__
 #define __CC_DEFS_HPP__
@@ -91,6 +91,7 @@ enum IconType {};
 enum BoomListType {};
 enum TableViewCellEditingStyle {};
 
+class AchievementNotifier;
 class AnimatedGameObject;
 class AppDelegate;
 class SongInfoObject;
@@ -235,6 +236,12 @@ class ColorSelectPopup;
 class SetupPulsePopup;
 
 
+class AchievementNotifier : public cocos2d::CCNode, public GDObj {
+public:
+    void sharedState();
+    void willSwitchToScene(cocos2d::CCScene*);
+};
+
 class AnimatedGameObject : public GDObj {
 public:
     void playAnimation(int);
@@ -244,6 +251,13 @@ public:
 class AppDelegate : public GDObj {
 public:
     void bgScale();
+    virtual bool applicationDidFinishLaunching();
+    virtual void applicationDidEnterBackground();
+    virtual void applicationWillEnterForeground();
+    virtual bool applicationWillBecomeActive();
+    virtual bool applicationWillResignActive();
+    virtual void trySaveGame();
+    virtual void willSwitchToScene(cocos2d::CCScene*);
     static AppDelegate* get();
     CLASS_PARAM(cocos2d::CCScene*, runningScene, 0x28);
 };
@@ -395,11 +409,15 @@ public:
     void playEffect(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
 };
 
-class CCMenuItemToggler : public cocos2d::CCNodeRGBA, public GDObj {
+class CCMenuItemToggler : public cocos2d::CCMenuItem, public GDObj {
 public:
     static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_CallFuncO);
     void setSizeMult(float);
-    CLASS_PARAM(bool, toggled, 0x168);
+    void toggle(bool);
+    CCMenuItemSpriteExtra* m_onButton;
+    CCMenuItemSpriteExtra* m_offButton;
+    bool m_toggled;
+    bool m_notClickable;
 };
 
 class CCMoveCNode : public GDObj {
@@ -434,12 +452,28 @@ public:
     std::string getString();
     void refreshLabel();
     void setAllowedChars(std::string);
+    void setLabelNormalColor(cocos2d::_ccColor3B);
     void setLabelPlaceholderColor(cocos2d::_ccColor3B);
     void setLabelPlaceholderScale(float);
     void setMaxLabelScale(float);
     void setMaxLabelWidth(float);
     void setString(std::string);
     void updateLabel(std::string);
+    void forceOffset();
+    virtual void registerWithTouchDispatcher();
+    bool init(float, float, char const*, char const*, int, char const*);
+    virtual void visit();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void textChanged();
+    virtual void onClickTrackNode(bool);
+    virtual void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo&);
+    virtual void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo&);
+    virtual bool onTextFieldInsertText(cocos2d::CCTextFieldTTF*, char const*, int);
+    virtual bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF*);
+    virtual bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF*);
     void* m_unknown0;
     std::string m_caption;
     int m_unknown1;
@@ -669,6 +703,7 @@ public:
 
 class FLAlertLayerProtocol : public GDObj {
 public:
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
 };
 
 class FMODAudioEngine : public cocos2d::CCNode, public GDObj {
@@ -974,8 +1009,11 @@ public:
 class GJGroundLayer : public GDObj {
 public:
     static GJGroundLayer* create(int, int);
+    void createLine(int);
     void deactivateGround();
     void getGroundY();
+    bool init(int, int);
+    void loadGroundSprites(int, bool);
     void updateGround01Color(cocos2d::_ccColor3B);
     void updateGround02Color(cocos2d::_ccColor3B);
     void updateGroundPos(cocos2d::CCPoint);
@@ -1264,7 +1302,7 @@ public:
     static void getRelativeOffset(GameObject*, cocos2d::CCPoint);
     static void multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float);
     static void stringSetupToDict(std::string, char const*);
-    static void stringSetupToMap(std::string, char const*);
+    static std::map<std::string, std::string> stringSetupToMap(std::string, char const*);
     static void transformColor(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue);
     static void transformColor(cocos2d::_ccColor3B const&, float, float, float);
 };
