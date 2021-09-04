@@ -3,24 +3,20 @@ import os
 import sys
 
 # yeah
-
-starter_code = open(os.path.dirname(__file__) + "/base/cackit.begin.cpp", "r").read()
+print("cac kit is being builded")
+starter_code = open(os.path.dirname(__file__) + "/base/cackit.begin.hpp", "r").read()
 
 build_start = """
 
 template<class D, void*** V>
 class ${cls} : public {cls}, public $CacBase {{
  public:
-    ${cls}() {{            
-        __cackit::glob.push_back(this);
-        std::cout << (V) << std::endl;
-    }}
     ~${cls}() {{}}
     typedef {cls}* __thistype;
 """
 
 build_body1 = """
-    {ret} {name}({params}) {{
+    inline {ret} __attribute__((noinline)) {name}({params}) {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(base+{addr}))(this{params3});
         else return {cls}::{name}({params5});
@@ -28,7 +24,7 @@ build_body1 = """
 """
 
 build_body1_virtual = """
-    {ret} {name}({params}) override {{
+    inline {ret} __attribute__((noinline)) {name}({params}) override {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(base+{addr}))(this{params3});
         else return {cls}::{name}({params5});
@@ -36,7 +32,7 @@ build_body1_virtual = """
 """
 
 build_body1_static = """
-    static {ret} {name}({params}) {{
+    static inline {ret} __attribute__((noinline)) {name}({params}) {{
         if (({ret}(*)({params4})){{&${cls}::{name}}} != ({ret}(*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(base+{addr}))({params3});
         else return {cls}::{name}({params5});
@@ -44,7 +40,7 @@ build_body1_static = """
 """
 
 build_body2_start = """
-    void apply_hooks() override {{
+    ${cls}() {{
     m->registerHook(extract_destructor(this), +[](){{}});
 """
     

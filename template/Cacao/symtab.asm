@@ -1,4 +1,9 @@
-extern _base
+global _base
+section .bss
+_base: resq 1
+section .text
+
+
 %macro defit 2
 global %1
 %1:

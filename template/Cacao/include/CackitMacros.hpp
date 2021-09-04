@@ -4,7 +4,7 @@
 // deprecated
 #define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
 
-#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
+#define inject() $inject(); static int const _inject = ($inject(), (+[](volatile uintptr_t& b) {b = getBase();return 0;})(base)); void $inject()
 
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
