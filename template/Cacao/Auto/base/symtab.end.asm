@@ -1366,7 +1366,7 @@ nul __ZTVN7cocos2d9extension35CCControlSaturationBrightnessPickerE
 nul __ZTVN7cocos2d9extension9CCControlE
 nul __ZTVN7cocos2d9extension9CCEditBoxE
 nul __ZTVN7cocos2d9extension9WebSocketE
-__ZTV10CommonRTTI: resq 108 ; gonna make this the vtable for ccnode or ccobject idk
+__ZTV10CommonRTTI: resq 108 ; gonna make this the vtable for ccnode
 
 nul __ZTS10ArtistCell
 nul __ZTS10ButtonPage
@@ -2049,4 +2049,4 @@ nul __ZTSN7cocos2d9extension35CCControlSaturationBrightnessPickerE
 nul __ZTSN7cocos2d9extension9CCControlE
 nul __ZTSN7cocos2d9extension9CCEditBoxE
 nul __ZTSN7cocos2d9extension9WebSocketE
-__ZTS10CommonRTTI: resb 18 ; gonna make this the typeinfo name for ccnode or ccobject idk
+__ZTS10CommonRTTI: resb 18 ; gonna make this the typeinfo name for ccnode

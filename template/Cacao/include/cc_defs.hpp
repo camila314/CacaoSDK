@@ -1,7 +1,5 @@
-// Copyright camila314 2021
-// me toooooooooo
-#ifndef __CC_DEFS_HPP__
-#define __CC_DEFS_HPP__
+// Copyright camila314 & alk1m123 2021
+#pragma once 
 
 #define _GLIBCXX_USE_CXX11_ABI 0
 #include <iostream>
@@ -2359,4 +2357,3 @@ public:
     CLASS_PARAM(int, targetMode, 0x390);
 };
 
-#endif
