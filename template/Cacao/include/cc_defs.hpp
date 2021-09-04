@@ -148,6 +148,7 @@ class EditorOptionsLayer;
 class EditorPauseLayer;
 class EditorUI;
 class EndLevelLayer;
+class ScrollingLayer;
 class FLAlertLayerProtocol;
 class FMODAudioEngine;
 class FollowRewardPage;
@@ -255,10 +256,10 @@ class SetupPulsePopup;
 class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
     virtual void onEnter();
-    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
     virtual void registerWithTouchDispatcher();
     virtual void keyBackClicked();
     virtual void keyDown(cocos2d::enumKeyCodes);
@@ -787,6 +788,11 @@ public:
 class EndLevelLayer : public GDObj {
 public:
     static EndLevelLayer* create();
+};
+
+class ScrollingLayer : public cocos2d::CCLayerColor, public GDObj {
+public:
+    static ScrollingLayer* create(cocos2d::CCSize, cocos2d::CCPoint, float);
 };
 
 class FLAlertLayerProtocol : public GDObj {

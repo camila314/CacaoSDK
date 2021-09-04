@@ -13,7 +13,8 @@ NS_CC_BEGIN
 */
 typedef enum
 {
-    KEY_None = 0x00,
+    // this one might not actually exist in gd itself
+    HJ_ADD( KEY_None = 0x00 ),
     KEY_Backspace = 0x08,
     KEY_Tab = 0x09,
     KEY_Clear = 0x0C,

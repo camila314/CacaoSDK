@@ -59,6 +59,11 @@ namespace Cacao {
     void repeatFunction(K func, int times) {
         GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, times, 0.0, false);
     }
+    
+    template <typename K>
+    void repeatFunction(K func, int times, float delay) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), delay, times, 0.0, false);
+    }
 
     template <typename T>
     char const* typeinfo_name_for(T ptr) {
@@ -203,7 +208,6 @@ namespace Cacao {
      public:
         CacAlertLayer() : 
             FLAlertLayer() {
-                m_helper = FLAlertLayer::create("","","");
                 m_title = cocos2d::CCLabelBMFont::create("", "goldFont.fnt");
             }
 
@@ -217,7 +221,6 @@ namespace Cacao {
         inline bool init() {return init(cocos2d::CCSize(300.0,200.0));}
         inline CacAlertLayer* title(char const* t) {m_title->setString(t, true);return this;}
      protected:
-        FLAlertLayer* m_helper;
         CCMenuItemSpriteExtra* m_closeButton;
         cocos2d::CCLabelBMFont* m_title;
     };

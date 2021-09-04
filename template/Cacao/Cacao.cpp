@@ -497,7 +497,6 @@ namespace Cacao {
 
     void CacAlertLayer::keyBackClicked() {
         onClose();
-        m_helper->keyBackClicked();
         setKeypadEnabled(false);
         setTouchEnabled(false);
         removeFromParentAndCleanup(true);
@@ -512,8 +511,6 @@ namespace Cacao {
 
 
         if (CCLayerColor::initWithColor(ccc4(0,0,0,150))) { 
-            m_helper->m_buttonMenu->setVisible(false);
-            m_helper->m_mainLayer->setVisible(false);
 
             m_mainLayer = CCLayer::create();
             m_buttonMenu = CCMenu::create();
@@ -544,8 +541,8 @@ namespace Cacao {
     }
 
     void CacAlertLayer::show(void) {
-        m_helper->m_noElasticity = m_noElasticity;
-        m_helper->show();
+        //m_helper->m_noElasticity = m_noElasticity;
+        //m_helper->show();
 
         registerWithTouchDispatcher();
         CCDirector::sharedDirector()->getTouchDispatcher()->incrementForcePrio(2);

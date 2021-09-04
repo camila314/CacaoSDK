@@ -1,10 +1,10 @@
 @interface FLAlertLayer : cocos2d::CCLayerColor
 
     virtual void onEnter() = 0x25f350;
-    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40, 288;
-    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0, 288;
-    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 288;
-    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020, 288;
+    bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40, 288;
+    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0, 288;
+    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 288;
+    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020, 288;
     virtual void registerWithTouchDispatcher() = 0x25f2e0;
     virtual void keyBackClicked() = 0x25ed90, 304;
     virtual void keyDown(cocos2d::enumKeyCodes) = 0x25ece0, 312;
@@ -501,6 +501,10 @@
 @interface EditorPauseLayer : FLAlertLayer
     static EditorPauseLayer* create(LevelEditorLayer*) = 0x13c680;
     void saveLevel() = 0x13ebd0;
+@end
+
+@interface ScrollingLayer : cocos2d::CCLayerColor
+    static ScrollingLayer* create(cocos2d::CCSize, cocos2d::CCPoint, float) = 0x41a900, 314158;
 @end
 
 @interface FLAlertLayerProtocol
@@ -2127,6 +2131,10 @@
 
 @interface cocos2d::CCKeyboardDelegate
     void keyUp(cocos2d::enumKeyCodes) = 0x61a0;
+@end
+
+@interface cocos2d::CCKeyboardDispatcher // :trol:
+    void dispatchKeyboardMSG(cocos2d::enumKeyCodes, bool) = 0xe8190, 9193848;
 @end
 
 @interface cocos2d::CCLabelBMFont

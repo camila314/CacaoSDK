@@ -17,25 +17,25 @@ public:
         else return FLAlertLayer::onEnter();
     }
 
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
             return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25ee40))(this, p0, p1);
         else return FLAlertLayer::ccTouchBegan(p0, p1);
     }
 
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
             return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25f0a0))(this, p0, p1);
         else return FLAlertLayer::ccTouchMoved(p0, p1);
     }
 
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
             return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25ef60))(this, p0, p1);
         else return FLAlertLayer::ccTouchEnded(p0, p1);
     }
 
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) override {
+    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
             return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25f020))(this, p0, p1);
         else return FLAlertLayer::ccTouchCancelled(p0, p1);
@@ -94,16 +94,16 @@ public:
             m->registerHook(base+0x25f350, extract_virtual(V, (void(D::*)()){&D::onEnter}));
 
         if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(base+0x25ee40, extract_virtual(V, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+            m->registerHook(base+0x25ee40, extract((bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            m->registerHook(base+0x25f0a0, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
+            m->registerHook(base+0x25f0a0, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(base+0x25ef60, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
+            m->registerHook(base+0x25ef60, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            m->registerHook(base+0x25f020, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
+            m->registerHook(base+0x25f020, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
 
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
             m->registerHook(base+0x25f2e0, extract_virtual(V, (void(D::*)()){&D::registerWithTouchDispatcher}));
@@ -2696,6 +2696,30 @@ public:
 
         if ((EndLevelLayer*(*)()){&$EndLevelLayer::create} != (EndLevelLayer*(*)()){&D::create})
             m->registerHook(base+0x2787d0, (EndLevelLayer*(*)()){&D::create});
+    }
+};
+
+
+template<class D>
+class $ScrollingLayer : public ScrollingLayer, public $CacBase {
+public:
+    inline ~$ScrollingLayer() override {}
+
+    inline static ScrollingLayer* create(cocos2d::CCSize p0, cocos2d::CCPoint p1, float p2) {
+        if ((ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&$ScrollingLayer::create} != (ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&D::create})
+            return reinterpret_cast<ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)>(m->getOriginal(base+0x41a900))(p0, p1, p2);
+        else return ScrollingLayer::create(p0, p1, p2);
+    }
+
+    inline $ScrollingLayer() {
+        if ($lock) return;
+        $lock = true;
+        auto V = *reinterpret_cast<uintptr_t*>(new D());
+        $lock = false;
+        m->registerHook(extract_destructor(V), +[](){});
+
+        if ((ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&$ScrollingLayer::create} != (ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&D::create})
+            m->registerHook(base+0x41a900, (ScrollingLayer*(*)(cocos2d::CCSize, cocos2d::CCPoint, float)){&D::create});
     }
 };
 
