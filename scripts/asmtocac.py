@@ -6,101 +6,101 @@ import itertools
 
 funcs = {}
 exist = {}
-mangles = []
+demangles = {}
 
 with open("../template/Cacao/Auto/functions.txt", "r") as f:
-	s = f.readlines()
-	for k, m in zip(s[0::2], s[1::2]):
-		mangles.append(m[:-1])
-
-# with open("../template/Cacao/Cac/cackit.mm", "r") as f:
-#     while True:
-#         l = f.readline()
-#         if not l:
-#             break
-#         cl = l[11:-1]
-#         exist[cl] = []
-#         l = f.readline()
-#         if not l:
-#             break
-#         while l != "@end\n":
-#             exist[cl].append(l)
-#             l = f.readline()
-#             if not l:
-#                 break
-#         l = f.readline()
-#         if not l:
-#             break
-
+    s = f.readlines()
+    for k, m in zip(s[0::2], s[1::2]):
+        k = k.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "cocos2d::SEL_MenuHandler").replace("void (cocos2d::CCObject::*)(float)", "cocos2d::SEL_SCHEDULE")
+        demangles[m[:-1]] = k[:-1]
 
 addresses = list(itertools.chain(*[[a.addr for a in c.infos] for c in parsecac.parse("../template/Cacao/cacnew.mm").values()]))
-with open("../template/Cacao/symtab2.asm", "r") as f:
+with open(sys.argv[1], "r") as f:
     data = f.read()
-    data = data.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "cocos2d::SEL_CallFuncO").replace("void (cocos2d::CCObject::*)(float)", "cocos2d::SEL_SCHEDULE")
-    for m in re.finditer(r"; (?:cocos2d)?(?:::extension)?([^(?:non)].+)::(.+?)\((.*)\)(?: const)?\ndefit (.+?), (0x[0-9a-f]+)", data):
-        cl, fun, param, add, mang, ret = m.group(1), m.group(2), m.group(3), m.group(5), m.group(4), "void"
+
+    for m in re.finditer(r"defit (.+?), (0x[0-9a-f]+)", data):
+        mang, addr = m.group(1), m.group(2)
+
         #fuck it hardcoding
-        # print(cl)
-        if add in addresses:
-            print(add)
-            continue
         if (
-            cl == "cocos2d"
-            or "fmt" in cl
-            or "pugi" in cl
-            or "FMOD" in cl
-            or "std::map" in param
-            or "__va_list" in param): 
+            "fmt" in mang
+            or "pugi" in mang
+            or "FMOD" in mang
+            or "__va_list" in mang
+            or "map" in mang): 
             continue
 
-        # print(cl)
-        if fun == "create":
-            ret = f"{cl}*"
-        if fun == "init":
-            ret = "bool"
+        # thunk handling
+        thunk = None
+        thunkf = False
+        if 'ZThn' in mang:
+            thunkf = True
+            print(mang.replace("__ZThn", ""))
+            print(mang.replace("__ZThn", "").partition("_"))
+            thunk = mang.replace("__ZThn", "").partition("_")[0]
+
+        mang = mang.replace(f"Thn{thunk}_", "")
+
+
+        # not generate existing addresses
+        if addr in addresses:
+            continue
+
+        # filter out non base ctors and dtors
+        if 'C1E' in mang or 'D1E' in mang or 'C3E' in mang or 'D0E' in mang:
+            continue
+
+        if mang[1:] not in demangles:
+            continue
+
+        func = demangles[mang[1:]]
+        ret = "void "
+        static = ""
+        cl = '::'.join(func.partition("(")[0].split('::')[:-1])
+
+        if cl == "" or cl == "cocos2d" or cl == "cocos2d::extension":
+            continue
+
+        if 'C2E' in mang or 'D2E' in mang:
+            ret = ""
+
+        func = func.partition("(")[0].split('::')[-1] + "(" + func.partition("(")[2]
+
+        if "create(" in func:
+            ret = f"{cl}* "
+            static = "static "
+
+        if "shared" in func:
+            ret = f"{cl}* "
+            static = "static "
+
+        if "init(" in func:
+            ret = "bool "
 
         if cl not in funcs:
             funcs[cl] = []
-        # print(mang)
-        funcs[cl].append((fun, param, add, ret, mangles.index(mang[1:])))
 
-# for cl in funcs:
-#     with open('cac/' + cl.replace('::', '/') + '.mm', "w") as f:
-#         f.write(f"@interface {cl}\n")
-#         for fun, param, add, ret, mang in funcs[cl]:
-#             static = "static " if fun == "create" else ""
-#             if fun in cl or fun[1:] in cl:
-#                 if 'C2' in mangles[mang] or 'D2' in mangles[mang]:
-#                     f.write(f"    {fun}({param}) = {add}, {mang};\n")
-#             else:
-#                 if cl in exist:
-#                     for l in exist[cl]:
-#                         if f"{fun}({param}) = {add};\n" in l:
-#                             f.write(l[:-2] + f", {mang};\n")
-#                             break
-#                     else:
-#                         f.write(f"    {static}{ret} {fun}({param}) = {add}, {mang};\n")
-#                 else:
-#                     f.write(f"    {static}{ret} {fun}({param}) = {add}, {mang};\n")
-#         f.write(f"@end\n\n")
+        funcs[cl].append([static, ret, func, addr, thunk])
 
-
-with open('cactest2.mm', "w") as f:
+with open("exported.mm", "w") as f:
     for cl in funcs:
-        f.write(f"@interface {cl}\n")
-        for fun, param, add, ret, mang in funcs[cl]:
-            static = "static " if fun == "create" else ""
-            if fun in cl or fun[1:] in cl:
-                if 'C2' in mangles[mang] or 'D2' in mangles[mang]:
-                    f.write(f"    {fun}({param}) = {add}, {mang};\n")
+        out = ""
+        out += f"@interface {cl}\n"
+        for static, ret, func, addr, thunk in funcs[cl]:
+
+            d = list(filter(lambda x: x[2] == func, funcs[cl]))
+            if len(d) > 1:
+                if thunk is not None:
+                    continue
+                thunk = d[0][4] if d[1][4] is None else d[1][4]
+            elif len(d) == 1 and thunk is not None:
+                continue
+
+            if thunk is None:
+                out += f"    {static}{ret}{func} = {addr};\n"
             else:
-                if cl in exist:
-                    for l in exist[cl]:
-                        if f"{fun}({param}) = {add};\n" in l:
-                            f.write(l[:-2] + f", {mang};\n")
-                            break
-                    else:
-                        f.write(f"    {static}{ret} {fun}({param}) = {add}, {mang};\n")
-                else:
-                    f.write(f"    {static}{ret} {fun}({param}) = {add}, {mang};\n")
-        f.write(f"@end\n\n")
+                out += f"    {static}{ret}{func} = {addr}, {thunk};\n"
+        out += f"@end\n\n"
+
+        if out != f"@interface {cl}\n@end\n\n":
+            f.write(out)

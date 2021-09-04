@@ -102,7 +102,7 @@ syms3 = {}
 with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
     s = f.readlines()
     for k, m in zip(s[0::2], s[1::2]):
-        k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "")
+        k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "").replace("std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >", "std::map<std::string, std::string>")
 
         t = k.split("::")
         ke = t[0]

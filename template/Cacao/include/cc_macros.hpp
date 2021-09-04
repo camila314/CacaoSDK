@@ -1,4 +1,5 @@
 // Copyright 2021 camila314
+// this is pretty outdated honestly
 
 using cocos2d::CCObject;
 

@@ -376,6 +376,7 @@
 @end
 
 @interface CreateMenuItem : CCMenuItemSpriteExtra
+    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x1c580;
 @end
 
 @interface CreatorLayer : cocos2d::CCLayer
@@ -433,6 +434,7 @@
     void addPlayerPoint(cocos2d::CCPoint) = 0xa39c0;
     void addToSpeedObjects(GameObject*) = 0x99900;
     static DrawGridLayer* create(cocos2d::CCNode*, LevelEditorLayer*) = 0x920c0;
+    void draw() = 0xa3c40;
     bool init(cocos2d::CCNode*, LevelEditorLayer*) = 0xa36e0;
     void timeForXPos(float) = 0x9b330;
     void update(float) = 0xa3b30;
@@ -2449,6 +2451,7 @@
 
 @interface cocos2d::CCRenderTexture
     void begin() = 0x35ce10;
+    void end() = 0x35d2c0;
     static cocos2d::CCRenderTexture* create(int, int, cocos2d::CCTexture2DPixelFormat) = 0x35c720;
     void newCCImage(bool) = 0x35d7d0;
 @end

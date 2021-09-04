@@ -3,7 +3,6 @@ import os
 import sys
 
 # yeah
-print("cac kit is being builded")
 starter_code = open(os.path.dirname(__file__) + "/base/cackit.begin.hpp", "r").read()
 
 build_start = """

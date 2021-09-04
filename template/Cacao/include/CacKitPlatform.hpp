@@ -1,5 +1,4 @@
-#ifndef __CACKIT_PLATFORM_HPP__
-#define __CACKIT_PLATFORM_HPP__
+#pragma once
 
 #include <stdint.h>
 
@@ -73,5 +72,3 @@ public:
 
 #define $redirect(base) REDIRECT_($##base, __COUNTER__)
 #define $implement(base, derived) REDIRECT__(base, derived)
-
-#endif

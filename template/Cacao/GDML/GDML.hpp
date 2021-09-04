@@ -5,13 +5,12 @@
 //  Created by Full Name on 7/17/20.
 //  Copyright © 2020 camila314. All rights reserved.
 //
+#pragma once
+
 #include <vector>
 #include "lowLevel.hpp"
 
 using namespace std;
-
-#ifndef GDML_
-#define GDML_
 
 #define FCAST(a, b) reinterpret_cast<decltype(&a)>(b)
 typedef void(*func_t)();
@@ -97,4 +96,3 @@ uintptr_t getBase();
 
 
 #pragma GCC visibility pop
-#endif

@@ -6,8 +6,7 @@
 //  this isn't copyright its pretty much taken from rd_route
 //
 
-#ifndef lowLevel_hpp
-#define lowLevel_hpp
+#pragma once
 
 #include <stdlib.h>         // realloc()
 #include <libgen.h>         // basename()
@@ -48,4 +47,3 @@ int rd_duplicate_function(void *function, void **duplicate);
 
 kern_return_t readPM(mach_vm_address_t address, size_t length, char* bytes);
 kern_return_t writePM(mach_vm_address_t address, size_t length, char* bytes);
-#endif /* lowLevel_hpp */

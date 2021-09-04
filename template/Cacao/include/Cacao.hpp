@@ -1,6 +1,5 @@
 // Copyright camila314 2021
-#ifndef __CACAO_HPP__
-#define __CACAO_HPP__
+#pragma once
 
 #include <cc_defs.hpp>
 #include <map>
@@ -241,5 +240,3 @@ namespace Cacao {
 
     };
 }  // namespace Cacao
-
-#endif
