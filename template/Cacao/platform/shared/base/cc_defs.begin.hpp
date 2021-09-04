@@ -17,8 +17,6 @@
 #define GJBL (LEL ? static_cast<GJBaseGameLayer*>(LEL) : static_cast<GJBaseGameLayer*>(PL))
 #define WINSIZE (CCDirector::sharedDirector()->getWinSize())
 
-typedef void(*queuefunc)(std::string);
-
 //thanks pie
 enum SearchType {
     kSearch          = 0x0,
@@ -70,7 +68,6 @@ int xCompRealPos(void const*, void const*);
 
 class GDObj { 
 public:
-
     void* valOffset(long offset);
     void setValOffset(long offset, void* setter);
     template <typename T>

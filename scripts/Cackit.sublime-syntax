@@ -10,4 +10,4 @@ scope: source.c++
 extends: Packages/C++/C++.sublime-syntax
 
 variables:
-  compiler_directive: 'dupable|inline|restrict|__restrict__|__restrict'
+  compiler_directive: 'thiscall|stdcall|optcall|dupable|inline|restrict|__restrict__|__restrict'
