@@ -15,10 +15,11 @@ with open("../template/Cacao/Auto/functions.txt", "r") as f:
         demangles[m[:-1]] = k[:-1]
 
 addresses = list(itertools.chain(*[[a.addr for a in c.infos] for c in parsecac.parse("../template/Cacao/cacnew.mm").values()]))
+# addresses = []
 with open(sys.argv[1], "r") as f:
     data = f.read()
 
-    for m in re.finditer(r"defit (.+?), (0x[0-9a-f]+)", data):
+    for m in re.finditer(r"\ndefit (.+?), (0x[0-9a-f]+)", data):
         mang, addr = m.group(1), m.group(2)
 
         #fuck it hardcoding
@@ -35,8 +36,6 @@ with open(sys.argv[1], "r") as f:
         thunkf = False
         if 'ZThn' in mang:
             thunkf = True
-            print(mang.replace("__ZThn", ""))
-            print(mang.replace("__ZThn", "").partition("_"))
             thunk = mang.replace("__ZThn", "").partition("_")[0]
 
         mang = mang.replace(f"Thn{thunk}_", "")

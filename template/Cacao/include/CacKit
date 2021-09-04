@@ -8168,6 +8168,12 @@ public:
         else return MenuLayer::onQuit(p0);
     }
 
+    inline void scene(bool p0) {
+        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x1d12d0))(this, p0);
+        else return MenuLayer::scene(p0);
+    }
+
     inline $MenuLayer() {
         if ($lock) return;
         $lock = true;
@@ -8183,6 +8189,9 @@ public:
 
         if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
             m->registerHook(base+0x1d2b40, extract((void(D::*)(cocos2d::CCObject*)){&D::onQuit}));
+
+        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
+            m->registerHook(base+0x1d12d0, extract((void(D::*)(bool)){&D::scene}));
     }
 };
 

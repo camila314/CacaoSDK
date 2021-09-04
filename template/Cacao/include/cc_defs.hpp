@@ -1667,6 +1667,7 @@ public:
     virtual void keyBackClicked();
     void onMoreGames(cocos2d::CCObject*);
     void onQuit(cocos2d::CCObject*);
+    void scene(bool);
 };
 
 class MoreVideoOptionsLayer : public FLAlertLayer{

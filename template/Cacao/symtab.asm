@@ -860,6 +860,7 @@ defit __ZN13MenuGameLayer6updateEf, 0x28fa70
 defit __ZN9MenuLayer14keyBackClickedEv, 0x1d3160
 defit __ZN9MenuLayer11onMoreGamesEPN7cocos2d8CCObjectE, 0x1d2ad0
 defit __ZN9MenuLayer6onQuitEPN7cocos2d8CCObjectE, 0x1d2b40
+defit __ZN9MenuLayer5sceneEb, 0x1d12d0
 defit __ZN21MoreVideoOptionsLayer6createEv, 0x443c10
 defit __ZN21MoreVideoOptionsLayer4initEv, 0x444150
 defit __ZN20MusicDownloadManager24incrementPriorityForSongEi, 0x2ef750
