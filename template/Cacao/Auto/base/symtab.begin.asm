@@ -1,11 +1,57 @@
-extern _base
+section .text
+
 %macro defit 2
 global %1
 %1:
-    mov rax, [rel _base]
+    mov rax, [rel _asmBase]
     add rax, %2
     jmp rax
 %endmacro
+
+extern __Z7getBasev
+global __Z10setAsmBasev
+__Z10setAsmBasev:
+    push rbp
+    mov rbp, rsp
+
+    call __Z7getBasev
+    mov [rel _asmBase], rax
+
+    call __Z13setCommonRTTIv
+
+    mov rax, [rel _asmBase]
+    
+
+    pop rbp
+    ret
+
+extern _memcpy
+
+__Z13setCommonRTTIv:
+    push rbp
+    mov rbp, rsp
+
+    lea rdi, [rel __ZTI10CommonRTTI]
+    mov rsi, [rel _asmBase]
+    add rsi, 0x624f70
+    mov rdx, 0x20
+    call _memcpy
+
+    lea rdi, [rel __ZTV10CommonRTTI]
+    mov rsi, [rel _asmBase]
+    add rsi, 0x6247b0
+    mov rdx, 0x360
+    call _memcpy
+
+    lea rdi, [rel __ZTS10CommonRTTI]
+    mov rsi, [rel _asmBase]
+    add rsi, 0x50ea90
+    mov rdx, 0x12
+    call _memcpy
+
+    pop rbp
+    ret
+
 
 global __ZN5GDObj9valOffsetEl
 __ZN5GDObj9valOffsetEl:
@@ -50,5 +96,5 @@ global %1
 
 %macro nul 1
     global %1
-    %1: resb 1
+    %1: 
 %endmacro
