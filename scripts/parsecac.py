@@ -286,5 +286,5 @@ def write(file, funky_classes):
             f.write(f"@end\n\n")
 
 
-# d = parse("cacnew.mm")
+# d = parse("cinnamon.mm")
 # write("caccopy.mm", d)

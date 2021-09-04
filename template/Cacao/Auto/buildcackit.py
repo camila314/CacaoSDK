@@ -10,11 +10,11 @@ build_start = """
 template<class D>
 class ${cls} : public {cls}, public $CacBase {{
 public:
-    inline ~${cls}() override {{}}
+    dupable ~${cls}() override {{}}
 """
 
 build_body1 = """
-    inline {ret} {name}({params}) {{
+    dupable {ret} {name}({params}) {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(base+{addr}))(this{params3});
         else return {cls}::{name}({params5});
@@ -22,7 +22,7 @@ build_body1 = """
 """
 
 build_body1_virtual = """
-    inline {ret} {name}({params}) override {{
+    dupable {ret} {name}({params}) override {{
         if (({ret}(${cls}::*)({params4})){{&${cls}::{name}}} != ({ret}(D::*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)(decltype(this){params2})>(m->getOriginal(base+{addr}))(this{params3});
         else return {cls}::{name}({params5});
@@ -30,7 +30,7 @@ build_body1_virtual = """
 """
 
 build_body1_static = """
-    inline static {ret} {name}({params}) {{
+    dupable static {ret} {name}({params}) {{
         if (({ret}(*)({params4})){{&${cls}::{name}}} != ({ret}(*)({params4})){{&D::{name}}})
             return reinterpret_cast<{ret}(*)({params2})>(m->getOriginal(base+{addr}))({params3});
         else return {cls}::{name}({params5});
@@ -38,7 +38,7 @@ build_body1_static = """
 """
 
 build_body2_start = """
-    inline ${cls}() {{
+    dupable ${cls}() {{
         if ($lock) return;
         $lock = true;
         auto V = *reinterpret_cast<uintptr_t*>(new D());

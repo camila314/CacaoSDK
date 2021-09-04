@@ -11,22 +11,22 @@ add_library(Cacao STATIC Cacao.cpp symtab.asm)
 target_link_libraries(Cacao GDML)
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.end.hpp
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.end.hpp
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit 
     COMMENT "Generating Cackit"
 )
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.begin.asm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.end.asm
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.begin.asm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.end.asm
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
     COMMENT "Generating symbols"
 )
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cacnew.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.end.hpp
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.end.hpp
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
     COMMENT "Generating headers"
 )

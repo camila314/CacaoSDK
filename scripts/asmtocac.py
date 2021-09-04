@@ -14,7 +14,7 @@ with open("../template/Cacao/Auto/functions.txt", "r") as f:
         k = k.replace("void (cocos2d::CCObject::*)(cocos2d::CCObject*)", "cocos2d::SEL_MenuHandler").replace("void (cocos2d::CCObject::*)(float)", "cocos2d::SEL_SCHEDULE")
         demangles[m[:-1]] = k[:-1]
 
-addresses = list(itertools.chain(*[[a.addr for a in c.infos] for c in parsecac.parse("../template/Cacao/cacnew.mm").values()]))
+addresses = list(itertools.chain(*[[a.addr for a in c.infos] for c in parsecac.parse("../template/Cacao/cinnamon.mm").values()]))
 # addresses = []
 with open(sys.argv[1], "r") as f:
     data = f.read()

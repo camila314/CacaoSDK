@@ -1,0 +1,13 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: Cackit
+file_extensions:
+  - Cackit
+  - cackit
+  - CacKit
+scope: source.c++
+extends: Packages/C++/C++.sublime-syntax
+
+variables:
+  compiler_directive: 'dupable|inline|restrict|__restrict__|__restrict'
