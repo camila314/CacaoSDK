@@ -452,7 +452,7 @@ public:
     static ButtonSprite* create(char const*, int, int, float, bool);
     void updateBGImage(char const*);
     static ButtonSprite* create(char const*, float);
-    static ButtonSprite* create(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+    static ButtonSprite* create(char const*, int, int, float, bool, char const*, char const*, float);
 };
 
 class CCAnimatedSprite : public cocos2d::CCSprite, public GDObj {
@@ -1283,6 +1283,7 @@ public:
     void setGameVariable(char const*, bool);
     void setIntGameVariable(char const*, int);
     void setUGV(char const*, bool);
+    void returnToLastScene(GJGameLevel*);
     static GameManager* sharedState();
     ~GameManager();
     void getGTexture(int);

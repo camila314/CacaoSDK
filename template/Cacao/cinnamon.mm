@@ -183,7 +183,7 @@
     static ButtonSprite* create(char const*, int, int, float, bool) = 0x4fa40;
     void updateBGImage(char const*) = 0x502d0;
     static ButtonSprite* create(char const*, float) = 0x4fa60;
-    static ButtonSprite* create(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool) = 0x4fa90;
+    static ButtonSprite* create(char const*, int, int, float, bool, char const*, char const*, float) = 0x4fa90;
 @end
 
 @interface CCAnimatedSprite : cocos2d::CCSprite
@@ -975,6 +975,7 @@
     void setGameVariable(char const*, bool) = 0x1cca80;
     void setIntGameVariable(char const*, int) = 0x1cd0e0;
     void setUGV(char const*, bool) = 0x1cce50;
+    void returnToLastScene(GJGameLevel*) = 0x1d0500;
     static GameManager* sharedState() = 0x1c2b30;
     ~GameManager() = 0x1d0e00;
     void getGTexture(int) = 0x1cca40;

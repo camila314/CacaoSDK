@@ -184,7 +184,7 @@ defit __ZN12ButtonSprite6createEPKc, 0x4fa10
 defit __ZN12ButtonSprite6createEPKciifb, 0x4fa40
 defit __ZN12ButtonSprite13updateBGImageEPKc, 0x502d0
 defit __ZN12ButtonSprite6createEPKcf, 0x4fa60
-defit __ZN12ButtonSprite6createEPN7cocos2d8CCSpriteEiiffbPKcb, 0x4fa90
+defit __ZN12ButtonSprite6createEPKciifbS1_S1_f, 0x4fa90
 defit __ZN16CCAnimatedSprite12runAnimationESs, 0x1a6430
 defit __ZN16CCAnimatedSprite16tweenToAnimationESsf, 0x1a65b0
 defit __ZN12CCBlockLayer9disableUIEv, 0x2a5a80
@@ -607,6 +607,7 @@ defit __ZN11GameManager24reportPercentageForLevelEiib, 0x1c5b00
 defit __ZN11GameManager15setGameVariableEPKcb, 0x1cca80
 defit __ZN11GameManager18setIntGameVariableEPKci, 0x1cd0e0
 defit __ZN11GameManager6setUGVEPKcb, 0x1cce50
+defit __ZN11GameManager17returnToLastSceneEP11GJGameLevel, 0x1d0500
 defit __ZN11GameManager11sharedStateEv, 0x1c2b30
 defit __ZN11GameManagerD1Ev, 0x1d0e00
 defit __ZN11GameManagerD2Ev, 0x1d0e00
