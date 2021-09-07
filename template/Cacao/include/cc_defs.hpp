@@ -96,8 +96,11 @@ enum CommentError {};
 enum BackupAccountError {};
 enum UpdateResponse {};
 class ArtistCell;
+class ButtonSprite;
 class GJItemIcon;
 class GJUserCell;
+class CCSpritePlus;
+class OBB2D;
 class GameObject;
 class GaragePage;
 class HardStreak;
@@ -128,13 +131,16 @@ class SecretLayer;
 class SpeedObject;
 class UploadPopup;
 class AccountLayer;
+class TableViewDataSource;
+class TableViewDelegate;
 class BoomListView;
 class CCBlockLayer;
 class CCCircleWave;
+class CCCircleWaveDelegate;
 class CCLightFlash;
 class CCLightStrip;
-class CCSpritePlus;
 class CreatorLayer;
+class FLAlertLayerProtocol;
 class FLAlertLayer;
 class GJHttpResult;
 class GJRewardItem;
@@ -149,6 +155,7 @@ class SetTextPopup;
 class SimplePlayer;
 class SlideInLayer;
 class SupportLayer;
+class CreateMenuItem;
 class BoomListLayer;
 class CCAlertCircle;
 class ChallengeNode;
@@ -284,7 +291,6 @@ class SecretNumberLayer;
 class SetupOpacityPopup;
 class ShareCommentLayer;
 class SpriteDescription;
-class TableViewDelegate;
 class TextInputDelegate;
 class UploadActionPopup;
 class VideoOptionsLayer;
@@ -365,2485 +371,3024 @@ class LevelPage;
 class MenuLayer;
 class PlayLayer;
 class StatsCell;
+class CCScrollLayerExtDelegate;
 class TableView;
 
 
 class ArtistCell : public GDObj {
 public:
-    ~ArtistCell();
-    bool init();
-    void draw();
+    virtual ~ArtistCell();
+    virtual bool init();
+    virtual void draw();
+};
+
+class ButtonSprite : public cocos2d::CCSprite, public GDObj {
+public:
+    static ButtonSprite* create(char const*);
+    static ButtonSprite* create(char const*, int, int, float, bool);
+    void updateBGImage(char const*);
+    static ButtonSprite* create(char const*, float);
+    static ButtonSprite* create(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
 };
 
 class GJItemIcon : public GDObj {
 public:
-    ~GJItemIcon();
-    void setOpacity(unsigned char);
+    virtual ~GJItemIcon();
+    virtual void setOpacity(unsigned char);
 };
 
 class GJUserCell : public GDObj {
 public:
-    ~GJUserCell();
-    bool init();
-    void draw();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
+    virtual ~GJUserCell();
+    virtual bool init();
+    virtual void draw();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
 };
 
-class GameObject : public GDObj {
+class CCSpritePlus : public cocos2d::CCSprite, public GDObj {
 public:
-    ~GameObject();
-    void update(float);
-    void setScaleX(float);
-    void setScaleY(float);
-    void setScale(float);
-    void setPosition(cocos2d::CCPoint const&);
-    void setVisible(bool);
-    void setRotation(float);
-    void setOpacity(unsigned char);
-    void initWithTexture(cocos2d::CCTexture2D*);
-    void setChildColor(cocos2d::_ccColor3B const&);
-    void setFlipX(bool);
-    void setFlipY(bool);
-    void customSetup();
-    void setupCustomSprites();
-    void addMainSpriteToParent(bool);
-    void resetObject();
-    void triggerObject(GJBaseGameLayer*);
-    void activateObject();
-    void deactivateObject(bool);
-    void getObjectRect();
-    void getObjectRect(float, float);
-    void getObjectRect2(float, float);
-    void getObjectTextureRect();
-    void getRealPosition();
-    void setStartPos(cocos2d::CCPoint);
-    void updateStartValues();
-    void getSaveString();
-    void isFlipX();
-    void isFlipY();
-    void setRScaleX(float);
-    void setRScaleY(float);
-    void setRScale(float);
-    void getRScaleX();
-    void getRScaleY();
-    void calculateSpawnXPos();
-    void triggerActivated(float);
-    void powerOnObject();
-    void powerOffObject();
-    void setObjectColor(cocos2d::_ccColor3B const&);
-    void setGlowColor(cocos2d::_ccColor3B const&);
-    void getOrientedBox();
-    void addToGroup(int);
-    void removeFromGroup(int);
-    void spawnXPosition();
-    void getObjectRectDirty();
-    void setObjectRectDirty(bool);
-    void getOrientedRectDirty();
-    void setOrientedRectDirty(bool);
-    void getType();
-    void setType(GameObjectType);
-    void getStartPos();
+    virtual ~CCSpritePlus();
+    virtual void setScaleX(float);
+    virtual void setScaleY(float);
+    virtual void setScale(float);
+    virtual void setPosition(cocos2d::CCPoint const&);
+    virtual void setRotation(float);
+    virtual bool initWithTexture(cocos2d::CCTexture2D*);
+    virtual bool initWithSpriteFrameName(char const*);
+    virtual void setFlipX(bool);
+    virtual void setFlipY(bool);
+    inline CCSpritePlus* getFollowingSprite() {return m_followingSprite;}
+    inline void setFollowingSprite(CCSpritePlus* setter) {m_followingSprite = setter;}
+    cocos2d::CCArray* m_followers;
+    CCSpritePlus* m_followingSprite;
+    bool m_hasFollower;
+    bool m_propagateScaleChanges;
+    bool m_propagateFlipChanges;
+};
+
+class OBB2D : public cocos2d::CCNode, public GDObj {
+public:
+    void calculateWithCenter(cocos2d::CCPoint, float, float, float);
+    static OBB2D* create(cocos2d::CCPoint, float, float, float);
+    void getBoundingRect();
+    void overlaps(OBB2D*);
+    void overlaps1Way(OBB2D*);
+};
+
+class GameObject : public CCSpritePlus{
+public:
+    virtual ~GameObject();
+    virtual void update(float);
+    virtual void setScaleX(float);
+    virtual void setScaleY(float);
+    virtual void setScale(float);
+    virtual void setPosition(cocos2d::CCPoint const&);
+    virtual void setVisible(bool);
+    virtual void setRotation(float);
+    virtual void setOpacity(unsigned char);
+    virtual bool initWithTexture(cocos2d::CCTexture2D*);
+    virtual void setChildColor(cocos2d::_ccColor3B const&);
+    virtual void setFlipX(bool);
+    virtual void setFlipY(bool);
+    virtual void customSetup();
+    virtual void setupCustomSprites();
+    virtual void addMainSpriteToParent(bool);
+    virtual void resetObject();
+    virtual void triggerObject(GJBaseGameLayer*);
+    virtual void activateObject();
+    virtual void deactivateObject(bool);
+    virtual void getObjectRect();
+    virtual void getObjectRect(float, float);
+    virtual void getObjectRect2(float, float);
+    virtual void getObjectTextureRect();
+    virtual void getRealPosition();
+    virtual void setStartPos(cocos2d::CCPoint);
+    virtual void updateStartValues();
+    virtual void getSaveString();
+    virtual void isFlipX();
+    virtual void isFlipY();
+    virtual void setRScaleX(float);
+    virtual void setRScaleY(float);
+    virtual void setRScale(float);
+    virtual void getRScaleX();
+    virtual void getRScaleY();
+    virtual void calculateSpawnXPos();
+    virtual void triggerActivated(float);
+    virtual void powerOnObject();
+    virtual void powerOffObject();
+    virtual void setObjectColor(cocos2d::_ccColor3B const&);
+    virtual void setGlowColor(cocos2d::_ccColor3B const&);
+    virtual void getOrientedBox();
+    virtual void addToGroup(int);
+    virtual void removeFromGroup(int);
+    virtual void spawnXPosition();
+    virtual void getObjectRectDirty();
+    virtual void setObjectRectDirty(bool);
+    virtual void getOrientedRectDirty();
+    virtual void setOrientedRectDirty(bool);
+    virtual void getType();
+    virtual void setType(GameObjectType);
+    virtual void getStartPos();
+    int getGroupID(int);
+    CLASS_PARAM(int, type, 0x370);
+    CLASS_PARAM(int, id, 0x3c4);
+    CLASS_PARAM(OBB2D*, hitbox, 0x2b0);
+    CLASS_PARAM(bool, inEditLayer, 0x279);
+    CLASS_PARAM(cocos2d::CCPoint, startPos, 0x37c);
+    CLASS_PARAM(bool, touchTriggered, 0x378);
+    CLASS_PARAM(bool, spawnTriggered, 0x379);
+    CLASS_PARAM(int, uuid, 0x36c);
+    CLASS_PARAM(int, colorID, 0x3bc);
+    CLASS_PARAM(int, zOrder, 0x42c);
+    CLASS_PARAM(int, unknownType, 0x3d4);
+    CLASS_PARAM(int, coinID, 0x3e8);
+    CLASS_PARAM(float, scale, 0x3c0);
+    CLASS_PARAM(float, multiScaleMultiplier, 0x44c);
 };
 
 class GaragePage : public GDObj {
 public:
-    ~GaragePage();
-    void listButtonBarSwitchedPage(ListButtonBar*, int);
+    virtual ~GaragePage();
+    virtual void listButtonBarSwitchedPage(ListButtonBar*, int);
 };
 
 class HardStreak : public GDObj {
 public:
-    ~HardStreak();
-    bool init();
+    virtual ~HardStreak();
+    virtual bool init();
 };
 
 class PauseLayer : public GDObj {
 public:
-    ~PauseLayer();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void customSetup();
-    void keyUp(cocos2d::enumKeyCodes);
+    virtual ~PauseLayer();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void customSetup();
+    virtual void keyUp(cocos2d::enumKeyCodes);
 };
 
 class RingObject : public GDObj {
 public:
-    ~RingObject();
-    void setScale(float);
-    void setRotation(float);
-    void resetObject();
-    void getSaveString();
-    void setRScale(float);
-    void triggerActivated(float);
-    void powerOnObject();
-    void powerOffObject();
+    virtual ~RingObject();
+    virtual void setScale(float);
+    virtual void setRotation(float);
+    virtual void resetObject();
+    virtual void getSaveString();
+    virtual void setRScale(float);
+    virtual void triggerActivated(float);
+    virtual void powerOnObject();
+    virtual void powerOffObject();
 };
 
 class SetIDLayer : public GDObj {
 public:
-    ~SetIDLayer();
-    void keyBackClicked();
+    virtual ~SetIDLayer();
+    virtual void keyBackClicked();
 };
 
 class SetIDPopup : public GDObj {
 public:
-    ~SetIDPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void valueChanged();
+    virtual ~SetIDPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void valueChanged();
 };
 
 class ShardsPage : public GDObj {
 public:
-    ~ShardsPage();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
+    virtual ~ShardsPage();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
 };
 
 class SongsLayer : public GDObj {
 public:
-    ~SongsLayer();
-    void customSetup();
+    virtual ~SongsLayer();
+    virtual void customSetup();
 };
 
 class StatsLayer : public GDObj {
 public:
-    ~StatsLayer();
-    void customSetup();
+    virtual ~StatsLayer();
+    virtual void customSetup();
 };
 
 class UndoObject : public GDObj {
 public:
-    ~UndoObject();
+    virtual ~UndoObject();
 };
 
 class AppDelegate : public GDObj {
 public:
-    ~AppDelegate();
-    void applicationDidFinishLaunching();
-    void applicationDidEnterBackground();
-    void applicationWillEnterForeground();
-    void applicationWillBecomeActive();
-    void applicationWillResignActive();
-    void trySaveGame();
-    void willSwitchToScene(cocos2d::CCScene*);
+    virtual ~AppDelegate();
+    virtual void applicationDidFinishLaunching();
+    virtual void applicationDidEnterBackground();
+    virtual void applicationWillEnterForeground();
+    virtual void applicationWillBecomeActive();
+    virtual void applicationWillResignActive();
+    virtual void trySaveGame();
+    virtual void willSwitchToScene(cocos2d::CCScene*);
+    void bgScale();
+    static AppDelegate* get();
+    CLASS_PARAM(cocos2d::CCScene*, runningScene, 0x28);
 };
 
 class CCCountdown : public GDObj {
 public:
-    ~CCCountdown();
-    bool init();
-    void setOpacity(unsigned char);
+    virtual ~CCCountdown();
+    virtual bool init();
+    virtual void setOpacity(unsigned char);
 };
 
 class CCMoveCNode : public GDObj {
 public:
-    ~CCMoveCNode();
-    bool init();
+    virtual ~CCMoveCNode();
+    virtual bool init();
 };
 
 class CommentCell : public GDObj {
 public:
-    ~CommentCell();
-    bool init();
-    void draw();
-    void likedItem(LikeItemType, int, bool);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual ~CommentCell();
+    virtual bool init();
+    virtual void draw();
+    virtual void likedItem(LikeItemType, int, bool);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
 };
 
 class DialogLayer : public GDObj {
 public:
-    ~DialogLayer();
-    void onEnter();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void fadeInTextFinished(TextArea*);
+    virtual ~DialogLayer();
+    virtual void onEnter();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void fadeInTextFinished(TextArea*);
 };
 
 class GJGameLevel : public GDObj {
 public:
-    ~GJGameLevel();
-    void encodeWithCoder(DS_Dictionary*);
-    void canEncode();
-    bool init();
+    virtual ~GJGameLevel();
+    virtual void encodeWithCoder(DS_Dictionary*);
+    virtual bool canEncode();
+    virtual bool init();
 };
 
-class GJListLayer : public GDObj {
+class GJListLayer : public cocos2d::CCLayerColor, public GDObj {
 public:
-    ~GJListLayer();
+    virtual ~GJListLayer();
 };
 
 class GJScoreCell : public GDObj {
 public:
-    ~GJScoreCell();
-    bool init();
-    void draw();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual ~GJScoreCell();
+    virtual bool init();
+    virtual void draw();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
 };
 
 class GJShopLayer : public GDObj {
 public:
-    ~GJShopLayer();
-    void keyBackClicked();
-    void didPurchaseItem(GJStoreItem*);
+    virtual ~GJShopLayer();
+    virtual void keyBackClicked();
+    virtual void didPurchaseItem(GJStoreItem*);
 };
 
 class GJUserScore : public GDObj {
 public:
-    ~GJUserScore();
-    bool init();
+    virtual ~GJUserScore();
+    virtual bool init();
 };
 
 class GJWorldNode : public GDObj {
 public:
-    ~GJWorldNode();
+    virtual ~GJWorldNode();
 };
 
-class GameManager : public GDObj {
+class GameManager : public cocos2d::CCNode, public GDObj {
 public:
-    ~GameManager();
-    void update(float);
-    bool init();
-    void encodeDataTo(DS_Dictionary*);
-    void dataLoaded(DS_Dictionary*);
-    void firstLoad();
+    virtual ~GameManager();
+    virtual void update(float);
+    virtual bool init();
+    virtual void encodeDataTo(DS_Dictionary*);
+    virtual void dataLoaded(DS_Dictionary*);
+    virtual void firstLoad();
+    void accountStatusChanged();
+    const cocos2d::_ccColor3B& colorForIdx(int);
+    void didExitPlayscene();
+    void doQuickSave();
+    void fadeInMusic(char const*);
+    void getBGTexture(int);
+    void getFontFile(int);
+    bool getGameVariable(char const*);
+    int getIntGameVariable(char const*);
+    void getUGV(char const*);
+    void loadDeathEffect(int);
+    void loadFont(int);
+    void reloadAll(bool, bool, bool);
+    void reloadAllStep5();
+    void reportPercentageForLevel(int, int, bool);
+    void setGameVariable(char const*, bool);
+    void setIntGameVariable(char const*, int);
+    void setUGV(char const*, bool);
+    static GameManager* sharedState();
+    void getGTexture(int);
+    void reportAchievementWithID(char const*, int, bool);
+    void resolutionForKey(int);
+    CLASS_PARAM(PlayLayer*, playLayer, 0x180);
+    CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x188);
+    CLASS_PARAM(int, scene, 0x1f4);
+    CLASS_PARAM(bool, ldm, 0x2a1);
 };
 
 class MapPackCell : public GDObj {
 public:
-    ~MapPackCell();
-    bool init();
-    void draw();
+    virtual ~MapPackCell();
+    virtual bool init();
+    virtual void draw();
 };
 
 class ProfilePage : public GDObj {
 public:
-    ~ProfilePage();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void updateUserScoreFinished();
-    void updateUserScoreFailed();
-    void getUserInfoFinished(GJUserScore*);
-    void getUserInfoFailed(int);
-    void userInfoChanged(GJUserScore*);
-    void loadCommentsFinished(cocos2d::CCArray*, char const*);
-    void loadCommentsFailed(char const*);
-    void setupPageInfo(std::string, char const*);
-    void commentUploadFinished(int);
-    void commentUploadFailed(int, CommentError);
-    void commentDeleteFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
+    virtual ~ProfilePage();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void updateUserScoreFinished();
+    virtual void updateUserScoreFailed();
+    virtual void getUserInfoFinished(GJUserScore*);
+    virtual void getUserInfoFailed(int);
+    virtual void userInfoChanged(GJUserScore*);
+    virtual void loadCommentsFinished(cocos2d::CCArray*, char const*);
+    virtual void loadCommentsFailed(char const*);
+    virtual void setupPageInfo(std::string, char const*);
+    virtual void commentUploadFinished(int);
+    virtual void commentUploadFailed(int, CommentError);
+    virtual void commentDeleteFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
 };
 
 class RewardsPage : public GDObj {
 public:
-    ~RewardsPage();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void rewardsStatusFinished(int);
-    void rewardsStatusFailed();
+    virtual ~RewardsPage();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void rewardsStatusFinished(int);
+    virtual void rewardsStatusFailed();
 };
 
 class SecretLayer : public GDObj {
 public:
-    ~SecretLayer();
-    bool init();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual ~SecretLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
 };
 
 class SpeedObject : public GDObj {
 public:
-    ~SpeedObject();
+    virtual ~SpeedObject();
 };
 
 class UploadPopup : public GDObj {
 public:
-    ~UploadPopup();
-    void keyBackClicked();
-    void show();
-    void levelUploadFinished(GJGameLevel*);
-    void levelUploadFailed(GJGameLevel*);
+    virtual ~UploadPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void levelUploadFinished(GJGameLevel*);
+    virtual void levelUploadFailed(GJGameLevel*);
 };
 
 class AccountLayer : public GDObj {
 public:
-    ~AccountLayer();
-    void customSetup();
-    void layerHidden();
-    void backupAccountFinished();
-    void backupAccountFailed(BackupAccountError);
-    void syncAccountFinished();
-    void syncAccountFailed(BackupAccountError);
-    void accountStatusChanged();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class BoomListView : public GDObj {
-public:
-    ~BoomListView();
-    void draw();
-    void setupList();
-    void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
-    void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*);
-    void didSelectRowAtIndexPath(CCIndexPath&, TableView*);
-    void numberOfRowsInSection(unsigned int, TableView*);
-    void numberOfSectionsInTableView(TableView*);
-    void cellForRowAtIndexPath(CCIndexPath&, TableView*);
-    void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&);
-    void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
-    void getListCell(char const*);
-    void loadCell(TableViewCell*, int);
-};
-
-class CCBlockLayer : public GDObj {
-public:
-    ~CCBlockLayer();
-    bool init();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void customSetup();
-    void enterLayer();
-    void exitLayer();
-    void showLayer(bool);
-    void hideLayer(bool);
-    void layerVisible();
-    void layerHidden();
-    void enterAnimFinished();
-    void disableUI();
-    void enableUI();
-};
-
-class CCCircleWave : public GDObj {
-public:
-    ~CCCircleWave();
-    void setPosition(cocos2d::CCPoint const&);
-    void removeMeAndCleanup();
-    void draw();
-    void updateTweenAction(float, char const*);
-};
-
-class CCLightFlash : public GDObj {
-public:
-    ~CCLightFlash();
-    bool init();
-};
-
-class CCLightStrip : public GDObj {
-public:
-    ~CCLightStrip();
-    void draw();
-    void updateTweenAction(float, char const*);
-};
-
-class CCSpritePlus : public GDObj {
-public:
-    ~CCSpritePlus();
-    void setScaleX(float);
-    void setScaleY(float);
-    void setScale(float);
-    void setPosition(cocos2d::CCPoint const&);
-    void setRotation(float);
-    void initWithTexture(cocos2d::CCTexture2D*);
-    void initWithSpriteFrameName(char const*);
-    void setFlipX(bool);
-    void setFlipY(bool);
-};
-
-class CreatorLayer : public GDObj {
-public:
-    ~CreatorLayer();
-    bool init();
-    void keyBackClicked();
-    void sceneWillResume();
-    void dialogClosed(DialogLayer*);
-};
-
-class FLAlertLayer : public GDObj {
-public:
-    ~FLAlertLayer();
-    void onEnter();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void show();
-};
-
-class GJHttpResult : public GDObj {
-public:
-    ~GJHttpResult();
-};
-
-class GJRewardItem : public GDObj {
-public:
-    ~GJRewardItem();
-    void encodeWithCoder(DS_Dictionary*);
-    void canEncode();
-};
-
-class GauntletNode : public GDObj {
-public:
-    ~GauntletNode();
-};
-
-class LoadingLayer : public GDObj {
-public:
-    ~LoadingLayer();
-};
-
-class OptionsLayer : public GDObj {
-public:
-    ~OptionsLayer();
-    void customSetup();
-    void layerHidden();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class PlayerObject : public GDObj {
-public:
-    ~PlayerObject();
-    void update(float);
-    void setScaleX(float);
-    void setScaleY(float);
-    void setScale(float);
-    void setPosition(cocos2d::CCPoint const&);
-    void setVisible(bool);
-    void setRotation(float);
-    void setOpacity(unsigned char);
-    void setColor(cocos2d::_ccColor3B const&);
-    void setFlipX(bool);
-    void setFlipY(bool);
-    void resetObject();
-    void getRealPosition();
-    void getOrientedBox();
-    void animationFinished(char const*);
-};
-
-class SecretLayer2 : public GDObj {
-public:
-    ~SecretLayer2();
-    bool init();
-    void onExit();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void dialogClosed(DialogLayer*);
-};
-
-class SecretLayer3 : public GDObj {
-public:
-    ~SecretLayer3();
-    bool init();
-    void onExit();
-    void keyBackClicked();
-    void dialogClosed(DialogLayer*);
-};
-
-class SecretLayer4 : public GDObj {
-public:
-    ~SecretLayer4();
-    bool init();
-    void onExit();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void dialogClosed(DialogLayer*);
-};
-
-class SetTextPopup : public GDObj {
-public:
-    ~SetTextPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-};
-
-class SimplePlayer : public GDObj {
-public:
-    ~SimplePlayer();
-    void setOpacity(unsigned char);
-    void setColor(cocos2d::_ccColor3B const&);
-};
-
-class SlideInLayer : public GDObj {
-public:
-    ~SlideInLayer();
-    bool init();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void customSetup();
-    void enterLayer();
-    void exitLayer(cocos2d::CCObject*);
-    void showLayer(bool);
-    void hideLayer(bool);
-    void layerVisible();
-    void layerHidden();
-    void enterAnimFinished();
-    void disableUI();
-    void enableUI();
-};
-
-class SupportLayer : public GDObj {
-public:
-    ~SupportLayer();
-    void customSetup();
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class BoomListLayer : public GDObj {
-public:
-    ~BoomListLayer();
-};
-
-class CCAlertCircle : public GDObj {
-public:
-    ~CCAlertCircle();
-    bool init();
-    void draw();
-};
-
-class ChallengeNode : public GDObj {
-public:
-    ~ChallengeNode();
-};
-
-class DrawGridLayer : public GDObj {
-public:
-    ~DrawGridLayer();
-    void update(float);
-    void draw();
-};
-
-class EditButtonBar : public GDObj {
-public:
-    ~EditButtonBar();
-};
-
-class ExtendedLayer : public GDObj {
-public:
-    ~ExtendedLayer();
-    bool init();
-    void setPosition(cocos2d::CCPoint const&);
-};
-
-class GJChestSprite : public GDObj {
-public:
-    ~GJChestSprite();
-    void setColor(cocos2d::_ccColor3B const&);
-};
-
-class GJGarageLayer : public GDObj {
-public:
-    ~GJGarageLayer();
-    bool init();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void listButtonBarSwitchedPage(ListButtonBar*, int);
-    void updateRate();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void dialogClosed(DialogLayer*);
-};
-
-class GJGroundLayer : public GDObj {
-public:
-    ~GJGroundLayer();
-    void draw();
-    void showGround();
-    void fadeInGround(float);
-    void fadeOutGround(float);
-};
-
-class GJMessageCell : public GDObj {
-public:
-    ~GJMessageCell();
-    bool init();
-    void draw();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-};
-
-class GJRequestCell : public GDObj {
-public:
-    ~GJRequestCell();
-    bool init();
-    void draw();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-};
-
-class GJRobotSprite : public GDObj {
-public:
-    ~GJRobotSprite();
-    bool init();
-    void setOpacity(unsigned char);
-    void hideSecondary();
-};
-
-class GJSongBrowser : public GDObj {
-public:
-    ~GJSongBrowser();
-    void customSetup();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class GJSpriteColor : public GDObj {
-public:
-    ~GJSpriteColor();
-    bool init();
-};
-
-class GJUserMessage : public GDObj {
-public:
-    ~GJUserMessage();
-    bool init();
-};
-
-class GauntletLayer : public GDObj {
-public:
-    ~GauntletLayer();
-    void keyBackClicked();
-    void loadLevelsFinished(cocos2d::CCArray*, char const*);
-    void loadLevelsFailed(char const*);
-};
-
-class LikeItemLayer : public GDObj {
-public:
-    ~LikeItemLayer();
-    void keyBackClicked();
-};
-
-class ListButtonBar : public GDObj {
-public:
-    ~ListButtonBar();
-};
-
-class LoadingCircle : public GDObj {
-public:
-    ~LoadingCircle();
-    bool init();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-};
-
-class MenuGameLayer : public GDObj {
-public:
-    ~MenuGameLayer();
-    void update(float);
-    bool init();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-};
-
-class MyLevelsLayer : public GDObj {
-public:
-    ~MyLevelsLayer();
-    bool init();
-    void keyBackClicked();
-};
-
-class ObjectDecoder : public GDObj {
-public:
-    ~ObjectDecoder();
-    bool init();
-};
-
-class ObjectManager : public GDObj {
-public:
-    ~ObjectManager();
-    bool init();
-};
-
-class ObjectToolbox : public GDObj {
-public:
-    ~ObjectToolbox();
-    bool init();
-};
-
-class SongInfoLayer : public GDObj {
-public:
-    ~SongInfoLayer();
-    void keyBackClicked();
-};
-
-class TableViewCell : public GDObj {
-public:
-    ~TableViewCell();
-};
-
-class TutorialLayer : public GDObj {
-public:
-    ~TutorialLayer();
-    bool init();
-    void keyBackClicked();
-};
-
-class TutorialPopup : public GDObj {
-public:
-    ~TutorialPopup();
-    void keyBackClicked();
-    void show();
-};
-
-class AchievementBar : public GDObj {
-public:
-    ~AchievementBar();
-    void setOpacity(unsigned char);
-};
-
-class CCContentLayer : public GDObj {
-public:
-    ~CCContentLayer();
-    void setPosition(cocos2d::CCPoint const&);
-};
-
-class CCCounterLabel : public GDObj {
-public:
-    ~CCCounterLabel();
-};
-
-class ChallengesPage : public GDObj {
-public:
-    ~ChallengesPage();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void challengeStatusFinished();
-    void challengeStatusFailed();
-    void currencyWillExit(CurrencyRewardLayer*);
-};
-
-class CurrencySprite : public GDObj {
-public:
-    ~CurrencySprite();
-};
-
-class CustomListView : public GDObj {
-public:
-    ~CustomListView();
-    void setupList();
-    void getListCell(char const*);
-    void loadCell(TableViewCell*, int);
-};
-
-class CustomSongCell : public GDObj {
-public:
-    ~CustomSongCell();
-    bool init();
-    void draw();
-};
-
-class DailyLevelNode : public GDObj {
-public:
-    ~DailyLevelNode();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class DailyLevelPage : public GDObj {
-public:
-    ~DailyLevelPage();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void dailyStatusFinished(bool);
-    void dailyStatusFailed(bool);
-    void levelDownloadFinished(GJGameLevel*);
-    void levelDownloadFailed(int);
-};
-
-class EditLevelLayer : public GDObj {
-public:
-    ~EditLevelLayer();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void setIDPopupClosed(SetIDPopup*, int);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-};
-
-class GJMessagePopup : public GDObj {
-public:
-    ~GJMessagePopup();
-    void keyBackClicked();
-    void downloadMessageFinished(GJUserMessage*);
-    void downloadMessageFailed(int);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class GJOptionsLayer : public GDObj {
-public:
-    ~GJOptionsLayer();
-    bool init();
-    void keyBackClicked();
-    void setupOptions();
-    void onClose(cocos2d::CCObject*);
-};
-
-class GJRewardObject : public GDObj {
-public:
-    ~GJRewardObject();
-    void encodeWithCoder(DS_Dictionary*);
-    void canEncode();
-};
-
-class GJScaleControl : public GDObj {
-public:
-    ~GJScaleControl();
-    bool init();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-};
-
-class GJSearchObject : public GDObj {
-public:
-    ~GJSearchObject();
-};
-
-class GJSpiderSprite : public GDObj {
-public:
-    ~GJSpiderSprite();
-    bool init();
-};
-
-class GameObjectCopy : public GDObj {
-public:
-    ~GameObjectCopy();
-};
-
-class HSVWidgetPopup : public GDObj {
-public:
-    ~HSVWidgetPopup();
-    void keyBackClicked();
-};
-
-class LevelInfoLayer : public GDObj {
-public:
-    ~LevelInfoLayer();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void numberInputClosed(NumberInputLayer*);
-    void levelDownloadFinished(GJGameLevel*);
-    void levelDownloadFailed(int);
-    void levelUpdateFinished(GJGameLevel*, UpdateResponse);
-    void levelUpdateFailed(int);
-    void levelDeleteFinished(int);
-    void levelDeleteFailed(int);
-    void rateLevelClosed();
-    void likedItem(LikeItemType, int, bool);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void setIDPopupClosed(SetIDPopup*, int);
-};
-
-class RateDemonLayer : public GDObj {
-public:
-    ~RateDemonLayer();
-    void keyBackClicked();
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-};
-
-class RateLevelLayer : public GDObj {
-public:
-    ~RateLevelLayer();
-    void keyBackClicked();
-};
-
-class RateStarsLayer : public GDObj {
-public:
-    ~RateStarsLayer();
-    void keyBackClicked();
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-};
-
-class ScrollingLayer : public GDObj {
-public:
-    ~ScrollingLayer();
-    void draw();
-    void visit();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-};
-
-class SelectArtLayer : public GDObj {
-public:
-    ~SelectArtLayer();
-    void keyBackClicked();
-};
-
-class SetFolderPopup : public GDObj {
-public:
-    ~SetFolderPopup();
-    void valueChanged();
-    void setTextPopupClosed(SetTextPopup*, std::string);
-};
-
-class SetItemIDLayer : public GDObj {
-public:
-    ~SetItemIDLayer();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class SongInfoObject : public GDObj {
-public:
-    ~SongInfoObject();
-    void encodeWithCoder(DS_Dictionary*);
-    void canEncode();
-};
-
-class StartPosObject : public GDObj {
-public:
-    ~StartPosObject();
-    bool init();
-    void getSaveString();
-};
-
-class WorldLevelPage : public GDObj {
-public:
-    ~WorldLevelPage();
-    void keyBackClicked();
-    void show();
-};
-
-class AchievementCell : public GDObj {
-public:
-    ~AchievementCell();
-    bool init();
-    void draw();
-};
-
-class BoomScrollLayer : public GDObj {
-public:
-    ~BoomScrollLayer();
-    void visit();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-};
-
-class CCNodeContainer : public GDObj {
-public:
-    ~CCNodeContainer();
-    bool init();
-    void visit();
-};
-
-class CCSpriteWithHue : public GDObj {
-public:
-    ~CCSpriteWithHue();
-    void draw();
-    void initWithTexture(cocos2d::CCTexture2D*);
-    void initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&);
-    void initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool);
-    void initWithSpriteFrame(cocos2d::CCSpriteFrame*);
-    void updateColor();
-};
-
-class CCTextInputNode : public GDObj {
-public:
-    ~CCTextInputNode();
-    void visit();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void textChanged();
-    void onClickTrackNode(bool);
-    void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo&);
-    void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo&);
-    void onTextFieldInsertText(cocos2d::CCTextFieldTTF*, char const*, int);
-    void onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF*);
-    void onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF*);
-};
-
-class CustomSongLayer : public GDObj {
-public:
-    ~CustomSongLayer();
-    void keyBackClicked();
-    void show();
-    void textChanged(CCTextInputNode*);
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-    void dropDownLayerWillClose(GJDropDownLayer*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class EndPortalObject : public GDObj {
-public:
-    ~EndPortalObject();
-    bool init();
-    void setPosition(cocos2d::CCPoint const&);
-    void setVisible(bool);
-    void triggerObject(GJBaseGameLayer*);
-    void calculateSpawnXPos();
-};
-
-class FileSaveManager : public GDObj {
-public:
-    ~FileSaveManager();
-    bool init();
-    void firstLoad();
-};
-
-class GJBaseGameLayer : public GDObj {
-public:
-    ~GJBaseGameLayer();
-    bool init();
-    void objectsCollided(int, int);
-    void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int);
-    void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
-    void flipGravity(PlayerObject*, bool, bool);
-    void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
-    void toggleGroupTriggered(int, bool);
-    void spawnGroup(int);
-    void addToSection(GameObject*);
-    void addToGroup(GameObject*, int, bool);
-    void removeFromGroup(GameObject*, int);
-};
-
-class GJChallengeItem : public GDObj {
-public:
-    ~GJChallengeItem();
-    void encodeWithCoder(DS_Dictionary*);
-    void canEncode();
-};
-
-class GJDropDownLayer : public GDObj {
-public:
-    ~GJDropDownLayer();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void customSetup();
-    void enterLayer();
-    void exitLayer(cocos2d::CCObject*);
-    void showLayer(bool);
-    void hideLayer(bool);
-    void layerVisible();
-    void layerHidden();
-    void enterAnimFinished();
-    void disableUI();
-    void enableUI();
-};
-
-class GJEffectManager : public GDObj {
-public:
-    ~GJEffectManager();
-    bool init();
-};
-
-class GJFriendRequest : public GDObj {
-public:
-    ~GJFriendRequest();
-    bool init();
-};
-
-class GJObjectDecoder : public GDObj {
-public:
-    ~GJObjectDecoder();
-    bool init();
-    void getDecodedObject(int, DS_Dictionary*);
-};
-
-class InfoAlertButton : public GDObj {
-public:
-    ~InfoAlertButton();
-    void activate();
-};
-
-class LabelGameObject : public GDObj {
-public:
-    ~LabelGameObject();
-    bool init();
-    void setOpacity(unsigned char);
-    void setupCustomSprites();
-    void addMainSpriteToParent(bool);
-    void getSaveString();
-    void setObjectColor(cocos2d::_ccColor3B const&);
-};
-
-class MoreSearchLayer : public GDObj {
-public:
-    ~MoreSearchLayer();
-    bool init();
-    void keyBackClicked();
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class RetryLevelLayer : public GDObj {
-public:
-    ~RetryLevelLayer();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void customSetup();
-    void showLayer(bool);
-    void enterAnimFinished();
-    void keyUp(cocos2d::enumKeyCodes);
-};
-
-class SelectFontLayer : public GDObj {
-public:
-    ~SelectFontLayer();
-    void keyBackClicked();
-};
-
-class SetGroupIDLayer : public GDObj {
-public:
-    ~SetGroupIDLayer();
-    void keyBackClicked();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-};
-
-class SetupPulsePopup : public GDObj {
-public:
-    ~SetupPulsePopup();
-    void keyBackClicked();
-    void show();
-    void colorValueChanged(cocos2d::_ccColor3B);
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void colorSelectClosed(GJSpecialColorSelect*, int);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class SetupShakePopup : public GDObj {
-public:
-    ~SetupShakePopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class SetupSpawnPopup : public GDObj {
-public:
-    ~SetupSpawnPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class ShareLevelLayer : public GDObj {
-public:
-    ~ShareLevelLayer();
-    void keyBackClicked();
-};
-
-class TopArtistsLayer : public GDObj {
-public:
-    ~TopArtistsLayer();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void loadListFinished(cocos2d::CCArray*, char const*);
-    void loadListFailed(char const*);
-    void setupPageInfo(std::string, char const*);
-};
-
-class AccountHelpLayer : public GDObj {
-public:
-    ~AccountHelpLayer();
-    void customSetup();
-    void layerHidden();
-    void accountStatusChanged();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class CCAnimatedSprite : public GDObj {
-public:
-    ~CCAnimatedSprite();
-    void setOpacity(unsigned char);
-    void animationFinished(char const*);
-    void animationFinishedO(cocos2d::CCObject*);
-};
-
-class CCContentManager : public GDObj {
-public:
-    ~CCContentManager();
-};
-
-class CCPartAnimSprite : public GDObj {
-public:
-    ~CCPartAnimSprite();
-    void setScaleX(float);
-    void setScaleY(float);
-    void setScale(float);
-    void setOpacity(unsigned char);
-    void setBlendFunc(cocos2d::_ccBlendFunc);
-    void setDisplayFrame(cocos2d::CCSpriteFrame*);
-    void isFrameDisplayed(cocos2d::CCSpriteFrame*);
-    void displayFrame();
-};
-
-class CCScrollLayerExt : public GDObj {
-public:
-    ~CCScrollLayerExt();
-    void visit();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void preVisitWithClippingRect(cocos2d::CCRect);
-    void postVisit();
-};
-
-class CheckpointObject : public GDObj {
-public:
-    ~CheckpointObject();
-    bool init();
-};
-
-class ColorSelectPopup : public GDObj {
-public:
-    ~ColorSelectPopup();
-    void keyBackClicked();
-    void show();
-    void colorValueChanged(cocos2d::_ccColor3B);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void colorSelectClosed(GJSpecialColorSelect*, int);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class CustomSongWidget : public GDObj {
-public:
-    ~CustomSongWidget();
-    void loadSongInfoFinished(SongInfoObject*);
-    void loadSongInfoFailed(int, GJSongError);
-    void downloadSongFinished(SongInfoObject*);
-    void downloadSongFailed(int, GJSongError);
-    void songStateChanged();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class EditorPauseLayer : public GDObj {
-public:
-    ~EditorPauseLayer();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void customSetup();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-};
-
-class EffectGameObject : public GDObj {
-public:
-    ~EffectGameObject();
-    void customSetup();
-    void triggerObject(GJBaseGameLayer*);
-    void getSaveString();
-    void triggerActivated(float);
-    void spawnXPosition();
-};
-
-class FollowRewardPage : public GDObj {
-public:
-    ~FollowRewardPage();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void updateRate();
-};
-
-class GJAccountManager : public GDObj {
-public:
-    ~GJAccountManager();
-    bool init();
-};
-
-class GJFlyGroundLayer : public GDObj {
-public:
-    ~GJFlyGroundLayer();
-    bool init();
-};
-
-class GJLevelScoreCell : public GDObj {
-public:
-    ~GJLevelScoreCell();
-    bool init();
-    void draw();
-};
-
-class GJMoreGamesLayer : public GDObj {
-public:
-    ~GJMoreGamesLayer();
-    void customSetup();
-};
-
-class GameLevelManager : public GDObj {
-public:
-    ~GameLevelManager();
-    bool init();
-};
-
-class GameSoundManager : public GDObj {
-public:
-    ~GameSoundManager();
-    bool init();
-};
-
-class GameStatsManager : public GDObj {
-public:
-    ~GameStatsManager();
-    bool init();
-};
-
-class GhostTrailEffect : public GDObj {
-public:
-    ~GhostTrailEffect();
-    bool init();
-    void draw();
-};
-
-class KeybindingsLayer : public GDObj {
-public:
-    ~KeybindingsLayer();
-    bool init();
-    void keyBackClicked();
-};
-
-class LevelEditorLayer : public GDObj {
-public:
-    ~LevelEditorLayer();
-    void update(float);
-    void draw();
-    void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
-    void flipGravity(PlayerObject*, bool, bool);
-    void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
-    void addToGroup(GameObject*, int, bool);
-    void removeFromGroup(GameObject*, int);
-    void timeForXPos(float);
-    void xPosForTime(float);
-    void levelSettingsUpdated();
-};
-
-class LevelLeaderboard : public GDObj {
-public:
-    ~LevelLeaderboard();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void loadLeaderboardFinished(cocos2d::CCArray*, char const*);
-    void loadLeaderboardFailed(char const*);
-    void updateUserScoreFinished();
-    void updateUserScoreFailed();
-};
-
-class LevelSearchLayer : public GDObj {
-public:
-    ~LevelSearchLayer();
-    bool init();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void demonFilterSelectClosed(int);
-};
-
-class LevelSelectLayer : public GDObj {
-public:
-    ~LevelSelectLayer();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void updatePageWithObject(cocos2d::CCObject*, cocos2d::CCObject*);
-    void scrollLayerMoved(cocos2d::CCPoint);
-};
-
-class MoreOptionsLayer : public GDObj {
-public:
-    ~MoreOptionsLayer();
-    bool init();
-    void keyBackClicked();
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-    void googlePlaySignedIn();
-};
-
-class NumberInputLayer : public GDObj {
-public:
-    ~NumberInputLayer();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-};
-
-class PlayerCheckpoint : public GDObj {
-public:
-    ~PlayerCheckpoint();
-    bool init();
-};
-
-class SetTargetIDLayer : public GDObj {
-public:
-    ~SetTargetIDLayer();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class SetupRotatePopup : public GDObj {
-public:
-    ~SetupRotatePopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class SliderTouchLogic : public GDObj {
-public:
-    ~SliderTouchLogic();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-};
-
-class SongOptionsLayer : public GDObj {
-public:
-    ~SongOptionsLayer();
-    void keyBackClicked();
-};
-
-class WorldSelectLayer : public GDObj {
-public:
-    ~WorldSelectLayer();
-    void onExit();
-    void keyBackClicked();
-    void scrollLayerWillScrollToPage(BoomScrollLayer*, int);
-    void scrollLayerScrolledToPage(BoomScrollLayer*, int);
-    void scrollLayerMoved(cocos2d::CCPoint);
-};
-
-class AccountLoginLayer : public GDObj {
-public:
-    ~AccountLoginLayer();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void loginAccountFinished(int, int);
-    void loginAccountFailed(AccountError);
-};
-
-class AchievementsLayer : public GDObj {
-public:
-    ~AchievementsLayer();
-    void keyDown(cocos2d::enumKeyCodes);
-    void customSetup();
-};
-
-class AudioEffectsLayer : public GDObj {
-public:
-    ~AudioEffectsLayer();
-    void draw();
-    void updateTweenAction(float, char const*);
-};
-
-class CCMenuItemToggler : public GDObj {
-public:
-    ~CCMenuItemToggler();
-    void activate();
-    void selected();
-    void unselected();
-    void setEnabled(bool);
-};
-
-class ColorActionSprite : public GDObj {
-public:
-    ~ColorActionSprite();
-    bool init();
-};
-
-class DungeonBarsSprite : public GDObj {
-public:
-    ~DungeonBarsSprite();
-    bool init();
-    void visit();
-};
-
-class EditTriggersPopup : public GDObj {
-public:
-    ~EditTriggersPopup();
-    void keyBackClicked();
-    void show();
-};
-
-class GJColorSetupLayer : public GDObj {
-public:
-    ~GJColorSetupLayer();
-    void keyBackClicked();
-    void colorSelectClosed(cocos2d::CCNode*);
-};
-
-class GJRotationControl : public GDObj {
-public:
-    ~GJRotationControl();
-    bool init();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-};
-
-class GooglePlayManager : public GDObj {
-public:
-    ~GooglePlayManager();
-    bool init();
-};
-
-class LeaderboardsLayer : public GDObj {
-public:
-    ~LeaderboardsLayer();
-    void keyBackClicked();
-    void updateUserScoreFinished();
-    void updateUserScoreFailed();
-    void loadLeaderboardFinished(cocos2d::CCArray*, char const*);
-    void loadLeaderboardFailed(char const*);
-};
-
-class LevelBrowserLayer : public GDObj {
-public:
-    ~LevelBrowserLayer();
-    void onEnter();
-    void onEnterTransitionDidFinish();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void loadLevelsFinished(cocos2d::CCArray*, char const*);
-    void loadLevelsFailed(char const*);
-    void setupPageInfo(std::string, char const*);
-    void setTextPopupClosed(SetTextPopup*, std::string);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void setIDPopupClosed(SetIDPopup*, int);
-};
-
-class LevelFeatureLayer : public GDObj {
-public:
-    ~LevelFeatureLayer();
-    void keyBackClicked();
-};
-
-class LocalLevelManager : public GDObj {
-public:
-    ~LocalLevelManager();
-    bool init();
-    void encodeDataTo(DS_Dictionary*);
-    void dataLoaded(DS_Dictionary*);
-    void firstLoad();
-};
-
-class PromoInterstitial : public GDObj {
-public:
-    ~PromoInterstitial();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void keyBackClicked();
-    void show();
-};
-
-class PurchaseItemPopup : public GDObj {
-public:
-    ~PurchaseItemPopup();
-    void keyBackClicked();
-};
-
-class RewardUnlockLayer : public GDObj {
-public:
-    ~RewardUnlockLayer();
-    void keyBackClicked();
-    void currencyWillExit(CurrencyRewardLayer*);
-};
-
-class SecretNumberLayer : public GDObj {
-public:
-    ~SecretNumberLayer();
-    bool init();
-};
-
-class SetupOpacityPopup : public GDObj {
-public:
-    ~SetupOpacityPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-};
-
-class ShareCommentLayer : public GDObj {
-public:
-    ~ShareCommentLayer();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-};
-
-class SpriteDescription : public GDObj {
-public:
-    ~SpriteDescription();
+    virtual ~AccountLayer();
+    virtual void customSetup();
+    virtual void layerHidden();
+    virtual void backupAccountFinished();
+    virtual void backupAccountFailed(BackupAccountError);
+    virtual void syncAccountFinished();
+    virtual void syncAccountFailed(BackupAccountError);
+    virtual void accountStatusChanged();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class TableViewDataSource : public GDObj {
+public:
+    virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {}
+    virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+    virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {}
+    virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {}
 };
 
 class TableViewDelegate : public GDObj {
 public:
-    void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*);
-    void didEndTweenToIndexPath(CCIndexPath&, TableView*);
-    void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
+    virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;}
+    virtual void numberOfSectionsInTableView(TableView*) {}
+    virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {}
+    virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {}
+};
+
+class BoomListView : public cocos2d::CCLayer, public TableViewDataSource, public TableViewDelegate{
+public:
+    virtual ~BoomListView();
+    virtual void draw();
+    virtual void setupList();
+    virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
+    virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*);
+    virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*);
+    virtual int numberOfRowsInSection(unsigned int, TableView*);
+    virtual void numberOfSectionsInTableView(TableView*);
+    virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*);
+    virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&);
+    virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
+    virtual TableViewCell* getListCell(char const*);
+    virtual void loadCell(TableViewCell*, int);
+    static BoomListView* create(cocos2d::CCArray*, float, float, int, BoomListType);
+    bool init(cocos2d::CCArray*, float, float, int, BoomListType);
+    TableView* m_tableView;
+    cocos2d::CCArray* m_content;
+    BoomListType m_type;
+    float m_width;
+    float m_height;
+    float m_cellHeight;
+    int m_page;
+};
+
+class CCBlockLayer : public GDObj {
+public:
+    virtual ~CCBlockLayer();
+    virtual bool init();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void customSetup();
+    virtual void enterLayer();
+    virtual void exitLayer();
+    virtual void showLayer(bool);
+    virtual void hideLayer(bool);
+    virtual void layerVisible();
+    virtual void layerHidden();
+    virtual void enterAnimFinished();
+    virtual void disableUI();
+    virtual void enableUI();
+};
+
+class CCCircleWave : public cocos2d::CCNode, public GDObj {
+public:
+    virtual ~CCCircleWave();
+    virtual void setPosition(cocos2d::CCPoint const&);
+    virtual void removeMeAndCleanup();
+    virtual void draw();
+    virtual void updateTweenAction(float, char const*);
+    static CCCircleWave* create(float, float, float, bool);
+    static CCCircleWave* create(float, float, float, bool, bool);
+    bool init(float, float, float, bool, bool);
+    void followObject(cocos2d::CCNode*, bool);
+    void updatePosition(float);
+    CLASS_PARAM(cocos2d::_ccColor3B, color, 0x134);
+    CLASS_PARAM(CCCircleWaveDelegate*, delegate, 0x150);
+};
+
+class CCCircleWaveDelegate : public GDObj {
+public:
+};
+
+class CCLightFlash : public GDObj {
+public:
+    virtual ~CCLightFlash();
+    virtual bool init();
+};
+
+class CCLightStrip : public GDObj {
+public:
+    virtual ~CCLightStrip();
+    virtual void draw();
+    virtual void updateTweenAction(float, char const*);
+};
+
+class CreatorLayer : public GDObj {
+public:
+    virtual ~CreatorLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void sceneWillResume();
+    virtual void dialogClosed(DialogLayer*);
+};
+
+class FLAlertLayerProtocol : public GDObj {
+public:
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
+};
+
+class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
+public:
+    virtual ~FLAlertLayer();
+    virtual void onEnter();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void show();
+    bool init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(char const* title, const std::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
+    cocos2d::CCMenu* m_buttonMenu;
+    int m_controlConnected;
+    void* m_alertProtocol;
+    cocos2d::CCNode* m_scene;
+    bool m_reverseKeyBack;
+    cocos2d::ccColor3B m_color;
+    cocos2d::CCLayer* m_mainLayer;
+    int m_ZOrder;
+    bool m_noElasticity;
+    cocos2d::ccColor3B m_color2;
+    ButtonSprite* m_button1;
+    ButtonSprite* m_button2;
+    CCLayerColor* m_scrollingLayer;
+    int m_joystickConnected;
+    bool m_containsBorder;
+    bool m_noAction;
+};
+
+class GJHttpResult : public GDObj {
+public:
+    virtual ~GJHttpResult();
+};
+
+class GJRewardItem : public GDObj {
+public:
+    virtual ~GJRewardItem();
+    virtual void encodeWithCoder(DS_Dictionary*);
+    virtual bool canEncode();
+};
+
+class GauntletNode : public GDObj {
+public:
+    virtual ~GauntletNode();
+};
+
+class LoadingLayer : public GDObj {
+public:
+    virtual ~LoadingLayer();
+};
+
+class OptionsLayer : public GDObj {
+public:
+    virtual ~OptionsLayer();
+    virtual void customSetup();
+    virtual void layerHidden();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class PlayerObject : public GDObj {
+public:
+    virtual ~PlayerObject();
+    virtual void update(float);
+    virtual void setScaleX(float);
+    virtual void setScaleY(float);
+    virtual void setScale(float);
+    virtual void setPosition(cocos2d::CCPoint const&);
+    virtual void setVisible(bool);
+    virtual void setRotation(float);
+    virtual void setOpacity(unsigned char);
+    virtual void setColor(cocos2d::_ccColor3B const&);
+    virtual void setFlipX(bool);
+    virtual void setFlipY(bool);
+    virtual void resetObject();
+    virtual void getRealPosition();
+    virtual void getOrientedBox();
+    virtual void animationFinished(char const*);
+};
+
+class SecretLayer2 : public GDObj {
+public:
+    virtual ~SecretLayer2();
+    virtual bool init();
+    virtual void onExit();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void dialogClosed(DialogLayer*);
+};
+
+class SecretLayer3 : public GDObj {
+public:
+    virtual ~SecretLayer3();
+    virtual bool init();
+    virtual void onExit();
+    virtual void keyBackClicked();
+    virtual void dialogClosed(DialogLayer*);
+};
+
+class SecretLayer4 : public GDObj {
+public:
+    virtual ~SecretLayer4();
+    virtual bool init();
+    virtual void onExit();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void dialogClosed(DialogLayer*);
+};
+
+class SetTextPopup : public GDObj {
+public:
+    virtual ~SetTextPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+};
+
+class SimplePlayer : public GDObj {
+public:
+    virtual ~SimplePlayer();
+    virtual void setOpacity(unsigned char);
+    virtual void setColor(cocos2d::_ccColor3B const&);
+};
+
+class SlideInLayer : public GDObj {
+public:
+    virtual ~SlideInLayer();
+    virtual bool init();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void customSetup();
+    virtual void enterLayer();
+    virtual void exitLayer(cocos2d::CCObject*);
+    virtual void showLayer(bool);
+    virtual void hideLayer(bool);
+    virtual void layerVisible();
+    virtual void layerHidden();
+    virtual void enterAnimFinished();
+    virtual void disableUI();
+    virtual void enableUI();
+};
+
+class SupportLayer : public GDObj {
+public:
+    virtual ~SupportLayer();
+    virtual void customSetup();
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class CreateMenuItem : public CCMenuItemSpriteExtra{
+public:
+    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+};
+
+class BoomListLayer : public GDObj {
+public:
+    virtual ~BoomListLayer();
+};
+
+class CCAlertCircle : public GDObj {
+public:
+    virtual ~CCAlertCircle();
+    virtual bool init();
+    virtual void draw();
+};
+
+class ChallengeNode : public GDObj {
+public:
+    virtual ~ChallengeNode();
+};
+
+class DrawGridLayer : public GDObj {
+public:
+    virtual ~DrawGridLayer();
+    virtual void update(float);
+    virtual void draw();
+};
+
+class EditButtonBar : public cocos2d::CCNode, public GDObj {
+public:
+    virtual ~EditButtonBar();
+    void loadFromItems(cocos2d::CCArray*, int, int, bool);
+    CLASS_PARAM(cocos2d::CCArray*, objectSlots, 0x130);
+};
+
+class ExtendedLayer : public GDObj {
+public:
+    virtual ~ExtendedLayer();
+    virtual bool init();
+    virtual void setPosition(cocos2d::CCPoint const&);
+};
+
+class GJChestSprite : public GDObj {
+public:
+    virtual ~GJChestSprite();
+    virtual void setColor(cocos2d::_ccColor3B const&);
+};
+
+class GJGarageLayer : public GDObj {
+public:
+    virtual ~GJGarageLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void listButtonBarSwitchedPage(ListButtonBar*, int);
+    virtual void updateRate();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void dialogClosed(DialogLayer*);
+};
+
+class GJGroundLayer : public GDObj {
+public:
+    virtual ~GJGroundLayer();
+    virtual void draw();
+    virtual void showGround();
+    virtual void fadeInGround(float);
+    virtual void fadeOutGround(float);
+};
+
+class GJMessageCell : public GDObj {
+public:
+    virtual ~GJMessageCell();
+    virtual bool init();
+    virtual void draw();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+};
+
+class GJRequestCell : public GDObj {
+public:
+    virtual ~GJRequestCell();
+    virtual bool init();
+    virtual void draw();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+};
+
+class GJRobotSprite : public GDObj {
+public:
+    virtual ~GJRobotSprite();
+    virtual bool init();
+    virtual void setOpacity(unsigned char);
+    virtual void hideSecondary();
+};
+
+class GJSongBrowser : public GDObj {
+public:
+    virtual ~GJSongBrowser();
+    virtual void customSetup();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class GJSpriteColor : public GDObj {
+public:
+    virtual ~GJSpriteColor();
+    virtual bool init();
+};
+
+class GJUserMessage : public GDObj {
+public:
+    virtual ~GJUserMessage();
+    virtual bool init();
+};
+
+class GauntletLayer : public GDObj {
+public:
+    virtual ~GauntletLayer();
+    virtual void keyBackClicked();
+    virtual void loadLevelsFinished(cocos2d::CCArray*, char const*);
+    virtual void loadLevelsFailed(char const*);
+};
+
+class LikeItemLayer : public GDObj {
+public:
+    virtual ~LikeItemLayer();
+    virtual void keyBackClicked();
+};
+
+class ListButtonBar : public GDObj {
+public:
+    virtual ~ListButtonBar();
+};
+
+class LoadingCircle : public GDObj {
+public:
+    virtual ~LoadingCircle();
+    virtual bool init();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+};
+
+class MenuGameLayer : public GDObj {
+public:
+    virtual ~MenuGameLayer();
+    virtual void update(float);
+    virtual bool init();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+};
+
+class MyLevelsLayer : public GDObj {
+public:
+    virtual ~MyLevelsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+};
+
+class ObjectDecoder : public GDObj {
+public:
+    virtual ~ObjectDecoder();
+    virtual bool init();
+};
+
+class ObjectManager : public GDObj {
+public:
+    virtual ~ObjectManager();
+    virtual bool init();
+};
+
+class ObjectToolbox : public GDObj {
+public:
+    virtual ~ObjectToolbox();
+    virtual bool init();
+    char const* intKeyToFrame(int);
+    static ObjectToolbox* sharedState();
+    CLASS_PARAM(cocos2d::CCDictionary*, strKeyObjects, 0x120);
+    CLASS_PARAM(cocos2d::CCDictionary*, intKeyObjects, 0x128);
+};
+
+class SongInfoLayer : public GDObj {
+public:
+    virtual ~SongInfoLayer();
+    virtual void keyBackClicked();
+};
+
+class TableViewCell : public cocos2d::CCLayer, public GDObj {
+public:
+    virtual ~TableViewCell();
+    TableViewCell(char const*, float, float);
+    char pad[0x1c0-0x170];
+    float m_parentHeight;
+    float m_height;
+    cocos2d::CCLayerColor* m_backgroundLayer;
+    cocos2d::CCLayer* m_mainLayer;
+};
+
+class TutorialLayer : public GDObj {
+public:
+    virtual ~TutorialLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+};
+
+class TutorialPopup : public GDObj {
+public:
+    virtual ~TutorialPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+};
+
+class AchievementBar : public GDObj {
+public:
+    virtual ~AchievementBar();
+    virtual void setOpacity(unsigned char);
+};
+
+class CCContentLayer : public GDObj {
+public:
+    virtual ~CCContentLayer();
+    virtual void setPosition(cocos2d::CCPoint const&);
+};
+
+class CCCounterLabel : public GDObj {
+public:
+    virtual ~CCCounterLabel();
+};
+
+class ChallengesPage : public GDObj {
+public:
+    virtual ~ChallengesPage();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void challengeStatusFinished();
+    virtual void challengeStatusFailed();
+    virtual void currencyWillExit(CurrencyRewardLayer*);
+};
+
+class CurrencySprite : public GDObj {
+public:
+    virtual ~CurrencySprite();
+};
+
+class CustomListView : public GDObj {
+public:
+    virtual ~CustomListView();
+    virtual void setupList();
+    virtual void getListCell(char const*);
+    virtual void loadCell(TableViewCell*, int);
+};
+
+class CustomSongCell : public GDObj {
+public:
+    virtual ~CustomSongCell();
+    virtual bool init();
+    virtual void draw();
+};
+
+class DailyLevelNode : public GDObj {
+public:
+    virtual ~DailyLevelNode();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class DailyLevelPage : public GDObj {
+public:
+    virtual ~DailyLevelPage();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void dailyStatusFinished(bool);
+    virtual void dailyStatusFailed(bool);
+    virtual void levelDownloadFinished(GJGameLevel*);
+    virtual void levelDownloadFailed(int);
+};
+
+class EditLevelLayer : public GDObj {
+public:
+    virtual ~EditLevelLayer();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void setIDPopupClosed(SetIDPopup*, int);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+};
+
+class GJMessagePopup : public GDObj {
+public:
+    virtual ~GJMessagePopup();
+    virtual void keyBackClicked();
+    virtual void downloadMessageFinished(GJUserMessage*);
+    virtual void downloadMessageFailed(int);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class GJOptionsLayer : public GDObj {
+public:
+    virtual ~GJOptionsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void setupOptions();
+    virtual void onClose(cocos2d::CCObject*);
+};
+
+class GJRewardObject : public GDObj {
+public:
+    virtual ~GJRewardObject();
+    virtual void encodeWithCoder(DS_Dictionary*);
+    virtual bool canEncode();
+};
+
+class GJScaleControl : public GDObj {
+public:
+    virtual ~GJScaleControl();
+    virtual bool init();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+};
+
+class GJSearchObject : public GDObj {
+public:
+    virtual ~GJSearchObject();
+};
+
+class GJSpiderSprite : public GDObj {
+public:
+    virtual ~GJSpiderSprite();
+    virtual bool init();
+};
+
+class GameObjectCopy : public GDObj {
+public:
+    virtual ~GameObjectCopy();
+};
+
+class HSVWidgetPopup : public GDObj {
+public:
+    virtual ~HSVWidgetPopup();
+    virtual void keyBackClicked();
+};
+
+class LevelInfoLayer : public GDObj {
+public:
+    virtual ~LevelInfoLayer();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void numberInputClosed(NumberInputLayer*);
+    virtual void levelDownloadFinished(GJGameLevel*);
+    virtual void levelDownloadFailed(int);
+    virtual void levelUpdateFinished(GJGameLevel*, UpdateResponse);
+    virtual void levelUpdateFailed(int);
+    virtual void levelDeleteFinished(int);
+    virtual void levelDeleteFailed(int);
+    virtual void rateLevelClosed();
+    virtual void likedItem(LikeItemType, int, bool);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void setIDPopupClosed(SetIDPopup*, int);
+};
+
+class RateDemonLayer : public GDObj {
+public:
+    virtual ~RateDemonLayer();
+    virtual void keyBackClicked();
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+};
+
+class RateLevelLayer : public GDObj {
+public:
+    virtual ~RateLevelLayer();
+    virtual void keyBackClicked();
+};
+
+class RateStarsLayer : public GDObj {
+public:
+    virtual ~RateStarsLayer();
+    virtual void keyBackClicked();
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+};
+
+class ScrollingLayer : public GDObj {
+public:
+    virtual ~ScrollingLayer();
+    virtual void draw();
+    virtual void visit();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+};
+
+class SelectArtLayer : public GDObj {
+public:
+    virtual ~SelectArtLayer();
+    virtual void keyBackClicked();
+};
+
+class SetFolderPopup : public GDObj {
+public:
+    virtual ~SetFolderPopup();
+    virtual void valueChanged();
+    virtual void setTextPopupClosed(SetTextPopup*, std::string);
+};
+
+class SetItemIDLayer : public GDObj {
+public:
+    virtual ~SetItemIDLayer();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class SongInfoObject : public cocos2d::CCNode, public GDObj {
+public:
+    virtual ~SongInfoObject();
+    virtual void encodeWithCoder(DS_Dictionary*);
+    virtual bool canEncode();
+    int m_unknown0;
+    std::string m_unknown1;
+    std::string m_artist;
+    std::string m_unknown2;
+    std::string m_youtube;
+    std::string m_unknown3;
+    int m_unknown4;
+    float m_unknown5;
+    unsigned short m_pad;
+    unsigned short m_metadata;
+    int m_uuid;
+};
+
+class StartPosObject : public GDObj {
+public:
+    virtual ~StartPosObject();
+    virtual bool init();
+    virtual void getSaveString();
+};
+
+class WorldLevelPage : public GDObj {
+public:
+    virtual ~WorldLevelPage();
+    virtual void keyBackClicked();
+    virtual void show();
+};
+
+class AchievementCell : public GDObj {
+public:
+    virtual ~AchievementCell();
+    virtual bool init();
+    virtual void draw();
+    void loadFromDict(cocos2d::CCDictionary*);
+};
+
+class BoomScrollLayer : public GDObj {
+public:
+    virtual ~BoomScrollLayer();
+    virtual void visit();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+};
+
+class CCNodeContainer : public GDObj {
+public:
+    virtual ~CCNodeContainer();
+    virtual bool init();
+    virtual void visit();
+};
+
+class CCSpriteWithHue : public GDObj {
+public:
+    virtual ~CCSpriteWithHue();
+    virtual void draw();
+    virtual void initWithTexture(cocos2d::CCTexture2D*);
+    virtual void initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&);
+    virtual void initWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool);
+    virtual void initWithSpriteFrame(cocos2d::CCSpriteFrame*);
+    virtual void updateColor();
+};
+
+class CCTextInputNode : public cocos2d::CCLayer, public cocos2d::CCIMEDelegate, public cocos2d::CCTextFieldDelegate, public GDObj {
+public:
+    virtual ~CCTextInputNode();
+    virtual void visit();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void textChanged();
+    virtual void onClickTrackNode(bool);
+    virtual void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo&);
+    virtual void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo&);
+    virtual bool onTextFieldInsertText(cocos2d::CCTextFieldTTF*, char const*, int);
+    virtual bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF*);
+    virtual bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF*);
+    static CCTextInputNode* create(float, float, char const*, char const*, int, char const*);
+    std::string getString();
+    void refreshLabel();
+    void setAllowedChars(std::string);
+    void setLabelNormalColor(cocos2d::_ccColor3B);
+    void setLabelPlaceholderColor(cocos2d::_ccColor3B);
+    void setLabelPlaceholderScale(float);
+    void setMaxLabelScale(float);
+    void setMaxLabelWidth(float);
+    void setString(std::string);
+    void updateLabel(std::string);
+    void forceOffset();
+    void* m_unknown0;
+    std::string m_caption;
+    int m_unknown1;
+    bool m_selected;
+    std::string m_allowedChars;
+    float m_maxLabelWidth;
+    float m_maxLabelScale;
+    float m_placeholderScale;
+    cocos2d::ccColor3B m_placeholderColor;
+    cocos2d::ccColor3B m_textColor;
+    cocos2d::CCLabelBMFont* m_cursor;
+    cocos2d::CCTextFieldTTF* m_textField;
+    TextInputDelegate* m_delegate;
+    int m_maxLabelLength;
+    cocos2d::CCLabelBMFont* m_placeholderLabel;
+    bool m_unknown2;
+    bool m_unknown3;
+    bool m_forceOffset;
+};
+
+class CustomSongLayer : public GDObj {
+public:
+    virtual ~CustomSongLayer();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+    virtual void dropDownLayerWillClose(GJDropDownLayer*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class EndPortalObject : public GDObj {
+public:
+    virtual ~EndPortalObject();
+    virtual bool init();
+    virtual void setPosition(cocos2d::CCPoint const&);
+    virtual void setVisible(bool);
+    virtual void triggerObject(GJBaseGameLayer*);
+    virtual void calculateSpawnXPos();
+};
+
+class FileSaveManager : public GDObj {
+public:
+    virtual ~FileSaveManager();
+    virtual bool init();
+    virtual void firstLoad();
+};
+
+class GJBaseGameLayer : public cocos2d::CCLayer, public GDObj {
+public:
+    virtual ~GJBaseGameLayer();
+    virtual bool init();
+    virtual void objectsCollided(int, int);
+    virtual void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int);
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+    virtual void flipGravity(PlayerObject*, bool, bool);
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+    virtual void toggleGroupTriggered(int, bool);
+    virtual void spawnGroup(int);
+    virtual void addToSection(GameObject*);
+    virtual void addToGroup(GameObject*, int, bool);
+    virtual void removeFromGroup(GameObject*, int);
+    void addObjectCounter(LabelGameObject*, int);
+    void addToGroups(GameObject*, bool);
+    void atlasValue(int);
+    void bumpPlayer(PlayerObject*, GameObject*);
+    void calculateOpacityValues(EffectGameObject*, EffectGameObject*, float, GJEffectManager*);
+    void checkSpawnObjects();
+    void collectItem(int, int);
+    void collectedObject(EffectGameObject*);
+    void createTextLayers();
+    void damagingObjectsInRect(cocos2d::CCRect);
+    void enableHighCapacityMode();
+    void getCapacityString();
+    void getGroundHeightForMode(int);
+    void getGroup(int);
+    void getMoveDeltaForObjects(int, int);
+    void getOptimizedGroup(int);
+    void getStaticGroup(int);
+    void isGroupDisabledForObject(GameObject*);
+    void isGroupDisabledForObjectFull(GameObject*, cocos2d::CCArray*);
+    void loadUpToPosition(float);
+    void objectIntersectsCircle(GameObject*, GameObject*);
+    void objectTriggered(EffectGameObject*);
+    void optimizeMoveGroups();
+    void parentForZLayer(int, bool, int);
+    void playerTouchedRing(PlayerObject*, GameObject*);
+    void processColorObject(EffectGameObject*, int, cocos2d::CCDictionary*, float, GJEffectManager*);
+    void processFollowActions();
+    void processMoveActions();
+    void processMoveActionsStep(float);
+    void processOpacityObject(EffectGameObject*, cocos2d::CCDictionary*, float, GJEffectManager*);
+    void processPlayerFollowActions(float);
+    void processRotationActions();
+    void pushButton(int, bool);
+    void rectIntersectsCircle(cocos2d::CCRect, cocos2d::CCPoint, float);
+    void refreshCounterLabels();
+    void releaseButton(int, bool);
+    void removeFromGroups(GameObject*);
+    void removeObjectFromSection(GameObject*);
+    void reorderObjectSection(GameObject*);
+    void resetGroupCounters(bool);
+    void resetMoveOptimizedValue();
+    void sectionForPos(float);
+    void setupLayers();
+    void shouldExitHackedLevel();
+    void spawnGroupTriggered(int, float, int);
+    void staticObjectsInRect(cocos2d::CCRect);
+    void testInstantCountTrigger(int, int, int, bool, int);
+    void toggleGroup(int, bool);
+    void togglePlayerVisibility(bool);
+    void triggerMoveCommand(EffectGameObject*);
+    void updateCollisionBlocks();
+    void updateCounters(int, int);
+    void updateDisabledObjectsLastPos(cocos2d::CCArray*);
+    void updateLayerCapacity(std::string);
+    void updateLegacyLayerCapacity(int, int, int, int);
+    void updateOBB2(cocos2d::CCRect);
+    void updateQueuedLabels();
+    CLASS_PARAM(GJEffectManager*, effectManager, 0x180);
+    CLASS_PARAM(cocos2d::CCLayer*, objectLayer, 0x188);
+    CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
+    CLASS_PARAM(PlayerObject*, player1, 0x380);
+    CLASS_PARAM(PlayerObject*, player2, 0x388);
+    CLASS_PARAM(LevelSettingsObject*, levelSettings, 0x390);
+    CLASS_PARAM(cocos2d::CCDictionary*, unknownDict, 0x398);
+};
+
+class GJChallengeItem : public GDObj {
+public:
+    virtual ~GJChallengeItem();
+    virtual void encodeWithCoder(DS_Dictionary*);
+    virtual bool canEncode();
+};
+
+class GJDropDownLayer : public cocos2d::CCLayerColor, public GDObj {
+public:
+    virtual ~GJDropDownLayer();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void customSetup();
+    virtual void enterLayer();
+    virtual void exitLayer(cocos2d::CCObject*);
+    virtual void showLayer(bool);
+    virtual void hideLayer(bool);
+    virtual void layerVisible();
+    virtual void layerHidden();
+    virtual void enterAnimFinished();
+    virtual void disableUI();
+    virtual void enableUI();
+    static GJDropDownLayer* create(char const*, float);
+    bool init(char const*, float);
+    cocos2d::CCPoint m_endPosition;
+    cocos2d::CCPoint m_startPosition;
+    cocos2d::CCMenu* m_buttonMenu;
+    GJListLayer* m_listLayer;
+    bool m_controllerEnabled;
+    cocos2d::CCLayer* m_mainLayer;
+    bool m_hidden;
+    void* m_unknown;
+};
+
+class GJEffectManager : public GDObj {
+public:
+    virtual ~GJEffectManager();
+    virtual bool init();
+};
+
+class GJFriendRequest : public GDObj {
+public:
+    virtual ~GJFriendRequest();
+    virtual bool init();
+};
+
+class GJObjectDecoder : public GDObj {
+public:
+    virtual ~GJObjectDecoder();
+    virtual bool init();
+    virtual void getDecodedObject(int, DS_Dictionary*);
+};
+
+class InfoAlertButton : public GDObj {
+public:
+    virtual ~InfoAlertButton();
+    virtual void activate();
+};
+
+class LabelGameObject : public GDObj {
+public:
+    virtual ~LabelGameObject();
+    virtual bool init();
+    virtual void setOpacity(unsigned char);
+    virtual void setupCustomSprites();
+    virtual void addMainSpriteToParent(bool);
+    virtual void getSaveString();
+    virtual void setObjectColor(cocos2d::_ccColor3B const&);
+};
+
+class MoreSearchLayer : public GDObj {
+public:
+    virtual ~MoreSearchLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class RetryLevelLayer : public GDObj {
+public:
+    virtual ~RetryLevelLayer();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void customSetup();
+    virtual void showLayer(bool);
+    virtual void enterAnimFinished();
+    virtual void keyUp(cocos2d::enumKeyCodes);
+};
+
+class SelectFontLayer : public GDObj {
+public:
+    virtual ~SelectFontLayer();
+    virtual void keyBackClicked();
+};
+
+class SetGroupIDLayer : public GDObj {
+public:
+    virtual ~SetGroupIDLayer();
+    virtual void keyBackClicked();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+};
+
+class SetupPulsePopup : public GDObj {
+public:
+    virtual ~SetupPulsePopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void colorValueChanged(cocos2d::_ccColor3B);
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void colorSelectClosed(GJSpecialColorSelect*, int);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class SetupShakePopup : public GDObj {
+public:
+    virtual ~SetupShakePopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class SetupSpawnPopup : public GDObj {
+public:
+    virtual ~SetupSpawnPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class ShareLevelLayer : public GDObj {
+public:
+    virtual ~ShareLevelLayer();
+    virtual void keyBackClicked();
+};
+
+class TopArtistsLayer : public GDObj {
+public:
+    virtual ~TopArtistsLayer();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void loadListFinished(cocos2d::CCArray*, char const*);
+    virtual void loadListFailed(char const*);
+    virtual void setupPageInfo(std::string, char const*);
+};
+
+class AccountHelpLayer : public GDObj {
+public:
+    virtual ~AccountHelpLayer();
+    virtual void customSetup();
+    virtual void layerHidden();
+    virtual void accountStatusChanged();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class CCAnimatedSprite : public GDObj {
+public:
+    virtual ~CCAnimatedSprite();
+    virtual void setOpacity(unsigned char);
+    virtual void animationFinished(char const*);
+    virtual void animationFinishedO(cocos2d::CCObject*);
+};
+
+class CCContentManager : public GDObj {
+public:
+    virtual ~CCContentManager();
+};
+
+class CCPartAnimSprite : public GDObj {
+public:
+    virtual ~CCPartAnimSprite();
+    virtual void setScaleX(float);
+    virtual void setScaleY(float);
+    virtual void setScale(float);
+    virtual void setOpacity(unsigned char);
+    virtual void setBlendFunc(cocos2d::_ccBlendFunc);
+    virtual void setDisplayFrame(cocos2d::CCSpriteFrame*);
+    virtual void isFrameDisplayed(cocos2d::CCSpriteFrame*);
+    virtual void displayFrame();
+};
+
+class CCScrollLayerExt : public GDObj {
+public:
+    virtual ~CCScrollLayerExt();
+    virtual void visit();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void preVisitWithClippingRect(cocos2d::CCRect);
+    virtual void postVisit();
+    void moveToTop();
+    void moveToTopWithOffset(float);
+};
+
+class CheckpointObject : public GDObj {
+public:
+    virtual ~CheckpointObject();
+    virtual bool init();
+};
+
+class ColorSelectPopup : public GDObj {
+public:
+    virtual ~ColorSelectPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void colorValueChanged(cocos2d::_ccColor3B);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void colorSelectClosed(GJSpecialColorSelect*, int);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class CustomSongWidget : public GDObj {
+public:
+    virtual ~CustomSongWidget();
+    virtual void loadSongInfoFinished(SongInfoObject*);
+    virtual void loadSongInfoFailed(int, GJSongError);
+    virtual void downloadSongFinished(SongInfoObject*);
+    virtual void downloadSongFailed(int, GJSongError);
+    virtual void songStateChanged();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class EditorPauseLayer : public GDObj {
+public:
+    virtual ~EditorPauseLayer();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void customSetup();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+};
+
+class EffectGameObject : public GDObj {
+public:
+    virtual ~EffectGameObject();
+    virtual void customSetup();
+    virtual void triggerObject(GJBaseGameLayer*);
+    virtual void getSaveString();
+    virtual void triggerActivated(float);
+    virtual void spawnXPosition();
+    static EffectGameObject* create(char const*);
+    void getTargetColorIndex();
+    CLASS_PARAM(int, targetGroup, 0x4F8);
+    CLASS_PARAM(bool, activateGroup, 0x578);
+    CLASS_PARAM(bool, touchHoldMode, 0x579);
+    CLASS_PARAM(int, animationID, 0x584);
+    CLASS_PARAM(float, spawnDelay, 0x588);
+    CLASS_PARAM(bool, multiTrigger, 0x594);
+    CLASS_PARAM(int, targetCount, 0x598);
+    CLASS_PARAM(int, compareType, 0x5A0);
+    CLASS_PARAM(int, itemBlockBID, 0x5A8);
+    CLASS_PARAM(int, itemBlockID, 0x5B0);
+};
+
+class FollowRewardPage : public GDObj {
+public:
+    virtual ~FollowRewardPage();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void updateRate();
+};
+
+class GJAccountManager : public GDObj {
+public:
+    virtual ~GJAccountManager();
+    virtual bool init();
+};
+
+class GJFlyGroundLayer : public GDObj {
+public:
+    virtual ~GJFlyGroundLayer();
+    virtual bool init();
+};
+
+class GJLevelScoreCell : public GDObj {
+public:
+    virtual ~GJLevelScoreCell();
+    virtual bool init();
+    virtual void draw();
+};
+
+class GJMoreGamesLayer : public GDObj {
+public:
+    virtual ~GJMoreGamesLayer();
+    virtual void customSetup();
+};
+
+class GameLevelManager : public GDObj {
+public:
+    virtual ~GameLevelManager();
+    virtual bool init();
+};
+
+class GameSoundManager : public GDObj {
+public:
+    virtual ~GameSoundManager();
+    virtual bool init();
+};
+
+class GameStatsManager : public GDObj {
+public:
+    virtual ~GameStatsManager();
+    virtual bool init();
+};
+
+class GhostTrailEffect : public GDObj {
+public:
+    virtual ~GhostTrailEffect();
+    virtual bool init();
+    virtual void draw();
+};
+
+class KeybindingsLayer : public GDObj {
+public:
+    virtual ~KeybindingsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+};
+
+class LevelEditorLayer : public GJBaseGameLayer{
+public:
+    virtual ~LevelEditorLayer();
+    virtual void update(float);
+    virtual void draw();
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+    virtual void flipGravity(PlayerObject*, bool, bool);
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+    virtual void addToGroup(GameObject*, int, bool);
+    virtual void removeFromGroup(GameObject*, int);
+    virtual void timeForXPos(float);
+    virtual void xPosForTime(float);
+    virtual void levelSettingsUpdated();
+    void activateTriggerEffect(EffectGameObject*, float, float, float);
+    GameObject* addObjectFromString(std::string);
+    void addSpecial(GameObject*);
+    void addToRedoList(UndoObject*);
+    void addToUndoList(UndoObject*, bool);
+    void animateInDualGround(GameObject*, float, bool);
+    void checkCollisions(PlayerObject*, float);
+    static LevelEditorLayer* create(GJGameLevel*);
+    void createBackground();
+    void createGroundLayer();
+    GameObject* createObject(int, cocos2d::CCPoint, bool);
+    void createObjectsFromSetup(std::string);
+    void createObjectsFromString(std::string, bool);
+    void getLastObjectX();
+    void getLevelString();
+    void getNextColorChannel();
+    void getNextFreeBlockID(cocos2d::CCArray*);
+    int getNextFreeGroupID(cocos2d::CCArray*);
+    void getNextFreeItemID(cocos2d::CCArray*);
+    void getObjectRect(GameObject*, bool);
+    void getRelativeOffset(GameObject*);
+    void handleAction(bool, cocos2d::CCArray*);
+    bool init(GJGameLevel*);
+    void objectAtPosition(cocos2d::CCPoint);
+    void objectMoved(GameObject*);
+    void objectsInRect(cocos2d::CCRect, bool);
+    void onPlaytest();
+    void onStopPlaytest();
+    void playMusic();
+    void recreateGroups();
+    void redoLastAction();
+    void removeAllObjects();
+    void removeAllObjectsOfType(int);
+    void removeObject(GameObject*, bool);
+    void removeSpecial(GameObject*);
+    void resetMovingObjects();
+    void resetObjectVector();
+    void resetToggledGroups();
+    void resetToggledGroupsAndObjects();
+    void resetUnusedColorChannels();
+    void rotationForSlopeNearObject(GameObject*);
+    void runColorEffect(EffectGameObject*, int, float, float, bool);
+    void scene(GJGameLevel*);
+    void setupLevelStart(LevelSettingsObject*);
+    void sortStickyGroups();
+    void stopTriggersInGroup(int, float);
+    void toggleDualMode(GameObject*, bool, PlayerObject*, bool);
+    void toggleGroupPreview(int, bool);
+    void transferDefaultColors(GJEffectManager*, GJEffectManager*);
+    void undoLastAction();
+    void updateBGAndGColors();
+    void updateBlendValues();
+    void updateDualGround(PlayerObject*, int, bool);
+    void updateEditorMode();
+    void updateGameObjectsNew();
+    void updateGround(float);
+    void updateGroundWidth();
+    void updateOptions();
+    void updateToggledGroups();
+    void updateVisibility(float);
+    CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
+    CLASS_PARAM(EditorUI*, editorUI, 0x5d8);
+};
+
+class LevelLeaderboard : public GDObj {
+public:
+    virtual ~LevelLeaderboard();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void loadLeaderboardFinished(cocos2d::CCArray*, char const*);
+    virtual void loadLeaderboardFailed(char const*);
+    virtual void updateUserScoreFinished();
+    virtual void updateUserScoreFailed();
+};
+
+class LevelSearchLayer : public GDObj {
+public:
+    virtual ~LevelSearchLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void demonFilterSelectClosed(int);
+};
+
+class LevelSelectLayer : public GDObj {
+public:
+    virtual ~LevelSelectLayer();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void updatePageWithObject(cocos2d::CCObject*, cocos2d::CCObject*);
+    virtual void scrollLayerMoved(cocos2d::CCPoint);
+};
+
+class MoreOptionsLayer : public GDObj {
+public:
+    virtual ~MoreOptionsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+    virtual void googlePlaySignedIn();
+};
+
+class NumberInputLayer : public GDObj {
+public:
+    virtual ~NumberInputLayer();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+};
+
+class PlayerCheckpoint : public GDObj {
+public:
+    virtual ~PlayerCheckpoint();
+    virtual bool init();
+};
+
+class SetTargetIDLayer : public GDObj {
+public:
+    virtual ~SetTargetIDLayer();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class SetupRotatePopup : public GDObj {
+public:
+    virtual ~SetupRotatePopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class SliderTouchLogic : public GDObj {
+public:
+    virtual ~SliderTouchLogic();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+};
+
+class SongOptionsLayer : public GDObj {
+public:
+    virtual ~SongOptionsLayer();
+    virtual void keyBackClicked();
+};
+
+class WorldSelectLayer : public GDObj {
+public:
+    virtual ~WorldSelectLayer();
+    virtual void onExit();
+    virtual void keyBackClicked();
+    virtual void scrollLayerWillScrollToPage(BoomScrollLayer*, int);
+    virtual void scrollLayerScrolledToPage(BoomScrollLayer*, int);
+    virtual void scrollLayerMoved(cocos2d::CCPoint);
+};
+
+class AccountLoginLayer : public GDObj {
+public:
+    virtual ~AccountLoginLayer();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void loginAccountFinished(int, int);
+    virtual void loginAccountFailed(AccountError);
+};
+
+class AchievementsLayer : public GDObj {
+public:
+    virtual ~AchievementsLayer();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void customSetup();
+    void loadPage(int);
+};
+
+class AudioEffectsLayer : public GDObj {
+public:
+    virtual ~AudioEffectsLayer();
+    virtual void draw();
+    virtual void updateTweenAction(float, char const*);
+};
+
+class CCMenuItemToggler : public cocos2d::CCMenuItem, public GDObj {
+public:
+    virtual ~CCMenuItemToggler();
+    virtual void activate();
+    virtual void selected();
+    virtual void unselected();
+    virtual void setEnabled(bool);
+    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    void setSizeMult(float);
+    void toggle(bool);
+    CCMenuItemSpriteExtra* m_onButton;
+    CCMenuItemSpriteExtra* m_offButton;
+    bool m_toggled;
+    bool m_notClickable;
+};
+
+class ColorActionSprite : public GDObj {
+public:
+    virtual ~ColorActionSprite();
+    virtual bool init();
+};
+
+class DungeonBarsSprite : public GDObj {
+public:
+    virtual ~DungeonBarsSprite();
+    virtual bool init();
+    virtual void visit();
+};
+
+class EditTriggersPopup : public GDObj {
+public:
+    virtual ~EditTriggersPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+};
+
+class GJColorSetupLayer : public GDObj {
+public:
+    virtual ~GJColorSetupLayer();
+    virtual void keyBackClicked();
+    virtual void colorSelectClosed(cocos2d::CCNode*);
+};
+
+class GJRotationControl : public GDObj {
+public:
+    virtual ~GJRotationControl();
+    virtual bool init();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+};
+
+class GooglePlayManager : public GDObj {
+public:
+    virtual ~GooglePlayManager();
+    virtual bool init();
+};
+
+class LeaderboardsLayer : public GDObj {
+public:
+    virtual ~LeaderboardsLayer();
+    virtual void keyBackClicked();
+    virtual void updateUserScoreFinished();
+    virtual void updateUserScoreFailed();
+    virtual void loadLeaderboardFinished(cocos2d::CCArray*, char const*);
+    virtual void loadLeaderboardFailed(char const*);
+};
+
+class LevelBrowserLayer : public GDObj {
+public:
+    virtual ~LevelBrowserLayer();
+    virtual void onEnter();
+    virtual void onEnterTransitionDidFinish();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void loadLevelsFinished(cocos2d::CCArray*, char const*);
+    virtual void loadLevelsFailed(char const*);
+    virtual void setupPageInfo(std::string, char const*);
+    virtual void setTextPopupClosed(SetTextPopup*, std::string);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void setIDPopupClosed(SetIDPopup*, int);
+};
+
+class LevelFeatureLayer : public GDObj {
+public:
+    virtual ~LevelFeatureLayer();
+    virtual void keyBackClicked();
+};
+
+class LocalLevelManager : public GDObj {
+public:
+    virtual ~LocalLevelManager();
+    virtual bool init();
+    virtual void encodeDataTo(DS_Dictionary*);
+    virtual void dataLoaded(DS_Dictionary*);
+    virtual void firstLoad();
+};
+
+class PromoInterstitial : public GDObj {
+public:
+    virtual ~PromoInterstitial();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void keyBackClicked();
+    virtual void show();
+};
+
+class PurchaseItemPopup : public GDObj {
+public:
+    virtual ~PurchaseItemPopup();
+    virtual void keyBackClicked();
+};
+
+class RewardUnlockLayer : public GDObj {
+public:
+    virtual ~RewardUnlockLayer();
+    virtual void keyBackClicked();
+    virtual void currencyWillExit(CurrencyRewardLayer*);
+};
+
+class SecretNumberLayer : public GDObj {
+public:
+    virtual ~SecretNumberLayer();
+    virtual bool init();
+};
+
+class SetupOpacityPopup : public GDObj {
+public:
+    virtual ~SetupOpacityPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+};
+
+class ShareCommentLayer : public GDObj {
+public:
+    virtual ~ShareCommentLayer();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+};
+
+class SpriteDescription : public GDObj {
+public:
+    virtual ~SpriteDescription();
 };
 
 class TextInputDelegate : public GDObj {
 public:
-    void textChanged(CCTextInputNode*);
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-    void allowTextInput(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+    virtual void allowTextInput(CCTextInputNode*);
 };
 
 class UploadActionPopup : public GDObj {
 public:
-    ~UploadActionPopup();
-    void keyBackClicked();
+    virtual ~UploadActionPopup();
+    virtual void keyBackClicked();
 };
 
 class VideoOptionsLayer : public GDObj {
 public:
-    ~VideoOptionsLayer();
-    bool init();
-    void keyBackClicked();
+    virtual ~VideoOptionsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
 };
 
 class AchievementManager : public GDObj {
 public:
-    ~AchievementManager();
-    bool init();
+    virtual ~AchievementManager();
+    virtual bool init();
+    void getAllAchievements();
+    void sharedState();
 };
 
 class AnimatedGameObject : public GDObj {
 public:
-    ~AnimatedGameObject();
-    void setOpacity(unsigned char);
-    void resetObject();
-    void activateObject();
-    void deactivateObject(bool);
-    void setObjectColor(cocos2d::_ccColor3B const&);
-    void animationFinished(char const*);
-    void displayFrameChanged(cocos2d::CCObject*, std::string);
+    virtual ~AnimatedGameObject();
+    virtual void setOpacity(unsigned char);
+    virtual void resetObject();
+    virtual void activateObject();
+    virtual void deactivateObject(bool);
+    virtual void setObjectColor(cocos2d::_ccColor3B const&);
+    virtual void animationFinished(char const*);
+    virtual void displayFrameChanged(cocos2d::CCObject*, std::string);
+    void playAnimation(int);
+    void updateChildSpriteColor(cocos2d::_ccColor3B);
 };
 
 class AnimatedShopKeeper : public GDObj {
 public:
-    ~AnimatedShopKeeper();
-    void animationFinished(char const*);
+    virtual ~AnimatedShopKeeper();
+    virtual void animationFinished(char const*);
 };
 
 class ColorChannelSprite : public GDObj {
 public:
-    ~ColorChannelSprite();
-    bool init();
+    virtual ~ColorChannelSprite();
+    virtual bool init();
 };
 
 class ConfigureHSVWidget : public GDObj {
 public:
-    ~ConfigureHSVWidget();
+    virtual ~ConfigureHSVWidget();
 };
 
 class EditorOptionsLayer : public GDObj {
 public:
-    ~EditorOptionsLayer();
-    bool init();
-    void setupOptions();
-    void onClose(cocos2d::CCObject*);
+    virtual ~EditorOptionsLayer();
+    virtual bool init();
+    virtual void setupOptions();
+    virtual void onClose(cocos2d::CCObject*);
 };
 
 class FriendRequestPopup : public GDObj {
 public:
-    ~FriendRequestPopup();
-    void keyBackClicked();
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void onClosePopup(UploadActionPopup*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual ~FriendRequestPopup();
+    virtual void keyBackClicked();
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
 };
 
 class FriendsProfilePage : public GDObj {
 public:
-    ~FriendsProfilePage();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void getUserListFinished(cocos2d::CCArray*, UserListType);
-    void getUserListFailed(UserListType, GJErrorCode);
-    void userListChanged(cocos2d::CCArray*, UserListType);
-    void forceReloadList(UserListType);
+    virtual ~FriendsProfilePage();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void getUserListFinished(cocos2d::CCArray*, UserListType);
+    virtual void getUserListFailed(UserListType, GJErrorCode);
+    virtual void userListChanged(cocos2d::CCArray*, UserListType);
+    virtual void forceReloadList(UserListType);
 };
 
 class GJCommentListLayer : public GDObj {
 public:
-    ~GJCommentListLayer();
+    virtual ~GJCommentListLayer();
 };
 
 class GJMoveCommandLayer : public GDObj {
 public:
-    ~GJMoveCommandLayer();
-    void keyBackClicked();
-    void valuePopupClosed(ConfigureValuePopup*, float);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~GJMoveCommandLayer();
+    virtual void keyBackClicked();
+    virtual void valuePopupClosed(ConfigureValuePopup*, float);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class GameEffectsManager : public GDObj {
 public:
-    ~GameEffectsManager();
+    virtual ~GameEffectsManager();
 };
 
 class GroupCommandObject : public GDObj {
 public:
-    ~GroupCommandObject();
-    bool init();
-    void updateTweenAction(float, char const*);
+    virtual ~GroupCommandObject();
+    virtual bool init();
+    virtual void updateTweenAction(float, char const*);
 };
 
 class KeybindingsManager : public GDObj {
 public:
-    ~KeybindingsManager();
-    bool init();
+    virtual ~KeybindingsManager();
+    virtual bool init();
 };
 
 class LevelSettingsLayer : public GDObj {
 public:
-    ~LevelSettingsLayer();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void colorSelectClosed(cocos2d::CCNode*);
-    void customSongLayerClosed();
-    void selectArtClosed(SelectArtLayer*);
+    virtual ~LevelSettingsLayer();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void colorSelectClosed(cocos2d::CCNode*);
+    virtual void customSongLayerClosed();
+    virtual void selectArtClosed(SelectArtLayer*);
 };
 
-class AchievementNotifier : public GDObj {
+class AchievementNotifier : public cocos2d::CCNode, public GDObj {
 public:
-    ~AchievementNotifier();
-    bool init();
+    virtual ~AchievementNotifier();
+    virtual bool init();
+    void sharedState();
+    void willSwitchToScene(cocos2d::CCScene*);
 };
 
 class CCAnimateFrameCache : public GDObj {
 public:
-    ~CCAnimateFrameCache();
+    virtual ~CCAnimateFrameCache();
 };
 
 class CollisionBlockPopup : public GDObj {
 public:
-    ~CollisionBlockPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~CollisionBlockPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class CommunityCreditNode : public GDObj {
 public:
-    ~CommunityCreditNode();
+    virtual ~CommunityCreditNode();
 };
 
 class ConfigureValuePopup : public GDObj {
 public:
-    ~ConfigureValuePopup();
-    void keyBackClicked();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
+    virtual ~ConfigureValuePopup();
+    virtual void keyBackClicked();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
 };
 
 class CurrencyRewardLayer : public GDObj {
 public:
-    ~CurrencyRewardLayer();
-    void update(float);
+    virtual ~CurrencyRewardLayer();
+    virtual void update(float);
 };
 
 class EditGameObjectPopup : public GDObj {
 public:
-    ~EditGameObjectPopup();
-    void keyBackClicked();
-    void show();
+    virtual ~EditGameObjectPopup();
+    virtual void keyBackClicked();
+    virtual void show();
 };
 
 class FRequestProfilePage : public GDObj {
 public:
-    ~FRequestProfilePage();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void onClosePopup(UploadActionPopup*);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void loadFRequestsFinished(cocos2d::CCArray*, char const*);
-    void loadFRequestsFailed(char const*, GJErrorCode);
-    void setupPageInfo(std::string, char const*);
-    void forceReloadRequests(bool);
+    virtual ~FRequestProfilePage();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void loadFRequestsFinished(cocos2d::CCArray*, char const*);
+    virtual void loadFRequestsFailed(char const*, GJErrorCode);
+    virtual void setupPageInfo(std::string, char const*);
+    virtual void forceReloadRequests(bool);
 };
 
 class GJWriteMessagePopup : public GDObj {
 public:
-    ~GJWriteMessagePopup();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void uploadMessageFinished(int);
-    void uploadMessageFailed(int);
-    void onClosePopup(UploadActionPopup*);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~GJWriteMessagePopup();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void uploadMessageFinished(int);
+    virtual void uploadMessageFailed(int);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class GauntletSelectLayer : public GDObj {
 public:
-    ~GauntletSelectLayer();
-    void onExit();
-    void keyBackClicked();
-    void scrollLayerWillScrollToPage(BoomScrollLayer*, int);
-    void scrollLayerScrolledToPage(BoomScrollLayer*, int);
-    void loadLevelsFinished(cocos2d::CCArray*, char const*);
-    void loadLevelsFailed(char const*);
+    virtual ~GauntletSelectLayer();
+    virtual void onExit();
+    virtual void keyBackClicked();
+    virtual void scrollLayerWillScrollToPage(BoomScrollLayer*, int);
+    virtual void scrollLayerScrolledToPage(BoomScrollLayer*, int);
+    virtual void loadLevelsFinished(cocos2d::CCArray*, char const*);
+    virtual void loadLevelsFailed(char const*);
 };
 
 class GravityEffectSprite : public GDObj {
 public:
-    ~GravityEffectSprite();
-    bool init();
-    void draw();
+    virtual ~GravityEffectSprite();
+    virtual bool init();
+    virtual void draw();
 };
 
 class LevelSettingsObject : public GDObj {
 public:
-    ~LevelSettingsObject();
-    bool init();
+    virtual ~LevelSettingsObject();
+    virtual bool init();
 };
 
 class MessagesProfilePage : public GDObj {
 public:
-    ~MessagesProfilePage();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void onClosePopup(UploadActionPopup*);
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
-    void loadMessagesFinished(cocos2d::CCArray*, char const*);
-    void loadMessagesFailed(char const*, GJErrorCode);
-    void forceReloadMessages(bool);
-    void setupPageInfo(std::string, char const*);
+    virtual ~MessagesProfilePage();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void onClosePopup(UploadActionPopup*);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
+    virtual void loadMessagesFinished(cocos2d::CCArray*, char const*);
+    virtual void loadMessagesFailed(char const*, GJErrorCode);
+    virtual void forceReloadMessages(bool);
+    virtual void setupPageInfo(std::string, char const*);
 };
 
 class SetupAnimationPopup : public GDObj {
 public:
-    ~SetupAnimationPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupAnimationPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class AccountRegisterLayer : public GDObj {
 public:
-    ~AccountRegisterLayer();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
-    void allowTextInput(CCTextInputNode*);
-    void registerAccountFinished();
-    void registerAccountFailed(AccountError);
+    virtual ~AccountRegisterLayer();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
+    virtual void allowTextInput(CCTextInputNode*);
+    virtual void registerAccountFinished();
+    virtual void registerAccountFailed(AccountError);
 };
 
 class CommunityCreditsPage : public GDObj {
 public:
-    ~CommunityCreditsPage();
-    bool init();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
+    virtual ~CommunityCreditsPage();
+    virtual bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
 };
 
 class CustomizeObjectLayer : public GDObj {
 public:
-    ~CustomizeObjectLayer();
-    void keyBackClicked();
-    void textInputOpened(CCTextInputNode*);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void hsvPopupClosed(HSVWidgetPopup*, cocos2d::_ccHSVValue);
-    void colorSelectClosed(cocos2d::CCNode*);
-    void colorSetupClosed(int);
+    virtual ~CustomizeObjectLayer();
+    virtual void keyBackClicked();
+    virtual void textInputOpened(CCTextInputNode*);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void hsvPopupClosed(HSVWidgetPopup*, cocos2d::_ccHSVValue);
+    virtual void colorSelectClosed(cocos2d::CCNode*);
+    virtual void colorSetupClosed(int);
 };
 
 class GJFollowCommandLayer : public GDObj {
 public:
-    ~GJFollowCommandLayer();
-    void keyBackClicked();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~GJFollowCommandLayer();
+    virtual void keyBackClicked();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class GJRotateCommandLayer : public GDObj {
 public:
-    ~GJRotateCommandLayer();
-    void keyBackClicked();
-    void valuePopupClosed(ConfigureValuePopup*, float);
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~GJRotateCommandLayer();
+    virtual void keyBackClicked();
+    virtual void valuePopupClosed(ConfigureValuePopup*, float);
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class GJSpecialColorSelect : public GDObj {
 public:
-    ~GJSpecialColorSelect();
-    void keyBackClicked();
+    virtual ~GJSpecialColorSelect();
+    virtual void keyBackClicked();
 };
 
 class MusicDelegateHandler : public GDObj {
 public:
-    ~MusicDelegateHandler();
+    virtual ~MusicDelegateHandler();
 };
 
 class MusicDownloadManager : public GDObj {
 public:
-    ~MusicDownloadManager();
-    bool init();
+    virtual ~MusicDownloadManager();
+    virtual bool init();
 };
 
 class ParentalOptionsLayer : public GDObj {
 public:
-    ~ParentalOptionsLayer();
-    bool init();
-    void keyBackClicked();
+    virtual ~ParentalOptionsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
 };
 
 class TeleportPortalObject : public GDObj {
 public:
-    ~TeleportPortalObject();
-    void setPosition(cocos2d::CCPoint const&);
-    void setRotation(float);
-    void setStartPos(cocos2d::CCPoint);
-    void getSaveString();
-    void addToGroup(int);
-    void removeFromGroup(int);
-    void setRotation2(float);
-    void addToGroup2(int);
-    void removeFromGroup2(int);
+    virtual ~TeleportPortalObject();
+    virtual void setPosition(cocos2d::CCPoint const&);
+    virtual void setRotation(float);
+    virtual void setStartPos(cocos2d::CCPoint);
+    virtual void getSaveString();
+    virtual void addToGroup(int);
+    virtual void removeFromGroup(int);
+    virtual void setRotation2(float);
+    virtual void addToGroup2(int);
+    virtual void removeFromGroup2(int);
 };
 
 class UploadActionDelegate : public GDObj {
 public:
-    void uploadActionFinished(int, int);
-    void uploadActionFailed(int, int);
+    virtual void uploadActionFinished(int, int);
+    virtual void uploadActionFailed(int, int);
 };
 
 class CreateGuidelinesLayer : public GDObj {
 public:
-    ~CreateGuidelinesLayer();
-    void update(float);
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void keyUp(cocos2d::enumKeyCodes);
+    virtual ~CreateGuidelinesLayer();
+    virtual void update(float);
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void keyUp(cocos2d::enumKeyCodes);
 };
 
 class GJPFollowCommandLayer : public GDObj {
 public:
-    ~GJPFollowCommandLayer();
-    void keyBackClicked();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~GJPFollowCommandLayer();
+    virtual void keyBackClicked();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class MoreVideoOptionsLayer : public GDObj {
 public:
-    ~MoreVideoOptionsLayer();
-    bool init();
-    void keyBackClicked();
+    virtual ~MoreVideoOptionsLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
 };
 
 class MusicDownloadDelegate : public GDObj {
 public:
-    void loadSongInfoFinished(SongInfoObject*);
-    void loadSongInfoFailed(int, GJSongError);
-    void downloadSongFinished(SongInfoObject*);
-    void downloadSongFailed(int, GJSongError);
+    virtual void loadSongInfoFinished(SongInfoObject*);
+    virtual void loadSongInfoFailed(int, GJSongError);
+    virtual void downloadSongFinished(SongInfoObject*);
+    virtual void downloadSongFailed(int, GJSongError);
 };
 
 class SetupTouchTogglePopup : public GDObj {
 public:
-    ~SetupTouchTogglePopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupTouchTogglePopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class ColorSelectLiveOverlay : public GDObj {
 public:
-    ~ColorSelectLiveOverlay();
-    void keyBackClicked();
-    void show();
+    virtual ~ColorSelectLiveOverlay();
+    virtual void keyBackClicked();
+    virtual void show();
 };
 
 class DemonFilterSelectLayer : public GDObj {
 public:
-    ~DemonFilterSelectLayer();
-    bool init();
-    void keyBackClicked();
+    virtual ~DemonFilterSelectLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
 };
 
 class GJAccountSettingsLayer : public GDObj {
 public:
-    ~GJAccountSettingsLayer();
-    void keyBackClicked();
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~GJAccountSettingsLayer();
+    virtual void keyBackClicked();
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class SetupAnimSettingsPopup : public GDObj {
 public:
-    ~SetupAnimSettingsPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupAnimSettingsPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class SetupCountTriggerPopup : public GDObj {
 public:
-    ~SetupCountTriggerPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupCountTriggerPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class SetupInstantCountPopup : public GDObj {
 public:
-    ~SetupInstantCountPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupInstantCountPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class SetupObjectTogglePopup : public GDObj {
 public:
-    ~SetupObjectTogglePopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupObjectTogglePopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class SpriteAnimationManager : public GDObj {
 public:
-    ~SpriteAnimationManager();
+    virtual ~SpriteAnimationManager();
 };
 
 class BoomScrollLayerDelegate : public GDObj {
 public:
-    void scrollLayerScrollingStarted(BoomScrollLayer*);
-    void scrollLayerScrolledToPage(BoomScrollLayer*, int);
-    void scrollLayerMoved(cocos2d::CCPoint);
-    void scrollLayerWillScrollToPage(BoomScrollLayer*, int);
+    virtual void scrollLayerScrollingStarted(BoomScrollLayer*);
+    virtual void scrollLayerScrolledToPage(BoomScrollLayer*, int);
+    virtual void scrollLayerMoved(cocos2d::CCPoint);
+    virtual void scrollLayerWillScrollToPage(BoomScrollLayer*, int);
 };
 
 class SetupPickupTriggerPopup : public GDObj {
 public:
-    ~SetupPickupTriggerPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupPickupTriggerPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class ShareLevelSettingsLayer : public GDObj {
 public:
-    ~ShareLevelSettingsLayer();
-    void keyBackClicked();
-    void numberInputClosed(NumberInputLayer*);
+    virtual ~ShareLevelSettingsLayer();
+    virtual void keyBackClicked();
+    virtual void numberInputClosed(NumberInputLayer*);
 };
 
 class PlatformDownloadDelegate : public GDObj {
 public:
-    void downloadFinished(char const*);
-    void downloadFailed(char const*);
+    virtual void downloadFinished(char const*);
+    virtual void downloadFailed(char const*);
 };
 
 class SetupInteractObjectPopup : public GDObj {
 public:
-    ~SetupInteractObjectPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupInteractObjectPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class SetupCollisionTriggerPopup : public GDObj {
 public:
-    ~SetupCollisionTriggerPopup();
-    void keyBackClicked();
-    void show();
-    void textInputClosed(CCTextInputNode*);
-    void textChanged(CCTextInputNode*);
-    void textInputShouldOffset(CCTextInputNode*, float);
-    void textInputReturn(CCTextInputNode*);
+    virtual ~SetupCollisionTriggerPopup();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void textInputClosed(CCTextInputNode*);
+    virtual void textChanged(CCTextInputNode*);
+    virtual void textInputShouldOffset(CCTextInputNode*, float);
+    virtual void textInputReturn(CCTextInputNode*);
 };
 
 class UpdateAccountSettingsPopup : public GDObj {
 public:
-    ~UpdateAccountSettingsPopup();
-    void keyBackClicked();
-    void updateSettingsFinished();
-    void updateSettingsFailed();
+    virtual ~UpdateAccountSettingsPopup();
+    virtual void keyBackClicked();
+    virtual void updateSettingsFinished();
+    virtual void updateSettingsFailed();
 };
 
 class Slider : public GDObj {
 public:
-    ~Slider();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual ~Slider();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
 };
 
 class UILayer : public GDObj {
 public:
-    ~UILayer();
-    bool init();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void keyUp(cocos2d::enumKeyCodes);
+    virtual ~UILayer();
+    virtual bool init();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void keyUp(cocos2d::enumKeyCodes);
 };
 
-class EditorUI : public GDObj {
+class EditorUI : public cocos2d::CCLayer, public GDObj {
 public:
-    ~EditorUI();
-    void draw();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void songStateChanged();
-    void colorSelectClosed(cocos2d::CCNode*);
-    void keyUp(cocos2d::enumKeyCodes);
-    void scrollWheel(float, float);
-    void angleChangeBegin();
-    void angleChangeEnded();
-    void angleChanged(float);
-    void scaleChangeBegin();
-    void scaleChangeEnded();
-    void scaleChanged(float);
+    virtual ~EditorUI();
+    virtual void draw();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void songStateChanged();
+    virtual void colorSelectClosed(cocos2d::CCNode*);
+    virtual void keyUp(cocos2d::enumKeyCodes);
+    virtual void scrollWheel(float, float);
+    virtual void angleChangeBegin();
+    virtual void angleChangeEnded();
+    virtual void angleChanged(float);
+    virtual void scaleChangeBegin();
+    virtual void scaleChangeEnded();
+    virtual void scaleChanged(float);
+    void constrainGameLayerPosition();
+    void create(LevelEditorLayer*);
+    void deselectAll();
+    void onDeselectAll(cocos2d::CCObject*);
+    void disableButton(CreateMenuItem*);
+    void editButtonUsable();
+    void editObject(cocos2d::CCObject*);
+    void enableButton(CreateMenuItem*);
+    CCMenuItemSpriteExtra* getCreateBtn(int, int);
+    void getGroupCenter(cocos2d::CCArray*, bool);
+    cocos2d::CCArray* getSelectedObjects();
+    void init(LevelEditorLayer*);
+    void moveObject(GameObject*, cocos2d::CCPoint);
+    void onDuplicate(cocos2d::CCObject*);
+    void pasteObjects(std::string);
+    void playerTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    void playtestStopped();
+    void redoLastAction(cocos2d::CCObject*);
+    void replaceGroupID(GameObject*, int, int);
+    void scaleObjects(cocos2d::CCArray*, float, cocos2d::CCPoint);
+    void selectObjects(cocos2d::CCArray*, bool);
+    void setupCreateMenu();
+    void undoLastAction(cocos2d::CCObject*);
+    void updateButtons();
+    void updateObjectInfoLabel();
+    void updateSlider();
+    void updateZoom(float);
+    CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x408);
+    CLASS_PARAM(cocos2d::CCArray*, editBars, 0x358);
+    CLASS_PARAM(cocos2d::CCNode*, locationSlider, 0x228);
+    CLASS_PARAM(GameObject*, lastSelectedObject, 0x440);
+    CLASS_PARAM(std::string, clipboard, 0x458);
 };
 
 class GManager : public GDObj {
 public:
-    ~GManager();
-    bool init();
-    void setup();
-    void encodeDataTo(DS_Dictionary*);
-    void dataLoaded(DS_Dictionary*);
-    void firstLoad();
+    virtual ~GManager();
+    virtual bool init();
+    virtual void setup();
+    virtual void encodeDataTo(DS_Dictionary*);
+    virtual void dataLoaded(DS_Dictionary*);
+    virtual void firstLoad();
 };
 
 class GameCell : public GDObj {
 public:
-    ~GameCell();
-    bool init();
-    void draw();
+    virtual ~GameCell();
+    virtual bool init();
+    virtual void draw();
 };
 
 class ListCell : public GDObj {
 public:
-    ~ListCell();
-    bool init();
-    void draw();
+    virtual ~ListCell();
+    virtual bool init();
+    virtual void draw();
 };
 
 class SongCell : public GDObj {
 public:
-    ~SongCell();
-    bool init();
-    void draw();
+    virtual ~SongCell();
+    virtual bool init();
+    virtual void draw();
 };
 
 class TextArea : public GDObj {
 public:
-    ~TextArea();
-    void draw();
-    void setOpacity(unsigned char);
+    virtual ~TextArea();
+    virtual void draw();
+    virtual void setOpacity(unsigned char);
 };
 
 class GJComment : public GDObj {
 public:
-    ~GJComment();
-    bool init();
+    virtual ~GJComment();
+    virtual bool init();
 };
 
 class GJMapPack : public GDObj {
 public:
-    ~GJMapPack();
-    bool init();
+    virtual ~GJMapPack();
+    virtual bool init();
 };
 
 class InfoLayer : public GDObj {
 public:
-    ~InfoLayer();
-    void registerWithTouchDispatcher();
-    void keyBackClicked();
-    void show();
-    void loadCommentsFinished(cocos2d::CCArray*, char const*);
-    void loadCommentsFailed(char const*);
-    void setupPageInfo(std::string, char const*);
-    void commentUploadFinished(int);
-    void commentUploadFailed(int, CommentError);
-    void updateUserScoreFinished();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual ~InfoLayer();
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void show();
+    virtual void loadCommentsFinished(cocos2d::CCArray*, char const*);
+    virtual void loadCommentsFailed(char const*);
+    virtual void setupPageInfo(std::string, char const*);
+    virtual void commentUploadFinished(int);
+    virtual void commentUploadFailed(int, CommentError);
+    virtual void updateUserScoreFinished();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
 };
 
 class KeysLayer : public GDObj {
 public:
-    ~KeysLayer();
-    bool init();
-    void keyBackClicked();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
-    void dialogClosed(DialogLayer*);
+    virtual ~KeysLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void dialogClosed(DialogLayer*);
 };
 
 class LevelCell : public GDObj {
 public:
-    ~LevelCell();
-    bool init();
-    void draw();
+    virtual ~LevelCell();
+    virtual bool init();
+    virtual void draw();
 };
 
 class LevelPage : public GDObj {
 public:
-    ~LevelPage();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void dialogClosed(DialogLayer*);
+    virtual ~LevelPage();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void dialogClosed(DialogLayer*);
 };
 
-class MenuLayer : public GDObj {
+class MenuLayer : public cocos2d::CCLayer, public FLAlertLayerProtocol{
 public:
-    ~MenuLayer();
-    bool init();
-    void keyBackClicked();
-    void keyDown(cocos2d::enumKeyCodes);
-    void googlePlaySignedIn();
-    void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual ~MenuLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void googlePlaySignedIn();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    virtual void onMoreGames(cocos2d::CCObject*);
+    virtual void onQuit(cocos2d::CCObject*);
+    virtual void scene(bool);
 };
 
-class PlayLayer : public GDObj {
+class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate{
 public:
-    ~PlayLayer();
-    void update(float);
-    void onEnterTransitionDidFinish();
-    void onExit();
-    void draw();
-    void visit();
-    void updateTweenAction(float, char const*);
-    void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
-    void flipGravity(PlayerObject*, bool, bool);
-    void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
-    void timeForXPos(float);
-    void xPosForTime(float);
-    void currencyWillExit(CurrencyRewardLayer*);
-    void circleWaveWillBeRemoved(CCCircleWave*);
-    void dialogClosed(DialogLayer*);
+    virtual ~PlayLayer();
+    virtual void update(float);
+    virtual void onEnterTransitionDidFinish();
+    virtual void onExit();
+    virtual void draw();
+    virtual void visit();
+    virtual void updateTweenAction(float, char const*);
+    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+    virtual void flipGravity(PlayerObject*, bool, bool);
+    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+    virtual void timeForXPos(float);
+    virtual void xPosForTime(float);
+    virtual void currencyWillExit(CurrencyRewardLayer*);
+    virtual void circleWaveWillBeRemoved(CCCircleWave*);
+    virtual void dialogClosed(DialogLayer*);
+    void addCircle(CCCircleWave*);
+    void addObject(GameObject*);
+    void addToGroupOld(GameObject*);
+    void addToSpeedObjects(GameObject*);
+    void animateInDualGround(GameObject*, float, bool);
+    void animateInGround(bool);
+    void animateOutGround(bool);
+    void animateOutGroundFinished();
+    void applyEnterEffect(GameObject*);
+    void cameraMoveX(float, float, float);
+    void cameraMoveY(float, float, float);
+    void checkCollisions(PlayerObject*, float);
+    void claimParticle(std::string);
+    void clearPickedUpItems();
+    void colorObject(int, cocos2d::_ccColor3B);
+    void commitJumps();
+    static PlayLayer* create(GJGameLevel*);
+    void createCheckpoint();
+    void createObjectsFromSetup(std::string);
+    void createParticle(int, char const*, int, cocos2d::tCCPositionType);
+    void delayedResetLevel();
+    void destroyPlayer(PlayerObject*, GameObject*);
+    void enterDualMode(GameObject*, bool);
+    void exitAirMode();
+    void exitBirdMode(PlayerObject*);
+    void exitDartMode(PlayerObject*);
+    void exitFlyMode(PlayerObject*);
+    void exitRobotMode(PlayerObject*);
+    void exitRollMode(PlayerObject*);
+    void exitSpiderMode(PlayerObject*);
+    void flipFinished();
+    void flipObjects();
+    void fullReset();
+    void getLastCheckpoint();
+    void getMaxPortalY();
+    void getMinPortalY();
+    void getObjectsState();
+    void getOtherPlayer(PlayerObject*);
+    void getParticleKey(int, char const*, int, cocos2d::tCCPositionType);
+    void getParticleKey2(std::string);
+    void getRelativeMod(cocos2d::CCPoint, float, float, float);
+    void getTempMilliTime();
+    void gravityEffectFinished();
+    void hasItem(int);
+    void hasUniqueCoin(GameObject*);
+    void incrementJumps();
+    bool init(GJGameLevel*);
+    void isFlipping();
+    void levelComplete();
+    void lightningFlash(cocos2d::CCPoint, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, int, bool, float);
+    void lightningFlash(cocos2d::CCPoint, cocos2d::_ccColor3B);
+    void loadDefaultColors();
+    void loadFromCheckpoint(CheckpointObject*);
+    void loadLastCheckpoint();
+    void loadSavedObjectsState(std::string);
+    void markCheckpoint();
+    void moveCameraToPos(cocos2d::CCPoint);
+    void onQuit();
+    void optimizeColorGroups();
+    void optimizeOpacityGroups();
+    void optimizeSaveRequiredGroups();
+    void pauseGame(bool);
+    void pickupItem(GameObject*);
+    void playAnimationCommand(int, int);
+    void playEndAnimationToPos(cocos2d::CCPoint);
+    void playExitDualEffect(PlayerObject*);
+    void playFlashEffect(float, int, float);
+    void playGravityEffect(bool);
+    void playSpeedParticle(float);
+    void playerWillSwitchMode(PlayerObject*, GameObject*);
+    void prepareSpawnObjects();
+    void processItems();
+    void processLoadedMoveActions();
+    void recordAction(bool, PlayerObject*);
+    void registerActiveObject(GameObject*);
+    void registerStateObject(GameObject*);
+    void removeAllObjects();
+    void removeFromGroupOld(GameObject*);
+    void removeLastCheckpoint();
+    void removePlayer2();
+    void resetLevel();
+    void resume();
+    void resumeAndRestart();
+    void saveRecordAction(bool, PlayerObject*);
+    void scene(GJGameLevel*);
+    void setupLevelStart(LevelSettingsObject*);
+    void setupReplay(std::string);
+    void shakeCamera(float, float, float);
+    void shouldBlend(int);
+    void showCompleteEffect();
+    void showCompleteText();
+    void showEndLayer();
+    void showHint();
+    void showNewBest(bool, int, int, bool, bool, bool);
+    void showRetryLayer();
+    void showTwoPlayerGuide();
+    void sortGroups();
+    void spawnCircle();
+    void spawnFirework();
+    void spawnParticle(char const*, int, cocos2d::tCCPositionType, cocos2d::CCPoint);
+    void spawnPlayer2();
+    void startGame();
+    void startMusic();
+    void startRecording();
+    void startRecordingDelayed();
+    void stopCameraShake();
+    void stopRecording();
+    void storeCheckpoint(CheckpointObject*);
+    void switchToFlyMode(PlayerObject*, GameObject*, bool, int);
+    void switchToRobotMode(PlayerObject*, GameObject*, bool);
+    void switchToRollMode(PlayerObject*, GameObject*, bool);
+    void switchToSpiderMode(PlayerObject*, GameObject*, bool);
+    void timeForXPos2(float, bool);
+    void toggleBGEffectVisibility(bool);
+    void toggleDualMode(GameObject*, bool, PlayerObject*, bool);
+    void toggleFlipped(bool, bool);
+    void toggleGhostEffect(int);
+    void toggleGlitter(bool);
+    void togglePracticeMode(bool);
+    void toggleProgressbar();
+    void tryStartRecord();
+    void unclaimParticle(char const*, cocos2d::CCParticleSystemQuad*);
+    void unregisterActiveObject(GameObject*);
+    void unregisterStateObject(GameObject*);
+    void updateAttempts();
+    void updateCamera(float);
+    void updateDualGround(PlayerObject*, int, bool);
+    void updateEffectPositions();
+    void updateLevelColors();
+    void updateMoveObjectsLastPosition();
+    void updateProgressbar();
+    void updateReplay(float);
+    void updateTimeMod(float, bool);
+    void updateVisibility();
+    void vfDChk();
+    void visitWithColorFlash();
+    void willSwitchToMode(int, PlayerObject*);
+    CLASS_PARAM(bool, gameStarted, 0x4dc);
+    CLASS_PARAM(EndPortalObject*, endPortal, 0x530);
+    CLASS_PARAM(float, length, 0x5f8);
+    CLASS_PARAM(float, trueLength, 0x5fc);
+    CLASS_PARAM(GJGameLevel*, level, 0x728);
+    CLASS_PARAM(int, attempt, 0x754);
+    CLASS_PARAM(bool, testMode, 0x738);
+    CLASS_PARAM(bool, practiceMode, 0x739);
+    CLASS_PARAM(float, time, 0x760);
+    STRUCT_PARAM(GameModes, gameModes, 0x76f);
 };
 
 class StatsCell : public GDObj {
 public:
-    ~StatsCell();
-    bool init();
-    void draw();
+    virtual ~StatsCell();
+    virtual bool init();
+    virtual void draw();
 };
 
-class TableView : public GDObj {
+class CCScrollLayerExtDelegate : public GDObj {
 public:
-    ~TableView();
-    void onEnter();
-    void onExit();
-    void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void registerWithTouchDispatcher();
-    void scrollWheel(float, float);
-    void scrllViewWillBeginDecelerating(CCScrollLayerExt*);
-    void scrollViewDidEndDecelerating(CCScrollLayerExt*);
-    void scrollViewTouchMoving(CCScrollLayerExt*);
-    void scrollViewDidEndMoving(CCScrollLayerExt*);
+};
+
+class TableView : public CCScrollLayerExt, public CCScrollLayerExtDelegate{
+public:
+    virtual ~TableView();
+    virtual void onEnter();
+    virtual void onExit();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void scrollWheel(float, float);
+    virtual void scrllViewWillBeginDecelerating(CCScrollLayerExt*);
+    virtual void scrollViewDidEndDecelerating(CCScrollLayerExt*);
+    virtual void scrollViewTouchMoving(CCScrollLayerExt*);
+    virtual void scrollViewDidEndMoving(CCScrollLayerExt*);
+    static TableView* create(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    void reloadData();
+    CLASS_PARAM(float, unknown, 0x1c8);
 };
 

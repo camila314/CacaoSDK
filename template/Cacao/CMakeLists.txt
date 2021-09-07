@@ -6,7 +6,7 @@ add_subdirectory(GDML)
 enable_language(ASM_NASM)
 set(CMAKE_ASM_NASM_OBJECT_FORMAT macho64)
 
-add_library(Cacao STATIC symtab.asm Cardamom.cpp)
+add_library(Cacao STATIC Cacao.cpp symtab.asm)
 
 target_link_libraries(Cacao GDML)
 
@@ -31,18 +31,18 @@ add_custom_command(
     COMMENT "Generating headers"
 )
 
-add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/platform/shared/buildcardamom.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/Cardamom.cpp"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/platform/shared/buildcardamom.py
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cardamom.cpp
-    COMMENT "Generating source thingy"
-)
+# add_custom_command(
+#     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/platform/shared/buildcardamom.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/Cardamom.cpp"
+#     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/platform/shared/buildcardamom.py
+#     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cardamom.cpp
+#     COMMENT "Generating source thingy"
+# )
 
 add_custom_target(Cackit ALL
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cardamom.cpp
+    # DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cardamom.cpp
 )
 
 add_dependencies(Cacao Cackit)

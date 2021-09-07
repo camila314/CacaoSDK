@@ -19,8 +19,8 @@ source_body_static = """
 """
 
 def build_source(funky_cls):
-    # if "cocos2d" in funky_cls.name:
-    #     return ""
+    if "cocos2d" in funky_cls.name:
+        return ""
     if "CCMenuItemSpriteExtra" in funky_cls.name:
         return ""
 

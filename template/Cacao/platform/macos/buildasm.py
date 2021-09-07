@@ -10,12 +10,12 @@ build_data = """"""
 
 
 def build_cls(funky_cls):
-    curr = 0
+    curr = 1
     out = ""
 
     for info in funky_cls.infos:
-        if funky_cls.name not in info.name:
-            continue
+        # if funky_cls.name not in info.name and "cocos2d" not in funky_cls.name:
+        #     continue
         if not info.func:
             continue
         mangs = info.getMangles()
@@ -23,12 +23,23 @@ def build_cls(funky_cls):
         thunk = info.thunk
 
         if mangs is not None and addr is not None:
-            out += f"defit _{mangs[curr]}, {addr}\n"
+            # if len(mangs) > 1 and ('D1' in mangs[curr] or 'D0' in mangs[curr]):
+            #     if curr == 1 and 'D1' in mangs[curr]:
+            #         out += f"defit _{mangs[curr].replace('D1', 'D2')}, {addr}\n"
+            #     out += f"defit _{mangs[curr]}, {addr}\n"
 
-        if curr == 0:
-            curr = 1
-        else:
-            curr = 0
+
+            #     if curr == 0:
+            #         curr = 1
+            #     else:
+            #         curr = 0
+            # else:
+            for mang in mangs:
+                out += f"defit _{mang}, {addr}\n"
+                if 'D1' in mangs:
+                    
+                if thunk is not None:
+                    out += f"thunk __ZThn{thunk}_{mang[2:]}, _{mang}, {thunk}\n"
                 # if thunk is not None:
                 #     out += f"thunk __ZThn{thunk}_{mang[2:]}, _{mang}, {thunk}\n"
 
