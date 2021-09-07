@@ -6,7 +6,7 @@ add_subdirectory(GDML)
 enable_language(ASM_NASM)
 set(CMAKE_ASM_NASM_OBJECT_FORMAT macho64)
 
-add_library(Cacao STATIC Cacao.cpp symtab.asm)
+add_library(Cacao STATIC symtab.asm Cardamom.cpp)
 
 target_link_libraries(Cacao GDML)
 

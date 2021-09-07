@@ -72,6 +72,8 @@ protected:
 
     virtual bool ccTouchBegan(CCTouch* touch, CCEvent* pEvent);
     virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+
+    virtual void registerWithTouchDispatcher();
 };
 
 // end of GUI group

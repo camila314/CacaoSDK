@@ -37,7 +37,7 @@ NS_CC_BEGIN
  */
 
 // for CCPoint assignement operator and copy constructor
-class CC_DLL CCSize;
+class CCSize;
 
 /**
  * @js NA

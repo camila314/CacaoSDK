@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 import platform
 
 reserved = {
@@ -14,6 +15,43 @@ tokens = ['ASSIGN','ADDRESS','IDENT','LPAREN','RPAREN', 'WHITESPACE', 'SEMI', 'C
 states = (
     ('volatile','exclusive'),
 )
+
+returns = {}
+consts = {}
+statics = {}
+returns2 = {}
+
+with open(os.path.dirname(__file__) + "/libcocos2d.demangled.txt") as f:
+    for m in re.finditer(r"(?:\w+?: )(?:virtual )?(static )?(.+)__\w+ (.+)\(.+\)(const )?\n", f.read()):
+        static, ret, func, const = m.group(1) is not None, m.group(2).replace("BOOL", "bool").replace("class ", "").replace("enum ", "").replace("struct ", "").replace("virtual ", "").replace(" *", "*").replace(" &", "&").replace("std::basic_string<char,std::char_traits<char>,std::allocator<char> >", "std::string"), m.group(3), m.group(4) is not None
+        returns[func] = ret[:-1]
+        consts[func] = const
+        statics[func] = static
+
+implements = set()
+for root, dirs, files in os.walk(os.path.dirname(__file__) + "/../../include"):
+    for name in filter(lambda x: x[-2:] == ".h", files):
+        with open(os.path.join(root, name), "r") as h:
+            try:
+                data = h.read()
+                for clm in re.finditer(r"class CC_DLL (\w+)[^$]+?{([^$]+?)\n};", data):
+                    cl, content = clm.group(1), clm.group(2)
+                    for funm in re.finditer(r"(?:inline )?(?:virtual )?(?:static )?(\w[\w* &]+?) (\w+)\(.*\)( const)?\s*{", content):
+
+                        ret, fun = funm.group(1), funm.group(2)
+                        implements.add("cocos2d::" + cl + "::" + fun)
+                        implements.add("cocos2d::extension::" + cl + "::" + fun)
+
+                    for funm in re.finditer(r"(?:inline )?(?:virtual )?(?:static )?(\w[\w* &]+?) (\w+)\(.*\)( const)?\s*", content):
+
+                        ret, fun = funm.group(1), funm.group(2)
+                        returns2["cocos2d::" + cl + "::" + fun] = ret
+                        returns2["cocos2d::extension::" + cl + "::" + fun] = ret
+                    # print("@end", cl, "\n")
+            except:
+                pass
+                # print("error", os.path.join(root, name))
+
 
 class FunkyInfo:
     def __init__(self):
@@ -43,6 +81,32 @@ class FunkyInfo:
             # print(syms2[self.parent.name])
             # print("errored", repr(self))
             return None
+
+    def getReturn(self):
+        if self.ret != "void":
+            return self.ret
+        if f"{self.parent.name}::{self.name}" in returns:
+            if f"{self.parent.name}::{self.name}" in implements:
+                return "ğ"
+            else:
+                return returns[f"{self.parent.name}::{self.name}"]
+        elif f"{self.parent.name}::{self.name}" in returns2:
+            return returns2[f"{self.parent.name}::{self.name}"]
+        else:
+            return self.ret
+
+    def getConst(self):
+        if f"{self.parent.name}::{self.name}" in consts:
+            return consts[f"{self.parent.name}::{self.name}"]
+        else:
+            return False
+
+    def getStatic(self):
+        if f"{self.parent.name}::{self.name}" in statics:
+            return statics[f"{self.parent.name}::{self.name}"]
+        else:
+            return self.static
+
     def __repr__(self):
         return f"<{f'method with mangle {self.mang}' if self.func else 'member'} {'static ' if self.static else ''}{'virtual ' if self.static else ''}{self.ret} {self.name}{'(' + ', '.join(self.args) + ')' if self.func else ''} at address {self.addr}{f' with thunk offset {self.thunk}' if self.thunk is not None else ''}>"
 
@@ -191,6 +255,8 @@ def parse_func(tok):
             arglist.append(tok.value)
 
         tok = ensure_next()
+        if tok.type == "IDENT":
+            tok = ensure_next()
         if tok.type == "ASSIGN":
             tok = ensure_next()
             if tok.type != "ADDRESS":

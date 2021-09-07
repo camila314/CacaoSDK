@@ -61,6 +61,9 @@ public:
     bool init();
 
     static CCScene *create(void);
+
+    //Robtop modification
+    int getHighestChildZ();
 };
 
 // end of scene group

@@ -84,6 +84,9 @@ public:
     void setStartupScriptFilename(const std::string& startupScriptFile);
     
     const std::string& getStartupScriptFilename(void);
+
+    //Robtop modification
+    virtual void openURL(char const* link);
     
 protected:
     static CCApplication * sm_pSharedApplication;

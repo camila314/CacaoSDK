@@ -7,6 +7,7 @@ starter_code = open(os.path.dirname(__file__) + "/base/cc_defs.begin.hpp", "r").
 ender_code = open(os.path.dirname(__file__) + "/base/cc_defs.end.hpp", "r").read()
 
 def build_cls(funky_cls):
+    destructor = False
     gdobj = "public GDObj "
     out = ""
     if "cocos2d" in funky_cls.name:
@@ -22,6 +23,10 @@ def build_cls(funky_cls):
         out += ", "
     out += gdobj + "{\npublic:\n"
     for info in funky_cls.infos:
+        if "~" in info.name and destructor:
+            continue
+        if "~" in info.name:
+            destructor = True
         if info.volatile:
             out += "    " + info.data + "\n"
         else:

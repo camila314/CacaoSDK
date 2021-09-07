@@ -191,6 +191,8 @@ def parse_func(tok):
             arglist.append(tok.value)
 
         tok = ensure_next()
+        if tok.type == "IDENT":
+            tok = ensure_next()
         if tok.type == "ASSIGN":
             tok = ensure_next()
             if tok.type != "ADDRESS":

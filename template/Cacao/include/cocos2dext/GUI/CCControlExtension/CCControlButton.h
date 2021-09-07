@@ -49,6 +49,9 @@ NS_CC_EXT_BEGIN
  * @{
  */
 
+// alk modif
+typedef void (CCObject::*SEL_EventHandler)(CCObject*, unsigned int);
+
 /** @class CCControlButton Button control for Cocos2D. */
 class CCControlButton : public CCControl
 {        

@@ -155,7 +155,12 @@ public:
 
      @since v2.1
      */
-    virtual std::string fullPathForFilename(const char* pszFileName);
+    // rob modification
+    // virtual std::string fullPathForFilename(const char* pszFileName);
+    virtual std::string fullPathForFilename(const char* pszFileName, bool);
+
+    // rob modification
+    virtual void removeFullPath(char const*);
     
     /**
      * Loads the filenameLookup dictionary from the contents of a filename.
@@ -299,7 +304,9 @@ public:
      *  @return  The path that can be write/read a file in
      *  @lua NA
      */
-    virtual std::string getWritablePath() = 0;
+    // rob modification
+    // virtual std::string getWritablePath() = 0;
+    virtual std::string getWritablePath2();
     
     /**
      *  Checks whether a file exists.
@@ -353,6 +360,10 @@ protected:
      *          If the original filename wasn't in the dictionary, it will return the original filename.
      */
     virtual std::string getNewFilename(const char* pszFileName);
+
+    // rob modification
+    virtual bool shouldUseHD();
+    virtual std::string addSuffix(std::string, std::string);
     
     /**
      *  Gets full path for filename, resolution directory and search path.

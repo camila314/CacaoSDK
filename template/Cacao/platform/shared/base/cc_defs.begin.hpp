@@ -85,4 +85,13 @@ enum GhostType {};
 enum IconType {};
 enum BoomListType {};
 enum TableViewCellEditingStyle {};
-
+enum CCIndexPath {};
+enum UserListType {};
+enum GJErrorCode {};
+enum AccountError {};
+enum GJSongError {};
+enum LikeItemType {};
+enum GJStoreItem {};
+enum CommentError {};
+enum BackupAccountError {};
+enum UpdateResponse {};

@@ -160,6 +160,9 @@ public:
      */
     virtual void handleTouchesCancel(int num, int ids[], float xs[], float ys[]);
 
+    // rob modification
+    virtual void pollInputEvents();
+
     /**
      * Get the opengl view port rectangle.
      */

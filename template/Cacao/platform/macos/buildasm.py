@@ -10,9 +10,12 @@ build_data = """"""
 
 
 def build_cls(funky_cls):
+    curr = 0
     out = ""
 
     for info in funky_cls.infos:
+        if funky_cls.name not in info.name:
+            continue
         if not info.func:
             continue
         mangs = info.getMangles()
@@ -20,11 +23,14 @@ def build_cls(funky_cls):
         thunk = info.thunk
 
         if mangs is not None and addr is not None:
-            for mang in mangs:
-                if "D0E" not in mang:
-                    out += f"defit _{mang}, {addr}\n"
-                    if thunk is not None:
-                        out += f"thunk __ZThn{thunk}_{mang[2:]}, _{mang}, {thunk}\n"
+            out += f"defit _{mangs[curr]}, {addr}\n"
+
+        if curr == 0:
+            curr = 1
+        else:
+            curr = 0
+                # if thunk is not None:
+                #     out += f"thunk __ZThn{thunk}_{mang[2:]}, _{mang}, {thunk}\n"
 
     return out
 
