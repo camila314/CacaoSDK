@@ -42,8 +42,8 @@ AccountLayer::backupAccountFinished()
 _ZN12AccountLayer21backupAccountFinishedEv
 AccountLayer::create()
 _ZN12AccountLayer6createEv
-AccountLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN12AccountLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+AccountLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN12AccountLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 AccountLayer::customSetup()
 _ZN12AccountLayer11customSetupEv
 AccountLayer::doBackup()
@@ -90,8 +90,8 @@ AccountLoginLayer::AccountLoginLayer()
 _ZN17AccountLoginLayerC2Ev
 AccountLoginLayer::FLAlert_Clicked(FLAlertLayer*, bool)
 _ZN17AccountLoginLayer15FLAlert_ClickedEP12FLAlertLayerb
-AccountLoginLayer::create(std::string)
-_ZN17AccountLoginLayer6createESs
+AccountLoginLayer::create(gd::string)
+_ZN17AccountLoginLayer6createEN2gd6stringE
 AccountLoginLayer::createTextBackground(cocos2d::CCPoint, char const*, cocos2d::CCSize)
 _ZN17AccountLoginLayer20createTextBackgroundEN7cocos2d7CCPointEPKcNS0_6CCSizeE
 AccountLoginLayer::createTextInput(cocos2d::CCPoint, cocos2d::CCSize, char const*, int)
@@ -102,8 +102,8 @@ AccountLoginLayer::disableNodes()
 _ZN17AccountLoginLayer12disableNodesEv
 AccountLoginLayer::hideLoadingUI()
 _ZN17AccountLoginLayer13hideLoadingUIEv
-AccountLoginLayer::init(std::string)
-_ZN17AccountLoginLayer4initESs
+AccountLoginLayer::init(gd::string)
+_ZN17AccountLoginLayer4initEN2gd6stringE
 AccountLoginLayer::keyBackClicked()
 _ZN17AccountLoginLayer14keyBackClickedEv
 AccountLoginLayer::loginAccountFailed(AccountError)
@@ -154,10 +154,10 @@ AccountRegisterLayer::create()
 _ZN20AccountRegisterLayer6createEv
 AccountRegisterLayer::createTextBackground(cocos2d::CCPoint, cocos2d::CCSize)
 _ZN20AccountRegisterLayer20createTextBackgroundEN7cocos2d7CCPointENS0_6CCSizeE
-AccountRegisterLayer::createTextInput(cocos2d::CCPoint, cocos2d::CCSize, std::string, int)
-_ZN20AccountRegisterLayer15createTextInputEN7cocos2d7CCPointENS0_6CCSizeESsi
-AccountRegisterLayer::createTextLabel(cocos2d::CCPoint, std::string, cocos2d::CCSize)
-_ZN20AccountRegisterLayer15createTextLabelEN7cocos2d7CCPointESsNS0_6CCSizeE
+AccountRegisterLayer::createTextInput(cocos2d::CCPoint, cocos2d::CCSize, gd::string, int)
+_ZN20AccountRegisterLayer15createTextInputEN7cocos2d7CCPointENS0_6CCSizeEN2gd6stringEi
+AccountRegisterLayer::createTextLabel(cocos2d::CCPoint, gd::string, cocos2d::CCSize)
+_ZN20AccountRegisterLayer15createTextLabelEN7cocos2d7CCPointEN2gd6stringENS0_6CCSizeE
 AccountRegisterLayer::disableNodes()
 _ZN20AccountRegisterLayer12disableNodesEv
 AccountRegisterLayer::hideLoadingUI()
@@ -196,12 +196,12 @@ AccountRegisterLayer::toggleUI(bool)
 _ZN20AccountRegisterLayer8toggleUIEb
 AccountRegisterLayer::updateLabel(AccountError)
 _ZN20AccountRegisterLayer11updateLabelE12AccountError
-AccountRegisterLayer::validEmail(std::string)
-_ZN20AccountRegisterLayer10validEmailESs
-AccountRegisterLayer::validPassword(std::string)
-_ZN20AccountRegisterLayer13validPasswordESs
-AccountRegisterLayer::validUser(std::string)
-_ZN20AccountRegisterLayer9validUserESs
+AccountRegisterLayer::validEmail(gd::string)
+_ZN20AccountRegisterLayer10validEmailEN2gd6stringE
+AccountRegisterLayer::validPassword(gd::string)
+_ZN20AccountRegisterLayer13validPasswordEN2gd6stringE
+AccountRegisterLayer::validUser(gd::string)
+_ZN20AccountRegisterLayer9validUserEN2gd6stringE
 AccountRegisterLayer::~AccountRegisterLayer()
 _ZN20AccountRegisterLayerD0Ev
 AccountRegisterLayer::~AccountRegisterLayer()
@@ -366,8 +366,8 @@ AnimatedGameObject::create(int)
 _ZN18AnimatedGameObject6createEi
 AnimatedGameObject::deactivateObject(bool)
 _ZN18AnimatedGameObject16deactivateObjectEb
-AnimatedGameObject::displayFrameChanged(cocos2d::CCObject*, std::string)
-_ZN18AnimatedGameObject19displayFrameChangedEPN7cocos2d8CCObjectESs
+AnimatedGameObject::displayFrameChanged(cocos2d::CCObject*, gd::string)
+_ZN18AnimatedGameObject19displayFrameChangedEPN7cocos2d8CCObjectEN2gd6stringE
 AnimatedGameObject::getTweenTime(int, int)
 _ZN18AnimatedGameObject12getTweenTimeEii
 AnimatedGameObject::init(int)
@@ -476,16 +476,16 @@ ArtistCell::~ArtistCell()
 _ZN10ArtistCellD2Ev
 AudioEffectsLayer::audioStep(float)
 _ZN17AudioEffectsLayer9audioStepEf
-AudioEffectsLayer::create(std::string)
-_ZN17AudioEffectsLayer6createESs
+AudioEffectsLayer::create(gd::string)
+_ZN17AudioEffectsLayer6createEN2gd6stringE
 AudioEffectsLayer::draw()
 _ZN17AudioEffectsLayer4drawEv
 AudioEffectsLayer::getBGSquare()
 _ZN17AudioEffectsLayer11getBGSquareEv
 AudioEffectsLayer::goingDown()
 _ZN17AudioEffectsLayer9goingDownEv
-AudioEffectsLayer::init(std::string)
-_ZN17AudioEffectsLayer4initESs
+AudioEffectsLayer::init(gd::string)
+_ZN17AudioEffectsLayer4initEN2gd6stringE
 AudioEffectsLayer::resetAudioVars()
 _ZN17AudioEffectsLayer14resetAudioVarsEv
 AudioEffectsLayer::triggerEffect(float)
@@ -512,10 +512,10 @@ BitmapFontCache::~BitmapFontCache()
 _ZN15BitmapFontCacheD1Ev
 BitmapFontCache::~BitmapFontCache()
 _ZN15BitmapFontCacheD2Ev
-BonusDropdown::create(std::string, int)
-_ZN13BonusDropdown6createESsi
-BonusDropdown::init(std::string, int)
-_ZN13BonusDropdown4initESsi
+BonusDropdown::create(gd::string, int)
+_ZN13BonusDropdown6createEN2gd6stringEi
+BonusDropdown::init(gd::string, int)
+_ZN13BonusDropdown4initEN2gd6stringEi
 BonusDropdown::show()
 _ZN13BonusDropdown4showEv
 BonusDropdown::~BonusDropdown()
@@ -754,10 +754,10 @@ CCAnimatedSprite::initWithType(char const*)
 _ZN16CCAnimatedSprite12initWithTypeEPKc
 CCAnimatedSprite::loadType(char const*)
 _ZN16CCAnimatedSprite8loadTypeEPKc
-CCAnimatedSprite::runAnimation(std::string)
-_ZN16CCAnimatedSprite12runAnimationESs
-CCAnimatedSprite::runAnimationForced(std::string)
-_ZN16CCAnimatedSprite18runAnimationForcedESs
+CCAnimatedSprite::runAnimation(gd::string)
+_ZN16CCAnimatedSprite12runAnimationEN2gd6stringE
+CCAnimatedSprite::runAnimationForced(gd::string)
+_ZN16CCAnimatedSprite18runAnimationForcedEN2gd6stringE
 CCAnimatedSprite::setColor(cocos2d::_ccColor3B)
 _ZN16CCAnimatedSprite8setColorEN7cocos2d10_ccColor3BE
 CCAnimatedSprite::setOpacity(unsigned char)
@@ -766,8 +766,8 @@ CCAnimatedSprite::stopTween()
 _ZN16CCAnimatedSprite9stopTweenEv
 CCAnimatedSprite::switchToMode(spriteMode)
 _ZN16CCAnimatedSprite12switchToModeE10spriteMode
-CCAnimatedSprite::tweenToAnimation(std::string, float)
-_ZN16CCAnimatedSprite16tweenToAnimationESsf
+CCAnimatedSprite::tweenToAnimation(gd::string, float)
+_ZN16CCAnimatedSprite16tweenToAnimationEN2gd6stringEf
 CCAnimatedSprite::tweenToAnimationFinished()
 _ZN16CCAnimatedSprite24tweenToAnimationFinishedEv
 CCAnimatedSprite::willPlayAnimation()
@@ -1162,8 +1162,8 @@ CCSpritePart::create(cocos2d::CCTexture2D*)
 _ZN12CCSpritePart6createEPN7cocos2d11CCTexture2DE
 CCSpritePart::createWithSpriteFrameName(char const*)
 _ZN12CCSpritePart25createWithSpriteFrameNameEPKc
-CCSpritePart::frameChanged(std::string)
-_ZN12CCSpritePart12frameChangedESs
+CCSpritePart::frameChanged(gd::string)
+_ZN12CCSpritePart12frameChangedEN2gd6stringE
 CCSpritePart::getBeingUsed()
 _ZN12CCSpritePart12getBeingUsedEv
 CCSpritePart::hideInactive()
@@ -1218,14 +1218,14 @@ CCSpritePlus::~CCSpritePlus()
 _ZN12CCSpritePlusD1Ev
 CCSpritePlus::~CCSpritePlus()
 _ZN12CCSpritePlusD2Ev
-CCSpriteWithHue::create(std::string const&)
-_ZN15CCSpriteWithHue6createERKSs
-CCSpriteWithHue::create(std::string const&, cocos2d::CCRect const&)
-_ZN15CCSpriteWithHue6createERKSsRKN7cocos2d6CCRectE
+CCSpriteWithHue::create(gd::string const&)
+_ZN15CCSpriteWithHue6createERKN2gd6stringE
+CCSpriteWithHue::create(gd::string const&, cocos2d::CCRect const&)
+_ZN15CCSpriteWithHue6createERKN2gd6stringERKN7cocos2d6CCRectE
 CCSpriteWithHue::createWithSpriteFrame(cocos2d::CCSpriteFrame*)
 _ZN15CCSpriteWithHue21createWithSpriteFrameEPN7cocos2d13CCSpriteFrameE
-CCSpriteWithHue::createWithSpriteFrameName(std::string const&)
-_ZN15CCSpriteWithHue25createWithSpriteFrameNameERKSs
+CCSpriteWithHue::createWithSpriteFrameName(gd::string const&)
+_ZN15CCSpriteWithHue25createWithSpriteFrameNameERKN2gd6stringE
 CCSpriteWithHue::createWithTexture(cocos2d::CCTexture2D*)
 _ZN15CCSpriteWithHue17createWithTextureEPN7cocos2d11CCTexture2DE
 CCSpriteWithHue::createWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool)
@@ -1304,8 +1304,8 @@ CCTextInputNode::refreshLabel()
 _ZN15CCTextInputNode12refreshLabelEv
 CCTextInputNode::registerWithTouchDispatcher()
 _ZN15CCTextInputNode27registerWithTouchDispatcherEv
-CCTextInputNode::setAllowedChars(std::string)
-_ZN15CCTextInputNode15setAllowedCharsESs
+CCTextInputNode::setAllowedChars(gd::string)
+_ZN15CCTextInputNode15setAllowedCharsEN2gd6stringE
 CCTextInputNode::setLabelNormalColor(cocos2d::_ccColor3B)
 _ZN15CCTextInputNode19setLabelNormalColorEN7cocos2d10_ccColor3BE
 CCTextInputNode::setLabelPlaceholderColor(cocos2d::_ccColor3B)
@@ -1316,14 +1316,14 @@ CCTextInputNode::setMaxLabelScale(float)
 _ZN15CCTextInputNode16setMaxLabelScaleEf
 CCTextInputNode::setMaxLabelWidth(float)
 _ZN15CCTextInputNode16setMaxLabelWidthEf
-CCTextInputNode::setString(std::string)
-_ZN15CCTextInputNode9setStringESs
+CCTextInputNode::setString(gd::string)
+_ZN15CCTextInputNode9setStringEN2gd6stringE
 CCTextInputNode::textChanged()
 _ZN15CCTextInputNode11textChangedEv
 CCTextInputNode::updateBlinkLabel()
 _ZN15CCTextInputNode16updateBlinkLabelEv
-CCTextInputNode::updateLabel(std::string)
-_ZN15CCTextInputNode11updateLabelESs
+CCTextInputNode::updateLabel(gd::string)
+_ZN15CCTextInputNode11updateLabelEN2gd6stringE
 CCTextInputNode::visit()
 _ZN15CCTextInputNode5visitEv
 CCTextInputNode::~CCTextInputNode()
@@ -1338,8 +1338,8 @@ ChallengeNode::init(GJChallengeItem*, ChallengesPage*, bool)
 _ZN13ChallengeNode4initEP15GJChallengeItemP14ChallengesPageb
 ChallengeNode::onClaimReward(cocos2d::CCObject*)
 _ZN13ChallengeNode13onClaimRewardEPN7cocos2d8CCObjectE
-ChallengeNode::updateTimeLabel(std::string)
-_ZN13ChallengeNode15updateTimeLabelESs
+ChallengeNode::updateTimeLabel(gd::string)
+_ZN13ChallengeNode15updateTimeLabelEN2gd6stringE
 ChallengeNode::~ChallengeNode()
 _ZN13ChallengeNodeD0Ev
 ChallengeNode::~ChallengeNode()
@@ -1410,8 +1410,8 @@ CheckpointObject::~CheckpointObject()
 _ZN16CheckpointObjectD2Ev
 CollisionBlockPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN19CollisionBlockPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-CollisionBlockPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN19CollisionBlockPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+CollisionBlockPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN19CollisionBlockPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 CollisionBlockPopup::determineStartValues()
 _ZN19CollisionBlockPopup20determineStartValuesEv
 CollisionBlockPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -1450,8 +1450,8 @@ CollisionBlockPopup::~CollisionBlockPopup()
 _ZN19CollisionBlockPopupD2Ev
 CollisionTriggerAction::create(int, int, int, bool, bool)
 _ZN22CollisionTriggerAction6createEiiibb
-CollisionTriggerAction::createFromString(std::string)
-_ZN22CollisionTriggerAction16createFromStringESs
+CollisionTriggerAction::createFromString(gd::string)
+_ZN22CollisionTriggerAction16createFromStringEN2gd6stringE
 CollisionTriggerAction::getSaveString()
 _ZN22CollisionTriggerAction13getSaveStringEv
 CollisionTriggerAction::init(int, int, int, bool, bool)
@@ -1484,8 +1484,8 @@ ColorAction::resetAction()
 _ZN11ColorAction11resetActionEv
 ColorAction::setupFromDict(cocos2d::CCDictionary*)
 _ZN11ColorAction13setupFromDictEPN7cocos2d12CCDictionaryE
-ColorAction::setupFromString(std::string)
-_ZN11ColorAction15setupFromStringESs
+ColorAction::setupFromString(gd::string)
+_ZN11ColorAction15setupFromStringEN2gd6stringE
 ColorAction::step(float)
 _ZN11ColorAction4stepEf
 ColorAction::updateCustomColor(cocos2d::_ccColor3B, cocos2d::_ccColor3B)
@@ -1536,8 +1536,8 @@ ColorSelectLiveOverlay::colorValueChanged(cocos2d::_ccColor3B)
 _ZN22ColorSelectLiveOverlay17colorValueChangedEN7cocos2d10_ccColor3BE
 ColorSelectLiveOverlay::create(ColorAction*, ColorAction*, EffectGameObject*)
 _ZN22ColorSelectLiveOverlay6createEP11ColorActionS1_P16EffectGameObject
-ColorSelectLiveOverlay::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN22ColorSelectLiveOverlay18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+ColorSelectLiveOverlay::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN22ColorSelectLiveOverlay18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 ColorSelectLiveOverlay::createWithActions(ColorAction*, ColorAction*)
 _ZN22ColorSelectLiveOverlay17createWithActionsEP11ColorActionS1_
 ColorSelectLiveOverlay::createWithObject(EffectGameObject*)
@@ -1592,8 +1592,8 @@ ColorSelectPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN16ColorSelectPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
 ColorSelectPopup::create(EffectGameObject*, cocos2d::CCArray*, ColorAction*)
 _ZN16ColorSelectPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayEP11ColorAction
-ColorSelectPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN16ColorSelectPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+ColorSelectPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN16ColorSelectPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 ColorSelectPopup::determineStartValues()
 _ZN16ColorSelectPopup20determineStartValuesEv
 ColorSelectPopup::getColorValue()
@@ -1742,10 +1742,10 @@ CommentUploadDelegate::commentUploadFailed(int, CommentError)
 _ZN21CommentUploadDelegate19commentUploadFailedEi12CommentError
 CommentUploadDelegate::commentUploadFinished(int)
 _ZN21CommentUploadDelegate21commentUploadFinishedEi
-CommunityCreditNode::create(int, int, int, std::string)
-_ZN19CommunityCreditNode6createEiiiSs
-CommunityCreditNode::init(int, int, int, std::string)
-_ZN19CommunityCreditNode4initEiiiSs
+CommunityCreditNode::create(int, int, int, gd::string)
+_ZN19CommunityCreditNode6createEiiiN2gd6stringE
+CommunityCreditNode::init(int, int, int, gd::string)
+_ZN19CommunityCreditNode4initEiiiN2gd6stringE
 CommunityCreditNode::~CommunityCreditNode()
 _ZN19CommunityCreditNodeD0Ev
 CommunityCreditNode::~CommunityCreditNode()
@@ -1796,10 +1796,10 @@ ConfigureHSVWidget::~ConfigureHSVWidget()
 _ZN18ConfigureHSVWidgetD1Ev
 ConfigureHSVWidget::~ConfigureHSVWidget()
 _ZN18ConfigureHSVWidgetD2Ev
-ConfigureValuePopup::create(ConfigureValuePopupDelegate*, float, float, float, std::string, std::string)
-_ZN19ConfigureValuePopup6createEP27ConfigureValuePopupDelegatefffSsSs
-ConfigureValuePopup::init(ConfigureValuePopupDelegate*, float, float, float, std::string, std::string)
-_ZN19ConfigureValuePopup4initEP27ConfigureValuePopupDelegatefffSsSs
+ConfigureValuePopup::create(ConfigureValuePopupDelegate*, float, float, float, gd::string, gd::string)
+_ZN19ConfigureValuePopup6createEP27ConfigureValuePopupDelegatefffN2gd6stringEN2gd6stringE
+ConfigureValuePopup::init(ConfigureValuePopupDelegate*, float, float, float, gd::string, gd::string)
+_ZN19ConfigureValuePopup4initEP27ConfigureValuePopupDelegatefffN2gd6stringEN2gd6stringE
 ConfigureValuePopup::keyBackClicked()
 _ZN19ConfigureValuePopup14keyBackClickedEv
 ConfigureValuePopup::onClose(cocos2d::CCObject*)
@@ -1834,8 +1834,8 @@ ConvertUTF8toUTF32(unsigned char const**, unsigned char const*, unsigned int**, 
 _Z18ConvertUTF8toUTF32PPKhS0_PPjS2_15ConversionFlags
 CountTriggerAction::create(int, int, bool, bool)
 _ZN18CountTriggerAction6createEiibb
-CountTriggerAction::createFromString(std::string)
-_ZN18CountTriggerAction16createFromStringESs
+CountTriggerAction::createFromString(gd::string)
+_ZN18CountTriggerAction16createFromStringEN2gd6stringE
 CountTriggerAction::getSaveString()
 _ZN18CountTriggerAction13getSaveStringEv
 CountTriggerAction::init(int, int, bool, bool)
@@ -1860,8 +1860,8 @@ CreateGuidelinesLayer::create(LevelSettingsObject*)
 _ZN21CreateGuidelinesLayer6createEP19LevelSettingsObject
 CreateGuidelinesLayer::doClearGuidelines()
 _ZN21CreateGuidelinesLayer17doClearGuidelinesEv
-CreateGuidelinesLayer::getMergedRecordString(std::string, std::string)
-_ZN21CreateGuidelinesLayer21getMergedRecordStringESsSs
+CreateGuidelinesLayer::getMergedRecordString(gd::string, gd::string)
+_ZN21CreateGuidelinesLayer21getMergedRecordStringEN2gd6stringEN2gd6stringE
 CreateGuidelinesLayer::init(LevelSettingsObject*)
 _ZN21CreateGuidelinesLayer4initEP19LevelSettingsObject
 CreateGuidelinesLayer::keyBackClicked()
@@ -2180,8 +2180,8 @@ CustomizeObjectLayer::colorSetupClosed(int)
 _ZN20CustomizeObjectLayer16colorSetupClosedEi
 CustomizeObjectLayer::create(GameObject*, cocos2d::CCArray*)
 _ZN20CustomizeObjectLayer6createEP10GameObjectPN7cocos2d7CCArrayE
-CustomizeObjectLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN20CustomizeObjectLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+CustomizeObjectLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN20CustomizeObjectLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 CustomizeObjectLayer::determineStartValues()
 _ZN20CustomizeObjectLayer20determineStartValuesEv
 CustomizeObjectLayer::getActiveMode(bool)
@@ -2254,14 +2254,14 @@ DS_Dictionary::DS_Dictionary()
 _ZN13DS_DictionaryC1Ev
 DS_Dictionary::DS_Dictionary()
 _ZN13DS_DictionaryC2Ev
-DS_Dictionary::addBoolValuesToMapForKey(std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >&, char const*, bool)
-_ZN13DS_Dictionary24addBoolValuesToMapForKeyERSt3mapISsbSt4lessISsESaISt4pairIKSsbEEEPKcb
-DS_Dictionary::addBoolValuesToMapForKeySpecial(std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >&, char const*, bool)
-_ZN13DS_Dictionary31addBoolValuesToMapForKeySpecialERSt3mapISsbSt4lessISsESaISt4pairIKSsbEEEPKcb
+DS_Dictionary::addBoolValuesToMapForKey(gd::map<gd::string, bool>&, char const*, bool)
+_ZN13DS_Dictionary24addBoolValuesToMapForKeyERSt3mapIN2gd6stringEbSt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEbEEEPKcb
+DS_Dictionary::addBoolValuesToMapForKeySpecial(gd::map<gd::string, bool>&, char const*, bool)
+_ZN13DS_Dictionary31addBoolValuesToMapForKeySpecialERSt3mapIN2gd6stringEbSt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEbEEEPKcb
 DS_Dictionary::checkCompatibility()
 _ZN13DS_Dictionary18checkCompatibilityEv
-DS_Dictionary::cleanStringWhiteSpace(std::string const&)
-_ZN13DS_Dictionary21cleanStringWhiteSpaceERKSs
+DS_Dictionary::cleanStringWhiteSpace(gd::string const&)
+_ZN13DS_Dictionary21cleanStringWhiteSpaceERKN2gd6stringE
 DS_Dictionary::copyFile(char const*, char const*)
 _ZN13DS_Dictionary8copyFileEPKcS1_
 DS_Dictionary::decodeObjectForKey(char const*, bool, int)
@@ -2304,10 +2304,10 @@ DS_Dictionary::loadRootSubDictFromCompressedFile(char const*)
 _ZN13DS_Dictionary33loadRootSubDictFromCompressedFileEPKc
 DS_Dictionary::loadRootSubDictFromFile(char const*)
 _ZN13DS_Dictionary23loadRootSubDictFromFileEPKc
-DS_Dictionary::loadRootSubDictFromString(std::string)
-_ZN13DS_Dictionary25loadRootSubDictFromStringESs
-DS_Dictionary::rectFromString(std::string const&, cocos2d::CCRect&)
-_ZN13DS_Dictionary14rectFromStringERKSsRN7cocos2d6CCRectE
+DS_Dictionary::loadRootSubDictFromString(gd::string)
+_ZN13DS_Dictionary25loadRootSubDictFromStringEN2gd6stringE
+DS_Dictionary::rectFromString(gd::string const&, cocos2d::CCRect&)
+_ZN13DS_Dictionary14rectFromStringERKN2gd6stringERN7cocos2d6CCRectE
 DS_Dictionary::removeAllKeys()
 _ZN13DS_Dictionary13removeAllKeysEv
 DS_Dictionary::removeKey(char const*)
@@ -2326,8 +2326,8 @@ DS_Dictionary::setBoolForKey(char const*, bool)
 _ZN13DS_Dictionary13setBoolForKeyEPKcb
 DS_Dictionary::setBoolForKey(char const*, bool, bool)
 _ZN13DS_Dictionary13setBoolForKeyEPKcbb
-DS_Dictionary::setBoolMapForKey(char const*, std::map<std::string, bool, std::less<std::string>, std::allocator<std::pair<std::string const, bool> > >&)
-_ZN13DS_Dictionary16setBoolMapForKeyEPKcRSt3mapISsbSt4lessISsESaISt4pairIKSsbEEE
+DS_Dictionary::setBoolMapForKey(char const*, gd::map<gd::string, bool>&)
+_ZN13DS_Dictionary16setBoolMapForKeyEPKcRSt3mapIN2gd6stringEbSt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEbEEE
 DS_Dictionary::setDictForKey(char const*, cocos2d::CCDictionary*)
 _ZN13DS_Dictionary13setDictForKeyEPKcPN7cocos2d12CCDictionaryE
 DS_Dictionary::setFloatForKey(char const*, float)
@@ -2340,46 +2340,46 @@ DS_Dictionary::setIntegerForKey(char const*, int, bool)
 _ZN13DS_Dictionary16setIntegerForKeyEPKcib
 DS_Dictionary::setObjectForKey(char const*, cocos2d::CCObject*)
 _ZN13DS_Dictionary15setObjectForKeyEPKcPN7cocos2d8CCObjectE
-DS_Dictionary::setRectArrayForKey(char const*, std::vector<cocos2d::CCRect, std::allocator<cocos2d::CCRect> > const&)
+DS_Dictionary::setRectArrayForKey(char const*, gd::vector<cocos2d::CCRect> const&)
 _ZN13DS_Dictionary18setRectArrayForKeyEPKcRKSt6vectorIN7cocos2d6CCRectESaIS4_EE
-DS_Dictionary::setRectArrayForKey(char const*, std::vector<cocos2d::CCRect, std::allocator<cocos2d::CCRect> > const&, bool)
+DS_Dictionary::setRectArrayForKey(char const*, gd::vector<cocos2d::CCRect> const&, bool)
 _ZN13DS_Dictionary18setRectArrayForKeyEPKcRKSt6vectorIN7cocos2d6CCRectESaIS4_EEb
 DS_Dictionary::setRectForKey(char const*, cocos2d::CCRect const&)
 _ZN13DS_Dictionary13setRectForKeyEPKcRKN7cocos2d6CCRectE
 DS_Dictionary::setRectForKey(char const*, cocos2d::CCRect const&, bool)
 _ZN13DS_Dictionary13setRectForKeyEPKcRKN7cocos2d6CCRectEb
-DS_Dictionary::setStringArrayForKey(char const*, std::vector<std::string, std::allocator<std::string> > const&)
-_ZN13DS_Dictionary20setStringArrayForKeyEPKcRKSt6vectorISsSaISsEE
-DS_Dictionary::setStringArrayForKey(char const*, std::vector<std::string, std::allocator<std::string> > const&, bool)
-_ZN13DS_Dictionary20setStringArrayForKeyEPKcRKSt6vectorISsSaISsEEb
-DS_Dictionary::setStringForKey(char const*, std::string const&)
-_ZN13DS_Dictionary15setStringForKeyEPKcRKSs
-DS_Dictionary::setStringForKey(char const*, std::string const&, bool)
-_ZN13DS_Dictionary15setStringForKeyEPKcRKSsb
+DS_Dictionary::setStringArrayForKey(char const*, gd::vector<gd::string> const&)
+_ZN13DS_Dictionary20setStringArrayForKeyEPKcRKSt6vectorIN2gd6stringESaIN2gd6stringEEE
+DS_Dictionary::setStringArrayForKey(char const*, gd::vector<gd::string> const&, bool)
+_ZN13DS_Dictionary20setStringArrayForKeyEPKcRKSt6vectorIN2gd6stringESaIN2gd6stringEEEb
+DS_Dictionary::setStringForKey(char const*, gd::string const&)
+_ZN13DS_Dictionary15setStringForKeyEPKcRKN2gd6stringE
+DS_Dictionary::setStringForKey(char const*, gd::string const&, bool)
+_ZN13DS_Dictionary15setStringForKeyEPKcRKN2gd6stringEb
 DS_Dictionary::setSubDictForKey(char const*)
 _ZN13DS_Dictionary16setSubDictForKeyEPKc
 DS_Dictionary::setSubDictForKey(char const*, bool, bool)
 _ZN13DS_Dictionary16setSubDictForKeyEPKcbb
-DS_Dictionary::setVec2ArrayForKey(char const*, std::vector<cocos2d::CCPoint, std::allocator<cocos2d::CCPoint> > const&)
+DS_Dictionary::setVec2ArrayForKey(char const*, gd::vector<cocos2d::CCPoint> const&)
 _ZN13DS_Dictionary18setVec2ArrayForKeyEPKcRKSt6vectorIN7cocos2d7CCPointESaIS4_EE
-DS_Dictionary::setVec2ArrayForKey(char const*, std::vector<cocos2d::CCPoint, std::allocator<cocos2d::CCPoint> > const&, bool)
+DS_Dictionary::setVec2ArrayForKey(char const*, gd::vector<cocos2d::CCPoint> const&, bool)
 _ZN13DS_Dictionary18setVec2ArrayForKeyEPKcRKSt6vectorIN7cocos2d7CCPointESaIS4_EEb
 DS_Dictionary::setVec2ForKey(char const*, cocos2d::CCPoint const&)
 _ZN13DS_Dictionary13setVec2ForKeyEPKcRKN7cocos2d7CCPointE
 DS_Dictionary::setVec2ForKey(char const*, cocos2d::CCPoint const&, bool)
 _ZN13DS_Dictionary13setVec2ForKeyEPKcRKN7cocos2d7CCPointEb
-DS_Dictionary::split(std::string const&, char const*, std::vector<std::string, std::allocator<std::string> >&)
-_ZN13DS_Dictionary5splitERKSsPKcRSt6vectorISsSaISsEE
-DS_Dictionary::splitWithForm(std::string const&, std::vector<std::string, std::allocator<std::string> >&)
-_ZN13DS_Dictionary13splitWithFormERKSsRSt6vectorISsSaISsEE
+DS_Dictionary::split(gd::string const&, char const*, gd::vector<gd::string>&)
+_ZN13DS_Dictionary5splitERKN2gd6stringEPKcRSt6vectorIN2gd6stringESaIN2gd6stringEEE
+DS_Dictionary::splitWithForm(gd::string const&, gd::vector<gd::string>&)
+_ZN13DS_Dictionary13splitWithFormERKN2gd6stringERSt6vectorIN2gd6stringESaIN2gd6stringEEE
 DS_Dictionary::stepBackToRootSubDict()
 _ZN13DS_Dictionary21stepBackToRootSubDictEv
 DS_Dictionary::stepIntoSubDictWithKey(char const*)
 _ZN13DS_Dictionary22stepIntoSubDictWithKeyEPKc
 DS_Dictionary::stepOutOfSubDict()
 _ZN13DS_Dictionary16stepOutOfSubDictEv
-DS_Dictionary::vec2FromString(std::string const&, cocos2d::CCPoint&)
-_ZN13DS_Dictionary14vec2FromStringERKSsRN7cocos2d7CCPointE
+DS_Dictionary::vec2FromString(gd::string const&, cocos2d::CCPoint&)
+_ZN13DS_Dictionary14vec2FromStringERKN2gd6stringERN7cocos2d7CCPointE
 DS_Dictionary::~DS_Dictionary()
 _ZN13DS_DictionaryD1Ev
 DS_Dictionary::~DS_Dictionary()
@@ -2396,8 +2396,8 @@ DailyLevelNode::onSkipLevel(cocos2d::CCObject*)
 _ZN14DailyLevelNode11onSkipLevelEPN7cocos2d8CCObjectE
 DailyLevelNode::showSkipButton()
 _ZN14DailyLevelNode14showSkipButtonEv
-DailyLevelNode::updateTimeLabel(std::string)
-_ZN14DailyLevelNode15updateTimeLabelESs
+DailyLevelNode::updateTimeLabel(gd::string)
+_ZN14DailyLevelNode15updateTimeLabelEN2gd6stringE
 DailyLevelNode::~DailyLevelNode()
 _ZN14DailyLevelNodeD0Ev
 DailyLevelNode::~DailyLevelNode()
@@ -2554,10 +2554,10 @@ DialogLayer::~DialogLayer()
 _ZN11DialogLayerD1Ev
 DialogLayer::~DialogLayer()
 _ZN11DialogLayerD2Ev
-DialogObject::create(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)
-_ZN12DialogObject6createESsSsifbN7cocos2d10_ccColor3BE
-DialogObject::init(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)
-_ZN12DialogObject4initESsSsifbN7cocos2d10_ccColor3BE
+DialogObject::create(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)
+_ZN12DialogObject6createEN2gd6stringEN2gd6stringEifbN7cocos2d10_ccColor3BE
+DialogObject::init(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)
+_ZN12DialogObject4initEN2gd6stringEN2gd6stringEifbN7cocos2d10_ccColor3BE
 DialogObject::~DialogObject()
 _ZN12DialogObjectD0Ev
 DialogObject::~DialogObject()
@@ -2592,8 +2592,8 @@ DrawGridLayer::getPortalMinMax(GameObject*)
 _ZN13DrawGridLayer15getPortalMinMaxEP10GameObject
 DrawGridLayer::init(cocos2d::CCNode*, LevelEditorLayer*)
 _ZN13DrawGridLayer4initEPN7cocos2d6CCNodeEP16LevelEditorLayer
-DrawGridLayer::loadTimeMarkers(std::string)
-_ZN13DrawGridLayer15loadTimeMarkersESs
+DrawGridLayer::loadTimeMarkers(gd::string)
+_ZN13DrawGridLayer15loadTimeMarkersEN2gd6stringE
 DrawGridLayer::removeFromEffects(EffectGameObject*)
 _ZN13DrawGridLayer17removeFromEffectsEP16EffectGameObject
 DrawGridLayer::removeFromGuides(GameObject*)
@@ -2756,8 +2756,8 @@ EditLevelLayer::~EditLevelLayer()
 _ZN14EditLevelLayerD2Ev
 EditTriggersPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN17EditTriggersPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-EditTriggersPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN17EditTriggersPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+EditTriggersPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN17EditTriggersPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 EditTriggersPopup::determineStartValues()
 _ZN17EditTriggersPopup20determineStartValuesEv
 EditTriggersPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -3044,8 +3044,8 @@ EditorUI::getRelativeOffset(GameObject*)
 _ZN8EditorUI17getRelativeOffsetEP10GameObject
 EditorUI::getSelectedObjects()
 _ZN8EditorUI18getSelectedObjectsEv
-EditorUI::getSimpleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), cocos2d::CCMenu*)
-_ZN8EditorUI15getSimpleButtonESsMN7cocos2d8CCObjectEFvPS1_EPNS0_6CCMenuE
+EditorUI::getSimpleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), cocos2d::CCMenu*)
+_ZN8EditorUI15getSimpleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EPNS0_6CCMenuE
 EditorUI::getSpriteButton(char const*, void (cocos2d::CCObject::*)(cocos2d::CCObject*), cocos2d::CCMenu*, float)
 _ZN8EditorUI15getSpriteButtonEPKcMN7cocos2d8CCObjectEFvPS3_EPNS2_6CCMenuEf
 EditorUI::getSpriteButton(char const*, void (cocos2d::CCObject::*)(cocos2d::CCObject*), cocos2d::CCMenu*, float, int, cocos2d::CCPoint)
@@ -3070,8 +3070,8 @@ EditorUI::keyUp(cocos2d::enumKeyCodes)
 _ZN8EditorUI5keyUpEN7cocos2d12enumKeyCodesE
 EditorUI::liveEditColorUsable()
 _ZN8EditorUI19liveEditColorUsableEv
-EditorUI::menuItemFromObjectString(std::string, int)
-_ZN8EditorUI24menuItemFromObjectStringESsi
+EditorUI::menuItemFromObjectString(gd::string, int)
+_ZN8EditorUI24menuItemFromObjectStringEN2gd6stringEi
 EditorUI::moveForCommand(EditCommand)
 _ZN8EditorUI14moveForCommandE11EditCommand
 EditorUI::moveGamelayer(cocos2d::CCPoint)
@@ -3154,8 +3154,8 @@ EditorUI::orderDownCustomItem(cocos2d::CCObject*)
 _ZN8EditorUI19orderDownCustomItemEPN7cocos2d8CCObjectE
 EditorUI::orderUpCustomItem(cocos2d::CCObject*)
 _ZN8EditorUI17orderUpCustomItemEPN7cocos2d8CCObjectE
-EditorUI::pasteObjects(std::string)
-_ZN8EditorUI12pasteObjectsESs
+EditorUI::pasteObjects(gd::string)
+_ZN8EditorUI12pasteObjectsEN2gd6stringE
 EditorUI::playerTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*)
 _ZN8EditorUI16playerTouchBeganEPN7cocos2d7CCTouchEPNS0_7CCEventE
 EditorUI::playerTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
@@ -3326,8 +3326,8 @@ EffectGameObject::EffectGameObject()
 _ZN16EffectGameObjectC2Ev
 EffectGameObject::create(char const*)
 _ZN16EffectGameObject6createEPKc
-EffectGameObject::customObjectSetup(std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >&)
-_ZN16EffectGameObject17customObjectSetupERSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE
+EffectGameObject::customObjectSetup(gd::map<gd::string, gd::string>&)
+_ZN16EffectGameObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 EffectGameObject::customSetup()
 _ZN16EffectGameObject11customSetupEv
 EffectGameObject::getSaveString()
@@ -3482,14 +3482,14 @@ FLAlertLayer::ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*)
 _ZN12FLAlertLayer12ccTouchEndedEPN7cocos2d7CCTouchEPNS0_7CCEventE
 FLAlertLayer::ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*)
 _ZN12FLAlertLayer12ccTouchMovedEPN7cocos2d7CCTouchEPNS0_7CCEventE
-FLAlertLayer::create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*)
-_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_
-FLAlertLayer::create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)
-_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_f
-FLAlertLayer::create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)
-_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_fbf
-FLAlertLayer::init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)
-_ZN12FLAlertLayer4initEP20FLAlertLayerProtocolPKcSsS3_S3_fbf
+FLAlertLayer::create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*)
+_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcN2gd6stringES3_S3_
+FLAlertLayer::create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)
+_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcN2gd6stringES3_S3_f
+FLAlertLayer::create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)
+_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcN2gd6stringES3_S3_fbf
+FLAlertLayer::init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)
+_ZN12FLAlertLayer4initEP20FLAlertLayerProtocolPKcN2gd6stringES3_S3_fbf
 FLAlertLayer::keyBackClicked()
 _ZN12FLAlertLayer14keyBackClickedEv
 FLAlertLayer::keyDown(cocos2d::enumKeyCodes)
@@ -3582,8 +3582,8 @@ FMODAudioEngine::getBackgroundMusicVolume()
 _ZN15FMODAudioEngine24getBackgroundMusicVolumeEv
 FMODAudioEngine::getEffectsVolume()
 _ZN15FMODAudioEngine16getEffectsVolumeEv
-FMODAudioEngine::isBackgroundMusicPlaying(std::string)
-_ZN15FMODAudioEngine24isBackgroundMusicPlayingESs
+FMODAudioEngine::isBackgroundMusicPlaying(gd::string)
+_ZN15FMODAudioEngine24isBackgroundMusicPlayingEN2gd6stringE
 FMODAudioEngine::isBackgroundMusicPlaying()
 _ZN15FMODAudioEngine24isBackgroundMusicPlayingEv
 FMODAudioEngine::pauseAllEffects()
@@ -3592,14 +3592,14 @@ FMODAudioEngine::pauseBackgroundMusic()
 _ZN15FMODAudioEngine20pauseBackgroundMusicEv
 FMODAudioEngine::pauseEffect(unsigned int)
 _ZN15FMODAudioEngine11pauseEffectEj
-FMODAudioEngine::playBackgroundMusic(std::string, bool, bool)
-_ZN15FMODAudioEngine19playBackgroundMusicESsbb
-FMODAudioEngine::playEffect(std::string, bool, float, float, float)
-_ZN15FMODAudioEngine10playEffectESsbfff
-FMODAudioEngine::preloadBackgroundMusic(std::string)
-_ZN15FMODAudioEngine22preloadBackgroundMusicESs
-FMODAudioEngine::preloadEffect(std::string)
-_ZN15FMODAudioEngine13preloadEffectESs
+FMODAudioEngine::playBackgroundMusic(gd::string, bool, bool)
+_ZN15FMODAudioEngine19playBackgroundMusicEN2gd6stringEbb
+FMODAudioEngine::playEffect(gd::string, bool, float, float, float)
+_ZN15FMODAudioEngine10playEffectEN2gd6stringEbfff
+FMODAudioEngine::preloadBackgroundMusic(gd::string)
+_ZN15FMODAudioEngine22preloadBackgroundMusicEN2gd6stringE
+FMODAudioEngine::preloadEffect(gd::string)
+_ZN15FMODAudioEngine13preloadEffectEN2gd6stringE
 FMODAudioEngine::printResult(FMOD_RESULT)
 _ZN15FMODAudioEngine11printResultE11FMOD_RESULT
 FMODAudioEngine::resumeAllEffects()
@@ -3630,8 +3630,8 @@ FMODAudioEngine::stopBackgroundMusic(bool)
 _ZN15FMODAudioEngine19stopBackgroundMusicEb
 FMODAudioEngine::stopEffect(unsigned int)
 _ZN15FMODAudioEngine10stopEffectEj
-FMODAudioEngine::unloadEffect(std::string)
-_ZN15FMODAudioEngine12unloadEffectESs
+FMODAudioEngine::unloadEffect(gd::string)
+_ZN15FMODAudioEngine12unloadEffectEN2gd6stringE
 FMODAudioEngine::update(float)
 _ZN15FMODAudioEngine6updateEf
 FMODAudioEngine::willPlayBackgroundMusic()
@@ -3696,8 +3696,8 @@ FRequestProfilePage::registerWithTouchDispatcher()
 _ZN19FRequestProfilePage27registerWithTouchDispatcherEv
 FRequestProfilePage::setupCommentsBrowser(cocos2d::CCArray*)
 _ZN19FRequestProfilePage20setupCommentsBrowserEPN7cocos2d7CCArrayE
-FRequestProfilePage::setupPageInfo(std::string, char const*)
-_ZN19FRequestProfilePage13setupPageInfoESsPKc
+FRequestProfilePage::setupPageInfo(gd::string, char const*)
+_ZN19FRequestProfilePage13setupPageInfoEN2gd6stringEPKc
 FRequestProfilePage::untoggleAll()
 _ZN19FRequestProfilePage11untoggleAllEv
 FRequestProfilePage::updateLevelsLabel()
@@ -3782,8 +3782,8 @@ FriendRequestDelegate::loadFRequestsFailed(char const*, GJErrorCode)
 _ZN21FriendRequestDelegate19loadFRequestsFailedEPKc11GJErrorCode
 FriendRequestDelegate::loadFRequestsFinished(cocos2d::CCArray*, char const*)
 _ZN21FriendRequestDelegate21loadFRequestsFinishedEPN7cocos2d7CCArrayEPKc
-FriendRequestDelegate::setupPageInfo(std::string, char const*)
-_ZN21FriendRequestDelegate13setupPageInfoESsPKc
+FriendRequestDelegate::setupPageInfo(gd::string, char const*)
+_ZN21FriendRequestDelegate13setupPageInfoEN2gd6stringEPKc
 FriendRequestPopup::FLAlert_Clicked(FLAlertLayer*, bool)
 _ZN18FriendRequestPopup15FLAlert_ClickedEP12FLAlertLayerb
 FriendRequestPopup::blockUser()
@@ -3860,14 +3860,14 @@ GJAccountLoginDelegate::loginAccountFailed(AccountError)
 _ZN22GJAccountLoginDelegate18loginAccountFailedE12AccountError
 GJAccountLoginDelegate::loginAccountFinished(int, int)
 _ZN22GJAccountLoginDelegate20loginAccountFinishedEii
-GJAccountManager::ProcessHttpRequest(std::string, std::string, std::string, GJHttpType)
-_ZN16GJAccountManager18ProcessHttpRequestESsSsSs10GJHttpType
+GJAccountManager::ProcessHttpRequest(gd::string, gd::string, gd::string, GJHttpType)
+_ZN16GJAccountManager18ProcessHttpRequestEN2gd6stringEN2gd6stringEN2gd6stringE10GJHttpType
 GJAccountManager::addDLToActive(char const*)
 _ZN16GJAccountManager13addDLToActiveEPKc
 GJAccountManager::addDLToActive(char const*, cocos2d::CCObject*)
 _ZN16GJAccountManager13addDLToActiveEPKcPN7cocos2d8CCObjectE
-GJAccountManager::backupAccount(std::string)
-_ZN16GJAccountManager13backupAccountESs
+GJAccountManager::backupAccount(gd::string)
+_ZN16GJAccountManager13backupAccountEN2gd6stringE
 GJAccountManager::dataLoaded(DS_Dictionary*)
 _ZN16GJAccountManager10dataLoadedEP13DS_Dictionary
 GJAccountManager::encodeDataTo(DS_Dictionary*)
@@ -3882,48 +3882,48 @@ GJAccountManager::getDLObject(char const*)
 _ZN16GJAccountManager11getDLObjectEPKc
 GJAccountManager::getGJP()
 _ZN16GJAccountManager6getGJPEv
-GJAccountManager::handleIt(bool, std::string, std::string, GJHttpType)
-_ZN16GJAccountManager8handleItEbSsSs10GJHttpType
-GJAccountManager::handleItDelayed(bool, std::string, std::string, GJHttpType)
-_ZN16GJAccountManager15handleItDelayedEbSsSs10GJHttpType
+GJAccountManager::handleIt(bool, gd::string, gd::string, GJHttpType)
+_ZN16GJAccountManager8handleItEbN2gd6stringEN2gd6stringE10GJHttpType
+GJAccountManager::handleItDelayed(bool, gd::string, gd::string, GJHttpType)
+_ZN16GJAccountManager15handleItDelayedEbN2gd6stringEN2gd6stringE10GJHttpType
 GJAccountManager::handleItND(cocos2d::CCNode*, void*)
 _ZN16GJAccountManager10handleItNDEPN7cocos2d6CCNodeEPv
 GJAccountManager::init()
 _ZN16GJAccountManager4initEv
 GJAccountManager::isDLActive(char const*)
 _ZN16GJAccountManager10isDLActiveEPKc
-GJAccountManager::linkToAccount(std::string, std::string, int, int)
-_ZN16GJAccountManager13linkToAccountESsSsii
-GJAccountManager::loginAccount(std::string, std::string)
-_ZN16GJAccountManager12loginAccountESsSs
-GJAccountManager::onBackupAccountCompleted(std::string, std::string)
-_ZN16GJAccountManager24onBackupAccountCompletedESsSs
-GJAccountManager::onGetAccountBackupURLCompleted(std::string, std::string)
-_ZN16GJAccountManager30onGetAccountBackupURLCompletedESsSs
-GJAccountManager::onGetAccountSyncURLCompleted(std::string, std::string)
-_ZN16GJAccountManager28onGetAccountSyncURLCompletedESsSs
-GJAccountManager::onLoginAccountCompleted(std::string, std::string)
-_ZN16GJAccountManager23onLoginAccountCompletedESsSs
+GJAccountManager::linkToAccount(gd::string, gd::string, int, int)
+_ZN16GJAccountManager13linkToAccountEN2gd6stringEN2gd6stringEii
+GJAccountManager::loginAccount(gd::string, gd::string)
+_ZN16GJAccountManager12loginAccountEN2gd6stringEN2gd6stringE
+GJAccountManager::onBackupAccountCompleted(gd::string, gd::string)
+_ZN16GJAccountManager24onBackupAccountCompletedEN2gd6stringEN2gd6stringE
+GJAccountManager::onGetAccountBackupURLCompleted(gd::string, gd::string)
+_ZN16GJAccountManager30onGetAccountBackupURLCompletedEN2gd6stringEN2gd6stringE
+GJAccountManager::onGetAccountSyncURLCompleted(gd::string, gd::string)
+_ZN16GJAccountManager28onGetAccountSyncURLCompletedEN2gd6stringEN2gd6stringE
+GJAccountManager::onLoginAccountCompleted(gd::string, gd::string)
+_ZN16GJAccountManager23onLoginAccountCompletedEN2gd6stringEN2gd6stringE
 GJAccountManager::onProcessHttpRequestCompleted(cocos2d::extension::CCHttpClient*, cocos2d::extension::CCHttpResponse*)
 _ZN16GJAccountManager29onProcessHttpRequestCompletedEPN7cocos2d9extension12CCHttpClientEPNS1_14CCHttpResponseE
-GJAccountManager::onRegisterAccountCompleted(std::string, std::string)
-_ZN16GJAccountManager26onRegisterAccountCompletedESsSs
-GJAccountManager::onSyncAccountCompleted(std::string, std::string)
-_ZN16GJAccountManager22onSyncAccountCompletedESsSs
-GJAccountManager::onUpdateAccountSettingsCompleted(std::string, std::string)
-_ZN16GJAccountManager32onUpdateAccountSettingsCompletedESsSs
-GJAccountManager::registerAccount(std::string, std::string, std::string)
-_ZN16GJAccountManager15registerAccountESsSsSs
+GJAccountManager::onRegisterAccountCompleted(gd::string, gd::string)
+_ZN16GJAccountManager26onRegisterAccountCompletedEN2gd6stringEN2gd6stringE
+GJAccountManager::onSyncAccountCompleted(gd::string, gd::string)
+_ZN16GJAccountManager22onSyncAccountCompletedEN2gd6stringEN2gd6stringE
+GJAccountManager::onUpdateAccountSettingsCompleted(gd::string, gd::string)
+_ZN16GJAccountManager32onUpdateAccountSettingsCompletedEN2gd6stringEN2gd6stringE
+GJAccountManager::registerAccount(gd::string, gd::string, gd::string)
+_ZN16GJAccountManager15registerAccountEN2gd6stringEN2gd6stringEN2gd6stringE
 GJAccountManager::removeDLFromActive(char const*)
 _ZN16GJAccountManager18removeDLFromActiveEPKc
 GJAccountManager::sharedState()
 _ZN16GJAccountManager11sharedStateEv
-GJAccountManager::syncAccount(std::string)
-_ZN16GJAccountManager11syncAccountESs
+GJAccountManager::syncAccount(gd::string)
+_ZN16GJAccountManager11syncAccountEN2gd6stringE
 GJAccountManager::unlinkFromAccount()
 _ZN16GJAccountManager17unlinkFromAccountEv
-GJAccountManager::updateAccountSettings(int, int, int, std::string, std::string, std::string)
-_ZN16GJAccountManager21updateAccountSettingsEiiiSsSsSs
+GJAccountManager::updateAccountSettings(int, int, int, gd::string, gd::string, gd::string)
+_ZN16GJAccountManager21updateAccountSettingsEiiiN2gd6stringEN2gd6stringEN2gd6stringE
 GJAccountManager::~GJAccountManager()
 _ZN16GJAccountManagerD0Ev
 GJAccountManager::~GJAccountManager()
@@ -3944,8 +3944,8 @@ GJAccountSettingsLayer::GJAccountSettingsLayer()
 _ZN22GJAccountSettingsLayerC2Ev
 GJAccountSettingsLayer::create(int)
 _ZN22GJAccountSettingsLayer6createEi
-GJAccountSettingsLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, float, float)
-_ZN22GJAccountSettingsLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEff
+GJAccountSettingsLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, float, float)
+_ZN22GJAccountSettingsLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEff
 GJAccountSettingsLayer::init(int)
 _ZN22GJAccountSettingsLayer4initEi
 GJAccountSettingsLayer::keyBackClicked()
@@ -4110,8 +4110,8 @@ GJBaseGameLayer::updateCounters(int, int)
 _ZN15GJBaseGameLayer14updateCountersEii
 GJBaseGameLayer::updateDisabledObjectsLastPos(cocos2d::CCArray*)
 _ZN15GJBaseGameLayer28updateDisabledObjectsLastPosEPN7cocos2d7CCArrayE
-GJBaseGameLayer::updateLayerCapacity(std::string)
-_ZN15GJBaseGameLayer19updateLayerCapacityESs
+GJBaseGameLayer::updateLayerCapacity(gd::string)
+_ZN15GJBaseGameLayer19updateLayerCapacityEN2gd6stringE
 GJBaseGameLayer::updateLegacyLayerCapacity(int, int, int, int)
 _ZN15GJBaseGameLayer25updateLegacyLayerCapacityEiiii
 GJBaseGameLayer::updateOBB2(cocos2d::CCRect)
@@ -4130,12 +4130,12 @@ GJChallengeDelegate::challengeStatusFinished()
 _ZN19GJChallengeDelegate23challengeStatusFinishedEv
 GJChallengeItem::canEncode()
 _ZN15GJChallengeItem9canEncodeEv
-GJChallengeItem::create(GJChallengeType, int, int, int, std::string)
-_ZN15GJChallengeItem6createE15GJChallengeTypeiiiSs
+GJChallengeItem::create(GJChallengeType, int, int, int, gd::string)
+_ZN15GJChallengeItem6createE15GJChallengeTypeiiiN2gd6stringE
 GJChallengeItem::create()
 _ZN15GJChallengeItem6createEv
-GJChallengeItem::createFromString(std::string)
-_ZN15GJChallengeItem16createFromStringESs
+GJChallengeItem::createFromString(gd::string)
+_ZN15GJChallengeItem16createFromStringEN2gd6stringE
 GJChallengeItem::createWithCoder(DS_Dictionary*)
 _ZN15GJChallengeItem15createWithCoderEP13DS_Dictionary
 GJChallengeItem::dataLoaded(DS_Dictionary*)
@@ -4144,8 +4144,8 @@ GJChallengeItem::encodeWithCoder(DS_Dictionary*)
 _ZN15GJChallengeItem15encodeWithCoderEP13DS_Dictionary
 GJChallengeItem::incrementCount(int)
 _ZN15GJChallengeItem14incrementCountEi
-GJChallengeItem::init(GJChallengeType, int, int, int, std::string)
-_ZN15GJChallengeItem4initE15GJChallengeTypeiiiSs
+GJChallengeItem::init(GJChallengeType, int, int, int, gd::string)
+_ZN15GJChallengeItem4initE15GJChallengeTypeiiiN2gd6stringE
 GJChallengeItem::setCount(int)
 _ZN15GJChallengeItem8setCountEi
 GJChallengeItem::~GJChallengeItem()
@@ -4358,8 +4358,8 @@ GJEffectManager::isGroupEnabled(int)
 _ZN15GJEffectManager14isGroupEnabledEi
 GJEffectManager::keyForGroupIDColor(int, cocos2d::_ccColor3B const&, bool)
 _ZN15GJEffectManager18keyForGroupIDColorEiRKN7cocos2d10_ccColor3BEb
-GJEffectManager::loadState(std::string)
-_ZN15GJEffectManager9loadStateESs
+GJEffectManager::loadState(gd::string)
+_ZN15GJEffectManager9loadStateEN2gd6stringE
 GJEffectManager::objectsCollided(int, int)
 _ZN15GJEffectManager15objectsCollidedEii
 GJEffectManager::opacityForIndex(int)
@@ -4416,8 +4416,8 @@ GJEffectManager::setColorAction(ColorAction*, int)
 _ZN15GJEffectManager14setColorActionEP11ColorActioni
 GJEffectManager::setFollowing(int, int, bool)
 _ZN15GJEffectManager12setFollowingEiib
-GJEffectManager::setupFromString(std::string)
-_ZN15GJEffectManager15setupFromStringESs
+GJEffectManager::setupFromString(gd::string)
+_ZN15GJEffectManager15setupFromStringEN2gd6stringE
 GJEffectManager::shouldBlend(int)
 _ZN15GJEffectManager11shouldBlendEi
 GJEffectManager::spawnGroup(int, float, int)
@@ -4612,8 +4612,8 @@ GJGameLevel::setAttemptTime(int)
 _ZN11GJGameLevel14setAttemptTimeEi
 GJGameLevel::setAttempts(int)
 _ZN11GJGameLevel11setAttemptsEi
-GJGameLevel::setCapacityString(std::string)
-_ZN11GJGameLevel17setCapacityStringESs
+GJGameLevel::setCapacityString(gd::string)
+_ZN11GJGameLevel17setCapacityStringEN2gd6stringE
 GJGameLevel::setClicks(int)
 _ZN11GJGameLevel9setClicksEi
 GJGameLevel::setCoinsVerified(int)
@@ -4630,8 +4630,8 @@ GJGameLevel::setLastBuildSave(cocos2d::CCDictionary*)
 _ZN11GJGameLevel16setLastBuildSaveEPN7cocos2d12CCDictionaryE
 GJGameLevel::setLevelID(int)
 _ZN11GJGameLevel10setLevelIDEi
-GJGameLevel::setLevelName(std::string)
-_ZN11GJGameLevel12setLevelNameESs
+GJGameLevel::setLevelName(gd::string)
+_ZN11GJGameLevel12setLevelNameEN2gd6stringE
 GJGameLevel::setNewNormalPercent(int)
 _ZN11GJGameLevel19setNewNormalPercentEi
 GJGameLevel::setNewNormalPercent2(int)
@@ -4806,10 +4806,10 @@ GJGroundLayer::~GJGroundLayer()
 _ZN13GJGroundLayerD1Ev
 GJGroundLayer::~GJGroundLayer()
 _ZN13GJGroundLayerD2Ev
-GJHttpResult::create(bool, std::string, std::string, GJHttpType)
-_ZN12GJHttpResult6createEbSsSs10GJHttpType
-GJHttpResult::init(bool, std::string, std::string, GJHttpType)
-_ZN12GJHttpResult4initEbSsSs10GJHttpType
+GJHttpResult::create(bool, gd::string, gd::string, GJHttpType)
+_ZN12GJHttpResult6createEbN2gd6stringEN2gd6stringE10GJHttpType
+GJHttpResult::init(bool, gd::string, gd::string, GJHttpType)
+_ZN12GJHttpResult4initEbN2gd6stringEN2gd6stringE10GJHttpType
 GJHttpResult::~GJHttpResult()
 _ZN12GJHttpResultD0Ev
 GJHttpResult::~GJHttpResult()
@@ -4876,10 +4876,10 @@ GJMapPack::hasCompletedMapPack()
 _ZN9GJMapPack19hasCompletedMapPackEv
 GJMapPack::init()
 _ZN9GJMapPack4initEv
-GJMapPack::parsePackColors(std::string, std::string)
-_ZN9GJMapPack15parsePackColorsESsSs
-GJMapPack::parsePackLevels(std::string)
-_ZN9GJMapPack15parsePackLevelsESs
+GJMapPack::parsePackColors(gd::string, gd::string)
+_ZN9GJMapPack15parsePackColorsEN2gd6stringEN2gd6stringE
+GJMapPack::parsePackLevels(gd::string)
+_ZN9GJMapPack15parsePackLevelsEN2gd6stringE
 GJMapPack::totalMaps()
 _ZN9GJMapPack9totalMapsEv
 GJMapPack::~GJMapPack()
@@ -5258,8 +5258,8 @@ GJRewardDelegate::rewardsStatusFinished(int)
 _ZN16GJRewardDelegate21rewardsStatusFinishedEi
 GJRewardItem::canEncode()
 _ZN12GJRewardItem9canEncodeEv
-GJRewardItem::create(int, int, std::string)
-_ZN12GJRewardItem6createEiiSs
+GJRewardItem::create(int, int, gd::string)
+_ZN12GJRewardItem6createEiiN2gd6stringE
 GJRewardItem::create()
 _ZN12GJRewardItem6createEv
 GJRewardItem::createSpecial(GJRewardType, int, int, SpecialRewardItem, int, SpecialRewardItem, int, int, int)
@@ -5284,8 +5284,8 @@ GJRewardItem::getRewardCount(SpecialRewardItem)
 _ZN12GJRewardItem14getRewardCountE17SpecialRewardItem
 GJRewardItem::getRewardObjectForType(SpecialRewardItem)
 _ZN12GJRewardItem22getRewardObjectForTypeE17SpecialRewardItem
-GJRewardItem::init(int, int, std::string)
-_ZN12GJRewardItem4initEiiSs
+GJRewardItem::init(int, int, gd::string)
+_ZN12GJRewardItem4initEiiN2gd6stringE
 GJRewardItem::isShardType(SpecialRewardItem)
 _ZN12GJRewardItem11isShardTypeE17SpecialRewardItem
 GJRewardItem::rewardItemToStat(SpecialRewardItem)
@@ -5332,8 +5332,8 @@ GJRobotSprite::hideGlow()
 _ZN13GJRobotSprite8hideGlowEv
 GJRobotSprite::hideSecondary()
 _ZN13GJRobotSprite13hideSecondaryEv
-GJRobotSprite::init(std::string)
-_ZN13GJRobotSprite4initESs
+GJRobotSprite::init(gd::string)
+_ZN13GJRobotSprite4initEN2gd6stringE
 GJRobotSprite::init()
 _ZN13GJRobotSprite4initEv
 GJRobotSprite::setOpacity(unsigned char)
@@ -5552,10 +5552,10 @@ GJSearchObject::GJSearchObject()
 _ZN14GJSearchObjectC2Ev
 GJSearchObject::create(SearchType)
 _ZN14GJSearchObject6createE10SearchType
-GJSearchObject::create(SearchType, std::string)
-_ZN14GJSearchObject6createE10SearchTypeSs
-GJSearchObject::create(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)
-_ZN14GJSearchObject6createE10SearchTypeSsSsSsibbbibbbbbbbbii
+GJSearchObject::create(SearchType, gd::string)
+_ZN14GJSearchObject6createE10SearchTypeN2gd6stringE
+GJSearchObject::create(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)
+_ZN14GJSearchObject6createE10SearchTypeN2gd6stringEN2gd6stringEN2gd6stringEibbbibbbbbbbbii
 GJSearchObject::createFromKey(char const*)
 _ZN14GJSearchObject13createFromKeyEPKc
 GJSearchObject::getKey()
@@ -5568,12 +5568,12 @@ GJSearchObject::getPageObject(int)
 _ZN14GJSearchObject13getPageObjectEi
 GJSearchObject::getPrevPageObject()
 _ZN14GJSearchObject17getPrevPageObjectEv
-GJSearchObject::getSearchKey(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)
-_ZN14GJSearchObject12getSearchKeyE10SearchTypeSsSsSsibbbibbbbbbbbii
+GJSearchObject::getSearchKey(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)
+_ZN14GJSearchObject12getSearchKeyE10SearchTypeN2gd6stringEN2gd6stringEN2gd6stringEibbbibbbbbbbbii
 GJSearchObject::getString() const
 _ZNK14GJSearchObject9getStringEv
-GJSearchObject::init(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)
-_ZN14GJSearchObject4initE10SearchTypeSsSsSsibbbibbbbbbbbii
+GJSearchObject::init(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)
+_ZN14GJSearchObject4initE10SearchTypeN2gd6stringEN2gd6stringEN2gd6stringEibbbibbbbbbbbii
 GJSearchObject::~GJSearchObject()
 _ZN14GJSearchObjectD0Ev
 GJSearchObject::~GJSearchObject()
@@ -5844,14 +5844,14 @@ GJWriteMessagePopup::textInputReturn(CCTextInputNode*)
 _ZN19GJWriteMessagePopup15textInputReturnEP15CCTextInputNode
 GJWriteMessagePopup::textInputShouldOffset(CCTextInputNode*, float)
 _ZN19GJWriteMessagePopup21textInputShouldOffsetEP15CCTextInputNodef
-GJWriteMessagePopup::updateBody(std::string)
-_ZN19GJWriteMessagePopup10updateBodyESs
+GJWriteMessagePopup::updateBody(gd::string)
+_ZN19GJWriteMessagePopup10updateBodyEN2gd6stringE
 GJWriteMessagePopup::updateCharCountLabel(int)
 _ZN19GJWriteMessagePopup20updateCharCountLabelEi
-GJWriteMessagePopup::updateSubject(std::string)
-_ZN19GJWriteMessagePopup13updateSubjectESs
-GJWriteMessagePopup::updateText(std::string, int)
-_ZN19GJWriteMessagePopup10updateTextESsi
+GJWriteMessagePopup::updateSubject(gd::string)
+_ZN19GJWriteMessagePopup13updateSubjectEN2gd6stringE
+GJWriteMessagePopup::updateText(gd::string, int)
+_ZN19GJWriteMessagePopup10updateTextEN2gd6stringEi
 GJWriteMessagePopup::uploadMessageFailed(int)
 _ZN19GJWriteMessagePopup19uploadMessageFailedEi
 GJWriteMessagePopup::uploadMessageFinished(int)
@@ -5876,22 +5876,22 @@ GManager::init()
 _ZN8GManager4initEv
 GManager::load()
 _ZN8GManager4loadEv
-GManager::loadDataFromFile(std::string)
-_ZN8GManager16loadDataFromFileESs
-GManager::loadFromCompressedString(std::string)
-_ZN8GManager24loadFromCompressedStringESs
-GManager::loadFromString(std::string)
-_ZN8GManager14loadFromStringESs
+GManager::loadDataFromFile(gd::string)
+_ZN8GManager16loadDataFromFileEN2gd6stringE
+GManager::loadFromCompressedString(gd::string)
+_ZN8GManager24loadFromCompressedStringEN2gd6stringE
+GManager::loadFromString(gd::string)
+_ZN8GManager14loadFromStringEN2gd6stringE
 GManager::save()
 _ZN8GManager4saveEv
-GManager::saveData(DS_Dictionary*, std::string)
-_ZN8GManager8saveDataEP13DS_DictionarySs
-GManager::saveGMTo(std::string)
-_ZN8GManager8saveGMToESs
+GManager::saveData(DS_Dictionary*, gd::string)
+_ZN8GManager8saveDataEP13DS_DictionaryN2gd6stringE
+GManager::saveGMTo(gd::string)
+_ZN8GManager8saveGMToEN2gd6stringE
 GManager::setup()
 _ZN8GManager5setupEv
-GManager::tryLoadData(DS_Dictionary*, std::string)
-_ZN8GManager11tryLoadDataEP13DS_DictionarySs
+GManager::tryLoadData(DS_Dictionary*, gd::string)
+_ZN8GManager11tryLoadDataEP13DS_DictionaryN2gd6stringE
 GManager::~GManager()
 _ZN8GManagerD0Ev
 GManager::~GManager()
@@ -5906,8 +5906,8 @@ GameCell::draw()
 _ZN8GameCell4drawEv
 GameCell::init()
 _ZN8GameCell4initEv
-GameCell::loadFromString(std::string)
-_ZN8GameCell14loadFromStringESs
+GameCell::loadFromString(gd::string)
+_ZN8GameCell14loadFromStringEN2gd6stringE
 GameCell::onTouch(cocos2d::CCObject*)
 _ZN8GameCell7onTouchEPN7cocos2d8CCObjectE
 GameCell::updateBGColor(int)
@@ -5936,8 +5936,8 @@ GameLevelManager::GameLevelManager()
 _ZN16GameLevelManagerC1Ev
 GameLevelManager::GameLevelManager()
 _ZN16GameLevelManagerC2Ev
-GameLevelManager::ProcessHttpRequest(std::string, std::string, std::string, GJHttpType)
-_ZN16GameLevelManager18ProcessHttpRequestESsSsSs10GJHttpType
+GameLevelManager::ProcessHttpRequest(gd::string, gd::string, gd::string, GJHttpType)
+_ZN16GameLevelManager18ProcessHttpRequestEN2gd6stringEN2gd6stringEN2gd6stringE10GJHttpType
 GameLevelManager::acceptFriendRequest(int, int)
 _ZN16GameLevelManager19acceptFriendRequestEii
 GameLevelManager::accountIDForUserID(int)
@@ -5952,18 +5952,18 @@ GameLevelManager::blockUser(int)
 _ZN16GameLevelManager9blockUserEi
 GameLevelManager::cleanupDailyLevels()
 _ZN16GameLevelManager18cleanupDailyLevelsEv
-GameLevelManager::createAndGetAccountComments(std::string, int)
-_ZN16GameLevelManager27createAndGetAccountCommentsESsi
-GameLevelManager::createAndGetCommentsFull(std::string, int, bool)
-_ZN16GameLevelManager24createAndGetCommentsFullESsib
-GameLevelManager::createAndGetLevelComments(std::string, int)
-_ZN16GameLevelManager25createAndGetLevelCommentsESsi
-GameLevelManager::createAndGetLevels(std::string)
-_ZN16GameLevelManager18createAndGetLevelsESs
-GameLevelManager::createAndGetMapPacks(std::string)
-_ZN16GameLevelManager20createAndGetMapPacksESs
-GameLevelManager::createAndGetScores(std::string, GJScoreType)
-_ZN16GameLevelManager18createAndGetScoresESs11GJScoreType
+GameLevelManager::createAndGetAccountComments(gd::string, int)
+_ZN16GameLevelManager27createAndGetAccountCommentsEN2gd6stringEi
+GameLevelManager::createAndGetCommentsFull(gd::string, int, bool)
+_ZN16GameLevelManager24createAndGetCommentsFullEN2gd6stringEib
+GameLevelManager::createAndGetLevelComments(gd::string, int)
+_ZN16GameLevelManager25createAndGetLevelCommentsEN2gd6stringEi
+GameLevelManager::createAndGetLevels(gd::string)
+_ZN16GameLevelManager18createAndGetLevelsEN2gd6stringE
+GameLevelManager::createAndGetMapPacks(gd::string)
+_ZN16GameLevelManager20createAndGetMapPacksEN2gd6stringE
+GameLevelManager::createAndGetScores(gd::string, GJScoreType)
+_ZN16GameLevelManager18createAndGetScoresEN2gd6stringE11GJScoreType
 GameLevelManager::createNewLevel()
 _ZN16GameLevelManager14createNewLevelEv
 GameLevelManager::createPageInfo(int, int, int)
@@ -6098,8 +6098,8 @@ GameLevelManager::getMessageKey(int)
 _ZN16GameLevelManager13getMessageKeyEi
 GameLevelManager::getMessagesKey(bool, int)
 _ZN16GameLevelManager14getMessagesKeyEbi
-GameLevelManager::getNextLevelName(std::string)
-_ZN16GameLevelManager16getNextLevelNameESs
+GameLevelManager::getNextLevelName(gd::string)
+_ZN16GameLevelManager16getNextLevelNameEN2gd6stringE
 GameLevelManager::getOnlineLevels(GJSearchObject*)
 _ZN16GameLevelManager15getOnlineLevelsEP14GJSearchObject
 GameLevelManager::getPageInfo(char const*)
@@ -6158,10 +6158,10 @@ GameLevelManager::getUsers(GJSearchObject*)
 _ZN16GameLevelManager8getUsersEP14GJSearchObject
 GameLevelManager::gotoLevelPage(GJGameLevel*)
 _ZN16GameLevelManager13gotoLevelPageEP11GJGameLevel
-GameLevelManager::handleIt(bool, std::string, std::string, GJHttpType)
-_ZN16GameLevelManager8handleItEbSsSs10GJHttpType
-GameLevelManager::handleItDelayed(bool, std::string, std::string, GJHttpType)
-_ZN16GameLevelManager15handleItDelayedEbSsSs10GJHttpType
+GameLevelManager::handleIt(bool, gd::string, gd::string, GJHttpType)
+_ZN16GameLevelManager8handleItEbN2gd6stringEN2gd6stringE10GJHttpType
+GameLevelManager::handleItDelayed(bool, gd::string, gd::string, GJHttpType)
+_ZN16GameLevelManager15handleItDelayedEbN2gd6stringEN2gd6stringE10GJHttpType
 GameLevelManager::handleItND(cocos2d::CCNode*, void*)
 _ZN16GameLevelManager10handleItNDEPN7cocos2d6CCNodeEPv
 GameLevelManager::hasDailyStateBeenLoaded(bool)
@@ -6224,106 +6224,106 @@ GameLevelManager::markLevelAsReported(int)
 _ZN16GameLevelManager19markLevelAsReportedEi
 GameLevelManager::messageWasRemoved(int, bool)
 _ZN16GameLevelManager17messageWasRemovedEib
-GameLevelManager::onAcceptFriendRequestCompleted(std::string, std::string)
-_ZN16GameLevelManager30onAcceptFriendRequestCompletedESsSs
-GameLevelManager::onBanUserCompleted(std::string, std::string)
-_ZN16GameLevelManager18onBanUserCompletedESsSs
-GameLevelManager::onBlockUserCompleted(std::string, std::string)
-_ZN16GameLevelManager20onBlockUserCompletedESsSs
-GameLevelManager::onDeleteCommentCompleted(std::string, std::string)
-_ZN16GameLevelManager24onDeleteCommentCompletedESsSs
-GameLevelManager::onDeleteFriendRequestCompleted(std::string, std::string)
-_ZN16GameLevelManager30onDeleteFriendRequestCompletedESsSs
-GameLevelManager::onDeleteServerLevelCompleted(std::string, std::string)
-_ZN16GameLevelManager28onDeleteServerLevelCompletedESsSs
-GameLevelManager::onDeleteUserMessagesCompleted(std::string, std::string)
-_ZN16GameLevelManager29onDeleteUserMessagesCompletedESsSs
-GameLevelManager::onDownloadLevelCompleted(std::string, std::string)
-_ZN16GameLevelManager24onDownloadLevelCompletedESsSs
-GameLevelManager::onDownloadUserMessageCompleted(std::string, std::string)
-_ZN16GameLevelManager30onDownloadUserMessageCompletedESsSs
-GameLevelManager::onGetAccountCommentsCompleted(std::string, std::string)
-_ZN16GameLevelManager29onGetAccountCommentsCompletedESsSs
-GameLevelManager::onGetFriendRequestsCompleted(std::string, std::string)
-_ZN16GameLevelManager28onGetFriendRequestsCompletedESsSs
-GameLevelManager::onGetGJChallengesCompleted(std::string, std::string)
-_ZN16GameLevelManager26onGetGJChallengesCompletedESsSs
-GameLevelManager::onGetGJRewardsCompleted(std::string, std::string)
-_ZN16GameLevelManager23onGetGJRewardsCompletedESsSs
-GameLevelManager::onGetGJUserInfoCompleted(std::string, std::string)
-_ZN16GameLevelManager24onGetGJUserInfoCompletedESsSs
-GameLevelManager::onGetGauntletsCompleted(std::string, std::string)
-_ZN16GameLevelManager23onGetGauntletsCompletedESsSs
-GameLevelManager::onGetLeaderboardScoresCompleted(std::string, std::string)
-_ZN16GameLevelManager31onGetLeaderboardScoresCompletedESsSs
-GameLevelManager::onGetLevelCommentsCompleted(std::string, std::string)
-_ZN16GameLevelManager27onGetLevelCommentsCompletedESsSs
-GameLevelManager::onGetLevelLeaderboardCompleted(std::string, std::string)
-_ZN16GameLevelManager30onGetLevelLeaderboardCompletedESsSs
-GameLevelManager::onGetLevelSaveDataCompleted(std::string, std::string)
-_ZN16GameLevelManager27onGetLevelSaveDataCompletedESsSs
-GameLevelManager::onGetMapPacksCompleted(std::string, std::string)
-_ZN16GameLevelManager22onGetMapPacksCompletedESsSs
-GameLevelManager::onGetOnlineLevelsCompleted(std::string, std::string)
-_ZN16GameLevelManager26onGetOnlineLevelsCompletedESsSs
-GameLevelManager::onGetTopArtistsCompleted(std::string, std::string)
-_ZN16GameLevelManager24onGetTopArtistsCompletedESsSs
-GameLevelManager::onGetUserListCompleted(std::string, std::string)
-_ZN16GameLevelManager22onGetUserListCompletedESsSs
-GameLevelManager::onGetUserMessagesCompleted(std::string, std::string)
-_ZN16GameLevelManager26onGetUserMessagesCompletedESsSs
-GameLevelManager::onGetUsersCompleted(std::string, std::string)
-_ZN16GameLevelManager19onGetUsersCompletedESsSs
-GameLevelManager::onLikeItemCompleted(std::string, std::string)
-_ZN16GameLevelManager19onLikeItemCompletedESsSs
+GameLevelManager::onAcceptFriendRequestCompleted(gd::string, gd::string)
+_ZN16GameLevelManager30onAcceptFriendRequestCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onBanUserCompleted(gd::string, gd::string)
+_ZN16GameLevelManager18onBanUserCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onBlockUserCompleted(gd::string, gd::string)
+_ZN16GameLevelManager20onBlockUserCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onDeleteCommentCompleted(gd::string, gd::string)
+_ZN16GameLevelManager24onDeleteCommentCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onDeleteFriendRequestCompleted(gd::string, gd::string)
+_ZN16GameLevelManager30onDeleteFriendRequestCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onDeleteServerLevelCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onDeleteServerLevelCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onDeleteUserMessagesCompleted(gd::string, gd::string)
+_ZN16GameLevelManager29onDeleteUserMessagesCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onDownloadLevelCompleted(gd::string, gd::string)
+_ZN16GameLevelManager24onDownloadLevelCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onDownloadUserMessageCompleted(gd::string, gd::string)
+_ZN16GameLevelManager30onDownloadUserMessageCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetAccountCommentsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager29onGetAccountCommentsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetFriendRequestsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onGetFriendRequestsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetGJChallengesCompleted(gd::string, gd::string)
+_ZN16GameLevelManager26onGetGJChallengesCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetGJRewardsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager23onGetGJRewardsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetGJUserInfoCompleted(gd::string, gd::string)
+_ZN16GameLevelManager24onGetGJUserInfoCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetGauntletsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager23onGetGauntletsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetLeaderboardScoresCompleted(gd::string, gd::string)
+_ZN16GameLevelManager31onGetLeaderboardScoresCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetLevelCommentsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager27onGetLevelCommentsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetLevelLeaderboardCompleted(gd::string, gd::string)
+_ZN16GameLevelManager30onGetLevelLeaderboardCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetLevelSaveDataCompleted(gd::string, gd::string)
+_ZN16GameLevelManager27onGetLevelSaveDataCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetMapPacksCompleted(gd::string, gd::string)
+_ZN16GameLevelManager22onGetMapPacksCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetOnlineLevelsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager26onGetOnlineLevelsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetTopArtistsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager24onGetTopArtistsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetUserListCompleted(gd::string, gd::string)
+_ZN16GameLevelManager22onGetUserListCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetUserMessagesCompleted(gd::string, gd::string)
+_ZN16GameLevelManager26onGetUserMessagesCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onGetUsersCompleted(gd::string, gd::string)
+_ZN16GameLevelManager19onGetUsersCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onLikeItemCompleted(gd::string, gd::string)
+_ZN16GameLevelManager19onLikeItemCompletedEN2gd6stringEN2gd6stringE
 GameLevelManager::onProcessHttpRequestCompleted(cocos2d::extension::CCHttpClient*, cocos2d::extension::CCHttpResponse*)
 _ZN16GameLevelManager29onProcessHttpRequestCompletedEPN7cocos2d9extension12CCHttpClientEPNS1_14CCHttpResponseE
-GameLevelManager::onRateDemonCompleted(std::string, std::string)
-_ZN16GameLevelManager20onRateDemonCompletedESsSs
-GameLevelManager::onRateStarsCompleted(std::string, std::string)
-_ZN16GameLevelManager20onRateStarsCompletedESsSs
-GameLevelManager::onReadFriendRequestCompleted(std::string, std::string)
-_ZN16GameLevelManager28onReadFriendRequestCompletedESsSs
-GameLevelManager::onRemoveFriendCompleted(std::string, std::string)
-_ZN16GameLevelManager23onRemoveFriendCompletedESsSs
-GameLevelManager::onReportLevelCompleted(std::string, std::string)
-_ZN16GameLevelManager22onReportLevelCompletedESsSs
-GameLevelManager::onRequestUserAccessCompleted(std::string, std::string)
-_ZN16GameLevelManager28onRequestUserAccessCompletedESsSs
-GameLevelManager::onRestoreItemsCompleted(std::string, std::string)
-_ZN16GameLevelManager23onRestoreItemsCompletedESsSs
-GameLevelManager::onSetLevelFeaturedCompleted(std::string, std::string)
-_ZN16GameLevelManager27onSetLevelFeaturedCompletedESsSs
-GameLevelManager::onSetLevelStarsCompleted(std::string, std::string)
-_ZN16GameLevelManager24onSetLevelStarsCompletedESsSs
-GameLevelManager::onSubmitUserInfoCompleted(std::string, std::string)
-_ZN16GameLevelManager25onSubmitUserInfoCompletedESsSs
-GameLevelManager::onSuggestLevelStarsCompleted(std::string, std::string)
-_ZN16GameLevelManager28onSuggestLevelStarsCompletedESsSs
-GameLevelManager::onUnblockUserCompleted(std::string, std::string)
-_ZN16GameLevelManager22onUnblockUserCompletedESsSs
-GameLevelManager::onUpdateDescriptionCompleted(std::string, std::string)
-_ZN16GameLevelManager28onUpdateDescriptionCompletedESsSs
-GameLevelManager::onUpdateLevelCompleted(std::string, std::string)
-_ZN16GameLevelManager22onUpdateLevelCompletedESsSs
-GameLevelManager::onUpdateUserScoreCompleted(std::string, std::string)
-_ZN16GameLevelManager26onUpdateUserScoreCompletedESsSs
-GameLevelManager::onUploadCommentCompleted(std::string, std::string)
-_ZN16GameLevelManager24onUploadCommentCompletedESsSs
-GameLevelManager::onUploadFriendRequestCompleted(std::string, std::string)
-_ZN16GameLevelManager30onUploadFriendRequestCompletedESsSs
-GameLevelManager::onUploadLevelCompleted(std::string, std::string)
-_ZN16GameLevelManager22onUploadLevelCompletedESsSs
-GameLevelManager::onUploadUserMessageCompleted(std::string, std::string)
-_ZN16GameLevelManager28onUploadUserMessageCompletedESsSs
-GameLevelManager::ongetGJDailyLevelStateCompleted(std::string, std::string)
-_ZN16GameLevelManager31ongetGJDailyLevelStateCompletedESsSs
+GameLevelManager::onRateDemonCompleted(gd::string, gd::string)
+_ZN16GameLevelManager20onRateDemonCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onRateStarsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager20onRateStarsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onReadFriendRequestCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onReadFriendRequestCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onRemoveFriendCompleted(gd::string, gd::string)
+_ZN16GameLevelManager23onRemoveFriendCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onReportLevelCompleted(gd::string, gd::string)
+_ZN16GameLevelManager22onReportLevelCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onRequestUserAccessCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onRequestUserAccessCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onRestoreItemsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager23onRestoreItemsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onSetLevelFeaturedCompleted(gd::string, gd::string)
+_ZN16GameLevelManager27onSetLevelFeaturedCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onSetLevelStarsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager24onSetLevelStarsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onSubmitUserInfoCompleted(gd::string, gd::string)
+_ZN16GameLevelManager25onSubmitUserInfoCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onSuggestLevelStarsCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onSuggestLevelStarsCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUnblockUserCompleted(gd::string, gd::string)
+_ZN16GameLevelManager22onUnblockUserCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUpdateDescriptionCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onUpdateDescriptionCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUpdateLevelCompleted(gd::string, gd::string)
+_ZN16GameLevelManager22onUpdateLevelCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUpdateUserScoreCompleted(gd::string, gd::string)
+_ZN16GameLevelManager26onUpdateUserScoreCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUploadCommentCompleted(gd::string, gd::string)
+_ZN16GameLevelManager24onUploadCommentCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUploadFriendRequestCompleted(gd::string, gd::string)
+_ZN16GameLevelManager30onUploadFriendRequestCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUploadLevelCompleted(gd::string, gd::string)
+_ZN16GameLevelManager22onUploadLevelCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::onUploadUserMessageCompleted(gd::string, gd::string)
+_ZN16GameLevelManager28onUploadUserMessageCompletedEN2gd6stringEN2gd6stringE
+GameLevelManager::ongetGJDailyLevelStateCompleted(gd::string, gd::string)
+_ZN16GameLevelManager31ongetGJDailyLevelStateCompletedEN2gd6stringEN2gd6stringE
 GameLevelManager::pageFromCommentKey(char const*)
 _ZN16GameLevelManager18pageFromCommentKeyEPKc
-GameLevelManager::parseRestoreData(std::string)
-_ZN16GameLevelManager16parseRestoreDataESs
-GameLevelManager::processOnDownloadLevelCompleted(std::string, std::string, bool)
-_ZN16GameLevelManager31processOnDownloadLevelCompletedESsSsb
+GameLevelManager::parseRestoreData(gd::string)
+_ZN16GameLevelManager16parseRestoreDataEN2gd6stringE
+GameLevelManager::processOnDownloadLevelCompleted(gd::string, gd::string, bool)
+_ZN16GameLevelManager31processOnDownloadLevelCompletedEN2gd6stringEN2gd6stringEb
 GameLevelManager::purgeUnusedLevels()
 _ZN16GameLevelManager17purgeUnusedLevelsEv
 GameLevelManager::rateDemon(int, int, bool)
@@ -6334,8 +6334,8 @@ GameLevelManager::readFriendRequest(int)
 _ZN16GameLevelManager17readFriendRequestEi
 GameLevelManager::removeDLFromActive(char const*)
 _ZN16GameLevelManager18removeDLFromActiveEPKc
-GameLevelManager::removeDelimiterChars(std::string, bool)
-_ZN16GameLevelManager20removeDelimiterCharsESsb
+GameLevelManager::removeDelimiterChars(gd::string, bool)
+_ZN16GameLevelManager20removeDelimiterCharsEN2gd6stringEb
 GameLevelManager::removeFriend(int)
 _ZN16GameLevelManager12removeFriendEi
 GameLevelManager::removeLevelDownloadedKeysFromDict(cocos2d::CCDictionary*)
@@ -6362,8 +6362,8 @@ GameLevelManager::resetStoredUserList(UserListType)
 _ZN16GameLevelManager19resetStoredUserListE12UserListType
 GameLevelManager::resetTimerForKey(char const*)
 _ZN16GameLevelManager16resetTimerForKeyEPKc
-GameLevelManager::responseToDict(std::string, bool)
-_ZN16GameLevelManager14responseToDictESsb
+GameLevelManager::responseToDict(gd::string, bool)
+_ZN16GameLevelManager14responseToDictEN2gd6stringEb
 GameLevelManager::restoreItems()
 _ZN16GameLevelManager12restoreItemsEv
 GameLevelManager::saveFetchedLevels(cocos2d::CCArray*)
@@ -6382,8 +6382,8 @@ GameLevelManager::setDiffVal(int, bool)
 _ZN16GameLevelManager10setDiffValEib
 GameLevelManager::setDownloadedLevelsDict(cocos2d::CCDictionary*)
 _ZN16GameLevelManager23setDownloadedLevelsDictEPN7cocos2d12CCDictionaryE
-GameLevelManager::setFolderName(int, std::string, bool)
-_ZN16GameLevelManager13setFolderNameEiSsb
+GameLevelManager::setFolderName(int, gd::string, bool)
+_ZN16GameLevelManager13setFolderNameEiN2gd6stringEb
 GameLevelManager::setFolderNamesCreatedDict(cocos2d::CCDictionary*)
 _ZN16GameLevelManager25setFolderNamesCreatedDictEPN7cocos2d12CCDictionaryE
 GameLevelManager::setFolderNamesDict(cocos2d::CCDictionary*)
@@ -6420,24 +6420,24 @@ GameLevelManager::sharedState()
 _ZN16GameLevelManager11sharedStateEv
 GameLevelManager::specialFromLikeKey(char const*)
 _ZN16GameLevelManager18specialFromLikeKeyEPKc
-GameLevelManager::storeCommentsResult(cocos2d::CCArray*, std::string, char const*)
-_ZN16GameLevelManager19storeCommentsResultEPN7cocos2d7CCArrayESsPKc
+GameLevelManager::storeCommentsResult(cocos2d::CCArray*, gd::string, char const*)
+_ZN16GameLevelManager19storeCommentsResultEPN7cocos2d7CCArrayEN2gd6stringEPKc
 GameLevelManager::storeDailyLevelState(int, int, bool)
 _ZN16GameLevelManager20storeDailyLevelStateEiib
 GameLevelManager::storeFriendRequest(GJFriendRequest*)
 _ZN16GameLevelManager18storeFriendRequestEP15GJFriendRequest
-GameLevelManager::storeSearchResult(cocos2d::CCArray*, std::string, char const*)
-_ZN16GameLevelManager17storeSearchResultEPN7cocos2d7CCArrayESsPKc
+GameLevelManager::storeSearchResult(cocos2d::CCArray*, gd::string, char const*)
+_ZN16GameLevelManager17storeSearchResultEPN7cocos2d7CCArrayEN2gd6stringEPKc
 GameLevelManager::storeUserInfo(GJUserScore*)
 _ZN16GameLevelManager13storeUserInfoEP11GJUserScore
 GameLevelManager::storeUserMessage(GJUserMessage*)
 _ZN16GameLevelManager16storeUserMessageEP13GJUserMessage
 GameLevelManager::storeUserMessageReply(int, GJUserMessage*)
 _ZN16GameLevelManager21storeUserMessageReplyEiP13GJUserMessage
-GameLevelManager::storeUserName(int, int, std::string)
-_ZN16GameLevelManager13storeUserNameEiiSs
-GameLevelManager::storeUserNames(std::string)
-_ZN16GameLevelManager14storeUserNamesESs
+GameLevelManager::storeUserName(int, int, gd::string)
+_ZN16GameLevelManager13storeUserNameEiiN2gd6stringE
+GameLevelManager::storeUserNames(gd::string)
+_ZN16GameLevelManager14storeUserNamesEN2gd6stringE
 GameLevelManager::submitUserInfo()
 _ZN16GameLevelManager14submitUserInfoEv
 GameLevelManager::suggestLevelStars(int, int, bool)
@@ -6450,8 +6450,8 @@ GameLevelManager::unblockUser(int)
 _ZN16GameLevelManager11unblockUserEi
 GameLevelManager::unfollowUser(int)
 _ZN16GameLevelManager12unfollowUserEi
-GameLevelManager::updateDescription(int, std::string)
-_ZN16GameLevelManager17updateDescriptionEiSs
+GameLevelManager::updateDescription(int, gd::string)
+_ZN16GameLevelManager17updateDescriptionEiN2gd6stringE
 GameLevelManager::updateLevel(GJGameLevel*)
 _ZN16GameLevelManager11updateLevelEP11GJGameLevel
 GameLevelManager::updateLevelOrders()
@@ -6462,18 +6462,18 @@ GameLevelManager::updateUserScore()
 _ZN16GameLevelManager15updateUserScoreEv
 GameLevelManager::updateUsernames()
 _ZN16GameLevelManager15updateUsernamesEv
-GameLevelManager::uploadAccountComment(std::string)
-_ZN16GameLevelManager20uploadAccountCommentESs
-GameLevelManager::uploadComment(std::string, CommentType, int, int)
-_ZN16GameLevelManager13uploadCommentESs11CommentTypeii
-GameLevelManager::uploadFriendRequest(int, std::string)
-_ZN16GameLevelManager19uploadFriendRequestEiSs
+GameLevelManager::uploadAccountComment(gd::string)
+_ZN16GameLevelManager20uploadAccountCommentEN2gd6stringE
+GameLevelManager::uploadComment(gd::string, CommentType, int, int)
+_ZN16GameLevelManager13uploadCommentEN2gd6stringE11CommentTypeii
+GameLevelManager::uploadFriendRequest(int, gd::string)
+_ZN16GameLevelManager19uploadFriendRequestEiN2gd6stringE
 GameLevelManager::uploadLevel(GJGameLevel*)
 _ZN16GameLevelManager11uploadLevelEP11GJGameLevel
-GameLevelManager::uploadLevelComment(int, std::string, int)
-_ZN16GameLevelManager18uploadLevelCommentEiSsi
-GameLevelManager::uploadUserMessage(int, std::string, std::string)
-_ZN16GameLevelManager17uploadUserMessageEiSsSs
+GameLevelManager::uploadLevelComment(int, gd::string, int)
+_ZN16GameLevelManager18uploadLevelCommentEiN2gd6stringEi
+GameLevelManager::uploadUserMessage(int, gd::string, gd::string)
+_ZN16GameLevelManager17uploadUserMessageEiN2gd6stringEN2gd6stringE
 GameLevelManager::userIDForAccountID(int)
 _ZN16GameLevelManager18userIDForAccountIDEi
 GameLevelManager::userInfoForAccountID(int)
@@ -6494,8 +6494,8 @@ GameManager::GameManager()
 _ZN11GameManagerC2Ev
 GameManager::accountStatusChanged()
 _ZN11GameManager20accountStatusChangedEv
-GameManager::addNewCustomObject(std::string)
-_ZN11GameManager18addNewCustomObjectESs
+GameManager::addNewCustomObject(gd::string)
+_ZN11GameManager18addNewCustomObjectEN2gd6stringE
 GameManager::applicationDidEnterBackground()
 _ZN11GameManager29applicationDidEnterBackgroundEv
 GameManager::applicationWillEnterForeground()
@@ -6506,8 +6506,8 @@ GameManager::checkSteamAchievementUnlock()
 _ZN11GameManager27checkSteamAchievementUnlockEv
 GameManager::checkUsedIcons()
 _ZN11GameManager14checkUsedIconsEv
-GameManager::claimItemsResponse(std::string)
-_ZN11GameManager18claimItemsResponseESs
+GameManager::claimItemsResponse(gd::string)
+_ZN11GameManager18claimItemsResponseEN2gd6stringE
 GameManager::colorForIdx(int)
 _ZN11GameManager11colorForIdxEi
 GameManager::colorForPos(int)
@@ -6594,8 +6594,8 @@ GameManager::openEditorGuide()
 _ZN11GameManager15openEditorGuideEv
 GameManager::rateGame()
 _ZN11GameManager8rateGameEv
-GameManager::recountUserStats(std::string)
-_ZN11GameManager16recountUserStatsESs
+GameManager::recountUserStats(gd::string)
+_ZN11GameManager16recountUserStatsEN2gd6stringE
 GameManager::reloadAll(bool, bool, bool)
 _ZN11GameManager9reloadAllEbbb
 GameManager::reloadAllStep2()
@@ -6744,22 +6744,22 @@ GameObject::addColorSprite()
 _ZN10GameObject14addColorSpriteEv
 GameObject::addColorSpriteToParent(bool)
 _ZN10GameObject22addColorSpriteToParentEb
-GameObject::addCustomBlackChild(std::string, float, bool)
-_ZN10GameObject19addCustomBlackChildESsfb
-GameObject::addCustomChild(std::string, cocos2d::CCPoint, int)
-_ZN10GameObject14addCustomChildESsN7cocos2d7CCPointEi
-GameObject::addCustomColorChild(std::string)
-_ZN10GameObject19addCustomColorChildESs
+GameObject::addCustomBlackChild(gd::string, float, bool)
+_ZN10GameObject19addCustomBlackChildEN2gd6stringEfb
+GameObject::addCustomChild(gd::string, cocos2d::CCPoint, int)
+_ZN10GameObject14addCustomChildEN2gd6stringEN7cocos2d7CCPointEi
+GameObject::addCustomColorChild(gd::string)
+_ZN10GameObject19addCustomColorChildEN2gd6stringE
 GameObject::addEmptyGlow()
 _ZN10GameObject12addEmptyGlowEv
 GameObject::addGlow()
 _ZN10GameObject7addGlowEv
-GameObject::addInternalChild(cocos2d::CCSprite*, std::string, cocos2d::CCPoint, int)
-_ZN10GameObject16addInternalChildEPN7cocos2d8CCSpriteESsNS0_7CCPointEi
-GameObject::addInternalCustomColorChild(std::string, cocos2d::CCPoint, int)
-_ZN10GameObject27addInternalCustomColorChildESsN7cocos2d7CCPointEi
-GameObject::addInternalGlowChild(std::string, cocos2d::CCPoint)
-_ZN10GameObject20addInternalGlowChildESsN7cocos2d7CCPointE
+GameObject::addInternalChild(cocos2d::CCSprite*, gd::string, cocos2d::CCPoint, int)
+_ZN10GameObject16addInternalChildEPN7cocos2d8CCSpriteEN2gd6stringENS0_7CCPointEi
+GameObject::addInternalCustomColorChild(gd::string, cocos2d::CCPoint, int)
+_ZN10GameObject27addInternalCustomColorChildEN2gd6stringEN7cocos2d7CCPointEi
+GameObject::addInternalGlowChild(gd::string, cocos2d::CCPoint)
+_ZN10GameObject20addInternalGlowChildEN2gd6stringEN7cocos2d7CCPointE
 GameObject::addMainSpriteToParent(bool)
 _ZN10GameObject21addMainSpriteToParentEb
 GameObject::addNewSlope01(bool)
@@ -6804,8 +6804,8 @@ GameObject::createAndAddParticle(int, char const*, int, cocos2d::tCCPositionType
 _ZN10GameObject20createAndAddParticleEiPKciN7cocos2d15tCCPositionTypeE
 GameObject::createColorGroupContainer(int)
 _ZN10GameObject25createColorGroupContainerEi
-GameObject::createGlow(std::string)
-_ZN10GameObject10createGlowESs
+GameObject::createGlow(gd::string)
+_ZN10GameObject10createGlowEN2gd6stringE
 GameObject::createGroupContainer(int)
 _ZN10GameObject20createGroupContainerEi
 GameObject::createOpacityGroupContainer(int)
@@ -6820,8 +6820,8 @@ GameObject::createWithKey(int)
 _ZN10GameObject13createWithKeyEi
 GameObject::createWithTexture(cocos2d::CCTexture2D*)
 _ZN10GameObject17createWithTextureEPN7cocos2d11CCTexture2DE
-GameObject::customObjectSetup(std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >&)
-_ZN10GameObject17customObjectSetupERSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE
+GameObject::customObjectSetup(gd::map<gd::string, gd::string>&)
+_ZN10GameObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 GameObject::customScaleMod(char const*)
 _ZN10GameObject14customScaleModEPKc
 GameObject::customSetup()
@@ -6854,14 +6854,14 @@ GameObject::getBallFrame(int)
 _ZN10GameObject12getBallFrameEi
 GameObject::getBoxOffset()
 _ZN10GameObject12getBoxOffsetEv
-GameObject::getColorFrame(std::string)
-_ZN10GameObject13getColorFrameESs
+GameObject::getColorFrame(gd::string)
+_ZN10GameObject13getColorFrameEN2gd6stringE
 GameObject::getColorIndex()
 _ZN10GameObject13getColorIndexEv
 GameObject::getDidUpdateLastPosition()
 _ZN10GameObject24getDidUpdateLastPositionEv
-GameObject::getGlowFrame(std::string)
-_ZN10GameObject12getGlowFrameESs
+GameObject::getGlowFrame(gd::string)
+_ZN10GameObject12getGlowFrameEN2gd6stringE
 GameObject::getGroupDisabled()
 _ZN10GameObject16getGroupDisabledEv
 GameObject::getGroupID(int)
@@ -6966,10 +6966,10 @@ GameObject::isStoppableTrigger()
 _ZN10GameObject18isStoppableTriggerEv
 GameObject::isTrigger()
 _ZN10GameObject9isTriggerEv
-GameObject::loadGroupsFromString(std::string)
-_ZN10GameObject20loadGroupsFromStringESs
-GameObject::objectFromString(std::string, bool)
-_ZN10GameObject16objectFromStringESsb
+GameObject::loadGroupsFromString(gd::string)
+_ZN10GameObject20loadGroupsFromStringEN2gd6stringE
+GameObject::objectFromString(gd::string, bool)
+_ZN10GameObject16objectFromStringEN2gd6stringEb
 GameObject::opacityModForMode(int, bool)
 _ZN10GameObject17opacityModForModeEib
 GameObject::parentForZLayer(int, bool, int)
@@ -7124,8 +7124,8 @@ GameObject::updateState()
 _ZN10GameObject11updateStateEv
 GameObject::updateSyncedAnimation(float)
 _ZN10GameObject21updateSyncedAnimationEf
-GameObject::updateTextObject(std::string, bool)
-_ZN10GameObject16updateTextObjectESsb
+GameObject::updateTextObject(gd::string, bool)
+_ZN10GameObject16updateTextObjectEN2gd6stringEb
 GameObject::waitingForActivation()
 _ZN10GameObject20waitingForActivationEv
 GameObject::~GameObject()
@@ -7162,26 +7162,26 @@ GameSoundManager::getMeteringValue()
 _ZN16GameSoundManager16getMeteringValueEv
 GameSoundManager::init()
 _ZN16GameSoundManager4initEv
-GameSoundManager::isLoopedSoundPlaying(std::string)
-_ZN16GameSoundManager20isLoopedSoundPlayingESs
+GameSoundManager::isLoopedSoundPlaying(gd::string)
+_ZN16GameSoundManager20isLoopedSoundPlayingEN2gd6stringE
 GameSoundManager::pauseAllLoopedSounds()
 _ZN16GameSoundManager20pauseAllLoopedSoundsEv
-GameSoundManager::pauseLoopedSound(std::string)
-_ZN16GameSoundManager16pauseLoopedSoundESs
-GameSoundManager::playBackgroundMusic(std::string, bool, bool)
-_ZN16GameSoundManager19playBackgroundMusicESsbb
-GameSoundManager::playEffect(std::string, float, float, float)
-_ZN16GameSoundManager10playEffectESsfff
-GameSoundManager::playLoopedSound(std::string, std::string, float, float, bool, bool, bool)
-_ZN16GameSoundManager15playLoopedSoundESsSsffbbb
-GameSoundManager::playUniqueEffect(std::string)
-_ZN16GameSoundManager16playUniqueEffectESs
-GameSoundManager::playUniqueEffect(std::string, float, float, float)
-_ZN16GameSoundManager16playUniqueEffectESsfff
+GameSoundManager::pauseLoopedSound(gd::string)
+_ZN16GameSoundManager16pauseLoopedSoundEN2gd6stringE
+GameSoundManager::playBackgroundMusic(gd::string, bool, bool)
+_ZN16GameSoundManager19playBackgroundMusicEN2gd6stringEbb
+GameSoundManager::playEffect(gd::string, float, float, float)
+_ZN16GameSoundManager10playEffectEN2gd6stringEfff
+GameSoundManager::playLoopedSound(gd::string, gd::string, float, float, bool, bool, bool)
+_ZN16GameSoundManager15playLoopedSoundEN2gd6stringEN2gd6stringEffbbb
+GameSoundManager::playUniqueEffect(gd::string)
+_ZN16GameSoundManager16playUniqueEffectEN2gd6stringE
+GameSoundManager::playUniqueEffect(gd::string, float, float, float)
+_ZN16GameSoundManager16playUniqueEffectEN2gd6stringEfff
 GameSoundManager::preload()
 _ZN16GameSoundManager7preloadEv
-GameSoundManager::removeLoopedSound(std::string)
-_ZN16GameSoundManager17removeLoopedSoundESs
+GameSoundManager::removeLoopedSound(gd::string)
+_ZN16GameSoundManager17removeLoopedSoundEN2gd6stringE
 GameSoundManager::resetUniqueEffects()
 _ZN16GameSoundManager18resetUniqueEffectsEv
 GameSoundManager::resumeAllLoopedSounds()
@@ -7196,10 +7196,10 @@ GameSoundManager::stopAllLoopedSounds()
 _ZN16GameSoundManager19stopAllLoopedSoundsEv
 GameSoundManager::stopBackgroundMusic()
 _ZN16GameSoundManager19stopBackgroundMusicEv
-GameSoundManager::stopLoopedSound(std::string, bool)
-_ZN16GameSoundManager15stopLoopedSoundESsb
-GameSoundManager::updateLoopedVolume(std::string, float)
-_ZN16GameSoundManager18updateLoopedVolumeESsf
+GameSoundManager::stopLoopedSound(gd::string, bool)
+_ZN16GameSoundManager15stopLoopedSoundEN2gd6stringEb
+GameSoundManager::updateLoopedVolume(gd::string, float)
+_ZN16GameSoundManager18updateLoopedVolumeEN2gd6stringEf
 GameSoundManager::updateMetering(float)
 _ZN16GameSoundManager14updateMeteringEf
 GameSoundManager::~GameSoundManager()
@@ -7308,8 +7308,8 @@ GameStatsManager::getQueuedChallenge(int)
 _ZN16GameStatsManager18getQueuedChallengeEi
 GameStatsManager::getRewardForSecretChest(int)
 _ZN16GameStatsManager23getRewardForSecretChestEi
-GameStatsManager::getRewardForSpecialChest(std::string)
-_ZN16GameStatsManager24getRewardForSpecialChestESs
+GameStatsManager::getRewardForSpecialChest(gd::string)
+_ZN16GameStatsManager24getRewardForSpecialChestEN2gd6stringE
 GameStatsManager::getRewardItem(GJRewardType)
 _ZN16GameStatsManager13getRewardItemE12GJRewardType
 GameStatsManager::getRewardKey(GJRewardType, int)
@@ -7372,16 +7372,16 @@ GameStatsManager::init()
 _ZN16GameStatsManager4initEv
 GameStatsManager::isItemUnlocked(UnlockType, int)
 _ZN16GameStatsManager14isItemUnlockedE10UnlockTypei
-GameStatsManager::isLiteUnlockable(std::string)
-_ZN16GameStatsManager16isLiteUnlockableESs
+GameStatsManager::isLiteUnlockable(gd::string)
+_ZN16GameStatsManager16isLiteUnlockableEN2gd6stringE
 GameStatsManager::isSecretChestUnlocked(int)
 _ZN16GameStatsManager21isSecretChestUnlockedEi
-GameStatsManager::isSecretCoin(std::string)
-_ZN16GameStatsManager12isSecretCoinESs
-GameStatsManager::isSecretCoinValid(std::string)
-_ZN16GameStatsManager17isSecretCoinValidESs
-GameStatsManager::isSpecialChestUnlocked(std::string)
-_ZN16GameStatsManager22isSpecialChestUnlockedESs
+GameStatsManager::isSecretCoin(gd::string)
+_ZN16GameStatsManager12isSecretCoinEN2gd6stringE
+GameStatsManager::isSecretCoinValid(gd::string)
+_ZN16GameStatsManager17isSecretCoinValidEN2gd6stringE
+GameStatsManager::isSpecialChestUnlocked(gd::string)
+_ZN16GameStatsManager22isSpecialChestUnlockedEN2gd6stringE
 GameStatsManager::isStoreItemUnlocked(int)
 _ZN16GameStatsManager19isStoreItemUnlockedEi
 GameStatsManager::logCoins()
@@ -7492,8 +7492,8 @@ GameStatsManager::storePendingUserCoin(char const*)
 _ZN16GameStatsManager20storePendingUserCoinEPKc
 GameStatsManager::storeQueuedChallenge(int, GJChallengeItem*)
 _ZN16GameStatsManager20storeQueuedChallengeEiP15GJChallengeItem
-GameStatsManager::storeRewardState(GJRewardType, int, int, std::string)
-_ZN16GameStatsManager16storeRewardStateE12GJRewardTypeiiSs
+GameStatsManager::storeRewardState(GJRewardType, int, int, gd::string)
+_ZN16GameStatsManager16storeRewardStateE12GJRewardTypeiiN2gd6stringE
 GameStatsManager::storeSecondaryQueuedChallenge(int, GJChallengeItem*)
 _ZN16GameStatsManager29storeSecondaryQueuedChallengeEiP15GJChallengeItem
 GameStatsManager::storeSecretCoin(char const*)
@@ -7506,8 +7506,8 @@ GameStatsManager::uncompleteLevel(GJGameLevel*)
 _ZN16GameStatsManager15uncompleteLevelEP11GJGameLevel
 GameStatsManager::unlockSecretChest(int)
 _ZN16GameStatsManager17unlockSecretChestEi
-GameStatsManager::unlockSpecialChest(std::string)
-_ZN16GameStatsManager18unlockSpecialChestESs
+GameStatsManager::unlockSpecialChest(gd::string)
+_ZN16GameStatsManager18unlockSpecialChestEN2gd6stringE
 GameStatsManager::verifyUserCoins()
 _ZN16GameStatsManager15verifyUserCoinsEv
 GameStatsManager::~GameStatsManager()
@@ -7524,12 +7524,12 @@ GameToolbox::alignItemsHorisontally(cocos2d::CCArray*, float, cocos2d::CCPoint, 
 _ZN11GameToolbox22alignItemsHorisontallyEPN7cocos2d7CCArrayEfNS0_7CCPointEb
 GameToolbox::alignItemsVertically(cocos2d::CCArray*, float, cocos2d::CCPoint)
 _ZN11GameToolbox20alignItemsVerticallyEPN7cocos2d7CCArrayEfNS0_7CCPointE
-GameToolbox::createHashString(std::string, int)
-_ZN11GameToolbox16createHashStringESsi
-GameToolbox::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCArray*)
-_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_PNS0_7CCArrayE
-GameToolbox::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)
-_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE
+GameToolbox::createHashString(gd::string, int)
+_ZN11GameToolbox16createHashStringEN2gd6stringEi
+GameToolbox::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCArray*)
+_ZN11GameToolbox18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_PNS0_7CCArrayE
+GameToolbox::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)
+_ZN11GameToolbox18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE
 GameToolbox::doWeHaveInternet()
 _ZN11GameToolbox16doWeHaveInternetEv
 GameToolbox::getDropActionWDelay(float, float, float, cocos2d::CCNode*, void (cocos2d::CCObject::*)())
@@ -7544,8 +7544,8 @@ GameToolbox::getResponse(cocos2d::extension::CCHttpResponse*)
 _ZN11GameToolbox11getResponseEPN7cocos2d9extension14CCHttpResponseE
 GameToolbox::getTimeString(int)
 _ZN11GameToolbox13getTimeStringEi
-GameToolbox::hsvFromString(std::string, char const*)
-_ZN11GameToolbox13hsvFromStringESsPKc
+GameToolbox::hsvFromString(gd::string, char const*)
+_ZN11GameToolbox13hsvFromStringEN2gd6stringEPKc
 GameToolbox::isIOS()
 _ZN11GameToolbox5isIOSEv
 GameToolbox::mergeDictsSaveLargestInt(cocos2d::CCDictionary*, cocos2d::CCDictionary*)
@@ -7556,18 +7556,18 @@ GameToolbox::multipliedColorValue(cocos2d::_ccColor3B, cocos2d::_ccColor3B, floa
 _ZN11GameToolbox20multipliedColorValueEN7cocos2d10_ccColor3BES1_f
 GameToolbox::openAppPage()
 _ZN11GameToolbox11openAppPageEv
-GameToolbox::openRateURL(std::string, std::string)
-_ZN11GameToolbox11openRateURLESsSs
+GameToolbox::openRateURL(gd::string, gd::string)
+_ZN11GameToolbox11openRateURLEN2gd6stringEN2gd6stringE
 GameToolbox::postClipVisit()
 _ZN11GameToolbox13postClipVisitEv
 GameToolbox::preVisitWithClippingRect(cocos2d::CCNode*, cocos2d::CCRect, cocos2d::CCNode*)
 _ZN11GameToolbox24preVisitWithClippingRectEPN7cocos2d6CCNodeENS0_6CCRectES2_
 GameToolbox::stringFromHSV(cocos2d::_ccHSVValue, char const*)
 _ZN11GameToolbox13stringFromHSVEN7cocos2d11_ccHSVValueEPKc
-GameToolbox::stringSetupToDict(std::string, char const*)
-_ZN11GameToolbox17stringSetupToDictESsPKc
-GameToolbox::stringSetupToMap(std::string, char const*)
-_ZN11GameToolbox16stringSetupToMapESsPKc
+GameToolbox::stringSetupToDict(gd::string, char const*)
+_ZN11GameToolbox17stringSetupToDictEN2gd6stringEPKc
+GameToolbox::stringSetupToMap(gd::string, char const*)
+_ZN11GameToolbox16stringSetupToMapEN2gd6stringEPKc
 GameToolbox::strongColor(cocos2d::_ccColor3B)
 _ZN11GameToolbox11strongColorEN7cocos2d10_ccColor3BE
 GameToolbox::transformColor(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)
@@ -7732,8 +7732,8 @@ GroupCommandObject::GroupCommandObject()
 _ZN18GroupCommandObjectC2Ev
 GroupCommandObject::create()
 _ZN18GroupCommandObject6createEv
-GroupCommandObject::createFromString(std::string)
-_ZN18GroupCommandObject16createFromStringESs
+GroupCommandObject::createFromString(gd::string)
+_ZN18GroupCommandObject16createFromStringEN2gd6stringE
 GroupCommandObject::easeToText(int)
 _ZN18GroupCommandObject10easeToTextEi
 GroupCommandObject::getEasedAction(cocos2d::CCActionInterval*, int, float)
@@ -7762,10 +7762,10 @@ GroupCommandObject::~GroupCommandObject()
 _ZN18GroupCommandObjectD1Ev
 GroupCommandObject::~GroupCommandObject()
 _ZN18GroupCommandObjectD2Ev
-HSVWidgetPopup::create(cocos2d::_ccHSVValue, HSVWidgetPopupDelegate*, std::string)
-_ZN14HSVWidgetPopup6createEN7cocos2d11_ccHSVValueEP22HSVWidgetPopupDelegateSs
-HSVWidgetPopup::init(cocos2d::_ccHSVValue, HSVWidgetPopupDelegate*, std::string)
-_ZN14HSVWidgetPopup4initEN7cocos2d11_ccHSVValueEP22HSVWidgetPopupDelegateSs
+HSVWidgetPopup::create(cocos2d::_ccHSVValue, HSVWidgetPopupDelegate*, gd::string)
+_ZN14HSVWidgetPopup6createEN7cocos2d11_ccHSVValueEP22HSVWidgetPopupDelegateN2gd6stringE
+HSVWidgetPopup::init(cocos2d::_ccHSVValue, HSVWidgetPopupDelegate*, gd::string)
+_ZN14HSVWidgetPopup4initEN7cocos2d11_ccHSVValueEP22HSVWidgetPopupDelegateN2gd6stringE
 HSVWidgetPopup::keyBackClicked()
 _ZN14HSVWidgetPopup14keyBackClickedEv
 HSVWidgetPopup::onClose(cocos2d::CCObject*)
@@ -7808,10 +7808,10 @@ HardStreak::~HardStreak()
 _ZN10HardStreakD2Ev
 InfoAlertButton::activate()
 _ZN15InfoAlertButton8activateEv
-InfoAlertButton::create(std::string, std::string, float)
-_ZN15InfoAlertButton6createESsSsf
-InfoAlertButton::init(std::string, std::string, float)
-_ZN15InfoAlertButton4initESsSsf
+InfoAlertButton::create(gd::string, gd::string, float)
+_ZN15InfoAlertButton6createEN2gd6stringEN2gd6stringEf
+InfoAlertButton::init(gd::string, gd::string, float)
+_ZN15InfoAlertButton4initEN2gd6stringEN2gd6stringEf
 InfoAlertButton::~InfoAlertButton()
 _ZN15InfoAlertButtonD0Ev
 InfoAlertButton::~InfoAlertButton()
@@ -7876,8 +7876,8 @@ InfoLayer::setupCommentsBrowser(cocos2d::CCArray*)
 _ZN9InfoLayer20setupCommentsBrowserEPN7cocos2d7CCArrayE
 InfoLayer::setupLevelInfo()
 _ZN9InfoLayer14setupLevelInfoEv
-InfoLayer::setupPageInfo(std::string, char const*)
-_ZN9InfoLayer13setupPageInfoESsPKc
+InfoLayer::setupPageInfo(gd::string, char const*)
+_ZN9InfoLayer13setupPageInfoEN2gd6stringEPKc
 InfoLayer::show()
 _ZN9InfoLayer4showEv
 InfoLayer::toggleCommentMode(cocos2d::CCObject*)
@@ -8036,22 +8036,22 @@ LabelGameObject::addMainSpriteToParent(bool)
 _ZN15LabelGameObject21addMainSpriteToParentEb
 LabelGameObject::create()
 _ZN15LabelGameObject6createEv
-LabelGameObject::customObjectSetup(std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >&)
-_ZN15LabelGameObject17customObjectSetupERSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE
+LabelGameObject::customObjectSetup(gd::map<gd::string, gd::string>&)
+_ZN15LabelGameObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 LabelGameObject::getSaveString()
 _ZN15LabelGameObject13getSaveStringEv
 LabelGameObject::init()
 _ZN15LabelGameObject4initEv
-LabelGameObject::queueUpdateLabel(std::string)
-_ZN15LabelGameObject16queueUpdateLabelESs
+LabelGameObject::queueUpdateLabel(gd::string)
+_ZN15LabelGameObject16queueUpdateLabelEN2gd6stringE
 LabelGameObject::setObjectColor(cocos2d::_ccColor3B const&)
 _ZN15LabelGameObject14setObjectColorERKN7cocos2d10_ccColor3BE
 LabelGameObject::setOpacity(unsigned char)
 _ZN15LabelGameObject10setOpacityEh
 LabelGameObject::setupCustomSprites()
 _ZN15LabelGameObject18setupCustomSpritesEv
-LabelGameObject::updateLabel(std::string)
-_ZN15LabelGameObject11updateLabelESs
+LabelGameObject::updateLabel(gd::string)
+_ZN15LabelGameObject11updateLabelEN2gd6stringE
 LabelGameObject::updateLabelIfDirty()
 _ZN15LabelGameObject18updateLabelIfDirtyEv
 LabelGameObject::~LabelGameObject()
@@ -8122,8 +8122,8 @@ LevelBrowserLayer::LevelBrowserLayer()
 _ZN17LevelBrowserLayerC2Ev
 LevelBrowserLayer::create(GJSearchObject*)
 _ZN17LevelBrowserLayer6createEP14GJSearchObject
-LevelBrowserLayer::getLevelMatchingSearch(cocos2d::CCArray*, std::string)
-_ZN17LevelBrowserLayer22getLevelMatchingSearchEPN7cocos2d7CCArrayESs
+LevelBrowserLayer::getLevelMatchingSearch(cocos2d::CCArray*, gd::string)
+_ZN17LevelBrowserLayer22getLevelMatchingSearchEPN7cocos2d7CCArrayEN2gd6stringE
 LevelBrowserLayer::init(GJSearchObject*)
 _ZN17LevelBrowserLayer4initEP14GJSearchObject
 LevelBrowserLayer::isCorrect(char const*)
@@ -8180,12 +8180,12 @@ LevelBrowserLayer::setIDPopupClosed(SetIDPopup*, int)
 _ZN17LevelBrowserLayer16setIDPopupClosedEP10SetIDPopupi
 LevelBrowserLayer::setSearchObject(GJSearchObject*)
 _ZN17LevelBrowserLayer15setSearchObjectEP14GJSearchObject
-LevelBrowserLayer::setTextPopupClosed(SetTextPopup*, std::string)
-_ZN17LevelBrowserLayer18setTextPopupClosedEP12SetTextPopupSs
+LevelBrowserLayer::setTextPopupClosed(SetTextPopup*, gd::string)
+_ZN17LevelBrowserLayer18setTextPopupClosedEP12SetTextPopupN2gd6stringE
 LevelBrowserLayer::setupLevelBrowser(cocos2d::CCArray*)
 _ZN17LevelBrowserLayer17setupLevelBrowserEPN7cocos2d7CCArrayE
-LevelBrowserLayer::setupPageInfo(std::string, char const*)
-_ZN17LevelBrowserLayer13setupPageInfoESsPKc
+LevelBrowserLayer::setupPageInfo(gd::string, char const*)
+_ZN17LevelBrowserLayer13setupPageInfoEN2gd6stringEPKc
 LevelBrowserLayer::updateLevelsLabel()
 _ZN17LevelBrowserLayer17updateLevelsLabelEv
 LevelBrowserLayer::updatePageLabel()
@@ -8228,8 +8228,8 @@ LevelCommentDelegate::loadCommentsFailed(char const*)
 _ZN20LevelCommentDelegate18loadCommentsFailedEPKc
 LevelCommentDelegate::loadCommentsFinished(cocos2d::CCArray*, char const*)
 _ZN20LevelCommentDelegate20loadCommentsFinishedEPN7cocos2d7CCArrayEPKc
-LevelCommentDelegate::setupPageInfo(std::string, char const*)
-_ZN20LevelCommentDelegate13setupPageInfoESsPKc
+LevelCommentDelegate::setupPageInfo(gd::string, char const*)
+_ZN20LevelCommentDelegate13setupPageInfoEN2gd6stringEPKc
 LevelCommentDelegate::updateUserScoreFinished()
 _ZN20LevelCommentDelegate23updateUserScoreFinishedEv
 LevelDeleteDelegate::levelDeleteFailed(int)
@@ -8246,8 +8246,8 @@ LevelEditorLayer::LevelEditorLayer()
 _ZN16LevelEditorLayerC2Ev
 LevelEditorLayer::activateTriggerEffect(EffectGameObject*, float, float, float)
 _ZN16LevelEditorLayer21activateTriggerEffectEP16EffectGameObjectfff
-LevelEditorLayer::addObjectFromString(std::string)
-_ZN16LevelEditorLayer19addObjectFromStringESs
+LevelEditorLayer::addObjectFromString(gd::string)
+_ZN16LevelEditorLayer19addObjectFromStringEN2gd6stringE
 LevelEditorLayer::addObjectsRecursiveFromArray(cocos2d::CCArray*, int)
 _ZN16LevelEditorLayer28addObjectsRecursiveFromArrayEPN7cocos2d7CCArrayEi
 LevelEditorLayer::addRelatedStickyObjects(cocos2d::CCArray*)
@@ -8282,10 +8282,10 @@ LevelEditorLayer::createGroundLayer()
 _ZN16LevelEditorLayer17createGroundLayerEv
 LevelEditorLayer::createObject(int, cocos2d::CCPoint, bool)
 _ZN16LevelEditorLayer12createObjectEiN7cocos2d7CCPointEb
-LevelEditorLayer::createObjectsFromSetup(std::string)
-_ZN16LevelEditorLayer22createObjectsFromSetupESs
-LevelEditorLayer::createObjectsFromString(std::string, bool)
-_ZN16LevelEditorLayer23createObjectsFromStringESsb
+LevelEditorLayer::createObjectsFromSetup(gd::string)
+_ZN16LevelEditorLayer22createObjectsFromSetupEN2gd6stringE
+LevelEditorLayer::createObjectsFromString(gd::string, bool)
+_ZN16LevelEditorLayer23createObjectsFromStringEN2gd6stringEb
 LevelEditorLayer::dirtifyTriggers()
 _ZN16LevelEditorLayer15dirtifyTriggersEv
 LevelEditorLayer::draw()
@@ -8698,8 +8698,8 @@ LevelManagerDelegate::loadLevelsFailed(char const*)
 _ZN20LevelManagerDelegate16loadLevelsFailedEPKc
 LevelManagerDelegate::loadLevelsFinished(cocos2d::CCArray*, char const*)
 _ZN20LevelManagerDelegate18loadLevelsFinishedEPN7cocos2d7CCArrayEPKc
-LevelManagerDelegate::setupPageInfo(std::string, char const*)
-_ZN20LevelManagerDelegate13setupPageInfoESsPKc
+LevelManagerDelegate::setupPageInfo(gd::string, char const*)
+_ZN20LevelManagerDelegate13setupPageInfoEN2gd6stringEPKc
 LevelPage::LevelPage()
 _ZN9LevelPageC1Ev
 LevelPage::LevelPage()
@@ -8764,8 +8764,8 @@ LevelSearchLayer::getLevelLenKey()
 _ZN16LevelSearchLayer14getLevelLenKeyEv
 LevelSearchLayer::getSearchDiffKey()
 _ZN16LevelSearchLayer16getSearchDiffKeyEv
-LevelSearchLayer::getSearchObject(SearchType, std::string)
-_ZN16LevelSearchLayer15getSearchObjectE10SearchTypeSs
+LevelSearchLayer::getSearchObject(SearchType, gd::string)
+_ZN16LevelSearchLayer15getSearchObjectE10SearchTypeN2gd6stringE
 LevelSearchLayer::getTimeKey(int)
 _ZN16LevelSearchLayer10getTimeKeyEi
 LevelSearchLayer::init()
@@ -8882,8 +8882,8 @@ LevelSettingsLayer::colorSelectClosed(cocos2d::CCNode*)
 _ZN18LevelSettingsLayer17colorSelectClosedEPN7cocos2d6CCNodeE
 LevelSettingsLayer::create(LevelSettingsObject*, LevelEditorLayer*)
 _ZN18LevelSettingsLayer6createEP19LevelSettingsObjectP16LevelEditorLayer
-LevelSettingsLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN18LevelSettingsLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+LevelSettingsLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN18LevelSettingsLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 LevelSettingsLayer::customSongLayerClosed()
 _ZN18LevelSettingsLayer21customSongLayerClosedEv
 LevelSettingsLayer::init(LevelSettingsObject*, LevelEditorLayer*)
@@ -8962,8 +8962,8 @@ LevelSettingsObject::init()
 _ZN19LevelSettingsObject4initEv
 LevelSettingsObject::objectFromDict(cocos2d::CCDictionary*)
 _ZN19LevelSettingsObject14objectFromDictEPN7cocos2d12CCDictionaryE
-LevelSettingsObject::objectFromString(std::string)
-_ZN19LevelSettingsObject16objectFromStringESs
+LevelSettingsObject::objectFromString(gd::string)
+_ZN19LevelSettingsObject16objectFromStringEN2gd6stringE
 LevelSettingsObject::offsetMusic()
 _ZN19LevelSettingsObject11offsetMusicEv
 LevelSettingsObject::setupColorsFromLegacyMode(cocos2d::CCDictionary*)
@@ -8976,10 +8976,10 @@ LevelSettingsObject::~LevelSettingsObject()
 _ZN19LevelSettingsObjectD2Ev
 LevelTools::artistForAudio(int)
 _ZN10LevelTools14artistForAudioEi
-LevelTools::base64DecodeString(std::string)
-_ZN10LevelTools18base64DecodeStringESs
-LevelTools::base64EncodeString(std::string)
-_ZN10LevelTools18base64EncodeStringESs
+LevelTools::base64DecodeString(gd::string)
+_ZN10LevelTools18base64DecodeStringEN2gd6stringE
+LevelTools::base64EncodeString(gd::string)
+_ZN10LevelTools18base64EncodeStringEN2gd6stringE
 LevelTools::createOldStarLevelDict()
 _ZN10LevelTools22createOldStarLevelDictEv
 LevelTools::createStarLevelDict()
@@ -9002,8 +9002,8 @@ LevelTools::getLevel(int, bool)
 _ZN10LevelTools8getLevelEib
 LevelTools::getSongObject(int)
 _ZN10LevelTools13getSongObjectEi
-LevelTools::logSaveInfo(std::string)
-_ZN10LevelTools11logSaveInfoESs
+LevelTools::logSaveInfo(gd::string)
+_ZN10LevelTools11logSaveInfoEN2gd6stringE
 LevelTools::nameForArtist(int)
 _ZN10LevelTools13nameForArtistEi
 LevelTools::ngURLForArtist(int)
@@ -9014,8 +9014,8 @@ LevelTools::timeForXPos(float, cocos2d::CCArray*, int)
 _ZN10LevelTools11timeForXPosEfPN7cocos2d7CCArrayEi
 LevelTools::urlForAudio(int)
 _ZN10LevelTools11urlForAudioEi
-LevelTools::verifyLevelIntegrity(std::string, int)
-_ZN10LevelTools20verifyLevelIntegrityESsi
+LevelTools::verifyLevelIntegrity(gd::string, int)
+_ZN10LevelTools20verifyLevelIntegrityEN2gd6stringEi
 LevelTools::xPosForTime(float, cocos2d::CCArray*, int)
 _ZN10LevelTools11xPosForTimeEfPN7cocos2d7CCArrayEi
 LevelTools::ytURLForArtist(int)
@@ -9152,8 +9152,8 @@ LocalLevelManager::firstLoad()
 _ZN17LocalLevelManager9firstLoadEv
 LocalLevelManager::getAllLevelsInDict()
 _ZN17LocalLevelManager18getAllLevelsInDictEv
-LocalLevelManager::getAllLevelsWithName(std::string)
-_ZN17LocalLevelManager20getAllLevelsWithNameESs
+LocalLevelManager::getAllLevelsWithName(gd::string)
+_ZN17LocalLevelManager20getAllLevelsWithNameEN2gd6stringE
 LocalLevelManager::getCreatedLevels(int)
 _ZN17LocalLevelManager16getCreatedLevelsEi
 LocalLevelManager::getLevelsInNameGroups()
@@ -9334,8 +9334,8 @@ MessageListDelegate::loadMessagesFailed(char const*, GJErrorCode)
 _ZN19MessageListDelegate18loadMessagesFailedEPKc11GJErrorCode
 MessageListDelegate::loadMessagesFinished(cocos2d::CCArray*, char const*)
 _ZN19MessageListDelegate20loadMessagesFinishedEPN7cocos2d7CCArrayEPKc
-MessageListDelegate::setupPageInfo(std::string, char const*)
-_ZN19MessageListDelegate13setupPageInfoESsPKc
+MessageListDelegate::setupPageInfo(gd::string, char const*)
+_ZN19MessageListDelegate13setupPageInfoEN2gd6stringEPKc
 MessagesProfilePage::FLAlert_Clicked(FLAlertLayer*, bool)
 _ZN19MessagesProfilePage15FLAlert_ClickedEP12FLAlertLayerb
 MessagesProfilePage::MessagesProfilePage()
@@ -9380,8 +9380,8 @@ MessagesProfilePage::registerWithTouchDispatcher()
 _ZN19MessagesProfilePage27registerWithTouchDispatcherEv
 MessagesProfilePage::setupCommentsBrowser(cocos2d::CCArray*)
 _ZN19MessagesProfilePage20setupCommentsBrowserEPN7cocos2d7CCArrayE
-MessagesProfilePage::setupPageInfo(std::string, char const*)
-_ZN19MessagesProfilePage13setupPageInfoESsPKc
+MessagesProfilePage::setupPageInfo(gd::string, char const*)
+_ZN19MessagesProfilePage13setupPageInfoEN2gd6stringEPKc
 MessagesProfilePage::untoggleAll()
 _ZN19MessagesProfilePage11untoggleAllEv
 MessagesProfilePage::updateLevelsLabel()
@@ -9466,8 +9466,8 @@ MoreSearchLayer::audioPrevious(cocos2d::CCObject*)
 _ZN15MoreSearchLayer13audioPreviousEPN7cocos2d8CCObjectE
 MoreSearchLayer::create()
 _ZN15MoreSearchLayer6createEv
-MoreSearchLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN15MoreSearchLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+MoreSearchLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN15MoreSearchLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 MoreSearchLayer::init()
 _ZN15MoreSearchLayer4initEv
 MoreSearchLayer::keyBackClicked()
@@ -9564,18 +9564,18 @@ MultilineBitmapFont::MultilineBitmapFont()
 _ZN19MultilineBitmapFontC1Ev
 MultilineBitmapFont::MultilineBitmapFont()
 _ZN19MultilineBitmapFontC2Ev
-MultilineBitmapFont::createWithFont(char const*, std::string, float, float, cocos2d::CCPoint, int, bool)
-_ZN19MultilineBitmapFont14createWithFontEPKcSsffN7cocos2d7CCPointEib
-MultilineBitmapFont::initWithFont(char const*, std::string, float, float, cocos2d::CCPoint, int, bool)
-_ZN19MultilineBitmapFont12initWithFontEPKcSsffN7cocos2d7CCPointEib
+MultilineBitmapFont::createWithFont(char const*, gd::string, float, float, cocos2d::CCPoint, int, bool)
+_ZN19MultilineBitmapFont14createWithFontEPKcN2gd6stringEffN7cocos2d7CCPointEib
+MultilineBitmapFont::initWithFont(char const*, gd::string, float, float, cocos2d::CCPoint, int, bool)
+_ZN19MultilineBitmapFont12initWithFontEPKcN2gd6stringEffN7cocos2d7CCPointEib
 MultilineBitmapFont::moveSpecialDescriptors(int, int)
 _ZN19MultilineBitmapFont22moveSpecialDescriptorsEii
-MultilineBitmapFont::readColorInfo(std::string)
-_ZN19MultilineBitmapFont13readColorInfoESs
+MultilineBitmapFont::readColorInfo(gd::string)
+_ZN19MultilineBitmapFont13readColorInfoEN2gd6stringE
 MultilineBitmapFont::setOpacity(unsigned char)
 _ZN19MultilineBitmapFont10setOpacityEh
-MultilineBitmapFont::stringWithMaxWidth(std::string, float, float)
-_ZN19MultilineBitmapFont18stringWithMaxWidthESsff
+MultilineBitmapFont::stringWithMaxWidth(gd::string, float, float)
+_ZN19MultilineBitmapFont18stringWithMaxWidthEN2gd6stringEff
 MultilineBitmapFont::~MultilineBitmapFont()
 _ZN19MultilineBitmapFontD0Ev
 MultilineBitmapFont::~MultilineBitmapFont()
@@ -9602,22 +9602,22 @@ MusicDownloadDelegate::loadSongInfoFinished(SongInfoObject*)
 _ZN21MusicDownloadDelegate20loadSongInfoFinishedEP14SongInfoObject
 MusicDownloadDelegate::songStateChanged()
 _ZN21MusicDownloadDelegate16songStateChangedEv
-MusicDownloadManager::ProcessHttpRequest(std::string, std::string, std::string, GJHttpType)
-_ZN20MusicDownloadManager18ProcessHttpRequestESsSsSs10GJHttpType
+MusicDownloadManager::ProcessHttpRequest(gd::string, gd::string, gd::string, GJHttpType)
+_ZN20MusicDownloadManager18ProcessHttpRequestEN2gd6stringEN2gd6stringEN2gd6stringE10GJHttpType
 MusicDownloadManager::addDLToActive(char const*)
 _ZN20MusicDownloadManager13addDLToActiveEPKc
 MusicDownloadManager::addDLToActive(char const*, cocos2d::CCObject*)
 _ZN20MusicDownloadManager13addDLToActiveEPKcPN7cocos2d8CCObjectE
 MusicDownloadManager::addMusicDownloadDelegate(MusicDownloadDelegate*)
 _ZN20MusicDownloadManager24addMusicDownloadDelegateEP21MusicDownloadDelegate
-MusicDownloadManager::addSongObjectFromString(std::string)
-_ZN20MusicDownloadManager23addSongObjectFromStringESs
+MusicDownloadManager::addSongObjectFromString(gd::string)
+_ZN20MusicDownloadManager23addSongObjectFromStringEN2gd6stringE
 MusicDownloadManager::clearSong(int)
 _ZN20MusicDownloadManager9clearSongEi
 MusicDownloadManager::clearUnusedSongs()
 _ZN20MusicDownloadManager16clearUnusedSongsEv
-MusicDownloadManager::createSongsInfo(std::string)
-_ZN20MusicDownloadManager15createSongsInfoESs
+MusicDownloadManager::createSongsInfo(gd::string)
+_ZN20MusicDownloadManager15createSongsInfoEN2gd6stringE
 MusicDownloadManager::dataLoaded(DS_Dictionary*)
 _ZN20MusicDownloadManager10dataLoadedEP13DS_Dictionary
 MusicDownloadManager::deleteSong(int)
@@ -9650,10 +9650,10 @@ MusicDownloadManager::getSongInfoObject(int)
 _ZN20MusicDownloadManager17getSongInfoObjectEi
 MusicDownloadManager::getSongPriority()
 _ZN20MusicDownloadManager15getSongPriorityEv
-MusicDownloadManager::handleIt(bool, std::string, std::string, GJHttpType)
-_ZN20MusicDownloadManager8handleItEbSsSs10GJHttpType
-MusicDownloadManager::handleItDelayed(bool, std::string, std::string, GJHttpType)
-_ZN20MusicDownloadManager15handleItDelayedEbSsSs10GJHttpType
+MusicDownloadManager::handleIt(bool, gd::string, gd::string, GJHttpType)
+_ZN20MusicDownloadManager8handleItEbN2gd6stringEN2gd6stringE10GJHttpType
+MusicDownloadManager::handleItDelayed(bool, gd::string, gd::string, GJHttpType)
+_ZN20MusicDownloadManager15handleItDelayedEbN2gd6stringEN2gd6stringE10GJHttpType
 MusicDownloadManager::handleItND(cocos2d::CCNode*, void*)
 _ZN20MusicDownloadManager10handleItNDEPN7cocos2d6CCNodeEPv
 MusicDownloadManager::incrementPriorityForSong(int)
@@ -9674,8 +9674,8 @@ MusicDownloadManager::loadSongInfoFinished(SongInfoObject*)
 _ZN20MusicDownloadManager20loadSongInfoFinishedEP14SongInfoObject
 MusicDownloadManager::onDownloadSongCompleted(cocos2d::extension::CCHttpClient*, cocos2d::extension::CCHttpResponse*)
 _ZN20MusicDownloadManager23onDownloadSongCompletedEPN7cocos2d9extension12CCHttpClientEPNS1_14CCHttpResponseE
-MusicDownloadManager::onGetSongInfoCompleted(std::string, std::string)
-_ZN20MusicDownloadManager22onGetSongInfoCompletedESsSs
+MusicDownloadManager::onGetSongInfoCompleted(gd::string, gd::string)
+_ZN20MusicDownloadManager22onGetSongInfoCompletedEN2gd6stringEN2gd6stringE
 MusicDownloadManager::onProcessHttpRequestCompleted(cocos2d::extension::CCHttpClient*, cocos2d::extension::CCHttpResponse*)
 _ZN20MusicDownloadManager29onProcessHttpRequestCompletedEPN7cocos2d9extension12CCHttpClientEPNS1_14CCHttpResponseE
 MusicDownloadManager::pathForSong(int)
@@ -9684,8 +9684,8 @@ MusicDownloadManager::removeDLFromActive(char const*)
 _ZN20MusicDownloadManager18removeDLFromActiveEPKc
 MusicDownloadManager::removeMusicDownloadDelegate(MusicDownloadDelegate*)
 _ZN20MusicDownloadManager27removeMusicDownloadDelegateEP21MusicDownloadDelegate
-MusicDownloadManager::responseToDict(std::string, char const*)
-_ZN20MusicDownloadManager14responseToDictESsPKc
+MusicDownloadManager::responseToDict(gd::string, char const*)
+_ZN20MusicDownloadManager14responseToDictEN2gd6stringEPKc
 MusicDownloadManager::setDownloadedSongsDict(cocos2d::CCDictionary*)
 _ZN20MusicDownloadManager22setDownloadedSongsDictEPN7cocos2d12CCDictionaryE
 MusicDownloadManager::sharedState()
@@ -9854,12 +9854,12 @@ OnlineListDelegate::loadListFailed(char const*)
 _ZN18OnlineListDelegate14loadListFailedEPKc
 OnlineListDelegate::loadListFinished(cocos2d::CCArray*, char const*)
 _ZN18OnlineListDelegate16loadListFinishedEPN7cocos2d7CCArrayEPKc
-OnlineListDelegate::setupPageInfo(std::string, char const*)
-_ZN18OnlineListDelegate13setupPageInfoESsPKc
+OnlineListDelegate::setupPageInfo(gd::string, char const*)
+_ZN18OnlineListDelegate13setupPageInfoEN2gd6stringEPKc
 OpacityEffectAction::create(float, float, float, int)
 _ZN19OpacityEffectAction6createEfffi
-OpacityEffectAction::createFromString(std::string)
-_ZN19OpacityEffectAction16createFromStringESs
+OpacityEffectAction::createFromString(gd::string)
+_ZN19OpacityEffectAction16createFromStringEN2gd6stringE
 OpacityEffectAction::getSaveString()
 _ZN19OpacityEffectAction13getSaveStringEv
 OpacityEffectAction::init(float, float, float, int)
@@ -9876,8 +9876,8 @@ OptionsLayer::FLAlert_Clicked(FLAlertLayer*, bool)
 _ZN12OptionsLayer15FLAlert_ClickedEP12FLAlertLayerb
 OptionsLayer::create()
 _ZN12OptionsLayer6createEv
-OptionsLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN12OptionsLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+OptionsLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN12OptionsLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 OptionsLayer::customSetup()
 _ZN12OptionsLayer11customSetupEv
 OptionsLayer::exitLayer()
@@ -9966,8 +9966,8 @@ PauseLayer::PauseLayer()
 _ZN10PauseLayerC2Ev
 PauseLayer::create(bool)
 _ZN10PauseLayer6createEb
-PauseLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN10PauseLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+PauseLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN10PauseLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 PauseLayer::customSetup()
 _ZN10PauseLayer11customSetupEv
 PauseLayer::goEdit()
@@ -10024,12 +10024,12 @@ PlatformDownloadDelegate::downloadFinished(char const*)
 _ZN24PlatformDownloadDelegate16downloadFinishedEPKc
 PlatformToolbox::activateGameCenter()
 _ZN15PlatformToolbox18activateGameCenterEv
-PlatformToolbox::copyToClipboard(std::string)
-_ZN15PlatformToolbox15copyToClipboardESs
-PlatformToolbox::doesFileExist(std::string)
-_ZN15PlatformToolbox13doesFileExistESs
-PlatformToolbox::downloadAndSavePromoImage(std::string, std::string)
-_ZN15PlatformToolbox25downloadAndSavePromoImageESsSs
+PlatformToolbox::copyToClipboard(gd::string)
+_ZN15PlatformToolbox15copyToClipboardEN2gd6stringE
+PlatformToolbox::doesFileExist(gd::string)
+_ZN15PlatformToolbox13doesFileExistEN2gd6stringE
+PlatformToolbox::downloadAndSavePromoImage(gd::string, gd::string)
+_ZN15PlatformToolbox25downloadAndSavePromoImageEN2gd6stringEN2gd6stringE
 PlatformToolbox::gameDidSave()
 _ZN15PlatformToolbox11gameDidSaveEv
 PlatformToolbox::getDisplaySize()
@@ -10078,8 +10078,8 @@ PlatformToolbox::reportLoadingFinished()
 _ZN15PlatformToolbox21reportLoadingFinishedEv
 PlatformToolbox::resizeWindow(float, float)
 _ZN15PlatformToolbox12resizeWindowEff
-PlatformToolbox::saveAndEncryptStringToFile(std::string, char const*, char const*)
-_ZN15PlatformToolbox26saveAndEncryptStringToFileESsPKcS1_
+PlatformToolbox::saveAndEncryptStringToFile(gd::string, char const*, char const*)
+_ZN15PlatformToolbox26saveAndEncryptStringToFileEN2gd6stringEPKcS1_
 PlatformToolbox::sendMail(char const*, char const*, char const*)
 _ZN15PlatformToolbox8sendMailEPKcS1_S1_
 PlatformToolbox::setBlockBackButton(bool)
@@ -10096,8 +10096,8 @@ PlatformToolbox::signInGooglePlay()
 _ZN15PlatformToolbox16signInGooglePlayEv
 PlatformToolbox::signOutGooglePlay()
 _ZN15PlatformToolbox17signOutGooglePlayEv
-PlatformToolbox::spriteFromSavedFile(std::string)
-_ZN15PlatformToolbox19spriteFromSavedFileESs
+PlatformToolbox::spriteFromSavedFile(gd::string)
+_ZN15PlatformToolbox19spriteFromSavedFileEN2gd6stringE
 PlatformToolbox::toggleCPUSleepMode(bool)
 _ZN15PlatformToolbox18toggleCPUSleepModeEb
 PlatformToolbox::toggleCallGLFinish(bool)
@@ -10112,8 +10112,8 @@ PlatformToolbox::toggleSmoothFix(bool)
 _ZN15PlatformToolbox15toggleSmoothFixEb
 PlatformToolbox::toggleVerticalSync(bool)
 _ZN15PlatformToolbox18toggleVerticalSyncEb
-PlatformToolbox::tryShowRateDialog(std::string)
-_ZN15PlatformToolbox17tryShowRateDialogESs
+PlatformToolbox::tryShowRateDialog(gd::string)
+_ZN15PlatformToolbox17tryShowRateDialogEN2gd6stringE
 PlatformToolbox::updateMouseControl()
 _ZN15PlatformToolbox18updateMouseControlEv
 PlatformToolbox::updateWindowedSize(float, float)
@@ -10150,8 +10150,8 @@ PlayLayer::checkCollisions(PlayerObject*, float)
 _ZN9PlayLayer15checkCollisionsEP12PlayerObjectf
 PlayLayer::circleWaveWillBeRemoved(CCCircleWave*)
 _ZN9PlayLayer23circleWaveWillBeRemovedEP12CCCircleWave
-PlayLayer::claimParticle(std::string)
-_ZN9PlayLayer13claimParticleESs
+PlayLayer::claimParticle(gd::string)
+_ZN9PlayLayer13claimParticleEN2gd6stringE
 PlayLayer::clearPickedUpItems()
 _ZN9PlayLayer18clearPickedUpItemsEv
 PlayLayer::colorObject(int, cocos2d::_ccColor3B)
@@ -10162,8 +10162,8 @@ PlayLayer::create(GJGameLevel*)
 _ZN9PlayLayer6createEP11GJGameLevel
 PlayLayer::createCheckpoint()
 _ZN9PlayLayer16createCheckpointEv
-PlayLayer::createObjectsFromSetup(std::string)
-_ZN9PlayLayer22createObjectsFromSetupESs
+PlayLayer::createObjectsFromSetup(gd::string)
+_ZN9PlayLayer22createObjectsFromSetupEN2gd6stringE
 PlayLayer::createParticle(int, char const*, int, cocos2d::tCCPositionType)
 _ZN9PlayLayer14createParticleEiPKciN7cocos2d15tCCPositionTypeE
 PlayLayer::currencyWillExit(CurrencyRewardLayer*)
@@ -10212,8 +10212,8 @@ PlayLayer::getOtherPlayer(PlayerObject*)
 _ZN9PlayLayer14getOtherPlayerEP12PlayerObject
 PlayLayer::getParticleKey(int, char const*, int, cocos2d::tCCPositionType)
 _ZN9PlayLayer14getParticleKeyEiPKciN7cocos2d15tCCPositionTypeE
-PlayLayer::getParticleKey2(std::string)
-_ZN9PlayLayer15getParticleKey2ESs
+PlayLayer::getParticleKey2(gd::string)
+_ZN9PlayLayer15getParticleKey2EN2gd6stringE
 PlayLayer::getRelativeMod(cocos2d::CCPoint, float, float, float)
 _ZN9PlayLayer14getRelativeModEN7cocos2d7CCPointEfff
 PlayLayer::getTempMilliTime()
@@ -10242,8 +10242,8 @@ PlayLayer::loadFromCheckpoint(CheckpointObject*)
 _ZN9PlayLayer18loadFromCheckpointEP16CheckpointObject
 PlayLayer::loadLastCheckpoint()
 _ZN9PlayLayer18loadLastCheckpointEv
-PlayLayer::loadSavedObjectsState(std::string)
-_ZN9PlayLayer21loadSavedObjectsStateESs
+PlayLayer::loadSavedObjectsState(gd::string)
+_ZN9PlayLayer21loadSavedObjectsStateEN2gd6stringE
 PlayLayer::markCheckpoint()
 _ZN9PlayLayer14markCheckpointEv
 PlayLayer::moveCameraToPos(cocos2d::CCPoint)
@@ -10312,8 +10312,8 @@ PlayLayer::setStartPosObject(StartPosObject*)
 _ZN9PlayLayer17setStartPosObjectEP14StartPosObject
 PlayLayer::setupLevelStart(LevelSettingsObject*)
 _ZN9PlayLayer15setupLevelStartEP19LevelSettingsObject
-PlayLayer::setupReplay(std::string)
-_ZN9PlayLayer11setupReplayESs
+PlayLayer::setupReplay(gd::string)
+_ZN9PlayLayer11setupReplayEN2gd6stringE
 PlayLayer::shakeCamera(float, float, float)
 _ZN9PlayLayer11shakeCameraEfff
 PlayLayer::shouldBlend(int)
@@ -10722,8 +10722,8 @@ PlayerObject::updatePlayerShipFrame(int)
 _ZN12PlayerObject21updatePlayerShipFrameEi
 PlayerObject::updatePlayerSpiderFrame(int)
 _ZN12PlayerObject23updatePlayerSpiderFrameEi
-PlayerObject::updatePlayerSpriteExtra(std::string)
-_ZN12PlayerObject23updatePlayerSpriteExtraESs
+PlayerObject::updatePlayerSpriteExtra(gd::string)
+_ZN12PlayerObject23updatePlayerSpriteExtraEN2gd6stringE
 PlayerObject::updateRobotAnimationSpeed()
 _ZN12PlayerObject25updateRobotAnimationSpeedEv
 PlayerObject::updateRotation(float)
@@ -10732,8 +10732,8 @@ PlayerObject::updateRotation(float, float)
 _ZN12PlayerObject14updateRotationEff
 PlayerObject::updateShipRotation(float)
 _ZN12PlayerObject18updateShipRotationEf
-PlayerObject::updateShipSpriteExtra(std::string)
-_ZN12PlayerObject21updateShipSpriteExtraESs
+PlayerObject::updateShipSpriteExtra(gd::string)
+_ZN12PlayerObject21updateShipSpriteExtraEN2gd6stringE
 PlayerObject::updateSlopeRotation(float)
 _ZN12PlayerObject19updateSlopeRotationEf
 PlayerObject::updateSlopeYVelocity(float)
@@ -10860,8 +10860,8 @@ ProfilePage::setupComments()
 _ZN11ProfilePage13setupCommentsEv
 ProfilePage::setupCommentsBrowser(cocos2d::CCArray*)
 _ZN11ProfilePage20setupCommentsBrowserEPN7cocos2d7CCArrayE
-ProfilePage::setupPageInfo(std::string, char const*)
-_ZN11ProfilePage13setupPageInfoESsPKc
+ProfilePage::setupPageInfo(gd::string, char const*)
+_ZN11ProfilePage13setupPageInfoEN2gd6stringEPKc
 ProfilePage::show()
 _ZN11ProfilePage4showEv
 ProfilePage::showNoAccountError()
@@ -10922,8 +10922,8 @@ PulseEffectAction::PulseEffectAction()
 _ZN17PulseEffectActionC2Ev
 PulseEffectAction::create(float, float, float, PulseEffectType, int, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool)
 _ZN17PulseEffectAction6createEfff15PulseEffectTypeiN7cocos2d10_ccColor3BENS1_11_ccHSVValueEibb
-PulseEffectAction::createFromString(std::string)
-_ZN17PulseEffectAction16createFromStringESs
+PulseEffectAction::createFromString(gd::string)
+_ZN17PulseEffectAction16createFromStringEN2gd6stringE
 PulseEffectAction::getSaveString()
 _ZN17PulseEffectAction13getSaveStringEv
 PulseEffectAction::init(float, float, float, PulseEffectType, int, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool)
@@ -11142,8 +11142,8 @@ RewardsPage::~RewardsPage()
 _ZN11RewardsPageD2Ev
 RingObject::create(char const*)
 _ZN10RingObject6createEPKc
-RingObject::customObjectSetup(std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >&)
-_ZN10RingObject17customObjectSetupERSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE
+RingObject::customObjectSetup(gd::map<gd::string, gd::string>&)
+_ZN10RingObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 RingObject::getSaveString()
 _ZN10RingObject13getSaveStringEv
 RingObject::init(char const*)
@@ -11260,8 +11260,8 @@ SecretLayer2::textInputClosed(CCTextInputNode*)
 _ZN12SecretLayer215textInputClosedEP15CCTextInputNode
 SecretLayer2::textInputOpened(CCTextInputNode*)
 _ZN12SecretLayer215textInputOpenedEP15CCTextInputNode
-SecretLayer2::updateMessageLabel(std::string)
-_ZN12SecretLayer218updateMessageLabelESs
+SecretLayer2::updateMessageLabel(gd::string)
+_ZN12SecretLayer218updateMessageLabelEN2gd6stringE
 SecretLayer2::updateSearchLabel(char const*)
 _ZN12SecretLayer217updateSearchLabelEPKc
 SecretLayer2::~SecretLayer2()
@@ -11366,8 +11366,8 @@ SecretLayer4::textInputClosed(CCTextInputNode*)
 _ZN12SecretLayer415textInputClosedEP15CCTextInputNode
 SecretLayer4::textInputOpened(CCTextInputNode*)
 _ZN12SecretLayer415textInputOpenedEP15CCTextInputNode
-SecretLayer4::updateMessageLabel(std::string)
-_ZN12SecretLayer418updateMessageLabelESs
+SecretLayer4::updateMessageLabel(gd::string)
+_ZN12SecretLayer418updateMessageLabelEN2gd6stringE
 SecretLayer4::updateSearchLabel(char const*)
 _ZN12SecretLayer417updateSearchLabelEPKc
 SecretLayer4::~SecretLayer4()
@@ -11408,8 +11408,8 @@ SecretLayer::textInputClosed(CCTextInputNode*)
 _ZN11SecretLayer15textInputClosedEP15CCTextInputNode
 SecretLayer::textInputOpened(CCTextInputNode*)
 _ZN11SecretLayer15textInputOpenedEP15CCTextInputNode
-SecretLayer::updateMessageLabel(std::string)
-_ZN11SecretLayer18updateMessageLabelESs
+SecretLayer::updateMessageLabel(gd::string)
+_ZN11SecretLayer18updateMessageLabelEN2gd6stringE
 SecretLayer::updateSearchLabel(char const*)
 _ZN11SecretLayer17updateSearchLabelEPKc
 SecretLayer::~SecretLayer()
@@ -11474,14 +11474,14 @@ SetFolderPopup::SetFolderPopup()
 _ZN14SetFolderPopupC1Ev
 SetFolderPopup::SetFolderPopup()
 _ZN14SetFolderPopupC2Ev
-SetFolderPopup::create(int, bool, std::string)
-_ZN14SetFolderPopup6createEibSs
-SetFolderPopup::init(int, bool, std::string)
-_ZN14SetFolderPopup4initEibSs
+SetFolderPopup::create(int, bool, gd::string)
+_ZN14SetFolderPopup6createEibN2gd6stringE
+SetFolderPopup::init(int, bool, gd::string)
+_ZN14SetFolderPopup4initEibN2gd6stringE
 SetFolderPopup::onSetFolderName(cocos2d::CCObject*)
 _ZN14SetFolderPopup15onSetFolderNameEPN7cocos2d8CCObjectE
-SetFolderPopup::setTextPopupClosed(SetTextPopup*, std::string)
-_ZN14SetFolderPopup18setTextPopupClosedEP12SetTextPopupSs
+SetFolderPopup::setTextPopupClosed(SetTextPopup*, gd::string)
+_ZN14SetFolderPopup18setTextPopupClosedEP12SetTextPopupN2gd6stringE
 SetFolderPopup::valueChanged()
 _ZN14SetFolderPopup12valueChangedEv
 SetFolderPopup::~SetFolderPopup()
@@ -11590,10 +11590,10 @@ SetIDLayer::~SetIDLayer()
 _ZN10SetIDLayerD1Ev
 SetIDLayer::~SetIDLayer()
 _ZN10SetIDLayerD2Ev
-SetIDPopup::create(int, int, int, std::string, std::string, bool, int)
-_ZN10SetIDPopup6createEiiiSsSsbi
-SetIDPopup::init(int, int, int, std::string, std::string, bool, int)
-_ZN10SetIDPopup4initEiiiSsSsbi
+SetIDPopup::create(int, int, int, gd::string, gd::string, bool, int)
+_ZN10SetIDPopup6createEiiiN2gd6stringEN2gd6stringEbi
+SetIDPopup::init(int, int, int, gd::string, gd::string, bool, int)
+_ZN10SetIDPopup4initEiiiN2gd6stringEN2gd6stringEbi
 SetIDPopup::keyBackClicked()
 _ZN10SetIDPopup14keyBackClickedEv
 SetIDPopup::onCancel(cocos2d::CCObject*)
@@ -11624,8 +11624,8 @@ SetIDPopupDelegate::setIDPopupClosed(SetIDPopup*, int)
 _ZN18SetIDPopupDelegate16setIDPopupClosedEP10SetIDPopupi
 SetItemIDLayer::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN14SetItemIDLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetItemIDLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN14SetItemIDLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+SetItemIDLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN14SetItemIDLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 SetItemIDLayer::determineStartValues()
 _ZN14SetItemIDLayer20determineStartValuesEv
 SetItemIDLayer::init(EffectGameObject*, cocos2d::CCArray*)
@@ -11662,14 +11662,14 @@ SetTargetIDLayer::SetTargetIDLayer()
 _ZN16SetTargetIDLayerC1Ev
 SetTargetIDLayer::SetTargetIDLayer()
 _ZN16SetTargetIDLayerC2Ev
-SetTargetIDLayer::create(EffectGameObject*, cocos2d::CCArray*, std::string)
-_ZN16SetTargetIDLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayESs
-SetTargetIDLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
-_ZN16SetTargetIDLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
+SetTargetIDLayer::create(EffectGameObject*, cocos2d::CCArray*, gd::string)
+_ZN16SetTargetIDLayer6createEP16EffectGameObjectPN7cocos2d7CCArrayEN2gd6stringE
+SetTargetIDLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint)
+_ZN16SetTargetIDLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointE
 SetTargetIDLayer::determineStartValues()
 _ZN16SetTargetIDLayer20determineStartValuesEv
-SetTargetIDLayer::init(EffectGameObject*, cocos2d::CCArray*, std::string)
-_ZN16SetTargetIDLayer4initEP16EffectGameObjectPN7cocos2d7CCArrayESs
+SetTargetIDLayer::init(EffectGameObject*, cocos2d::CCArray*, gd::string)
+_ZN16SetTargetIDLayer4initEP16EffectGameObjectPN7cocos2d7CCArrayEN2gd6stringE
 SetTargetIDLayer::keyBackClicked()
 _ZN16SetTargetIDLayer14keyBackClickedEv
 SetTargetIDLayer::onClose(cocos2d::CCObject*)
@@ -11710,10 +11710,10 @@ SetTargetIDLayer::~SetTargetIDLayer()
 _ZN16SetTargetIDLayerD1Ev
 SetTargetIDLayer::~SetTargetIDLayer()
 _ZN16SetTargetIDLayerD2Ev
-SetTextPopup::create(std::string, std::string, int, std::string, std::string, bool)
-_ZN12SetTextPopup6createESsSsiSsSsb
-SetTextPopup::init(std::string, std::string, int, std::string, std::string, bool)
-_ZN12SetTextPopup4initESsSsiSsSsb
+SetTextPopup::create(gd::string, gd::string, int, gd::string, gd::string, bool)
+_ZN12SetTextPopup6createEN2gd6stringEN2gd6stringEiN2gd6stringEN2gd6stringEb
+SetTextPopup::init(gd::string, gd::string, int, gd::string, gd::string, bool)
+_ZN12SetTextPopup4initEN2gd6stringEN2gd6stringEiN2gd6stringEN2gd6stringEb
 SetTextPopup::keyBackClicked()
 _ZN12SetTextPopup14keyBackClickedEv
 SetTextPopup::onCancel(cocos2d::CCObject*)
@@ -11736,12 +11736,12 @@ SetTextPopup::~SetTextPopup()
 _ZN12SetTextPopupD1Ev
 SetTextPopup::~SetTextPopup()
 _ZN12SetTextPopupD2Ev
-SetTextPopupDelegate::setTextPopupClosed(SetTextPopup*, std::string)
-_ZN20SetTextPopupDelegate18setTextPopupClosedEP12SetTextPopupSs
+SetTextPopupDelegate::setTextPopupClosed(SetTextPopup*, gd::string)
+_ZN20SetTextPopupDelegate18setTextPopupClosedEP12SetTextPopupN2gd6stringE
 SetupAnimSettingsPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN22SetupAnimSettingsPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupAnimSettingsPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN22SetupAnimSettingsPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupAnimSettingsPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN22SetupAnimSettingsPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupAnimSettingsPopup::determineStartValues()
 _ZN22SetupAnimSettingsPopup20determineStartValuesEv
 SetupAnimSettingsPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -11780,8 +11780,8 @@ SetupAnimationPopup::SetupAnimationPopup()
 _ZN19SetupAnimationPopupC2Ev
 SetupAnimationPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN19SetupAnimationPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupAnimationPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN19SetupAnimationPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupAnimationPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN19SetupAnimationPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupAnimationPopup::determineStartValues()
 _ZN19SetupAnimationPopup20determineStartValuesEv
 SetupAnimationPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -11838,8 +11838,8 @@ SetupCollisionTriggerPopup::SetupCollisionTriggerPopup()
 _ZN26SetupCollisionTriggerPopupC2Ev
 SetupCollisionTriggerPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN26SetupCollisionTriggerPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupCollisionTriggerPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN26SetupCollisionTriggerPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupCollisionTriggerPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN26SetupCollisionTriggerPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupCollisionTriggerPopup::determineStartValues()
 _ZN26SetupCollisionTriggerPopup20determineStartValuesEv
 SetupCollisionTriggerPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -11906,8 +11906,8 @@ SetupCountTriggerPopup::SetupCountTriggerPopup()
 _ZN22SetupCountTriggerPopupC2Ev
 SetupCountTriggerPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN22SetupCountTriggerPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupCountTriggerPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN22SetupCountTriggerPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupCountTriggerPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN22SetupCountTriggerPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupCountTriggerPopup::determineStartValues()
 _ZN22SetupCountTriggerPopup20determineStartValuesEv
 SetupCountTriggerPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -11974,8 +11974,8 @@ SetupInstantCountPopup::SetupInstantCountPopup()
 _ZN22SetupInstantCountPopupC2Ev
 SetupInstantCountPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN22SetupInstantCountPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupInstantCountPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN22SetupInstantCountPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupInstantCountPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN22SetupInstantCountPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupInstantCountPopup::determineStartValues()
 _ZN22SetupInstantCountPopup20determineStartValuesEv
 SetupInstantCountPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12038,8 +12038,8 @@ SetupInstantCountPopup::~SetupInstantCountPopup()
 _ZN22SetupInstantCountPopupD2Ev
 SetupInteractObjectPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN24SetupInteractObjectPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupInteractObjectPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN24SetupInteractObjectPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupInteractObjectPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN24SetupInteractObjectPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupInteractObjectPopup::determineStartValues()
 _ZN24SetupInteractObjectPopup20determineStartValuesEv
 SetupInteractObjectPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12096,8 +12096,8 @@ SetupObjectTogglePopup::SetupObjectTogglePopup()
 _ZN22SetupObjectTogglePopupC2Ev
 SetupObjectTogglePopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN22SetupObjectTogglePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupObjectTogglePopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN22SetupObjectTogglePopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupObjectTogglePopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN22SetupObjectTogglePopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupObjectTogglePopup::determineStartValues()
 _ZN22SetupObjectTogglePopup20determineStartValuesEv
 SetupObjectTogglePopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12212,8 +12212,8 @@ SetupPickupTriggerPopup::SetupPickupTriggerPopup()
 _ZN23SetupPickupTriggerPopupC2Ev
 SetupPickupTriggerPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN23SetupPickupTriggerPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupPickupTriggerPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN23SetupPickupTriggerPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupPickupTriggerPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN23SetupPickupTriggerPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupPickupTriggerPopup::determineStartValues()
 _ZN23SetupPickupTriggerPopup20determineStartValuesEv
 SetupPickupTriggerPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12378,8 +12378,8 @@ SetupPulsePopup::~SetupPulsePopup()
 _ZN15SetupPulsePopupD2Ev
 SetupRotatePopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN16SetupRotatePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupRotatePopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN16SetupRotatePopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupRotatePopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN16SetupRotatePopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupRotatePopup::determineStartValues()
 _ZN16SetupRotatePopup20determineStartValuesEv
 SetupRotatePopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12422,8 +12422,8 @@ SetupShakePopup::SetupShakePopup()
 _ZN15SetupShakePopupC2Ev
 SetupShakePopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN15SetupShakePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupShakePopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN15SetupShakePopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupShakePopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN15SetupShakePopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupShakePopup::determineStartValues()
 _ZN15SetupShakePopup20determineStartValuesEv
 SetupShakePopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12476,8 +12476,8 @@ SetupShakePopup::~SetupShakePopup()
 _ZN15SetupShakePopupD2Ev
 SetupSpawnPopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN15SetupSpawnPopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupSpawnPopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN15SetupSpawnPopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupSpawnPopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN15SetupSpawnPopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupSpawnPopup::determineStartValues()
 _ZN15SetupSpawnPopup20determineStartValuesEv
 SetupSpawnPopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12536,8 +12536,8 @@ SetupTouchTogglePopup::SetupTouchTogglePopup()
 _ZN21SetupTouchTogglePopupC2Ev
 SetupTouchTogglePopup::create(EffectGameObject*, cocos2d::CCArray*)
 _ZN21SetupTouchTogglePopup6createEP16EffectGameObjectPN7cocos2d7CCArrayE
-SetupTouchTogglePopup::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN21SetupTouchTogglePopup18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SetupTouchTogglePopup::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN21SetupTouchTogglePopup18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SetupTouchTogglePopup::determineStartValues()
 _ZN21SetupTouchTogglePopup20determineStartValuesEv
 SetupTouchTogglePopup::init(EffectGameObject*, cocos2d::CCArray*)
@@ -12616,10 +12616,10 @@ ShareCommentLayer::ShareCommentLayer()
 _ZN17ShareCommentLayerC1Ev
 ShareCommentLayer::ShareCommentLayer()
 _ZN17ShareCommentLayerC2Ev
-ShareCommentLayer::create(std::string, int, CommentType, int)
-_ZN17ShareCommentLayer6createESsi11CommentTypei
-ShareCommentLayer::init(std::string, int, CommentType, int)
-_ZN17ShareCommentLayer4initESsi11CommentTypei
+ShareCommentLayer::create(gd::string, int, CommentType, int)
+_ZN17ShareCommentLayer6createEN2gd6stringEi11CommentTypei
+ShareCommentLayer::init(gd::string, int, CommentType, int)
+_ZN17ShareCommentLayer4initEN2gd6stringEi11CommentTypei
 ShareCommentLayer::keyBackClicked()
 _ZN17ShareCommentLayer14keyBackClickedEv
 ShareCommentLayer::onClose(cocos2d::CCObject*)
@@ -12892,12 +12892,12 @@ SongCell::~SongCell()
 _ZN8SongCellD1Ev
 SongCell::~SongCell()
 _ZN8SongCellD2Ev
-SongInfoLayer::create(std::string, std::string, std::string, std::string, std::string, std::string)
-_ZN13SongInfoLayer6createESsSsSsSsSsSs
+SongInfoLayer::create(gd::string, gd::string, gd::string, gd::string, gd::string, gd::string)
+_ZN13SongInfoLayer6createEN2gd6stringEN2gd6stringEN2gd6stringEN2gd6stringEN2gd6stringEN2gd6stringE
 SongInfoLayer::create(int)
 _ZN13SongInfoLayer6createEi
-SongInfoLayer::init(std::string, std::string, std::string, std::string, std::string, std::string)
-_ZN13SongInfoLayer4initESsSsSsSsSsSs
+SongInfoLayer::init(gd::string, gd::string, gd::string, gd::string, gd::string, gd::string)
+_ZN13SongInfoLayer4initEN2gd6stringEN2gd6stringEN2gd6stringEN2gd6stringEN2gd6stringEN2gd6stringE
 SongInfoLayer::keyBackClicked()
 _ZN13SongInfoLayer14keyBackClickedEv
 SongInfoLayer::onClose(cocos2d::CCObject*)
@@ -12922,14 +12922,14 @@ SongInfoObject::create(cocos2d::CCDictionary*)
 _ZN14SongInfoObject6createEPN7cocos2d12CCDictionaryE
 SongInfoObject::create(int)
 _ZN14SongInfoObject6createEi
-SongInfoObject::create(int, std::string, std::string, int, float, std::string, std::string, std::string, int)
-_ZN14SongInfoObject6createEiSsSsifSsSsSsi
+SongInfoObject::create(int, gd::string, gd::string, int, float, gd::string, gd::string, gd::string, int)
+_ZN14SongInfoObject6createEiN2gd6stringEN2gd6stringEifN2gd6stringEN2gd6stringEN2gd6stringEi
 SongInfoObject::createWithCoder(DS_Dictionary*)
 _ZN14SongInfoObject15createWithCoderEP13DS_Dictionary
 SongInfoObject::encodeWithCoder(DS_Dictionary*)
 _ZN14SongInfoObject15encodeWithCoderEP13DS_Dictionary
-SongInfoObject::init(int, std::string, std::string, int, float, std::string, std::string, std::string, int)
-_ZN14SongInfoObject4initEiSsSsifSsSsSsi
+SongInfoObject::init(int, gd::string, gd::string, int, float, gd::string, gd::string, gd::string, int)
+_ZN14SongInfoObject4initEiN2gd6stringEN2gd6stringEifN2gd6stringEN2gd6stringEN2gd6stringEi
 SongInfoObject::~SongInfoObject()
 _ZN14SongInfoObjectD0Ev
 SongInfoObject::~SongInfoObject()
@@ -12982,8 +12982,8 @@ SongsLayer::~SongsLayer()
 _ZN10SongsLayerD2Ev
 SpawnTriggerAction::create(float, int)
 _ZN18SpawnTriggerAction6createEfi
-SpawnTriggerAction::createFromString(std::string)
-_ZN18SpawnTriggerAction16createFromStringESs
+SpawnTriggerAction::createFromString(gd::string)
+_ZN18SpawnTriggerAction16createFromStringEN2gd6stringE
 SpawnTriggerAction::getSaveString()
 _ZN18SpawnTriggerAction13getSaveStringEv
 SpawnTriggerAction::init(float, int)
@@ -13014,48 +13014,48 @@ SpriteAnimationManager::animationFinished()
 _ZN22SpriteAnimationManager17animationFinishedEv
 SpriteAnimationManager::callAnimationFinished()
 _ZN22SpriteAnimationManager21callAnimationFinishedEv
-SpriteAnimationManager::createAnimations(std::string)
-_ZN22SpriteAnimationManager16createAnimationsESs
-SpriteAnimationManager::createWithOwner(CCAnimatedSprite*, std::string)
-_ZN22SpriteAnimationManager15createWithOwnerEP16CCAnimatedSpriteSs
+SpriteAnimationManager::createAnimations(gd::string)
+_ZN22SpriteAnimationManager16createAnimationsEN2gd6stringE
+SpriteAnimationManager::createWithOwner(CCAnimatedSprite*, gd::string)
+_ZN22SpriteAnimationManager15createWithOwnerEP16CCAnimatedSpriteN2gd6stringE
 SpriteAnimationManager::doCleanup()
 _ZN22SpriteAnimationManager9doCleanupEv
-SpriteAnimationManager::executeAnimation(std::string)
-_ZN22SpriteAnimationManager16executeAnimationESs
-SpriteAnimationManager::finishAnimation(std::string)
-_ZN22SpriteAnimationManager15finishAnimationESs
-SpriteAnimationManager::getAnimType(std::string)
-_ZN22SpriteAnimationManager11getAnimTypeESs
-SpriteAnimationManager::getPrio(std::string)
-_ZN22SpriteAnimationManager7getPrioESs
-SpriteAnimationManager::initWithOwner(CCAnimatedSprite*, std::string)
-_ZN22SpriteAnimationManager13initWithOwnerEP16CCAnimatedSpriteSs
-SpriteAnimationManager::loadAnimations(std::string)
-_ZN22SpriteAnimationManager14loadAnimationsESs
+SpriteAnimationManager::executeAnimation(gd::string)
+_ZN22SpriteAnimationManager16executeAnimationEN2gd6stringE
+SpriteAnimationManager::finishAnimation(gd::string)
+_ZN22SpriteAnimationManager15finishAnimationEN2gd6stringE
+SpriteAnimationManager::getAnimType(gd::string)
+_ZN22SpriteAnimationManager11getAnimTypeEN2gd6stringE
+SpriteAnimationManager::getPrio(gd::string)
+_ZN22SpriteAnimationManager7getPrioEN2gd6stringE
+SpriteAnimationManager::initWithOwner(CCAnimatedSprite*, gd::string)
+_ZN22SpriteAnimationManager13initWithOwnerEP16CCAnimatedSpriteN2gd6stringE
+SpriteAnimationManager::loadAnimations(gd::string)
+_ZN22SpriteAnimationManager14loadAnimationsEN2gd6stringE
 SpriteAnimationManager::offsetCurrentAnimation(float)
 _ZN22SpriteAnimationManager22offsetCurrentAnimationEf
 SpriteAnimationManager::overridePrio()
 _ZN22SpriteAnimationManager12overridePrioEv
-SpriteAnimationManager::playSound(std::string)
-_ZN22SpriteAnimationManager9playSoundESs
-SpriteAnimationManager::playSoundForAnimation(std::string)
-_ZN22SpriteAnimationManager21playSoundForAnimationESs
-SpriteAnimationManager::queueAnimation(std::string)
-_ZN22SpriteAnimationManager14queueAnimationESs
+SpriteAnimationManager::playSound(gd::string)
+_ZN22SpriteAnimationManager9playSoundEN2gd6stringE
+SpriteAnimationManager::playSoundForAnimation(gd::string)
+_ZN22SpriteAnimationManager21playSoundForAnimationEN2gd6stringE
+SpriteAnimationManager::queueAnimation(gd::string)
+_ZN22SpriteAnimationManager14queueAnimationEN2gd6stringE
 SpriteAnimationManager::resetAnimState()
 _ZN22SpriteAnimationManager14resetAnimStateEv
-SpriteAnimationManager::runAnimation(std::string)
-_ZN22SpriteAnimationManager12runAnimationESs
+SpriteAnimationManager::runAnimation(gd::string)
+_ZN22SpriteAnimationManager12runAnimationEN2gd6stringE
 SpriteAnimationManager::runQueuedAnimation()
 _ZN22SpriteAnimationManager18runQueuedAnimationEv
 SpriteAnimationManager::stopAnimations()
 _ZN22SpriteAnimationManager14stopAnimationsEv
-SpriteAnimationManager::storeAnimation(cocos2d::CCAnimate*, cocos2d::CCAnimate*, std::string, int, spriteMode, cocos2d::CCSpriteFrame*)
-_ZN22SpriteAnimationManager14storeAnimationEPN7cocos2d9CCAnimateES2_Ssi10spriteModePNS0_13CCSpriteFrameE
-SpriteAnimationManager::storeSoundForAnimation(cocos2d::CCString*, std::string, float)
-_ZN22SpriteAnimationManager22storeSoundForAnimationEPN7cocos2d8CCStringESsf
-SpriteAnimationManager::switchToFirstFrameOfAnimation(std::string)
-_ZN22SpriteAnimationManager29switchToFirstFrameOfAnimationESs
+SpriteAnimationManager::storeAnimation(cocos2d::CCAnimate*, cocos2d::CCAnimate*, gd::string, int, spriteMode, cocos2d::CCSpriteFrame*)
+_ZN22SpriteAnimationManager14storeAnimationEPN7cocos2d9CCAnimateES2_N2gd6stringEi10spriteModePNS0_13CCSpriteFrameE
+SpriteAnimationManager::storeSoundForAnimation(cocos2d::CCString*, gd::string, float)
+_ZN22SpriteAnimationManager22storeSoundForAnimationEPN7cocos2d8CCStringEN2gd6stringEf
+SpriteAnimationManager::switchToFirstFrameOfAnimation(gd::string)
+_ZN22SpriteAnimationManager29switchToFirstFrameOfAnimationEN2gd6stringE
 SpriteAnimationManager::updateAnimationSpeed(float)
 _ZN22SpriteAnimationManager20updateAnimationSpeedEf
 SpriteAnimationManager::~SpriteAnimationManager()
@@ -13084,8 +13084,8 @@ SpriteDescription::~SpriteDescription()
 _ZN17SpriteDescriptionD1Ev
 SpriteDescription::~SpriteDescription()
 _ZN17SpriteDescriptionD2Ev
-SpritePartDelegate::displayFrameChanged(cocos2d::CCObject*, std::string)
-_ZN18SpritePartDelegate19displayFrameChangedEPN7cocos2d8CCObjectESs
+SpritePartDelegate::displayFrameChanged(cocos2d::CCObject*, gd::string)
+_ZN18SpritePartDelegate19displayFrameChangedEPN7cocos2d8CCObjectEN2gd6stringE
 SquareDistance(float, float, float, float)
 _Z14SquareDistanceffff
 StartPosObject::create()
@@ -13146,8 +13146,8 @@ SupportLayer::FLAlert_Clicked(FLAlertLayer*, bool)
 _ZN12SupportLayer15FLAlert_ClickedEP12FLAlertLayerb
 SupportLayer::create()
 _ZN12SupportLayer6createEv
-SupportLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
-_ZN12SupportLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
+SupportLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)
+_ZN12SupportLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_7CCArrayE
 SupportLayer::customSetup()
 _ZN12SupportLayer11customSetupEv
 SupportLayer::exitLayer()
@@ -13286,8 +13286,8 @@ TeleportPortalObject::addToGroup2(int)
 _ZN20TeleportPortalObject11addToGroup2Ei
 TeleportPortalObject::create(char const*)
 _ZN20TeleportPortalObject6createEPKc
-TeleportPortalObject::customObjectSetup(std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >&)
-_ZN20TeleportPortalObject17customObjectSetupERSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE
+TeleportPortalObject::customObjectSetup(gd::map<gd::string, gd::string>&)
+_ZN20TeleportPortalObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 TeleportPortalObject::getSaveString()
 _ZN20TeleportPortalObject13getSaveStringEv
 TeleportPortalObject::getTeleportXOff(cocos2d::CCNode*)
@@ -13316,10 +13316,10 @@ TeleportPortalObject::~TeleportPortalObject()
 _ZN20TeleportPortalObjectD1Ev
 TeleportPortalObject::~TeleportPortalObject()
 _ZN20TeleportPortalObjectD2Ev
-TextAlertPopup::create(std::string, float, float)
-_ZN14TextAlertPopup6createESsff
-TextAlertPopup::init(std::string, float, float)
-_ZN14TextAlertPopup4initESsff
+TextAlertPopup::create(gd::string, float, float)
+_ZN14TextAlertPopup6createEN2gd6stringEff
+TextAlertPopup::init(gd::string, float, float)
+_ZN14TextAlertPopup4initEN2gd6stringEff
 TextAlertPopup::~TextAlertPopup()
 _ZN14TextAlertPopupD0Ev
 TextAlertPopup::~TextAlertPopup()
@@ -13332,8 +13332,8 @@ TextArea::TextArea()
 _ZN8TextAreaC2Ev
 TextArea::colorAllCharactersTo(cocos2d::_ccColor3B)
 _ZN8TextArea20colorAllCharactersToEN7cocos2d10_ccColor3BE
-TextArea::create(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)
-_ZN8TextArea6createESsPKcffN7cocos2d7CCPointEfb
+TextArea::create(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)
+_ZN8TextArea6createEN2gd6stringEPKcffN7cocos2d7CCPointEfb
 TextArea::draw()
 _ZN8TextArea4drawEv
 TextArea::fadeIn(float, bool)
@@ -13348,14 +13348,14 @@ TextArea::finishFade()
 _ZN8TextArea10finishFadeEv
 TextArea::hideAll()
 _ZN8TextArea7hideAllEv
-TextArea::init(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)
-_ZN8TextArea4initESsPKcffN7cocos2d7CCPointEfb
+TextArea::init(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)
+_ZN8TextArea4initEN2gd6stringEPKcffN7cocos2d7CCPointEfb
 TextArea::setIgnoreColorCode(bool)
 _ZN8TextArea18setIgnoreColorCodeEb
 TextArea::setOpacity(unsigned char)
 _ZN8TextArea10setOpacityEh
-TextArea::setString(std::string)
-_ZN8TextArea9setStringESs
+TextArea::setString(gd::string)
+_ZN8TextArea9setStringEN2gd6stringE
 TextArea::showAll()
 _ZN8TextArea7showAllEv
 TextArea::stopAllCharacterActions()
@@ -13382,8 +13382,8 @@ TextInputDelegate::textInputShouldOffset(CCTextInputNode*, float)
 _ZN17TextInputDelegate21textInputShouldOffsetEP15CCTextInputNodef
 ToggleTriggerAction::create(int, bool)
 _ZN19ToggleTriggerAction6createEib
-ToggleTriggerAction::createFromString(std::string)
-_ZN19ToggleTriggerAction16createFromStringESs
+ToggleTriggerAction::createFromString(gd::string)
+_ZN19ToggleTriggerAction16createFromStringEN2gd6stringE
 ToggleTriggerAction::getSaveString()
 _ZN19ToggleTriggerAction13getSaveStringEv
 ToggleTriggerAction::init(int, bool)
@@ -13418,8 +13418,8 @@ TopArtistsLayer::registerWithTouchDispatcher()
 _ZN15TopArtistsLayer27registerWithTouchDispatcherEv
 TopArtistsLayer::setupLeaderboard(cocos2d::CCArray*)
 _ZN15TopArtistsLayer16setupLeaderboardEPN7cocos2d7CCArrayE
-TopArtistsLayer::setupPageInfo(std::string, char const*)
-_ZN15TopArtistsLayer13setupPageInfoESsPKc
+TopArtistsLayer::setupPageInfo(gd::string, char const*)
+_ZN15TopArtistsLayer13setupPageInfoEN2gd6stringEPKc
 TopArtistsLayer::show()
 _ZN15TopArtistsLayer4showEv
 TopArtistsLayer::updateLevelsLabel()
@@ -13432,8 +13432,8 @@ TopArtistsLayer::~TopArtistsLayer()
 _ZN15TopArtistsLayerD2Ev
 TouchToggleAction::create(int, bool, TouchTriggerType)
 _ZN17TouchToggleAction6createEib16TouchTriggerType
-TouchToggleAction::createFromString(std::string)
-_ZN17TouchToggleAction16createFromStringESs
+TouchToggleAction::createFromString(gd::string)
+_ZN17TouchToggleAction16createFromStringEN2gd6stringE
 TouchToggleAction::getSaveString()
 _ZN17TouchToggleAction13getSaveStringEv
 TouchToggleAction::init(int, bool, TouchTriggerType)
@@ -13468,10 +13468,10 @@ TutorialPopup::animateMenu()
 _ZN13TutorialPopup11animateMenuEv
 TutorialPopup::closeTutorial(cocos2d::CCObject*)
 _ZN13TutorialPopup13closeTutorialEPN7cocos2d8CCObjectE
-TutorialPopup::create(std::string)
-_ZN13TutorialPopup6createESs
-TutorialPopup::init(std::string)
-_ZN13TutorialPopup4initESs
+TutorialPopup::create(gd::string)
+_ZN13TutorialPopup6createEN2gd6stringE
+TutorialPopup::init(gd::string)
+_ZN13TutorialPopup4initEN2gd6stringE
 TutorialPopup::keyBackClicked()
 _ZN13TutorialPopup14keyBackClickedEv
 TutorialPopup::registerForCallback(void (cocos2d::CCObject::*)(cocos2d::CCObject*), cocos2d::CCNode*)
@@ -13550,10 +13550,10 @@ UndoObject::~UndoObject()
 _ZN10UndoObjectD1Ev
 UndoObject::~UndoObject()
 _ZN10UndoObjectD2Ev
-UpdateAccountSettingsPopup::create(GJAccountSettingsLayer*, int, int, int, std::string, std::string, std::string)
-_ZN26UpdateAccountSettingsPopup6createEP22GJAccountSettingsLayeriiiSsSsSs
-UpdateAccountSettingsPopup::init(GJAccountSettingsLayer*, int, int, int, std::string, std::string, std::string)
-_ZN26UpdateAccountSettingsPopup4initEP22GJAccountSettingsLayeriiiSsSsSs
+UpdateAccountSettingsPopup::create(GJAccountSettingsLayer*, int, int, int, gd::string, gd::string, gd::string)
+_ZN26UpdateAccountSettingsPopup6createEP22GJAccountSettingsLayeriiiN2gd6stringEN2gd6stringEN2gd6stringE
+UpdateAccountSettingsPopup::init(GJAccountSettingsLayer*, int, int, int, gd::string, gd::string, gd::string)
+_ZN26UpdateAccountSettingsPopup4initEP22GJAccountSettingsLayeriiiN2gd6stringEN2gd6stringEN2gd6stringE
 UpdateAccountSettingsPopup::keyBackClicked()
 _ZN26UpdateAccountSettingsPopup14keyBackClickedEv
 UpdateAccountSettingsPopup::onClose(cocos2d::CCObject*)
@@ -13574,18 +13574,18 @@ UploadActionDelegate::uploadActionFinished(int, int)
 _ZN20UploadActionDelegate20uploadActionFinishedEii
 UploadActionPopup::closePopup()
 _ZN17UploadActionPopup10closePopupEv
-UploadActionPopup::create(UploadPopupDelegate*, std::string)
-_ZN17UploadActionPopup6createEP19UploadPopupDelegateSs
-UploadActionPopup::init(UploadPopupDelegate*, std::string)
-_ZN17UploadActionPopup4initEP19UploadPopupDelegateSs
+UploadActionPopup::create(UploadPopupDelegate*, gd::string)
+_ZN17UploadActionPopup6createEP19UploadPopupDelegateN2gd6stringE
+UploadActionPopup::init(UploadPopupDelegate*, gd::string)
+_ZN17UploadActionPopup4initEP19UploadPopupDelegateN2gd6stringE
 UploadActionPopup::keyBackClicked()
 _ZN17UploadActionPopup14keyBackClickedEv
 UploadActionPopup::onClose(cocos2d::CCObject*)
 _ZN17UploadActionPopup7onCloseEPN7cocos2d8CCObjectE
-UploadActionPopup::showFailMessage(std::string)
-_ZN17UploadActionPopup15showFailMessageESs
-UploadActionPopup::showSuccessMessage(std::string)
-_ZN17UploadActionPopup18showSuccessMessageESs
+UploadActionPopup::showFailMessage(gd::string)
+_ZN17UploadActionPopup15showFailMessageEN2gd6stringE
+UploadActionPopup::showSuccessMessage(gd::string)
+_ZN17UploadActionPopup18showSuccessMessageEN2gd6stringE
 UploadActionPopup::~UploadActionPopup()
 _ZN17UploadActionPopupD0Ev
 UploadActionPopup::~UploadActionPopup()
@@ -13638,8 +13638,8 @@ UserListDelegate::userListChanged(cocos2d::CCArray*, UserListType)
 _ZN16UserListDelegate15userListChangedEPN7cocos2d7CCArrayE12UserListType
 VideoOptionsLayer::create()
 _ZN17VideoOptionsLayer6createEv
-VideoOptionsLayer::createToggleButton(std::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, float, float, bool)
-_ZN17VideoOptionsLayer18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEffb
+VideoOptionsLayer::createToggleButton(gd::string, void (cocos2d::CCObject::*)(cocos2d::CCObject*), bool, cocos2d::CCMenu*, cocos2d::CCPoint, float, float, bool)
+_ZN17VideoOptionsLayer18createToggleButtonEN2gd6stringEMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEffb
 VideoOptionsLayer::init()
 _ZN17VideoOptionsLayer4initEv
 VideoOptionsLayer::keyBackClicked()
@@ -14334,18 +14334,18 @@ cocos2d::CCBMFontConfiguration::getCharacterSet() const
 _ZNK7cocos2d21CCBMFontConfiguration15getCharacterSetEv
 cocos2d::CCBMFontConfiguration::initWithFNTfile(char const*)
 _ZN7cocos2d21CCBMFontConfiguration15initWithFNTfileEPKc
-cocos2d::CCBMFontConfiguration::parseCharacterDefinition(std::string, cocos2d::_BMFontDef*)
-_ZN7cocos2d21CCBMFontConfiguration24parseCharacterDefinitionESsPNS_10_BMFontDefE
-cocos2d::CCBMFontConfiguration::parseCommonArguments(std::string)
-_ZN7cocos2d21CCBMFontConfiguration20parseCommonArgumentsESs
+cocos2d::CCBMFontConfiguration::parseCharacterDefinition(gd::string, cocos2d::_BMFontDef*)
+_ZN7cocos2d21CCBMFontConfiguration24parseCharacterDefinitionEN2gd6stringEPNS_10_BMFontDefE
+cocos2d::CCBMFontConfiguration::parseCommonArguments(gd::string)
+_ZN7cocos2d21CCBMFontConfiguration20parseCommonArgumentsEN2gd6stringE
 cocos2d::CCBMFontConfiguration::parseConfigFile(char const*)
 _ZN7cocos2d21CCBMFontConfiguration15parseConfigFileEPKc
-cocos2d::CCBMFontConfiguration::parseImageFileName(std::string, char const*)
-_ZN7cocos2d21CCBMFontConfiguration18parseImageFileNameESsPKc
-cocos2d::CCBMFontConfiguration::parseInfoArguments(std::string)
-_ZN7cocos2d21CCBMFontConfiguration18parseInfoArgumentsESs
-cocos2d::CCBMFontConfiguration::parseKerningEntry(std::string)
-_ZN7cocos2d21CCBMFontConfiguration17parseKerningEntryESs
+cocos2d::CCBMFontConfiguration::parseImageFileName(gd::string, char const*)
+_ZN7cocos2d21CCBMFontConfiguration18parseImageFileNameEN2gd6stringEPKc
+cocos2d::CCBMFontConfiguration::parseInfoArguments(gd::string)
+_ZN7cocos2d21CCBMFontConfiguration18parseInfoArgumentsEN2gd6stringE
+cocos2d::CCBMFontConfiguration::parseKerningEntry(gd::string)
+_ZN7cocos2d21CCBMFontConfiguration17parseKerningEntryEN2gd6stringE
 cocos2d::CCBMFontConfiguration::purgeFontDefDictionary()
 _ZN7cocos2d21CCBMFontConfiguration22purgeFontDefDictionaryEv
 cocos2d::CCBMFontConfiguration::purgeKerningDictionary()
@@ -14696,8 +14696,8 @@ cocos2d::CCConfiguration::CCConfiguration()
 _ZN7cocos2d15CCConfigurationC1Ev
 cocos2d::CCConfiguration::CCConfiguration()
 _ZN7cocos2d15CCConfigurationC2Ev
-cocos2d::CCConfiguration::checkForGLExtension(std::string const&) const
-_ZNK7cocos2d15CCConfiguration19checkForGLExtensionERKSs
+cocos2d::CCConfiguration::checkForGLExtension(gd::string const&) const
+_ZNK7cocos2d15CCConfiguration19checkForGLExtensionERKN2gd6stringE
 cocos2d::CCConfiguration::dumpInfo() const
 _ZNK7cocos2d15CCConfiguration8dumpInfoEv
 cocos2d::CCConfiguration::gatherGPUInfo()
@@ -14834,8 +14834,8 @@ cocos2d::CCDictionary::allKeys()
 _ZN7cocos2d12CCDictionary7allKeysEv
 cocos2d::CCDictionary::allKeysForObject(cocos2d::CCObject*)
 _ZN7cocos2d12CCDictionary16allKeysForObjectEPNS_8CCObjectE
-cocos2d::CCDictionary::charForKey(std::string const&)
-_ZN7cocos2d12CCDictionary10charForKeyERKSs
+cocos2d::CCDictionary::charForKey(gd::string const&)
+_ZN7cocos2d12CCDictionary10charForKeyERKN2gd6stringE
 cocos2d::CCDictionary::copyWithZone(cocos2d::CCZone*)
 _ZN7cocos2d12CCDictionary12copyWithZoneEPNS_6CCZoneE
 cocos2d::CCDictionary::count()
@@ -14850,8 +14850,8 @@ cocos2d::CCDictionary::createWithDictionary(cocos2d::CCDictionary*)
 _ZN7cocos2d12CCDictionary20createWithDictionaryEPS0_
 cocos2d::CCDictionary::getFirstKey()
 _ZN7cocos2d12CCDictionary11getFirstKeyEv
-cocos2d::CCDictionary::objectForKey(std::string const&)
-_ZN7cocos2d12CCDictionary12objectForKeyERKSs
+cocos2d::CCDictionary::objectForKey(gd::string const&)
+_ZN7cocos2d12CCDictionary12objectForKeyERKN2gd6stringE
 cocos2d::CCDictionary::objectForKey(long)
 _ZN7cocos2d12CCDictionary12objectForKeyEl
 cocos2d::CCDictionary::randomObject()
@@ -14860,22 +14860,22 @@ cocos2d::CCDictionary::removeAllObjects()
 _ZN7cocos2d12CCDictionary16removeAllObjectsEv
 cocos2d::CCDictionary::removeObjectForElememt(cocos2d::CCDictElement*)
 _ZN7cocos2d12CCDictionary22removeObjectForElememtEPNS_13CCDictElementE
-cocos2d::CCDictionary::removeObjectForKey(std::string const&)
-_ZN7cocos2d12CCDictionary18removeObjectForKeyERKSs
+cocos2d::CCDictionary::removeObjectForKey(gd::string const&)
+_ZN7cocos2d12CCDictionary18removeObjectForKeyERKN2gd6stringE
 cocos2d::CCDictionary::removeObjectForKey(long)
 _ZN7cocos2d12CCDictionary18removeObjectForKeyEl
 cocos2d::CCDictionary::removeObjectsForKeys(cocos2d::CCArray*)
 _ZN7cocos2d12CCDictionary20removeObjectsForKeysEPNS_7CCArrayE
-cocos2d::CCDictionary::setObject(cocos2d::CCObject*, std::string const&)
-_ZN7cocos2d12CCDictionary9setObjectEPNS_8CCObjectERKSs
+cocos2d::CCDictionary::setObject(cocos2d::CCObject*, gd::string const&)
+_ZN7cocos2d12CCDictionary9setObjectEPNS_8CCObjectERKN2gd6stringE
 cocos2d::CCDictionary::setObject(cocos2d::CCObject*, long)
 _ZN7cocos2d12CCDictionary9setObjectEPNS_8CCObjectEl
-cocos2d::CCDictionary::setObjectUnSafe(cocos2d::CCObject*, std::string const&)
-_ZN7cocos2d12CCDictionary15setObjectUnSafeEPNS_8CCObjectERKSs
+cocos2d::CCDictionary::setObjectUnSafe(cocos2d::CCObject*, gd::string const&)
+_ZN7cocos2d12CCDictionary15setObjectUnSafeEPNS_8CCObjectERKN2gd6stringE
 cocos2d::CCDictionary::setObjectUnSafe(cocos2d::CCObject*, long)
 _ZN7cocos2d12CCDictionary15setObjectUnSafeEPNS_8CCObjectEl
-cocos2d::CCDictionary::valueForKey(std::string const&)
-_ZN7cocos2d12CCDictionary11valueForKeyERKSs
+cocos2d::CCDictionary::valueForKey(gd::string const&)
+_ZN7cocos2d12CCDictionary11valueForKeyERKN2gd6stringE
 cocos2d::CCDictionary::valueForKey(long)
 _ZN7cocos2d12CCDictionary11valueForKeyEl
 cocos2d::CCDictionary::writeToFile(char const*)
@@ -15584,12 +15584,12 @@ cocos2d::CCFileUtils::addSearchPath(char const*)
 _ZN7cocos2d11CCFileUtils13addSearchPathEPKc
 cocos2d::CCFileUtils::addSearchResolutionsOrder(char const*)
 _ZN7cocos2d11CCFileUtils25addSearchResolutionsOrderEPKc
-cocos2d::CCFileUtils::addSuffix(std::string, std::string)
-_ZN7cocos2d11CCFileUtils9addSuffixESsSs
-cocos2d::CCFileUtils::createCCArrayWithContentsOfFile(std::string const&)
-_ZN7cocos2d11CCFileUtils31createCCArrayWithContentsOfFileERKSs
-cocos2d::CCFileUtils::createCCDictionaryWithContentsOfFile(std::string const&)
-_ZN7cocos2d11CCFileUtils36createCCDictionaryWithContentsOfFileERKSs
+cocos2d::CCFileUtils::addSuffix(gd::string, gd::string)
+_ZN7cocos2d11CCFileUtils9addSuffixEN2gd6stringEN2gd6stringE
+cocos2d::CCFileUtils::createCCArrayWithContentsOfFile(gd::string const&)
+_ZN7cocos2d11CCFileUtils31createCCArrayWithContentsOfFileERKN2gd6stringE
+cocos2d::CCFileUtils::createCCDictionaryWithContentsOfFile(gd::string const&)
+_ZN7cocos2d11CCFileUtils36createCCDictionaryWithContentsOfFileERKN2gd6stringE
 cocos2d::CCFileUtils::fullPathForFilename(char const*, bool)
 _ZN7cocos2d11CCFileUtils19fullPathForFilenameEPKcb
 cocos2d::CCFileUtils::fullPathFromRelativeFile(char const*, char const*)
@@ -15600,12 +15600,12 @@ cocos2d::CCFileUtils::getFileData(char const*, char const*, unsigned long*)
 _ZN7cocos2d11CCFileUtils11getFileDataEPKcS2_Pm
 cocos2d::CCFileUtils::getFileDataFromZip(char const*, char const*, unsigned long*)
 _ZN7cocos2d11CCFileUtils18getFileDataFromZipEPKcS2_Pm
-cocos2d::CCFileUtils::getFullPathForDirectoryAndFilename(std::string const&, std::string const&)
-_ZN7cocos2d11CCFileUtils34getFullPathForDirectoryAndFilenameERKSsS2_
+cocos2d::CCFileUtils::getFullPathForDirectoryAndFilename(gd::string const&, gd::string const&)
+_ZN7cocos2d11CCFileUtils34getFullPathForDirectoryAndFilenameERKN2gd6stringES2_
 cocos2d::CCFileUtils::getNewFilename(char const*)
 _ZN7cocos2d11CCFileUtils14getNewFilenameEPKc
-cocos2d::CCFileUtils::getPathForFilename(std::string const&, std::string const&, std::string const&)
-_ZN7cocos2d11CCFileUtils18getPathForFilenameERKSsS2_S2_
+cocos2d::CCFileUtils::getPathForFilename(gd::string const&, gd::string const&, gd::string const&)
+_ZN7cocos2d11CCFileUtils18getPathForFilenameERKN2gd6stringES2_S2_
 cocos2d::CCFileUtils::getSearchPaths()
 _ZN7cocos2d11CCFileUtils14getSearchPathsEv
 cocos2d::CCFileUtils::getSearchResolutionsOrder()
@@ -15614,8 +15614,8 @@ cocos2d::CCFileUtils::getWritablePath2()
 _ZN7cocos2d11CCFileUtils16getWritablePath2Ev
 cocos2d::CCFileUtils::init()
 _ZN7cocos2d11CCFileUtils4initEv
-cocos2d::CCFileUtils::isAbsolutePath(std::string const&)
-_ZN7cocos2d11CCFileUtils14isAbsolutePathERKSs
+cocos2d::CCFileUtils::isAbsolutePath(gd::string const&)
+_ZN7cocos2d11CCFileUtils14isAbsolutePathERKN2gd6stringE
 cocos2d::CCFileUtils::isPopupNotify()
 _ZN7cocos2d11CCFileUtils13isPopupNotifyEv
 cocos2d::CCFileUtils::loadFilenameLookupDictionaryFromFile(char const*)
@@ -15634,16 +15634,16 @@ cocos2d::CCFileUtils::setFilenameLookupDictionary(cocos2d::CCDictionary*)
 _ZN7cocos2d11CCFileUtils27setFilenameLookupDictionaryEPNS_12CCDictionaryE
 cocos2d::CCFileUtils::setPopupNotify(bool)
 _ZN7cocos2d11CCFileUtils14setPopupNotifyEb
-cocos2d::CCFileUtils::setSearchPaths(std::vector<std::string, std::allocator<std::string> > const&)
-_ZN7cocos2d11CCFileUtils14setSearchPathsERKSt6vectorISsSaISsEE
-cocos2d::CCFileUtils::setSearchResolutionsOrder(std::vector<std::string, std::allocator<std::string> > const&)
-_ZN7cocos2d11CCFileUtils25setSearchResolutionsOrderERKSt6vectorISsSaISsEE
+cocos2d::CCFileUtils::setSearchPaths(gd::vector<gd::string> const&)
+_ZN7cocos2d11CCFileUtils14setSearchPathsERKSt6vectorIN2gd6stringESaIN2gd6stringEEE
+cocos2d::CCFileUtils::setSearchResolutionsOrder(gd::vector<gd::string> const&)
+_ZN7cocos2d11CCFileUtils25setSearchResolutionsOrderERKSt6vectorIN2gd6stringESaIN2gd6stringEEE
 cocos2d::CCFileUtils::sharedFileUtils()
 _ZN7cocos2d11CCFileUtils15sharedFileUtilsEv
 cocos2d::CCFileUtils::shouldUseHD()
 _ZN7cocos2d11CCFileUtils11shouldUseHDEv
-cocos2d::CCFileUtils::writeToFile(cocos2d::CCDictionary*, std::string const&)
-_ZN7cocos2d11CCFileUtils11writeToFileEPNS_12CCDictionaryERKSs
+cocos2d::CCFileUtils::writeToFile(cocos2d::CCDictionary*, gd::string const&)
+_ZN7cocos2d11CCFileUtils11writeToFileEPNS_12CCDictionaryERKN2gd6stringE
 cocos2d::CCFileUtils::~CCFileUtils()
 _ZN7cocos2d11CCFileUtilsD0Ev
 cocos2d::CCFileUtils::~CCFileUtils()
@@ -15664,10 +15664,10 @@ cocos2d::CCFileUtilsAndroid::getWritablePath()
 _ZN7cocos2d18CCFileUtilsAndroid15getWritablePathEv
 cocos2d::CCFileUtilsAndroid::init()
 _ZN7cocos2d18CCFileUtilsAndroid4initEv
-cocos2d::CCFileUtilsAndroid::isAbsolutePath(std::string const&)
-_ZN7cocos2d18CCFileUtilsAndroid14isAbsolutePathERKSs
-cocos2d::CCFileUtilsAndroid::isFileExist(std::string const&)
-_ZN7cocos2d18CCFileUtilsAndroid11isFileExistERKSs
+cocos2d::CCFileUtilsAndroid::isAbsolutePath(gd::string const&)
+_ZN7cocos2d18CCFileUtilsAndroid14isAbsolutePathERKN2gd6stringE
+cocos2d::CCFileUtilsAndroid::isFileExist(gd::string const&)
+_ZN7cocos2d18CCFileUtilsAndroid11isFileExistERKN2gd6stringE
 cocos2d::CCFileUtilsAndroid::~CCFileUtilsAndroid()
 _ZN7cocos2d18CCFileUtilsAndroidD0Ev
 cocos2d::CCFileUtilsAndroid::~CCFileUtilsAndroid()
@@ -18212,7 +18212,7 @@ cocos2d::CCPointArray::reverse()
 _ZN7cocos2d12CCPointArray7reverseEv
 cocos2d::CCPointArray::reverseInline()
 _ZN7cocos2d12CCPointArray13reverseInlineEv
-cocos2d::CCPointArray::setControlPoints(std::vector<cocos2d::CCPoint*, std::allocator<cocos2d::CCPoint*> >*)
+cocos2d::CCPointArray::setControlPoints(gd::vector<cocos2d::CCPoint*>*)
 _ZN7cocos2d12CCPointArray16setControlPointsEPSt6vectorIPNS_7CCPointESaIS3_EE
 cocos2d::CCPointArray::~CCPointArray()
 _ZN7cocos2d12CCPointArrayD0Ev
@@ -19528,16 +19528,16 @@ cocos2d::CCString::CCString(char const*)
 _ZN7cocos2d8CCStringC1EPKc
 cocos2d::CCString::CCString(cocos2d::CCString const&)
 _ZN7cocos2d8CCStringC1ERKS0_
-cocos2d::CCString::CCString(std::string const&)
-_ZN7cocos2d8CCStringC1ERKSs
+cocos2d::CCString::CCString(gd::string const&)
+_ZN7cocos2d8CCStringC1ERKN2gd6stringE
 cocos2d::CCString::CCString()
 _ZN7cocos2d8CCStringC1Ev
 cocos2d::CCString::CCString(char const*)
 _ZN7cocos2d8CCStringC2EPKc
 cocos2d::CCString::CCString(cocos2d::CCString const&)
 _ZN7cocos2d8CCStringC2ERKS0_
-cocos2d::CCString::CCString(std::string const&)
-_ZN7cocos2d8CCStringC2ERKSs
+cocos2d::CCString::CCString(gd::string const&)
+_ZN7cocos2d8CCStringC2ERKN2gd6stringE
 cocos2d::CCString::CCString()
 _ZN7cocos2d8CCStringC2Ev
 cocos2d::CCString::acceptVisitor(cocos2d::CCDataVisitor&)
@@ -19548,8 +19548,8 @@ cocos2d::CCString::compare(char const*) const
 _ZNK7cocos2d8CCString7compareEPKc
 cocos2d::CCString::copyWithZone(cocos2d::CCZone*)
 _ZN7cocos2d8CCString12copyWithZoneEPNS_6CCZoneE
-cocos2d::CCString::create(std::string const&)
-_ZN7cocos2d8CCString6createERKSs
+cocos2d::CCString::create(gd::string const&)
+_ZN7cocos2d8CCString6createERKN2gd6stringE
 cocos2d::CCString::createWithContentsOfFile(char const*)
 _ZN7cocos2d8CCString24createWithContentsOfFileEPKc
 cocos2d::CCString::createWithData(unsigned char const*, unsigned long)
@@ -21066,8 +21066,8 @@ cocos2d::CCUserDefault::getIntegerForKey(char const*, int)
 _ZN7cocos2d13CCUserDefault16getIntegerForKeyEPKci
 cocos2d::CCUserDefault::getStringForKey(char const*)
 _ZN7cocos2d13CCUserDefault15getStringForKeyEPKc
-cocos2d::CCUserDefault::getStringForKey(char const*, std::string const&)
-_ZN7cocos2d13CCUserDefault15getStringForKeyEPKcRKSs
+cocos2d::CCUserDefault::getStringForKey(char const*, gd::string const&)
+_ZN7cocos2d13CCUserDefault15getStringForKeyEPKcRKN2gd6stringE
 cocos2d::CCUserDefault::getXMLFilePath()
 _ZN7cocos2d13CCUserDefault14getXMLFilePathEv
 cocos2d::CCUserDefault::initXMLFilePath()
@@ -21084,8 +21084,8 @@ cocos2d::CCUserDefault::setFloatForKey(char const*, float)
 _ZN7cocos2d13CCUserDefault14setFloatForKeyEPKcf
 cocos2d::CCUserDefault::setIntegerForKey(char const*, int)
 _ZN7cocos2d13CCUserDefault16setIntegerForKeyEPKci
-cocos2d::CCUserDefault::setStringForKey(char const*, std::string const&)
-_ZN7cocos2d13CCUserDefault15setStringForKeyEPKcRKSs
+cocos2d::CCUserDefault::setStringForKey(char const*, gd::string const&)
+_ZN7cocos2d13CCUserDefault15setStringForKeyEPKcRKN2gd6stringE
 cocos2d::CCUserDefault::sharedUserDefault()
 _ZN7cocos2d13CCUserDefault17sharedUserDefaultEv
 cocos2d::CCUserDefault::~CCUserDefault()
@@ -21218,34 +21218,34 @@ cocos2d::XmlSaxHander::~XmlSaxHander()
 _ZN7cocos2d12XmlSaxHanderD1Ev
 cocos2d::XmlSaxHander::~XmlSaxHander()
 _ZN7cocos2d12XmlSaxHanderD2Ev
-cocos2d::ZipFile::ZipFile(std::string const&, std::string const&)
-_ZN7cocos2d7ZipFileC1ERKSsS2_
-cocos2d::ZipFile::ZipFile(std::string const&, std::string const&)
-_ZN7cocos2d7ZipFileC2ERKSsS2_
-cocos2d::ZipFile::fileExists(std::string const&) const
-_ZNK7cocos2d7ZipFile10fileExistsERKSs
-cocos2d::ZipFile::getFileData(std::string const&, unsigned long*)
-_ZN7cocos2d7ZipFile11getFileDataERKSsPm
-cocos2d::ZipFile::getFileData(std::string const&, unsigned long*, cocos2d::ZipFilePrivate*)
-_ZN7cocos2d7ZipFile11getFileDataERKSsPmPNS_14ZipFilePrivateE
-cocos2d::ZipFile::setFilter(std::string const&)
-_ZN7cocos2d7ZipFile9setFilterERKSs
-cocos2d::ZipFile::setFilter(std::string const&, cocos2d::ZipFilePrivate*)
-_ZN7cocos2d7ZipFile9setFilterERKSsPNS_14ZipFilePrivateE
+cocos2d::ZipFile::ZipFile(gd::string const&, gd::string const&)
+_ZN7cocos2d7ZipFileC1ERKN2gd6stringES2_
+cocos2d::ZipFile::ZipFile(gd::string const&, gd::string const&)
+_ZN7cocos2d7ZipFileC2ERKN2gd6stringES2_
+cocos2d::ZipFile::fileExists(gd::string const&) const
+_ZNK7cocos2d7ZipFile10fileExistsERKN2gd6stringE
+cocos2d::ZipFile::getFileData(gd::string const&, unsigned long*)
+_ZN7cocos2d7ZipFile11getFileDataERKN2gd6stringEPm
+cocos2d::ZipFile::getFileData(gd::string const&, unsigned long*, cocos2d::ZipFilePrivate*)
+_ZN7cocos2d7ZipFile11getFileDataERKN2gd6stringEPmPNS_14ZipFilePrivateE
+cocos2d::ZipFile::setFilter(gd::string const&)
+_ZN7cocos2d7ZipFile9setFilterERKN2gd6stringE
+cocos2d::ZipFile::setFilter(gd::string const&, cocos2d::ZipFilePrivate*)
+_ZN7cocos2d7ZipFile9setFilterERKN2gd6stringEPNS_14ZipFilePrivateE
 cocos2d::ZipFile::~ZipFile()
 _ZN7cocos2d7ZipFileD0Ev
 cocos2d::ZipFile::~ZipFile()
 _ZN7cocos2d7ZipFileD1Ev
 cocos2d::ZipFile::~ZipFile()
 _ZN7cocos2d7ZipFileD2Ev
-cocos2d::ZipUtils::base64DecodeEnc(std::string, std::string)
-_ZN7cocos2d8ZipUtils15base64DecodeEncESsSs
-cocos2d::ZipUtils::base64EncodeEnc(std::string, std::string)
-_ZN7cocos2d8ZipUtils15base64EncodeEncESsSs
-cocos2d::ZipUtils::base64URLDecode(std::string)
-_ZN7cocos2d8ZipUtils15base64URLDecodeESs
-cocos2d::ZipUtils::base64URLEncode(std::string)
-_ZN7cocos2d8ZipUtils15base64URLEncodeESs
+cocos2d::ZipUtils::base64DecodeEnc(gd::string, gd::string)
+_ZN7cocos2d8ZipUtils15base64DecodeEncEN2gd6stringEN2gd6stringE
+cocos2d::ZipUtils::base64EncodeEnc(gd::string, gd::string)
+_ZN7cocos2d8ZipUtils15base64EncodeEncEN2gd6stringEN2gd6stringE
+cocos2d::ZipUtils::base64URLDecode(gd::string)
+_ZN7cocos2d8ZipUtils15base64URLDecodeEN2gd6stringE
+cocos2d::ZipUtils::base64URLEncode(gd::string)
+_ZN7cocos2d8ZipUtils15base64URLEncodeEN2gd6stringE
 cocos2d::ZipUtils::ccDecodeEncodedPvr(unsigned int*, int)
 _ZN7cocos2d8ZipUtils18ccDecodeEncodedPvrEPji
 cocos2d::ZipUtils::ccDeflateMemory(unsigned char*, unsigned int, unsigned char**)
@@ -21264,20 +21264,20 @@ cocos2d::ZipUtils::ccSetPvrEncryptionKey(unsigned int, unsigned int, unsigned in
 _ZN7cocos2d8ZipUtils21ccSetPvrEncryptionKeyEjjjj
 cocos2d::ZipUtils::ccSetPvrEncryptionKeyPart(int, unsigned int)
 _ZN7cocos2d8ZipUtils25ccSetPvrEncryptionKeyPartEij
-cocos2d::ZipUtils::compressString(std::string, bool, int)
-_ZN7cocos2d8ZipUtils14compressStringESsbi
-cocos2d::ZipUtils::decompressString(std::string, bool, int)
-_ZN7cocos2d8ZipUtils16decompressStringESsbi
+cocos2d::ZipUtils::compressString(gd::string, bool, int)
+_ZN7cocos2d8ZipUtils14compressStringEN2gd6stringEbi
+cocos2d::ZipUtils::decompressString(gd::string, bool, int)
+_ZN7cocos2d8ZipUtils16decompressStringEN2gd6stringEbi
 cocos2d::ZipUtils::decompressString2(unsigned char*, bool, int, int)
 _ZN7cocos2d8ZipUtils17decompressString2EPhbii
-cocos2d::ZipUtils::encryptDecrypt(std::string, int)
-_ZN7cocos2d8ZipUtils14encryptDecryptESsi
-cocos2d::ZipUtils::encryptDecryptWKey(std::string, std::string)
-_ZN7cocos2d8ZipUtils18encryptDecryptWKeyESsSs
-cocos2d::ZipUtils::hexToChar(std::string const&)
-_ZN7cocos2d8ZipUtils9hexToCharERKSs
-cocos2d::ZipUtils::urlDecode(std::string const&)
-_ZN7cocos2d8ZipUtils9urlDecodeERKSs
+cocos2d::ZipUtils::encryptDecrypt(gd::string, int)
+_ZN7cocos2d8ZipUtils14encryptDecryptEN2gd6stringEi
+cocos2d::ZipUtils::encryptDecryptWKey(gd::string, gd::string)
+_ZN7cocos2d8ZipUtils18encryptDecryptWKeyEN2gd6stringEN2gd6stringE
+cocos2d::ZipUtils::hexToChar(gd::string const&)
+_ZN7cocos2d8ZipUtils9hexToCharERKN2gd6stringE
+cocos2d::ZipUtils::urlDecode(gd::string const&)
+_ZN7cocos2d8ZipUtils9urlDecodeERKN2gd6stringE
 cocos2d::__CCAffineTransformMake(float, float, float, float, float, float)
 _ZN7cocos2d23__CCAffineTransformMakeEffffff
 cocos2d::__CCPointApplyAffineTransform(cocos2d::CCPoint const&, cocos2d::CCAffineTransform const&)
@@ -21464,13 +21464,13 @@ cocos2d::cc_utf16_to_utf8(unsigned short const*, int*)
 _ZN7cocos2d16cc_utf16_to_utf8EPKtPi
 cocos2d::cc_utf16_vec_from_utf16_str(unsigned short const*)
 _ZN7cocos2d27cc_utf16_vec_from_utf16_strEPKt
-cocos2d::cc_utf8_find_last_not_char(std::vector<unsigned short, std::allocator<unsigned short> > const&, unsigned short)
+cocos2d::cc_utf8_find_last_not_char(gd::vector<unsigned short> const&, unsigned short)
 _ZN7cocos2d26cc_utf8_find_last_not_charERKSt6vectorItSaItEEt
 cocos2d::cc_utf8_strlen(char const*)
 _ZN7cocos2d14cc_utf8_strlenEPKc
 cocos2d::cc_utf8_to_utf16(char const*, int*)
 _ZN7cocos2d16cc_utf8_to_utf16EPKcPi
-cocos2d::cc_utf8_trim_ws(std::vector<unsigned short, std::allocator<unsigned short> >*)
+cocos2d::cc_utf8_trim_ws(gd::vector<unsigned short>*)
 _ZN7cocos2d15cc_utf8_trim_wsEPSt6vectorItSaItEE
 cocos2d::cc_wcslen(unsigned short const*)
 _ZN7cocos2d9cc_wcslenEPKt
@@ -21676,8 +21676,8 @@ cocos2d::extension::CCControlButton::create(cocos2d::extension::CCScale9Sprite*)
 _ZN7cocos2d9extension15CCControlButton6createEPNS0_14CCScale9SpriteE
 cocos2d::extension::CCControlButton::create(cocos2d::CCNode*, cocos2d::extension::CCScale9Sprite*)
 _ZN7cocos2d9extension15CCControlButton6createEPNS_6CCNodeEPNS0_14CCScale9SpriteE
-cocos2d::extension::CCControlButton::create(std::string, char const*, float)
-_ZN7cocos2d9extension15CCControlButton6createESsPKcf
+cocos2d::extension::CCControlButton::create(gd::string, char const*, float)
+_ZN7cocos2d9extension15CCControlButton6createEN2gd6stringEPKcf
 cocos2d::extension::CCControlButton::create()
 _ZN7cocos2d9extension15CCControlButton6createEv
 cocos2d::extension::CCControlButton::doesAdjustBackgroundImage()
@@ -21712,8 +21712,8 @@ cocos2d::extension::CCControlButton::initWithBackgroundSprite(cocos2d::extension
 _ZN7cocos2d9extension15CCControlButton24initWithBackgroundSpriteEPNS0_14CCScale9SpriteE
 cocos2d::extension::CCControlButton::initWithLabelAndBackgroundSprite(cocos2d::CCNode*, cocos2d::extension::CCScale9Sprite*)
 _ZN7cocos2d9extension15CCControlButton32initWithLabelAndBackgroundSpriteEPNS_6CCNodeEPNS0_14CCScale9SpriteE
-cocos2d::extension::CCControlButton::initWithTitleAndFontNameAndFontSize(std::string, char const*, float)
-_ZN7cocos2d9extension15CCControlButton35initWithTitleAndFontNameAndFontSizeESsPKcf
+cocos2d::extension::CCControlButton::initWithTitleAndFontNameAndFontSize(gd::string, char const*, float)
+_ZN7cocos2d9extension15CCControlButton35initWithTitleAndFontNameAndFontSizeEN2gd6stringEPKcf
 cocos2d::extension::CCControlButton::needsLayout()
 _ZN7cocos2d9extension15CCControlButton11needsLayoutEv
 cocos2d::extension::CCControlButton::setAdjustBackgroundImage(bool)
@@ -22564,8 +22564,8 @@ cocos2d::extension::WebSocket::close()
 _ZN7cocos2d9extension9WebSocket5closeEv
 cocos2d::extension::WebSocket::getReadyState()
 _ZN7cocos2d9extension9WebSocket13getReadyStateEv
-cocos2d::extension::WebSocket::init(cocos2d::extension::WebSocket::Delegate const&, std::string const&, std::vector<std::string, std::allocator<std::string> > const*)
-_ZN7cocos2d9extension9WebSocket4initERKNS1_8DelegateERKSsPKSt6vectorISsSaISsEE
+cocos2d::extension::WebSocket::init(cocos2d::extension::WebSocket::Delegate const&, gd::string const&, gd::vector<gd::string> const*)
+_ZN7cocos2d9extension9WebSocket4initERKNS1_8DelegateERKN2gd6stringEPKSt6vectorIN2gd6stringESaIN2gd6stringEEE
 cocos2d::extension::WebSocket::onSocketCallback(lws*, lws_callback_reasons, void*, void*, unsigned int)
 _ZN7cocos2d9extension9WebSocket16onSocketCallbackEP3lws20lws_callback_reasonsPvS5_j
 cocos2d::extension::WebSocket::onSubThreadEnded()
@@ -22578,8 +22578,8 @@ cocos2d::extension::WebSocket::onUIThreadReceiveMessage(cocos2d::extension::WsMe
 _ZN7cocos2d9extension9WebSocket24onUIThreadReceiveMessageEPNS0_9WsMessageE
 cocos2d::extension::WebSocket::send(unsigned char const*, unsigned int)
 _ZN7cocos2d9extension9WebSocket4sendEPKhj
-cocos2d::extension::WebSocket::send(std::string const&)
-_ZN7cocos2d9extension9WebSocket4sendERKSs
+cocos2d::extension::WebSocket::send(gd::string const&)
+_ZN7cocos2d9extension9WebSocket4sendERKN2gd6stringE
 cocos2d::extension::WebSocket::~WebSocket()
 _ZN7cocos2d9extension9WebSocketD0Ev
 cocos2d::extension::WebSocket::~WebSocket()
@@ -22628,8 +22628,8 @@ cocos2d::fill_fopen_filefunc(cocos2d::zlib_filefunc_def_s*)
 _ZN7cocos2d19fill_fopen_filefuncEPNS_19zlib_filefunc_def_sE
 cocos2d::fill_zlib_filefunc64_32_def_from_filefunc32(cocos2d::zlib_filefunc64_32_def_s*, cocos2d::zlib_filefunc_def_s const*)
 _ZN7cocos2d43fill_zlib_filefunc64_32_def_from_filefunc32EPNS_24zlib_filefunc64_32_def_sEPKNS_19zlib_filefunc_def_sE
-cocos2d::getCharacterCountInUTF8String(std::string const&)
-_ZN7cocos2d29getCharacterCountInUTF8StringERKSs
+cocos2d::getCharacterCountInUTF8String(gd::string const&)
+_ZN7cocos2d29getCharacterCountInUTF8StringERKN2gd6stringE
 cocos2d::iscjk_unicode(unsigned short)
 _ZN7cocos2d13iscjk_unicodeEt
 cocos2d::isspace_unicode(unsigned short)
@@ -22788,10 +22788,10 @@ levelCompare(void const*, void const*)
 _Z12levelComparePKvS0_
 llvm::ConvertCodePointToUTF8(unsigned int, char*&)
 _ZN4llvm22ConvertCodePointToUTF8EjRPc
-llvm::ConvertUTF8toWide(unsigned int, std::string const&, char*&, unsigned char const*&)
-_ZN4llvm17ConvertUTF8toWideEjRKSsRPcRPKh
-llvm::convertUTF16ToUTF8String(std::basic_string<unsigned short, std::char_traits<unsigned short>, std::allocator<unsigned short> > const&, std::string&)
-_ZN4llvm24convertUTF16ToUTF8StringERKSbItSt11char_traitsItESaItEERSs
+llvm::ConvertUTF8toWide(unsigned int, gd::string const&, char*&, unsigned char const*&)
+_ZN4llvm17ConvertUTF8toWideEjRKN2gd6stringERPcRPKh
+llvm::convertUTF16ToUTF8String(std::basic_string<unsigned short, std::char_traits<unsigned short>, std::allocator<unsigned short> > const&, gd::string&)
+_ZN4llvm24convertUTF16ToUTF8StringERKSbItSt11char_traitsItESaItEERN2gd6stringE
 llvm::hasUTF16ByteOrderMark(char const*, unsigned int)
 _ZN4llvm21hasUTF16ByteOrderMarkEPKcj
 localStorageFree()
@@ -22820,8 +22820,8 @@ pugi::as_utf8(std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocat
 _ZN4pugi7as_utf8ERKSbIwSt11char_traitsIwESaIwEE
 pugi::as_wide(char const*)
 _ZN4pugi7as_wideEPKc
-pugi::as_wide(std::string const&)
-_ZN4pugi7as_wideERKSs
+pugi::as_wide(gd::string const&)
+_ZN4pugi7as_wideERKN2gd6stringE
 pugi::get_memory_allocation_function()
 _ZN4pugi30get_memory_allocation_functionEv
 pugi::get_memory_deallocation_function()

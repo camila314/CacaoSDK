@@ -9,6 +9,7 @@
 #include <CCMenuItemSpriteExtra.h>
 #include <cocos2dx/cocos2d.h>
 #include <cocos2dext/cocos-ext.h>
+#include <stl_compat/libstdcpp.h>
 
 
 #define GM (GameManager::sharedState())

@@ -39,7 +39,7 @@ class FunkyInfo:
             n = f"{self.parent.name}::{self.name}({','.join(self.args)})".replace(" ", "").replace("const", "").replace("cocos2d::SEL_SCHEDULE", "").replace("cocos2d::SEL_MenuHandler", "")
             return [a[1] for a in filter(lambda x: n == x[0], syms[self.parent.name])]
         except ValueError:
-            # print(syms2[self.parent.name])
+            print(syms2[self.parent.name])
             # print("errored", repr(self))
             return None
     def __repr__(self):

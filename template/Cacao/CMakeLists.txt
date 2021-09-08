@@ -11,29 +11,29 @@ add_library(Cacao STATIC Cacao.cpp symtab.asm)
 target_link_libraries(Cacao GDML)
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.end.hpp
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit 
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.end.hpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime
     COMMENT "Generating Cackit"
 )
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.begin.asm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.end.asm
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.begin.asm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.end.asm
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime1
     COMMENT "Generating symbols"
 )
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.end.hpp
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.end.hpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime2
     COMMENT "Generating headers"
 )
 
 add_custom_target(Cackit ALL
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime1
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
 )
 

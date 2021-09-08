@@ -28,4 +28,8 @@ def build_cls(funky_cls):
 
     return out
 
-open(sys.argv[2], "w").write(starter_code + ''.join(build_cls(cl) for cl in parsecac.parse(sys.argv[1]).values()) + ender_code)
+full_code = starter_code + ''.join(build_cls(cl) for cl in parsecac.parse(sys.argv[1]).values()) + ender_code
+
+if open(sys.argv[2], "r").read() != full_code:
+    open(sys.argv[2], "w").write(full_code)
+

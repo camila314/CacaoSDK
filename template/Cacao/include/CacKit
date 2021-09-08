@@ -66,21 +66,21 @@ public:
         else return FLAlertLayer::show();
     }
 
-    dupable bool init(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) override {
-        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25e1b0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    dupable bool init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) override {
+        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this), FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25e1b0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
         else return FLAlertLayer::init(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
-    dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5) {
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create})
-            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)>(m->getOriginal(base+0x25e0e0))(p0, p1, p2, p3, p4, p5);
+    dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create})
+            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)>(m->getOriginal(base+0x25e0e0))(p0, p1, p2, p3, p4, p5);
         else return FLAlertLayer::create(p0, p1, p2, p3, p4, p5);
     }
 
-    dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create})
-            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25dec0))(p0, p1, p2, p3, p4, p5, p6, p7);
+    dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create})
+            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25dec0))(p0, p1, p2, p3, p4, p5, p6, p7);
         else return FLAlertLayer::create(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
@@ -118,14 +118,14 @@ public:
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::show} != (void(D::*)()){&D::show})
             m->registerHook(base+0x25f120, extract_virtual(V, (void(D::*)()){&D::show}));
 
-        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init})
-            m->registerHook(base+0x25e1b0, extract_virtual(V, (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init}));
+        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init})
+            m->registerHook(base+0x25e1b0, extract_virtual(V, (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init}));
 
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create})
-            m->registerHook(base+0x25e0e0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create});
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create})
+            m->registerHook(base+0x25e0e0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create});
 
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create})
-            m->registerHook(base+0x25dec0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create});
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create})
+            m->registerHook(base+0x25dec0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create});
     }
 };
 
@@ -468,9 +468,9 @@ public:
         else return AudioEffectsLayer::audioStep(p0);
     }
 
-    dupable static AudioEffectsLayer* create(std::string p0) {
-        if ((AudioEffectsLayer*(*)(std::string)){&$AudioEffectsLayer::create} != (AudioEffectsLayer*(*)(std::string)){&D::create})
-            return reinterpret_cast<AudioEffectsLayer*(*)(std::string)>(m->getOriginal(base+0x271a00))(p0);
+    dupable static AudioEffectsLayer* create(gd::string p0) {
+        if ((AudioEffectsLayer*(*)(gd::string)){&$AudioEffectsLayer::create} != (AudioEffectsLayer*(*)(gd::string)){&D::create})
+            return reinterpret_cast<AudioEffectsLayer*(*)(gd::string)>(m->getOriginal(base+0x271a00))(p0);
         else return AudioEffectsLayer::create(p0);
     }
 
@@ -490,8 +490,8 @@ public:
         if ((void($AudioEffectsLayer::*)(float)){&$AudioEffectsLayer::audioStep} != (void(D::*)(float)){&D::audioStep})
             m->registerHook(base+0x271f40, extract((void(D::*)(float)){&D::audioStep}));
 
-        if ((AudioEffectsLayer*(*)(std::string)){&$AudioEffectsLayer::create} != (AudioEffectsLayer*(*)(std::string)){&D::create})
-            m->registerHook(base+0x271a00, (AudioEffectsLayer*(*)(std::string)){&D::create});
+        if ((AudioEffectsLayer*(*)(gd::string)){&$AudioEffectsLayer::create} != (AudioEffectsLayer*(*)(gd::string)){&D::create})
+            m->registerHook(base+0x271a00, (AudioEffectsLayer*(*)(gd::string)){&D::create});
 
         if ((void($AudioEffectsLayer::*)()){&$AudioEffectsLayer::resetAudioVars} != (void(D::*)()){&D::resetAudioVars})
             m->registerHook(base+0x271ee0, extract((void(D::*)()){&D::resetAudioVars}));
@@ -888,15 +888,15 @@ class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
 public:
     dupable ~$CCAnimatedSprite() override {}
 
-    dupable void runAnimation(std::string p0) {
-        if ((void($CCAnimatedSprite::*)(std::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(std::string)){&D::runAnimation})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x1a6430))(this, p0);
+    dupable void runAnimation(gd::string p0) {
+        if ((void($CCAnimatedSprite::*)(gd::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(gd::string)){&D::runAnimation})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x1a6430))(this, p0);
         else return CCAnimatedSprite::runAnimation(p0);
     }
 
-    dupable void tweenToAnimation(std::string p0, float p1) {
-        if ((void($CCAnimatedSprite::*)(std::string, float)){&$CCAnimatedSprite::tweenToAnimation} != (void(D::*)(std::string, float)){&D::tweenToAnimation})
-            return reinterpret_cast<void(*)(decltype(this), std::string, float)>(m->getOriginal(base+0x1a65b0))(this, p0, p1);
+    dupable void tweenToAnimation(gd::string p0, float p1) {
+        if ((void($CCAnimatedSprite::*)(gd::string, float)){&$CCAnimatedSprite::tweenToAnimation} != (void(D::*)(gd::string, float)){&D::tweenToAnimation})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, float)>(m->getOriginal(base+0x1a65b0))(this, p0, p1);
         else return CCAnimatedSprite::tweenToAnimation(p0, p1);
     }
 
@@ -907,11 +907,11 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($CCAnimatedSprite::*)(std::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(std::string)){&D::runAnimation})
-            m->registerHook(base+0x1a6430, extract((void(D::*)(std::string)){&D::runAnimation}));
+        if ((void($CCAnimatedSprite::*)(gd::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(gd::string)){&D::runAnimation})
+            m->registerHook(base+0x1a6430, extract((void(D::*)(gd::string)){&D::runAnimation}));
 
-        if ((void($CCAnimatedSprite::*)(std::string, float)){&$CCAnimatedSprite::tweenToAnimation} != (void(D::*)(std::string, float)){&D::tweenToAnimation})
-            m->registerHook(base+0x1a65b0, extract((void(D::*)(std::string, float)){&D::tweenToAnimation}));
+        if ((void($CCAnimatedSprite::*)(gd::string, float)){&$CCAnimatedSprite::tweenToAnimation} != (void(D::*)(gd::string, float)){&D::tweenToAnimation})
+            m->registerHook(base+0x1a65b0, extract((void(D::*)(gd::string, float)){&D::tweenToAnimation}));
     }
 };
 
@@ -1332,9 +1332,9 @@ public:
         else return CCTextInputNode::create(p0, p1, p2, p3, p4, p5);
     }
 
-    dupable std::string getString() {
-        if ((std::string($CCTextInputNode::*)()){&$CCTextInputNode::getString} != (std::string(D::*)()){&D::getString})
-            return reinterpret_cast<std::string(*)(decltype(this))>(m->getOriginal(base+0x5d6f0))(this);
+    dupable gd::string getString() {
+        if ((gd::string($CCTextInputNode::*)()){&$CCTextInputNode::getString} != (gd::string(D::*)()){&D::getString})
+            return reinterpret_cast<gd::string(*)(decltype(this))>(m->getOriginal(base+0x5d6f0))(this);
         else return CCTextInputNode::getString();
     }
 
@@ -1344,9 +1344,9 @@ public:
         else return CCTextInputNode::refreshLabel();
     }
 
-    dupable void setAllowedChars(std::string p0) {
-        if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(std::string)){&D::setAllowedChars})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x5d360))(this, p0);
+    dupable void setAllowedChars(gd::string p0) {
+        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(gd::string)){&D::setAllowedChars})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x5d360))(this, p0);
         else return CCTextInputNode::setAllowedChars(p0);
     }
 
@@ -1380,15 +1380,15 @@ public:
         else return CCTextInputNode::setMaxLabelWidth(p0);
     }
 
-    dupable void setString(std::string p0) {
-        if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setString} != (void(D::*)(std::string)){&D::setString})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x5d3e0))(this, p0);
+    dupable void setString(gd::string p0) {
+        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setString} != (void(D::*)(gd::string)){&D::setString})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x5d3e0))(this, p0);
         else return CCTextInputNode::setString(p0);
     }
 
-    dupable void updateLabel(std::string p0) {
-        if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(std::string)){&D::updateLabel})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x5d4a0))(this, p0);
+    dupable void updateLabel(gd::string p0) {
+        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(gd::string)){&D::updateLabel})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x5d4a0))(this, p0);
         else return CCTextInputNode::updateLabel(p0);
     }
 
@@ -1492,14 +1492,14 @@ public:
         if ((CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create} != (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create})
             m->registerHook(base+0x5cfb0, (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create});
 
-        if ((std::string($CCTextInputNode::*)()){&$CCTextInputNode::getString} != (std::string(D::*)()){&D::getString})
-            m->registerHook(base+0x5d6f0, extract((std::string(D::*)()){&D::getString}));
+        if ((gd::string($CCTextInputNode::*)()){&$CCTextInputNode::getString} != (gd::string(D::*)()){&D::getString})
+            m->registerHook(base+0x5d6f0, extract((gd::string(D::*)()){&D::getString}));
 
         if ((void($CCTextInputNode::*)()){&$CCTextInputNode::refreshLabel} != (void(D::*)()){&D::refreshLabel})
             m->registerHook(base+0x5d730, extract((void(D::*)()){&D::refreshLabel}));
 
-        if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(std::string)){&D::setAllowedChars})
-            m->registerHook(base+0x5d360, extract((void(D::*)(std::string)){&D::setAllowedChars}));
+        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(gd::string)){&D::setAllowedChars})
+            m->registerHook(base+0x5d360, extract((void(D::*)(gd::string)){&D::setAllowedChars}));
 
         if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelNormalColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor})
             m->registerHook(base+0x5dab0, extract((void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor}));
@@ -1516,11 +1516,11 @@ public:
         if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setMaxLabelWidth} != (void(D::*)(float)){&D::setMaxLabelWidth})
             m->registerHook(base+0x5da50, extract((void(D::*)(float)){&D::setMaxLabelWidth}));
 
-        if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::setString} != (void(D::*)(std::string)){&D::setString})
-            m->registerHook(base+0x5d3e0, extract((void(D::*)(std::string)){&D::setString}));
+        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setString} != (void(D::*)(gd::string)){&D::setString})
+            m->registerHook(base+0x5d3e0, extract((void(D::*)(gd::string)){&D::setString}));
 
-        if ((void($CCTextInputNode::*)(std::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(std::string)){&D::updateLabel})
-            m->registerHook(base+0x5d4a0, extract((void(D::*)(std::string)){&D::updateLabel}));
+        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(gd::string)){&D::updateLabel})
+            m->registerHook(base+0x5d4a0, extract((void(D::*)(gd::string)){&D::updateLabel}));
 
         if ((void($CCTextInputNode::*)()){&$CCTextInputNode::forceOffset} != (void(D::*)()){&D::forceOffset})
             m->registerHook(base+0x5ec70, extract((void(D::*)()){&D::forceOffset}));
@@ -1641,9 +1641,9 @@ class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
 public:
     dupable ~$CollisionTriggerAction() override {}
 
-    dupable static CollisionTriggerAction* createFromString(std::string p0) {
-        if ((CollisionTriggerAction*(*)(std::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<CollisionTriggerAction*(*)(std::string)>(m->getOriginal(base+0x176ee0))(p0);
+    dupable static CollisionTriggerAction* createFromString(gd::string p0) {
+        if ((CollisionTriggerAction*(*)(gd::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<CollisionTriggerAction*(*)(gd::string)>(m->getOriginal(base+0x176ee0))(p0);
         else return CollisionTriggerAction::createFromString(p0);
     }
 
@@ -1654,8 +1654,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CollisionTriggerAction*(*)(std::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x176ee0, (CollisionTriggerAction*(*)(std::string)){&D::createFromString});
+        if ((CollisionTriggerAction*(*)(gd::string)){&$CollisionTriggerAction::createFromString} != (CollisionTriggerAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x176ee0, (CollisionTriggerAction*(*)(gd::string)){&D::createFromString});
     }
 };
 
@@ -1677,9 +1677,9 @@ public:
         else return ColorAction::setupFromDict(p0);
     }
 
-    dupable void setupFromString(std::string p0) {
-        if ((void($ColorAction::*)(std::string)){&$ColorAction::setupFromString} != (void(D::*)(std::string)){&D::setupFromString})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x17f270))(this, p0);
+    dupable void setupFromString(gd::string p0) {
+        if ((void($ColorAction::*)(gd::string)){&$ColorAction::setupFromString} != (void(D::*)(gd::string)){&D::setupFromString})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x17f270))(this, p0);
         else return ColorAction::setupFromString(p0);
     }
 
@@ -1696,8 +1696,8 @@ public:
         if ((void($ColorAction::*)(cocos2d::CCDictionary*)){&$ColorAction::setupFromDict} != (void(D::*)(cocos2d::CCDictionary*)){&D::setupFromDict})
             m->registerHook(base+0x17f310, extract((void(D::*)(cocos2d::CCDictionary*)){&D::setupFromDict}));
 
-        if ((void($ColorAction::*)(std::string)){&$ColorAction::setupFromString} != (void(D::*)(std::string)){&D::setupFromString})
-            m->registerHook(base+0x17f270, extract((void(D::*)(std::string)){&D::setupFromString}));
+        if ((void($ColorAction::*)(gd::string)){&$ColorAction::setupFromString} != (void(D::*)(gd::string)){&D::setupFromString})
+            m->registerHook(base+0x17f270, extract((void(D::*)(gd::string)){&D::setupFromString}));
     }
 };
 
@@ -1842,9 +1842,9 @@ class $CountTriggerAction : public CountTriggerAction, public $CacBase {
 public:
     dupable ~$CountTriggerAction() override {}
 
-    dupable static CountTriggerAction* createFromString(std::string p0) {
-        if ((CountTriggerAction*(*)(std::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<CountTriggerAction*(*)(std::string)>(m->getOriginal(base+0x1754f0))(p0);
+    dupable static CountTriggerAction* createFromString(gd::string p0) {
+        if ((CountTriggerAction*(*)(gd::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<CountTriggerAction*(*)(gd::string)>(m->getOriginal(base+0x1754f0))(p0);
         else return CountTriggerAction::createFromString(p0);
     }
 
@@ -1855,8 +1855,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CountTriggerAction*(*)(std::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x1754f0, (CountTriggerAction*(*)(std::string)){&D::createFromString});
+        if ((CountTriggerAction*(*)(gd::string)){&$CountTriggerAction::createFromString} != (CountTriggerAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x1754f0, (CountTriggerAction*(*)(gd::string)){&D::createFromString});
     }
 };
 
@@ -2187,9 +2187,9 @@ class $DialogObject : public DialogObject, public $CacBase {
 public:
     dupable ~$DialogObject() override {}
 
-    dupable static DialogObject* create(std::string p0, std::string p1, int p2, float p3, bool p4, cocos2d::_ccColor3B p5) {
-        if ((DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&$DialogObject::create} != (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create})
-            return reinterpret_cast<DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)>(m->getOriginal(base+0x204410))(p0, p1, p2, p3, p4, p5);
+    dupable static DialogObject* create(gd::string p0, gd::string p1, int p2, float p3, bool p4, cocos2d::_ccColor3B p5) {
+        if ((DialogObject*(*)(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)){&$DialogObject::create} != (DialogObject*(*)(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)){&D::create})
+            return reinterpret_cast<DialogObject*(*)(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)>(m->getOriginal(base+0x204410))(p0, p1, p2, p3, p4, p5);
         else return DialogObject::create(p0, p1, p2, p3, p4, p5);
     }
 
@@ -2200,8 +2200,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&$DialogObject::create} != (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create})
-            m->registerHook(base+0x204410, (DialogObject*(*)(std::string, std::string, int, float, bool, cocos2d::_ccColor3B)){&D::create});
+        if ((DialogObject*(*)(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)){&$DialogObject::create} != (DialogObject*(*)(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)){&D::create})
+            m->registerHook(base+0x204410, (DialogObject*(*)(gd::string, gd::string, int, float, bool, cocos2d::_ccColor3B)){&D::create});
     }
 };
 
@@ -2496,9 +2496,9 @@ public:
         else return EditorUI::onDuplicate(p0);
     }
 
-    dupable void pasteObjects(std::string p0) {
-        if ((void($EditorUI::*)(std::string)){&$EditorUI::pasteObjects} != (void(D::*)(std::string)){&D::pasteObjects})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x232d0))(this, p0);
+    dupable void pasteObjects(gd::string p0) {
+        if ((void($EditorUI::*)(gd::string)){&$EditorUI::pasteObjects} != (void(D::*)(gd::string)){&D::pasteObjects})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x232d0))(this, p0);
         else return EditorUI::pasteObjects(p0);
     }
 
@@ -2632,8 +2632,8 @@ public:
         if ((void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::onDuplicate} != (void(D::*)(cocos2d::CCObject*)){&D::onDuplicate})
             m->registerHook(base+0x18ba0, extract((void(D::*)(cocos2d::CCObject*)){&D::onDuplicate}));
 
-        if ((void($EditorUI::*)(std::string)){&$EditorUI::pasteObjects} != (void(D::*)(std::string)){&D::pasteObjects})
-            m->registerHook(base+0x232d0, extract((void(D::*)(std::string)){&D::pasteObjects}));
+        if ((void($EditorUI::*)(gd::string)){&$EditorUI::pasteObjects} != (void(D::*)(gd::string)){&D::pasteObjects})
+            m->registerHook(base+0x232d0, extract((void(D::*)(gd::string)){&D::pasteObjects}));
 
         if ((void($EditorUI::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$EditorUI::playerTouchBegan} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::playerTouchBegan})
             m->registerHook(base+0x2ebf0, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::playerTouchBegan}));
@@ -3192,9 +3192,9 @@ public:
         else return GJBaseGameLayer::updateDisabledObjectsLastPos(p0);
     }
 
-    dupable void updateLayerCapacity(std::string p0) {
-        if ((void($GJBaseGameLayer::*)(std::string)){&$GJBaseGameLayer::updateLayerCapacity} != (void(D::*)(std::string)){&D::updateLayerCapacity})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0xb1680))(this, p0);
+    dupable void updateLayerCapacity(gd::string p0) {
+        if ((void($GJBaseGameLayer::*)(gd::string)){&$GJBaseGameLayer::updateLayerCapacity} != (void(D::*)(gd::string)){&D::updateLayerCapacity})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0xb1680))(this, p0);
         else return GJBaseGameLayer::updateLayerCapacity(p0);
     }
 
@@ -3415,8 +3415,8 @@ public:
         if ((void($GJBaseGameLayer::*)(cocos2d::CCArray*)){&$GJBaseGameLayer::updateDisabledObjectsLastPos} != (void(D::*)(cocos2d::CCArray*)){&D::updateDisabledObjectsLastPos})
             m->registerHook(base+0xb95b0, extract((void(D::*)(cocos2d::CCArray*)){&D::updateDisabledObjectsLastPos}));
 
-        if ((void($GJBaseGameLayer::*)(std::string)){&$GJBaseGameLayer::updateLayerCapacity} != (void(D::*)(std::string)){&D::updateLayerCapacity})
-            m->registerHook(base+0xb1680, extract((void(D::*)(std::string)){&D::updateLayerCapacity}));
+        if ((void($GJBaseGameLayer::*)(gd::string)){&$GJBaseGameLayer::updateLayerCapacity} != (void(D::*)(gd::string)){&D::updateLayerCapacity})
+            m->registerHook(base+0xb1680, extract((void(D::*)(gd::string)){&D::updateLayerCapacity}));
 
         if ((void($GJBaseGameLayer::*)(int, int, int, int)){&$GJBaseGameLayer::updateLegacyLayerCapacity} != (void(D::*)(int, int, int, int)){&D::updateLegacyLayerCapacity})
             m->registerHook(base+0xb1590, extract((void(D::*)(int, int, int, int)){&D::updateLegacyLayerCapacity}));
@@ -3840,9 +3840,9 @@ public:
         else return GJEffectManager::keyForGroupIDColor(p0, p1, p2);
     }
 
-    dupable void loadState(std::string p0) {
-        if ((void($GJEffectManager::*)(std::string)){&$GJEffectManager::loadState} != (void(D::*)(std::string)){&D::loadState})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x188db0))(this, p0);
+    dupable void loadState(gd::string p0) {
+        if ((void($GJEffectManager::*)(gd::string)){&$GJEffectManager::loadState} != (void(D::*)(gd::string)){&D::loadState})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x188db0))(this, p0);
         else return GJEffectManager::loadState(p0);
     }
 
@@ -4014,9 +4014,9 @@ public:
         else return GJEffectManager::setFollowing(p0, p1, p2);
     }
 
-    dupable void setupFromString(std::string p0) {
-        if ((void($GJEffectManager::*)(std::string)){&$GJEffectManager::setupFromString} != (void(D::*)(std::string)){&D::setupFromString})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x186290))(this, p0);
+    dupable void setupFromString(gd::string p0) {
+        if ((void($GJEffectManager::*)(gd::string)){&$GJEffectManager::setupFromString} != (void(D::*)(gd::string)){&D::setupFromString})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x186290))(this, p0);
         else return GJEffectManager::setupFromString(p0);
     }
 
@@ -4243,8 +4243,8 @@ public:
         if ((void($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool)){&$GJEffectManager::keyForGroupIDColor} != (void(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::keyForGroupIDColor})
             m->registerHook(base+0x184c90, extract((void(D::*)(int, cocos2d::_ccColor3B const&, bool)){&D::keyForGroupIDColor}));
 
-        if ((void($GJEffectManager::*)(std::string)){&$GJEffectManager::loadState} != (void(D::*)(std::string)){&D::loadState})
-            m->registerHook(base+0x188db0, extract((void(D::*)(std::string)){&D::loadState}));
+        if ((void($GJEffectManager::*)(gd::string)){&$GJEffectManager::loadState} != (void(D::*)(gd::string)){&D::loadState})
+            m->registerHook(base+0x188db0, extract((void(D::*)(gd::string)){&D::loadState}));
 
         if ((void($GJEffectManager::*)(int, int)){&$GJEffectManager::objectsCollided} != (void(D::*)(int, int)){&D::objectsCollided})
             m->registerHook(base+0x182a00, extract((void(D::*)(int, int)){&D::objectsCollided}));
@@ -4330,8 +4330,8 @@ public:
         if ((void($GJEffectManager::*)(int, int, bool)){&$GJEffectManager::setFollowing} != (void(D::*)(int, int, bool)){&D::setFollowing})
             m->registerHook(base+0x185e00, extract((void(D::*)(int, int, bool)){&D::setFollowing}));
 
-        if ((void($GJEffectManager::*)(std::string)){&$GJEffectManager::setupFromString} != (void(D::*)(std::string)){&D::setupFromString})
-            m->registerHook(base+0x186290, extract((void(D::*)(std::string)){&D::setupFromString}));
+        if ((void($GJEffectManager::*)(gd::string)){&$GJEffectManager::setupFromString} != (void(D::*)(gd::string)){&D::setupFromString})
+            m->registerHook(base+0x186290, extract((void(D::*)(gd::string)){&D::setupFromString}));
 
         if ((void($GJEffectManager::*)(int)){&$GJEffectManager::shouldBlend} != (void(D::*)(int)){&D::shouldBlend})
             m->registerHook(base+0x180e40, extract((void(D::*)(int)){&D::shouldBlend}));
@@ -5151,9 +5151,9 @@ public:
         else return GJSearchObject::create(p0);
     }
 
-    dupable static GJSearchObject* create(SearchType p0, std::string p1, std::string p2, std::string p3, int p4, bool p5, bool p6, bool p7, int p8, bool p9, bool p10, bool p11, bool p12, bool p13, bool p14, bool p15, bool p16, int p17, int p18) {
-        if ((GJSearchObject*(*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&D::create})
-            return reinterpret_cast<GJSearchObject*(*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)>(m->getOriginal(base+0x2dee30))(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18);
+    dupable static GJSearchObject* create(SearchType p0, gd::string p1, gd::string p2, gd::string p3, int p4, bool p5, bool p6, bool p7, int p8, bool p9, bool p10, bool p11, bool p12, bool p13, bool p14, bool p15, bool p16, int p17, int p18) {
+        if ((GJSearchObject*(*)(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&D::create})
+            return reinterpret_cast<GJSearchObject*(*)(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)>(m->getOriginal(base+0x2dee30))(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18);
         else return GJSearchObject::create(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18);
     }
 
@@ -5173,8 +5173,8 @@ public:
         if ((GJSearchObject*(*)(SearchType)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType)){&D::create})
             m->registerHook(base+0x2df120, (GJSearchObject*(*)(SearchType)){&D::create});
 
-        if ((GJSearchObject*(*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&D::create})
-            m->registerHook(base+0x2dee30, (GJSearchObject*(*)(SearchType, std::string, std::string, std::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&D::create});
+        if ((GJSearchObject*(*)(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&$GJSearchObject::create} != (GJSearchObject*(*)(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&D::create})
+            m->registerHook(base+0x2dee30, (GJSearchObject*(*)(SearchType, gd::string, gd::string, gd::string, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, bool, int, int)){&D::create});
 
         if ((void($GJSearchObject::*)(int)){&$GJSearchObject::getPageObject} != (void(D::*)(int)){&D::getPageObject})
             m->registerHook(base+0x2df9a0, extract((void(D::*)(int)){&D::getPageObject}));
@@ -5337,15 +5337,15 @@ public:
         else return GManager::save();
     }
 
-    dupable void saveData(DS_Dictionary* p0, std::string p1) {
-        if ((void($GManager::*)(DS_Dictionary*, std::string)){&$GManager::saveData} != (void(D::*)(DS_Dictionary*, std::string)){&D::saveData})
-            return reinterpret_cast<void(*)(decltype(this), DS_Dictionary*, std::string)>(m->getOriginal(base+0x26f4b0))(this, p0, p1);
+    dupable void saveData(DS_Dictionary* p0, gd::string p1) {
+        if ((void($GManager::*)(DS_Dictionary*, gd::string)){&$GManager::saveData} != (void(D::*)(DS_Dictionary*, gd::string)){&D::saveData})
+            return reinterpret_cast<void(*)(decltype(this), DS_Dictionary*, gd::string)>(m->getOriginal(base+0x26f4b0))(this, p0, p1);
         else return GManager::saveData(p0, p1);
     }
 
-    dupable void saveGMTo(std::string p0) {
-        if ((void($GManager::*)(std::string)){&$GManager::saveGMTo} != (void(D::*)(std::string)){&D::saveGMTo})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x26f3b0))(this, p0);
+    dupable void saveGMTo(gd::string p0) {
+        if ((void($GManager::*)(gd::string)){&$GManager::saveGMTo} != (void(D::*)(gd::string)){&D::saveGMTo})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x26f3b0))(this, p0);
         else return GManager::saveGMTo(p0);
     }
 
@@ -5359,11 +5359,11 @@ public:
         if ((void($GManager::*)()){&$GManager::save} != (void(D::*)()){&D::save})
             m->registerHook(base+0x26f300, extract((void(D::*)()){&D::save}));
 
-        if ((void($GManager::*)(DS_Dictionary*, std::string)){&$GManager::saveData} != (void(D::*)(DS_Dictionary*, std::string)){&D::saveData})
-            m->registerHook(base+0x26f4b0, extract((void(D::*)(DS_Dictionary*, std::string)){&D::saveData}));
+        if ((void($GManager::*)(DS_Dictionary*, gd::string)){&$GManager::saveData} != (void(D::*)(DS_Dictionary*, gd::string)){&D::saveData})
+            m->registerHook(base+0x26f4b0, extract((void(D::*)(DS_Dictionary*, gd::string)){&D::saveData}));
 
-        if ((void($GManager::*)(std::string)){&$GManager::saveGMTo} != (void(D::*)(std::string)){&D::saveGMTo})
-            m->registerHook(base+0x26f3b0, extract((void(D::*)(std::string)){&D::saveGMTo}));
+        if ((void($GManager::*)(gd::string)){&$GManager::saveGMTo} != (void(D::*)(gd::string)){&D::saveGMTo})
+            m->registerHook(base+0x26f3b0, extract((void(D::*)(gd::string)){&D::saveGMTo}));
     }
 };
 
@@ -5907,9 +5907,9 @@ public:
         else return GameObject::getRScaleY();
     }
 
-    dupable std::string getSaveString() {
-        if ((std::string($GameObject::*)()){&$GameObject::getSaveString} != (std::string(D::*)()){&D::getSaveString})
-            return reinterpret_cast<std::string(*)(decltype(this))>(m->getOriginal(base+0x33d3d0))(this);
+    dupable gd::string getSaveString() {
+        if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
+            return reinterpret_cast<gd::string(*)(decltype(this))>(m->getOriginal(base+0x33d3d0))(this);
         else return GameObject::getSaveString();
     }
 
@@ -6021,9 +6021,9 @@ public:
         else return GameObject::isSpecialObject();
     }
 
-    dupable static GameObject* objectFromString(std::string p0, bool p1) {
-        if ((GameObject*(*)(std::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(std::string, bool)){&D::objectFromString})
-            return reinterpret_cast<GameObject*(*)(std::string, bool)>(m->getOriginal(base+0x33b720))(p0, p1);
+    dupable static GameObject* objectFromString(gd::string p0, bool p1) {
+        if ((GameObject*(*)(gd::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(gd::string, bool)){&D::objectFromString})
+            return reinterpret_cast<GameObject*(*)(gd::string, bool)>(m->getOriginal(base+0x33b720))(p0, p1);
         else return GameObject::objectFromString(p0, p1);
     }
 
@@ -6388,8 +6388,8 @@ public:
         if ((void($GameObject::*)()){&$GameObject::getRScaleY} != (void(D::*)()){&D::getRScaleY})
             m->registerHook(base+0x335e80, extract((void(D::*)()){&D::getRScaleY}));
 
-        if ((std::string($GameObject::*)()){&$GameObject::getSaveString} != (std::string(D::*)()){&D::getSaveString})
-            m->registerHook(base+0x33d3d0, extract((std::string(D::*)()){&D::getSaveString}));
+        if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
+            m->registerHook(base+0x33d3d0, extract((gd::string(D::*)()){&D::getSaveString}));
 
         if ((void($GameObject::*)()){&$GameObject::getSecondaryColorMode} != (void(D::*)()){&D::getSecondaryColorMode})
             m->registerHook(base+0x341c20, extract((void(D::*)()){&D::getSecondaryColorMode}));
@@ -6445,8 +6445,8 @@ public:
         if ((void($GameObject::*)()){&$GameObject::isSpecialObject} != (void(D::*)()){&D::isSpecialObject})
             m->registerHook(base+0x343c40, extract((void(D::*)()){&D::isSpecialObject}));
 
-        if ((GameObject*(*)(std::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(std::string, bool)){&D::objectFromString})
-            m->registerHook(base+0x33b720, (GameObject*(*)(std::string, bool)){&D::objectFromString});
+        if ((GameObject*(*)(gd::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(gd::string, bool)){&D::objectFromString})
+            m->registerHook(base+0x33b720, (GameObject*(*)(gd::string, bool)){&D::objectFromString});
 
         if ((void($GameObject::*)()){&$GameObject::playShineEffect} != (void(D::*)()){&D::playShineEffect})
             m->registerHook(base+0x2fa9d0, extract((void(D::*)()){&D::playShineEffect}));
@@ -6630,15 +6630,15 @@ public:
         else return GameSoundManager::getMeteringValue();
     }
 
-    dupable void playBackgroundMusic(std::string p0, bool p1, bool p2) {
-        if ((void($GameSoundManager::*)(std::string, bool, bool)){&$GameSoundManager::playBackgroundMusic} != (void(D::*)(std::string, bool, bool)){&D::playBackgroundMusic})
-            return reinterpret_cast<void(*)(decltype(this), std::string, bool, bool)>(m->getOriginal(base+0x362070))(this, p0, p1, p2);
+    dupable void playBackgroundMusic(gd::string p0, bool p1, bool p2) {
+        if ((void($GameSoundManager::*)(gd::string, bool, bool)){&$GameSoundManager::playBackgroundMusic} != (void(D::*)(gd::string, bool, bool)){&D::playBackgroundMusic})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, bool, bool)>(m->getOriginal(base+0x362070))(this, p0, p1, p2);
         else return GameSoundManager::playBackgroundMusic(p0, p1, p2);
     }
 
-    dupable void playEffect(std::string p0, float p1, float p2, float p3) {
-        if ((void($GameSoundManager::*)(std::string, float, float, float)){&$GameSoundManager::playEffect} != (void(D::*)(std::string, float, float, float)){&D::playEffect})
-            return reinterpret_cast<void(*)(decltype(this), std::string, float, float, float)>(m->getOriginal(base+0x3623d0))(this, p0, p1, p2, p3);
+    dupable void playEffect(gd::string p0, float p1, float p2, float p3) {
+        if ((void($GameSoundManager::*)(gd::string, float, float, float)){&$GameSoundManager::playEffect} != (void(D::*)(gd::string, float, float, float)){&D::playEffect})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, float, float, float)>(m->getOriginal(base+0x3623d0))(this, p0, p1, p2, p3);
         else return GameSoundManager::playEffect(p0, p1, p2, p3);
     }
 
@@ -6670,11 +6670,11 @@ public:
         if ((void($GameSoundManager::*)()){&$GameSoundManager::getMeteringValue} != (void(D::*)()){&D::getMeteringValue})
             m->registerHook(base+0x362db0, extract((void(D::*)()){&D::getMeteringValue}));
 
-        if ((void($GameSoundManager::*)(std::string, bool, bool)){&$GameSoundManager::playBackgroundMusic} != (void(D::*)(std::string, bool, bool)){&D::playBackgroundMusic})
-            m->registerHook(base+0x362070, extract((void(D::*)(std::string, bool, bool)){&D::playBackgroundMusic}));
+        if ((void($GameSoundManager::*)(gd::string, bool, bool)){&$GameSoundManager::playBackgroundMusic} != (void(D::*)(gd::string, bool, bool)){&D::playBackgroundMusic})
+            m->registerHook(base+0x362070, extract((void(D::*)(gd::string, bool, bool)){&D::playBackgroundMusic}));
 
-        if ((void($GameSoundManager::*)(std::string, float, float, float)){&$GameSoundManager::playEffect} != (void(D::*)(std::string, float, float, float)){&D::playEffect})
-            m->registerHook(base+0x3623d0, extract((void(D::*)(std::string, float, float, float)){&D::playEffect}));
+        if ((void($GameSoundManager::*)(gd::string, float, float, float)){&$GameSoundManager::playEffect} != (void(D::*)(gd::string, float, float, float)){&D::playEffect})
+            m->registerHook(base+0x3623d0, extract((void(D::*)(gd::string, float, float, float)){&D::playEffect}));
 
         if ((void($GameSoundManager::*)()){&$GameSoundManager::sharedManager} != (void(D::*)()){&D::sharedManager})
             m->registerHook(base+0x3610f0, extract((void(D::*)()){&D::sharedManager}));
@@ -6831,9 +6831,9 @@ class $GameToolbox : public GameToolbox, public $CacBase {
 public:
     dupable ~$GameToolbox() override {}
 
-    dupable static void createToggleButton(std::string p0, cocos2d::SEL_MenuHandler p1, bool p2, cocos2d::CCMenu* p3, cocos2d::CCPoint p4, cocos2d::CCNode* p5, cocos2d::CCNode* p6, float p7, float p8, float p9, cocos2d::CCPoint p10, char const* p11, bool p12, int p13, cocos2d::CCArray* p14) {
-        if ((void(*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&$GameToolbox::createToggleButton} != (void(*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton})
-            return reinterpret_cast<void(*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)>(m->getOriginal(base+0x28bdd0))(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14);
+    dupable static void createToggleButton(gd::string p0, cocos2d::SEL_MenuHandler p1, bool p2, cocos2d::CCMenu* p3, cocos2d::CCPoint p4, cocos2d::CCNode* p5, cocos2d::CCNode* p6, float p7, float p8, float p9, cocos2d::CCPoint p10, char const* p11, bool p12, int p13, cocos2d::CCArray* p14) {
+        if ((void(*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&$GameToolbox::createToggleButton} != (void(*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton})
+            return reinterpret_cast<void(*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)>(m->getOriginal(base+0x28bdd0))(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14);
         else return GameToolbox::createToggleButton(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14);
     }
 
@@ -6849,15 +6849,15 @@ public:
         else return GameToolbox::multipliedColorValue(p0, p1, p2);
     }
 
-    dupable static void stringSetupToDict(std::string p0, char const* p1) {
-        if ((void(*)(std::string, char const*)){&$GameToolbox::stringSetupToDict} != (void(*)(std::string, char const*)){&D::stringSetupToDict})
-            return reinterpret_cast<void(*)(std::string, char const*)>(m->getOriginal(base+0x28d700))(p0, p1);
+    dupable static void stringSetupToDict(gd::string p0, char const* p1) {
+        if ((void(*)(gd::string, char const*)){&$GameToolbox::stringSetupToDict} != (void(*)(gd::string, char const*)){&D::stringSetupToDict})
+            return reinterpret_cast<void(*)(gd::string, char const*)>(m->getOriginal(base+0x28d700))(p0, p1);
         else return GameToolbox::stringSetupToDict(p0, p1);
     }
 
-    dupable static std::map<std::string, std::string> stringSetupToMap(std::string p0, char const* p1) {
-        if ((std::map<std::string, std::string>(*)(std::string, char const*)){&$GameToolbox::stringSetupToMap} != (std::map<std::string, std::string>(*)(std::string, char const*)){&D::stringSetupToMap})
-            return reinterpret_cast<std::map<std::string, std::string>(*)(std::string, char const*)>(m->getOriginal(base+0x28d4c0))(p0, p1);
+    dupable static gd::map<gd::string, gd::string> stringSetupToMap(gd::string p0, char const* p1) {
+        if ((gd::map<gd::string, gd::string>(*)(gd::string, char const*)){&$GameToolbox::stringSetupToMap} != (gd::map<gd::string, gd::string>(*)(gd::string, char const*)){&D::stringSetupToMap})
+            return reinterpret_cast<gd::map<gd::string, gd::string>(*)(gd::string, char const*)>(m->getOriginal(base+0x28d4c0))(p0, p1);
         else return GameToolbox::stringSetupToMap(p0, p1);
     }
 
@@ -6880,8 +6880,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void(*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&$GameToolbox::createToggleButton} != (void(*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton})
-            m->registerHook(base+0x28bdd0, (void(*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton});
+        if ((void(*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&$GameToolbox::createToggleButton} != (void(*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton})
+            m->registerHook(base+0x28bdd0, (void(*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*)){&D::createToggleButton});
 
         if ((void(*)(GameObject*, cocos2d::CCPoint)){&$GameToolbox::getRelativeOffset} != (void(*)(GameObject*, cocos2d::CCPoint)){&D::getRelativeOffset})
             m->registerHook(base+0x28c060, (void(*)(GameObject*, cocos2d::CCPoint)){&D::getRelativeOffset});
@@ -6889,11 +6889,11 @@ public:
         if ((void(*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)){&$GameToolbox::multipliedColorValue} != (void(*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)){&D::multipliedColorValue})
             m->registerHook(base+0x28cb90, (void(*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float)){&D::multipliedColorValue});
 
-        if ((void(*)(std::string, char const*)){&$GameToolbox::stringSetupToDict} != (void(*)(std::string, char const*)){&D::stringSetupToDict})
-            m->registerHook(base+0x28d700, (void(*)(std::string, char const*)){&D::stringSetupToDict});
+        if ((void(*)(gd::string, char const*)){&$GameToolbox::stringSetupToDict} != (void(*)(gd::string, char const*)){&D::stringSetupToDict})
+            m->registerHook(base+0x28d700, (void(*)(gd::string, char const*)){&D::stringSetupToDict});
 
-        if ((std::map<std::string, std::string>(*)(std::string, char const*)){&$GameToolbox::stringSetupToMap} != (std::map<std::string, std::string>(*)(std::string, char const*)){&D::stringSetupToMap})
-            m->registerHook(base+0x28d4c0, (std::map<std::string, std::string>(*)(std::string, char const*)){&D::stringSetupToMap});
+        if ((gd::map<gd::string, gd::string>(*)(gd::string, char const*)){&$GameToolbox::stringSetupToMap} != (gd::map<gd::string, gd::string>(*)(gd::string, char const*)){&D::stringSetupToMap})
+            m->registerHook(base+0x28d4c0, (gd::map<gd::string, gd::string>(*)(gd::string, char const*)){&D::stringSetupToMap});
 
         if ((void(*)(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)){&$GameToolbox::transformColor} != (void(*)(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)){&D::transformColor})
             m->registerHook(base+0x28c950, (void(*)(cocos2d::_ccColor3B const&, cocos2d::_ccHSVValue)){&D::transformColor});
@@ -6957,9 +6957,9 @@ public:
         else return GroupCommandObject::create();
     }
 
-    dupable static GroupCommandObject* createFromString(std::string p0) {
-        if ((GroupCommandObject*(*)(std::string)){&$GroupCommandObject::createFromString} != (GroupCommandObject*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<GroupCommandObject*(*)(std::string)>(m->getOriginal(base+0x16ece0))(p0);
+    dupable static GroupCommandObject* createFromString(gd::string p0) {
+        if ((GroupCommandObject*(*)(gd::string)){&$GroupCommandObject::createFromString} != (GroupCommandObject*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<GroupCommandObject*(*)(gd::string)>(m->getOriginal(base+0x16ece0))(p0);
         else return GroupCommandObject::createFromString(p0);
     }
 
@@ -6997,8 +6997,8 @@ public:
         if ((GroupCommandObject*(*)()){&$GroupCommandObject::create} != (GroupCommandObject*(*)()){&D::create})
             m->registerHook(base+0x18b460, (GroupCommandObject*(*)()){&D::create});
 
-        if ((GroupCommandObject*(*)(std::string)){&$GroupCommandObject::createFromString} != (GroupCommandObject*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x16ece0, (GroupCommandObject*(*)(std::string)){&D::createFromString});
+        if ((GroupCommandObject*(*)(gd::string)){&$GroupCommandObject::createFromString} != (GroupCommandObject*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x16ece0, (GroupCommandObject*(*)(gd::string)){&D::createFromString});
 
         if ((void($GroupCommandObject::*)(int)){&$GroupCommandObject::easeToText} != (void(D::*)(int)){&D::easeToText})
             m->registerHook(base+0x16ecb0, extract((void(D::*)(int)){&D::easeToText}));
@@ -7071,9 +7071,9 @@ class $InfoAlertButton : public InfoAlertButton, public $CacBase {
 public:
     dupable ~$InfoAlertButton() override {}
 
-    dupable static InfoAlertButton* create(std::string p0, std::string p1, float p2) {
-        if ((InfoAlertButton*(*)(std::string, std::string, float)){&$InfoAlertButton::create} != (InfoAlertButton*(*)(std::string, std::string, float)){&D::create})
-            return reinterpret_cast<InfoAlertButton*(*)(std::string, std::string, float)>(m->getOriginal(base+0x2ecad0))(p0, p1, p2);
+    dupable static InfoAlertButton* create(gd::string p0, gd::string p1, float p2) {
+        if ((InfoAlertButton*(*)(gd::string, gd::string, float)){&$InfoAlertButton::create} != (InfoAlertButton*(*)(gd::string, gd::string, float)){&D::create})
+            return reinterpret_cast<InfoAlertButton*(*)(gd::string, gd::string, float)>(m->getOriginal(base+0x2ecad0))(p0, p1, p2);
         else return InfoAlertButton::create(p0, p1, p2);
     }
 
@@ -7084,8 +7084,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((InfoAlertButton*(*)(std::string, std::string, float)){&$InfoAlertButton::create} != (InfoAlertButton*(*)(std::string, std::string, float)){&D::create})
-            m->registerHook(base+0x2ecad0, (InfoAlertButton*(*)(std::string, std::string, float)){&D::create});
+        if ((InfoAlertButton*(*)(gd::string, gd::string, float)){&$InfoAlertButton::create} != (InfoAlertButton*(*)(gd::string, gd::string, float)){&D::create})
+            m->registerHook(base+0x2ecad0, (InfoAlertButton*(*)(gd::string, gd::string, float)){&D::create});
     }
 };
 
@@ -7299,9 +7299,9 @@ public:
         else return LevelEditorLayer::activateTriggerEffect(p0, p1, p2, p3);
     }
 
-    dupable GameObject* addObjectFromString(std::string p0) {
-        if ((GameObject*($LevelEditorLayer::*)(std::string)){&$LevelEditorLayer::addObjectFromString} != (GameObject*(D::*)(std::string)){&D::addObjectFromString})
-            return reinterpret_cast<GameObject*(*)(decltype(this), std::string)>(m->getOriginal(base+0x94640))(this, p0);
+    dupable GameObject* addObjectFromString(gd::string p0) {
+        if ((GameObject*($LevelEditorLayer::*)(gd::string)){&$LevelEditorLayer::addObjectFromString} != (GameObject*(D::*)(gd::string)){&D::addObjectFromString})
+            return reinterpret_cast<GameObject*(*)(decltype(this), gd::string)>(m->getOriginal(base+0x94640))(this, p0);
         else return LevelEditorLayer::addObjectFromString(p0);
     }
 
@@ -7371,15 +7371,15 @@ public:
         else return LevelEditorLayer::createObject(p0, p1, p2);
     }
 
-    dupable void createObjectsFromSetup(std::string p0) {
-        if ((void($LevelEditorLayer::*)(std::string)){&$LevelEditorLayer::createObjectsFromSetup} != (void(D::*)(std::string)){&D::createObjectsFromSetup})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x92230))(this, p0);
+    dupable void createObjectsFromSetup(gd::string p0) {
+        if ((void($LevelEditorLayer::*)(gd::string)){&$LevelEditorLayer::createObjectsFromSetup} != (void(D::*)(gd::string)){&D::createObjectsFromSetup})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x92230))(this, p0);
         else return LevelEditorLayer::createObjectsFromSetup(p0);
     }
 
-    dupable void createObjectsFromString(std::string p0, bool p1) {
-        if ((void($LevelEditorLayer::*)(std::string, bool)){&$LevelEditorLayer::createObjectsFromString} != (void(D::*)(std::string, bool)){&D::createObjectsFromString})
-            return reinterpret_cast<void(*)(decltype(this), std::string, bool)>(m->getOriginal(base+0x94730))(this, p0, p1);
+    dupable void createObjectsFromString(gd::string p0, bool p1) {
+        if ((void($LevelEditorLayer::*)(gd::string, bool)){&$LevelEditorLayer::createObjectsFromString} != (void(D::*)(gd::string, bool)){&D::createObjectsFromString})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, bool)>(m->getOriginal(base+0x94730))(this, p0, p1);
         else return LevelEditorLayer::createObjectsFromString(p0, p1);
     }
 
@@ -7723,8 +7723,8 @@ public:
         if ((void($LevelEditorLayer::*)(EffectGameObject*, float, float, float)){&$LevelEditorLayer::activateTriggerEffect} != (void(D::*)(EffectGameObject*, float, float, float)){&D::activateTriggerEffect})
             m->registerHook(base+0x9b520, extract((void(D::*)(EffectGameObject*, float, float, float)){&D::activateTriggerEffect}));
 
-        if ((GameObject*($LevelEditorLayer::*)(std::string)){&$LevelEditorLayer::addObjectFromString} != (GameObject*(D::*)(std::string)){&D::addObjectFromString})
-            m->registerHook(base+0x94640, extract((GameObject*(D::*)(std::string)){&D::addObjectFromString}));
+        if ((GameObject*($LevelEditorLayer::*)(gd::string)){&$LevelEditorLayer::addObjectFromString} != (GameObject*(D::*)(gd::string)){&D::addObjectFromString})
+            m->registerHook(base+0x94640, extract((GameObject*(D::*)(gd::string)){&D::addObjectFromString}));
 
         if ((void($LevelEditorLayer::*)(GameObject*)){&$LevelEditorLayer::addSpecial} != (void(D::*)(GameObject*)){&D::addSpecial})
             m->registerHook(base+0x94f30, extract((void(D::*)(GameObject*)){&D::addSpecial}));
@@ -7759,11 +7759,11 @@ public:
         if ((GameObject*($LevelEditorLayer::*)(int, cocos2d::CCPoint, bool)){&$LevelEditorLayer::createObject} != (GameObject*(D::*)(int, cocos2d::CCPoint, bool)){&D::createObject})
             m->registerHook(base+0x957c0, extract((GameObject*(D::*)(int, cocos2d::CCPoint, bool)){&D::createObject}));
 
-        if ((void($LevelEditorLayer::*)(std::string)){&$LevelEditorLayer::createObjectsFromSetup} != (void(D::*)(std::string)){&D::createObjectsFromSetup})
-            m->registerHook(base+0x92230, extract((void(D::*)(std::string)){&D::createObjectsFromSetup}));
+        if ((void($LevelEditorLayer::*)(gd::string)){&$LevelEditorLayer::createObjectsFromSetup} != (void(D::*)(gd::string)){&D::createObjectsFromSetup})
+            m->registerHook(base+0x92230, extract((void(D::*)(gd::string)){&D::createObjectsFromSetup}));
 
-        if ((void($LevelEditorLayer::*)(std::string, bool)){&$LevelEditorLayer::createObjectsFromString} != (void(D::*)(std::string, bool)){&D::createObjectsFromString})
-            m->registerHook(base+0x94730, extract((void(D::*)(std::string, bool)){&D::createObjectsFromString}));
+        if ((void($LevelEditorLayer::*)(gd::string, bool)){&$LevelEditorLayer::createObjectsFromString} != (void(D::*)(gd::string, bool)){&D::createObjectsFromString})
+            m->registerHook(base+0x94730, extract((void(D::*)(gd::string, bool)){&D::createObjectsFromString}));
 
         if ((void($LevelEditorLayer::*)()){&$LevelEditorLayer::draw} != (void(D::*)()){&D::draw})
             m->registerHook(base+0xa2a70, extract((void(D::*)()){&D::draw}));
@@ -7995,9 +7995,9 @@ public:
         else return LevelSettingsObject::objectFromDict(p0);
     }
 
-    dupable static LevelSettingsObject* objectFromString(std::string p0) {
-        if ((LevelSettingsObject*(*)(std::string)){&$LevelSettingsObject::objectFromString} != (LevelSettingsObject*(*)(std::string)){&D::objectFromString})
-            return reinterpret_cast<LevelSettingsObject*(*)(std::string)>(m->getOriginal(base+0x945a0))(p0);
+    dupable static LevelSettingsObject* objectFromString(gd::string p0) {
+        if ((LevelSettingsObject*(*)(gd::string)){&$LevelSettingsObject::objectFromString} != (LevelSettingsObject*(*)(gd::string)){&D::objectFromString})
+            return reinterpret_cast<LevelSettingsObject*(*)(gd::string)>(m->getOriginal(base+0x945a0))(p0);
         else return LevelSettingsObject::objectFromString(p0);
     }
 
@@ -8023,8 +8023,8 @@ public:
         if ((void($LevelSettingsObject::*)(cocos2d::CCDictionary*)){&$LevelSettingsObject::objectFromDict} != (void(D::*)(cocos2d::CCDictionary*)){&D::objectFromDict})
             m->registerHook(base+0xa5810, extract((void(D::*)(cocos2d::CCDictionary*)){&D::objectFromDict}));
 
-        if ((LevelSettingsObject*(*)(std::string)){&$LevelSettingsObject::objectFromString} != (LevelSettingsObject*(*)(std::string)){&D::objectFromString})
-            m->registerHook(base+0x945a0, (LevelSettingsObject*(*)(std::string)){&D::objectFromString});
+        if ((LevelSettingsObject*(*)(gd::string)){&$LevelSettingsObject::objectFromString} != (LevelSettingsObject*(*)(gd::string)){&D::objectFromString})
+            m->registerHook(base+0x945a0, (LevelSettingsObject*(*)(gd::string)){&D::objectFromString});
 
         if ((void($LevelSettingsObject::*)(cocos2d::CCDictionary*)){&$LevelSettingsObject::setupColorsFromLegacyMode} != (void(D::*)(cocos2d::CCDictionary*)){&D::setupColorsFromLegacyMode})
             m->registerHook(base+0xa6a30, extract((void(D::*)(cocos2d::CCDictionary*)){&D::setupColorsFromLegacyMode}));
@@ -8043,9 +8043,9 @@ public:
         else return LevelTools::getAudioString(p0);
     }
 
-    dupable void verifyLevelIntegrity(std::string p0, int p1) {
-        if ((void($LevelTools::*)(std::string, int)){&$LevelTools::verifyLevelIntegrity} != (void(D::*)(std::string, int)){&D::verifyLevelIntegrity})
-            return reinterpret_cast<void(*)(decltype(this), std::string, int)>(m->getOriginal(base+0x294360))(this, p0, p1);
+    dupable void verifyLevelIntegrity(gd::string p0, int p1) {
+        if ((void($LevelTools::*)(gd::string, int)){&$LevelTools::verifyLevelIntegrity} != (void(D::*)(gd::string, int)){&D::verifyLevelIntegrity})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, int)>(m->getOriginal(base+0x294360))(this, p0, p1);
         else return LevelTools::verifyLevelIntegrity(p0, p1);
     }
 
@@ -8065,8 +8065,8 @@ public:
         if ((void($LevelTools::*)(int)){&$LevelTools::getAudioString} != (void(D::*)(int)){&D::getAudioString})
             m->registerHook(base+0x293880, extract((void(D::*)(int)){&D::getAudioString}));
 
-        if ((void($LevelTools::*)(std::string, int)){&$LevelTools::verifyLevelIntegrity} != (void(D::*)(std::string, int)){&D::verifyLevelIntegrity})
-            m->registerHook(base+0x294360, extract((void(D::*)(std::string, int)){&D::verifyLevelIntegrity}));
+        if ((void($LevelTools::*)(gd::string, int)){&$LevelTools::verifyLevelIntegrity} != (void(D::*)(gd::string, int)){&D::verifyLevelIntegrity})
+            m->registerHook(base+0x294360, extract((void(D::*)(gd::string, int)){&D::verifyLevelIntegrity}));
 
         if ((void($LevelTools::*)(float, cocos2d::CCArray*, int)){&$LevelTools::xPosForTime} != (void(D::*)(float, cocos2d::CCArray*, int)){&D::xPosForTime})
             m->registerHook(base+0x293d90, extract((void(D::*)(float, cocos2d::CCArray*, int)){&D::xPosForTime}));
@@ -8385,9 +8385,9 @@ public:
         else return OpacityEffectAction::create(p0, p1, p2, p3);
     }
 
-    dupable static OpacityEffectAction* createFromString(std::string p0) {
-        if ((OpacityEffectAction*(*)(std::string)){&$OpacityEffectAction::createFromString} != (OpacityEffectAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<OpacityEffectAction*(*)(std::string)>(m->getOriginal(base+0x178c10))(p0);
+    dupable static OpacityEffectAction* createFromString(gd::string p0) {
+        if ((OpacityEffectAction*(*)(gd::string)){&$OpacityEffectAction::createFromString} != (OpacityEffectAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<OpacityEffectAction*(*)(gd::string)>(m->getOriginal(base+0x178c10))(p0);
         else return OpacityEffectAction::createFromString(p0);
     }
 
@@ -8413,8 +8413,8 @@ public:
         if ((OpacityEffectAction*(*)(float, float, float, int)){&$OpacityEffectAction::create} != (OpacityEffectAction*(*)(float, float, float, int)){&D::create})
             m->registerHook(base+0x1789f0, (OpacityEffectAction*(*)(float, float, float, int)){&D::create});
 
-        if ((OpacityEffectAction*(*)(std::string)){&$OpacityEffectAction::createFromString} != (OpacityEffectAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x178c10, (OpacityEffectAction*(*)(std::string)){&D::createFromString});
+        if ((OpacityEffectAction*(*)(gd::string)){&$OpacityEffectAction::createFromString} != (OpacityEffectAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x178c10, (OpacityEffectAction*(*)(gd::string)){&D::createFromString});
 
         if ((bool($OpacityEffectAction::*)(float, float, float, int)){&$OpacityEffectAction::init} != (bool(D::*)(float, float, float, int)){&D::init})
             m->registerHook(base+0x178b00, extract((bool(D::*)(float, float, float, int)){&D::init}));
@@ -8580,9 +8580,9 @@ public:
         else return PlayLayer::circleWaveWillBeRemoved(p0);
     }
 
-    dupable void claimParticle(std::string p0) {
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::claimParticle} != (void(D::*)(std::string)){&D::claimParticle})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x76ba0))(this, p0);
+    dupable void claimParticle(gd::string p0) {
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::claimParticle} != (void(D::*)(gd::string)){&D::claimParticle})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x76ba0))(this, p0);
         else return PlayLayer::claimParticle(p0);
     }
 
@@ -8616,9 +8616,9 @@ public:
         else return PlayLayer::createCheckpoint();
     }
 
-    dupable void createObjectsFromSetup(std::string p0) {
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::createObjectsFromSetup} != (void(D::*)(std::string)){&D::createObjectsFromSetup})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x6d130))(this, p0);
+    dupable void createObjectsFromSetup(gd::string p0) {
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::createObjectsFromSetup} != (void(D::*)(gd::string)){&D::createObjectsFromSetup})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x6d130))(this, p0);
         else return PlayLayer::createObjectsFromSetup(p0);
     }
 
@@ -8766,9 +8766,9 @@ public:
         else return PlayLayer::getParticleKey(p0, p1, p2, p3);
     }
 
-    dupable void getParticleKey2(std::string p0) {
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::getParticleKey2} != (void(D::*)(std::string)){&D::getParticleKey2})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x767b0))(this, p0);
+    dupable void getParticleKey2(gd::string p0) {
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::getParticleKey2} != (void(D::*)(gd::string)){&D::getParticleKey2})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x767b0))(this, p0);
         else return PlayLayer::getParticleKey2(p0);
     }
 
@@ -8856,9 +8856,9 @@ public:
         else return PlayLayer::loadLastCheckpoint();
     }
 
-    dupable void loadSavedObjectsState(std::string p0) {
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::loadSavedObjectsState} != (void(D::*)(std::string)){&D::loadSavedObjectsState})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x7f3d0))(this, p0);
+    dupable void loadSavedObjectsState(gd::string p0) {
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::loadSavedObjectsState} != (void(D::*)(gd::string)){&D::loadSavedObjectsState})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x7f3d0))(this, p0);
         else return PlayLayer::loadSavedObjectsState(p0);
     }
 
@@ -9060,9 +9060,9 @@ public:
         else return PlayLayer::setupLevelStart(p0);
     }
 
-    dupable void setupReplay(std::string p0) {
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::setupReplay} != (void(D::*)(std::string)){&D::setupReplay})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x7e1e0))(this, p0);
+    dupable void setupReplay(gd::string p0) {
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::setupReplay} != (void(D::*)(gd::string)){&D::setupReplay})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x7e1e0))(this, p0);
         else return PlayLayer::setupReplay(p0);
     }
 
@@ -9451,8 +9451,8 @@ public:
         if ((void($PlayLayer::*)(CCCircleWave*)){&$PlayLayer::circleWaveWillBeRemoved} != (void(D::*)(CCCircleWave*)){&D::circleWaveWillBeRemoved})
             m->registerHook(base+0x7e110, extract((void(D::*)(CCCircleWave*)){&D::circleWaveWillBeRemoved}));
 
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::claimParticle} != (void(D::*)(std::string)){&D::claimParticle})
-            m->registerHook(base+0x76ba0, extract((void(D::*)(std::string)){&D::claimParticle}));
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::claimParticle} != (void(D::*)(gd::string)){&D::claimParticle})
+            m->registerHook(base+0x76ba0, extract((void(D::*)(gd::string)){&D::claimParticle}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::clearPickedUpItems} != (void(D::*)()){&D::clearPickedUpItems})
             m->registerHook(base+0x7cfa0, extract((void(D::*)()){&D::clearPickedUpItems}));
@@ -9469,8 +9469,8 @@ public:
         if ((void($PlayLayer::*)()){&$PlayLayer::createCheckpoint} != (void(D::*)()){&D::createCheckpoint})
             m->registerHook(base+0x7e470, extract((void(D::*)()){&D::createCheckpoint}));
 
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::createObjectsFromSetup} != (void(D::*)(std::string)){&D::createObjectsFromSetup})
-            m->registerHook(base+0x6d130, extract((void(D::*)(std::string)){&D::createObjectsFromSetup}));
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::createObjectsFromSetup} != (void(D::*)(gd::string)){&D::createObjectsFromSetup})
+            m->registerHook(base+0x6d130, extract((void(D::*)(gd::string)){&D::createObjectsFromSetup}));
 
         if ((void($PlayLayer::*)(int, char const*, int, cocos2d::tCCPositionType)){&$PlayLayer::createParticle} != (void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::createParticle})
             m->registerHook(base+0x76800, extract((void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::createParticle}));
@@ -9544,8 +9544,8 @@ public:
         if ((void($PlayLayer::*)(int, char const*, int, cocos2d::tCCPositionType)){&$PlayLayer::getParticleKey} != (void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::getParticleKey})
             m->registerHook(base+0x764d0, extract((void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::getParticleKey}));
 
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::getParticleKey2} != (void(D::*)(std::string)){&D::getParticleKey2})
-            m->registerHook(base+0x767b0, extract((void(D::*)(std::string)){&D::getParticleKey2}));
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::getParticleKey2} != (void(D::*)(gd::string)){&D::getParticleKey2})
+            m->registerHook(base+0x767b0, extract((void(D::*)(gd::string)){&D::getParticleKey2}));
 
         if ((void($PlayLayer::*)(cocos2d::CCPoint, float, float, float)){&$PlayLayer::getRelativeMod} != (void(D::*)(cocos2d::CCPoint, float, float, float)){&D::getRelativeMod})
             m->registerHook(base+0x7c2a0, extract((void(D::*)(cocos2d::CCPoint, float, float, float)){&D::getRelativeMod}));
@@ -9589,8 +9589,8 @@ public:
         if ((void($PlayLayer::*)()){&$PlayLayer::loadLastCheckpoint} != (void(D::*)()){&D::loadLastCheckpoint})
             m->registerHook(base+0x7efc0, extract((void(D::*)()){&D::loadLastCheckpoint}));
 
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::loadSavedObjectsState} != (void(D::*)(std::string)){&D::loadSavedObjectsState})
-            m->registerHook(base+0x7f3d0, extract((void(D::*)(std::string)){&D::loadSavedObjectsState}));
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::loadSavedObjectsState} != (void(D::*)(gd::string)){&D::loadSavedObjectsState})
+            m->registerHook(base+0x7f3d0, extract((void(D::*)(gd::string)){&D::loadSavedObjectsState}));
 
         if ((void($PlayLayer::*)()){&$PlayLayer::markCheckpoint} != (void(D::*)()){&D::markCheckpoint})
             m->registerHook(base+0x7ef60, extract((void(D::*)()){&D::markCheckpoint}));
@@ -9691,8 +9691,8 @@ public:
         if ((void($PlayLayer::*)(LevelSettingsObject*)){&$PlayLayer::setupLevelStart} != (void(D::*)(LevelSettingsObject*)){&D::setupLevelStart})
             m->registerHook(base+0x6f560, extract((void(D::*)(LevelSettingsObject*)){&D::setupLevelStart}));
 
-        if ((void($PlayLayer::*)(std::string)){&$PlayLayer::setupReplay} != (void(D::*)(std::string)){&D::setupReplay})
-            m->registerHook(base+0x7e1e0, extract((void(D::*)(std::string)){&D::setupReplay}));
+        if ((void($PlayLayer::*)(gd::string)){&$PlayLayer::setupReplay} != (void(D::*)(gd::string)){&D::setupReplay})
+            m->registerHook(base+0x7e1e0, extract((void(D::*)(gd::string)){&D::setupReplay}));
 
         if ((void($PlayLayer::*)(float, float, float)){&$PlayLayer::shakeCamera} != (void(D::*)(float, float, float)){&D::shakeCamera})
             m->registerHook(base+0x744a0, extract((void(D::*)(float, float, float)){&D::shakeCamera}));
@@ -10698,9 +10698,9 @@ public:
         else return PlayerObject::updatePlayerSpiderFrame(p0);
     }
 
-    dupable void updatePlayerSpriteExtra(std::string p0) {
-        if ((void($PlayerObject::*)(std::string)){&$PlayerObject::updatePlayerSpriteExtra} != (void(D::*)(std::string)){&D::updatePlayerSpriteExtra})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x218440))(this, p0);
+    dupable void updatePlayerSpriteExtra(gd::string p0) {
+        if ((void($PlayerObject::*)(gd::string)){&$PlayerObject::updatePlayerSpriteExtra} != (void(D::*)(gd::string)){&D::updatePlayerSpriteExtra})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x218440))(this, p0);
         else return PlayerObject::updatePlayerSpriteExtra(p0);
     }
 
@@ -10728,9 +10728,9 @@ public:
         else return PlayerObject::updateShipRotation(p0);
     }
 
-    dupable void updateShipSpriteExtra(std::string p0) {
-        if ((void($PlayerObject::*)(std::string)){&$PlayerObject::updateShipSpriteExtra} != (void(D::*)(std::string)){&D::updateShipSpriteExtra})
-            return reinterpret_cast<void(*)(decltype(this), std::string)>(m->getOriginal(base+0x218510))(this, p0);
+    dupable void updateShipSpriteExtra(gd::string p0) {
+        if ((void($PlayerObject::*)(gd::string)){&$PlayerObject::updateShipSpriteExtra} != (void(D::*)(gd::string)){&D::updateShipSpriteExtra})
+            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x218510))(this, p0);
         else return PlayerObject::updateShipSpriteExtra(p0);
     }
 
@@ -11191,8 +11191,8 @@ public:
         if ((void($PlayerObject::*)(int)){&$PlayerObject::updatePlayerSpiderFrame} != (void(D::*)(int)){&D::updatePlayerSpiderFrame})
             m->registerHook(base+0x22d650, extract((void(D::*)(int)){&D::updatePlayerSpiderFrame}));
 
-        if ((void($PlayerObject::*)(std::string)){&$PlayerObject::updatePlayerSpriteExtra} != (void(D::*)(std::string)){&D::updatePlayerSpriteExtra})
-            m->registerHook(base+0x218440, extract((void(D::*)(std::string)){&D::updatePlayerSpriteExtra}));
+        if ((void($PlayerObject::*)(gd::string)){&$PlayerObject::updatePlayerSpriteExtra} != (void(D::*)(gd::string)){&D::updatePlayerSpriteExtra})
+            m->registerHook(base+0x218440, extract((void(D::*)(gd::string)){&D::updatePlayerSpriteExtra}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::updateRobotAnimationSpeed} != (void(D::*)()){&D::updateRobotAnimationSpeed})
             m->registerHook(base+0x22df40, extract((void(D::*)()){&D::updateRobotAnimationSpeed}));
@@ -11206,8 +11206,8 @@ public:
         if ((void($PlayerObject::*)(float)){&$PlayerObject::updateShipRotation} != (void(D::*)(float)){&D::updateShipRotation})
             m->registerHook(base+0x221310, extract((void(D::*)(float)){&D::updateShipRotation}));
 
-        if ((void($PlayerObject::*)(std::string)){&$PlayerObject::updateShipSpriteExtra} != (void(D::*)(std::string)){&D::updateShipSpriteExtra})
-            m->registerHook(base+0x218510, extract((void(D::*)(std::string)){&D::updateShipSpriteExtra}));
+        if ((void($PlayerObject::*)(gd::string)){&$PlayerObject::updateShipSpriteExtra} != (void(D::*)(gd::string)){&D::updateShipSpriteExtra})
+            m->registerHook(base+0x218510, extract((void(D::*)(gd::string)){&D::updateShipSpriteExtra}));
 
         if ((void($PlayerObject::*)(float)){&$PlayerObject::updateSlopeRotation} != (void(D::*)(float)){&D::updateSlopeRotation})
             m->registerHook(base+0x221030, extract((void(D::*)(float)){&D::updateSlopeRotation}));
@@ -11241,9 +11241,9 @@ class $PulseEffectAction : public PulseEffectAction, public $CacBase {
 public:
     dupable ~$PulseEffectAction() override {}
 
-    dupable static PulseEffectAction* createFromString(std::string p0) {
-        if ((PulseEffectAction*(*)(std::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<PulseEffectAction*(*)(std::string)>(m->getOriginal(base+0x179e90))(p0);
+    dupable static PulseEffectAction* createFromString(gd::string p0) {
+        if ((PulseEffectAction*(*)(gd::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<PulseEffectAction*(*)(gd::string)>(m->getOriginal(base+0x179e90))(p0);
         else return PulseEffectAction::createFromString(p0);
     }
 
@@ -11260,8 +11260,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((PulseEffectAction*(*)(std::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x179e90, (PulseEffectAction*(*)(std::string)){&D::createFromString});
+        if ((PulseEffectAction*(*)(gd::string)){&$PulseEffectAction::createFromString} != (PulseEffectAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x179e90, (PulseEffectAction*(*)(gd::string)){&D::createFromString});
 
         if ((void($PulseEffectAction::*)()){&$PulseEffectAction::getSaveString} != (void(D::*)()){&D::getSaveString})
             m->registerHook(base+0x17a850, extract((void(D::*)()){&D::getSaveString}));
@@ -11403,9 +11403,9 @@ class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
 public:
     dupable ~$SetTargetIDLayer() override {}
 
-    dupable static SetTargetIDLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1, std::string p2) {
-        if ((SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create} != (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create})
-            return reinterpret_cast<SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)>(m->getOriginal(base+0x159d20))(p0, p1, p2);
+    dupable static SetTargetIDLayer* create(EffectGameObject* p0, cocos2d::CCArray* p1, gd::string p2) {
+        if ((SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, gd::string)){&$SetTargetIDLayer::create} != (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, gd::string)){&D::create})
+            return reinterpret_cast<SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, gd::string)>(m->getOriginal(base+0x159d20))(p0, p1, p2);
         else return SetTargetIDLayer::create(p0, p1, p2);
     }
 
@@ -11434,8 +11434,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&$SetTargetIDLayer::create} != (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create})
-            m->registerHook(base+0x159d20, (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, std::string)){&D::create});
+        if ((SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, gd::string)){&$SetTargetIDLayer::create} != (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, gd::string)){&D::create})
+            m->registerHook(base+0x159d20, (SetTargetIDLayer*(*)(EffectGameObject*, cocos2d::CCArray*, gd::string)){&D::create});
 
         if ((void($SetTargetIDLayer::*)(cocos2d::CCObject*)){&$SetTargetIDLayer::onTargetIDArrow} != (void(D::*)(cocos2d::CCObject*)){&D::onTargetIDArrow})
             m->registerHook(base+0x15aed0, extract((void(D::*)(cocos2d::CCObject*)){&D::onTargetIDArrow}));
@@ -11910,9 +11910,9 @@ public:
         else return SetupSpawnPopup::create(p0, p1);
     }
 
-    dupable void createToggleButton(std::string p0, cocos2d::SEL_MenuHandler p1, bool p2, cocos2d::CCMenu* p3, cocos2d::CCPoint p4, cocos2d::CCArray* p5) {
-        if ((void($SetupSpawnPopup::*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton} != (void(D::*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&D::createToggleButton})
-            return reinterpret_cast<void(*)(decltype(this), std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)>(m->getOriginal(base+0x13b0e0))(this, p0, p1, p2, p3, p4, p5);
+    dupable void createToggleButton(gd::string p0, cocos2d::SEL_MenuHandler p1, bool p2, cocos2d::CCMenu* p3, cocos2d::CCPoint p4, cocos2d::CCArray* p5) {
+        if ((void($SetupSpawnPopup::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton} != (void(D::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&D::createToggleButton})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)>(m->getOriginal(base+0x13b0e0))(this, p0, p1, p2, p3, p4, p5);
         else return SetupSpawnPopup::createToggleButton(p0, p1, p2, p3, p4, p5);
     }
 
@@ -11944,8 +11944,8 @@ public:
         if ((SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&$SetupSpawnPopup::create} != (SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create})
             m->registerHook(base+0x139790, (SetupSpawnPopup*(*)(EffectGameObject*, cocos2d::CCArray*)){&D::create});
 
-        if ((void($SetupSpawnPopup::*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton} != (void(D::*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&D::createToggleButton})
-            m->registerHook(base+0x13b0e0, extract((void(D::*)(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&D::createToggleButton}));
+        if ((void($SetupSpawnPopup::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&$SetupSpawnPopup::createToggleButton} != (void(D::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&D::createToggleButton})
+            m->registerHook(base+0x13b0e0, extract((void(D::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*)){&D::createToggleButton}));
 
         if ((void($SetupSpawnPopup::*)(cocos2d::CCObject*)){&$SetupSpawnPopup::onTargetIDArrow} != (void(D::*)(cocos2d::CCObject*)){&D::onTargetIDArrow})
             m->registerHook(base+0x13ad80, extract((void(D::*)(cocos2d::CCObject*)){&D::onTargetIDArrow}));
@@ -12150,9 +12150,9 @@ class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
 public:
     dupable ~$SpawnTriggerAction() override {}
 
-    dupable static SpawnTriggerAction* createFromString(std::string p0) {
-        if ((SpawnTriggerAction*(*)(std::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<SpawnTriggerAction*(*)(std::string)>(m->getOriginal(base+0x17bf50))(p0);
+    dupable static SpawnTriggerAction* createFromString(gd::string p0) {
+        if ((SpawnTriggerAction*(*)(gd::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<SpawnTriggerAction*(*)(gd::string)>(m->getOriginal(base+0x17bf50))(p0);
         else return SpawnTriggerAction::createFromString(p0);
     }
 
@@ -12163,8 +12163,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((SpawnTriggerAction*(*)(std::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x17bf50, (SpawnTriggerAction*(*)(std::string)){&D::createFromString});
+        if ((SpawnTriggerAction*(*)(gd::string)){&$SpawnTriggerAction::createFromString} != (SpawnTriggerAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x17bf50, (SpawnTriggerAction*(*)(gd::string)){&D::createFromString});
     }
 };
 
@@ -12240,9 +12240,9 @@ class $TextArea : public TextArea, public $CacBase {
 public:
     dupable ~$TextArea() override {}
 
-    dupable static TextArea* create(std::string p0, char const* p1, float p2, float p3, cocos2d::CCPoint p4, float p5, bool p6) {
-        if ((TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&$TextArea::create} != (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create})
-            return reinterpret_cast<TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)>(m->getOriginal(base+0x19eb40))(p0, p1, p2, p3, p4, p5, p6);
+    dupable static TextArea* create(gd::string p0, char const* p1, float p2, float p3, cocos2d::CCPoint p4, float p5, bool p6) {
+        if ((TextArea*(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&$TextArea::create} != (TextArea*(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create})
+            return reinterpret_cast<TextArea*(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)>(m->getOriginal(base+0x19eb40))(p0, p1, p2, p3, p4, p5, p6);
         else return TextArea::create(p0, p1, p2, p3, p4, p5, p6);
     }
 
@@ -12253,8 +12253,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&$TextArea::create} != (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create})
-            m->registerHook(base+0x19eb40, (TextArea*(*)(std::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create});
+        if ((TextArea*(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&$TextArea::create} != (TextArea*(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create})
+            m->registerHook(base+0x19eb40, (TextArea*(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool)){&D::create});
     }
 };
 
@@ -12279,9 +12279,9 @@ class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
 public:
     dupable ~$ToggleTriggerAction() override {}
 
-    dupable static ToggleTriggerAction* createFromString(std::string p0) {
-        if ((ToggleTriggerAction*(*)(std::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<ToggleTriggerAction*(*)(std::string)>(m->getOriginal(base+0x1765e0))(p0);
+    dupable static ToggleTriggerAction* createFromString(gd::string p0) {
+        if ((ToggleTriggerAction*(*)(gd::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<ToggleTriggerAction*(*)(gd::string)>(m->getOriginal(base+0x1765e0))(p0);
         else return ToggleTriggerAction::createFromString(p0);
     }
 
@@ -12292,8 +12292,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((ToggleTriggerAction*(*)(std::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x1765e0, (ToggleTriggerAction*(*)(std::string)){&D::createFromString});
+        if ((ToggleTriggerAction*(*)(gd::string)){&$ToggleTriggerAction::createFromString} != (ToggleTriggerAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x1765e0, (ToggleTriggerAction*(*)(gd::string)){&D::createFromString});
     }
 };
 
@@ -12351,9 +12351,9 @@ public:
         else return TopArtistsLayer::loadPage(p0);
     }
 
-    dupable void setupPageInfo(std::string p0, char const* p1) {
-        if ((void($TopArtistsLayer::*)(std::string, char const*)){&$TopArtistsLayer::setupPageInfo} != (void(D::*)(std::string, char const*)){&D::setupPageInfo})
-            return reinterpret_cast<void(*)(decltype(this), std::string, char const*)>(m->getOriginal(base+0x193730))(this, p0, p1);
+    dupable void setupPageInfo(gd::string p0, char const* p1) {
+        if ((void($TopArtistsLayer::*)(gd::string, char const*)){&$TopArtistsLayer::setupPageInfo} != (void(D::*)(gd::string, char const*)){&D::setupPageInfo})
+            return reinterpret_cast<void(*)(decltype(this), gd::string, char const*)>(m->getOriginal(base+0x193730))(this, p0, p1);
         else return TopArtistsLayer::setupPageInfo(p0, p1);
     }
 
@@ -12376,8 +12376,8 @@ public:
         if ((void($TopArtistsLayer::*)(int)){&$TopArtistsLayer::loadPage} != (void(D::*)(int)){&D::loadPage})
             m->registerHook(base+0x193b60, extract((void(D::*)(int)){&D::loadPage}));
 
-        if ((void($TopArtistsLayer::*)(std::string, char const*)){&$TopArtistsLayer::setupPageInfo} != (void(D::*)(std::string, char const*)){&D::setupPageInfo})
-            m->registerHook(base+0x193730, extract((void(D::*)(std::string, char const*)){&D::setupPageInfo}));
+        if ((void($TopArtistsLayer::*)(gd::string, char const*)){&$TopArtistsLayer::setupPageInfo} != (void(D::*)(gd::string, char const*)){&D::setupPageInfo})
+            m->registerHook(base+0x193730, extract((void(D::*)(gd::string, char const*)){&D::setupPageInfo}));
     }
 };
 
@@ -12387,9 +12387,9 @@ class $TouchToggleAction : public TouchToggleAction, public $CacBase {
 public:
     dupable ~$TouchToggleAction() override {}
 
-    dupable static TouchToggleAction* createFromString(std::string p0) {
-        if ((TouchToggleAction*(*)(std::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(std::string)){&D::createFromString})
-            return reinterpret_cast<TouchToggleAction*(*)(std::string)>(m->getOriginal(base+0x177e10))(p0);
+    dupable static TouchToggleAction* createFromString(gd::string p0) {
+        if ((TouchToggleAction*(*)(gd::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(gd::string)){&D::createFromString})
+            return reinterpret_cast<TouchToggleAction*(*)(gd::string)>(m->getOriginal(base+0x177e10))(p0);
         else return TouchToggleAction::createFromString(p0);
     }
 
@@ -12400,8 +12400,8 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((TouchToggleAction*(*)(std::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(std::string)){&D::createFromString})
-            m->registerHook(base+0x177e10, (TouchToggleAction*(*)(std::string)){&D::createFromString});
+        if ((TouchToggleAction*(*)(gd::string)){&$TouchToggleAction::createFromString} != (TouchToggleAction*(*)(gd::string)){&D::createFromString})
+            m->registerHook(base+0x177e10, (TouchToggleAction*(*)(gd::string)){&D::createFromString});
     }
 };
 
