@@ -1,84 +1,56 @@
 #pragma once
 #include <Base/HeaderBase.hpp>
 
-class GJBaseGameLayer;
+class FLAlertLayerProtocol;
+class ButtonSprite;
+class FLAlertLayer;
 
-class GJBaseGameLayer : public cocos2d::CCLayer {
+class FLAlertLayerProtocol {
 public:
-    virtual ~GJBaseGameLayer();
-    virtual bool init();
-    virtual void objectsCollided(int, int);
-    virtual void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int);
-    virtual void updateColor(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
-    virtual void flipGravity(PlayerObject*, bool, bool);
-    virtual void calculateColorValues(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
-    virtual void toggleGroupTriggered(int, bool);
-    virtual void spawnGroup(int);
-    virtual void addToSection(GameObject*);
-    virtual void addToGroup(GameObject*, int, bool);
-    virtual void removeFromGroup(GameObject*, int);
-    void addObjectCounter(LabelGameObject*, int);
-    void addToGroups(GameObject*, bool);
-    void atlasValue(int);
-    void bumpPlayer(PlayerObject*, GameObject*);
-    void calculateOpacityValues(EffectGameObject*, EffectGameObject*, float, GJEffectManager*);
-    void checkSpawnObjects();
-    void collectItem(int, int);
-    void collectedObject(EffectGameObject*);
-    void createTextLayers();
-    void damagingObjectsInRect(cocos2d::CCRect);
-    void enableHighCapacityMode();
-    void getCapacityString();
-    void getGroundHeightForMode(int);
-    void getGroup(int);
-    void getMoveDeltaForObjects(int, int);
-    void getOptimizedGroup(int);
-    void getStaticGroup(int);
-    void isGroupDisabledForObject(GameObject*);
-    void isGroupDisabledForObjectFull(GameObject*, cocos2d::CCArray*);
-    void loadUpToPosition(float);
-    void objectIntersectsCircle(GameObject*, GameObject*);
-    void objectTriggered(EffectGameObject*);
-    void optimizeMoveGroups();
-    void parentForZLayer(int, bool, int);
-    void playerTouchedRing(PlayerObject*, GameObject*);
-    void processColorObject(EffectGameObject*, int, cocos2d::CCDictionary*, float, GJEffectManager*);
-    void processFollowActions();
-    void processMoveActions();
-    void processMoveActionsStep(float);
-    void processOpacityObject(EffectGameObject*, cocos2d::CCDictionary*, float, GJEffectManager*);
-    void processPlayerFollowActions(float);
-    void processRotationActions();
-    void pushButton(int, bool);
-    void rectIntersectsCircle(cocos2d::CCRect, cocos2d::CCPoint, float);
-    void refreshCounterLabels();
-    void releaseButton(int, bool);
-    void removeFromGroups(GameObject*);
-    void removeObjectFromSection(GameObject*);
-    void reorderObjectSection(GameObject*);
-    void resetGroupCounters(bool);
-    void resetMoveOptimizedValue();
-    void sectionForPos(float);
-    void setupLayers();
-    void shouldExitHackedLevel();
-    void spawnGroupTriggered(int, float, int);
-    void staticObjectsInRect(cocos2d::CCRect);
-    void testInstantCountTrigger(int, int, int, bool, int);
-    void toggleGroup(int, bool);
-    void togglePlayerVisibility(bool);
-    void triggerMoveCommand(EffectGameObject*);
-    void updateCollisionBlocks();
-    void updateCounters(int, int);
-    void updateDisabledObjectsLastPos(cocos2d::CCArray*);
-    void updateLayerCapacity(std::string);
-    void updateLegacyLayerCapacity(int, int, int, int);
-    void updateOBB2(cocos2d::CCRect);
-    void updateQueuedLabels();
-    CLASSPARAM(GJEffectManager*, effectManager, 0x180);
-    CLASSPARAM(cocos2d::CCLayer*, objectLayer, 0x188);
-    CLASSPARAM(cocos2d::CCArray*, objects, 0x3a0);
-    CLASSPARAM(PlayerObject*, player1, 0x380);
-    CLASSPARAM(PlayerObject*, player2, 0x388);
-    CLASSPARAM(LevelSettingsObject*, levelSettings, 0x390);
-    CLASSPARAM(cocos2d::CCDictionary*, unknownDict, 0x398);
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
+};
+
+class ButtonSprite : public cocos2d::CCSprite {
+public:
+    static ButtonSprite* create(char const*);
+    static ButtonSprite* create(char const*, int, int, float, bool);
+    void updateBGImage(char const*);
+    static ButtonSprite* create(char const*, float);
+    static ButtonSprite* create(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+};
+
+class FLAlertLayer : public cocos2d::CCLayerColor {
+public:
+    virtual ~FLAlertLayer();
+    virtual void onEnter();
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    virtual void registerWithTouchDispatcher();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void show();
+    bool init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(char const* title, const std::string &desc, char const* btn) {
+        return FLAlertLayer::create(nullptr, title, desc, btn, nullptr, 300.0);
+    };
+    cocos2d::CCMenu* m_buttonMenu;
+    int m_controlConnected;
+    void* m_alertProtocol;
+    cocos2d::CCNode* m_scene;
+    bool m_reverseKeyBack;
+    cocos2d::ccColor3B m_color;
+    cocos2d::CCLayer* m_mainLayer;
+    int m_ZOrder;
+    bool m_noElasticity;
+    cocos2d::ccColor3B m_color2;
+    ButtonSprite* m_button1;
+    ButtonSprite* m_button2;
+    cocos2d::CCLayerColor* m_scrollingLayer;
+    int m_joystickConnected;
+    bool m_containsBorder;
+    bool m_noAction;
 };

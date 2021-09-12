@@ -1,7 +1,6 @@
-import pickle
 from Shared import * 
 
-classes = pickle.load(open("cinnamon.pickle", "rb"))
+classes = pickle.load(open("Cinnamon/cinnamon.pickle", "rb"))
 
 functionBody = """
 {type}{cl}::{name}({params}) {const}{{
@@ -16,7 +15,6 @@ staticBody = """
 """
 
 out = """#include <Header.hpp>
-
 """
 
 for cl in classes:
@@ -26,6 +24,8 @@ for cl in classes:
         body = functionBody
         if info.static:
             body = staticBody
+        if info.declare.name[1:] in cl.name:
+            body = body.replace("return ", "")
         out += body.format(
             name = info.declare.name,
             type = f"{info.declare.type} " if info.declare.type else "",

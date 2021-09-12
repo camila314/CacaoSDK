@@ -2857,9 +2857,9 @@
     virtual void googlePlaySignedIn() = 0x1d2f30;
     virtual void FLAlert_Clicked(FLAlertLayer*, bool) = 0x1d3190;
 
-    virtual void onMoreGames(cocos2d::CCObject*) = 0x1d2ad0;
-    virtual void onQuit(cocos2d::CCObject*) = 0x1d2b40;
-    virtual void scene(bool) = 0x1d12d0;
+    void onMoreGames(cocos2d::CCObject*) = 0x1d2ad0;
+    void onQuit(cocos2d::CCObject*) = 0x1d2b40;
+    void scene(bool) = 0x1d12d0;
 @end
 
 @interface PlayLayer : GJBaseGameLayer, CCCircleWaveDelegate

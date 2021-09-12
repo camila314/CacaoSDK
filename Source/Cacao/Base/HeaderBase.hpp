@@ -6,7 +6,8 @@
 #include <string>
 #include <map>
 #include <GDML/GDML.hpp>
-#include <CCMenuItemSpriteExtra.h>
+// #include <CCMenuItemSpriteExtra.h>
+#include <Base/InterfaceBase.hpp>
 #include <cocos2dx/cocos2d.h>
 #include <cocos2dext/cocos-ext.h>
 

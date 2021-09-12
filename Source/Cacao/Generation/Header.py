@@ -1,16 +1,21 @@
-import pickle
 from Shared import * 
 
-classes = pickle.load(open("cinnamon.pickle", "rb"))
+classes = pickle.load(open("Cinnamon/cinnamon.pickle", "rb"))
 
 classBody = """
+class {cl} {{
+public:
+{body}}};
+"""
+
+basedBody = """
 class {cl} : {base} {{
 public:
 {body}}};
 """
 
 functionBody = "    {static}{virtual}{type}{name}({params}){const};\n"
-memberBody = "    {type}{name};\n"
+memberBody = "    {type} {name};\n"
 offsetBody = "    {func}({type}, {name}, {offset});\n"
 
 out = """#pragma once
@@ -18,9 +23,13 @@ out = """#pragma once
 
 """
 for cl in classes:
+    if "cocos2d" in cl.name:
+        continue
     out += f"class {cl.name};\n"
 
 for cl in classes:
+    if "cocos2d" in cl.name:
+        continue
     body = ""
     for info in cl.info:
 
@@ -33,6 +42,8 @@ for cl in classes:
                 params = ', '.join(p.type for p in info.parameters),
                 const = " const" if info.const else "",
             )
+        elif isinstance(info, str):
+            body += "    " + info + "\n"
         elif info.offset:
             body += offsetBody.format(
                 func = "STRUCTPARAM" if info.declare.type in ["GameModes", "LevelDifficulty"] else "CLASSPARAM",
@@ -41,15 +52,22 @@ for cl in classes:
                 offset = info.offset,
             )
         else:
-            body += offsetBody.format(
+            body += memberBody.format(
                 type = info.declare.type,
                 name = info.declare.name,
             )
-    out += classBody.format(
-        cl = cl.name,
-        base = ", ".join("public " + b for b in cl.base),
-        body = body,
-    )
+    if len(cl.base) == 0:
+        out += classBody.format(
+            cl = cl.name,
+            body = body,
+        )
+    else:
+        out += basedBody.format(
+            cl = cl.name,
+            base = ", ".join("public " + b for b in cl.base),
+            body = body,
+        )
+
 
 with open("../Header.hpp", "w") as f:
     f.write(out)
