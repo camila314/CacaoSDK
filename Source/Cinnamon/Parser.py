@@ -1,5 +1,7 @@
 import ply.yacc as yacc
-from Lexer import tokens
+from Lexer import tokens, addFile, setEntry
+import os
+import pickle
 
 def debugout(*args):
     # print(*args)
@@ -11,6 +13,14 @@ class CinnamonDeclaration:
         self.name = None
     def __repr__(self):
         return f"{self.type}" + (f" {self.name}" if self.name else "")
+    # def getType(self, default=None):
+    #     return self.type
+    # def getName(self, default=None):
+    #     return f"p{default}" if self.name is None else self.name
+    # def getExpr(self, default=None):
+    #     if self.type is None:
+    #         return getName(default)
+    #     return f"{getType(default)} {getName(default)}"
 
 class CinnamonFunction:
     def __init__(self):
@@ -20,8 +30,16 @@ class CinnamonFunction:
         self.declare = None
         self.parameters = []
         self.offset = None
+        self.parent = None
     def __repr__(self):
         return f"{self.declare}({self.parameters}) = {self.offset}"
+    # def getParameterTypes(self):
+    #     ', '.join(p.getType(i) for i, p in enumerate(self.parameters))
+    # def getParameterNames(self):
+    #     ', '.join(p.getName(i) for i, p in enumerate(self.parameters))
+    # def getParameterExpr(self):
+    #     ', '.join(p.getExpr(i) for i, p in enumerate(self.parameters))
+
 
 class CinnamonMember:
     def __init__(self):
@@ -44,15 +62,32 @@ def p_empty(p):
     pass
 
 
+# include implementation
+def p_include_include(p):
+    'include : INCLUDE LTRI TEMPLATEDATA RTRI'
+    p[0] = []
+    debugout(p[0:10], "p_include_include")
+
+def p_include_includes(p):
+    'include : include include'
+    p[0] = []
+    debugout(p[0:10], "p_include_includes")
+
+
 # body implementation
 def p_body_body(p):
     'body : bodypure'
     p[0] = p[1]
     debugout(p[0:10], "p_body_body")
 
+def p_body_empty(p):
+    'body : empty'
+    p[0] = []
+    debugout(p[0:10], "p_body_empty")
+
 def p_bodypure_bodypure(p):
     'bodypure : bodypure bodypure'
-    p[0] = p[1] + p[2]
+    p[0] = p[2] + p[1]
     debugout(p[0:10], "p_body_body")
 
 def p_bodypure_body(p):
@@ -62,10 +97,11 @@ def p_bodypure_body(p):
     p[0] = [c]
     debugout(p[0:10], "p_bodypure_body")
 
-# def p_bodypure_empty(p):
-#     'bodypure : empty'
-#     p[0] = []
-#     debugout(p[0:10], "p_body_body")
+# precedence = (
+#     ('left', 'bodypure_empty'),
+#     ('left', 'bodypure_body'),
+#     ('left', 'bodypure_bodypure'),
+#  )
 
 # class implementation
 def p_class_class(p):
@@ -80,6 +116,8 @@ def p_class_based(p):
     c = CinnamonClass()
     c.name = p[2]
     c.base = p[4]
+    for a in p[4]:
+        a.parent = c
     p[0] = c
     debugout(p[0:10], "p_class_based")
 
@@ -326,15 +364,18 @@ def p_purevolatile_semi(p):
 
 # Error rule for syntax errors
 def p_error(p):
-    debugout(p)
-    debugout(p.value)
-    debugout("Syntax error in input!")
+    print(p)
+    print(p.value)
+    print("Syntax error in input!")
 
 start = 'body'
 
 # Build the parser
 parser = yacc.yacc()
-# parser = yacc.yacc()
 
-result = parser.parse(open("MacOS/Test.mm","r").read())
+entryFile = "MacOS/GJBaseGameLayer.mm"
+setEntry(entryFile)
+
+result = parser.parse(open(entryFile,"r").read())
+pickle.dump(result, open("cinnamon.pickle", "wb"))
 print(result)

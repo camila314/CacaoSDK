@@ -55,3 +55,9 @@ to_copy/
 
 # Workspace files are user-specific
 *.sublime-workspace
+
+
+# Cinnamon specific generated files
+Source/Cinnamon/parser.out
+Source/Cinnamon/parsetab.py
+Source/Cinnamon/cinnamon.pickle
