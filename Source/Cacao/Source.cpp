@@ -1,5 +1,113 @@
 #include <Header.hpp>
 
+ButtonSprite* ButtonSprite::create(char const* p0) {
+    return reinterpret_cast<ButtonSprite*(*)(char const*)>(base+0x4fa10)(p0);
+}
+
+ButtonSprite* ButtonSprite::create(char const* p0, int p1, int p2, float p3, bool p4) {
+    return reinterpret_cast<ButtonSprite*(*)(char const*, int, int, float, bool)>(base+0x4fa40)(p0, p1, p2, p3, p4);
+}
+
+void ButtonSprite::updateBGImage(char const* p0) {
+    return reinterpret_cast<void(*)(ButtonSprite*, char const*)>(base+0x502d0)(this, p0);
+}
+
+ButtonSprite* ButtonSprite::create(char const* p0, float p1) {
+    return reinterpret_cast<ButtonSprite*(*)(char const*, float)>(base+0x4fa60)(p0, p1);
+}
+
+ButtonSprite* ButtonSprite::create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
+    return reinterpret_cast<ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)>(base+0x4fa90)(p0, p1, p2, p3, p4, p5, p6, p7);
+}
+
+FLAlertLayer::~FLAlertLayer() {
+    reinterpret_cast<FLAlertLayer*(*)(FLAlertLayer*)>(base+0x25db60)(this);
+}
+
+void FLAlertLayer::onEnter() {
+    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f350)(this);
+}
+
+bool FLAlertLayer::ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    return reinterpret_cast<bool(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25ee40)(this, p0, p1);
+}
+
+void FLAlertLayer::ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25f0a0)(this, p0, p1);
+}
+
+void FLAlertLayer::ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25ef60)(this, p0, p1);
+}
+
+void FLAlertLayer::ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25f020)(this, p0, p1);
+}
+
+void FLAlertLayer::registerWithTouchDispatcher() {
+    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f2e0)(this);
+}
+
+void FLAlertLayer::keyBackClicked() {
+    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25ed90)(this);
+}
+
+void FLAlertLayer::keyDown(cocos2d::enumKeyCodes p0) {
+    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::enumKeyCodes)>(base+0x25ece0)(this, p0);
+}
+
+void FLAlertLayer::show() {
+    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f120)(this);
+}
+
+bool FLAlertLayer::init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+    return reinterpret_cast<bool(*)(FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(base+0x25e1b0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
+}
+
+FLAlertLayer* FLAlertLayer::create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
+    return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)>(base+0x25e0e0)(p0, p1, p2, p3, p4, p5);
+}
+
+FLAlertLayer* FLAlertLayer::create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+    return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(base+0x25dec0)(p0, p1, p2, p3, p4, p5, p6, p7);
+}
+
+MenuLayer::~MenuLayer() {
+    reinterpret_cast<MenuLayer*(*)(MenuLayer*)>(base+0x1d1230)(this);
+}
+
+bool MenuLayer::init() {
+    return reinterpret_cast<bool(*)(MenuLayer*)>(base+0x1d14b0)(this);
+}
+
+void MenuLayer::keyBackClicked() {
+    return reinterpret_cast<void(*)(MenuLayer*)>(base+0x1d3160)(this);
+}
+
+void MenuLayer::keyDown(cocos2d::enumKeyCodes p0) {
+    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::enumKeyCodes)>(base+0x1d33d0)(this, p0);
+}
+
+void MenuLayer::googlePlaySignedIn() {
+    return reinterpret_cast<void(*)(MenuLayer*)>(base+0x1d2f30)(this);
+}
+
+void MenuLayer::FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
+    return reinterpret_cast<void(*)(MenuLayer*, FLAlertLayer*, bool)>(base+0x1d3190)(this, p0, p1);
+}
+
+void MenuLayer::onMoreGames(cocos2d::CCObject* p0) {
+    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::CCObject*)>(base+0x1d2ad0)(this, p0);
+}
+
+void MenuLayer::onQuit(cocos2d::CCObject* p0) {
+    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::CCObject*)>(base+0x1d2b40)(this, p0);
+}
+
+void MenuLayer::scene(bool p0) {
+    return reinterpret_cast<void(*)(MenuLayer*, bool)>(base+0x1d12d0)(this, p0);
+}
+
 cocos2d::CCObject* cocos2d::CCCopying::copyWithZone(cocos2d::CCZone*) {
     return 0;
 };
@@ -710,112 +818,4 @@ bool cocos2d::CCLayerRGBA::isCascadeColorEnabled() {
 
 void cocos2d::CCLayerRGBA::setCascadeColorEnabled(bool p0) {
     return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, bool)>(base+0x274250)(this, p0);
-}
-
-MenuLayer::~MenuLayer() {
-    reinterpret_cast<MenuLayer*(*)(MenuLayer*)>(base+0x1d1230)(this);
-}
-
-bool MenuLayer::init() {
-    return reinterpret_cast<bool(*)(MenuLayer*)>(base+0x1d14b0)(this);
-}
-
-void MenuLayer::keyBackClicked() {
-    return reinterpret_cast<void(*)(MenuLayer*)>(base+0x1d3160)(this);
-}
-
-void MenuLayer::keyDown(cocos2d::enumKeyCodes p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::enumKeyCodes)>(base+0x1d33d0)(this, p0);
-}
-
-void MenuLayer::googlePlaySignedIn() {
-    return reinterpret_cast<void(*)(MenuLayer*)>(base+0x1d2f30)(this);
-}
-
-void MenuLayer::FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
-    return reinterpret_cast<void(*)(MenuLayer*, FLAlertLayer*, bool)>(base+0x1d3190)(this, p0, p1);
-}
-
-void MenuLayer::onMoreGames(cocos2d::CCObject* p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::CCObject*)>(base+0x1d2ad0)(this, p0);
-}
-
-void MenuLayer::onQuit(cocos2d::CCObject* p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::CCObject*)>(base+0x1d2b40)(this, p0);
-}
-
-void MenuLayer::scene(bool p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, bool)>(base+0x1d12d0)(this, p0);
-}
-
-ButtonSprite* ButtonSprite::create(char const* p0) {
-    return reinterpret_cast<ButtonSprite*(*)(char const*)>(base+0x4fa10)(p0);
-}
-
-ButtonSprite* ButtonSprite::create(char const* p0, int p1, int p2, float p3, bool p4) {
-    return reinterpret_cast<ButtonSprite*(*)(char const*, int, int, float, bool)>(base+0x4fa40)(p0, p1, p2, p3, p4);
-}
-
-void ButtonSprite::updateBGImage(char const* p0) {
-    return reinterpret_cast<void(*)(ButtonSprite*, char const*)>(base+0x502d0)(this, p0);
-}
-
-ButtonSprite* ButtonSprite::create(char const* p0, float p1) {
-    return reinterpret_cast<ButtonSprite*(*)(char const*, float)>(base+0x4fa60)(p0, p1);
-}
-
-ButtonSprite* ButtonSprite::create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
-    return reinterpret_cast<ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)>(base+0x4fa90)(p0, p1, p2, p3, p4, p5, p6, p7);
-}
-
-FLAlertLayer::~FLAlertLayer() {
-    reinterpret_cast<FLAlertLayer*(*)(FLAlertLayer*)>(base+0x25db60)(this);
-}
-
-void FLAlertLayer::onEnter() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f350)(this);
-}
-
-bool FLAlertLayer::ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<bool(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25ee40)(this, p0, p1);
-}
-
-void FLAlertLayer::ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25f0a0)(this, p0, p1);
-}
-
-void FLAlertLayer::ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25ef60)(this, p0, p1);
-}
-
-void FLAlertLayer::ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25f020)(this, p0, p1);
-}
-
-void FLAlertLayer::registerWithTouchDispatcher() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f2e0)(this);
-}
-
-void FLAlertLayer::keyBackClicked() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25ed90)(this);
-}
-
-void FLAlertLayer::keyDown(cocos2d::enumKeyCodes p0) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::enumKeyCodes)>(base+0x25ece0)(this, p0);
-}
-
-void FLAlertLayer::show() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f120)(this);
-}
-
-bool FLAlertLayer::init(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-    return reinterpret_cast<bool(*)(FLAlertLayer*, FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)>(base+0x25e1b0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
-}
-
-FLAlertLayer* FLAlertLayer::create(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5) {
-    return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)>(base+0x25e0e0)(p0, p1, p2, p3, p4, p5);
-}
-
-FLAlertLayer* FLAlertLayer::create(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-    return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)>(base+0x25dec0)(p0, p1, p2, p3, p4, p5, p6, p7);
 }

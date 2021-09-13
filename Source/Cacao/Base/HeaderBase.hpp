@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <Compatibility/gdstdlib.hpp>
 #include <GDML/GDML.hpp>
 // #include <CCMenuItemSpriteExtra.h>
 #include <Base/InterfaceBase.hpp>

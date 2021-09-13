@@ -2,26 +2,13 @@
 #include <Base/HeaderBase.hpp>
 
 class FLAlertLayerProtocol;
-class MenuLayer;
 class ButtonSprite;
 class FLAlertLayer;
+class MenuLayer;
 
 class FLAlertLayerProtocol {
 public:
     virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
-};
-
-class MenuLayer : public cocos2d::CCLayer, public FLAlertLayerProtocol {
-public:
-    virtual ~MenuLayer();
-    virtual bool init();
-    virtual void keyBackClicked();
-    virtual void keyDown(cocos2d::enumKeyCodes);
-    virtual void googlePlaySignedIn();
-    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
-    void onMoreGames(cocos2d::CCObject*);
-    void onQuit(cocos2d::CCObject*);
-    void scene(bool);
 };
 
 class ButtonSprite : public cocos2d::CCSprite {
@@ -45,15 +32,15 @@ public:
     virtual void keyBackClicked();
     virtual void keyDown(cocos2d::enumKeyCodes);
     virtual void show();
-    bool init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float);
-    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float);
-    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float);
-    static FLAlertLayer* create(char const* title, const std::string &desc, char const* btn) {
+    bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {
         return FLAlertLayer::create(nullptr, title, desc, btn, nullptr, 300.0);
     };
     cocos2d::CCMenu* m_buttonMenu;
     int m_controlConnected;
-    void* m_alertProtocol;
+    FLAlertLayerProtocol* m_alertProtocol;
     cocos2d::CCNode* m_scene;
     bool m_reverseKeyBack;
     cocos2d::ccColor3B m_color;
@@ -67,4 +54,17 @@ public:
     int m_joystickConnected;
     bool m_containsBorder;
     bool m_noAction;
+};
+
+class MenuLayer : public cocos2d::CCLayer, public FLAlertLayerProtocol {
+public:
+    virtual ~MenuLayer();
+    virtual bool init();
+    virtual void keyBackClicked();
+    virtual void keyDown(cocos2d::enumKeyCodes);
+    virtual void googlePlaySignedIn();
+    virtual void FLAlert_Clicked(FLAlertLayer*, bool);
+    void onMoreGames(cocos2d::CCObject*);
+    void onQuit(cocos2d::CCObject*);
+    void scene(bool);
 };

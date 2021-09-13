@@ -16,92 +16,6 @@ public:
 };
 
 template<class D>
-class $MenuLayer : public MenuLayer, public $CacBase {
-public:
-    inline ~$MenuLayer() {}
-
-    inline bool init() {
-        if ((bool($MenuLayer::*)()){&$MenuLayer::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x1d14b0))(this);
-        return MenuLayer::init();
-    }
-
-    inline void keyBackClicked() {
-        if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x1d3160))(this);
-        return MenuLayer::keyBackClicked();
-    }
-
-    inline void keyDown(cocos2d::enumKeyCodes p0) {
-        if ((void($MenuLayer::*)(cocos2d::enumKeyCodes)){&$MenuLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::enumKeyCodes)>(m->getOriginal(base+0x1d33d0))(this, p0);
-        return MenuLayer::keyDown(p0);
-    }
-
-    inline void googlePlaySignedIn() {
-        if ((void($MenuLayer::*)()){&$MenuLayer::googlePlaySignedIn} != (void(D::*)()){&D::googlePlaySignedIn})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x1d2f30))(this);
-        return MenuLayer::googlePlaySignedIn();
-    }
-
-    inline void FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
-        if ((void($MenuLayer::*)(FLAlertLayer*, bool)){&$MenuLayer::FLAlert_Clicked} != (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked})
-            return reinterpret_cast<void(*)(decltype(this), FLAlertLayer*, bool)>(m->getOriginal(base+0x1d3190))(this, p0, p1);
-        return MenuLayer::FLAlert_Clicked(p0, p1);
-    }
-
-    inline void onMoreGames(cocos2d::CCObject* p0) {
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x1d2ad0))(this, p0);
-        return MenuLayer::onMoreGames(p0);
-    }
-
-    inline void onQuit(cocos2d::CCObject* p0) {
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x1d2b40))(this, p0);
-        return MenuLayer::onQuit(p0);
-    }
-
-    inline void scene(bool p0) {
-        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x1d12d0))(this, p0);
-        return MenuLayer::scene(p0);
-    }
-
-    inline $MenuLayer() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
-        m->registerHook(extract_destructor(V), +[](){});
-
-        if ((bool($MenuLayer::*)()){&$MenuLayer::init} != (bool(D::*)()){&D::init})
-            m->registerHook(base+0x1d14b0, extract_virtual(V, (bool(D::*)()){&D::init}));
-
-        if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            m->registerHook(base+0x1d3160, extract_virtual(V, (void(D::*)()){&D::keyBackClicked}));
-
-        if ((void($MenuLayer::*)(cocos2d::enumKeyCodes)){&$MenuLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            m->registerHook(base+0x1d33d0, extract_virtual(V, (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
-
-        if ((void($MenuLayer::*)()){&$MenuLayer::googlePlaySignedIn} != (void(D::*)()){&D::googlePlaySignedIn})
-            m->registerHook(base+0x1d2f30, extract_virtual(V, (void(D::*)()){&D::googlePlaySignedIn}));
-
-        if ((void($MenuLayer::*)(FLAlertLayer*, bool)){&$MenuLayer::FLAlert_Clicked} != (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked})
-            m->registerHook(base+0x1d3190, extract_virtual(V, (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked}));
-
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
-            m->registerHook(base+0x1d2ad0, extract((void(D::*)(cocos2d::CCObject*)){&D::onMoreGames}));
-
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
-            m->registerHook(base+0x1d2b40, extract((void(D::*)(cocos2d::CCObject*)){&D::onQuit}));
-
-        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
-            m->registerHook(base+0x1d12d0, extract((void(D::*)(bool)){&D::scene}));
-    }
-};
-
-template<class D>
 class $ButtonSprite : public ButtonSprite, public $CacBase {
 public:
     inline ~$ButtonSprite() {}
@@ -219,21 +133,21 @@ public:
         return FLAlertLayer::show();
     }
 
-    inline bool init(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25e1b0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    inline bool init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this), FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25e1b0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
         return FLAlertLayer::init(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
-    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5) {
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create})
-            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)>(m->getOriginal(base+0x25e0e0))(p0, p1, p2, p3, p4, p5);
+    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create})
+            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)>(m->getOriginal(base+0x25e0e0))(p0, p1, p2, p3, p4, p5);
         return FLAlertLayer::create(p0, p1, p2, p3, p4, p5);
     }
 
-    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, std::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create})
-            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25dec0))(p0, p1, p2, p3, p4, p5, p6, p7);
+    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create})
+            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25dec0))(p0, p1, p2, p3, p4, p5, p6, p7);
         return FLAlertLayer::create(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
@@ -271,13 +185,99 @@ public:
         if ((void($FLAlertLayer::*)()){&$FLAlertLayer::show} != (void(D::*)()){&D::show})
             m->registerHook(base+0x25f120, extract_virtual(V, (void(D::*)()){&D::show}));
 
-        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init})
-            m->registerHook(base+0x25e1b0, extract((bool(D::*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::init}));
+        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init})
+            m->registerHook(base+0x25e1b0, extract((bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init}));
 
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create})
-            m->registerHook(base+0x25e0e0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float)){&D::create});
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create})
+            m->registerHook(base+0x25e0e0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create});
 
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create})
-            m->registerHook(base+0x25dec0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float)){&D::create});
+        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create})
+            m->registerHook(base+0x25dec0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create});
+    }
+};
+
+template<class D>
+class $MenuLayer : public MenuLayer, public $CacBase {
+public:
+    inline ~$MenuLayer() {}
+
+    inline bool init() {
+        if ((bool($MenuLayer::*)()){&$MenuLayer::init} != (bool(D::*)()){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x1d14b0))(this);
+        return MenuLayer::init();
+    }
+
+    inline void keyBackClicked() {
+        if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x1d3160))(this);
+        return MenuLayer::keyBackClicked();
+    }
+
+    inline void keyDown(cocos2d::enumKeyCodes p0) {
+        if ((void($MenuLayer::*)(cocos2d::enumKeyCodes)){&$MenuLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::enumKeyCodes)>(m->getOriginal(base+0x1d33d0))(this, p0);
+        return MenuLayer::keyDown(p0);
+    }
+
+    inline void googlePlaySignedIn() {
+        if ((void($MenuLayer::*)()){&$MenuLayer::googlePlaySignedIn} != (void(D::*)()){&D::googlePlaySignedIn})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x1d2f30))(this);
+        return MenuLayer::googlePlaySignedIn();
+    }
+
+    inline void FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
+        if ((void($MenuLayer::*)(FLAlertLayer*, bool)){&$MenuLayer::FLAlert_Clicked} != (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked})
+            return reinterpret_cast<void(*)(decltype(this), FLAlertLayer*, bool)>(m->getOriginal(base+0x1d3190))(this, p0, p1);
+        return MenuLayer::FLAlert_Clicked(p0, p1);
+    }
+
+    inline void onMoreGames(cocos2d::CCObject* p0) {
+        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x1d2ad0))(this, p0);
+        return MenuLayer::onMoreGames(p0);
+    }
+
+    inline void onQuit(cocos2d::CCObject* p0) {
+        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x1d2b40))(this, p0);
+        return MenuLayer::onQuit(p0);
+    }
+
+    inline void scene(bool p0) {
+        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x1d12d0))(this, p0);
+        return MenuLayer::scene(p0);
+    }
+
+    inline $MenuLayer() {
+        if (_lock) return;
+        _lock = true;
+        auto V = *reinterpret_cast<uintptr_t*>(new D());
+        _lock = false;
+        m->registerHook(extract_destructor(V), +[](){});
+
+        if ((bool($MenuLayer::*)()){&$MenuLayer::init} != (bool(D::*)()){&D::init})
+            m->registerHook(base+0x1d14b0, extract_virtual(V, (bool(D::*)()){&D::init}));
+
+        if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
+            m->registerHook(base+0x1d3160, extract_virtual(V, (void(D::*)()){&D::keyBackClicked}));
+
+        if ((void($MenuLayer::*)(cocos2d::enumKeyCodes)){&$MenuLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
+            m->registerHook(base+0x1d33d0, extract_virtual(V, (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
+
+        if ((void($MenuLayer::*)()){&$MenuLayer::googlePlaySignedIn} != (void(D::*)()){&D::googlePlaySignedIn})
+            m->registerHook(base+0x1d2f30, extract_virtual(V, (void(D::*)()){&D::googlePlaySignedIn}));
+
+        if ((void($MenuLayer::*)(FLAlertLayer*, bool)){&$MenuLayer::FLAlert_Clicked} != (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked})
+            m->registerHook(base+0x1d3190, extract_virtual(V, (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked}));
+
+        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
+            m->registerHook(base+0x1d2ad0, extract((void(D::*)(cocos2d::CCObject*)){&D::onMoreGames}));
+
+        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
+            m->registerHook(base+0x1d2b40, extract((void(D::*)(cocos2d::CCObject*)){&D::onQuit}));
+
+        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
+            m->registerHook(base+0x1d12d0, extract((void(D::*)(bool)){&D::scene}));
     }
 };
