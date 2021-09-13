@@ -360,7 +360,7 @@
     virtual void userInfoChanged(GJUserScore*) = 0x464070;
     virtual void loadCommentsFinished(cocos2d::CCArray*, char const*) = 0x464250;
     virtual void loadCommentsFailed(char const*) = 0x464340;
-    virtual void setupPageInfo(std::string, char const*) = 0x464410;
+    virtual void setupPageInfo(gd::string, char const*) = 0x464410;
     virtual void commentUploadFinished(int) = 0x464770;
     virtual void commentUploadFailed(int, CommentError) = 0x464800;
     virtual void commentDeleteFailed(int, int) = 0x4648e0;
@@ -547,12 +547,12 @@
     virtual void keyDown(cocos2d::enumKeyCodes) = 0x25ece0;
     virtual void show() = 0x25f120;
 
-    bool init(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float) = 0x25e1b0;
+    bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25e1b0;
 
-    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float) = 0x25e0e0;
-    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, std::string, char const*, char const*, float, bool, float) = 0x25dec0;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) = 0x25e0e0;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
     
-    volatile static FLAlertLayer* create(char const* title, const std::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
+    volatile static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
 
     cocos2d::CCMenu* m_buttonMenu; // 0x1f8
     int m_controlConnected; // 0x200
@@ -1141,7 +1141,7 @@
     virtual ~SetFolderPopup() = 0x155480;
     virtual ~SetFolderPopup() = 0x1554b0;
     virtual void valueChanged() = 0x155d40;
-    virtual void setTextPopupClosed(SetTextPopup*, std::string) = 0x1561b0;
+    virtual void setTextPopupClosed(SetTextPopup*, gd::string) = 0x1561b0;
 @end
 
 @interface SetItemIDLayer
@@ -1162,11 +1162,11 @@
     virtual bool canEncode() = 0x2f2da0;
 
     int m_unknown0;
-    std::string m_unknown1;
-    std::string m_artist;
-    std::string m_unknown2;
-    std::string m_youtube;
-    std::string m_unknown3;
+    gd::string m_unknown1;
+    gd::string m_artist;
+    gd::string m_unknown2;
+    gd::string m_youtube;
+    gd::string m_unknown3;
     int m_unknown4;
     float m_unknown5;
     unsigned short m_pad;
@@ -1245,23 +1245,23 @@
 
     static CCTextInputNode* create(float, float, char const*, char const*, int, char const*) = 0x5cfb0;
 
-    std::string getString() = 0x5d6f0;
+    gd::string getString() = 0x5d6f0;
     void refreshLabel() = 0x5d730;
-    void setAllowedChars(std::string) = 0x5d360;
+    void setAllowedChars(gd::string) = 0x5d360;
     void setLabelNormalColor(cocos2d::_ccColor3B) = 0x5dab0;
     void setLabelPlaceholderColor(cocos2d::_ccColor3B) = 0x5da90;
     void setLabelPlaceholderScale(float) = 0x5da70;
     void setMaxLabelScale(float) = 0x5da30;
     void setMaxLabelWidth(float) = 0x5da50;
-    void setString(std::string) = 0x5d3e0;
-    void updateLabel(std::string) = 0x5d4a0;
+    void setString(gd::string) = 0x5d3e0;
+    void updateLabel(gd::string) = 0x5d4a0;
     void forceOffset() = 0x5ec70;
 
     void* m_unknown0;
-    std::string m_caption; // 0x188
+    gd::string m_caption; // 0x188
     int m_unknown1;
     bool m_selected; // 0x194
-    std::string m_allowedChars; // 0x198
+    gd::string m_allowedChars; // 0x198
     float m_maxLabelWidth;
     float m_maxLabelScale;
     float m_placeholderScale;
@@ -1376,7 +1376,7 @@
     void updateCollisionBlocks() = 0xb6a30;
     void updateCounters(int, int) = 0xb9bc0;
     void updateDisabledObjectsLastPos(cocos2d::CCArray*) = 0xb95b0;
-    void updateLayerCapacity(std::string) = 0xb1680;
+    void updateLayerCapacity(gd::string) = 0xb1680;
     void updateLegacyLayerCapacity(int, int, int, int) = 0xb1590;
     void updateOBB2(cocos2d::CCRect) = 0xb63f0;
     void updateQueuedLabels() = 0xb9f30;
@@ -1552,7 +1552,7 @@
     virtual void show() = 0x193e40;
     virtual void loadListFinished(cocos2d::CCArray*, char const*) = 0x193600;
     virtual void loadListFailed(char const*) = 0x1936f0;
-    virtual void setupPageInfo(std::string, char const*) = 0x193730;
+    virtual void setupPageInfo(gd::string, char const*) = 0x193730;
 @end
 
 @interface AccountHelpLayer
@@ -1752,7 +1752,7 @@
     virtual void levelSettingsUpdated() = 0x93f30;
 
     void activateTriggerEffect(EffectGameObject*, float, float, float) = 0x9b520;
-    GameObject* addObjectFromString(std::string) = 0x94640;
+    GameObject* addObjectFromString(gd::string) = 0x94640;
     void addSpecial(GameObject*) = 0x94f30;
     void addToRedoList(UndoObject*) = 0x96f80;
     void addToUndoList(UndoObject*, bool) = 0x94e20;
@@ -1762,8 +1762,8 @@
     void createBackground() = 0x929f0;
     void createGroundLayer() = 0x92840;
     GameObject* createObject(int, cocos2d::CCPoint, bool) = 0x957c0;
-    void createObjectsFromSetup(std::string) = 0x92230;
-    void createObjectsFromString(std::string, bool) = 0x94730;
+    void createObjectsFromSetup(gd::string) = 0x92230;
+    void createObjectsFromString(gd::string, bool) = 0x94730;
     void getLastObjectX() = 0x9c860;
     void getLevelString() = 0x97790;
     void getNextColorChannel() = 0x9a610;
@@ -2030,8 +2030,8 @@
     virtual void keyDown(cocos2d::enumKeyCodes) = 0x255680;
     virtual void loadLevelsFinished(cocos2d::CCArray*, char const*) = 0x254e10;
     virtual void loadLevelsFailed(char const*) = 0x254f60;
-    virtual void setupPageInfo(std::string, char const*) = 0x255050;
-    virtual void setTextPopupClosed(SetTextPopup*, std::string) = 0x255760;
+    virtual void setupPageInfo(gd::string, char const*) = 0x255050;
+    virtual void setTextPopupClosed(SetTextPopup*, gd::string) = 0x255760;
     virtual void FLAlert_Clicked(FLAlertLayer*, bool) = 0x255840;
     virtual void setIDPopupClosed(SetIDPopup*, int) = 0x2554f0;
 @end
@@ -2150,7 +2150,7 @@
     virtual void deactivateObject(bool) = 0xc85e0;
     virtual void setObjectColor(cocos2d::_ccColor3B const&) = 0xc8720;
     virtual void animationFinished(char const*) = 0xc8750;
-    virtual void displayFrameChanged(cocos2d::CCObject*, std::string) = 0xc9160;
+    virtual void displayFrameChanged(cocos2d::CCObject*, gd::string) = 0xc9160;
 
     void playAnimation(int) = 0xc93d0;
     void updateChildSpriteColor(cocos2d::_ccColor3B) = 0xc8450;
@@ -2309,7 +2309,7 @@
     virtual void uploadActionFailed(int, int) = 0x437500;
     virtual void loadFRequestsFinished(cocos2d::CCArray*, char const*) = 0x437840;
     virtual void loadFRequestsFailed(char const*, GJErrorCode) = 0x437930;
-    virtual void setupPageInfo(std::string, char const*) = 0x437ab0;
+    virtual void setupPageInfo(gd::string, char const*) = 0x437ab0;
     virtual void forceReloadRequests(bool) = 0x437a60;
 @end
 
@@ -2365,7 +2365,7 @@
     virtual void loadMessagesFinished(cocos2d::CCArray*, char const*) = 0x108150;
     virtual void loadMessagesFailed(char const*, GJErrorCode) = 0x108280;
     virtual void forceReloadMessages(bool) = 0x1083b0;
-    virtual void setupPageInfo(std::string, char const*) = 0x108400;
+    virtual void setupPageInfo(gd::string, char const*) = 0x108400;
 @end
 
 @interface SetupAnimationPopup
@@ -2735,7 +2735,7 @@
     void init(LevelEditorLayer*) = 0x8ae0;
     void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
     void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
-    void pasteObjects(std::string) = 0x232d0;
+    void pasteObjects(gd::string) = 0x232d0;
     void playerTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ebf0;
     void playtestStopped() = 0x24790;
     void redoLastAction(cocos2d::CCObject*) = 0xb8e0;
@@ -2753,7 +2753,7 @@
     cocos2d::CCArray* m_editBars = 0x358;
     cocos2d::CCNode* m_locationSlider = 0x228;
     GameObject* m_lastSelectedObject = 0x440;
-    std::string m_clipboard = 0x458;
+    gd::string m_clipboard = 0x458;
 @end
 
 @interface GManager
@@ -2814,7 +2814,7 @@
     virtual void show() = 0x45ab80;
     virtual void loadCommentsFinished(cocos2d::CCArray*, char const*) = 0x45a1b0;
     virtual void loadCommentsFailed(char const*) = 0x45a270;
-    virtual void setupPageInfo(std::string, char const*) = 0x45a320;
+    virtual void setupPageInfo(gd::string, char const*) = 0x45a320;
     virtual void commentUploadFinished(int) = 0x45a890;
     virtual void commentUploadFailed(int, CommentError) = 0x45a960;
     virtual void updateUserScoreFinished() = 0x45a720;
@@ -2892,13 +2892,13 @@
     void cameraMoveX(float, float, float) = 0x7cbe0;
     void cameraMoveY(float, float, float) = 0x7cc60;
     void checkCollisions(PlayerObject*, float) = 0x78c90;
-    void claimParticle(std::string) = 0x76ba0;
+    void claimParticle(gd::string) = 0x76ba0;
     void clearPickedUpItems() = 0x7cfa0;
     void colorObject(int, cocos2d::_ccColor3B) = 0x77810;
     void commitJumps() = 0x737e0;
     static PlayLayer* create(GJGameLevel*) = 0x6b590;
     void createCheckpoint() = 0x7e470;
-    void createObjectsFromSetup(std::string) = 0x6d130;
+    void createObjectsFromSetup(gd::string) = 0x6d130;
     void createParticle(int, char const*, int, cocos2d::tCCPositionType) = 0x76800;
     void delayedResetLevel() = 0x7e050;
     void destroyPlayer(PlayerObject*, GameObject*) = 0x7ab80;
@@ -2919,7 +2919,7 @@
     void getObjectsState() = 0x7e9d0;
     void getOtherPlayer(PlayerObject*) = 0x7dcc0;
     void getParticleKey(int, char const*, int, cocos2d::tCCPositionType) = 0x764d0;
-    void getParticleKey2(std::string) = 0x767b0;
+    void getParticleKey2(gd::string) = 0x767b0;
     void getRelativeMod(cocos2d::CCPoint, float, float, float) = 0x7c2a0;
     void getTempMilliTime() = 0x778e0;
     void gravityEffectFinished() = 0x7cec0;
@@ -2934,7 +2934,7 @@
     void loadDefaultColors() = 0x6ef30;
     void loadFromCheckpoint(CheckpointObject*) = 0x7f000;
     void loadLastCheckpoint() = 0x7efc0;
-    void loadSavedObjectsState(std::string) = 0x7f3d0;
+    void loadSavedObjectsState(gd::string) = 0x7f3d0;
     void markCheckpoint() = 0x7ef60;
     void moveCameraToPos(cocos2d::CCPoint) = 0x7c980;
     void onQuit() = 0x72710;
@@ -2966,7 +2966,7 @@
     void saveRecordAction(bool, PlayerObject*) = 0x78750;
     void scene(GJGameLevel*) = 0x6b500;
     void setupLevelStart(LevelSettingsObject*) = 0x6f560;
-    void setupReplay(std::string) = 0x7e1e0;
+    void setupReplay(gd::string) = 0x7e1e0;
     void shakeCamera(float, float, float) = 0x744a0;
     void shouldBlend(int) = 0x771b0;
     void showCompleteEffect() = 0x738e0;
@@ -3279,26 +3279,26 @@
     virtual void loadFilenameLookupDictionaryFromFile(char const*) = 0x2416f0;
     virtual void setFilenameLookupDictionary(cocos2d::CCDictionary*) = 0x241680;
     virtual void fullPathFromRelativeFile(char const*, char const*) = 0x2408c0;
-    virtual void setSearchResolutionsOrder(std::vector<std::string> const&) = 0x240ac0;
+    virtual void setSearchResolutionsOrder(gd::vector<gd::string> const&) = 0x240ac0;
     virtual void addSearchResolutionsOrder(char const*) = 0x240d30;
     virtual void getSearchResolutionsOrder() = 0x240df0;
-    virtual void setSearchPaths(std::vector<std::string> const&) = 0x240e10;
+    virtual void setSearchPaths(gd::vector<gd::string> const&) = 0x240e10;
     virtual void addSearchPath(char const*) = 0x241180;
     virtual void removeSearchPath(char const*) = 0x241390;
     virtual void getSearchPaths() = 0x240e00;
     virtual void getWritablePath2() = 0x241a90;
-    virtual void isAbsolutePath(std::string const&) = 0x2419c0;
+    virtual void isAbsolutePath(gd::string const&) = 0x2419c0;
     virtual void setPopupNotify(bool) = 0x2419d0;
     virtual void isPopupNotify() = 0x2419e0;
     virtual bool init() = 0x23f010;
     virtual void getNewFilename(char const*) = 0x23f3f0;
     virtual void shouldUseHD() = 0x23f4e0;
-    virtual void addSuffix(std::string, std::string) = 0x23f510;
-    virtual void getPathForFilename(std::string const&, std::string const&, std::string const&) = 0x23f650;
-    virtual void getFullPathForDirectoryAndFilename(std::string const&, std::string const&) = 0x241900;
-    virtual void createCCDictionaryWithContentsOfFile(std::string const&) = 0x23ec30;
-    virtual void writeToFile(cocos2d::CCDictionary*, std::string const&) = 0x23ec40;
-    virtual void createCCArrayWithContentsOfFile(std::string const&) = 0x23ec50;
+    virtual void addSuffix(gd::string, gd::string) = 0x23f510;
+    virtual void getPathForFilename(gd::string const&, gd::string const&, gd::string const&) = 0x23f650;
+    virtual void getFullPathForDirectoryAndFilename(gd::string const&, gd::string const&) = 0x241900;
+    virtual void createCCDictionaryWithContentsOfFile(gd::string const&) = 0x23ec30;
+    virtual void writeToFile(cocos2d::CCDictionary*, gd::string const&) = 0x23ec40;
+    virtual void createCCArrayWithContentsOfFile(gd::string const&) = 0x23ec50;
 @end
 
 @interface cocos2d::CCGLProgram
@@ -5343,7 +5343,7 @@
     virtual void setLabelAnchorPoint(cocos2d::CCPoint) = 0x1a8d70;
     virtual void setMargins(int, int) = 0x1a8ae0;
     virtual void initWithLabelAndBackgroundSprite(cocos2d::CCNode*, cocos2d::extension::CCScale9Sprite*) = 0x1a8480;
-    virtual void initWithTitleAndFontNameAndFontSize(std::string, char const*, float) = 0x1a88f0;
+    virtual void initWithTitleAndFontNameAndFontSize(gd::string, char const*, float) = 0x1a88f0;
     virtual void initWithBackgroundSprite(cocos2d::extension::CCScale9Sprite*) = 0x1a8a30;
     virtual void getTitleForState(unsigned int) = 0x1a8db0;
     virtual void setTitleForState(cocos2d::CCString*, unsigned int) = 0x1a8e90;

@@ -65,7 +65,7 @@ class GJBaseGameLayer : cocos2d::CCLayer {
     void updateCollisionBlocks() = 0xb6a30;
     void updateCounters(int, int) = 0xb9bc0;
     void updateDisabledObjectsLastPos(cocos2d::CCArray*) = 0xb95b0;
-    void updateLayerCapacity(std::string) = 0xb1680;
+    void updateLayerCapacity(gd::string) = 0xb1680;
     void updateLegacyLayerCapacity(int, int, int, int) = 0xb1590;
     void updateOBB2(cocos2d::CCRect) = 0xb63f0;
     void updateQueuedLabels() = 0xb9f30;
@@ -78,43 +78,3 @@ class GJBaseGameLayer : cocos2d::CCLayer {
     LevelSettingsObject* m_levelSettings = 0x390;
     cocos2d::CCDictionary* m_unknownDict = 0x398;
 }
-
-// class cocos2d::CCLayer {
-//     virtual ~CCLayer() = 0x272900;
-//     virtual bool init() = 0x2729a0;
-//     virtual void onEnter() = 0x273300;
-//     virtual void onEnterTransitionDidFinish() = 0x273490;
-//     virtual void onExit() = 0x2733c0;
-//     virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2734d0;
-//     virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x273550;
-//     virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2735d0;
-//     virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x273650;
-//     virtual void ccTouchesBegan(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x2736d0;
-//     virtual void ccTouchesMoved(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x273750;
-//     virtual void ccTouchesEnded(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x2737d0;
-//     virtual void ccTouchesCancelled(cocos2d::CCSet*, cocos2d::CCEvent*) = 0x273850;
-//     virtual void didAccelerate(cocos2d::CCAcceleration*) = 0x272ea0;
-//     virtual void registerWithTouchDispatcher() = 0x272b40;
-//     virtual void registerScriptTouchHandler(int, bool, int, bool) = 0x272bd0;
-//     virtual void unregisterScriptTouchHandler() = 0x272c30;
-//     virtual void isTouchEnabled() = 0x272ce0;
-//     virtual void setTouchEnabled(bool) = 0x272cf0;
-//     virtual void setTouchMode(cocos2d::ccTouchesMode) = 0x272d60;
-//     virtual void getTouchMode() = 0x272e10;
-//     virtual void setTouchPriority(int) = 0x272db0;
-//     virtual void getTouchPriority() = 0x272e00;
-//     virtual void isAccelerometerEnabled() = 0x272e20;
-//     virtual void setAccelerometerEnabled(bool) = 0x272e30;
-//     virtual void setAccelerometerInterval(double) = 0x272e70;
-//     virtual void isKeypadEnabled() = 0x272f70;
-//     virtual void setKeypadEnabled(bool) = 0x272f80;
-//     virtual void isKeyboardEnabled() = 0x273010;
-//     virtual void setKeyboardEnabled(bool) = 0x273020;
-//     virtual void isMouseEnabled() = 0x273090;
-//     virtual void setMouseEnabled(bool) = 0x2730a0;
-//     virtual void keyBackClicked() = 0x273160;
-//     virtual void keyMenuClicked() = 0x273200;
-//     virtual void keyDown(cocos2d::enumKeyCodes) = 0x273280;
-
-//     static cocos2d::CCLayer* create() = 0x272a00;
-// }
