@@ -8,7 +8,7 @@ class CC_DLL CCMouseDelegate {
 public:
 	virtual void rightKeyDown(void);
 	virtual void rightKeyUp(void);
-	virtual void  scrollWheel(float, float);
+	virtual void scrollWheel(float, float);
 };
 
 NS_CC_END

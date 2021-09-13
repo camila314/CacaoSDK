@@ -19,6 +19,9 @@ out = """#include <Header.hpp>
 
 for cl in classes:
     for info in cl.info:
+        if isinstance(info, str) and "cocos2d" in cl.name:
+            out += "\n" + info.replace("\n    ", "\n") + "\n"
+            continue
         if not isinstance(info, CinnamonFunction):
             continue
         body = functionBody

@@ -63,15 +63,15 @@ def p_empty(p):
 
 
 # include implementation
-def p_include_include(p):
-    'include : INCLUDE LTRI TEMPLATEDATA RTRI'
-    p[0] = []
-    debugout(p[0:10], "p_include_include")
+# def p_include_include(p):
+#     'include : INCLUDE LTRI TEMPLATEDATA RTRI'
+#     p[0] = []
+#     print(p[0:10], "p_include_include")
 
-def p_include_includes(p):
-    'include : include include'
-    p[0] = []
-    debugout(p[0:10], "p_include_includes")
+# def p_include_includes(p):
+#     'include : include include'
+#     p[0] = []
+#     debugout(p[0:10], "p_include_includes")
 
 
 # body implementation
@@ -98,7 +98,7 @@ def p_bodypure_body(p):
     debugout(p[0:10], "p_bodypure_body")
 
 def p_bodypure_include(p):
-    'bodypure : include'
+    'bodypure : INCLUDE LTRI RTRI'
     p[0] = []
     debugout(p[0:10], "p_bodypure_include")
 
@@ -305,15 +305,10 @@ def p_puretype_constl(p):
     p[0] = p[1] + " " + p[2]
     debugout(p[0:10], "p_puretype_constl")
 
-def p_puretype_charconst(p):
-    'puretype : CHAR puretype'
+def p_puretype_constp(p):
+    'puretype : puretype CONSTP'
     p[0] = p[1] + " " + p[2]
-    debugout(p[0:10], "p_puretype_constl")
-
-def p_puretype_char(p):
-    'puretype : CHAR'
-    p[0] = p[1]
-    debugout(p[0:10], "p_puretype_constl")
+    debugout(p[0:10], "p_puretype_constp")
 
 def p_puretype_puretype(p):
     'puretype : IDENT'

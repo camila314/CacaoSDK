@@ -12,14 +12,16 @@ public:
 build_body1 = """
     inline {type} {name}({params}) {const}{{
         if (({type}({const}${cl}::*)({params4})){{&${cl}::{name}}} != ({type}({const}D::*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{type}(*)({const}D{params2})>(m->getOriginal(base+{offset}))(this{params3});
+            return reinterpret_cast<{type}(*)(decltype(this){params2})>(m->getOriginal(base+{offset}))(this{params3});
+        return {cl}::{name}({params5});
     }}
 """
 
 build_body1_virtual = """
     inline {type} {name}({params}) {const}{{
         if (({type}({const}${cl}::*)({params4})){{&${cl}::{name}}} != ({type}({const}D::*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{type}(*)({const}D{params2})>(m->getOriginal(base+{offset}))(this{params3});
+            return reinterpret_cast<{type}(*)(decltype(this){params2})>(m->getOriginal(base+{offset}))(this{params3});
+        return {cl}::{name}({params5});
     }}
 """
 
@@ -27,6 +29,7 @@ build_body1_static = """
     inline static {type} {name}({params}) {{
         if (({type}(*)({params4})){{&${cl}::{name}}} != ({type}(*)({params4})){{&D::{name}}})
             return reinterpret_cast<{type}(*)({params4})>(m->getOriginal(base+{offset}))({params3});
+        return {cl}::{name}({params5});
     }}
 """
 
@@ -87,6 +90,7 @@ for cl in classes:
             params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
             params3 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
             params4 = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+            params5 = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
         )
 

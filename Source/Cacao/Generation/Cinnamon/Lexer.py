@@ -12,7 +12,8 @@ reserved = {
     'optcall': 'OPTCALL',
     'unsigned': 'UNSIGNED',
     'class': 'CLASS',
-    'char': 'CHAR',
+    'const*': 'CONSTP',
+    'const&': 'CONSTP',
 }
 
 tokens = [
@@ -38,7 +39,7 @@ tokens = [
     'VOLATILE', 
     'VOLATILEDATA',
     'TEMPLATEDATA'
-] + list(reserved.values())
+] + list(set(reserved.values()))
 
 states = (
     ('volatile','exclusive'),
@@ -173,11 +174,11 @@ def t_eof(t):
     global currentfile
     more = nextFile()
     if more:
-        # t.lexer.input(open(more).read())
-        # t.lexer.lineno = 1
-        print(more)
-        # currentfile = more
-        # return t.lexer.token()
+        t.lexer.input(open(more).read())
+        t.lexer.lineno = 1
+        # print(more)
+        currentfile = more
+        return t.lexer.token()
     return None
 
 import ply.lex as lex
@@ -218,6 +219,6 @@ def setEntry(f):
 #     if not t:
 #         break
 #     print(t)
-#     print(lexer.lexstate)
+    # print(lexer.lexstate)
 
 

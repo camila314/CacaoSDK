@@ -91,7 +91,7 @@ public:
     virtual bool isEqual(const CCObject* pObject);
 
     virtual void acceptVisitor(CCDataVisitor &visitor);
-    virtual void update(float dt) {CC_UNUSED_PARAM(dt);};
+    virtual void update(float dt);
     virtual void encodeWithCoder(DS_Dictionary*); //Robtop Modification
     virtual bool canEncode();    //Robtop Modification
     virtual int  getTag() const; //Robtop Modification
