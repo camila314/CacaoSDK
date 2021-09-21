@@ -51,7 +51,10 @@ public:
     bool equals(const Margin& target) const;
 };
 
-const Margin MarginZero = Margin();
+// alk modification: yuo're 
+// const Margin MarginZero = Margin();
+// end of alk modification
+// you are welcome
 
 typedef enum
 {

@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from Lexer import tokens, addFile, setEntry
+from Lexer import tokens, preprocessed
 import os
 import pickle
 
@@ -87,7 +87,7 @@ def p_body_empty(p):
 
 def p_bodypure_bodypure(p):
     'bodypure : bodypure bodypure'
-    p[0] = p[2] + p[1]
+    p[0] = p[1] + p[2]
     debugout(p[0:10], "p_body_body")
 
 def p_bodypure_body(p):
@@ -96,6 +96,13 @@ def p_bodypure_body(p):
     c.info = p[3]
     p[0] = [c]
     debugout(p[0:10], "p_bodypure_body")
+
+def p_bodypure_empty(p):
+    'bodypure : class LCURLY empty RCURLY'
+    c = p[1]
+    c.info = []
+    p[0] = [c]
+    debugout(p[0:10], "p_bodypure_empty")
 
 def p_bodypure_include(p):
     'bodypure : INCLUDE LTRI RTRI'
@@ -377,7 +384,8 @@ def p_purevolatile_semi(p):
 # Error rule for syntax errors
 def p_error(p):
     print(p)
-    print(p.value)
+    print("Error at:")
+    print('\n'.join(p.lexer.lexdata.split('\n')[p.lexer.lineno-3:p.lexer.lineno+3]))
     print("Syntax error in input!")
 
 start = 'body'
@@ -385,9 +393,11 @@ start = 'body'
 # Build the parser
 parser = yacc.yacc()
 
-entryFile = "MacOS/Entry.mm"
-setEntry(entryFile)
+# entryFile = "MacOS/Entry.mm"
+# setEntry(entryFile)
 
-result = parser.parse(open(entryFile,"r").read())
+result = parser.parse(preprocessed)
+
+# result = parser.parse(open(entryFile,"r").read())
 pickle.dump(result, open("cinnamon.pickle", "wb"))
 # print(result)

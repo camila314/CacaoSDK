@@ -2,6 +2,7 @@ import os
 import sys
 import platform
 import queue
+import re
 
 reserved = {
     'static': 'STATIC',
@@ -61,11 +62,14 @@ t_COLON = r":"
 t_INITIAL_include_ignore_WHITESPACE = r"[\s\t]"
 t_ignore_COMMENT = r'//.*'
 
+nextinclude = ""
+
 def t_template_TEMPLATEDATA(t):
     r"[^<>]+"
-    global includenest
+    global includenest, nextinclude
     if includenest > 0:
-        addFile(t.value)
+        nextinclude = t.value
+    return t
 
 def t_volatile_VOLATILEDATA(t):
     r"[^{};]+"
@@ -105,6 +109,7 @@ def t_info_template_include_RTRI(t):
 
     if includenest == 1:
         includenest -= 1
+        addFile(nextinclude)
         t.lexer.pop_state()
     return t
 
@@ -172,13 +177,13 @@ def t_include_error(t):
 # EOF handling rule
 def t_eof(t):
     global currentfile
-    more = nextFile()
-    if more:
-        t.lexer.input(open(more).read())
-        t.lexer.lineno = 1
-        # print(more)
-        currentfile = more
-        return t.lexer.token()
+    # more = nextFile()
+    # if more:
+    #     t.lexer.input(open(more).read())
+    #     t.lexer.lineno = 1
+    #     # print(more)
+    #     currentfile = more
+    #     return t.lexer.token()
     return None
 
 import ply.lex as lex
@@ -195,11 +200,22 @@ def nextFile():
     return f
 
 def addFile(f):
-    global fileset, filequeue, currentfile
-    f = os.path.join(os.path.dirname(currentfile), f)
-    if f not in fileset:
-        fileset.add(f)
-        filequeue.put(f)
+    global fileset, currentfile, preprocessed
+    f2 = os.path.join(os.path.dirname(currentfile), f)
+    cont = lexer.lexdata
+    if f2 not in fileset:
+        fileset.add(f2)
+        # filequeue.put(f2)
+        more = open(f2).read()
+        
+        # preprocessed = lexer.lexinput.replace("#")
+        preprocessed = re.sub(f'#include\\s*<{f}>', more, cont)
+    else:
+        preprocessed = re.sub(f'#include\\s*<{f}>', "", cont)
+    t.lexer.input(preprocessed)
+    t.lexer.lineno = 1
+    t.lexer.begin('INITIAL')
+
 
 currentfile = ""
 def setEntry(f):
@@ -212,13 +228,15 @@ def setEntry(f):
 #         # raise ValueError("EOF when parsing")
 #     return tt
 
-# lexer.input(open("MacOS/Entry.mm","r").read())
-# while True:
-#     # t = getNext()
-#     t = lexer.token()
-#     if not t:
-#         break
-#     print(t)
+setEntry("MacOS/Entry.mm")
+lexer.input(open(currentfile,"r").read())
+while True:
+    t = lexer.token()
+    if not t:
+        break
+    # print(t)
     # print(lexer.lexstate)
 
-
+# print(preprocessed)
+lexer.lineno = 1
+lexer.begin('INITIAL')
