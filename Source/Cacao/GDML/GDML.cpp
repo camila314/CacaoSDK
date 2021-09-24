@@ -116,6 +116,15 @@ func_t ModContainer::getOriginal(uintptr_t addr) {
     return NULL;
 }
 
+func_t ModContainer::getOriginal(func_t func) {
+    auto container = hooks[reinterpret_cast<uintptr_t>(func)];
+    if (container) {
+        return container->getOriginal();
+    }
+    throw OriginalNotFoundException();
+    return nullptr;
+}
+
 uintptr_t getBase() {
     return _dyld_get_image_vmaddr_slide(0)+0x100000000;
 }

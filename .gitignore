@@ -58,6 +58,6 @@ to_copy/
 
 
 # Cinnamon specific generated files
-Source/Cinnamon/parser.out
-Source/Cinnamon/parsetab.py
-Source/Cinnamon/cinnamon.pickle
+Source/Cacao/Cinnamon/parser.out
+Source/Cacao/Cinnamon/parsetab.py
+Source/Cacao/Cinnamon/cinnamon.pickle

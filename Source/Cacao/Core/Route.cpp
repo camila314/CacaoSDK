@@ -1,43 +1,28 @@
+// 
+// Copyright rd_route 2015.
+// almost none of this code belongs to us.
 //
-//  lowLevel.cpp
-//  GDML
-//
-//  Created by Full Name on 7/17/20.
-//  almost none of this code belongs to me.
-//
+#include "Route.hpp"
 
-#include <lowLevel.hpp>
-#include <Zydis/Zydis.h>
-
-void* _follow_jmp(void* addr) {
+void* followJMP(void* addr) {
     ZydisDecoder decoder;
-    ZydisDecoderInit(&decoder,
-                    ZYDIS_MACHINE_MODE_LONG_64,
-                    ZYDIS_ADDRESS_WIDTH_64);
+    ZydisDecoderInit(&decoder, ZYDIS_MACHINE_MODE_LONG_64, ZYDIS_ADDRESS_WIDTH_64);
     ZydisDecodedInstruction instruction;
 
-    if (ZYAN_SUCCESS(ZydisDecoderDecodeBuffer(
-                        &decoder, 
-                        addr, 
-                        32, 
-                        &instruction))
-    ) {
+    if (ZYAN_SUCCESS(ZydisDecoderDecodeBuffer(&decoder, addr, 32, &instruction))) {
         if (instruction.mnemonic == ZYDIS_MNEMONIC_JMP) { // follow the jump
-            return _follow_jmp(*reinterpret_cast<void**>((long)addr + instruction.length));
+            return followJMP(*reinterpret_cast<void**>((long)addr + instruction.length));
         } else {
             return addr;
         }
     } else {
-        RDErrorLog("Could not parse assembly at %p, this really shouldnt happen wtf", addr);
+        RouteError("Could not parse assembly at %p, this really shouldnt happen wtf", addr);
         return addr;
     }
 }
 
-int dupe(void *function, void **duplicate)
-{
-#ifdef CAC_VERBOSE
-    printf("dupe %p to %p\n", function, duplicate);
-#endif
+int duplicateFunction(void *function, void **duplicate) {
+    RouteLog("dupe %p to %p\n", function, duplicate);
     if (!function || !duplicate) {
         return (KERN_INVALID_ARGUMENT);
     }
@@ -45,7 +30,7 @@ int dupe(void *function, void **duplicate)
     void *image = NULL;
     mach_vm_size_t image_slide = 0;
 
-    function = _follow_jmp(function);
+    function = followJMP(function);
 
     /* Obtain the macho header image which contains the function */
     Dl_info image_info = {0};
@@ -53,7 +38,7 @@ int dupe(void *function, void **duplicate)
         image = image_info.dli_fbase;
     }
     if (!image) {
-        RDErrorLog("Could not found a loaded mach-o image containing the given function.");
+        RouteError("Could not found a loaded mach-o image containing the given function.");
         return KERN_FAILURE;
     }
 
@@ -71,7 +56,7 @@ int dupe(void *function, void **duplicate)
         if (injection_history[i].injected_mach_header == (mach_vm_address_t)image) {
             if (duplicate) {
                 *duplicate = reinterpret_cast<void*>((char*)injection_history[i].target_address + (reinterpret_cast<char*>(function) - reinterpret_cast<char*>(image)));
-                _island_jump_back(function, *duplicate);
+                jumpBackIsland(function, *duplicate);
             }
             return KERN_SUCCESS;
         }
@@ -86,15 +71,15 @@ int dupe(void *function, void **duplicate)
     injection_history[history_size].injected_mach_header = (mach_vm_address_t)image;
     injection_history[history_size].target_address = ({
         mach_vm_address_t target = 0;
-        kern_return_t err = _remap_image(image, image_slide, &target);
+        kern_return_t err = remapImage(image, image_slide, &target);
         if (KERN_SUCCESS != err) {
-            RDErrorLog("Failed to remap segements of the image. See error messages above.");
+            RouteError("Failed to remap segments of the image. See error messages above.");
             return (err);
         }
         /* Backup an original function implementation if needed */
         if (duplicate) {
             *duplicate = (void *)(target + ((mach_vm_address_t)function - (mach_vm_address_t)image));
-            _island_jump_back(function, *duplicate);
+            jumpBackIsland(function, *duplicate);
         }
 
         target;
@@ -105,14 +90,12 @@ int dupe(void *function, void **duplicate)
     return KERN_SUCCESS;
 }
 
-kern_return_t _remap_image(void *image, mach_vm_size_t image_slide, mach_vm_address_t *new_location)
-{
+kern_return_t remapImage(void *image, mach_vm_size_t image_slide, mach_vm_address_t *new_location) {
     assert(image);
     assert(new_location);
-    RDErrorLog("remap image %p, %llu, %p", image, image_slide, new_location);
 
     mach_vm_address_t data_segment_offset = 0;
-    mach_vm_size_t image_size = _image_size(image, image_slide, &data_segment_offset);
+    mach_vm_size_t image_size = imageSize(image, image_slide, &data_segment_offset);
 
     kern_return_t err = KERN_FAILURE;
     /*
@@ -146,7 +129,7 @@ kern_return_t _remap_image(void *image, mach_vm_size_t image_slide, mach_vm_addr
     *new_location += data_segment_offset;
 
     if (KERN_SUCCESS != err) {
-        RDErrorLog("Failed to allocate a memory region for the function copy - mach_vm_allocate() returned 0x%x\n", err);
+        RouteError("Failed to allocate a memory region for the function copy - mach_vm_allocate() returned 0x%x\n", err);
         return (err);
     }
 
@@ -188,14 +171,13 @@ kern_return_t _remap_image(void *image, mach_vm_size_t image_slide, mach_vm_addr
     }
 
     if (KERN_SUCCESS != err) {
-        RDErrorLog("Failed to remap the function implementation to the new address - mach_vm_remap() returned 0x%x\n", err);
+        RouteError("Failed to remap the function implementation to the new address - mach_vm_remap() returned 0x%x\n", err);
     }
 
     return (err);
 }
 
-mach_vm_size_t _image_size(void *image, mach_vm_size_t image_slide, mach_vm_address_t *data_segment_offset)
-{
+mach_vm_size_t imageSize(void *image, mach_vm_size_t image_slide, mach_vm_address_t *data_segment_offset) {
     assert(image);
 
     const mach_header_t *header = (mach_header_t *)image;
@@ -227,13 +209,10 @@ mach_vm_size_t _image_size(void *image, mach_vm_size_t image_slide, mach_vm_addr
     return (image_end - image_addr);
 }
 
-kern_return_t _island_jump_back(void* to, void* from) {
-    RDErrorLog("to %p, from %p", to, from);
+kern_return_t jumpBackIsland(void* to, void* from) {
     int jmp_back_offset = 16;
     ZydisDecoder decoder;
-    ZydisDecoderInit(&decoder,
-                     ZYDIS_MACHINE_MODE_LONG_64,
-                     ZYDIS_ADDRESS_WIDTH_64);
+    ZydisDecoderInit(&decoder, ZYDIS_MACHINE_MODE_LONG_64, ZYDIS_ADDRESS_WIDTH_64);
 
     int offset = 0;
     char data[64];
@@ -241,93 +220,70 @@ kern_return_t _island_jump_back(void* to, void* from) {
 
     bool success = false;
     ZydisDecodedInstruction instruction;
-    while (ZYAN_SUCCESS(ZydisDecoderDecodeBuffer(&decoder, data + offset,
-      (jmp_back_offset+15) - offset, &instruction))) {
+    while (ZYAN_SUCCESS(ZydisDecoderDecodeBuffer(&decoder, data + offset, (jmp_back_offset+15) - offset, &instruction))) {
         offset += instruction.length;
         if (offset >= jmp_back_offset) {
-          success = true;
-          jmp_back_offset = offset;
-          break;
+            success = true;
+            jmp_back_offset = offset;
+            break;
         }
     }
 
     if (success) {
-      kern_return_t ret = _get_jmp_bytes(
-        (void*)((uintptr_t)to + jmp_back_offset),
-        &data[offset]);
-
-      if (ret == KERN_SUCCESS) {
-        ret = _protectProcessMemory((mach_vm_address_t)from, 64,
-          VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
+        kern_return_t ret = getJMPBytes((void*)((uintptr_t)to + jmp_back_offset), &data[offset]);
 
         if (ret == KERN_SUCCESS) {
-            memcpy(from, &data, 64);
-#ifdef CAC_VERBOSE
-            printf("Patched %p + %d with a jump to %p\n", from, jmp_back_offset, (void*)((uintptr_t)to + jmp_back_offset + 4));
-#endif
-            return KERN_SUCCESS;
+            ret = protectProcessMemory((mach_vm_address_t)from, 64, VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
+
+            if (ret == KERN_SUCCESS) {
+                memcpy(from, &data, 64);
+                RouteLog("Patched %p + %d with a jump to %p\n", from, jmp_back_offset, (void*)((uintptr_t)to + jmp_back_offset + 4));
+                return KERN_SUCCESS;
+            } else {
+                RouteLog("Jump back didn't work, reason is %s ; code %d ; patched to %p\n", mach_error_string(ret), ret, from);
+                return 3;
+            }
         } else {
-#ifdef CAC_VERBOSE
-            printf("Jump back didn't work, reason is %s ; code %d ; patched to %p\n", mach_error_string(ret), ret, from);
-#endif
             return 3;
         }
-      } else {
-        return 3;
-      }
     } else {
-      RDErrorLog("Could not parse assembly at %p, this really shouldnt happen wtf", from);
-      return 3;
+        RouteError("Could not parse assembly at %p, this really shouldnt happen wtf", from);
+        return 3;
     }
 }
 
-kern_return_t _get_jmp_bytes(void* to, char* buf)
-{
+kern_return_t getJMPBytes(void* to, char* buf) {
     //assert(to);
     /**
      * We are going to use an absolute JMP instruction for x86_64
-     * and a relative one for i386.
      */
-#if defined (__x86_64__)
     mach_msg_type_number_t size_of_jump = (sizeof(uintptr_t) * 2);
-#else
-    mach_msg_type_number_t size_of_jump = (sizeof(int) + 1);
-#endif
 
     kern_return_t err = KERN_SUCCESS;
     uint8_t opcodes[size_of_jump];
-#if defined(__x86_64__)
+
+
     opcodes[0] = 0xFF;
     opcodes[1] = 0x25;
     *((int*)&opcodes[2]) = 0;
     *((uintptr_t*)&opcodes[6]) = (uintptr_t)to;
     memcpy(buf, &opcodes, size_of_jump);
-    //err = _patch_memory((void *)where, size_of_jump, opcodes);
-    
-#else
-    int offset = (int)(to - where - size_of_jump);
-    opcodes[0] = 0xE9;
-    *((int*)&opcodes[1]) = offset;
-    err = _patch_memory((void *)where, size_of_jump, opcodes);
-#endif
 
     return (err);
 }
 
 kern_return_t readPM(mach_vm_address_t address, size_t length, char* bytes) {
-    uint32_t placehoolder;
-    return mach_vm_read(mach_task_self(), address, length,(vm_offset_t*)bytes,&placehoolder);
+    uint32_t placeholder;
+    return mach_vm_read(mach_task_self(), address, length, (vm_offset_t*)bytes, &placeholder);
 }
 
 
-kern_return_t _protectProcessMemory(mach_vm_address_t address, size_t length, vm_prot_t protection) {
+kern_return_t protectProcessMemory(mach_vm_address_t address, size_t length, vm_prot_t protection) {
     return mach_vm_protect(mach_task_self(), address, length, FALSE, protection);
 }
 
 kern_return_t writePM(mach_vm_address_t address, size_t length, char* bytes) {
-    kern_return_t ret = _protectProcessMemory(address, length, 7);
-    if(ret != KERN_SUCCESS)
-        return ret;
-    
+    kern_return_t ret = protectProcessMemory(address, length, VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
+    if (ret != KERN_SUCCESS) return ret;
     return mach_vm_write(mach_task_self(), address, (vm_offset_t)bytes, (mach_msg_type_number_t)length);
 }

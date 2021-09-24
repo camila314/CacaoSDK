@@ -8,6 +8,7 @@
 #pragma once
 
 #include <vector>
+#include <map>
 #include "lowLevel.hpp"
 
 using namespace std;
@@ -65,15 +66,19 @@ public:
     F registerHook(uintptr_t address, F function) {
         HookContainer* hook = new HookContainer(address, (func_t)function);
         mods.push_back(hook);
+        hooks[reinterpret_cast<uintptr_t&>(function)] = hook;
         return (F)hook->getOriginal();
     }
     
     func_t getOriginal(uintptr_t address);
+
+    func_t getOriginal(func_t func);
     char const* getName();
     inline vector<BaseContainer*> getMods() {return mods;};
 private:
     vector<BaseContainer*> mods;
     char const* containerName;
+    std::map<uintptr_t, HookContainer*> hooks;
 };
 
 struct OriginalNotFoundException : public exception

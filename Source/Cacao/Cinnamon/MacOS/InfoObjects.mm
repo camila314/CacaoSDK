@@ -1,16 +1,16 @@
-// class SongInfoObject : cocos2d::CCNode {
-//     int m_unknown0;
-//     gd::string m_unknown1;
-//     gd::string m_artist;
-//     gd::string m_unknown2;
-//     gd::string m_youtube;
-//     gd::string m_unknown3;
-//     int m_unknown4;
-//     float m_unknown5;
-//     unsigned short m_pad;
-//     unsigned short m_metadata;
-//     int m_uuid;
-// }
+class SongInfoObject : cocos2d::CCNode {
+    int m_unknown0;
+    gd::string m_unknown1;
+    gd::string m_artist;
+    gd::string m_unknown2;
+    gd::string m_youtube;
+    gd::string m_unknown3;
+    int m_unknown4;
+    float m_unknown5;
+    unsigned short m_pad;
+    unsigned short m_metadata;
+    int m_uuid;
+}
 
 // class GJGameLevel {
 //     virtual ~GJGameLevel() = 0x2db2d0;

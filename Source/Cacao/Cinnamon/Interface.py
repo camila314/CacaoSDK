@@ -1,6 +1,6 @@
 from Shared import * 
 
-classes = pickle.load(open("Cinnamon/cinnamon.pickle", "rb"))
+classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
@@ -10,52 +10,59 @@ public:
 """
 
 build_body1 = """
+    using c{id} = {type}({const}${cl}::*)({params4});
+    using d{id} = {type}({const}D::*)({params4});
+    using f{id} = {type}(*)({const}${cl}*{params2});
     inline {type} {name}({params}) {const}{{
-        if (({type}({const}${cl}::*)({params4})){{&${cl}::{name}}} != ({type}({const}D::*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{type}(*)(decltype(this){params2})>(m->getOriginal(base+{offset}))(this{params3});
+        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
+            return rcast<f{id}>(m->getOriginal(rcast<func_t&>((d{id}){{&D::{name}}})))(this{params3});
         return {cl}::{name}({params5});
     }}
 """
 
 build_body1_virtual = """
+    using c{id} = {type}({const}${cl}::*)({params4});
+    using d{id} = {type}({const}D::*)({params4});
+    using f{id} = {type}(*)({const}${cl}*{params2});
     inline {type} {name}({params}) {const}{{
-        if (({type}({const}${cl}::*)({params4})){{&${cl}::{name}}} != ({type}({const}D::*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{type}(*)(decltype(this){params2})>(m->getOriginal(base+{offset}))(this{params3});
+        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
+            return rcast<f{id}>(m->getOriginal(rcast<func_t&>((d{id}){{&D::{name}}})))(this{params3});
         return {cl}::{name}({params5});
     }}
 """
 
 build_body1_static = """
-    inline static {type} {name}({params}) {{
-        if (({type}(*)({params4})){{&${cl}::{name}}} != ({type}(*)({params4})){{&D::{name}}})
-            return reinterpret_cast<{type}(*)({params4})>(m->getOriginal(base+{offset}))({params3});
+    using c{id} = {type}(*)({params4});
+    inline static {type} {name}({params}) {const}{{
+        if ((c{id}){{&${cl}::{name}}} != (c{id}){{&D::{name}}})
+            return rcast<c{id}>(m->getOriginal(rcast<func_t&>((c{id}){{&D::{name}}})))({params3});
         return {cl}::{name}({params5});
     }}
 """
 
 build_body2_start = """
+    inline ${cl}(bool) {{}}
     inline ${cl}() {{
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){{}});
 """
     
 
 build_body2_body = """
-        if (({type}({const}${cl}::*)({params})){{&${cl}::{name}}} != ({type}({const}D::*)({params})){{&D::{name}}})
-            m->registerHook(base+{offset}, extract(({type}({const}D::*)({params})){{&D::{name}}}));
+        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
+            m->registerHook(base+{offset}, extract((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_static = """
-        if (({type}(*)({params})){{&${cl}::{name}}} != ({type}(*)({params})){{&D::{name}}})
-            m->registerHook(base+{offset}, ({type}(*)({params})){{&D::{name}}});
+        if ((c{id}){{&${cl}::{name}}} != (c{id}){{&D::{name}}})
+            m->registerHook(base+{offset}, (c{id}){{&D::{name}}});
 """
 
 build_body2_body_virtual = """
-        if (({type}({const}${cl}::*)({params})){{&${cl}::{name}}} != ({type}({const}D::*)({params})){{&D::{name}}})
-            m->registerHook(base+{offset}, extract_virtual(V, ({type}({const}D::*)({params})){{&D::{name}}}));
+        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
+            m->registerHook(base+{offset}, extract_virtual(V, (d{id}){{&D::{name}}}));
 """
 
 build_body2_end = "    }\n"
@@ -67,6 +74,7 @@ out = """//
 //
 #pragma once
 #include <Base/InterfaceBase.hpp>
+#define rcast reinterpret_cast
 """
 for cl in classes:
     if "cocos2d" in cl.name:
@@ -76,7 +84,7 @@ for cl in classes:
         cl=cl.name,
     )
 
-    for info in cl.info:
+    for i, info in enumerate(cl.info):
         if not isinstance(info, CinnamonFunction) or info.declare.name[1:] in cl.name:
             continue
         body1 = build_body1
@@ -96,11 +104,12 @@ for cl in classes:
             params4 = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
             params5 = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
+            id = i,
         )
 
     out += build_body2_start.format(cl=cl.name)
 
-    for info in cl.info:
+    for i, info in enumerate(cl.info):
         if not isinstance(info, CinnamonFunction) or info.declare.name[1:] in cl.name:
             continue
         body2 = build_body2_body
@@ -115,10 +124,15 @@ for cl in classes:
             offset = info.offset, 
             params = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
+            id = i,
         )
 
     out += build_body2_end
     out += build_end
+
+out += """
+#undef rcast
+"""
 
 with open("../Interface.hpp", "w") as f:
     f.write(out)

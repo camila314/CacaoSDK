@@ -228,7 +228,7 @@ def setEntry(f):
 #         # raise ValueError("EOF when parsing")
 #     return tt
 
-setEntry("MacOS/Entry.mm")
+setEntry(os.path.join(os.path.dirname(__file__), "MacOS/Entry.mm"))
 lexer.input(open(currentfile,"r").read())
 while True:
     t = lexer.token()

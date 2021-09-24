@@ -1,6 +1,6 @@
 from Shared import * 
 
-classes = pickle.load(open("Cinnamon/cinnamon.pickle", "rb"))
+classes = pickle.load(open(picklepath, "rb"))
 
 classBody = """
 class {cl} {{

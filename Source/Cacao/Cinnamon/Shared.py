@@ -1,4 +1,5 @@
 import pickle
+import os
 
 class CinnamonDeclaration:
     def __init__(self):
@@ -48,3 +49,5 @@ class CinnamonClass:
         self.base = []
     def __repr__(self):
         return self.name + ": " + ', '.join(self.base) + "\n" + '\n'.join(repr(r) for r in self.info)
+
+picklepath = os.path.join(os.path.dirname(__file__), "cinnamon.pickle")

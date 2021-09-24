@@ -399,5 +399,5 @@ parser = yacc.yacc()
 result = parser.parse(preprocessed)
 
 # result = parser.parse(open(entryFile,"r").read())
-pickle.dump(result, open("cinnamon.pickle", "wb"))
+pickle.dump(result, open(os.path.join(os.path.dirname(__file__), "cinnamon.pickle"), "wb"))
 # print(result)

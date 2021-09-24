@@ -3,84 +3,124 @@
 //
 #pragma once
 
-#include <vector>
+#include "Platform.hpp"
 
-#define FCAST(a, b) reinterpret_cast<decltype(&a)>(b)
-typedef void(*func_t)();
-/* The classes below are exported */
-#pragma GCC visibility push(default)
+namespace Cacao::core {
 
-class BaseContainer {
-private:
-    uintptr_t address;
-    size_t byteCount;
-    char* originalBytes;
-    char* moddedBytes;
-    
-public:
-    virtual ~BaseContainer();
-    void enable();
-    void disable();
-    inline uintptr_t getAddress() {
-        return address;
-    }
+    #define CoreLog(format, ...) fprintf(stdout, "%s:%d:\nlog: " format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
-    friend class ModContainer;
-};
+    typedef void(*func_t)();
 
-class MemoryContainer : public BaseContainer{
-public:
-    MemoryContainer(uintptr_t address, size_t byteCount, char* bytes);
-    ~MemoryContainer();
-};
+    //
+    // Base container type for hooks and patches
+    //
+    class BaseContainer {
+    private:
+        uintptr_t address;
+        char* originalBytes;
+        char* moddedBytes;
+        
+    public:
 
-class HookContainer : public BaseContainer {
-private:
-    func_t original; 
+        // Destructs the container
+        virtual ~BaseContainer();
 
-public:
-    HookContainer(uintptr_t address, func_t function);
-    func_t getOriginal();
-    ~HookContainer();
-};
+        // Enables the specific base container
+        virtual void enable();
 
-class ModContainer {
-private:
-    std::vector<BaseContainer*> mods;
-    char const* containerName;
+        // Disables the specific base container
+        virtual void disable();
 
-public:
-    ModContainer(char const* name);
-    ~ModContainer();
-    void enable();
-    void disable();
-    void registerWrite(uintptr_t address, size_t byteCount, char* bytes);
+        // Gets the address of the specific base container
+        uintptr_t getAddress();
 
-    template <typename F>
-    F registerHook(uintptr_t address, F function) {
-        HookContainer* hook = new HookContainer(address, (func_t)function);
-        mods.push_back(hook);
-        return (func_t)hook->getOriginal();
-    }
-    
-    func_t getOriginal(uintptr_t address);
-    char const* getName();
-    std::vector<BaseContainer*> getMods();
+        friend class ModContainer;
+    };
 
-};
+    class MemoryContainer : public BaseContainer {
+    private:
+        size_t byteCount;
 
-struct OriginalNotFoundException : public exception {
-    const char* what() const throw() {
-        return "Cannot find the original address of this function";
-    }
-};
+    public:
 
-struct ModNotFoundException : public exception {
-    const char* what() const throw() {
-        return "Cannot find the mod container given the name";
-    }
-};
+        // Constructs a memory container for the address with bytes of byteCount long
+        MemoryContainer(uintptr_t address, size_t byteCount, char* bytes);
 
-uintptr_t getBase();
+        // Destructs the specific memory container
+        virtual ~MemoryContainer();
+    };
 
-#pragma GCC visibility pop
+    class HookContainer : public BaseContainer {
+    private:
+        func_t original; 
+        uintptr_t searchAddress;
+
+    public:
+
+        // Constructs a hook container for the address with function
+        HookContainer(uintptr_t address, func_t function);
+
+        // Destructs the specific hook container
+        virtual ~HookContainer();
+
+        // Enables the specific hook container
+        virtual void enable();
+
+        // Disables the specific hook container
+        virtual void disable();
+
+        // Gets the original function for the specified hook
+        func_t getOriginal();
+    };
+
+
+    //
+    // Mod container that contains all the base containers
+    //
+    class ModContainer {
+    private:
+        std::map<uintptr_t, HookContainer*> m_hooks;
+        std::vector<BaseContainer*> m_mods;
+        std::string m_name;
+
+    public:
+        // Constructs the container with a given name
+        ModContainer(std::string name);
+
+        // Destructs the container
+        virtual ~ModContainer();
+
+        // Enables all the hooks and writes registered to the container
+        void enable();
+
+        // Disables all the hooks and writes registered to the container
+        void disable();
+
+        // Registers a write of bytes to the address that is byteCount long
+        void registerWrite(uintptr_t address, size_t byteCount, char* bytes);
+
+        // Registers a function hook to the address
+        func_t registerHook(uintptr_t address, func_t function); 
+
+        // Gets the original function from the specified address
+        __attribute__((deprecated("Replaced by getting the original function by the hooked function pointer, which doesn't break with multiple hooks on the same address"))) 
+        func_t getOriginal(uintptr_t address);
+
+        // Gets the original function from the hooking function
+        func_t getOriginal(func_t func);
+
+        // The getter for the base containers
+        std::vector<BaseContainer*> getMods();
+
+        // The getter for the name of the container
+        std::string getName();
+    };
+
+    struct OriginalNotFoundException : public exception {
+        const char* what() const throw() {
+            return "Cannot find the original address of this function";
+        }
+    };
+}
+
+using ModContainer = Cacao::core::ModContainer;
