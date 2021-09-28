@@ -43,6 +43,8 @@ struct LevelDifficulty {
         return *(__TYPE__*)((long)this+__OFFSET__);         \
     }
 
+#define NAKED __attribute__((naked))
+
 #ifndef __APPLE__
     #define returnXMM(type)                                 \
     type ret;                                               \

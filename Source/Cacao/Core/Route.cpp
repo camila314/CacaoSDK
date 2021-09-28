@@ -98,115 +98,13 @@ kern_return_t remapImage(void *image, mach_vm_size_t image_slide, mach_vm_addres
     mach_vm_size_t image_size = imageSize(image, image_slide, &data_segment_offset);
 
     kern_return_t err = KERN_FAILURE;
-    /*
-     * On x86_64 for some images __DATA segment is mapped far from other segments.
-     * To handle it we need to allocate a memory zone that has enough capacity
-     * for both __DATA's island and the rest of the image.
-     *
-     * Since __DATA is mapped even *before* the actual image, we are going to have
-     * a "safety zone" (the space between __TEXT and __DATA segments) by skipping
-     * the first data_segment_offset bytes. Thus, __DATA will be remapped into a
-     * valid (i.e. owned by user) memory space.
-     * Here's a map of whole memory zone:
-     *                                               image_size bytes
-     *                                            ---------------------
-     *        __DATA island                      /                     \
-     *            /   \                         /                       \
-     *  >--------*-----*-----------------------*------(...)------*-------*--->
-     *           |                             |                 |
-     *           |                             |                 |
-     *        __DATA                        __TEXT          __LINKEDIT
-     *           |                             |
-     *           |                             |
-     *      *new_location        *new_location + data_segment_offset
-     *
-     * NOTE: vmaddr(__TEXT) - vmaddr(__DATA) = const, so we can't remap __DATA
-     * into any place we want.
-     */
+
     *new_location = 0;
     err = mach_vm_allocate(mach_task_self(), new_location,
                           (image_size + data_segment_offset), VM_FLAGS_ANYWHERE);
     *new_location += data_segment_offset;
 
-    if (KERN_SUCCESS != err) {
-        RouteError("Failed to allocate a memory region for the function copy - mach_vm_allocate() returned 0x%x\n", err);
-        return (err);
-    }
-
-    const mach_header_t *header = (mach_header_t *)image;
-    struct load_command *cmd = (struct load_command *)(header + 1);
-
-    /**
-     * Remap each segment of the mach-o image into a new location.
-     * New location is:
-     * -> target_image + segment.offset_in_image;
-     */
-    for (uint32_t i = 0; (i < header->ncmds); i++, cmd = (struct load_command*)((long)cmd + cmd->cmdsize)) {
-        if (cmd->cmd != LC_SEGMENT_ARCH_INDEPENDENT) continue;
-
-        segment_command_t *segment = (segment_command_t *)cmd;
-        mach_vm_address_t vmaddr = segment->vmaddr;
-        mach_vm_size_t    vmsize = segment->vmsize;
-
-        if (vmsize == 0) continue;
-
-        mach_vm_address_t seg_source = vmaddr + image_slide;
-        mach_vm_address_t seg_target = *new_location + (seg_source - (mach_vm_address_t)header);
-
-        vm_prot_t cur_protection, max_protection;
-
-        err = mach_vm_remap(
-            /* Target information */
-            mach_task_self(), &seg_target, vmsize, 0x0,
-            /* Flags */
-            (VM_FLAGS_FIXED | 0x4000 ),
-            /* Source information */
-            mach_task_self(), seg_source,
-            /* Should we copy this region? (it will be directly mapped otherwise) */
-            true,
-            /* The initial protection for the new region */
-            &cur_protection, &max_protection,
-            /* The inheritance attribute */
-            VM_INHERIT_SHARE);
-    }
-
-    if (KERN_SUCCESS != err) {
-        RouteError("Failed to remap the function implementation to the new address - mach_vm_remap() returned 0x%x\n", err);
-    }
-
     return (err);
-}
-
-mach_vm_size_t imageSize(void *image, mach_vm_size_t image_slide, mach_vm_address_t *data_segment_offset) {
-    assert(image);
-
-    const mach_header_t *header = (mach_header_t *)image;
-    struct load_command *cmd = (struct load_command *)(header + 1);
-
-    mach_vm_address_t image_addr = (mach_vm_address_t)image - image_slide;
-    mach_vm_address_t image_end = image_addr;
-    mach_vm_address_t data_vmaddr = 0, text_vmaddr = 0;
-
-    for (uint32_t i = 0; (i < header->ncmds); i++, cmd = (struct load_command *)((long)cmd + cmd->cmdsize)) {
-        if (cmd->cmd != LC_SEGMENT_ARCH_INDEPENDENT) continue;
-
-        segment_command_t *segment = (segment_command_t *)cmd;
-        if (0 == strcmp("__DATA", segment->segname)) {
-            data_vmaddr = segment->vmaddr;
-        }  else if (0 == strcmp("__TEXT", segment->segname)) {
-            text_vmaddr = segment->vmaddr;
-        }
-
-        if ((segment->vmaddr + segment->vmsize) > image_end) {
-            image_end = segment->vmaddr + segment->vmsize;
-        }
-    }
-
-    if (data_vmaddr < text_vmaddr) {
-        *data_segment_offset = text_vmaddr - data_vmaddr;
-    }
-
-    return (image_end - image_addr);
 }
 
 kern_return_t jumpBackIsland(void* to, void* from) {
@@ -233,7 +131,7 @@ kern_return_t jumpBackIsland(void* to, void* from) {
         kern_return_t ret = getJMPBytes((void*)((uintptr_t)to + jmp_back_offset), &data[offset]);
 
         if (ret == KERN_SUCCESS) {
-            ret = protectProcessMemory((mach_vm_address_t)from, 64, VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
+            ret = protectPM((mach_vm_address_t)from, 64, VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
 
             if (ret == KERN_SUCCESS) {
                 memcpy(from, &data, 64);
@@ -252,24 +150,102 @@ kern_return_t jumpBackIsland(void* to, void* from) {
     }
 }
 
-kern_return_t getJMPBytes(void* to, char* buf) {
-    //assert(to);
+
+
+
+/**
+ * JMP implements by your dearest alk
+ */
+constexpr mach_msg_type_number_t sizeofJMP = (sizeof(int) + 1);
+
+mach_vm_address_t followJMP(mach_vm_address_t at) {
+    assert(at);
+    mach_vm_address_t follow = 0;
+    mach_vm_address_t next;
+
+    // why
+    while (next = readJMP(follow)) follow = next;
+
+    return follow;
+}
+
+mach_vm_address_t readJMP(mach_vm_address_t at) {
+    assert(at);
+
+    kern_return_t err = KERN_FAILURE;
+    uint8_t opcodes[sizeofJMP];
+
+    err = readPM(at, sizeofJMP, opcodes);
+
+    if (err == KERN_FAILURE) {
+        RouteError("Couldn't read jmp instruction at %p - returned %p", (void*)at, (void*)err);
+        return 0;
+    }
+    if (opcodes[0] != 0xE9) {
+        return 0;
+    }
+
+    int offset = *((int*)&opcodes[1]);
+    return at + sizeofJMP + offset;
+}
+
+void writeJMP(mach_vm_address_t at, mach_vm_address_t to) {
+    assert(at);
+    assert(to);
+
     /**
-     * We are going to use an absolute JMP instruction for x86_64
+     * No we are going to use a relative jump for x86_64 because of things:
+     * No need to fix the relative instructions we overwrite (5 instead of 14, highly unlikely to clash with an relative instruction)
+     * That's mostly it.
+     * oh and otherwise i cri
      */
-    mach_msg_type_number_t size_of_jump = (sizeof(uintptr_t) * 2);
 
-    kern_return_t err = KERN_SUCCESS;
-    uint8_t opcodes[size_of_jump];
+    kern_return_t err = KERN_FAILURE;
+    uint8_t opcodes[sizeofJMP];
+
+    int offset = (int)(to - at - sizeofJMP);
+    opcodes[0] = 0xE9;
+    *((int*)&opcodes[1]) = offset;
+
+    err = writePM(at, sizeofJMP, opcodes);
+
+    if (err == KERN_FAILURE) {
+        RouteError("Couldn't write jmp instruction at %p to %p - returned %p", (void*)at, (void*)to, (void*)err);
+    }
+    RouteLog("Created a jmp instruction at %p to %p", (void*)at, (void*)to); 
+}
+
+/**
+ * uwu stuff
+ */
+kern_return_t duplicateFunction(void* function, void** duplicate) {
+    RouteLog("Duplicate function %p to %p\n", function, duplicate);
+    if (!function || !duplicate) return KERN_INVALID_ARGUMENT;
+
+    function = followJMP(function);
+
+    
+
+    return KERN_SUCCESS;
+}
 
 
-    opcodes[0] = 0xFF;
-    opcodes[1] = 0x25;
-    *((int*)&opcodes[2]) = 0;
-    *((uintptr_t*)&opcodes[6]) = (uintptr_t)to;
-    memcpy(buf, &opcodes, size_of_jump);
 
-    return (err);
+/**
+ * Some nerd stuff i no understand
+ */
+mach_vm_address_t allocateVM(size_t length) {
+    kern_return_t err = KERN_FAILURE;
+
+    mach_vm_address_t alloc;
+    err = mach_vm_allocate(mach_task_self(), &alloc, length, VM_FLAGS_ANYWHERE);
+
+    if (err == KERN_FAILURE) {
+        RouteError("Failed to allocate a memory region - returned %p", (void*)err);
+        return 0;
+    }
+    RouteLog("Allocated a memory region at %p with size %d", (void*)alloc, length); 
+    return alloc;
 }
 
 kern_return_t readPM(mach_vm_address_t address, size_t length, char* bytes) {
@@ -277,13 +253,15 @@ kern_return_t readPM(mach_vm_address_t address, size_t length, char* bytes) {
     return mach_vm_read(mach_task_self(), address, length, (vm_offset_t*)bytes, &placeholder);
 }
 
-
-kern_return_t protectProcessMemory(mach_vm_address_t address, size_t length, vm_prot_t protection) {
+kern_return_t protectPM(mach_vm_address_t address, size_t length, vm_prot_t protection) {
     return mach_vm_protect(mach_task_self(), address, length, FALSE, protection);
 }
 
 kern_return_t writePM(mach_vm_address_t address, size_t length, char* bytes) {
-    kern_return_t ret = protectProcessMemory(address, length, VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
+    kern_return_t ret = protectPM(address, length, VM_PROT_WRITE | VM_PROT_READ | VM_PROT_EXECUTE);
     if (ret != KERN_SUCCESS) return ret;
     return mach_vm_write(mach_task_self(), address, (vm_offset_t)bytes, (mach_msg_type_number_t)length);
 }
+
+
+

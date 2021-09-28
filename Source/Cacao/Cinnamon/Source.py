@@ -46,5 +46,5 @@ for cl in classes:
         )
 
 
-with open("../Source.cpp", "w") as f:
+with open("Source.cpp", "w") as f:
     f.write(out)

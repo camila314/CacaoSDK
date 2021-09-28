@@ -82,6 +82,7 @@ namespace Cacao::core {
         std::map<uintptr_t, HookContainer*> m_hooks;
         std::vector<BaseContainer*> m_mods;
         std::string m_name;
+        uintptr_t m_hash;
 
     public:
         // Constructs the container with a given name
@@ -114,7 +115,24 @@ namespace Cacao::core {
 
         // The getter for the name of the container
         std::string getName();
+
+        // Implemented for the set
+        bool operator<(const ModContainer* other) const;
     };
+
+    // Shared interface container that holds all the mod containers
+    class ModInterface {
+    private:
+        static ModInterface* __attribute__((weak)) g_sharedInterface;
+
+        
+
+    public:
+        // Shared getter for the interface
+        static ModInterface* sharedInterface();
+
+
+    }
 
     struct OriginalNotFoundException : public exception {
         const char* what() const throw() {
@@ -124,3 +142,5 @@ namespace Cacao::core {
 }
 
 using ModContainer = Cacao::core::ModContainer;
+
+using ModInterface = Cacao::core::ModInterface;

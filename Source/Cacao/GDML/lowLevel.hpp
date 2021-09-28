@@ -30,8 +30,8 @@ typedef struct rd_injection {
     mach_vm_address_t target_address;
 } rd_injection_t;
 
-#define RDErrorLog(format, ...) fprintf(stderr, "%s:%d:\n\terror: " format"\n", \
-__FILE__, __LINE__, ##__VA_ARGS__)
+#define RDErrorLog(format, ...) fprintf(stderr, "%d, error: " format"\n", __LINE__, ##__VA_ARGS__)
+#define RDLog(format, ...) fprintf(stdout, "%d, log: " format"\n", __LINE__, ##__VA_ARGS__)
 
 kern_return_t _protectProcessMemory(mach_vm_address_t address, size_t length, vm_prot_t protection);
 kern_return_t _island_jump_back(void* to, void* from);

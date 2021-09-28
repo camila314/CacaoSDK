@@ -109,10 +109,12 @@ kern_return_t _remap_image(void *image, mach_vm_size_t image_slide, mach_vm_addr
 {
     assert(image);
     assert(new_location);
-    RDErrorLog("remap image %p, %llu, %p", image, image_slide, new_location);
+    RDLog("remap image %p, %p, %p", image, image_slide, *new_location);
 
     mach_vm_address_t data_segment_offset = 0;
     mach_vm_size_t image_size = _image_size(image, image_slide, &data_segment_offset);
+
+    RDLog("image size %p, offset %p", image_size, data_segment_offset);
 
     kern_return_t err = KERN_FAILURE;
     /*
@@ -144,6 +146,8 @@ kern_return_t _remap_image(void *image, mach_vm_size_t image_slide, mach_vm_addr
     err = mach_vm_allocate(mach_task_self(), new_location,
                           (image_size + data_segment_offset), VM_FLAGS_ANYWHERE);
     *new_location += data_segment_offset;
+
+    RDLog("new location %p", *new_location);
 
     if (KERN_SUCCESS != err) {
         RDErrorLog("Failed to allocate a memory region for the function copy - mach_vm_allocate() returned 0x%x\n", err);
@@ -196,6 +200,7 @@ kern_return_t _remap_image(void *image, mach_vm_size_t image_slide, mach_vm_addr
 
 mach_vm_size_t _image_size(void *image, mach_vm_size_t image_slide, mach_vm_address_t *data_segment_offset)
 {
+    RDErrorLog("image size %p, %p, %p", image, image_slide, *data_segment_offset);
     assert(image);
 
     const mach_header_t *header = (mach_header_t *)image;
@@ -228,7 +233,7 @@ mach_vm_size_t _image_size(void *image, mach_vm_size_t image_slide, mach_vm_addr
 }
 
 kern_return_t _island_jump_back(void* to, void* from) {
-    RDErrorLog("to %p, from %p", to, from);
+    RDErrorLog("island jump back to %p, from %p", to, from);
     int jmp_back_offset = 16;
     ZydisDecoder decoder;
     ZydisDecoderInit(&decoder,
@@ -262,14 +267,10 @@ kern_return_t _island_jump_back(void* to, void* from) {
 
         if (ret == KERN_SUCCESS) {
             memcpy(from, &data, 64);
-#ifdef CAC_VERBOSE
-            printf("Patched %p + %d with a jump to %p\n", from, jmp_back_offset, (void*)((uintptr_t)to + jmp_back_offset + 4));
-#endif
+            RDLog("Patched %p + %d with a jump to %p\n", from, jmp_back_offset, (void*)((uintptr_t)to + jmp_back_offset + 4));
             return KERN_SUCCESS;
         } else {
-#ifdef CAC_VERBOSE
-            printf("Jump back didn't work, reason is %s ; code %d ; patched to %p\n", mach_error_string(ret), ret, from);
-#endif
+            RDLog("Jump back didn't work, reason is %s ; code %d ; patched to %p\n", mach_error_string(ret), ret, from);
             return 3;
         }
       } else {

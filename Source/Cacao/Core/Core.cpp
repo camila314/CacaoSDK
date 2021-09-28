@@ -119,11 +119,16 @@ namespace Cacao::core {
 
     func_t ModContainer::getOriginal(func_t func) {
         auto container = m_hooks[reinterpret_cast<uintptr_t>(func)];
-        if (container) {
-            return container->getOriginal();
-        }
+        if (container) return container->getOriginal();
         throw OriginalNotFoundException();
         return nullptr;
+    }
+
+    ModInterface* ModInterface::sharedInterface() {
+        if (!g_sharedInterface) {
+            g_sharedInterface = new ModInterface();
+        }
+        return g_sharedInterface;
     }
 
     uintptr_t getBase() {

@@ -1,6 +1,7 @@
 // 
 // Copyright rd_route 2015.
 // its pretty much taken from rd_route
+// not anymore i modified it hehehehheh
 // 
 #pragma once
 
@@ -28,17 +29,30 @@ typedef struct rd_injection {
     mach_vm_address_t target_address;
 } rd_injection_t;
 
-#define RouteError(format, ...) fprintf(stderr, "%s:%d:\nerror: " format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
-#define RouteLog(format, ...) fprintf(stdout, "%s:%d:\nlog: " format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#define RouteError(format, ...) fprintf(stderr, "%d:\nerror: " format"\n", __LINE__, ##__VA_ARGS__)
+#define RouteLog(format, ...) fprintf(stdout, "%d:\nlog: " format"\n", __LINE__, ##__VA_ARGS__)
 
-kern_return_t   protectProcessMemory(mach_vm_address_t address, size_t length, vm_prot_t protection);
-kern_return_t   jumpBackIsland(void* to, void* from);
-mach_vm_size_t  imageSize(void *image, mach_vm_size_t image_slide, mach_vm_address_t *data_segment_offset);
-kern_return_t   remapImage(void *image,  mach_vm_size_t image_slide, mach_vm_address_t *new_location);
-kern_return_t   getJMPBytes(void* to, char* buf);
-kern_return_t   patchMemory(void *address, mach_msg_type_number_t count, uint8_t *new_bytes);
-int             duplicateFunction(void *function, void **duplicate);
-kern_return_t   readPM(mach_vm_address_t address, size_t length, char* bytes);
-kern_return_t   writePM(mach_vm_address_t address, size_t length, char* bytes);
-void*           followJMP(void* addr);
 
+// kern_return_t   jumpBackIsland(void* to, void* from);
+// mach_vm_size_t  imageSize(void *image, mach_vm_size_t image_slide, mach_vm_address_t *data_segment_offset);
+// kern_return_t   remapImage(void *image,  mach_vm_size_t image_slide, mach_vm_address_t *new_location);
+
+// kern_return_t   patchMemory(void *address, mach_msg_type_number_t count, uint8_t *new_bytes);
+
+
+// void*           followJMP(void* addr);
+
+// low level stuff
+kern_return_t       protectPM(mach_vm_address_t address, size_t length, vm_prot_t protection);
+kern_return_t       readPM(mach_vm_address_t address, size_t length, char* bytes);
+kern_return_t       writePM(mach_vm_address_t address, size_t length, char* bytes);
+mach_vm_address_t   allocateVM(size_t length);
+
+// jmp implements 
+mach_vm_address_t   followJMP(mach_vm_address_t at);
+mach_vm_address_t   readJMP(mach_vm_address_t at);
+void                writeJMP(mach_vm_address_t at, mach_vm_address_t to);
+
+// general purpose stuff 
+kern_return_t       duplicateFunction(void* function, void** duplicate);
+kern_return_t       overwriteFunction(void* function, void* overwrite);
