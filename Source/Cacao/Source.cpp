@@ -4,40 +4,49 @@
 //
 #include <Header.hpp>
 
+using f0 = cocos2d::CCObject*(*)(cocos2d::CCObject*);
 cocos2d::CCObject::~CCObject() {
-    reinterpret_cast<cocos2d::CCObject*(*)(cocos2d::CCObject*)>(base+0x250d90)(this);
+    reinterpret_cast<f0>(base+0x250d90)(this);
 }
 
+using f1 = bool(*)(cocos2d::CCObject*, cocos2d::CCObject const*);
 bool cocos2d::CCObject::isEqual(cocos2d::CCObject const* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCObject*, cocos2d::CCObject const*)>(base+0x250f20)(this, p0);
+    return reinterpret_cast<f1>(base+0x250f20)(this, p0);
 }
 
+using f2 = void(*)(cocos2d::CCObject*, cocos2d::CCDataVisitor&);
 void cocos2d::CCObject::acceptVisitor(cocos2d::CCDataVisitor& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCObject*, cocos2d::CCDataVisitor&)>(base+0x250f30)(this, p0);
+    return reinterpret_cast<f2>(base+0x250f30)(this, p0);
 }
 
+using f3 = void(*)(cocos2d::CCObject*, float);
 void cocos2d::CCObject::update(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCObject*, float)>(base+0x32660)(this, p0);
+    return reinterpret_cast<f3>(base+0x32660)(this, p0);
 }
 
+using f4 = void(*)(cocos2d::CCObject*, DS_Dictionary*);
 void cocos2d::CCObject::encodeWithCoder(DS_Dictionary* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCObject*, DS_Dictionary*)>(base+0x250f70)(this, p0);
+    return reinterpret_cast<f4>(base+0x250f70)(this, p0);
 }
 
+using f5 = bool(*)(cocos2d::CCObject*);
 bool cocos2d::CCObject::canEncode() {
-    return reinterpret_cast<bool(*)(cocos2d::CCObject*)>(base+0x250f90)(this);
+    return reinterpret_cast<f5>(base+0x250f90)(this);
 }
 
+using f6 = int(*)(const cocos2d::CCObject*);
 int cocos2d::CCObject::getTag() const {
-    return reinterpret_cast<int(*)(const cocos2d::CCObject*)>(base+0x250f50)(this);
+    return reinterpret_cast<f6>(base+0x250f50)(this);
 }
 
+using f7 = void(*)(cocos2d::CCObject*, int);
 void cocos2d::CCObject::setTag(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCObject*, int)>(base+0x250f60)(this, p0);
+    return reinterpret_cast<f7>(base+0x250f60)(this, p0);
 }
 
+using f8 = cocos2d::CCObject*(*)(cocos2d::CCObject*);
 cocos2d::CCObject::CCObject() {
-    reinterpret_cast<cocos2d::CCObject*(*)(cocos2d::CCObject*)>(base+0x250ca0)(this);
+    reinterpret_cast<f8>(base+0x250ca0)(this);
 }
 
 cocos2d::CCObject* cocos2d::CCCopying::copyWithZone(cocos2d::CCZone*) {
@@ -61,1072 +70,1339 @@ cocos2d::CCPoint& cocos2d::CCPoint::operator=(const cocos2d::CCSize& size) {
     return *this;
 };
 
+using f9 = cocos2d::CCNode*(*)(cocos2d::CCNode*);
 cocos2d::CCNode::~CCNode() {
-    reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCNode*)>(base+0x1228d0)(this);
+    reinterpret_cast<f9>(base+0x1228d0)(this);
 }
 
+using f10 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::update(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x1241a0)(this, p0);
+    return reinterpret_cast<f10>(base+0x1241a0)(this, p0);
 }
 
+using f11 = bool(*)(cocos2d::CCNode*);
 bool cocos2d::CCNode::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*)>(base+0x122910)(this);
+    return reinterpret_cast<f11>(base+0x122910)(this);
 }
 
+using f12 = void(*)(cocos2d::CCNode*, int);
 void cocos2d::CCNode::setZOrder(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, int)>(base+0x1229a0)(this, p0);
+    return reinterpret_cast<f12>(base+0x1229a0)(this, p0);
 }
 
+using f13 = void(*)(cocos2d::CCNode*, int);
 void cocos2d::CCNode::_setZOrder(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, int)>(base+0x122990)(this, p0);
+    return reinterpret_cast<f13>(base+0x122990)(this, p0);
 }
 
+using f14 = int(*)(cocos2d::CCNode*);
 int cocos2d::CCNode::getZOrder() {
-    return reinterpret_cast<int(*)(cocos2d::CCNode*)>(base+0x122980)(this);
+    return reinterpret_cast<f14>(base+0x122980)(this);
 }
 
+using f15 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setVertexZ(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x1229f0)(this, p0);
+    return reinterpret_cast<f15>(base+0x1229f0)(this, p0);
 }
 
+using f16 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getVertexZ() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x1229e0)(this);
+    return reinterpret_cast<f16>(base+0x1229e0)(this);
 }
 
+using f17 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setScaleX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122b10)(this, p0);
+    return reinterpret_cast<f17>(base+0x122b10)(this, p0);
 }
 
+using f18 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getScaleX() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122b00)(this);
+    return reinterpret_cast<f18>(base+0x122b00)(this);
 }
 
+using f19 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setScaleY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122b40)(this, p0);
+    return reinterpret_cast<f19>(base+0x122b40)(this, p0);
 }
 
+using f20 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getScaleY() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122b30)(this);
+    return reinterpret_cast<f20>(base+0x122b30)(this);
 }
 
+using f21 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setScale(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122ac0)(this, p0);
+    return reinterpret_cast<f21>(base+0x122ac0)(this, p0);
 }
 
+using f22 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getScale() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122ab0)(this);
+    return reinterpret_cast<f22>(base+0x122ab0)(this);
 }
 
+using f23 = void(*)(cocos2d::CCNode*, float, float);
 void cocos2d::CCNode::setScale(float p0, float p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float, float)>(base+0x122ae0)(this, p0, p1);
+    return reinterpret_cast<f23>(base+0x122ae0)(this, p0, p1);
 }
 
+using f24 = void(*)(cocos2d::CCNode*, cocos2d::CCPoint const&);
 void cocos2d::CCNode::setPosition(cocos2d::CCPoint const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCPoint const&)>(base+0x122b70)(this, p0);
+    return reinterpret_cast<f24>(base+0x122b70)(this, p0);
 }
 
+using f25 = cocos2d::CCPoint const&(*)(cocos2d::CCNode*);
 cocos2d::CCPoint const& cocos2d::CCNode::getPosition() {
-    return reinterpret_cast<cocos2d::CCPoint const&(*)(cocos2d::CCNode*)>(base+0x122b60)(this);
+    return reinterpret_cast<f25>(base+0x122b60)(this);
 }
 
+using f26 = void(*)(cocos2d::CCNode*, float, float);
 void cocos2d::CCNode::setPosition(float p0, float p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float, float)>(base+0x122ba0)(this, p0, p1);
+    return reinterpret_cast<f26>(base+0x122ba0)(this, p0, p1);
 }
 
+using f27 = void(*)(cocos2d::CCNode*, float*, float*);
 void cocos2d::CCNode::getPosition(float* p0, float* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float*, float*)>(base+0x122b90)(this, p0, p1);
+    return reinterpret_cast<f27>(base+0x122b90)(this, p0, p1);
 }
 
+using f28 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setPositionX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122c00)(this, p0);
+    return reinterpret_cast<f28>(base+0x122c00)(this, p0);
 }
 
+using f29 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getPositionX() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122be0)(this);
+    return reinterpret_cast<f29>(base+0x122be0)(this);
 }
 
+using f30 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setPositionY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122c40)(this, p0);
+    return reinterpret_cast<f30>(base+0x122c40)(this, p0);
 }
 
+using f31 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getPositionY() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122bf0)(this);
+    return reinterpret_cast<f31>(base+0x122bf0)(this);
 }
 
+using f32 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setSkewX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122930)(this, p0);
+    return reinterpret_cast<f32>(base+0x122930)(this, p0);
 }
 
+using f33 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getSkewX() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122920)(this);
+    return reinterpret_cast<f33>(base+0x122920)(this);
 }
 
+using f34 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setSkewY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122960)(this, p0);
+    return reinterpret_cast<f34>(base+0x122960)(this, p0);
 }
 
+using f35 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getSkewY() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122950)(this);
+    return reinterpret_cast<f35>(base+0x122950)(this);
 }
 
+using f36 = void(*)(cocos2d::CCNode*, cocos2d::CCPoint const&);
 void cocos2d::CCNode::setAnchorPoint(cocos2d::CCPoint const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCPoint const&)>(base+0x122d90)(this, p0);
+    return reinterpret_cast<f36>(base+0x122d90)(this, p0);
 }
 
+using f37 = cocos2d::CCPoint const&(*)(cocos2d::CCNode*);
 cocos2d::CCPoint const& cocos2d::CCNode::getAnchorPoint() {
-    return reinterpret_cast<cocos2d::CCPoint const&(*)(cocos2d::CCNode*)>(base+0x122d80)(this);
+    return reinterpret_cast<f37>(base+0x122d80)(this);
 }
 
+using f38 = cocos2d::CCPoint const&(*)(cocos2d::CCNode*);
 cocos2d::CCPoint const& cocos2d::CCNode::getAnchorPointInPoints() {
-    return reinterpret_cast<cocos2d::CCPoint const&(*)(cocos2d::CCNode*)>(base+0x122d70)(this);
+    return reinterpret_cast<f38>(base+0x122d70)(this);
 }
 
+using f39 = void(*)(cocos2d::CCNode*, cocos2d::CCSize const&);
 void cocos2d::CCNode::setContentSize(cocos2d::CCSize const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCSize const&)>(base+0x122e50)(this, p0);
+    return reinterpret_cast<f39>(base+0x122e50)(this, p0);
 }
 
+using f40 = cocos2d::CCSize const&(*)(const cocos2d::CCNode*);
 cocos2d::CCSize const& cocos2d::CCNode::getContentSize() const {
-    return reinterpret_cast<cocos2d::CCSize const&(*)(const cocos2d::CCNode*)>(base+0x122e00)(this);
+    return reinterpret_cast<f40>(base+0x122e00)(this);
 }
 
+using f41 = cocos2d::CCSize(*)(cocos2d::CCNode*);
 cocos2d::CCSize cocos2d::CCNode::getScaledContentSize() {
-    return reinterpret_cast<cocos2d::CCSize(*)(cocos2d::CCNode*)>(base+0x122e10)(this);
+    return reinterpret_cast<f41>(base+0x122e10)(this);
 }
 
+using f42 = void(*)(cocos2d::CCNode*, bool);
 void cocos2d::CCNode::setVisible(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, bool)>(base+0x122d60)(this, p0);
+    return reinterpret_cast<f42>(base+0x122d60)(this, p0);
 }
 
+using f43 = bool(*)(cocos2d::CCNode*);
 bool cocos2d::CCNode::isVisible() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*)>(base+0x122d50)(this);
+    return reinterpret_cast<f43>(base+0x122d50)(this);
 }
 
+using f44 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setRotation(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122a10)(this, p0);
+    return reinterpret_cast<f44>(base+0x122a10)(this, p0);
 }
 
+using f45 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getRotation() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122a00)(this);
+    return reinterpret_cast<f45>(base+0x122a00)(this);
 }
 
+using f46 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setRotationX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122a60)(this, p0);
+    return reinterpret_cast<f46>(base+0x122a60)(this, p0);
 }
 
+using f47 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getRotationX() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122a50)(this);
+    return reinterpret_cast<f47>(base+0x122a50)(this);
 }
 
+using f48 = void(*)(cocos2d::CCNode*, float);
 void cocos2d::CCNode::setRotationY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float)>(base+0x122a90)(this, p0);
+    return reinterpret_cast<f48>(base+0x122a90)(this, p0);
 }
 
+using f49 = float(*)(cocos2d::CCNode*);
 float cocos2d::CCNode::getRotationY() {
-    return reinterpret_cast<float(*)(cocos2d::CCNode*)>(base+0x122a80)(this);
+    return reinterpret_cast<f49>(base+0x122a80)(this);
 }
 
+using f50 = void(*)(cocos2d::CCNode*, unsigned int);
 void cocos2d::CCNode::setOrderOfArrival(unsigned int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, unsigned int)>(base+0x122f60)(this, p0);
+    return reinterpret_cast<f50>(base+0x122f60)(this, p0);
 }
 
+using f51 = unsigned int(*)(cocos2d::CCNode*);
 unsigned int cocos2d::CCNode::getOrderOfArrival() {
-    return reinterpret_cast<unsigned int(*)(cocos2d::CCNode*)>(base+0x122f50)(this);
+    return reinterpret_cast<f51>(base+0x122f50)(this);
 }
 
+using f52 = void(*)(cocos2d::CCNode*, cocos2d::ccGLServerState);
 void cocos2d::CCNode::setGLServerState(cocos2d::ccGLServerState p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::ccGLServerState)>(base+0x122fa0)(this, p0);
+    return reinterpret_cast<f52>(base+0x122fa0)(this, p0);
 }
 
+using f53 = cocos2d::ccGLServerState(*)(cocos2d::CCNode*);
 cocos2d::ccGLServerState cocos2d::CCNode::getGLServerState() {
-    return reinterpret_cast<cocos2d::ccGLServerState(*)(cocos2d::CCNode*)>(base+0x122f90)(this);
+    return reinterpret_cast<f53>(base+0x122f90)(this);
 }
 
+using f54 = void(*)(cocos2d::CCNode*, bool);
 void cocos2d::CCNode::ignoreAnchorPointForPosition(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, bool)>(base+0x122f00)(this, p0);
+    return reinterpret_cast<f54>(base+0x122f00)(this, p0);
 }
 
+using f55 = bool(*)(cocos2d::CCNode*);
 bool cocos2d::CCNode::isIgnoreAnchorPointForPosition() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*)>(base+0x122ef0)(this);
+    return reinterpret_cast<f55>(base+0x122ef0)(this);
 }
 
+using f56 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*);
 void cocos2d::CCNode::addChild(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*)>(base+0x1233d0)(this, p0);
+    return reinterpret_cast<f56>(base+0x1233d0)(this, p0);
 }
 
+using f57 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*, int);
 void cocos2d::CCNode::addChild(cocos2d::CCNode* p0, int p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*, int)>(base+0x1233b0)(this, p0, p1);
+    return reinterpret_cast<f57>(base+0x1233b0)(this, p0, p1);
 }
 
+using f58 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*, int, int);
 void cocos2d::CCNode::addChild(cocos2d::CCNode* p0, int p1, int p2) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*, int, int)>(base+0x1232a0)(this, p0, p1, p2);
+    return reinterpret_cast<f58>(base+0x1232a0)(this, p0, p1, p2);
 }
 
+using f59 = cocos2d::CCNode*(*)(cocos2d::CCNode*, int);
 cocos2d::CCNode* cocos2d::CCNode::getChildByTag(int p0) {
-    return reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCNode*, int)>(base+0x123220)(this, p0);
+    return reinterpret_cast<f59>(base+0x123220)(this, p0);
 }
 
+using f60 = cocos2d::CCArray*(*)(cocos2d::CCNode*);
 cocos2d::CCArray* cocos2d::CCNode::getChildren() {
-    return reinterpret_cast<cocos2d::CCArray*(*)(cocos2d::CCNode*)>(base+0x122c80)(this);
+    return reinterpret_cast<f60>(base+0x122c80)(this);
 }
 
+using f61 = unsigned int(*)(const cocos2d::CCNode*);
 unsigned int cocos2d::CCNode::getChildrenCount() const {
-    return reinterpret_cast<unsigned int(*)(const cocos2d::CCNode*)>(base+0x122c90)(this);
+    return reinterpret_cast<f61>(base+0x122c90)(this);
 }
 
+using f62 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*);
 void cocos2d::CCNode::setParent(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*)>(base+0x122ee0)(this, p0);
+    return reinterpret_cast<f62>(base+0x122ee0)(this, p0);
 }
 
+using f63 = cocos2d::CCNode*(*)(cocos2d::CCNode*);
 cocos2d::CCNode* cocos2d::CCNode::getParent() {
-    return reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCNode*)>(base+0x122ed0)(this);
+    return reinterpret_cast<f63>(base+0x122ed0)(this);
 }
 
+using f64 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::removeFromParent() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x1233f0)(this);
+    return reinterpret_cast<f64>(base+0x1233f0)(this);
 }
 
+using f65 = void(*)(cocos2d::CCNode*, bool);
 void cocos2d::CCNode::removeFromParentAndCleanup(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, bool)>(base+0x123410)(this, p0);
+    return reinterpret_cast<f65>(base+0x123410)(this, p0);
 }
 
+using f66 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::removeMeAndCleanup() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123440)(this);
+    return reinterpret_cast<f66>(base+0x123440)(this);
 }
 
+using f67 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*);
 void cocos2d::CCNode::removeChild(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*)>(base+0x123460)(this, p0);
+    return reinterpret_cast<f67>(base+0x123460)(this, p0);
 }
 
+using f68 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*, bool);
 void cocos2d::CCNode::removeChild(cocos2d::CCNode* p0, bool p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*, bool)>(base+0x123480)(this, p0, p1);
+    return reinterpret_cast<f68>(base+0x123480)(this, p0, p1);
 }
 
+using f69 = void(*)(cocos2d::CCNode*, int);
 void cocos2d::CCNode::removeChildByTag(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, int)>(base+0x1235a0)(this, p0);
+    return reinterpret_cast<f69>(base+0x1235a0)(this, p0);
 }
 
+using f70 = void(*)(cocos2d::CCNode*, int, bool);
 void cocos2d::CCNode::removeChildByTag(int p0, bool p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, int, bool)>(base+0x1235c0)(this, p0, p1);
+    return reinterpret_cast<f70>(base+0x1235c0)(this, p0, p1);
 }
 
+using f71 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::removeAllChildren() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123600)(this);
+    return reinterpret_cast<f71>(base+0x123600)(this);
 }
 
+using f72 = void(*)(cocos2d::CCNode*, bool);
 void cocos2d::CCNode::removeAllChildrenWithCleanup(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, bool)>(base+0x123620)(this, p0);
+    return reinterpret_cast<f72>(base+0x123620)(this, p0);
 }
 
+using f73 = void(*)(cocos2d::CCNode*, cocos2d::CCNode*, int);
 void cocos2d::CCNode::reorderChild(cocos2d::CCNode* p0, int p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCNode*, int)>(base+0x123760)(this, p0, p1);
+    return reinterpret_cast<f73>(base+0x123760)(this, p0, p1);
 }
 
+using f74 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::sortAllChildren() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x1237b0)(this);
+    return reinterpret_cast<f74>(base+0x1237b0)(this);
 }
 
+using f75 = cocos2d::CCGridBase*(*)(cocos2d::CCNode*);
 cocos2d::CCGridBase* cocos2d::CCNode::getGrid() {
-    return reinterpret_cast<cocos2d::CCGridBase*(*)(cocos2d::CCNode*)>(base+0x122d00)(this);
+    return reinterpret_cast<f75>(base+0x122d00)(this);
 }
 
+using f76 = void(*)(cocos2d::CCNode*, cocos2d::CCGridBase*);
 void cocos2d::CCNode::setGrid(cocos2d::CCGridBase* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCGridBase*)>(base+0x122d10)(this, p0);
+    return reinterpret_cast<f76>(base+0x122d10)(this, p0);
 }
 
+using f77 = void*(*)(cocos2d::CCNode*);
 void* cocos2d::CCNode::getUserData() {
-    return reinterpret_cast<void*(*)(cocos2d::CCNode*)>(base+0x122f30)(this);
+    return reinterpret_cast<f77>(base+0x122f30)(this);
 }
 
+using f78 = void(*)(cocos2d::CCNode*, void*);
 void cocos2d::CCNode::setUserData(void* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, void*)>(base+0x122f40)(this, p0);
+    return reinterpret_cast<f78>(base+0x122f40)(this, p0);
 }
 
+using f79 = cocos2d::CCObject*(*)(cocos2d::CCNode*);
 cocos2d::CCObject* cocos2d::CCNode::getUserObject() {
-    return reinterpret_cast<cocos2d::CCObject*(*)(cocos2d::CCNode*)>(base+0x122f80)(this);
+    return reinterpret_cast<f79>(base+0x122f80)(this);
 }
 
+using f80 = void(*)(cocos2d::CCNode*, cocos2d::CCObject*);
 void cocos2d::CCNode::setUserObject(cocos2d::CCObject* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCObject*)>(base+0x122fb0)(this, p0);
+    return reinterpret_cast<f80>(base+0x122fb0)(this, p0);
 }
 
+using f81 = cocos2d::CCGLProgram*(*)(cocos2d::CCNode*);
 cocos2d::CCGLProgram* cocos2d::CCNode::getShaderProgram() {
-    return reinterpret_cast<cocos2d::CCGLProgram*(*)(cocos2d::CCNode*)>(base+0x122f70)(this);
+    return reinterpret_cast<f81>(base+0x122f70)(this);
 }
 
+using f82 = void(*)(cocos2d::CCNode*, cocos2d::CCGLProgram*);
 void cocos2d::CCNode::setShaderProgram(cocos2d::CCGLProgram* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCGLProgram*)>(base+0x122ff0)(this, p0);
+    return reinterpret_cast<f82>(base+0x122ff0)(this, p0);
 }
 
+using f83 = cocos2d::CCCamera*(*)(cocos2d::CCNode*);
 cocos2d::CCCamera* cocos2d::CCNode::getCamera() {
-    return reinterpret_cast<cocos2d::CCCamera*(*)(cocos2d::CCNode*)>(base+0x122cb0)(this);
+    return reinterpret_cast<f83>(base+0x122cb0)(this);
 }
 
+using f84 = bool(*)(cocos2d::CCNode*);
 bool cocos2d::CCNode::isRunning() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*)>(base+0x122ec0)(this);
+    return reinterpret_cast<f84>(base+0x122ec0)(this);
 }
 
+using f85 = void(*)(cocos2d::CCNode*, int);
 void cocos2d::CCNode::registerScriptHandler(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, int)>(base+0x123d90)(this, p0);
+    return reinterpret_cast<f85>(base+0x123d90)(this, p0);
 }
 
+using f86 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::unregisterScriptHandler() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123dc0)(this);
+    return reinterpret_cast<f86>(base+0x123dc0)(this);
 }
 
+using f87 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::onEnter() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123a90)(this);
+    return reinterpret_cast<f87>(base+0x123a90)(this);
 }
 
+using f88 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::onEnterTransitionDidFinish() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123b90)(this);
+    return reinterpret_cast<f88>(base+0x123b90)(this);
 }
 
+using f89 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::onExit() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123ca0)(this);
+    return reinterpret_cast<f89>(base+0x123ca0)(this);
 }
 
+using f90 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::onExitTransitionDidStart() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123c00)(this);
+    return reinterpret_cast<f90>(base+0x123c00)(this);
 }
 
+using f91 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::cleanup() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123100)(this);
+    return reinterpret_cast<f91>(base+0x123100)(this);
 }
 
+using f92 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::draw() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123840)(this);
+    return reinterpret_cast<f92>(base+0x123840)(this);
 }
 
+using f93 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::visit() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x123850)(this);
+    return reinterpret_cast<f93>(base+0x123850)(this);
 }
 
+using f94 = void(*)(cocos2d::CCNode*, cocos2d::CCActionManager*);
 void cocos2d::CCNode::setActionManager(cocos2d::CCActionManager* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCActionManager*)>(base+0x123e00)(this, p0);
+    return reinterpret_cast<f94>(base+0x123e00)(this, p0);
 }
 
+using f95 = cocos2d::CCActionManager*(*)(cocos2d::CCNode*);
 cocos2d::CCActionManager* cocos2d::CCNode::getActionManager() {
-    return reinterpret_cast<cocos2d::CCActionManager*(*)(cocos2d::CCNode*)>(base+0x123e50)(this);
+    return reinterpret_cast<f95>(base+0x123e50)(this);
 }
 
+using f96 = void(*)(cocos2d::CCNode*, cocos2d::CCScheduler*);
 void cocos2d::CCNode::setScheduler(cocos2d::CCScheduler* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, cocos2d::CCScheduler*)>(base+0x123f20)(this, p0);
+    return reinterpret_cast<f96>(base+0x123f20)(this, p0);
 }
 
+using f97 = cocos2d::CCScheduler*(*)(cocos2d::CCNode*);
 cocos2d::CCScheduler* cocos2d::CCNode::getScheduler() {
-    return reinterpret_cast<cocos2d::CCScheduler*(*)(cocos2d::CCNode*)>(base+0x123f70)(this);
+    return reinterpret_cast<f97>(base+0x123f70)(this);
 }
 
+using f98 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::updateTransform() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x1249d0)(this);
+    return reinterpret_cast<f98>(base+0x1249d0)(this);
 }
 
+using f99 = const cocos2d::CCAffineTransform(*)(cocos2d::CCNode*);
 const cocos2d::CCAffineTransform cocos2d::CCNode::nodeToParentTransform() {
-    return reinterpret_cast<const cocos2d::CCAffineTransform(*)(cocos2d::CCNode*)>(base+0x124210)(this);
+    return reinterpret_cast<f99>(base+0x124210)(this);
 }
 
+using f100 = const cocos2d::CCAffineTransform(*)(cocos2d::CCNode*);
 const cocos2d::CCAffineTransform cocos2d::CCNode::parentToNodeTransform() {
-    return reinterpret_cast<const cocos2d::CCAffineTransform(*)(cocos2d::CCNode*)>(base+0x1245d0)(this);
+    return reinterpret_cast<f100>(base+0x1245d0)(this);
 }
 
+using f101 = cocos2d::CCAffineTransform(*)(cocos2d::CCNode*);
 cocos2d::CCAffineTransform cocos2d::CCNode::nodeToWorldTransform() {
-    return reinterpret_cast<cocos2d::CCAffineTransform(*)(cocos2d::CCNode*)>(base+0x124670)(this);
+    return reinterpret_cast<f101>(base+0x124670)(this);
 }
 
+using f102 = cocos2d::CCAffineTransform(*)(cocos2d::CCNode*);
 cocos2d::CCAffineTransform cocos2d::CCNode::worldToNodeTransform() {
-    return reinterpret_cast<cocos2d::CCAffineTransform(*)(cocos2d::CCNode*)>(base+0x124710)(this);
+    return reinterpret_cast<f102>(base+0x124710)(this);
 }
 
+using f103 = bool(*)(cocos2d::CCNode*, cocos2d::CCComponent*);
 bool cocos2d::CCNode::addComponent(cocos2d::CCComponent* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*, cocos2d::CCComponent*)>(base+0x124a40)(this, p0);
+    return reinterpret_cast<f103>(base+0x124a40)(this, p0);
 }
 
+using f104 = bool(*)(cocos2d::CCNode*, char const*);
 bool cocos2d::CCNode::removeComponent(char const* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*, char const*)>(base+0x124a60)(this, p0);
+    return reinterpret_cast<f104>(base+0x124a60)(this, p0);
 }
 
+using f105 = bool(*)(cocos2d::CCNode*, cocos2d::CCComponent*);
 bool cocos2d::CCNode::removeComponent(cocos2d::CCComponent* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCNode*, cocos2d::CCComponent*)>(base+0x124a80)(this, p0);
+    return reinterpret_cast<f105>(base+0x124a80)(this, p0);
 }
 
+using f106 = void(*)(cocos2d::CCNode*);
 void cocos2d::CCNode::removeAllComponents() {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*)>(base+0x124aa0)(this);
+    return reinterpret_cast<f106>(base+0x124aa0)(this);
 }
 
+using f107 = void(*)(cocos2d::CCNode*, float, char const*);
 void cocos2d::CCNode::updateTweenAction(float p0, char const* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCNode*, float, char const*)>(base+0x1249c0)(this, p0, p1);
+    return reinterpret_cast<f107>(base+0x1249c0)(this, p0, p1);
 }
 
+using f108 = cocos2d::CCNode*(*)(cocos2d::CCNode*);
 cocos2d::CCNode::CCNode() {
-    reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCNode*)>(base+0x122550)(this);
+    reinterpret_cast<f108>(base+0x122550)(this);
 }
 
+using f109 = cocos2d::CCNodeRGBA*(*)(cocos2d::CCNodeRGBA*);
 cocos2d::CCNodeRGBA::~CCNodeRGBA() {
-    reinterpret_cast<cocos2d::CCNodeRGBA*(*)(cocos2d::CCNodeRGBA*)>(base+0x124bb0)(this);
+    reinterpret_cast<f109>(base+0x124bb0)(this);
 }
 
+using f110 = bool(*)(cocos2d::CCNodeRGBA*);
 bool cocos2d::CCNodeRGBA::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNodeRGBA*)>(base+0x124bf0)(this);
+    return reinterpret_cast<f110>(base+0x124bf0)(this);
 }
 
+using f111 = GLubyte(*)(cocos2d::CCNodeRGBA*);
 GLubyte cocos2d::CCNodeRGBA::getOpacity() {
-    return reinterpret_cast<GLubyte(*)(cocos2d::CCNodeRGBA*)>(base+0x124cd0)(this);
+    return reinterpret_cast<f111>(base+0x124cd0)(this);
 }
 
+using f112 = GLubyte(*)(cocos2d::CCNodeRGBA*);
 GLubyte cocos2d::CCNodeRGBA::getDisplayedOpacity() {
-    return reinterpret_cast<GLubyte(*)(cocos2d::CCNodeRGBA*)>(base+0x124cf0)(this);
+    return reinterpret_cast<f112>(base+0x124cf0)(this);
 }
 
+using f113 = void(*)(cocos2d::CCNodeRGBA*, GLubyte);
 void cocos2d::CCNodeRGBA::setOpacity(GLubyte p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNodeRGBA*, GLubyte)>(base+0x124d10)(this, p0);
+    return reinterpret_cast<f113>(base+0x124d10)(this, p0);
 }
 
+using f114 = void(*)(cocos2d::CCNodeRGBA*, GLubyte);
 void cocos2d::CCNodeRGBA::updateDisplayedOpacity(GLubyte p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNodeRGBA*, GLubyte)>(base+0x124e50)(this, p0);
+    return reinterpret_cast<f114>(base+0x124e50)(this, p0);
 }
 
+using f115 = bool(*)(cocos2d::CCNodeRGBA*);
 bool cocos2d::CCNodeRGBA::isCascadeOpacityEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNodeRGBA*)>(base+0x124fe0)(this);
+    return reinterpret_cast<f115>(base+0x124fe0)(this);
 }
 
+using f116 = void(*)(cocos2d::CCNodeRGBA*, bool);
 void cocos2d::CCNodeRGBA::setCascadeOpacityEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNodeRGBA*, bool)>(base+0x125000)(this, p0);
+    return reinterpret_cast<f116>(base+0x125000)(this, p0);
 }
 
+using f117 = cocos2d::_ccColor3B const&(*)(cocos2d::CCNodeRGBA*);
 cocos2d::_ccColor3B const& cocos2d::CCNodeRGBA::getColor() {
-    return reinterpret_cast<cocos2d::_ccColor3B const&(*)(cocos2d::CCNodeRGBA*)>(base+0x125020)(this);
+    return reinterpret_cast<f117>(base+0x125020)(this);
 }
 
+using f118 = cocos2d::_ccColor3B const&(*)(cocos2d::CCNodeRGBA*);
 cocos2d::_ccColor3B const& cocos2d::CCNodeRGBA::getDisplayedColor() {
-    return reinterpret_cast<cocos2d::_ccColor3B const&(*)(cocos2d::CCNodeRGBA*)>(base+0x125040)(this);
+    return reinterpret_cast<f118>(base+0x125040)(this);
 }
 
+using f119 = void(*)(cocos2d::CCNodeRGBA*, cocos2d::_ccColor3B const&);
 void cocos2d::CCNodeRGBA::setColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNodeRGBA*, cocos2d::_ccColor3B const&)>(base+0x125060)(this, p0);
+    return reinterpret_cast<f119>(base+0x125060)(this, p0);
 }
 
+using f120 = void(*)(cocos2d::CCNodeRGBA*, cocos2d::_ccColor3B const&);
 void cocos2d::CCNodeRGBA::updateDisplayedColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNodeRGBA*, cocos2d::_ccColor3B const&)>(base+0x1251e0)(this, p0);
+    return reinterpret_cast<f120>(base+0x1251e0)(this, p0);
 }
 
+using f121 = bool(*)(cocos2d::CCNodeRGBA*);
 bool cocos2d::CCNodeRGBA::isCascadeColorEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCNodeRGBA*)>(base+0x125320)(this);
+    return reinterpret_cast<f121>(base+0x125320)(this);
 }
 
+using f122 = void(*)(cocos2d::CCNodeRGBA*, bool);
 void cocos2d::CCNodeRGBA::setCascadeColorEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCNodeRGBA*, bool)>(base+0x125340)(this, p0);
+    return reinterpret_cast<f122>(base+0x125340)(this, p0);
 }
 
+using f123 = cocos2d::CCNodeRGBA*(*)(cocos2d::CCNodeRGBA*);
 cocos2d::CCNodeRGBA::CCNodeRGBA() {
-    reinterpret_cast<cocos2d::CCNodeRGBA*(*)(cocos2d::CCNodeRGBA*)>(base+0x124b30)(this);
+    reinterpret_cast<f123>(base+0x124b30)(this);
 }
 
+using f124 = cocos2d::CCMenuItem*(*)(cocos2d::CCMenuItem*);
 cocos2d::CCMenuItem::~CCMenuItem() {
-    reinterpret_cast<cocos2d::CCMenuItem*(*)(cocos2d::CCMenuItem*)>(base+0x1fb8e0)(this);
+    reinterpret_cast<f124>(base+0x1fb8e0)(this);
 }
 
+using f125 = void(*)(cocos2d::CCMenuItem*);
 void cocos2d::CCMenuItem::activate() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItem*)>(base+0x1fba70)(this);
+    return reinterpret_cast<f125>(base+0x1fba70)(this);
 }
 
+using f126 = void(*)(cocos2d::CCMenuItem*);
 void cocos2d::CCMenuItem::selected() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItem*)>(base+0x1fb9e0)(this);
+    return reinterpret_cast<f126>(base+0x1fb9e0)(this);
 }
 
+using f127 = void(*)(cocos2d::CCMenuItem*);
 void cocos2d::CCMenuItem::unselected() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItem*)>(base+0x1fb9f0)(this);
+    return reinterpret_cast<f127>(base+0x1fb9f0)(this);
 }
 
+using f128 = void(*)(cocos2d::CCMenuItem*, int);
 void cocos2d::CCMenuItem::registerScriptTapHandler(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItem*, int)>(base+0x1fba00)(this, p0);
+    return reinterpret_cast<f128>(base+0x1fba00)(this, p0);
 }
 
+using f129 = void(*)(cocos2d::CCMenuItem*);
 void cocos2d::CCMenuItem::unregisterScriptTapHandler() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItem*)>(base+0x1fba30)(this);
+    return reinterpret_cast<f129>(base+0x1fba30)(this);
 }
 
+using f130 = bool(*)(cocos2d::CCMenuItem*);
 bool cocos2d::CCMenuItem::isEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCMenuItem*)>(base+0x1fbaf0)(this);
+    return reinterpret_cast<f130>(base+0x1fbaf0)(this);
 }
 
+using f131 = void(*)(cocos2d::CCMenuItem*, bool);
 void cocos2d::CCMenuItem::setEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItem*, bool)>(base+0x1fbae0)(this, p0);
+    return reinterpret_cast<f131>(base+0x1fbae0)(this, p0);
 }
 
+using f132 = bool(*)(cocos2d::CCMenuItem*);
 bool cocos2d::CCMenuItem::isSelected() {
-    return reinterpret_cast<bool(*)(cocos2d::CCMenuItem*)>(base+0x1fbb50)(this);
+    return reinterpret_cast<f132>(base+0x1fbb50)(this);
 }
 
+using f133 = void(*)(cocos2d::CCMenuItemSprite*);
 void cocos2d::CCMenuItemSprite::selected() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*)>(base+0x1fd3f0)(this);
+    return reinterpret_cast<f133>(base+0x1fd3f0)(this);
 }
 
+using f134 = void(*)(cocos2d::CCMenuItemSprite*);
 void cocos2d::CCMenuItemSprite::unselected() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*)>(base+0x1fd470)(this);
+    return reinterpret_cast<f134>(base+0x1fd470)(this);
 }
 
+using f135 = void(*)(cocos2d::CCMenuItemSprite*, bool);
 void cocos2d::CCMenuItemSprite::setEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*, bool)>(base+0x1fd4e0)(this, p0);
+    return reinterpret_cast<f135>(base+0x1fd4e0)(this, p0);
 }
 
+using f136 = cocos2d::CCNode*(*)(cocos2d::CCMenuItemSprite*);
 cocos2d::CCNode* cocos2d::CCMenuItemSprite::getNormalImage() {
-    return reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCMenuItemSprite*)>(base+0x1fcee0)(this);
+    return reinterpret_cast<f136>(base+0x1fcee0)(this);
 }
 
+using f137 = void(*)(cocos2d::CCMenuItemSprite*, cocos2d::CCNode*);
 void cocos2d::CCMenuItemSprite::setNormalImage(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*, cocos2d::CCNode*)>(base+0x1fcef0)(this, p0);
+    return reinterpret_cast<f137>(base+0x1fcef0)(this, p0);
 }
 
+using f138 = cocos2d::CCNode*(*)(cocos2d::CCMenuItemSprite*);
 cocos2d::CCNode* cocos2d::CCMenuItemSprite::getSelectedImage() {
-    return reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCMenuItemSprite*)>(base+0x1fcfc0)(this);
+    return reinterpret_cast<f138>(base+0x1fcfc0)(this);
 }
 
+using f139 = void(*)(cocos2d::CCMenuItemSprite*, cocos2d::CCNode*);
 void cocos2d::CCMenuItemSprite::setSelectedImage(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*, cocos2d::CCNode*)>(base+0x1fcfd0)(this, p0);
+    return reinterpret_cast<f139>(base+0x1fcfd0)(this, p0);
 }
 
+using f140 = cocos2d::CCNode*(*)(cocos2d::CCMenuItemSprite*);
 cocos2d::CCNode* cocos2d::CCMenuItemSprite::getDisabledImage() {
-    return reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCMenuItemSprite*)>(base+0x1fd070)(this);
+    return reinterpret_cast<f140>(base+0x1fd070)(this);
 }
 
+using f141 = void(*)(cocos2d::CCMenuItemSprite*, cocos2d::CCNode*);
 void cocos2d::CCMenuItemSprite::setDisabledImage(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*, cocos2d::CCNode*)>(base+0x1fd080)(this, p0);
+    return reinterpret_cast<f141>(base+0x1fd080)(this, p0);
 }
 
+using f142 = void(*)(cocos2d::CCMenuItemSprite*);
 void cocos2d::CCMenuItemSprite::updateImagesVisibility() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemSprite*)>(base+0x1fd510)(this);
+    return reinterpret_cast<f142>(base+0x1fd510)(this);
 }
 
+using f143 = cocos2d::CCMenuItemSprite*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCNode*);
 cocos2d::CCMenuItemSprite* cocos2d::CCMenuItemSprite::create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCNode* p2) {
-    return reinterpret_cast<cocos2d::CCMenuItemSprite*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCNode*)>(base+0x1fd120)(p0, p1, p2);
+    return reinterpret_cast<f143>(base+0x1fd120)(p0, p1, p2);
 }
 
+using f144 = cocos2d::CCMenuItemSprite*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
 cocos2d::CCMenuItemSprite* cocos2d::CCMenuItemSprite::create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCNode* p2, cocos2d::CCObject* p3, cocos2d::SEL_MenuHandler p4) {
-    return reinterpret_cast<cocos2d::CCMenuItemSprite*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(base+0x1fd140)(p0, p1, p2, p3, p4);
+    return reinterpret_cast<f144>(base+0x1fd140)(p0, p1, p2, p3, p4);
 }
 
+using f145 = cocos2d::CCMenuItemSprite*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
 cocos2d::CCMenuItemSprite* cocos2d::CCMenuItemSprite::create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-    return reinterpret_cast<cocos2d::CCMenuItemSprite*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(base+0x1fd2d0)(p0, p1, p2, p3);
+    return reinterpret_cast<f145>(base+0x1fd2d0)(p0, p1, p2, p3);
 }
 
+using f146 = bool(*)(cocos2d::CCMenuItemImage*);
 bool cocos2d::CCMenuItemImage::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCMenuItemImage*)>(base+0x1fd750)(this);
+    return reinterpret_cast<f146>(base+0x1fd750)(this);
 }
 
+using f147 = cocos2d::CCMenuItemLabel*(*)(cocos2d::CCMenuItemLabel*);
 cocos2d::CCMenuItemLabel::~CCMenuItemLabel() {
-    reinterpret_cast<cocos2d::CCMenuItemLabel*(*)(cocos2d::CCMenuItemLabel*)>(base+0x1fc0d0)(this);
+    reinterpret_cast<f147>(base+0x1fc0d0)(this);
 }
 
+using f148 = void(*)(cocos2d::CCMenuItemLabel*);
 void cocos2d::CCMenuItemLabel::activate() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemLabel*)>(base+0x1fc240)(this);
+    return reinterpret_cast<f148>(base+0x1fc240)(this);
 }
 
+using f149 = void(*)(cocos2d::CCMenuItemLabel*);
 void cocos2d::CCMenuItemLabel::selected() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemLabel*)>(base+0x1fc2e0)(this);
+    return reinterpret_cast<f149>(base+0x1fc2e0)(this);
 }
 
+using f150 = void(*)(cocos2d::CCMenuItemLabel*);
 void cocos2d::CCMenuItemLabel::unselected() {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemLabel*)>(base+0x1fc380)(this);
+    return reinterpret_cast<f150>(base+0x1fc380)(this);
 }
 
+using f151 = void(*)(cocos2d::CCMenuItemLabel*, bool);
 void cocos2d::CCMenuItemLabel::setEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemLabel*, bool)>(base+0x1fc3f0)(this, p0);
+    return reinterpret_cast<f151>(base+0x1fc3f0)(this, p0);
 }
 
+using f152 = cocos2d::_ccColor3B const&(*)(cocos2d::CCMenuItemLabel*);
 cocos2d::_ccColor3B const& cocos2d::CCMenuItemLabel::getDisabledColor() {
-    return reinterpret_cast<cocos2d::_ccColor3B const&(*)(cocos2d::CCMenuItemLabel*)>(base+0x1fbb80)(this);
+    return reinterpret_cast<f152>(base+0x1fbb80)(this);
 }
 
+using f153 = void(*)(cocos2d::CCMenuItemLabel*, cocos2d::_ccColor3B const&);
 void cocos2d::CCMenuItemLabel::setDisabledColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemLabel*, cocos2d::_ccColor3B const&)>(base+0x1fbb90)(this, p0);
+    return reinterpret_cast<f153>(base+0x1fbb90)(this, p0);
 }
 
+using f154 = cocos2d::CCNode*(*)(cocos2d::CCMenuItemLabel*);
 cocos2d::CCNode* cocos2d::CCMenuItemLabel::getLabel() {
-    return reinterpret_cast<cocos2d::CCNode*(*)(cocos2d::CCMenuItemLabel*)>(base+0x1fbbb0)(this);
+    return reinterpret_cast<f154>(base+0x1fbbb0)(this);
 }
 
+using f155 = void(*)(cocos2d::CCMenuItemLabel*, cocos2d::CCNode*);
 void cocos2d::CCMenuItemLabel::setLabel(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCMenuItemLabel*, cocos2d::CCNode*)>(base+0x1fbbc0)(this, p0);
+    return reinterpret_cast<f155>(base+0x1fbbc0)(this, p0);
 }
 
+using f156 = cocos2d::CCLayerRGBA*(*)(cocos2d::CCLayerRGBA*);
 cocos2d::CCLayerRGBA::~CCLayerRGBA() {
-    reinterpret_cast<cocos2d::CCLayerRGBA*(*)(cocos2d::CCLayerRGBA*)>(base+0x273aa0)(this);
+    reinterpret_cast<f156>(base+0x273aa0)(this);
 }
 
+using f157 = bool(*)(cocos2d::CCLayerRGBA*);
 bool cocos2d::CCLayerRGBA::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayerRGBA*)>(base+0x273b40)(this);
+    return reinterpret_cast<f157>(base+0x273b40)(this);
 }
 
+using f158 = GLubyte(*)(cocos2d::CCLayerRGBA*);
 GLubyte cocos2d::CCLayerRGBA::getOpacity() {
-    return reinterpret_cast<GLubyte(*)(cocos2d::CCLayerRGBA*)>(base+0x273be0)(this);
+    return reinterpret_cast<f158>(base+0x273be0)(this);
 }
 
+using f159 = GLubyte(*)(cocos2d::CCLayerRGBA*);
 GLubyte cocos2d::CCLayerRGBA::getDisplayedOpacity() {
-    return reinterpret_cast<GLubyte(*)(cocos2d::CCLayerRGBA*)>(base+0x273c00)(this);
+    return reinterpret_cast<f159>(base+0x273c00)(this);
 }
 
+using f160 = void(*)(cocos2d::CCLayerRGBA*, unsigned char);
 void cocos2d::CCLayerRGBA::setOpacity(unsigned char p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, unsigned char)>(base+0x273c20)(this, p0);
+    return reinterpret_cast<f160>(base+0x273c20)(this, p0);
 }
 
+using f161 = void(*)(cocos2d::CCLayerRGBA*, unsigned char);
 void cocos2d::CCLayerRGBA::updateDisplayedOpacity(unsigned char p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, unsigned char)>(base+0x273f20)(this, p0);
+    return reinterpret_cast<f161>(base+0x273f20)(this, p0);
 }
 
+using f162 = bool(*)(cocos2d::CCLayerRGBA*);
 bool cocos2d::CCLayerRGBA::isCascadeOpacityEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayerRGBA*)>(base+0x2741f0)(this);
+    return reinterpret_cast<f162>(base+0x2741f0)(this);
 }
 
+using f163 = void(*)(cocos2d::CCLayerRGBA*, bool);
 void cocos2d::CCLayerRGBA::setCascadeOpacityEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, bool)>(base+0x274210)(this, p0);
+    return reinterpret_cast<f163>(base+0x274210)(this, p0);
 }
 
+using f164 = cocos2d::_ccColor3B const&(*)(cocos2d::CCLayerRGBA*);
 cocos2d::_ccColor3B const& cocos2d::CCLayerRGBA::getColor() {
-    return reinterpret_cast<cocos2d::_ccColor3B const&(*)(cocos2d::CCLayerRGBA*)>(base+0x273d60)(this);
+    return reinterpret_cast<f164>(base+0x273d60)(this);
 }
 
+using f165 = cocos2d::_ccColor3B const&(*)(cocos2d::CCLayerRGBA*);
 cocos2d::_ccColor3B const& cocos2d::CCLayerRGBA::getDisplayedColor() {
-    return reinterpret_cast<cocos2d::_ccColor3B const&(*)(cocos2d::CCLayerRGBA*)>(base+0x273d80)(this);
+    return reinterpret_cast<f165>(base+0x273d80)(this);
 }
 
+using f166 = void(*)(cocos2d::CCLayerRGBA*, cocos2d::_ccColor3B const&);
 void cocos2d::CCLayerRGBA::setColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, cocos2d::_ccColor3B const&)>(base+0x273da0)(this, p0);
+    return reinterpret_cast<f166>(base+0x273da0)(this, p0);
 }
 
+using f167 = void(*)(cocos2d::CCLayerRGBA*, cocos2d::_ccColor3B const&);
 void cocos2d::CCLayerRGBA::updateDisplayedColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, cocos2d::_ccColor3B const&)>(base+0x2740b0)(this, p0);
+    return reinterpret_cast<f167>(base+0x2740b0)(this, p0);
 }
 
+using f168 = bool(*)(cocos2d::CCLayerRGBA*);
 bool cocos2d::CCLayerRGBA::isCascadeColorEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayerRGBA*)>(base+0x274230)(this);
+    return reinterpret_cast<f168>(base+0x274230)(this);
 }
 
+using f169 = void(*)(cocos2d::CCLayerRGBA*, bool);
 void cocos2d::CCLayerRGBA::setCascadeColorEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerRGBA*, bool)>(base+0x274250)(this, p0);
+    return reinterpret_cast<f169>(base+0x274250)(this, p0);
 }
 
+using f170 = cocos2d::CCLayerColor*(*)(cocos2d::CCLayerColor*);
 cocos2d::CCLayerColor::~CCLayerColor() {
-    reinterpret_cast<cocos2d::CCLayerColor*(*)(cocos2d::CCLayerColor*)>(base+0x2743e0)(this);
+    reinterpret_cast<f170>(base+0x2743e0)(this);
 }
 
+using f171 = bool(*)(cocos2d::CCLayerColor*);
 bool cocos2d::CCLayerColor::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayerColor*)>(base+0x274800)(this);
+    return reinterpret_cast<f171>(base+0x274800)(this);
 }
 
+using f172 = void(*)(cocos2d::CCLayerColor*, cocos2d::CCSize const&);
 void cocos2d::CCLayerColor::setContentSize(cocos2d::CCSize const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerColor*, cocos2d::CCSize const&)>(base+0x2749f0)(this, p0);
+    return reinterpret_cast<f172>(base+0x2749f0)(this, p0);
 }
 
+using f173 = void(*)(cocos2d::CCLayerColor*);
 void cocos2d::CCLayerColor::draw() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerColor*)>(base+0x274b50)(this);
+    return reinterpret_cast<f173>(base+0x274b50)(this);
 }
 
+using f174 = void(*)(cocos2d::CCLayerColor*, unsigned char);
 void cocos2d::CCLayerColor::setOpacity(unsigned char p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerColor*, unsigned char)>(base+0x274db0)(this, p0);
+    return reinterpret_cast<f174>(base+0x274db0)(this, p0);
 }
 
+using f175 = void(*)(cocos2d::CCLayerColor*, cocos2d::_ccColor3B const&);
 void cocos2d::CCLayerColor::setColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerColor*, cocos2d::_ccColor3B const&)>(base+0x274c20)(this, p0);
+    return reinterpret_cast<f175>(base+0x274c20)(this, p0);
 }
 
+using f176 = bool(*)(cocos2d::CCLayerColor*, cocos2d::_ccColor4B const&, float, float);
 bool cocos2d::CCLayerColor::initWithColor(cocos2d::_ccColor4B const& p0, float p1, float p2) {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayerColor*, cocos2d::_ccColor4B const&, float, float)>(base+0x274850)(this, p0, p1, p2);
+    return reinterpret_cast<f176>(base+0x274850)(this, p0, p1, p2);
 }
 
+using f177 = bool(*)(cocos2d::CCLayerColor*, cocos2d::_ccColor4B const&);
 bool cocos2d::CCLayerColor::initWithColor(cocos2d::_ccColor4B const& p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayerColor*, cocos2d::_ccColor4B const&)>(base+0x2749a0)(this, p0);
+    return reinterpret_cast<f177>(base+0x2749a0)(this, p0);
 }
 
+using f178 = cocos2d::ccBlendFunc(*)(cocos2d::CCLayerColor*);
 cocos2d::ccBlendFunc cocos2d::CCLayerColor::getBlendFunc() {
-    return reinterpret_cast<cocos2d::ccBlendFunc(*)(cocos2d::CCLayerColor*)>(base+0x274480)(this);
+    return reinterpret_cast<f178>(base+0x274480)(this);
 }
 
+using f179 = void(*)(cocos2d::CCLayerColor*, cocos2d::_ccBlendFunc);
 void cocos2d::CCLayerColor::setBlendFunc(cocos2d::_ccBlendFunc p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerColor*, cocos2d::_ccBlendFunc)>(base+0x2744a0)(this, p0);
+    return reinterpret_cast<f179>(base+0x2744a0)(this, p0);
 }
 
+using f180 = void(*)(cocos2d::CCLayerColor*);
 void cocos2d::CCLayerColor::updateColor() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayerColor*)>(base+0x274ae0)(this);
+    return reinterpret_cast<f180>(base+0x274ae0)(this);
 }
 
+using f181 = cocos2d::CCLayer*(*)(cocos2d::CCLayer*);
 cocos2d::CCLayer::~CCLayer() {
-    reinterpret_cast<cocos2d::CCLayer*(*)(cocos2d::CCLayer*)>(base+0x272900)(this);
+    reinterpret_cast<f181>(base+0x272900)(this);
 }
 
+using f182 = bool(*)(cocos2d::CCLayer*);
 bool cocos2d::CCLayer::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*)>(base+0x2729a0)(this);
+    return reinterpret_cast<f182>(base+0x2729a0)(this);
 }
 
+using f183 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::onEnter() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x273300)(this);
+    return reinterpret_cast<f183>(base+0x273300)(this);
 }
 
+using f184 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::onEnterTransitionDidFinish() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x273490)(this);
+    return reinterpret_cast<f184>(base+0x273490)(this);
 }
 
+using f185 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::onExit() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x2733c0)(this);
+    return reinterpret_cast<f185>(base+0x2733c0)(this);
 }
 
+using f186 = bool(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 bool cocos2d::CCLayer::ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x2734d0)(this, p0, p1);
+    return reinterpret_cast<f186>(base+0x2734d0)(this, p0, p1);
 }
 
+using f187 = void(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x273550)(this, p0, p1);
+    return reinterpret_cast<f187>(base+0x273550)(this, p0, p1);
 }
 
+using f188 = void(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x2735d0)(this, p0, p1);
+    return reinterpret_cast<f188>(base+0x2735d0)(this, p0, p1);
 }
 
+using f189 = void(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x273650)(this, p0, p1);
+    return reinterpret_cast<f189>(base+0x273650)(this, p0, p1);
 }
 
+using f190 = void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchesBegan(cocos2d::CCSet* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*)>(base+0x2736d0)(this, p0, p1);
+    return reinterpret_cast<f190>(base+0x2736d0)(this, p0, p1);
 }
 
+using f191 = void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchesMoved(cocos2d::CCSet* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*)>(base+0x273750)(this, p0, p1);
+    return reinterpret_cast<f191>(base+0x273750)(this, p0, p1);
 }
 
+using f192 = void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchesEnded(cocos2d::CCSet* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*)>(base+0x2737d0)(this, p0, p1);
+    return reinterpret_cast<f192>(base+0x2737d0)(this, p0, p1);
 }
 
+using f193 = void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*);
 void cocos2d::CCLayer::ccTouchesCancelled(cocos2d::CCSet* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCSet*, cocos2d::CCEvent*)>(base+0x273850)(this, p0, p1);
+    return reinterpret_cast<f193>(base+0x273850)(this, p0, p1);
 }
 
+using f194 = void(*)(cocos2d::CCLayer*, cocos2d::CCAcceleration*);
 void cocos2d::CCLayer::didAccelerate(cocos2d::CCAcceleration* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::CCAcceleration*)>(base+0x272ea0)(this, p0);
+    return reinterpret_cast<f194>(base+0x272ea0)(this, p0);
 }
 
+using f195 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::registerWithTouchDispatcher() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x272b40)(this);
+    return reinterpret_cast<f195>(base+0x272b40)(this);
 }
 
+using f196 = void(*)(cocos2d::CCLayer*, int, bool, int, bool);
 void cocos2d::CCLayer::registerScriptTouchHandler(int p0, bool p1, int p2, bool p3) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, int, bool, int, bool)>(base+0x272bd0)(this, p0, p1, p2, p3);
+    return reinterpret_cast<f196>(base+0x272bd0)(this, p0, p1, p2, p3);
 }
 
+using f197 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::unregisterScriptTouchHandler() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x272c30)(this);
+    return reinterpret_cast<f197>(base+0x272c30)(this);
 }
 
+using f198 = bool(*)(cocos2d::CCLayer*);
 bool cocos2d::CCLayer::isTouchEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*)>(base+0x272ce0)(this);
+    return reinterpret_cast<f198>(base+0x272ce0)(this);
 }
 
+using f199 = void(*)(cocos2d::CCLayer*, bool);
 void cocos2d::CCLayer::setTouchEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, bool)>(base+0x272cf0)(this, p0);
+    return reinterpret_cast<f199>(base+0x272cf0)(this, p0);
 }
 
+using f200 = void(*)(cocos2d::CCLayer*, cocos2d::ccTouchesMode);
 void cocos2d::CCLayer::setTouchMode(cocos2d::ccTouchesMode p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::ccTouchesMode)>(base+0x272d60)(this, p0);
+    return reinterpret_cast<f200>(base+0x272d60)(this, p0);
 }
 
+using f201 = int(*)(cocos2d::CCLayer*);
 int cocos2d::CCLayer::getTouchMode() {
-    return reinterpret_cast<int(*)(cocos2d::CCLayer*)>(base+0x272e10)(this);
+    return reinterpret_cast<f201>(base+0x272e10)(this);
 }
 
+using f202 = void(*)(cocos2d::CCLayer*, int);
 void cocos2d::CCLayer::setTouchPriority(int p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, int)>(base+0x272db0)(this, p0);
+    return reinterpret_cast<f202>(base+0x272db0)(this, p0);
 }
 
+using f203 = int(*)(cocos2d::CCLayer*);
 int cocos2d::CCLayer::getTouchPriority() {
-    return reinterpret_cast<int(*)(cocos2d::CCLayer*)>(base+0x272e00)(this);
+    return reinterpret_cast<f203>(base+0x272e00)(this);
 }
 
+using f204 = bool(*)(cocos2d::CCLayer*);
 bool cocos2d::CCLayer::isAccelerometerEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*)>(base+0x272e20)(this);
+    return reinterpret_cast<f204>(base+0x272e20)(this);
 }
 
+using f205 = void(*)(cocos2d::CCLayer*, bool);
 void cocos2d::CCLayer::setAccelerometerEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, bool)>(base+0x272e30)(this, p0);
+    return reinterpret_cast<f205>(base+0x272e30)(this, p0);
 }
 
+using f206 = void(*)(cocos2d::CCLayer*, double);
 void cocos2d::CCLayer::setAccelerometerInterval(double p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, double)>(base+0x272e70)(this, p0);
+    return reinterpret_cast<f206>(base+0x272e70)(this, p0);
 }
 
+using f207 = bool(*)(cocos2d::CCLayer*);
 bool cocos2d::CCLayer::isKeypadEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*)>(base+0x272f70)(this);
+    return reinterpret_cast<f207>(base+0x272f70)(this);
 }
 
+using f208 = void(*)(cocos2d::CCLayer*, bool);
 void cocos2d::CCLayer::setKeypadEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, bool)>(base+0x272f80)(this, p0);
+    return reinterpret_cast<f208>(base+0x272f80)(this, p0);
 }
 
+using f209 = bool(*)(cocos2d::CCLayer*);
 bool cocos2d::CCLayer::isKeyboardEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*)>(base+0x273010)(this);
+    return reinterpret_cast<f209>(base+0x273010)(this);
 }
 
+using f210 = void(*)(cocos2d::CCLayer*, bool);
 void cocos2d::CCLayer::setKeyboardEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, bool)>(base+0x273020)(this, p0);
+    return reinterpret_cast<f210>(base+0x273020)(this, p0);
 }
 
+using f211 = bool(*)(cocos2d::CCLayer*);
 bool cocos2d::CCLayer::isMouseEnabled() {
-    return reinterpret_cast<bool(*)(cocos2d::CCLayer*)>(base+0x273090)(this);
+    return reinterpret_cast<f211>(base+0x273090)(this);
 }
 
+using f212 = void(*)(cocos2d::CCLayer*, bool);
 void cocos2d::CCLayer::setMouseEnabled(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, bool)>(base+0x2730a0)(this, p0);
+    return reinterpret_cast<f212>(base+0x2730a0)(this, p0);
 }
 
+using f213 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::keyBackClicked() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x273160)(this);
+    return reinterpret_cast<f213>(base+0x273160)(this);
 }
 
+using f214 = void(*)(cocos2d::CCLayer*);
 void cocos2d::CCLayer::keyMenuClicked() {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*)>(base+0x273200)(this);
+    return reinterpret_cast<f214>(base+0x273200)(this);
 }
 
+using f215 = void(*)(cocos2d::CCLayer*, cocos2d::enumKeyCodes);
 void cocos2d::CCLayer::keyDown(cocos2d::enumKeyCodes p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCLayer*, cocos2d::enumKeyCodes)>(base+0x273280)(this, p0);
+    return reinterpret_cast<f215>(base+0x273280)(this, p0);
 }
 
+using f216 = cocos2d::CCLayer*(*)(cocos2d::CCLayer*);
 cocos2d::CCLayer::CCLayer() {
-    reinterpret_cast<cocos2d::CCLayer*(*)(cocos2d::CCLayer*)>(base+0x2725b0)(this);
+    reinterpret_cast<f216>(base+0x2725b0)(this);
 }
 
+using f217 = cocos2d::CCLayer*(*)();
 cocos2d::CCLayer* cocos2d::CCLayer::create() {
-    return reinterpret_cast<cocos2d::CCLayer*(*)()>(base+0x272a00)();
+    return reinterpret_cast<f217>(base+0x272a00)();
 }
 
+using f218 = cocos2d::CCSprite*(*)(cocos2d::CCSprite*);
 cocos2d::CCSprite::~CCSprite() {
-    reinterpret_cast<cocos2d::CCSprite*(*)(cocos2d::CCSprite*)>(base+0x133430)(this);
+    reinterpret_cast<f218>(base+0x133430)(this);
 }
 
+using f219 = bool(*)(cocos2d::CCSprite*);
 bool cocos2d::CCSprite::init() {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*)>(base+0x132ef0)(this);
+    return reinterpret_cast<f219>(base+0x132ef0)(this);
 }
 
+using f220 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setVertexZ(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134a80)(this, p0);
+    return reinterpret_cast<f220>(base+0x134a80)(this, p0);
 }
 
+using f221 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setScaleX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134900)(this, p0);
+    return reinterpret_cast<f221>(base+0x134900)(this, p0);
 }
 
+using f222 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setScaleY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134980)(this, p0);
+    return reinterpret_cast<f222>(base+0x134980)(this, p0);
 }
 
+using f223 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setScale(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134a00)(this, p0);
+    return reinterpret_cast<f223>(base+0x134a00)(this, p0);
 }
 
+using f224 = void(*)(cocos2d::CCSprite*, cocos2d::CCPoint const&);
 void cocos2d::CCSprite::setPosition(cocos2d::CCPoint const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCPoint const&)>(base+0x134650)(this, p0);
+    return reinterpret_cast<f224>(base+0x134650)(this, p0);
 }
 
+using f225 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setSkewX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134820)(this, p0);
+    return reinterpret_cast<f225>(base+0x134820)(this, p0);
 }
 
+using f226 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setSkewY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134890)(this, p0);
+    return reinterpret_cast<f226>(base+0x134890)(this, p0);
 }
 
+using f227 = void(*)(cocos2d::CCSprite*, cocos2d::CCPoint const&);
 void cocos2d::CCSprite::setAnchorPoint(cocos2d::CCPoint const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCPoint const&)>(base+0x134af0)(this, p0);
+    return reinterpret_cast<f227>(base+0x134af0)(this, p0);
 }
 
+using f228 = void(*)(cocos2d::CCSprite*, bool);
 void cocos2d::CCSprite::setVisible(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, bool)>(base+0x134b70)(this, p0);
+    return reinterpret_cast<f228>(base+0x134b70)(this, p0);
 }
 
+using f229 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setRotation(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x1346d0)(this, p0);
+    return reinterpret_cast<f229>(base+0x1346d0)(this, p0);
 }
 
+using f230 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setRotationX(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x134740)(this, p0);
+    return reinterpret_cast<f230>(base+0x134740)(this, p0);
 }
 
+using f231 = void(*)(cocos2d::CCSprite*, float);
 void cocos2d::CCSprite::setRotationY(float p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, float)>(base+0x1347b0)(this, p0);
+    return reinterpret_cast<f231>(base+0x1347b0)(this, p0);
 }
 
+using f232 = void(*)(cocos2d::CCSprite*, bool);
 void cocos2d::CCSprite::ignoreAnchorPointForPosition(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, bool)>(base+0x134b60)(this, p0);
+    return reinterpret_cast<f232>(base+0x134b60)(this, p0);
 }
 
+using f233 = void(*)(cocos2d::CCSprite*, cocos2d::CCNode*);
 void cocos2d::CCSprite::addChild(cocos2d::CCNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCNode*)>(base+0x134190)(this, p0);
+    return reinterpret_cast<f233>(base+0x134190)(this, p0);
 }
 
+using f234 = void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, int);
 void cocos2d::CCSprite::addChild(cocos2d::CCNode* p0, int p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, int)>(base+0x1341a0)(this, p0, p1);
+    return reinterpret_cast<f234>(base+0x1341a0)(this, p0, p1);
 }
 
+using f235 = void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, int, int);
 void cocos2d::CCSprite::addChild(cocos2d::CCNode* p0, int p1, int p2) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, int, int)>(base+0x1341b0)(this, p0, p1, p2);
+    return reinterpret_cast<f235>(base+0x1341b0)(this, p0, p1, p2);
 }
 
+using f236 = void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, bool);
 void cocos2d::CCSprite::removeChild(cocos2d::CCNode* p0, bool p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, bool)>(base+0x134300)(this, p0, p1);
+    return reinterpret_cast<f236>(base+0x134300)(this, p0, p1);
 }
 
+using f237 = void(*)(cocos2d::CCSprite*, bool);
 void cocos2d::CCSprite::removeAllChildrenWithCleanup(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, bool)>(base+0x134340)(this, p0);
+    return reinterpret_cast<f237>(base+0x134340)(this, p0);
 }
 
+using f238 = void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, int);
 void cocos2d::CCSprite::reorderChild(cocos2d::CCNode* p0, int p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCNode*, int)>(base+0x134270)(this, p0, p1);
+    return reinterpret_cast<f238>(base+0x134270)(this, p0, p1);
 }
 
+using f239 = void(*)(cocos2d::CCSprite*);
 void cocos2d::CCSprite::sortAllChildren() {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*)>(base+0x1343f0)(this);
+    return reinterpret_cast<f239>(base+0x1343f0)(this);
 }
 
+using f240 = void(*)(cocos2d::CCSprite*);
 void cocos2d::CCSprite::draw() {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*)>(base+0x134070)(this);
+    return reinterpret_cast<f240>(base+0x134070)(this);
 }
 
+using f241 = void(*)(cocos2d::CCSprite*);
 void cocos2d::CCSprite::updateTransform() {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*)>(base+0x133b70)(this);
+    return reinterpret_cast<f241>(base+0x133b70)(this);
 }
 
+using f242 = void(*)(cocos2d::CCSprite*, unsigned char);
 void cocos2d::CCSprite::setOpacity(unsigned char p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, unsigned char)>(base+0x134da0)(this, p0);
+    return reinterpret_cast<f242>(base+0x134da0)(this, p0);
 }
 
+using f243 = void(*)(cocos2d::CCSprite*, unsigned char);
 void cocos2d::CCSprite::updateDisplayedOpacity(unsigned char p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, unsigned char)>(base+0x1354c0)(this, p0);
+    return reinterpret_cast<f243>(base+0x1354c0)(this, p0);
 }
 
+using f244 = void(*)(cocos2d::CCSprite*, cocos2d::_ccColor3B const&);
 void cocos2d::CCSprite::setColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::_ccColor3B const&)>(base+0x134ff0)(this, p0);
+    return reinterpret_cast<f244>(base+0x134ff0)(this, p0);
 }
 
+using f245 = void(*)(cocos2d::CCSprite*, cocos2d::_ccColor3B const&);
 void cocos2d::CCSprite::updateDisplayedColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::_ccColor3B const&)>(base+0x135370)(this, p0);
+    return reinterpret_cast<f245>(base+0x135370)(this, p0);
 }
 
+using f246 = void(*)(cocos2d::CCSprite*, bool);
 void cocos2d::CCSprite::setOpacityModifyRGB(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, bool)>(base+0x135200)(this, p0);
+    return reinterpret_cast<f246>(base+0x135200)(this, p0);
 }
 
+using f247 = bool(*)(cocos2d::CCSprite*);
 bool cocos2d::CCSprite::isOpacityModifyRGB() {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*)>(base+0x135350)(this);
+    return reinterpret_cast<f247>(base+0x135350)(this);
 }
 
+using f248 = bool(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*);
 bool cocos2d::CCSprite::initWithTexture(cocos2d::CCTexture2D* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*)>(base+0x133110)(this, p0);
+    return reinterpret_cast<f248>(base+0x133110)(this, p0);
 }
 
+using f249 = bool(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*, cocos2d::CCRect const&);
 bool cocos2d::CCSprite::initWithTexture(cocos2d::CCTexture2D* p0, cocos2d::CCRect const& p1) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*, cocos2d::CCRect const&)>(base+0x1330f0)(this, p0, p1);
+    return reinterpret_cast<f249>(base+0x1330f0)(this, p0, p1);
 }
 
+using f250 = bool(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool);
 bool cocos2d::CCSprite::initWithTexture(cocos2d::CCTexture2D* p0, cocos2d::CCRect const& p1, bool p2) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*, cocos2d::CCRect const&, bool)>(base+0x132f10)(this, p0, p1, p2);
+    return reinterpret_cast<f250>(base+0x132f10)(this, p0, p1, p2);
 }
 
+using f251 = bool(*)(cocos2d::CCSprite*, cocos2d::CCSpriteFrame*);
 bool cocos2d::CCSprite::initWithSpriteFrame(cocos2d::CCSpriteFrame* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, cocos2d::CCSpriteFrame*)>(base+0x133270)(this, p0);
+    return reinterpret_cast<f251>(base+0x133270)(this, p0);
 }
 
+using f252 = bool(*)(cocos2d::CCSprite*, char const*);
 bool cocos2d::CCSprite::initWithSpriteFrameName(char const* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, char const*)>(base+0x1332c0)(this, p0);
+    return reinterpret_cast<f252>(base+0x1332c0)(this, p0);
 }
 
+using f253 = bool(*)(cocos2d::CCSprite*, char const*);
 bool cocos2d::CCSprite::initWithFile(char const* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, char const*)>(base+0x133180)(this, p0);
+    return reinterpret_cast<f253>(base+0x133180)(this, p0);
 }
 
+using f254 = bool(*)(cocos2d::CCSprite*, char const*, cocos2d::CCRect const&);
 bool cocos2d::CCSprite::initWithFile(char const* p0, cocos2d::CCRect const& p1) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, char const*, cocos2d::CCRect const&)>(base+0x133210)(this, p0, p1);
+    return reinterpret_cast<f254>(base+0x133210)(this, p0, p1);
 }
 
+using f255 = void(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*);
 void cocos2d::CCSprite::setTexture(cocos2d::CCTexture2D* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCTexture2D*)>(base+0x135a90)(this, p0);
+    return reinterpret_cast<f255>(base+0x135a90)(this, p0);
 }
 
+using f256 = cocos2d::CCTexture2D*(*)(cocos2d::CCSprite*);
 cocos2d::CCTexture2D* cocos2d::CCSprite::getTexture() {
-    return reinterpret_cast<cocos2d::CCTexture2D*(*)(cocos2d::CCSprite*)>(base+0x135c00)(this);
+    return reinterpret_cast<f256>(base+0x135c00)(this);
 }
 
+using f257 = void(*)(cocos2d::CCSprite*, cocos2d::_ccColor3B const&);
 void cocos2d::CCSprite::setChildColor(cocos2d::_ccColor3B const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::_ccColor3B const&)>(base+0x135160)(this, p0);
+    return reinterpret_cast<f257>(base+0x135160)(this, p0);
 }
 
+using f258 = void(*)(cocos2d::CCSprite*, unsigned char);
 void cocos2d::CCSprite::setChildOpacity(unsigned char p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, unsigned char)>(base+0x134f50)(this, p0);
+    return reinterpret_cast<f258>(base+0x134f50)(this, p0);
 }
 
+using f259 = cocos2d::CCSpriteBatchNode*(*)(cocos2d::CCSprite*);
 cocos2d::CCSpriteBatchNode* cocos2d::CCSprite::getBatchNode() {
-    return reinterpret_cast<cocos2d::CCSpriteBatchNode*(*)(cocos2d::CCSprite*)>(base+0x135910)(this);
+    return reinterpret_cast<f259>(base+0x135910)(this);
 }
 
+using f260 = void(*)(cocos2d::CCSprite*, cocos2d::CCSpriteBatchNode*);
 void cocos2d::CCSprite::setBatchNode(cocos2d::CCSpriteBatchNode* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCSpriteBatchNode*)>(base+0x135920)(this, p0);
+    return reinterpret_cast<f260>(base+0x135920)(this, p0);
 }
 
+using f261 = void(*)(cocos2d::CCSprite*);
 void cocos2d::CCSprite::refreshTextureRect() {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*)>(base+0x133520)(this);
+    return reinterpret_cast<f261>(base+0x133520)(this);
 }
 
+using f262 = void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&);
 void cocos2d::CCSprite::setTextureRect(cocos2d::CCRect const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&)>(base+0x133560)(this, p0);
+    return reinterpret_cast<f262>(base+0x133560)(this, p0);
 }
 
+using f263 = void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&, bool, cocos2d::CCSize const&);
 void cocos2d::CCSprite::setTextureRect(cocos2d::CCRect const& p0, bool p1, cocos2d::CCSize const& p2) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&, bool, cocos2d::CCSize const&)>(base+0x133580)(this, p0, p1, p2);
+    return reinterpret_cast<f263>(base+0x133580)(this, p0, p1, p2);
 }
 
+using f264 = void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&);
 void cocos2d::CCSprite::setVertexRect(cocos2d::CCRect const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&)>(base+0x1338f0)(this, p0);
+    return reinterpret_cast<f264>(base+0x1338f0)(this, p0);
 }
 
+using f265 = void(*)(cocos2d::CCSprite*, cocos2d::CCSpriteFrame*);
 void cocos2d::CCSprite::setDisplayFrame(cocos2d::CCSpriteFrame* p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCSpriteFrame*)>(base+0x135610)(this, p0);
+    return reinterpret_cast<f265>(base+0x135610)(this, p0);
 }
 
+using f266 = bool(*)(cocos2d::CCSprite*, cocos2d::CCSpriteFrame*);
 bool cocos2d::CCSprite::isFrameDisplayed(cocos2d::CCSpriteFrame* p0) {
-    return reinterpret_cast<bool(*)(cocos2d::CCSprite*, cocos2d::CCSpriteFrame*)>(base+0x1356d0)(this, p0);
+    return reinterpret_cast<f266>(base+0x1356d0)(this, p0);
 }
 
+using f267 = cocos2d::CCSpriteFrame*(*)(cocos2d::CCSprite*);
 cocos2d::CCSpriteFrame* cocos2d::CCSprite::displayFrame() {
-    return reinterpret_cast<cocos2d::CCSpriteFrame*(*)(cocos2d::CCSprite*)>(base+0x135760)(this);
+    return reinterpret_cast<f267>(base+0x135760)(this);
 }
 
+using f268 = void(*)(cocos2d::CCSprite*, char const*, int);
 void cocos2d::CCSprite::setDisplayFrameWithAnimationName(char const* p0, int p1) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, char const*, int)>(base+0x135680)(this, p0, p1);
+    return reinterpret_cast<f268>(base+0x135680)(this, p0, p1);
 }
 
+using f269 = void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&);
 void cocos2d::CCSprite::setTextureCoords(cocos2d::CCRect const& p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, cocos2d::CCRect const&)>(base+0x133910)(this, p0);
+    return reinterpret_cast<f269>(base+0x133910)(this, p0);
 }
 
+using f270 = void(*)(cocos2d::CCSprite*);
 void cocos2d::CCSprite::updateBlendFunc() {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*)>(base+0x135a20)(this);
+    return reinterpret_cast<f270>(base+0x135a20)(this);
 }
 
+using f271 = void(*)(cocos2d::CCSprite*);
 void cocos2d::CCSprite::setReorderChildDirtyRecursively() {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*)>(base+0x134550)(this);
+    return reinterpret_cast<f271>(base+0x134550)(this);
 }
 
+using f272 = void(*)(cocos2d::CCSprite*, bool);
 void cocos2d::CCSprite::setDirtyRecursively(bool p0) {
-    return reinterpret_cast<void(*)(cocos2d::CCSprite*, bool)>(base+0x1345b0)(this, p0);
+    return reinterpret_cast<f272>(base+0x1345b0)(this, p0);
 }
 
+using f273 = cocos2d::CCSprite*(*)(cocos2d::CCSprite*);
 cocos2d::CCSprite::CCSprite() {
-    reinterpret_cast<cocos2d::CCSprite*(*)(cocos2d::CCSprite*)>(base+0x133300)(this);
+    reinterpret_cast<f273>(base+0x133300)(this);
 }
 
+using f274 = cocos2d::CCSprite*(*)();
 cocos2d::CCSprite* cocos2d::CCSprite::create() {
-    return reinterpret_cast<cocos2d::CCSprite*(*)()>(base+0x132df0)();
+    return reinterpret_cast<f274>(base+0x132df0)();
 }
 
+using f275 = cocos2d::CCSprite*(*)(char const*);
 cocos2d::CCSprite* cocos2d::CCSprite::create(char const* p0) {
-    return reinterpret_cast<cocos2d::CCSprite*(*)(char const*)>(base+0x132a80)(p0);
+    return reinterpret_cast<f275>(base+0x132a80)(p0);
 }
 
 void cocos2d::CCMouseDelegate::rightKeyDown() {};
@@ -1141,534 +1417,667 @@ void cocos2d::CCKeyboardDelegate::keyUp(cocos2d::enumKeyCodes) {};
 
 cocos2d::CCKeyboardDelegate::CCKeyboardDelegate() {};
 
+using f276 = cocos2d::CCIMEDelegate*(*)(cocos2d::CCIMEDelegate*);
 cocos2d::CCIMEDelegate::~CCIMEDelegate() {
-    reinterpret_cast<cocos2d::CCIMEDelegate*(*)(cocos2d::CCIMEDelegate*)>(base+0x277670)(this);
+    reinterpret_cast<f276>(base+0x277670)(this);
 }
 
+using f277 = bool(*)(cocos2d::CCIMEDelegate*);
 bool cocos2d::CCIMEDelegate::attachWithIME() {
-    return reinterpret_cast<bool(*)(cocos2d::CCIMEDelegate*)>(base+0x2776a0)(this);
+    return reinterpret_cast<f277>(base+0x2776a0)(this);
 }
 
+using f278 = bool(*)(cocos2d::CCIMEDelegate*);
 bool cocos2d::CCIMEDelegate::detachWithIME() {
-    return reinterpret_cast<bool(*)(cocos2d::CCIMEDelegate*)>(base+0x277880)(this);
+    return reinterpret_cast<f278>(base+0x277880)(this);
 }
 
+using f279 = cocos2d::CCIMEDelegate*(*)(cocos2d::CCIMEDelegate*);
 cocos2d::CCIMEDelegate::CCIMEDelegate() {
-    reinterpret_cast<cocos2d::CCIMEDelegate*(*)(cocos2d::CCIMEDelegate*)>(base+0x277310)(this);
+    reinterpret_cast<f279>(base+0x277310)(this);
 }
 
+using f280 = void(*)(AppDelegate*);
 void AppDelegate::bgScale() {
-    return reinterpret_cast<void(*)(AppDelegate*)>(base+0x3aaab0)(this);
+    return reinterpret_cast<f280>(base+0x3aaab0)(this);
 }
 
+using f281 = bool(*)(AppDelegate*);
 bool AppDelegate::applicationDidFinishLaunching() {
-    return reinterpret_cast<bool(*)(AppDelegate*)>(base+0x3aa900)(this);
+    return reinterpret_cast<f281>(base+0x3aa900)(this);
 }
 
+using f282 = void(*)(AppDelegate*);
 void AppDelegate::applicationDidEnterBackground() {
-    return reinterpret_cast<void(*)(AppDelegate*)>(base+0x3aabe0)(this);
+    return reinterpret_cast<f282>(base+0x3aabe0)(this);
 }
 
+using f283 = void(*)(AppDelegate*);
 void AppDelegate::applicationWillEnterForeground() {
-    return reinterpret_cast<void(*)(AppDelegate*)>(base+0x3aac80)(this);
+    return reinterpret_cast<f283>(base+0x3aac80)(this);
 }
 
+using f284 = bool(*)(AppDelegate*);
 bool AppDelegate::applicationWillBecomeActive() {
-    return reinterpret_cast<bool(*)(AppDelegate*)>(base+0x3aab30)(this);
+    return reinterpret_cast<f284>(base+0x3aab30)(this);
 }
 
+using f285 = bool(*)(AppDelegate*);
 bool AppDelegate::applicationWillResignActive() {
-    return reinterpret_cast<bool(*)(AppDelegate*)>(base+0x3aab50)(this);
+    return reinterpret_cast<f285>(base+0x3aab50)(this);
 }
 
+using f286 = void(*)(AppDelegate*);
 void AppDelegate::trySaveGame() {
-    return reinterpret_cast<void(*)(AppDelegate*)>(base+0x3aaf10)(this);
+    return reinterpret_cast<f286>(base+0x3aaf10)(this);
 }
 
+using f287 = void(*)(AppDelegate*, cocos2d::CCScene*);
 void AppDelegate::willSwitchToScene(cocos2d::CCScene* p0) {
-    return reinterpret_cast<void(*)(AppDelegate*, cocos2d::CCScene*)>(base+0x3aaf40)(this, p0);
+    return reinterpret_cast<f287>(base+0x3aaf40)(this, p0);
 }
 
+using f288 = AppDelegate*(*)();
 AppDelegate* AppDelegate::get() {
-    return reinterpret_cast<AppDelegate*(*)()>(base+0x3aab10)();
+    return reinterpret_cast<f288>(base+0x3aab10)();
 }
 
+using f289 = bool(*)(CCSpritePlus*, char const*);
 bool CCSpritePlus::initWithSpriteFrameName(char const* p0) {
-    return reinterpret_cast<bool(*)(CCSpritePlus*, char const*)>(base+0x248670)(this, p0);
+    return reinterpret_cast<f289>(base+0x248670)(this, p0);
 }
 
+using f290 = CCMoveCNode*(*)();
 CCMoveCNode* CCMoveCNode::create() {
-    return reinterpret_cast<CCMoveCNode*(*)()>(base+0x1842a0)();
+    return reinterpret_cast<f290>(base+0x1842a0)();
 }
 
+using f291 = bool(*)(CCMoveCNode*);
 bool CCMoveCNode::init() {
-    return reinterpret_cast<bool(*)(CCMoveCNode*)>(base+0x18b3d0)(this);
+    return reinterpret_cast<f291>(base+0x18b3d0)(this);
 }
 
+using f292 = CCMoveCNode*(*)(CCMoveCNode*);
 CCMoveCNode::~CCMoveCNode() {
-    reinterpret_cast<CCMoveCNode*(*)(CCMoveCNode*)>(base+0x18b2c0)(this);
+    reinterpret_cast<f292>(base+0x18b2c0)(this);
 }
 
+using f293 = CCNodeContainer*(*)();
 CCNodeContainer* CCNodeContainer::create() {
-    return reinterpret_cast<CCNodeContainer*(*)()>(base+0xb1090)();
+    return reinterpret_cast<f293>(base+0xb1090)();
 }
 
+using f294 = bool(*)(CCNodeContainer*);
 bool CCNodeContainer::init() {
-    return reinterpret_cast<bool(*)(CCNodeContainer*)>(base+0xba950)(this);
+    return reinterpret_cast<f294>(base+0xba950)(this);
 }
 
+using f295 = void(*)(CCNodeContainer*);
 void CCNodeContainer::visit() {
-    return reinterpret_cast<void(*)(CCNodeContainer*)>(base+0xba960)(this);
+    return reinterpret_cast<f295>(base+0xba960)(this);
 }
 
+using f296 = void(*)(CCAnimatedSprite*, gd::string);
 void CCAnimatedSprite::runAnimation(gd::string p0) {
-    return reinterpret_cast<void(*)(CCAnimatedSprite*, gd::string)>(base+0x1a6430)(this, p0);
+    return reinterpret_cast<f296>(base+0x1a6430)(this, p0);
 }
 
+using f297 = void(*)(CCAnimatedSprite*, gd::string, float);
 void CCAnimatedSprite::tweenToAnimation(gd::string p0, float p1) {
-    return reinterpret_cast<void(*)(CCAnimatedSprite*, gd::string, float)>(base+0x1a65b0)(this, p0, p1);
+    return reinterpret_cast<f297>(base+0x1a65b0)(this, p0, p1);
 }
 
+using f298 = void(*)(CCBlockLayer*);
 void CCBlockLayer::disableUI() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5a80)(this);
+    return reinterpret_cast<f298>(base+0x2a5a80)(this);
 }
 
+using f299 = void(*)(CCBlockLayer*);
 void CCBlockLayer::draw() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5c20)(this);
+    return reinterpret_cast<f299>(base+0x2a5c20)(this);
 }
 
+using f300 = void(*)(CCBlockLayer*);
 void CCBlockLayer::enableUI() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5a90)(this);
+    return reinterpret_cast<f300>(base+0x2a5a90)(this);
 }
 
+using f301 = void(*)(CCBlockLayer*);
 void CCBlockLayer::enterAnimFinished() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5bb0)(this);
+    return reinterpret_cast<f301>(base+0x2a5bb0)(this);
 }
 
+using f302 = void(*)(CCBlockLayer*);
 void CCBlockLayer::enterLayer() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5aa0)(this);
+    return reinterpret_cast<f302>(base+0x2a5aa0)(this);
 }
 
+using f303 = void(*)(CCBlockLayer*);
 void CCBlockLayer::exitLayer() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5b40)(this);
+    return reinterpret_cast<f303>(base+0x2a5b40)(this);
 }
 
+using f304 = void(*)(CCBlockLayer*, bool);
 void CCBlockLayer::hideLayer(bool p0) {
-    return reinterpret_cast<void(*)(CCBlockLayer*, bool)>(base+0x2a5ba0)(this, p0);
+    return reinterpret_cast<f304>(base+0x2a5ba0)(this, p0);
 }
 
+using f305 = bool(*)(CCBlockLayer*);
 bool CCBlockLayer::init() {
-    return reinterpret_cast<bool(*)(CCBlockLayer*)>(base+0x2a59c0)(this);
+    return reinterpret_cast<f305>(base+0x2a59c0)(this);
 }
 
+using f306 = void(*)(CCBlockLayer*);
 void CCBlockLayer::layerHidden() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5be0)(this);
+    return reinterpret_cast<f306>(base+0x2a5be0)(this);
 }
 
+using f307 = void(*)(CCBlockLayer*);
 void CCBlockLayer::layerVisible() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5bc0)(this);
+    return reinterpret_cast<f307>(base+0x2a5bc0)(this);
 }
 
+using f308 = void(*)(CCBlockLayer*);
 void CCBlockLayer::registerWithTouchDispatcher() {
-    return reinterpret_cast<void(*)(CCBlockLayer*)>(base+0x2a5ad0)(this);
+    return reinterpret_cast<f308>(base+0x2a5ad0)(this);
 }
 
+using f309 = void(*)(CCBlockLayer*, bool);
 void CCBlockLayer::showLayer(bool p0) {
-    return reinterpret_cast<void(*)(CCBlockLayer*, bool)>(base+0x2a5b90)(this, p0);
+    return reinterpret_cast<f309>(base+0x2a5b90)(this, p0);
 }
 
+using f310 = CCCircleWave*(*)(float, float, float, bool);
 CCCircleWave* CCCircleWave::create(float p0, float p1, float p2, bool p3) {
-    return reinterpret_cast<CCCircleWave*(*)(float, float, float, bool)>(base+0xbd270)(p0, p1, p2, p3);
+    return reinterpret_cast<f310>(base+0xbd270)(p0, p1, p2, p3);
 }
 
+using f311 = CCCircleWave*(*)(float, float, float, bool, bool);
 CCCircleWave* CCCircleWave::create(float p0, float p1, float p2, bool p3, bool p4) {
-    return reinterpret_cast<CCCircleWave*(*)(float, float, float, bool, bool)>(base+0xbd290)(p0, p1, p2, p3, p4);
+    return reinterpret_cast<f311>(base+0xbd290)(p0, p1, p2, p3, p4);
 }
 
+using f312 = bool(*)(CCCircleWave*, float, float, float, bool, bool);
 bool CCCircleWave::init(float p0, float p1, float p2, bool p3, bool p4) {
-    return reinterpret_cast<bool(*)(CCCircleWave*, float, float, float, bool, bool)>(base+0xbd380)(this, p0, p1, p2, p3, p4);
+    return reinterpret_cast<f312>(base+0xbd380)(this, p0, p1, p2, p3, p4);
 }
 
+using f313 = void(*)(CCCircleWave*, cocos2d::CCNode*, bool);
 void CCCircleWave::followObject(cocos2d::CCNode* p0, bool p1) {
-    return reinterpret_cast<void(*)(CCCircleWave*, cocos2d::CCNode*, bool)>(base+0xbd670)(this, p0, p1);
+    return reinterpret_cast<f313>(base+0xbd670)(this, p0, p1);
 }
 
+using f314 = void(*)(CCCircleWave*, float);
 void CCCircleWave::updatePosition(float p0) {
-    return reinterpret_cast<void(*)(CCCircleWave*, float)>(base+0xbd630)(this, p0);
+    return reinterpret_cast<f314>(base+0xbd630)(this, p0);
 }
 
+using f315 = CCLightFlash*(*)();
 CCLightFlash* CCLightFlash::create() {
-    return reinterpret_cast<CCLightFlash*(*)()>(base+0x295870)();
+    return reinterpret_cast<f315>(base+0x295870)();
 }
 
+using f316 = void(*)(CCLightFlash*, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
 void CCLightFlash::playEffect(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1, float p2, float p3, float p4, float p5, float p6, float p7, float p8, float p9, float p10, float p11, float p12, float p13, float p14, float p15, int p16, bool p17, bool p18, float p19) {
-    return reinterpret_cast<void(*)(CCLightFlash*, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)>(base+0x295900)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
+    return reinterpret_cast<f316>(base+0x295900)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
 }
 
+using f317 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
 CCMenuItemSpriteExtra* CCMenuItemSpriteExtra::create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-    return reinterpret_cast<CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(base+0x1253c0)(p0, p1, p2, p3);
+    return reinterpret_cast<f317>(base+0x1253c0)(p0, p1, p2, p3);
 }
 
+using f318 = void(*)(CCMenuItemSpriteExtra*, float);
 void CCMenuItemSpriteExtra::setSizeMult(float p0) {
-    return reinterpret_cast<void(*)(CCMenuItemSpriteExtra*, float)>(base+0x1255e0)(this, p0);
+    return reinterpret_cast<f318>(base+0x1255e0)(this, p0);
 }
 
+using f319 = CCMenuItemSpriteExtra*(*)(CCMenuItemSpriteExtra*);
 CCMenuItemSpriteExtra::CCMenuItemSpriteExtra() {
-    reinterpret_cast<CCMenuItemSpriteExtra*(*)(CCMenuItemSpriteExtra*)>(base+0x32670)(this);
+    reinterpret_cast<f319>(base+0x32670)(this);
 }
 
+using f320 = bool(*)(CCMenuItemSpriteExtra*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
 bool CCMenuItemSpriteExtra::init(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-    return reinterpret_cast<bool(*)(CCMenuItemSpriteExtra*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(base+0x125450)(this, p0, p1, p2, p3);
+    return reinterpret_cast<f320>(base+0x125450)(this, p0, p1, p2, p3);
 }
 
+using f321 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
 CCMenuItemToggler* CCMenuItemToggler::create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-    return reinterpret_cast<CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(base+0x38400)(p0, p1, p2, p3);
+    return reinterpret_cast<f321>(base+0x38400)(p0, p1, p2, p3);
 }
 
+using f322 = void(*)(CCMenuItemToggler*, float);
 void CCMenuItemToggler::setSizeMult(float p0) {
-    return reinterpret_cast<void(*)(CCMenuItemToggler*, float)>(base+0x38a40)(this, p0);
+    return reinterpret_cast<f322>(base+0x38a40)(this, p0);
 }
 
+using f323 = void(*)(CCMenuItemToggler*, bool);
 void CCMenuItemToggler::toggle(bool p0) {
-    reinterpret_cast<void(*)(CCMenuItemToggler*, bool)>(base+0x38950)(this, p0);
+    reinterpret_cast<f323>(base+0x38950)(this, p0);
 }
 
+using f324 = CCScrollLayerExt*(*)(CCScrollLayerExt*);
 CCScrollLayerExt::~CCScrollLayerExt() {
-    reinterpret_cast<CCScrollLayerExt*(*)(CCScrollLayerExt*)>(base+0x2359b0)(this);
+    reinterpret_cast<f324>(base+0x2359b0)(this);
 }
 
+using f325 = void(*)(CCScrollLayerExt*);
 void CCScrollLayerExt::visit() {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*)>(base+0x236550)(this);
+    return reinterpret_cast<f325>(base+0x236550)(this);
 }
 
+using f326 = bool(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 bool CCScrollLayerExt::ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<bool(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x235ef0)(this, p0, p1);
+    return reinterpret_cast<f326>(base+0x235ef0)(this, p0, p1);
 }
 
+using f327 = void(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void CCScrollLayerExt::ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x236300)(this, p0, p1);
+    return reinterpret_cast<f327>(base+0x236300)(this, p0, p1);
 }
 
+using f328 = void(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void CCScrollLayerExt::ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x236020)(this, p0, p1);
+    return reinterpret_cast<f328>(base+0x236020)(this, p0, p1);
 }
 
+using f329 = void(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void CCScrollLayerExt::ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x2362a0)(this, p0, p1);
+    return reinterpret_cast<f329>(base+0x2362a0)(this, p0, p1);
 }
 
+using f330 = void(*)(CCScrollLayerExt*);
 void CCScrollLayerExt::registerWithTouchDispatcher() {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*)>(base+0x235eb0)(this);
+    return reinterpret_cast<f330>(base+0x235eb0)(this);
 }
 
+using f331 = void(*)(CCScrollLayerExt*, cocos2d::CCRect);
 void CCScrollLayerExt::preVisitWithClippingRect(cocos2d::CCRect p0) {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*, cocos2d::CCRect)>(base+0x2366a0)(this, p0);
+    return reinterpret_cast<f331>(base+0x2366a0)(this, p0);
 }
 
+using f332 = void(*)(CCScrollLayerExt*);
 void CCScrollLayerExt::postVisit() {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*)>(base+0x236720)(this);
+    return reinterpret_cast<f332>(base+0x236720)(this);
 }
 
+using f333 = void(*)(CCScrollLayerExt*);
 void CCScrollLayerExt::moveToTop() {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*)>(base+0x235870)(this);
+    return reinterpret_cast<f333>(base+0x235870)(this);
 }
 
+using f334 = void(*)(CCScrollLayerExt*, float);
 void CCScrollLayerExt::moveToTopWithOffset(float p0) {
-    return reinterpret_cast<void(*)(CCScrollLayerExt*, float)>(base+0x2357d0)(this, p0);
+    return reinterpret_cast<f334>(base+0x2357d0)(this, p0);
 }
 
+using f335 = FLAlertLayer*(*)(FLAlertLayer*);
 FLAlertLayer::~FLAlertLayer() {
-    reinterpret_cast<FLAlertLayer*(*)(FLAlertLayer*)>(base+0x25db60)(this);
+    reinterpret_cast<f335>(base+0x25db60)(this);
 }
 
+using f336 = void(*)(FLAlertLayer*);
 void FLAlertLayer::onEnter() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f350)(this);
+    return reinterpret_cast<f336>(base+0x25f350)(this);
 }
 
+using f337 = bool(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 bool FLAlertLayer::ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<bool(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25ee40)(this, p0, p1);
+    return reinterpret_cast<f337>(base+0x25ee40)(this, p0, p1);
 }
 
+using f338 = void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void FLAlertLayer::ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25f0a0)(this, p0, p1);
+    return reinterpret_cast<f338>(base+0x25f0a0)(this, p0, p1);
 }
 
+using f339 = void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void FLAlertLayer::ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25ef60)(this, p0, p1);
+    return reinterpret_cast<f339>(base+0x25ef60)(this, p0, p1);
 }
 
+using f340 = void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void FLAlertLayer::ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x25f020)(this, p0, p1);
+    return reinterpret_cast<f340>(base+0x25f020)(this, p0, p1);
 }
 
+using f341 = void(*)(FLAlertLayer*);
 void FLAlertLayer::registerWithTouchDispatcher() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f2e0)(this);
+    return reinterpret_cast<f341>(base+0x25f2e0)(this);
 }
 
+using f342 = void(*)(FLAlertLayer*);
 void FLAlertLayer::keyBackClicked() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25ed90)(this);
+    return reinterpret_cast<f342>(base+0x25ed90)(this);
 }
 
+using f343 = void(*)(FLAlertLayer*, cocos2d::enumKeyCodes);
 void FLAlertLayer::keyDown(cocos2d::enumKeyCodes p0) {
-    return reinterpret_cast<void(*)(FLAlertLayer*, cocos2d::enumKeyCodes)>(base+0x25ece0)(this, p0);
+    return reinterpret_cast<f343>(base+0x25ece0)(this, p0);
 }
 
+using f344 = void(*)(FLAlertLayer*);
 void FLAlertLayer::show() {
-    return reinterpret_cast<void(*)(FLAlertLayer*)>(base+0x25f120)(this);
+    return reinterpret_cast<f344>(base+0x25f120)(this);
 }
 
+using f345 = bool(*)(FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
 bool FLAlertLayer::init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-    return reinterpret_cast<bool(*)(FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(base+0x25e1b0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    return reinterpret_cast<f345>(base+0x25e1b0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
 }
 
+using f346 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
 FLAlertLayer* FLAlertLayer::create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
-    return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)>(base+0x25e0e0)(p0, p1, p2, p3, p4, p5);
+    return reinterpret_cast<f346>(base+0x25e0e0)(p0, p1, p2, p3, p4, p5);
 }
 
+using f347 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
 FLAlertLayer* FLAlertLayer::create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-    return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(base+0x25dec0)(p0, p1, p2, p3, p4, p5, p6, p7);
+    return reinterpret_cast<f347>(base+0x25dec0)(p0, p1, p2, p3, p4, p5, p6, p7);
 }
 
+using f348 = MenuLayer*(*)(MenuLayer*);
 MenuLayer::~MenuLayer() {
-    reinterpret_cast<MenuLayer*(*)(MenuLayer*)>(base+0x1d1230)(this);
+    reinterpret_cast<f348>(base+0x1d1230)(this);
 }
 
+using f349 = bool(*)(MenuLayer*);
 bool MenuLayer::init() {
-    return reinterpret_cast<bool(*)(MenuLayer*)>(base+0x1d14b0)(this);
+    return reinterpret_cast<f349>(base+0x1d14b0)(this);
 }
 
+using f350 = void(*)(MenuLayer*);
 void MenuLayer::keyBackClicked() {
-    return reinterpret_cast<void(*)(MenuLayer*)>(base+0x1d3160)(this);
+    return reinterpret_cast<f350>(base+0x1d3160)(this);
 }
 
+using f351 = void(*)(MenuLayer*, cocos2d::enumKeyCodes);
 void MenuLayer::keyDown(cocos2d::enumKeyCodes p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::enumKeyCodes)>(base+0x1d33d0)(this, p0);
+    return reinterpret_cast<f351>(base+0x1d33d0)(this, p0);
 }
 
+using f352 = void(*)(MenuLayer*);
 void MenuLayer::googlePlaySignedIn() {
-    return reinterpret_cast<void(*)(MenuLayer*)>(base+0x1d2f30)(this);
+    return reinterpret_cast<f352>(base+0x1d2f30)(this);
 }
 
+using f353 = void(*)(MenuLayer*, FLAlertLayer*, bool);
 void MenuLayer::FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
-    return reinterpret_cast<void(*)(MenuLayer*, FLAlertLayer*, bool)>(base+0x1d3190)(this, p0, p1);
+    return reinterpret_cast<f353>(base+0x1d3190)(this, p0, p1);
 }
 
+using f354 = void(*)(MenuLayer*, cocos2d::CCObject*);
 void MenuLayer::onMoreGames(cocos2d::CCObject* p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::CCObject*)>(base+0x1d2ad0)(this, p0);
+    return reinterpret_cast<f354>(base+0x1d2ad0)(this, p0);
 }
 
+using f355 = void(*)(MenuLayer*, cocos2d::CCObject*);
 void MenuLayer::onQuit(cocos2d::CCObject* p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, cocos2d::CCObject*)>(base+0x1d2b40)(this, p0);
+    return reinterpret_cast<f355>(base+0x1d2b40)(this, p0);
 }
 
+using f356 = void(*)(MenuLayer*, bool);
 void MenuLayer::scene(bool p0) {
-    return reinterpret_cast<void(*)(MenuLayer*, bool)>(base+0x1d12d0)(this, p0);
+    return reinterpret_cast<f356>(base+0x1d12d0)(this, p0);
 }
 
+using f357 = ButtonSprite*(*)(char const*);
 ButtonSprite* ButtonSprite::create(char const* p0) {
-    return reinterpret_cast<ButtonSprite*(*)(char const*)>(base+0x4fa10)(p0);
+    return reinterpret_cast<f357>(base+0x4fa10)(p0);
 }
 
+using f358 = ButtonSprite*(*)(char const*, int, int, float, bool);
 ButtonSprite* ButtonSprite::create(char const* p0, int p1, int p2, float p3, bool p4) {
-    return reinterpret_cast<ButtonSprite*(*)(char const*, int, int, float, bool)>(base+0x4fa40)(p0, p1, p2, p3, p4);
+    return reinterpret_cast<f358>(base+0x4fa40)(p0, p1, p2, p3, p4);
 }
 
+using f359 = void(*)(ButtonSprite*, char const*);
 void ButtonSprite::updateBGImage(char const* p0) {
-    return reinterpret_cast<void(*)(ButtonSprite*, char const*)>(base+0x502d0)(this, p0);
+    return reinterpret_cast<f359>(base+0x502d0)(this, p0);
 }
 
+using f360 = ButtonSprite*(*)(char const*, float);
 ButtonSprite* ButtonSprite::create(char const* p0, float p1) {
-    return reinterpret_cast<ButtonSprite*(*)(char const*, float)>(base+0x4fa60)(p0, p1);
+    return reinterpret_cast<f360>(base+0x4fa60)(p0, p1);
 }
 
+using f361 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
 ButtonSprite* ButtonSprite::create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
-    return reinterpret_cast<ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)>(base+0x4fa90)(p0, p1, p2, p3, p4, p5, p6, p7);
+    return reinterpret_cast<f361>(base+0x4fa90)(p0, p1, p2, p3, p4, p5, p6, p7);
 }
 
+using f362 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
 CCTextInputNode* CCTextInputNode::create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
-    return reinterpret_cast<CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)>(base+0x5cfb0)(p0, p1, p2, p3, p4, p5);
+    return reinterpret_cast<f362>(base+0x5cfb0)(p0, p1, p2, p3, p4, p5);
 }
 
+using f363 = gd::string(*)(CCTextInputNode*);
 gd::string CCTextInputNode::getString() {
-    return reinterpret_cast<gd::string(*)(CCTextInputNode*)>(base+0x5d6f0)(this);
+    return reinterpret_cast<f363>(base+0x5d6f0)(this);
 }
 
+using f364 = void(*)(CCTextInputNode*);
 void CCTextInputNode::refreshLabel() {
-    return reinterpret_cast<void(*)(CCTextInputNode*)>(base+0x5d730)(this);
+    return reinterpret_cast<f364>(base+0x5d730)(this);
 }
 
+using f365 = void(*)(CCTextInputNode*, gd::string);
 void CCTextInputNode::setAllowedChars(gd::string p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, gd::string)>(base+0x5d360)(this, p0);
+    return reinterpret_cast<f365>(base+0x5d360)(this, p0);
 }
 
+using f366 = void(*)(CCTextInputNode*, cocos2d::_ccColor3B);
 void CCTextInputNode::setLabelNormalColor(cocos2d::_ccColor3B p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::_ccColor3B)>(base+0x5dab0)(this, p0);
+    return reinterpret_cast<f366>(base+0x5dab0)(this, p0);
 }
 
+using f367 = void(*)(CCTextInputNode*, cocos2d::_ccColor3B);
 void CCTextInputNode::setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::_ccColor3B)>(base+0x5da90)(this, p0);
+    return reinterpret_cast<f367>(base+0x5da90)(this, p0);
 }
 
+using f368 = void(*)(CCTextInputNode*, float);
 void CCTextInputNode::setLabelPlaceholderScale(float p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, float)>(base+0x5da70)(this, p0);
+    return reinterpret_cast<f368>(base+0x5da70)(this, p0);
 }
 
+using f369 = void(*)(CCTextInputNode*, float);
 void CCTextInputNode::setMaxLabelScale(float p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, float)>(base+0x5da30)(this, p0);
+    return reinterpret_cast<f369>(base+0x5da30)(this, p0);
 }
 
+using f370 = void(*)(CCTextInputNode*, float);
 void CCTextInputNode::setMaxLabelWidth(float p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, float)>(base+0x5da50)(this, p0);
+    return reinterpret_cast<f370>(base+0x5da50)(this, p0);
 }
 
+using f371 = void(*)(CCTextInputNode*, gd::string);
 void CCTextInputNode::setString(gd::string p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, gd::string)>(base+0x5d3e0)(this, p0);
+    return reinterpret_cast<f371>(base+0x5d3e0)(this, p0);
 }
 
+using f372 = void(*)(CCTextInputNode*, gd::string);
 void CCTextInputNode::updateLabel(gd::string p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, gd::string)>(base+0x5d4a0)(this, p0);
+    return reinterpret_cast<f372>(base+0x5d4a0)(this, p0);
 }
 
+using f373 = void(*)(CCTextInputNode*);
 void CCTextInputNode::forceOffset() {
-    return reinterpret_cast<void(*)(CCTextInputNode*)>(base+0x5ec70)(this);
+    return reinterpret_cast<f373>(base+0x5ec70)(this);
 }
 
+using f374 = void(*)(CCTextInputNode*);
 void CCTextInputNode::registerWithTouchDispatcher() {
-    return reinterpret_cast<void(*)(CCTextInputNode*)>(base+0x5eec0)(this);
+    return reinterpret_cast<f374>(base+0x5eec0)(this);
 }
 
+using f375 = bool(*)(CCTextInputNode*, float, float, char const*, char const*, int, char const*);
 bool CCTextInputNode::init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
-    return reinterpret_cast<bool(*)(CCTextInputNode*, float, float, char const*, char const*, int, char const*)>(base+0x5d180)(this, p0, p1, p2, p3, p4, p5);
+    return reinterpret_cast<f375>(base+0x5d180)(this, p0, p1, p2, p3, p4, p5);
 }
 
+using f376 = void(*)(CCTextInputNode*);
 void CCTextInputNode::visit() {
-    return reinterpret_cast<void(*)(CCTextInputNode*)>(base+0x5d380)(this);
+    return reinterpret_cast<f376>(base+0x5d380)(this);
 }
 
+using f377 = bool(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 bool CCTextInputNode::ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<bool(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x5ec80)(this, p0, p1);
+    return reinterpret_cast<f377>(base+0x5ec80)(this, p0, p1);
 }
 
+using f378 = void(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void CCTextInputNode::ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x5ee80)(this, p0, p1);
+    return reinterpret_cast<f378>(base+0x5ee80)(this, p0, p1);
 }
 
+using f379 = void(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void CCTextInputNode::ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x5ee60)(this, p0, p1);
+    return reinterpret_cast<f379>(base+0x5ee60)(this, p0, p1);
 }
 
+using f380 = void(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
 void CCTextInputNode::ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*)>(base+0x5eea0)(this, p0, p1);
+    return reinterpret_cast<f380>(base+0x5eea0)(this, p0, p1);
 }
 
+using f381 = void(*)(CCTextInputNode*);
 void CCTextInputNode::textChanged() {
-    return reinterpret_cast<void(*)(CCTextInputNode*)>(base+0x5dd70)(this);
+    return reinterpret_cast<f381>(base+0x5dd70)(this);
 }
 
+using f382 = void(*)(CCTextInputNode*, bool);
 void CCTextInputNode::onClickTrackNode(bool p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, bool)>(base+0x5dd40)(this, p0);
+    return reinterpret_cast<f382>(base+0x5dd40)(this, p0);
 }
 
+using f383 = void(*)(CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
 void CCTextInputNode::keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&)>(base+0x5dad0)(this, p0);
+    return reinterpret_cast<f383>(base+0x5dad0)(this, p0);
 }
 
+using f384 = void(*)(CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
 void CCTextInputNode::keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-    return reinterpret_cast<void(*)(CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&)>(base+0x5dc20)(this, p0);
+    return reinterpret_cast<f384>(base+0x5dc20)(this, p0);
 }
 
+using f385 = bool(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*, char const*, int);
 bool CCTextInputNode::onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) {
-    return reinterpret_cast<bool(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*, char const*, int)>(base+0x5de50)(this, p0, p1, p2);
+    return reinterpret_cast<f385>(base+0x5de50)(this, p0, p1, p2);
 }
 
+using f386 = bool(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*);
 bool CCTextInputNode::onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) {
-    return reinterpret_cast<bool(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*)>(base+0x5e2c0)(this, p0);
+    return reinterpret_cast<f386>(base+0x5e2c0)(this, p0);
 }
 
+using f387 = bool(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*);
 bool CCTextInputNode::onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) {
-    return reinterpret_cast<bool(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*)>(base+0x5e610)(this, p0);
+    return reinterpret_cast<f387>(base+0x5e610)(this, p0);
 }
 
+using f388 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
 TableView* TableView::create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
-    return reinterpret_cast<TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)>(base+0x37eb30)(p0, p1, p2);
+    return reinterpret_cast<f388>(base+0x37eb30)(p0, p1, p2);
 }
 
+using f389 = void(*)(TableView*);
 void TableView::reloadData() {
-    return reinterpret_cast<void(*)(TableView*)>(base+0x37f970)(this);
+    return reinterpret_cast<f389>(base+0x37f970)(this);
 }
 
+using f390 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
 BoomListView* BoomListView::create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-    return reinterpret_cast<BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)>(base+0x18ecb0)(p0, p1, p2, p3, p4);
+    return reinterpret_cast<f390>(base+0x18ecb0)(p0, p1, p2, p3, p4);
 }
 
+using f391 = bool(*)(BoomListView*, cocos2d::CCArray*, float, float, int, BoomListType);
 bool BoomListView::init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-    return reinterpret_cast<bool(*)(BoomListView*, cocos2d::CCArray*, float, float, int, BoomListType)>(base+0x18ee00)(this, p0, p1, p2, p3, p4);
+    return reinterpret_cast<f391>(base+0x18ee00)(this, p0, p1, p2, p3, p4);
 }
 
+using f392 = void(*)(BoomListView*);
 void BoomListView::draw() {
-    return reinterpret_cast<void(*)(BoomListView*)>(base+0x18f790)(this);
+    return reinterpret_cast<f392>(base+0x18f790)(this);
 }
 
+using f393 = void(*)(BoomListView*);
 void BoomListView::setupList() {
-    return reinterpret_cast<void(*)(BoomListView*)>(base+0x18ef90)(this);
+    return reinterpret_cast<f393>(base+0x18ef90)(this);
 }
 
+using f394 = void(*)(BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
 void BoomListView::TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
-    return reinterpret_cast<void(*)(BoomListView*, CCIndexPath&, TableViewCell*, TableView*)>(base+0x18f030)(this, p0, p1, p2);
+    return reinterpret_cast<f394>(base+0x18f030)(this, p0, p1, p2);
 }
 
+using f395 = void(*)(BoomListView*, CCIndexPath&, TableView*);
 void BoomListView::cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-    return reinterpret_cast<void(*)(BoomListView*, CCIndexPath&, TableView*)>(base+0x18f070)(this, p0, p1);
+    return reinterpret_cast<f395>(base+0x18f070)(this, p0, p1);
 }
 
+using f396 = void(*)(BoomListView*, CCIndexPath&, TableView*);
 void BoomListView::didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-    return reinterpret_cast<void(*)(BoomListView*, CCIndexPath&, TableView*)>(base+0x18f090)(this, p0, p1);
+    return reinterpret_cast<f396>(base+0x18f090)(this, p0, p1);
 }
 
+using f397 = int(*)(BoomListView*, unsigned int, TableView*);
 int BoomListView::numberOfRowsInSection(unsigned int p0, TableView* p1) {
-    return reinterpret_cast<int(*)(BoomListView*, unsigned int, TableView*)>(base+0x18f0b0)(this, p0, p1);
+    return reinterpret_cast<f397>(base+0x18f0b0)(this, p0, p1);
 }
 
+using f398 = void(*)(BoomListView*, TableView*);
 void BoomListView::numberOfSectionsInTableView(TableView* p0) {
-    return reinterpret_cast<void(*)(BoomListView*, TableView*)>(base+0x18f0e0)(this, p0);
+    return reinterpret_cast<f398>(base+0x18f0e0)(this, p0);
 }
 
+using f399 = void(*)(BoomListView*, CCIndexPath&, TableView*);
 void BoomListView::cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-    return reinterpret_cast<void(*)(BoomListView*, CCIndexPath&, TableView*)>(base+0x18f100)(this, p0, p1);
+    return reinterpret_cast<f399>(base+0x18f100)(this, p0, p1);
 }
 
+using f400 = void(*)(BoomListView*, TableView*, TableViewCellEditingStyle, CCIndexPath&);
 void BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) {
-    return reinterpret_cast<void(*)(BoomListView*, TableView*, TableViewCellEditingStyle, CCIndexPath&)>(base+0x18f770)(this, p0, p1, p2);
+    return reinterpret_cast<f400>(base+0x18f770)(this, p0, p1, p2);
 }
 
+using f401 = void(*)(BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
 void BoomListView::TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
-    return reinterpret_cast<void(*)(BoomListView*, CCIndexPath&, TableViewCell*, TableView*)>(base+0x18f050)(this, p0, p1, p2);
+    return reinterpret_cast<f401>(base+0x18f050)(this, p0, p1, p2);
 }
 
+using f402 = TableViewCell*(*)(BoomListView*, char const*);
 TableViewCell* BoomListView::getListCell(char const* p0) {
-    return reinterpret_cast<TableViewCell*(*)(BoomListView*, char const*)>(base+0x18f200)(this, p0);
+    return reinterpret_cast<f402>(base+0x18f200)(this, p0);
 }
 
+using f403 = void(*)(BoomListView*, TableViewCell*, int);
 void BoomListView::loadCell(TableViewCell* p0, int p1) {
-    return reinterpret_cast<void(*)(BoomListView*, TableViewCell*, int)>(base+0x18f4a0)(this, p0, p1);
+    return reinterpret_cast<f403>(base+0x18f4a0)(this, p0, p1);
 }
 
+using f404 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
 CustomListView* CustomListView::create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-    return reinterpret_cast<CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)>(base+0x10d410)(p0, p1, p2, p3, p4);
+    return reinterpret_cast<f404>(base+0x10d410)(p0, p1, p2, p3, p4);
 }
 
+using f405 = void(*)(CustomListView*, char const*);
 void CustomListView::getListCell(char const* p0) {
-    return reinterpret_cast<void(*)(CustomListView*, char const*)>(base+0x10d560)(this, p0);
+    return reinterpret_cast<f405>(base+0x10d560)(this, p0);
 }
 
+using f406 = void(*)(CustomListView*, TableViewCell*, int);
 void CustomListView::loadCell(TableViewCell* p0, int p1) {
-    return reinterpret_cast<void(*)(CustomListView*, TableViewCell*, int)>(base+0x10e610)(this, p0, p1);
+    return reinterpret_cast<f406>(base+0x10e610)(this, p0, p1);
 }
 
+using f407 = void(*)(CustomListView*);
 void CustomListView::setupList() {
-    return reinterpret_cast<void(*)(CustomListView*)>(base+0x116e70)(this);
+    return reinterpret_cast<f407>(base+0x116e70)(this);
 }
 
+using f408 = TableViewCell*(*)(TableViewCell*, char const*, float, float);
 TableViewCell::TableViewCell(char const* p0, float p1, float p2) {
-    reinterpret_cast<TableViewCell*(*)(TableViewCell*, char const*, float, float)>(base+0x383de0)(this, p0, p1, p2);
+    reinterpret_cast<f408>(base+0x383de0)(this, p0, p1, p2);
 }

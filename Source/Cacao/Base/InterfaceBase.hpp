@@ -70,3 +70,27 @@ public:
 
 #define $redirect(base) REDIRECT_($##base, __COUNTER__)
 #define $implement(base, derived) REDIRECT__(base, derived)
+
+
+template <typename F>
+struct GetStatic;
+
+template <typename F, class D>
+struct GetDerived;
+
+// more revivals
+template <class R, class... A, class G>
+struct GetStatic<R(G::*)(A...)> {
+    using type = R(*)(G, A...);
+};
+
+template <class R, class... A, class G, class D>
+struct GetDerived<R(G::*)(A...), D> {
+    using type = R(D::*)(A...);
+};
+
+template<typename>
+struct Printer;
+
+// using foobartype = int(std::string::*)(int);
+// Printer<GetStatic<foobartype>::type> printer;

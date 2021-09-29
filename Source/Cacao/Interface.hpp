@@ -15,61 +15,63 @@ public:
     using d0 = void(D::*)();
     using f0 = void(*)($AppDelegate*);
     dupable void bgScale() {
-        return AppDelegate::bgScale();
+        return reinterpret_cast<f0>(base+0x3aaab0)(this);
     }
 
     using c1 = bool($AppDelegate::*)();
     using d1 = bool(D::*)();
     using f1 = bool(*)($AppDelegate*);
     dupable bool applicationDidFinishLaunching() {
-        return AppDelegate::applicationDidFinishLaunching();
+        return reinterpret_cast<f1>(base+0x3aa900)(this);
     }
 
     using c2 = void($AppDelegate::*)();
     using d2 = void(D::*)();
     using f2 = void(*)($AppDelegate*);
     dupable void applicationDidEnterBackground() {
-        return AppDelegate::applicationDidEnterBackground();
+        return reinterpret_cast<f2>(base+0x3aabe0)(this);
     }
 
     using c3 = void($AppDelegate::*)();
     using d3 = void(D::*)();
     using f3 = void(*)($AppDelegate*);
     dupable void applicationWillEnterForeground() {
-        return AppDelegate::applicationWillEnterForeground();
+        return reinterpret_cast<f3>(base+0x3aac80)(this);
     }
 
     using c4 = bool($AppDelegate::*)();
     using d4 = bool(D::*)();
     using f4 = bool(*)($AppDelegate*);
     dupable bool applicationWillBecomeActive() {
-        return AppDelegate::applicationWillBecomeActive();
+        return reinterpret_cast<f4>(base+0x3aab30)(this);
     }
 
     using c5 = bool($AppDelegate::*)();
     using d5 = bool(D::*)();
     using f5 = bool(*)($AppDelegate*);
     dupable bool applicationWillResignActive() {
-        return AppDelegate::applicationWillResignActive();
+        return reinterpret_cast<f5>(base+0x3aab50)(this);
     }
 
     using c6 = void($AppDelegate::*)();
     using d6 = void(D::*)();
     using f6 = void(*)($AppDelegate*);
     dupable void trySaveGame() {
-        return AppDelegate::trySaveGame();
+        return reinterpret_cast<f6>(base+0x3aaf10)(this);
     }
 
     using c7 = void($AppDelegate::*)(cocos2d::CCScene*);
     using d7 = void(D::*)(cocos2d::CCScene*);
     using f7 = void(*)($AppDelegate*, cocos2d::CCScene*);
     dupable void willSwitchToScene(cocos2d::CCScene* p0) {
-        return AppDelegate::willSwitchToScene(p0);
+        return reinterpret_cast<f7>(base+0x3aaf40)(this, p0);
     }
 
     using c8 = AppDelegate*(*)();
+    using d8 = AppDelegate*(*)();
+    using f8 = AppDelegate*(*)();
     dupable static AppDelegate* get() {
-        return AppDelegate::get();
+        return reinterpret_cast<f8>(base+0x3aab10)();
     }
 
     inline $AppDelegate(bool) {}
@@ -103,8 +105,8 @@ public:
         if ((c7){&$AppDelegate::willSwitchToScene} != (d7){&D::willSwitchToScene})
             m->registerHook(base+0x3aaf40, extract_virtual(V, (d7){&D::willSwitchToScene}));
 
-        if ((c8){&$AppDelegate::get} != (c8){&D::get})
-            m->registerHook(base+0x3aab10, (c8){&D::get});
+        if ((c8){&$AppDelegate::get} != (d8){&D::get})
+            m->registerHook(base+0x3aab10, (d8){&D::get});
     }
 };
 
@@ -215,7 +217,7 @@ public:
     using d0 = bool(D::*)(char const*);
     using f0 = bool(*)($CCSpritePlus*, char const*);
     dupable bool initWithSpriteFrameName(char const* p0) {
-        return CCSpritePlus::initWithSpriteFrameName(p0);
+        return reinterpret_cast<f0>(base+0x248670)(this, p0);
     }
 
     inline $CCSpritePlus(bool) {}
@@ -236,15 +238,17 @@ public:
     inline ~$CCMoveCNode() {}
 
     using c0 = CCMoveCNode*(*)();
+    using d0 = CCMoveCNode*(*)();
+    using f0 = CCMoveCNode*(*)();
     dupable static CCMoveCNode* create() {
-        return CCMoveCNode::create();
+        return reinterpret_cast<f0>(base+0x1842a0)();
     }
 
     using c1 = bool($CCMoveCNode::*)();
     using d1 = bool(D::*)();
     using f1 = bool(*)($CCMoveCNode*);
     dupable bool init() {
-        return CCMoveCNode::init();
+        return reinterpret_cast<f1>(base+0x18b3d0)(this);
     }
 
     inline $CCMoveCNode(bool) {}
@@ -254,8 +258,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCMoveCNode::create} != (c0){&D::create})
-            m->registerHook(base+0x1842a0, (c0){&D::create});
+        if ((c0){&$CCMoveCNode::create} != (d0){&D::create})
+            m->registerHook(base+0x1842a0, (d0){&D::create});
 
         if ((c1){&$CCMoveCNode::init} != (d1){&D::init})
             m->registerHook(base+0x18b3d0, extract((d1){&D::init}));
@@ -268,22 +272,24 @@ public:
     inline ~$CCNodeContainer() {}
 
     using c0 = CCNodeContainer*(*)();
+    using d0 = CCNodeContainer*(*)();
+    using f0 = CCNodeContainer*(*)();
     dupable static CCNodeContainer* create() {
-        return CCNodeContainer::create();
+        return reinterpret_cast<f0>(base+0xb1090)();
     }
 
     using c1 = bool($CCNodeContainer::*)();
     using d1 = bool(D::*)();
     using f1 = bool(*)($CCNodeContainer*);
     dupable bool init() {
-        return CCNodeContainer::init();
+        return reinterpret_cast<f1>(base+0xba950)(this);
     }
 
     using c2 = void($CCNodeContainer::*)();
     using d2 = void(D::*)();
     using f2 = void(*)($CCNodeContainer*);
     dupable void visit() {
-        return CCNodeContainer::visit();
+        return reinterpret_cast<f2>(base+0xba960)(this);
     }
 
     inline $CCNodeContainer(bool) {}
@@ -293,8 +299,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCNodeContainer::create} != (c0){&D::create})
-            m->registerHook(base+0xb1090, (c0){&D::create});
+        if ((c0){&$CCNodeContainer::create} != (d0){&D::create})
+            m->registerHook(base+0xb1090, (d0){&D::create});
 
         if ((c1){&$CCNodeContainer::init} != (d1){&D::init})
             m->registerHook(base+0xba950, extract((d1){&D::init}));
@@ -313,14 +319,14 @@ public:
     using d0 = void(D::*)(gd::string);
     using f0 = void(*)($CCAnimatedSprite*, gd::string);
     dupable void runAnimation(gd::string p0) {
-        return CCAnimatedSprite::runAnimation(p0);
+        return reinterpret_cast<f0>(base+0x1a6430)(this, p0);
     }
 
     using c1 = void($CCAnimatedSprite::*)(gd::string, float);
     using d1 = void(D::*)(gd::string, float);
     using f1 = void(*)($CCAnimatedSprite*, gd::string, float);
     dupable void tweenToAnimation(gd::string p0, float p1) {
-        return CCAnimatedSprite::tweenToAnimation(p0, p1);
+        return reinterpret_cast<f1>(base+0x1a65b0)(this, p0, p1);
     }
 
     inline $CCAnimatedSprite(bool) {}
@@ -347,84 +353,84 @@ public:
     using d0 = void(D::*)();
     using f0 = void(*)($CCBlockLayer*);
     dupable void disableUI() {
-        return CCBlockLayer::disableUI();
+        return reinterpret_cast<f0>(base+0x2a5a80)(this);
     }
 
     using c1 = void($CCBlockLayer::*)();
     using d1 = void(D::*)();
     using f1 = void(*)($CCBlockLayer*);
     dupable void draw() {
-        return CCBlockLayer::draw();
+        return reinterpret_cast<f1>(base+0x2a5c20)(this);
     }
 
     using c2 = void($CCBlockLayer::*)();
     using d2 = void(D::*)();
     using f2 = void(*)($CCBlockLayer*);
     dupable void enableUI() {
-        return CCBlockLayer::enableUI();
+        return reinterpret_cast<f2>(base+0x2a5a90)(this);
     }
 
     using c3 = void($CCBlockLayer::*)();
     using d3 = void(D::*)();
     using f3 = void(*)($CCBlockLayer*);
     dupable void enterAnimFinished() {
-        return CCBlockLayer::enterAnimFinished();
+        return reinterpret_cast<f3>(base+0x2a5bb0)(this);
     }
 
     using c4 = void($CCBlockLayer::*)();
     using d4 = void(D::*)();
     using f4 = void(*)($CCBlockLayer*);
     dupable void enterLayer() {
-        return CCBlockLayer::enterLayer();
+        return reinterpret_cast<f4>(base+0x2a5aa0)(this);
     }
 
     using c5 = void($CCBlockLayer::*)();
     using d5 = void(D::*)();
     using f5 = void(*)($CCBlockLayer*);
     dupable void exitLayer() {
-        return CCBlockLayer::exitLayer();
+        return reinterpret_cast<f5>(base+0x2a5b40)(this);
     }
 
     using c6 = void($CCBlockLayer::*)(bool);
     using d6 = void(D::*)(bool);
     using f6 = void(*)($CCBlockLayer*, bool);
     dupable void hideLayer(bool p0) {
-        return CCBlockLayer::hideLayer(p0);
+        return reinterpret_cast<f6>(base+0x2a5ba0)(this, p0);
     }
 
     using c7 = bool($CCBlockLayer::*)();
     using d7 = bool(D::*)();
     using f7 = bool(*)($CCBlockLayer*);
     dupable bool init() {
-        return CCBlockLayer::init();
+        return reinterpret_cast<f7>(base+0x2a59c0)(this);
     }
 
     using c8 = void($CCBlockLayer::*)();
     using d8 = void(D::*)();
     using f8 = void(*)($CCBlockLayer*);
     dupable void layerHidden() {
-        return CCBlockLayer::layerHidden();
+        return reinterpret_cast<f8>(base+0x2a5be0)(this);
     }
 
     using c9 = void($CCBlockLayer::*)();
     using d9 = void(D::*)();
     using f9 = void(*)($CCBlockLayer*);
     dupable void layerVisible() {
-        return CCBlockLayer::layerVisible();
+        return reinterpret_cast<f9>(base+0x2a5bc0)(this);
     }
 
     using c10 = void($CCBlockLayer::*)();
     using d10 = void(D::*)();
     using f10 = void(*)($CCBlockLayer*);
     dupable void registerWithTouchDispatcher() {
-        return CCBlockLayer::registerWithTouchDispatcher();
+        return reinterpret_cast<f10>(base+0x2a5ad0)(this);
     }
 
     using c11 = void($CCBlockLayer::*)(bool);
     using d11 = void(D::*)(bool);
     using f11 = void(*)($CCBlockLayer*, bool);
     dupable void showLayer(bool p0) {
-        return CCBlockLayer::showLayer(p0);
+        return reinterpret_cast<f11>(base+0x2a5b90)(this, p0);
     }
 
     inline $CCBlockLayer(bool) {}
@@ -478,34 +484,38 @@ public:
     inline ~$CCCircleWave() {}
 
     using c0 = CCCircleWave*(*)(float, float, float, bool);
+    using d0 = CCCircleWave*(*)(float, float, float, bool);
+    using f0 = CCCircleWave*(*)(float, float, float, bool);
     dupable static CCCircleWave* create(float p0, float p1, float p2, bool p3) {
-        return CCCircleWave::create(p0, p1, p2, p3);
+        return reinterpret_cast<f0>(base+0xbd270)(p0, p1, p2, p3);
     }
 
     using c1 = CCCircleWave*(*)(float, float, float, bool, bool);
+    using d1 = CCCircleWave*(*)(float, float, float, bool, bool);
+    using f1 = CCCircleWave*(*)(float, float, float, bool, bool);
     dupable static CCCircleWave* create(float p0, float p1, float p2, bool p3, bool p4) {
-        return CCCircleWave::create(p0, p1, p2, p3, p4);
+        return reinterpret_cast<f1>(base+0xbd290)(p0, p1, p2, p3, p4);
     }
 
     using c2 = bool($CCCircleWave::*)(float, float, float, bool, bool);
     using d2 = bool(D::*)(float, float, float, bool, bool);
     using f2 = bool(*)($CCCircleWave*, float, float, float, bool, bool);
     dupable bool init(float p0, float p1, float p2, bool p3, bool p4) {
-        return CCCircleWave::init(p0, p1, p2, p3, p4);
+        return reinterpret_cast<f2>(base+0xbd380)(this, p0, p1, p2, p3, p4);
     }
 
     using c3 = void($CCCircleWave::*)(cocos2d::CCNode*, bool);
     using d3 = void(D::*)(cocos2d::CCNode*, bool);
     using f3 = void(*)($CCCircleWave*, cocos2d::CCNode*, bool);
     dupable void followObject(cocos2d::CCNode* p0, bool p1) {
-        return CCCircleWave::followObject(p0, p1);
+        return reinterpret_cast<f3>(base+0xbd670)(this, p0, p1);
     }
 
     using c4 = void($CCCircleWave::*)(float);
     using d4 = void(D::*)(float);
     using f4 = void(*)($CCCircleWave*, float);
     dupable void updatePosition(float p0) {
-        return CCCircleWave::updatePosition(p0);
+        return reinterpret_cast<f4>(base+0xbd630)(this, p0);
     }
 
     inline $CCCircleWave(bool) {}
@@ -515,11 +525,11 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCCircleWave::create} != (c0){&D::create})
-            m->registerHook(base+0xbd270, (c0){&D::create});
+        if ((c0){&$CCCircleWave::create} != (d0){&D::create})
+            m->registerHook(base+0xbd270, (d0){&D::create});
 
-        if ((c1){&$CCCircleWave::create} != (c1){&D::create})
-            m->registerHook(base+0xbd290, (c1){&D::create});
+        if ((c1){&$CCCircleWave::create} != (d1){&D::create})
+            m->registerHook(base+0xbd290, (d1){&D::create});
 
         if ((c2){&$CCCircleWave::init} != (d2){&D::init})
             m->registerHook(base+0xbd380, extract((d2){&D::init}));
@@ -538,15 +548,17 @@ public:
     inline ~$CCLightFlash() {}
 
     using c0 = CCLightFlash*(*)();
+    using d0 = CCLightFlash*(*)();
+    using f0 = CCLightFlash*(*)();
     dupable static CCLightFlash* create() {
-        return CCLightFlash::create();
+        return reinterpret_cast<f0>(base+0x295870)();
     }
 
     using c1 = void($CCLightFlash::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
     using d1 = void(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
     using f1 = void(*)($CCLightFlash*, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
     dupable void playEffect(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1, float p2, float p3, float p4, float p5, float p6, float p7, float p8, float p9, float p10, float p11, float p12, float p13, float p14, float p15, int p16, bool p17, bool p18, float p19) {
-        return CCLightFlash::playEffect(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
+        return reinterpret_cast<f1>(base+0x295900)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
     }
 
     inline $CCLightFlash(bool) {}
@@ -556,8 +568,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCLightFlash::create} != (c0){&D::create})
-            m->registerHook(base+0x295870, (c0){&D::create});
+        if ((c0){&$CCLightFlash::create} != (d0){&D::create})
+            m->registerHook(base+0x295870, (d0){&D::create});
 
         if ((c1){&$CCLightFlash::playEffect} != (d1){&D::playEffect})
             m->registerHook(base+0x295900, extract((d1){&D::playEffect}));
@@ -570,22 +582,24 @@ public:
     inline ~$CCMenuItemSpriteExtra() {}
 
     using c0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using d0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using f0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
     dupable static CCMenuItemSpriteExtra* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-        return CCMenuItemSpriteExtra::create(p0, p1, p2, p3);
+        return reinterpret_cast<f0>(base+0x1253c0)(p0, p1, p2, p3);
     }
 
     using c1 = void($CCMenuItemSpriteExtra::*)(float);
     using d1 = void(D::*)(float);
     using f1 = void(*)($CCMenuItemSpriteExtra*, float);
     dupable void setSizeMult(float p0) {
-        return CCMenuItemSpriteExtra::setSizeMult(p0);
+        return reinterpret_cast<f1>(base+0x1255e0)(this, p0);
     }
 
     using c3 = bool($CCMenuItemSpriteExtra::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
     using d3 = bool(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
     using f3 = bool(*)($CCMenuItemSpriteExtra*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
     dupable bool init(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-        return CCMenuItemSpriteExtra::init(p0, p1, p2, p3);
+        return reinterpret_cast<f3>(base+0x125450)(this, p0, p1, p2, p3);
     }
 
     inline $CCMenuItemSpriteExtra(bool) {}
@@ -595,8 +609,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCMenuItemSpriteExtra::create} != (c0){&D::create})
-            m->registerHook(base+0x1253c0, (c0){&D::create});
+        if ((c0){&$CCMenuItemSpriteExtra::create} != (d0){&D::create})
+            m->registerHook(base+0x1253c0, (d0){&D::create});
 
         if ((c1){&$CCMenuItemSpriteExtra::setSizeMult} != (d1){&D::setSizeMult})
             m->registerHook(base+0x1255e0, extract((d1){&D::setSizeMult}));
@@ -612,15 +626,17 @@ public:
     inline ~$CCMenuItemToggler() {}
 
     using c0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using d0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using f0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
     dupable static CCMenuItemToggler* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-        return CCMenuItemToggler::create(p0, p1, p2, p3);
+        return reinterpret_cast<f0>(base+0x38400)(p0, p1, p2, p3);
     }
 
     using c1 = void($CCMenuItemToggler::*)(float);
     using d1 = void(D::*)(float);
     using f1 = void(*)($CCMenuItemToggler*, float);
     dupable void setSizeMult(float p0) {
-        return CCMenuItemToggler::setSizeMult(p0);
+        return reinterpret_cast<f1>(base+0x38a40)(this, p0);
     }
 
     inline $CCMenuItemToggler(bool) {}
@@ -630,8 +646,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCMenuItemToggler::create} != (c0){&D::create})
-            m->registerHook(base+0x38400, (c0){&D::create});
+        if ((c0){&$CCMenuItemToggler::create} != (d0){&D::create})
+            m->registerHook(base+0x38400, (d0){&D::create});
 
         if ((c1){&$CCMenuItemToggler::setSizeMult} != (d1){&D::setSizeMult})
             m->registerHook(base+0x38a40, extract((d1){&D::setSizeMult}));
@@ -647,70 +663,70 @@ public:
     using d1 = void(D::*)();
     using f1 = void(*)($CCScrollLayerExt*);
     dupable void visit() {
-        return CCScrollLayerExt::visit();
+        return reinterpret_cast<f1>(base+0x236550)(this);
     }
 
     using c2 = bool($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d2 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f2 = bool(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCScrollLayerExt::ccTouchBegan(p0, p1);
+        return reinterpret_cast<f2>(base+0x235ef0)(this, p0, p1);
     }
 
     using c3 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d3 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f3 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCScrollLayerExt::ccTouchMoved(p0, p1);
+        return reinterpret_cast<f3>(base+0x236300)(this, p0, p1);
     }
 
     using c4 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d4 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f4 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCScrollLayerExt::ccTouchEnded(p0, p1);
+        return reinterpret_cast<f4>(base+0x236020)(this, p0, p1);
     }
 
     using c5 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d5 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f5 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCScrollLayerExt::ccTouchCancelled(p0, p1);
+        return reinterpret_cast<f5>(base+0x2362a0)(this, p0, p1);
     }
 
     using c6 = void($CCScrollLayerExt::*)();
     using d6 = void(D::*)();
     using f6 = void(*)($CCScrollLayerExt*);
     dupable void registerWithTouchDispatcher() {
-        return CCScrollLayerExt::registerWithTouchDispatcher();
+        return reinterpret_cast<f6>(base+0x235eb0)(this);
     }
 
     using c7 = void($CCScrollLayerExt::*)(cocos2d::CCRect);
     using d7 = void(D::*)(cocos2d::CCRect);
     using f7 = void(*)($CCScrollLayerExt*, cocos2d::CCRect);
     dupable void preVisitWithClippingRect(cocos2d::CCRect p0) {
-        return CCScrollLayerExt::preVisitWithClippingRect(p0);
+        return reinterpret_cast<f7>(base+0x2366a0)(this, p0);
     }
 
     using c8 = void($CCScrollLayerExt::*)();
     using d8 = void(D::*)();
     using f8 = void(*)($CCScrollLayerExt*);
     dupable void postVisit() {
-        return CCScrollLayerExt::postVisit();
+        return reinterpret_cast<f8>(base+0x236720)(this);
     }
 
     using c9 = void($CCScrollLayerExt::*)();
     using d9 = void(D::*)();
     using f9 = void(*)($CCScrollLayerExt*);
     dupable void moveToTop() {
-        return CCScrollLayerExt::moveToTop();
+        return reinterpret_cast<f9>(base+0x235870)(this);
     }
 
     using c10 = void($CCScrollLayerExt::*)(float);
     using d10 = void(D::*)(float);
     using f10 = void(*)($CCScrollLayerExt*, float);
     dupable void moveToTopWithOffset(float p0) {
-        return CCScrollLayerExt::moveToTopWithOffset(p0);
+        return reinterpret_cast<f10>(base+0x2357d0)(this, p0);
     }
 
     inline $CCScrollLayerExt(bool) {}
@@ -761,80 +777,84 @@ public:
     using d1 = void(D::*)();
     using f1 = void(*)($FLAlertLayer*);
     dupable void onEnter() {
-        return FLAlertLayer::onEnter();
+        return reinterpret_cast<f1>(base+0x25f350)(this);
     }
 
     using c2 = bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d2 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f2 = bool(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return FLAlertLayer::ccTouchBegan(p0, p1);
+        return reinterpret_cast<f2>(base+0x25ee40)(this, p0, p1);
     }
 
     using c3 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d3 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f3 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return FLAlertLayer::ccTouchMoved(p0, p1);
+        return reinterpret_cast<f3>(base+0x25f0a0)(this, p0, p1);
     }
 
     using c4 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d4 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f4 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return FLAlertLayer::ccTouchEnded(p0, p1);
+        return reinterpret_cast<f4>(base+0x25ef60)(this, p0, p1);
     }
 
     using c5 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d5 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f5 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return FLAlertLayer::ccTouchCancelled(p0, p1);
+        return reinterpret_cast<f5>(base+0x25f020)(this, p0, p1);
     }
 
     using c6 = void($FLAlertLayer::*)();
     using d6 = void(D::*)();
     using f6 = void(*)($FLAlertLayer*);
     dupable void registerWithTouchDispatcher() {
-        return FLAlertLayer::registerWithTouchDispatcher();
+        return reinterpret_cast<f6>(base+0x25f2e0)(this);
     }
 
     using c7 = void($FLAlertLayer::*)();
     using d7 = void(D::*)();
     using f7 = void(*)($FLAlertLayer*);
     dupable void keyBackClicked() {
-        return FLAlertLayer::keyBackClicked();
+        return reinterpret_cast<f7>(base+0x25ed90)(this);
     }
 
     using c8 = void($FLAlertLayer::*)(cocos2d::enumKeyCodes);
     using d8 = void(D::*)(cocos2d::enumKeyCodes);
     using f8 = void(*)($FLAlertLayer*, cocos2d::enumKeyCodes);
     dupable void keyDown(cocos2d::enumKeyCodes p0) {
-        return FLAlertLayer::keyDown(p0);
+        return reinterpret_cast<f8>(base+0x25ece0)(this, p0);
     }
 
     using c9 = void($FLAlertLayer::*)();
     using d9 = void(D::*)();
     using f9 = void(*)($FLAlertLayer*);
     dupable void show() {
-        return FLAlertLayer::show();
+        return reinterpret_cast<f9>(base+0x25f120)(this);
     }
 
     using c10 = bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
     using d10 = bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
     using f10 = bool(*)($FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
     dupable bool init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        return FLAlertLayer::init(p0, p1, p2, p3, p4, p5, p6, p7);
+        return reinterpret_cast<f10>(base+0x25e1b0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
     using c11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
+    using d11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
+    using f11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
     dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
-        return FLAlertLayer::create(p0, p1, p2, p3, p4, p5);
+        return reinterpret_cast<f11>(base+0x25e0e0)(p0, p1, p2, p3, p4, p5);
     }
 
     using c12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    using d12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    using f12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
     dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        return FLAlertLayer::create(p0, p1, p2, p3, p4, p5, p6, p7);
+        return reinterpret_cast<f12>(base+0x25dec0)(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
     inline $FLAlertLayer(bool) {}
@@ -874,11 +894,11 @@ public:
         if ((c10){&$FLAlertLayer::init} != (d10){&D::init})
             m->registerHook(base+0x25e1b0, extract((d10){&D::init}));
 
-        if ((c11){&$FLAlertLayer::create} != (c11){&D::create})
-            m->registerHook(base+0x25e0e0, (c11){&D::create});
+        if ((c11){&$FLAlertLayer::create} != (d11){&D::create})
+            m->registerHook(base+0x25e0e0, (d11){&D::create});
 
-        if ((c12){&$FLAlertLayer::create} != (c12){&D::create})
-            m->registerHook(base+0x25dec0, (c12){&D::create});
+        if ((c12){&$FLAlertLayer::create} != (d12){&D::create})
+            m->registerHook(base+0x25dec0, (d12){&D::create});
     }
 };
 
@@ -891,56 +911,56 @@ public:
     using d1 = bool(D::*)();
     using f1 = bool(*)($MenuLayer*);
     dupable bool init() {
-        return MenuLayer::init();
+        return reinterpret_cast<f1>(base+0x1d14b0)(this);
     }
 
     using c2 = void($MenuLayer::*)();
     using d2 = void(D::*)();
     using f2 = void(*)($MenuLayer*);
     dupable void keyBackClicked() {
-        return MenuLayer::keyBackClicked();
+        return reinterpret_cast<f2>(base+0x1d3160)(this);
     }
 
     using c3 = void($MenuLayer::*)(cocos2d::enumKeyCodes);
     using d3 = void(D::*)(cocos2d::enumKeyCodes);
     using f3 = void(*)($MenuLayer*, cocos2d::enumKeyCodes);
     dupable void keyDown(cocos2d::enumKeyCodes p0) {
-        return MenuLayer::keyDown(p0);
+        return reinterpret_cast<f3>(base+0x1d33d0)(this, p0);
     }
 
     using c4 = void($MenuLayer::*)();
     using d4 = void(D::*)();
     using f4 = void(*)($MenuLayer*);
     dupable void googlePlaySignedIn() {
-        return MenuLayer::googlePlaySignedIn();
+        return reinterpret_cast<f4>(base+0x1d2f30)(this);
     }
 
     using c5 = void($MenuLayer::*)(FLAlertLayer*, bool);
     using d5 = void(D::*)(FLAlertLayer*, bool);
     using f5 = void(*)($MenuLayer*, FLAlertLayer*, bool);
     dupable void FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
-        return MenuLayer::FLAlert_Clicked(p0, p1);
+        return reinterpret_cast<f5>(base+0x1d3190)(this, p0, p1);
     }
 
     using c6 = void($MenuLayer::*)(cocos2d::CCObject*);
     using d6 = void(D::*)(cocos2d::CCObject*);
     using f6 = void(*)($MenuLayer*, cocos2d::CCObject*);
     dupable void onMoreGames(cocos2d::CCObject* p0) {
-        return MenuLayer::onMoreGames(p0);
+        return reinterpret_cast<f6>(base+0x1d2ad0)(this, p0);
     }
 
     using c7 = void($MenuLayer::*)(cocos2d::CCObject*);
     using d7 = void(D::*)(cocos2d::CCObject*);
     using f7 = void(*)($MenuLayer*, cocos2d::CCObject*);
     dupable void onQuit(cocos2d::CCObject* p0) {
-        return MenuLayer::onQuit(p0);
+        return reinterpret_cast<f7>(base+0x1d2b40)(this, p0);
     }
 
     using c8 = void($MenuLayer::*)(bool);
     using d8 = void(D::*)(bool);
     using f8 = void(*)($MenuLayer*, bool);
     dupable void scene(bool p0) {
-        return MenuLayer::scene(p0);
+        return reinterpret_cast<f8>(base+0x1d12d0)(this, p0);
     }
 
     inline $MenuLayer(bool) {}
@@ -982,30 +1002,38 @@ public:
     inline ~$ButtonSprite() {}
 
     using c0 = ButtonSprite*(*)(char const*);
+    using d0 = ButtonSprite*(*)(char const*);
+    using f0 = ButtonSprite*(*)(char const*);
     dupable static ButtonSprite* create(char const* p0) {
-        return ButtonSprite::create(p0);
+        return reinterpret_cast<f0>(base+0x4fa10)(p0);
     }
 
     using c1 = ButtonSprite*(*)(char const*, int, int, float, bool);
+    using d1 = ButtonSprite*(*)(char const*, int, int, float, bool);
+    using f1 = ButtonSprite*(*)(char const*, int, int, float, bool);
     dupable static ButtonSprite* create(char const* p0, int p1, int p2, float p3, bool p4) {
-        return ButtonSprite::create(p0, p1, p2, p3, p4);
+        return reinterpret_cast<f1>(base+0x4fa40)(p0, p1, p2, p3, p4);
     }
 
     using c2 = void($ButtonSprite::*)(char const*);
     using d2 = void(D::*)(char const*);
     using f2 = void(*)($ButtonSprite*, char const*);
     dupable void updateBGImage(char const* p0) {
-        return ButtonSprite::updateBGImage(p0);
+        return reinterpret_cast<f2>(base+0x502d0)(this, p0);
     }
 
     using c3 = ButtonSprite*(*)(char const*, float);
+    using d3 = ButtonSprite*(*)(char const*, float);
+    using f3 = ButtonSprite*(*)(char const*, float);
     dupable static ButtonSprite* create(char const* p0, float p1) {
-        return ButtonSprite::create(p0, p1);
+        return reinterpret_cast<f3>(base+0x4fa60)(p0, p1);
     }
 
     using c4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+    using d4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+    using f4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
     dupable static ButtonSprite* create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
-        return ButtonSprite::create(p0, p1, p2, p3, p4, p5, p6, p7);
+        return reinterpret_cast<f4>(base+0x4fa90)(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
     inline $ButtonSprite(bool) {}
@@ -1015,20 +1043,20 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$ButtonSprite::create} != (c0){&D::create})
-            m->registerHook(base+0x4fa10, (c0){&D::create});
+        if ((c0){&$ButtonSprite::create} != (d0){&D::create})
+            m->registerHook(base+0x4fa10, (d0){&D::create});
 
-        if ((c1){&$ButtonSprite::create} != (c1){&D::create})
-            m->registerHook(base+0x4fa40, (c1){&D::create});
+        if ((c1){&$ButtonSprite::create} != (d1){&D::create})
+            m->registerHook(base+0x4fa40, (d1){&D::create});
 
         if ((c2){&$ButtonSprite::updateBGImage} != (d2){&D::updateBGImage})
             m->registerHook(base+0x502d0, extract((d2){&D::updateBGImage}));
 
-        if ((c3){&$ButtonSprite::create} != (c3){&D::create})
-            m->registerHook(base+0x4fa60, (c3){&D::create});
+        if ((c3){&$ButtonSprite::create} != (d3){&D::create})
+            m->registerHook(base+0x4fa60, (d3){&D::create});
 
-        if ((c4){&$ButtonSprite::create} != (c4){&D::create})
-            m->registerHook(base+0x4fa90, (c4){&D::create});
+        if ((c4){&$ButtonSprite::create} != (d4){&D::create})
+            m->registerHook(base+0x4fa90, (d4){&D::create});
     }
 };
 
@@ -1038,183 +1066,185 @@ public:
     inline ~$CCTextInputNode() {}
 
     using c0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
+    using d0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
+    using f0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
     dupable static CCTextInputNode* create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
-        return CCTextInputNode::create(p0, p1, p2, p3, p4, p5);
+        return reinterpret_cast<f0>(base+0x5cfb0)(p0, p1, p2, p3, p4, p5);
     }
 
     using c1 = gd::string($CCTextInputNode::*)();
     using d1 = gd::string(D::*)();
     using f1 = gd::string(*)($CCTextInputNode*);
     dupable gd::string getString() {
-        return CCTextInputNode::getString();
+        return reinterpret_cast<f1>(base+0x5d6f0)(this);
     }
 
     using c2 = void($CCTextInputNode::*)();
     using d2 = void(D::*)();
     using f2 = void(*)($CCTextInputNode*);
     dupable void refreshLabel() {
-        return CCTextInputNode::refreshLabel();
+        return reinterpret_cast<f2>(base+0x5d730)(this);
     }
 
     using c3 = void($CCTextInputNode::*)(gd::string);
     using d3 = void(D::*)(gd::string);
     using f3 = void(*)($CCTextInputNode*, gd::string);
     dupable void setAllowedChars(gd::string p0) {
-        return CCTextInputNode::setAllowedChars(p0);
+        return reinterpret_cast<f3>(base+0x5d360)(this, p0);
     }
 
     using c4 = void($CCTextInputNode::*)(cocos2d::_ccColor3B);
     using d4 = void(D::*)(cocos2d::_ccColor3B);
     using f4 = void(*)($CCTextInputNode*, cocos2d::_ccColor3B);
     dupable void setLabelNormalColor(cocos2d::_ccColor3B p0) {
-        return CCTextInputNode::setLabelNormalColor(p0);
+        return reinterpret_cast<f4>(base+0x5dab0)(this, p0);
     }
 
     using c5 = void($CCTextInputNode::*)(cocos2d::_ccColor3B);
     using d5 = void(D::*)(cocos2d::_ccColor3B);
     using f5 = void(*)($CCTextInputNode*, cocos2d::_ccColor3B);
     dupable void setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
-        return CCTextInputNode::setLabelPlaceholderColor(p0);
+        return reinterpret_cast<f5>(base+0x5da90)(this, p0);
     }
 
     using c6 = void($CCTextInputNode::*)(float);
     using d6 = void(D::*)(float);
     using f6 = void(*)($CCTextInputNode*, float);
     dupable void setLabelPlaceholderScale(float p0) {
-        return CCTextInputNode::setLabelPlaceholderScale(p0);
+        return reinterpret_cast<f6>(base+0x5da70)(this, p0);
     }
 
     using c7 = void($CCTextInputNode::*)(float);
     using d7 = void(D::*)(float);
     using f7 = void(*)($CCTextInputNode*, float);
     dupable void setMaxLabelScale(float p0) {
-        return CCTextInputNode::setMaxLabelScale(p0);
+        return reinterpret_cast<f7>(base+0x5da30)(this, p0);
     }
 
     using c8 = void($CCTextInputNode::*)(float);
     using d8 = void(D::*)(float);
     using f8 = void(*)($CCTextInputNode*, float);
     dupable void setMaxLabelWidth(float p0) {
-        return CCTextInputNode::setMaxLabelWidth(p0);
+        return reinterpret_cast<f8>(base+0x5da50)(this, p0);
     }
 
     using c9 = void($CCTextInputNode::*)(gd::string);
     using d9 = void(D::*)(gd::string);
     using f9 = void(*)($CCTextInputNode*, gd::string);
     dupable void setString(gd::string p0) {
-        return CCTextInputNode::setString(p0);
+        return reinterpret_cast<f9>(base+0x5d3e0)(this, p0);
     }
 
     using c10 = void($CCTextInputNode::*)(gd::string);
     using d10 = void(D::*)(gd::string);
     using f10 = void(*)($CCTextInputNode*, gd::string);
     dupable void updateLabel(gd::string p0) {
-        return CCTextInputNode::updateLabel(p0);
+        return reinterpret_cast<f10>(base+0x5d4a0)(this, p0);
     }
 
     using c11 = void($CCTextInputNode::*)();
     using d11 = void(D::*)();
     using f11 = void(*)($CCTextInputNode*);
     dupable void forceOffset() {
-        return CCTextInputNode::forceOffset();
+        return reinterpret_cast<f11>(base+0x5ec70)(this);
     }
 
     using c12 = void($CCTextInputNode::*)();
     using d12 = void(D::*)();
     using f12 = void(*)($CCTextInputNode*);
     dupable void registerWithTouchDispatcher() {
-        return CCTextInputNode::registerWithTouchDispatcher();
+        return reinterpret_cast<f12>(base+0x5eec0)(this);
     }
 
     using c13 = bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*);
     using d13 = bool(D::*)(float, float, char const*, char const*, int, char const*);
     using f13 = bool(*)($CCTextInputNode*, float, float, char const*, char const*, int, char const*);
     dupable bool init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
-        return CCTextInputNode::init(p0, p1, p2, p3, p4, p5);
+        return reinterpret_cast<f13>(base+0x5d180)(this, p0, p1, p2, p3, p4, p5);
     }
 
     using c14 = void($CCTextInputNode::*)();
     using d14 = void(D::*)();
     using f14 = void(*)($CCTextInputNode*);
     dupable void visit() {
-        return CCTextInputNode::visit();
+        return reinterpret_cast<f14>(base+0x5d380)(this);
     }
 
     using c15 = bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d15 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f15 = bool(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCTextInputNode::ccTouchBegan(p0, p1);
+        return reinterpret_cast<f15>(base+0x5ec80)(this, p0, p1);
     }
 
     using c16 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d16 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f16 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCTextInputNode::ccTouchCancelled(p0, p1);
+        return reinterpret_cast<f16>(base+0x5ee80)(this, p0, p1);
     }
 
     using c17 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d17 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f17 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCTextInputNode::ccTouchEnded(p0, p1);
+        return reinterpret_cast<f17>(base+0x5ee60)(this, p0, p1);
     }
 
     using c18 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using d18 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
     using f18 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
     dupable void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return CCTextInputNode::ccTouchMoved(p0, p1);
+        return reinterpret_cast<f18>(base+0x5eea0)(this, p0, p1);
     }
 
     using c19 = void($CCTextInputNode::*)();
     using d19 = void(D::*)();
     using f19 = void(*)($CCTextInputNode*);
     dupable void textChanged() {
-        return CCTextInputNode::textChanged();
+        return reinterpret_cast<f19>(base+0x5dd70)(this);
     }
 
     using c20 = void($CCTextInputNode::*)(bool);
     using d20 = void(D::*)(bool);
     using f20 = void(*)($CCTextInputNode*, bool);
     dupable void onClickTrackNode(bool p0) {
-        return CCTextInputNode::onClickTrackNode(p0);
+        return reinterpret_cast<f20>(base+0x5dd40)(this, p0);
     }
 
     using c21 = void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
     using d21 = void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
     using f21 = void(*)($CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
     dupable void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-        return CCTextInputNode::keyboardWillShow(p0);
+        return reinterpret_cast<f21>(base+0x5dad0)(this, p0);
     }
 
     using c22 = void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
     using d22 = void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
     using f22 = void(*)($CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
     dupable void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-        return CCTextInputNode::keyboardWillHide(p0);
+        return reinterpret_cast<f22>(base+0x5dc20)(this, p0);
     }
 
     using c23 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int);
     using d23 = bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int);
     using f23 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*, char const*, int);
     dupable bool onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) {
-        return CCTextInputNode::onTextFieldInsertText(p0, p1, p2);
+        return reinterpret_cast<f23>(base+0x5de50)(this, p0, p1, p2);
     }
 
     using c24 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*);
     using d24 = bool(D::*)(cocos2d::CCTextFieldTTF*);
     using f24 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*);
     dupable bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) {
-        return CCTextInputNode::onTextFieldAttachWithIME(p0);
+        return reinterpret_cast<f24>(base+0x5e2c0)(this, p0);
     }
 
     using c25 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*);
     using d25 = bool(D::*)(cocos2d::CCTextFieldTTF*);
     using f25 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*);
     dupable bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) {
-        return CCTextInputNode::onTextFieldDetachWithIME(p0);
+        return reinterpret_cast<f25>(base+0x5e610)(this, p0);
     }
 
     inline $CCTextInputNode(bool) {}
@@ -1224,8 +1254,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CCTextInputNode::create} != (c0){&D::create})
-            m->registerHook(base+0x5cfb0, (c0){&D::create});
+        if ((c0){&$CCTextInputNode::create} != (d0){&D::create})
+            m->registerHook(base+0x5cfb0, (d0){&D::create});
 
         if ((c1){&$CCTextInputNode::getString} != (d1){&D::getString})
             m->registerHook(base+0x5d6f0, extract((d1){&D::getString}));
@@ -1310,15 +1340,17 @@ public:
     inline ~$TableView() {}
 
     using c0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    using d0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    using f0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
     dupable static TableView* create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
-        return TableView::create(p0, p1, p2);
+        return reinterpret_cast<f0>(base+0x37eb30)(p0, p1, p2);
     }
 
     using c1 = void($TableView::*)();
     using d1 = void(D::*)();
     using f1 = void(*)($TableView*);
     dupable void reloadData() {
-        return TableView::reloadData();
+        return reinterpret_cast<f1>(base+0x37f970)(this);
     }
 
     inline $TableView(bool) {}
@@ -1328,8 +1360,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$TableView::create} != (c0){&D::create})
-            m->registerHook(base+0x37eb30, (c0){&D::create});
+        if ((c0){&$TableView::create} != (d0){&D::create})
+            m->registerHook(base+0x37eb30, (d0){&D::create});
 
         if ((c1){&$TableView::reloadData} != (d1){&D::reloadData})
             m->registerHook(base+0x37f970, extract((d1){&D::reloadData}));
@@ -1342,99 +1374,101 @@ public:
     inline ~$BoomListView() {}
 
     using c0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using d0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using f0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
     dupable static BoomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-        return BoomListView::create(p0, p1, p2, p3, p4);
+        return reinterpret_cast<f0>(base+0x18ecb0)(p0, p1, p2, p3, p4);
     }
 
     using c1 = bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType);
     using d1 = bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType);
     using f1 = bool(*)($BoomListView*, cocos2d::CCArray*, float, float, int, BoomListType);
     dupable bool init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-        return BoomListView::init(p0, p1, p2, p3, p4);
+        return reinterpret_cast<f1>(base+0x18ee00)(this, p0, p1, p2, p3, p4);
     }
 
     using c2 = void($BoomListView::*)();
     using d2 = void(D::*)();
     using f2 = void(*)($BoomListView*);
     dupable void draw() {
-        return BoomListView::draw();
+        return reinterpret_cast<f2>(base+0x18f790)(this);
     }
 
     using c3 = void($BoomListView::*)();
     using d3 = void(D::*)();
     using f3 = void(*)($BoomListView*);
     dupable void setupList() {
-        return BoomListView::setupList();
+        return reinterpret_cast<f3>(base+0x18ef90)(this);
     }
 
     using c4 = void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*);
     using d4 = void(D::*)(CCIndexPath&, TableViewCell*, TableView*);
     using f4 = void(*)($BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
     dupable void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
-        return BoomListView::TableViewWillDisplayCellForRowAtIndexPath(p0, p1, p2);
+        return reinterpret_cast<f4>(base+0x18f030)(this, p0, p1, p2);
     }
 
     using c5 = void($BoomListView::*)(CCIndexPath&, TableView*);
     using d5 = void(D::*)(CCIndexPath&, TableView*);
     using f5 = void(*)($BoomListView*, CCIndexPath&, TableView*);
     dupable void cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-        return BoomListView::cellHeightForRowAtIndexPath(p0, p1);
+        return reinterpret_cast<f5>(base+0x18f070)(this, p0, p1);
     }
 
     using c6 = void($BoomListView::*)(CCIndexPath&, TableView*);
     using d6 = void(D::*)(CCIndexPath&, TableView*);
     using f6 = void(*)($BoomListView*, CCIndexPath&, TableView*);
     dupable void didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-        return BoomListView::didSelectRowAtIndexPath(p0, p1);
+        return reinterpret_cast<f6>(base+0x18f090)(this, p0, p1);
     }
 
     using c7 = int($BoomListView::*)(unsigned int, TableView*);
     using d7 = int(D::*)(unsigned int, TableView*);
     using f7 = int(*)($BoomListView*, unsigned int, TableView*);
     dupable int numberOfRowsInSection(unsigned int p0, TableView* p1) {
-        return BoomListView::numberOfRowsInSection(p0, p1);
+        return reinterpret_cast<f7>(base+0x18f0b0)(this, p0, p1);
     }
 
     using c8 = void($BoomListView::*)(TableView*);
     using d8 = void(D::*)(TableView*);
     using f8 = void(*)($BoomListView*, TableView*);
     dupable void numberOfSectionsInTableView(TableView* p0) {
-        return BoomListView::numberOfSectionsInTableView(p0);
+        return reinterpret_cast<f8>(base+0x18f0e0)(this, p0);
     }
 
     using c9 = void($BoomListView::*)(CCIndexPath&, TableView*);
     using d9 = void(D::*)(CCIndexPath&, TableView*);
     using f9 = void(*)($BoomListView*, CCIndexPath&, TableView*);
     dupable void cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-        return BoomListView::cellForRowAtIndexPath(p0, p1);
+        return reinterpret_cast<f9>(base+0x18f100)(this, p0, p1);
     }
 
     using c10 = void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&);
     using d10 = void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&);
     using f10 = void(*)($BoomListView*, TableView*, TableViewCellEditingStyle, CCIndexPath&);
     dupable void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) {
-        return BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath(p0, p1, p2);
+        return reinterpret_cast<f10>(base+0x18f770)(this, p0, p1, p2);
     }
 
     using c11 = void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*);
     using d11 = void(D::*)(CCIndexPath&, TableViewCell*, TableView*);
     using f11 = void(*)($BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
     dupable void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
-        return BoomListView::TableViewWillReloadCellForRowAtIndexPath(p0, p1, p2);
+        return reinterpret_cast<f11>(base+0x18f050)(this, p0, p1, p2);
     }
 
     using c12 = TableViewCell*($BoomListView::*)(char const*);
     using d12 = TableViewCell*(D::*)(char const*);
     using f12 = TableViewCell*(*)($BoomListView*, char const*);
     dupable TableViewCell* getListCell(char const* p0) {
-        return BoomListView::getListCell(p0);
+        return reinterpret_cast<f12>(base+0x18f200)(this, p0);
     }
 
     using c13 = void($BoomListView::*)(TableViewCell*, int);
     using d13 = void(D::*)(TableViewCell*, int);
     using f13 = void(*)($BoomListView*, TableViewCell*, int);
     dupable void loadCell(TableViewCell* p0, int p1) {
-        return BoomListView::loadCell(p0, p1);
+        return reinterpret_cast<f13>(base+0x18f4a0)(this, p0, p1);
     }
 
     inline $BoomListView(bool) {}
@@ -1444,8 +1478,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$BoomListView::create} != (c0){&D::create})
-            m->registerHook(base+0x18ecb0, (c0){&D::create});
+        if ((c0){&$BoomListView::create} != (d0){&D::create})
+            m->registerHook(base+0x18ecb0, (d0){&D::create});
 
         if ((c1){&$BoomListView::init} != (d1){&D::init})
             m->registerHook(base+0x18ee00, extract((d1){&D::init}));
@@ -1494,29 +1528,31 @@ public:
     inline ~$CustomListView() {}
 
     using c0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using d0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using f0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
     dupable static CustomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-        return CustomListView::create(p0, p1, p2, p3, p4);
+        return reinterpret_cast<f0>(base+0x10d410)(p0, p1, p2, p3, p4);
     }
 
     using c1 = void($CustomListView::*)(char const*);
     using d1 = void(D::*)(char const*);
     using f1 = void(*)($CustomListView*, char const*);
     dupable void getListCell(char const* p0) {
-        return CustomListView::getListCell(p0);
+        return reinterpret_cast<f1>(base+0x10d560)(this, p0);
     }
 
     using c2 = void($CustomListView::*)(TableViewCell*, int);
     using d2 = void(D::*)(TableViewCell*, int);
     using f2 = void(*)($CustomListView*, TableViewCell*, int);
     dupable void loadCell(TableViewCell* p0, int p1) {
-        return CustomListView::loadCell(p0, p1);
+        return reinterpret_cast<f2>(base+0x10e610)(this, p0, p1);
     }
 
     using c3 = void($CustomListView::*)();
     using d3 = void(D::*)();
     using f3 = void(*)($CustomListView*);
     dupable void setupList() {
-        return CustomListView::setupList();
+        return reinterpret_cast<f3>(base+0x116e70)(this);
     }
 
     inline $CustomListView(bool) {}
@@ -1526,8 +1562,8 @@ public:
         delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((c0){&$CustomListView::create} != (c0){&D::create})
-            m->registerHook(base+0x10d410, (c0){&D::create});
+        if ((c0){&$CustomListView::create} != (d0){&D::create})
+            m->registerHook(base+0x10d410, (d0){&D::create});
 
         if ((c1){&$CustomListView::getListCell} != (d1){&D::getListCell})
             m->registerHook(base+0x10d560, extract((d1){&D::getListCell}));

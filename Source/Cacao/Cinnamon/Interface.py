@@ -10,29 +10,58 @@ public:
 """
 
 build_body1 = """
-    using c{id} = {type}({const}${cl}::*)({params4});
-    using d{id} = {type}({const}D::*)({params4});
+    using c{id} = {type}({const}${cl}::*)({params3});
+    using d{id} = {type}({const}D::*)({params3});
     using f{id} = {type}(*)({const}${cl}*{params2});
     dupable {type} {name}({params}) {const}{{
-        return {cl}::{name}({params5});
+        {function}
     }}
 """
 
 build_body1_virtual = """
-    using c{id} = {type}({const}${cl}::*)({params4});
-    using d{id} = {type}({const}D::*)({params4});
+    using c{id} = {type}({const}${cl}::*)({params3});
+    using d{id} = {type}({const}D::*)({params3});
     using f{id} = {type}(*)({const}${cl}*{params2});
     dupable {type} {name}({params}) {const}{{
-        return {cl}::{name}({params5});
+        {function}
     }}
 """
 
 build_body1_static = """
-    using c{id} = {type}(*)({params4});
+    using c{id} = {type}(*)({params3});
+    using d{id} = {type}(*)({params3});
+    using f{id} = {type}(*)({params3});
     dupable static {type} {name}({params}) {const}{{
-        return {cl}::{name}({params5});
+        {function}
     }}
 """
+
+# build_body1 = """
+#     using c{id} = {type}({const}${cl}::*)({params3});
+#     using d{id} = typename GetDerived<c{id}, D>::type;
+#     using f{id} = typename GetStatic<c{id}>::type;
+#     dupable {type} {name}({params}) {const}{{
+#         {function}
+#     }}
+# """
+
+# build_body1_virtual = """
+#     using c{id} = {type}({const}${cl}::*)({params3});
+#     using d{id} = typename GetDerived<c{id}, D>::type;
+#     using f{id} = typename GetStatic<c{id}>::type;
+#     dupable {type} {name}({params}) {const}{{
+#         {function}
+#     }}
+# """
+
+# build_body1_static = """
+#     using c{id} = {type}(*)({params3});
+#     using d{id} = {type}(*)({params3});
+#     using f{id} = {type}(*)({params3});
+#     dupable static {type} {name}({params}) {const}{{
+#         {function}
+#     }}
+# """
 
 build_body2_start = """
     inline ${cl}(bool) {{}}
@@ -50,8 +79,8 @@ build_body2_body = """
 """
 
 build_body2_body_static = """
-        if ((c{id}){{&${cl}::{name}}} != (c{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, (c{id}){{&D::{name}}});
+        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
+            m->registerHook(base+{offset}, (d{id}){{&D::{name}}});
 """
 
 build_body2_body_virtual = """
@@ -94,11 +123,10 @@ for cl in classes:
             offset = info.offset, 
             params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
             params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-            params3 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
-            params4 = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-            params5 = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
+            params3 = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
             id = i,
+            function = getFunctionImplementation(cl, info, i),
         )
 
     out += build_body2_start.format(cl=cl.name)

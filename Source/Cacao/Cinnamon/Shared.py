@@ -51,3 +51,21 @@ class CinnamonClass:
         return self.name + ": " + ', '.join(self.base) + "\n" + '\n'.join(repr(r) for r in self.info)
 
 picklepath = os.path.join(os.path.dirname(__file__), "cinnamon.pickle")
+
+functionBody = "return reinterpret_cast<f{id}>(base+{offset})(this{params});"
+
+staticBody = "return reinterpret_cast<f{id}>(base+{offset})({params});"
+
+def getFunctionImplementation(cl, info, i):
+    if not isinstance(info, CinnamonFunction):
+        return ""
+    body = functionBody
+    if info.static:
+        body = staticBody
+    if info.declare.name[1:] in cl.name:
+        body = body.replace("return ", "")
+    return body.format(
+        id = i,
+        offset = info.offset, 
+        params = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
+    )
