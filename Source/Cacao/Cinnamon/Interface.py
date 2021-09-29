@@ -13,9 +13,7 @@ build_body1 = """
     using c{id} = {type}({const}${cl}::*)({params4});
     using d{id} = {type}({const}D::*)({params4});
     using f{id} = {type}(*)({const}${cl}*{params2});
-    inline {type} {name}({params}) {const}{{
-        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            return rcast<f{id}>(m->getOriginal(rcast<func_t&>((d{id}){{&D::{name}}})))(this{params3});
+    dupable {type} {name}({params}) {const}{{
         return {cl}::{name}({params5});
     }}
 """
@@ -24,18 +22,14 @@ build_body1_virtual = """
     using c{id} = {type}({const}${cl}::*)({params4});
     using d{id} = {type}({const}D::*)({params4});
     using f{id} = {type}(*)({const}${cl}*{params2});
-    inline {type} {name}({params}) {const}{{
-        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            return rcast<f{id}>(m->getOriginal(rcast<func_t&>((d{id}){{&D::{name}}})))(this{params3});
+    dupable {type} {name}({params}) {const}{{
         return {cl}::{name}({params5});
     }}
 """
 
 build_body1_static = """
     using c{id} = {type}(*)({params4});
-    inline static {type} {name}({params}) {const}{{
-        if ((c{id}){{&${cl}::{name}}} != (c{id}){{&D::{name}}})
-            return rcast<c{id}>(m->getOriginal(rcast<func_t&>((c{id}){{&D::{name}}})))({params3});
+    dupable static {type} {name}({params}) {const}{{
         return {cl}::{name}({params5});
     }}
 """
@@ -134,5 +128,5 @@ out += """
 #undef rcast
 """
 
-with open("../Interface.hpp", "w") as f:
+with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "w") as f:
     f.write(out)

@@ -46,5 +46,5 @@ for cl in classes:
         )
 
 
-with open("Source.cpp", "w") as f:
+with open(os.path.join(os.path.dirname(__file__), "..", "Source.cpp"), "w") as f:
     f.write(out)

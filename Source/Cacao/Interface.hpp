@@ -4,99 +4,107 @@
 //
 #pragma once
 #include <Base/InterfaceBase.hpp>
+#define rcast reinterpret_cast
 
 template<class D>
 class $AppDelegate : public AppDelegate, public $CacBase {
 public:
     inline ~$AppDelegate() {}
 
-    inline void bgScale() {
-        if ((void($AppDelegate::*)()){&$AppDelegate::bgScale} != (void(D::*)()){&D::bgScale})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3aaab0))(this);
+    using c0 = void($AppDelegate::*)();
+    using d0 = void(D::*)();
+    using f0 = void(*)($AppDelegate*);
+    dupable void bgScale() {
         return AppDelegate::bgScale();
     }
 
-    inline bool applicationDidFinishLaunching() {
-        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationDidFinishLaunching} != (bool(D::*)()){&D::applicationDidFinishLaunching})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x3aa900))(this);
+    using c1 = bool($AppDelegate::*)();
+    using d1 = bool(D::*)();
+    using f1 = bool(*)($AppDelegate*);
+    dupable bool applicationDidFinishLaunching() {
         return AppDelegate::applicationDidFinishLaunching();
     }
 
-    inline void applicationDidEnterBackground() {
-        if ((void($AppDelegate::*)()){&$AppDelegate::applicationDidEnterBackground} != (void(D::*)()){&D::applicationDidEnterBackground})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3aabe0))(this);
+    using c2 = void($AppDelegate::*)();
+    using d2 = void(D::*)();
+    using f2 = void(*)($AppDelegate*);
+    dupable void applicationDidEnterBackground() {
         return AppDelegate::applicationDidEnterBackground();
     }
 
-    inline void applicationWillEnterForeground() {
-        if ((void($AppDelegate::*)()){&$AppDelegate::applicationWillEnterForeground} != (void(D::*)()){&D::applicationWillEnterForeground})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3aac80))(this);
+    using c3 = void($AppDelegate::*)();
+    using d3 = void(D::*)();
+    using f3 = void(*)($AppDelegate*);
+    dupable void applicationWillEnterForeground() {
         return AppDelegate::applicationWillEnterForeground();
     }
 
-    inline bool applicationWillBecomeActive() {
-        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillBecomeActive} != (bool(D::*)()){&D::applicationWillBecomeActive})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x3aab30))(this);
+    using c4 = bool($AppDelegate::*)();
+    using d4 = bool(D::*)();
+    using f4 = bool(*)($AppDelegate*);
+    dupable bool applicationWillBecomeActive() {
         return AppDelegate::applicationWillBecomeActive();
     }
 
-    inline bool applicationWillResignActive() {
-        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillResignActive} != (bool(D::*)()){&D::applicationWillResignActive})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x3aab50))(this);
+    using c5 = bool($AppDelegate::*)();
+    using d5 = bool(D::*)();
+    using f5 = bool(*)($AppDelegate*);
+    dupable bool applicationWillResignActive() {
         return AppDelegate::applicationWillResignActive();
     }
 
-    inline void trySaveGame() {
-        if ((void($AppDelegate::*)()){&$AppDelegate::trySaveGame} != (void(D::*)()){&D::trySaveGame})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3aaf10))(this);
+    using c6 = void($AppDelegate::*)();
+    using d6 = void(D::*)();
+    using f6 = void(*)($AppDelegate*);
+    dupable void trySaveGame() {
         return AppDelegate::trySaveGame();
     }
 
-    inline void willSwitchToScene(cocos2d::CCScene* p0) {
-        if ((void($AppDelegate::*)(cocos2d::CCScene*)){&$AppDelegate::willSwitchToScene} != (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCScene*)>(m->getOriginal(base+0x3aaf40))(this, p0);
+    using c7 = void($AppDelegate::*)(cocos2d::CCScene*);
+    using d7 = void(D::*)(cocos2d::CCScene*);
+    using f7 = void(*)($AppDelegate*, cocos2d::CCScene*);
+    dupable void willSwitchToScene(cocos2d::CCScene* p0) {
         return AppDelegate::willSwitchToScene(p0);
     }
 
-    inline static AppDelegate* get() {
-        if ((AppDelegate*(*)()){&$AppDelegate::get} != (AppDelegate*(*)()){&D::get})
-            return reinterpret_cast<AppDelegate*(*)()>(m->getOriginal(base+0x3aab10))();
+    using c8 = AppDelegate*(*)();
+    dupable static AppDelegate* get() {
         return AppDelegate::get();
     }
 
+    inline $AppDelegate(bool) {}
     inline $AppDelegate() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($AppDelegate::*)()){&$AppDelegate::bgScale} != (void(D::*)()){&D::bgScale})
-            m->registerHook(base+0x3aaab0, extract((void(D::*)()){&D::bgScale}));
+        if ((c0){&$AppDelegate::bgScale} != (d0){&D::bgScale})
+            m->registerHook(base+0x3aaab0, extract((d0){&D::bgScale}));
 
-        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationDidFinishLaunching} != (bool(D::*)()){&D::applicationDidFinishLaunching})
-            m->registerHook(base+0x3aa900, extract_virtual(V, (bool(D::*)()){&D::applicationDidFinishLaunching}));
+        if ((c1){&$AppDelegate::applicationDidFinishLaunching} != (d1){&D::applicationDidFinishLaunching})
+            m->registerHook(base+0x3aa900, extract_virtual(V, (d1){&D::applicationDidFinishLaunching}));
 
-        if ((void($AppDelegate::*)()){&$AppDelegate::applicationDidEnterBackground} != (void(D::*)()){&D::applicationDidEnterBackground})
-            m->registerHook(base+0x3aabe0, extract_virtual(V, (void(D::*)()){&D::applicationDidEnterBackground}));
+        if ((c2){&$AppDelegate::applicationDidEnterBackground} != (d2){&D::applicationDidEnterBackground})
+            m->registerHook(base+0x3aabe0, extract_virtual(V, (d2){&D::applicationDidEnterBackground}));
 
-        if ((void($AppDelegate::*)()){&$AppDelegate::applicationWillEnterForeground} != (void(D::*)()){&D::applicationWillEnterForeground})
-            m->registerHook(base+0x3aac80, extract_virtual(V, (void(D::*)()){&D::applicationWillEnterForeground}));
+        if ((c3){&$AppDelegate::applicationWillEnterForeground} != (d3){&D::applicationWillEnterForeground})
+            m->registerHook(base+0x3aac80, extract_virtual(V, (d3){&D::applicationWillEnterForeground}));
 
-        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillBecomeActive} != (bool(D::*)()){&D::applicationWillBecomeActive})
-            m->registerHook(base+0x3aab30, extract_virtual(V, (bool(D::*)()){&D::applicationWillBecomeActive}));
+        if ((c4){&$AppDelegate::applicationWillBecomeActive} != (d4){&D::applicationWillBecomeActive})
+            m->registerHook(base+0x3aab30, extract_virtual(V, (d4){&D::applicationWillBecomeActive}));
 
-        if ((bool($AppDelegate::*)()){&$AppDelegate::applicationWillResignActive} != (bool(D::*)()){&D::applicationWillResignActive})
-            m->registerHook(base+0x3aab50, extract_virtual(V, (bool(D::*)()){&D::applicationWillResignActive}));
+        if ((c5){&$AppDelegate::applicationWillResignActive} != (d5){&D::applicationWillResignActive})
+            m->registerHook(base+0x3aab50, extract_virtual(V, (d5){&D::applicationWillResignActive}));
 
-        if ((void($AppDelegate::*)()){&$AppDelegate::trySaveGame} != (void(D::*)()){&D::trySaveGame})
-            m->registerHook(base+0x3aaf10, extract_virtual(V, (void(D::*)()){&D::trySaveGame}));
+        if ((c6){&$AppDelegate::trySaveGame} != (d6){&D::trySaveGame})
+            m->registerHook(base+0x3aaf10, extract_virtual(V, (d6){&D::trySaveGame}));
 
-        if ((void($AppDelegate::*)(cocos2d::CCScene*)){&$AppDelegate::willSwitchToScene} != (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene})
-            m->registerHook(base+0x3aaf40, extract_virtual(V, (void(D::*)(cocos2d::CCScene*)){&D::willSwitchToScene}));
+        if ((c7){&$AppDelegate::willSwitchToScene} != (d7){&D::willSwitchToScene})
+            m->registerHook(base+0x3aaf40, extract_virtual(V, (d7){&D::willSwitchToScene}));
 
-        if ((AppDelegate*(*)()){&$AppDelegate::get} != (AppDelegate*(*)()){&D::get})
-            m->registerHook(base+0x3aab10, (AppDelegate*(*)()){&D::get});
+        if ((c8){&$AppDelegate::get} != (c8){&D::get})
+            m->registerHook(base+0x3aab10, (c8){&D::get});
     }
 };
 
@@ -105,11 +113,11 @@ class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
 public:
     inline ~$CCCircleWaveDelegate() {}
 
+    inline $CCCircleWaveDelegate(bool) {}
     inline $CCCircleWaveDelegate() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -119,11 +127,11 @@ class $TableViewDelegate : public TableViewDelegate, public $CacBase {
 public:
     inline ~$TableViewDelegate() {}
 
+    inline $TableViewDelegate(bool) {}
     inline $TableViewDelegate() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -133,11 +141,11 @@ class $TableViewDataSource : public TableViewDataSource, public $CacBase {
 public:
     inline ~$TableViewDataSource() {}
 
+    inline $TableViewDataSource(bool) {}
     inline $TableViewDataSource() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -147,11 +155,11 @@ class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBa
 public:
     inline ~$CCScrollLayerExtDelegate() {}
 
+    inline $CCScrollLayerExtDelegate(bool) {}
     inline $CCScrollLayerExtDelegate() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -161,11 +169,11 @@ class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, publi
 public:
     inline ~$GJSpecialColorSelectDelegate() {}
 
+    inline $GJSpecialColorSelectDelegate(bool) {}
     inline $GJSpecialColorSelectDelegate() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -175,11 +183,11 @@ class $TextInputDelegate : public TextInputDelegate, public $CacBase {
 public:
     inline ~$TextInputDelegate() {}
 
+    inline $TextInputDelegate(bool) {}
     inline $TextInputDelegate() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -189,11 +197,11 @@ class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
 public:
     inline ~$FLAlertLayerProtocol() {}
 
+    inline $FLAlertLayerProtocol(bool) {}
     inline $FLAlertLayerProtocol() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -203,21 +211,22 @@ class $CCSpritePlus : public CCSpritePlus, public $CacBase {
 public:
     inline ~$CCSpritePlus() {}
 
-    inline bool initWithSpriteFrameName(char const* p0) {
-        if ((bool($CCSpritePlus::*)(char const*)){&$CCSpritePlus::initWithSpriteFrameName} != (bool(D::*)(char const*)){&D::initWithSpriteFrameName})
-            return reinterpret_cast<bool(*)(decltype(this), char const*)>(m->getOriginal(base+0x248670))(this, p0);
+    using c0 = bool($CCSpritePlus::*)(char const*);
+    using d0 = bool(D::*)(char const*);
+    using f0 = bool(*)($CCSpritePlus*, char const*);
+    dupable bool initWithSpriteFrameName(char const* p0) {
         return CCSpritePlus::initWithSpriteFrameName(p0);
     }
 
+    inline $CCSpritePlus(bool) {}
     inline $CCSpritePlus() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((bool($CCSpritePlus::*)(char const*)){&$CCSpritePlus::initWithSpriteFrameName} != (bool(D::*)(char const*)){&D::initWithSpriteFrameName})
-            m->registerHook(base+0x248670, extract((bool(D::*)(char const*)){&D::initWithSpriteFrameName}));
+        if ((c0){&$CCSpritePlus::initWithSpriteFrameName} != (d0){&D::initWithSpriteFrameName})
+            m->registerHook(base+0x248670, extract((d0){&D::initWithSpriteFrameName}));
     }
 };
 
@@ -226,30 +235,30 @@ class $CCMoveCNode : public CCMoveCNode, public $CacBase {
 public:
     inline ~$CCMoveCNode() {}
 
-    inline static CCMoveCNode* create() {
-        if ((CCMoveCNode*(*)()){&$CCMoveCNode::create} != (CCMoveCNode*(*)()){&D::create})
-            return reinterpret_cast<CCMoveCNode*(*)()>(m->getOriginal(base+0x1842a0))();
+    using c0 = CCMoveCNode*(*)();
+    dupable static CCMoveCNode* create() {
         return CCMoveCNode::create();
     }
 
-    inline bool init() {
-        if ((bool($CCMoveCNode::*)()){&$CCMoveCNode::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x18b3d0))(this);
+    using c1 = bool($CCMoveCNode::*)();
+    using d1 = bool(D::*)();
+    using f1 = bool(*)($CCMoveCNode*);
+    dupable bool init() {
         return CCMoveCNode::init();
     }
 
+    inline $CCMoveCNode(bool) {}
     inline $CCMoveCNode() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCMoveCNode*(*)()){&$CCMoveCNode::create} != (CCMoveCNode*(*)()){&D::create})
-            m->registerHook(base+0x1842a0, (CCMoveCNode*(*)()){&D::create});
+        if ((c0){&$CCMoveCNode::create} != (c0){&D::create})
+            m->registerHook(base+0x1842a0, (c0){&D::create});
 
-        if ((bool($CCMoveCNode::*)()){&$CCMoveCNode::init} != (bool(D::*)()){&D::init})
-            m->registerHook(base+0x18b3d0, extract((bool(D::*)()){&D::init}));
+        if ((c1){&$CCMoveCNode::init} != (d1){&D::init})
+            m->registerHook(base+0x18b3d0, extract((d1){&D::init}));
     }
 };
 
@@ -258,39 +267,40 @@ class $CCNodeContainer : public CCNodeContainer, public $CacBase {
 public:
     inline ~$CCNodeContainer() {}
 
-    inline static CCNodeContainer* create() {
-        if ((CCNodeContainer*(*)()){&$CCNodeContainer::create} != (CCNodeContainer*(*)()){&D::create})
-            return reinterpret_cast<CCNodeContainer*(*)()>(m->getOriginal(base+0xb1090))();
+    using c0 = CCNodeContainer*(*)();
+    dupable static CCNodeContainer* create() {
         return CCNodeContainer::create();
     }
 
-    inline bool init() {
-        if ((bool($CCNodeContainer::*)()){&$CCNodeContainer::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0xba950))(this);
+    using c1 = bool($CCNodeContainer::*)();
+    using d1 = bool(D::*)();
+    using f1 = bool(*)($CCNodeContainer*);
+    dupable bool init() {
         return CCNodeContainer::init();
     }
 
-    inline void visit() {
-        if ((void($CCNodeContainer::*)()){&$CCNodeContainer::visit} != (void(D::*)()){&D::visit})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xba960))(this);
+    using c2 = void($CCNodeContainer::*)();
+    using d2 = void(D::*)();
+    using f2 = void(*)($CCNodeContainer*);
+    dupable void visit() {
         return CCNodeContainer::visit();
     }
 
+    inline $CCNodeContainer(bool) {}
     inline $CCNodeContainer() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCNodeContainer*(*)()){&$CCNodeContainer::create} != (CCNodeContainer*(*)()){&D::create})
-            m->registerHook(base+0xb1090, (CCNodeContainer*(*)()){&D::create});
+        if ((c0){&$CCNodeContainer::create} != (c0){&D::create})
+            m->registerHook(base+0xb1090, (c0){&D::create});
 
-        if ((bool($CCNodeContainer::*)()){&$CCNodeContainer::init} != (bool(D::*)()){&D::init})
-            m->registerHook(base+0xba950, extract((bool(D::*)()){&D::init}));
+        if ((c1){&$CCNodeContainer::init} != (d1){&D::init})
+            m->registerHook(base+0xba950, extract((d1){&D::init}));
 
-        if ((void($CCNodeContainer::*)()){&$CCNodeContainer::visit} != (void(D::*)()){&D::visit})
-            m->registerHook(base+0xba960, extract((void(D::*)()){&D::visit}));
+        if ((c2){&$CCNodeContainer::visit} != (d2){&D::visit})
+            m->registerHook(base+0xba960, extract((d2){&D::visit}));
     }
 };
 
@@ -299,30 +309,32 @@ class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
 public:
     inline ~$CCAnimatedSprite() {}
 
-    inline void runAnimation(gd::string p0) {
-        if ((void($CCAnimatedSprite::*)(gd::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(gd::string)){&D::runAnimation})
-            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x1a6430))(this, p0);
+    using c0 = void($CCAnimatedSprite::*)(gd::string);
+    using d0 = void(D::*)(gd::string);
+    using f0 = void(*)($CCAnimatedSprite*, gd::string);
+    dupable void runAnimation(gd::string p0) {
         return CCAnimatedSprite::runAnimation(p0);
     }
 
-    inline void tweenToAnimation(gd::string p0, float p1) {
-        if ((void($CCAnimatedSprite::*)(gd::string, float)){&$CCAnimatedSprite::tweenToAnimation} != (void(D::*)(gd::string, float)){&D::tweenToAnimation})
-            return reinterpret_cast<void(*)(decltype(this), gd::string, float)>(m->getOriginal(base+0x1a65b0))(this, p0, p1);
+    using c1 = void($CCAnimatedSprite::*)(gd::string, float);
+    using d1 = void(D::*)(gd::string, float);
+    using f1 = void(*)($CCAnimatedSprite*, gd::string, float);
+    dupable void tweenToAnimation(gd::string p0, float p1) {
         return CCAnimatedSprite::tweenToAnimation(p0, p1);
     }
 
+    inline $CCAnimatedSprite(bool) {}
     inline $CCAnimatedSprite() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($CCAnimatedSprite::*)(gd::string)){&$CCAnimatedSprite::runAnimation} != (void(D::*)(gd::string)){&D::runAnimation})
-            m->registerHook(base+0x1a6430, extract((void(D::*)(gd::string)){&D::runAnimation}));
+        if ((c0){&$CCAnimatedSprite::runAnimation} != (d0){&D::runAnimation})
+            m->registerHook(base+0x1a6430, extract((d0){&D::runAnimation}));
 
-        if ((void($CCAnimatedSprite::*)(gd::string, float)){&$CCAnimatedSprite::tweenToAnimation} != (void(D::*)(gd::string, float)){&D::tweenToAnimation})
-            m->registerHook(base+0x1a65b0, extract((void(D::*)(gd::string, float)){&D::tweenToAnimation}));
+        if ((c1){&$CCAnimatedSprite::tweenToAnimation} != (d1){&D::tweenToAnimation})
+            m->registerHook(base+0x1a65b0, extract((d1){&D::tweenToAnimation}));
     }
 };
 
@@ -331,120 +343,132 @@ class $CCBlockLayer : public CCBlockLayer, public $CacBase {
 public:
     inline ~$CCBlockLayer() {}
 
-    inline void disableUI() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::disableUI} != (void(D::*)()){&D::disableUI})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5a80))(this);
+    using c0 = void($CCBlockLayer::*)();
+    using d0 = void(D::*)();
+    using f0 = void(*)($CCBlockLayer*);
+    dupable void disableUI() {
         return CCBlockLayer::disableUI();
     }
 
-    inline void draw() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::draw} != (void(D::*)()){&D::draw})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5c20))(this);
+    using c1 = void($CCBlockLayer::*)();
+    using d1 = void(D::*)();
+    using f1 = void(*)($CCBlockLayer*);
+    dupable void draw() {
         return CCBlockLayer::draw();
     }
 
-    inline void enableUI() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::enableUI} != (void(D::*)()){&D::enableUI})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5a90))(this);
+    using c2 = void($CCBlockLayer::*)();
+    using d2 = void(D::*)();
+    using f2 = void(*)($CCBlockLayer*);
+    dupable void enableUI() {
         return CCBlockLayer::enableUI();
     }
 
-    inline void enterAnimFinished() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::enterAnimFinished} != (void(D::*)()){&D::enterAnimFinished})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5bb0))(this);
+    using c3 = void($CCBlockLayer::*)();
+    using d3 = void(D::*)();
+    using f3 = void(*)($CCBlockLayer*);
+    dupable void enterAnimFinished() {
         return CCBlockLayer::enterAnimFinished();
     }
 
-    inline void enterLayer() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::enterLayer} != (void(D::*)()){&D::enterLayer})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5aa0))(this);
+    using c4 = void($CCBlockLayer::*)();
+    using d4 = void(D::*)();
+    using f4 = void(*)($CCBlockLayer*);
+    dupable void enterLayer() {
         return CCBlockLayer::enterLayer();
     }
 
-    inline void exitLayer() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::exitLayer} != (void(D::*)()){&D::exitLayer})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5b40))(this);
+    using c5 = void($CCBlockLayer::*)();
+    using d5 = void(D::*)();
+    using f5 = void(*)($CCBlockLayer*);
+    dupable void exitLayer() {
         return CCBlockLayer::exitLayer();
     }
 
-    inline void hideLayer(bool p0) {
-        if ((void($CCBlockLayer::*)(bool)){&$CCBlockLayer::hideLayer} != (void(D::*)(bool)){&D::hideLayer})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x2a5ba0))(this, p0);
+    using c6 = void($CCBlockLayer::*)(bool);
+    using d6 = void(D::*)(bool);
+    using f6 = void(*)($CCBlockLayer*, bool);
+    dupable void hideLayer(bool p0) {
         return CCBlockLayer::hideLayer(p0);
     }
 
-    inline bool init() {
-        if ((bool($CCBlockLayer::*)()){&$CCBlockLayer::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x2a59c0))(this);
+    using c7 = bool($CCBlockLayer::*)();
+    using d7 = bool(D::*)();
+    using f7 = bool(*)($CCBlockLayer*);
+    dupable bool init() {
         return CCBlockLayer::init();
     }
 
-    inline void layerHidden() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::layerHidden} != (void(D::*)()){&D::layerHidden})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5be0))(this);
+    using c8 = void($CCBlockLayer::*)();
+    using d8 = void(D::*)();
+    using f8 = void(*)($CCBlockLayer*);
+    dupable void layerHidden() {
         return CCBlockLayer::layerHidden();
     }
 
-    inline void layerVisible() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::layerVisible} != (void(D::*)()){&D::layerVisible})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5bc0))(this);
+    using c9 = void($CCBlockLayer::*)();
+    using d9 = void(D::*)();
+    using f9 = void(*)($CCBlockLayer*);
+    dupable void layerVisible() {
         return CCBlockLayer::layerVisible();
     }
 
-    inline void registerWithTouchDispatcher() {
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2a5ad0))(this);
+    using c10 = void($CCBlockLayer::*)();
+    using d10 = void(D::*)();
+    using f10 = void(*)($CCBlockLayer*);
+    dupable void registerWithTouchDispatcher() {
         return CCBlockLayer::registerWithTouchDispatcher();
     }
 
-    inline void showLayer(bool p0) {
-        if ((void($CCBlockLayer::*)(bool)){&$CCBlockLayer::showLayer} != (void(D::*)(bool)){&D::showLayer})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x2a5b90))(this, p0);
+    using c11 = void($CCBlockLayer::*)(bool);
+    using d11 = void(D::*)(bool);
+    using f11 = void(*)($CCBlockLayer*, bool);
+    dupable void showLayer(bool p0) {
         return CCBlockLayer::showLayer(p0);
     }
 
+    inline $CCBlockLayer(bool) {}
     inline $CCBlockLayer() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::disableUI} != (void(D::*)()){&D::disableUI})
-            m->registerHook(base+0x2a5a80, extract((void(D::*)()){&D::disableUI}));
+        if ((c0){&$CCBlockLayer::disableUI} != (d0){&D::disableUI})
+            m->registerHook(base+0x2a5a80, extract((d0){&D::disableUI}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::draw} != (void(D::*)()){&D::draw})
-            m->registerHook(base+0x2a5c20, extract((void(D::*)()){&D::draw}));
+        if ((c1){&$CCBlockLayer::draw} != (d1){&D::draw})
+            m->registerHook(base+0x2a5c20, extract((d1){&D::draw}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::enableUI} != (void(D::*)()){&D::enableUI})
-            m->registerHook(base+0x2a5a90, extract((void(D::*)()){&D::enableUI}));
+        if ((c2){&$CCBlockLayer::enableUI} != (d2){&D::enableUI})
+            m->registerHook(base+0x2a5a90, extract((d2){&D::enableUI}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::enterAnimFinished} != (void(D::*)()){&D::enterAnimFinished})
-            m->registerHook(base+0x2a5bb0, extract((void(D::*)()){&D::enterAnimFinished}));
+        if ((c3){&$CCBlockLayer::enterAnimFinished} != (d3){&D::enterAnimFinished})
+            m->registerHook(base+0x2a5bb0, extract((d3){&D::enterAnimFinished}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::enterLayer} != (void(D::*)()){&D::enterLayer})
-            m->registerHook(base+0x2a5aa0, extract((void(D::*)()){&D::enterLayer}));
+        if ((c4){&$CCBlockLayer::enterLayer} != (d4){&D::enterLayer})
+            m->registerHook(base+0x2a5aa0, extract((d4){&D::enterLayer}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::exitLayer} != (void(D::*)()){&D::exitLayer})
-            m->registerHook(base+0x2a5b40, extract((void(D::*)()){&D::exitLayer}));
+        if ((c5){&$CCBlockLayer::exitLayer} != (d5){&D::exitLayer})
+            m->registerHook(base+0x2a5b40, extract((d5){&D::exitLayer}));
 
-        if ((void($CCBlockLayer::*)(bool)){&$CCBlockLayer::hideLayer} != (void(D::*)(bool)){&D::hideLayer})
-            m->registerHook(base+0x2a5ba0, extract((void(D::*)(bool)){&D::hideLayer}));
+        if ((c6){&$CCBlockLayer::hideLayer} != (d6){&D::hideLayer})
+            m->registerHook(base+0x2a5ba0, extract((d6){&D::hideLayer}));
 
-        if ((bool($CCBlockLayer::*)()){&$CCBlockLayer::init} != (bool(D::*)()){&D::init})
-            m->registerHook(base+0x2a59c0, extract((bool(D::*)()){&D::init}));
+        if ((c7){&$CCBlockLayer::init} != (d7){&D::init})
+            m->registerHook(base+0x2a59c0, extract((d7){&D::init}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::layerHidden} != (void(D::*)()){&D::layerHidden})
-            m->registerHook(base+0x2a5be0, extract((void(D::*)()){&D::layerHidden}));
+        if ((c8){&$CCBlockLayer::layerHidden} != (d8){&D::layerHidden})
+            m->registerHook(base+0x2a5be0, extract((d8){&D::layerHidden}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::layerVisible} != (void(D::*)()){&D::layerVisible})
-            m->registerHook(base+0x2a5bc0, extract((void(D::*)()){&D::layerVisible}));
+        if ((c9){&$CCBlockLayer::layerVisible} != (d9){&D::layerVisible})
+            m->registerHook(base+0x2a5bc0, extract((d9){&D::layerVisible}));
 
-        if ((void($CCBlockLayer::*)()){&$CCBlockLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x2a5ad0, extract((void(D::*)()){&D::registerWithTouchDispatcher}));
+        if ((c10){&$CCBlockLayer::registerWithTouchDispatcher} != (d10){&D::registerWithTouchDispatcher})
+            m->registerHook(base+0x2a5ad0, extract((d10){&D::registerWithTouchDispatcher}));
 
-        if ((void($CCBlockLayer::*)(bool)){&$CCBlockLayer::showLayer} != (void(D::*)(bool)){&D::showLayer})
-            m->registerHook(base+0x2a5b90, extract((void(D::*)(bool)){&D::showLayer}));
+        if ((c11){&$CCBlockLayer::showLayer} != (d11){&D::showLayer})
+            m->registerHook(base+0x2a5b90, extract((d11){&D::showLayer}));
     }
 };
 
@@ -453,57 +477,58 @@ class $CCCircleWave : public CCCircleWave, public $CacBase {
 public:
     inline ~$CCCircleWave() {}
 
-    inline static CCCircleWave* create(float p0, float p1, float p2, bool p3) {
-        if ((CCCircleWave*(*)(float, float, float, bool)){&$CCCircleWave::create} != (CCCircleWave*(*)(float, float, float, bool)){&D::create})
-            return reinterpret_cast<CCCircleWave*(*)(float, float, float, bool)>(m->getOriginal(base+0xbd270))(p0, p1, p2, p3);
+    using c0 = CCCircleWave*(*)(float, float, float, bool);
+    dupable static CCCircleWave* create(float p0, float p1, float p2, bool p3) {
         return CCCircleWave::create(p0, p1, p2, p3);
     }
 
-    inline static CCCircleWave* create(float p0, float p1, float p2, bool p3, bool p4) {
-        if ((CCCircleWave*(*)(float, float, float, bool, bool)){&$CCCircleWave::create} != (CCCircleWave*(*)(float, float, float, bool, bool)){&D::create})
-            return reinterpret_cast<CCCircleWave*(*)(float, float, float, bool, bool)>(m->getOriginal(base+0xbd290))(p0, p1, p2, p3, p4);
+    using c1 = CCCircleWave*(*)(float, float, float, bool, bool);
+    dupable static CCCircleWave* create(float p0, float p1, float p2, bool p3, bool p4) {
         return CCCircleWave::create(p0, p1, p2, p3, p4);
     }
 
-    inline bool init(float p0, float p1, float p2, bool p3, bool p4) {
-        if ((bool($CCCircleWave::*)(float, float, float, bool, bool)){&$CCCircleWave::init} != (bool(D::*)(float, float, float, bool, bool)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), float, float, float, bool, bool)>(m->getOriginal(base+0xbd380))(this, p0, p1, p2, p3, p4);
+    using c2 = bool($CCCircleWave::*)(float, float, float, bool, bool);
+    using d2 = bool(D::*)(float, float, float, bool, bool);
+    using f2 = bool(*)($CCCircleWave*, float, float, float, bool, bool);
+    dupable bool init(float p0, float p1, float p2, bool p3, bool p4) {
         return CCCircleWave::init(p0, p1, p2, p3, p4);
     }
 
-    inline void followObject(cocos2d::CCNode* p0, bool p1) {
-        if ((void($CCCircleWave::*)(cocos2d::CCNode*, bool)){&$CCCircleWave::followObject} != (void(D::*)(cocos2d::CCNode*, bool)){&D::followObject})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCNode*, bool)>(m->getOriginal(base+0xbd670))(this, p0, p1);
+    using c3 = void($CCCircleWave::*)(cocos2d::CCNode*, bool);
+    using d3 = void(D::*)(cocos2d::CCNode*, bool);
+    using f3 = void(*)($CCCircleWave*, cocos2d::CCNode*, bool);
+    dupable void followObject(cocos2d::CCNode* p0, bool p1) {
         return CCCircleWave::followObject(p0, p1);
     }
 
-    inline void updatePosition(float p0) {
-        if ((void($CCCircleWave::*)(float)){&$CCCircleWave::updatePosition} != (void(D::*)(float)){&D::updatePosition})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0xbd630))(this, p0);
+    using c4 = void($CCCircleWave::*)(float);
+    using d4 = void(D::*)(float);
+    using f4 = void(*)($CCCircleWave*, float);
+    dupable void updatePosition(float p0) {
         return CCCircleWave::updatePosition(p0);
     }
 
+    inline $CCCircleWave(bool) {}
     inline $CCCircleWave() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCCircleWave*(*)(float, float, float, bool)){&$CCCircleWave::create} != (CCCircleWave*(*)(float, float, float, bool)){&D::create})
-            m->registerHook(base+0xbd270, (CCCircleWave*(*)(float, float, float, bool)){&D::create});
+        if ((c0){&$CCCircleWave::create} != (c0){&D::create})
+            m->registerHook(base+0xbd270, (c0){&D::create});
 
-        if ((CCCircleWave*(*)(float, float, float, bool, bool)){&$CCCircleWave::create} != (CCCircleWave*(*)(float, float, float, bool, bool)){&D::create})
-            m->registerHook(base+0xbd290, (CCCircleWave*(*)(float, float, float, bool, bool)){&D::create});
+        if ((c1){&$CCCircleWave::create} != (c1){&D::create})
+            m->registerHook(base+0xbd290, (c1){&D::create});
 
-        if ((bool($CCCircleWave::*)(float, float, float, bool, bool)){&$CCCircleWave::init} != (bool(D::*)(float, float, float, bool, bool)){&D::init})
-            m->registerHook(base+0xbd380, extract((bool(D::*)(float, float, float, bool, bool)){&D::init}));
+        if ((c2){&$CCCircleWave::init} != (d2){&D::init})
+            m->registerHook(base+0xbd380, extract((d2){&D::init}));
 
-        if ((void($CCCircleWave::*)(cocos2d::CCNode*, bool)){&$CCCircleWave::followObject} != (void(D::*)(cocos2d::CCNode*, bool)){&D::followObject})
-            m->registerHook(base+0xbd670, extract((void(D::*)(cocos2d::CCNode*, bool)){&D::followObject}));
+        if ((c3){&$CCCircleWave::followObject} != (d3){&D::followObject})
+            m->registerHook(base+0xbd670, extract((d3){&D::followObject}));
 
-        if ((void($CCCircleWave::*)(float)){&$CCCircleWave::updatePosition} != (void(D::*)(float)){&D::updatePosition})
-            m->registerHook(base+0xbd630, extract((void(D::*)(float)){&D::updatePosition}));
+        if ((c4){&$CCCircleWave::updatePosition} != (d4){&D::updatePosition})
+            m->registerHook(base+0xbd630, extract((d4){&D::updatePosition}));
     }
 };
 
@@ -512,30 +537,30 @@ class $CCLightFlash : public CCLightFlash, public $CacBase {
 public:
     inline ~$CCLightFlash() {}
 
-    inline static CCLightFlash* create() {
-        if ((CCLightFlash*(*)()){&$CCLightFlash::create} != (CCLightFlash*(*)()){&D::create})
-            return reinterpret_cast<CCLightFlash*(*)()>(m->getOriginal(base+0x295870))();
+    using c0 = CCLightFlash*(*)();
+    dupable static CCLightFlash* create() {
         return CCLightFlash::create();
     }
 
-    inline void playEffect(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1, float p2, float p3, float p4, float p5, float p6, float p7, float p8, float p9, float p10, float p11, float p12, float p13, float p14, float p15, int p16, bool p17, bool p18, float p19) {
-        if ((void($CCLightFlash::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)){&$CCLightFlash::playEffect} != (void(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)){&D::playEffect})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)>(m->getOriginal(base+0x295900))(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
+    using c1 = void($CCLightFlash::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
+    using d1 = void(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
+    using f1 = void(*)($CCLightFlash*, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
+    dupable void playEffect(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1, float p2, float p3, float p4, float p5, float p6, float p7, float p8, float p9, float p10, float p11, float p12, float p13, float p14, float p15, int p16, bool p17, bool p18, float p19) {
         return CCLightFlash::playEffect(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
     }
 
+    inline $CCLightFlash(bool) {}
     inline $CCLightFlash() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCLightFlash*(*)()){&$CCLightFlash::create} != (CCLightFlash*(*)()){&D::create})
-            m->registerHook(base+0x295870, (CCLightFlash*(*)()){&D::create});
+        if ((c0){&$CCLightFlash::create} != (c0){&D::create})
+            m->registerHook(base+0x295870, (c0){&D::create});
 
-        if ((void($CCLightFlash::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)){&$CCLightFlash::playEffect} != (void(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)){&D::playEffect})
-            m->registerHook(base+0x295900, extract((void(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float)){&D::playEffect}));
+        if ((c1){&$CCLightFlash::playEffect} != (d1){&D::playEffect})
+            m->registerHook(base+0x295900, extract((d1){&D::playEffect}));
     }
 };
 
@@ -544,39 +569,40 @@ class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
 public:
     inline ~$CCMenuItemSpriteExtra() {}
 
-    inline static CCMenuItemSpriteExtra* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-        if ((CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&$CCMenuItemSpriteExtra::create} != (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::create})
-            return reinterpret_cast<CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(m->getOriginal(base+0x1253c0))(p0, p1, p2, p3);
+    using c0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    dupable static CCMenuItemSpriteExtra* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
         return CCMenuItemSpriteExtra::create(p0, p1, p2, p3);
     }
 
-    inline void setSizeMult(float p0) {
-        if ((void($CCMenuItemSpriteExtra::*)(float)){&$CCMenuItemSpriteExtra::setSizeMult} != (void(D::*)(float)){&D::setSizeMult})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x1255e0))(this, p0);
+    using c1 = void($CCMenuItemSpriteExtra::*)(float);
+    using d1 = void(D::*)(float);
+    using f1 = void(*)($CCMenuItemSpriteExtra*, float);
+    dupable void setSizeMult(float p0) {
         return CCMenuItemSpriteExtra::setSizeMult(p0);
     }
 
-    inline bool init(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-        if ((bool($CCMenuItemSpriteExtra::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&$CCMenuItemSpriteExtra::init} != (bool(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(m->getOriginal(base+0x125450))(this, p0, p1, p2, p3);
+    using c3 = bool($CCMenuItemSpriteExtra::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using d3 = bool(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using f3 = bool(*)($CCMenuItemSpriteExtra*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    dupable bool init(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
         return CCMenuItemSpriteExtra::init(p0, p1, p2, p3);
     }
 
+    inline $CCMenuItemSpriteExtra(bool) {}
     inline $CCMenuItemSpriteExtra() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&$CCMenuItemSpriteExtra::create} != (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::create})
-            m->registerHook(base+0x1253c0, (CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::create});
+        if ((c0){&$CCMenuItemSpriteExtra::create} != (c0){&D::create})
+            m->registerHook(base+0x1253c0, (c0){&D::create});
 
-        if ((void($CCMenuItemSpriteExtra::*)(float)){&$CCMenuItemSpriteExtra::setSizeMult} != (void(D::*)(float)){&D::setSizeMult})
-            m->registerHook(base+0x1255e0, extract((void(D::*)(float)){&D::setSizeMult}));
+        if ((c1){&$CCMenuItemSpriteExtra::setSizeMult} != (d1){&D::setSizeMult})
+            m->registerHook(base+0x1255e0, extract((d1){&D::setSizeMult}));
 
-        if ((bool($CCMenuItemSpriteExtra::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&$CCMenuItemSpriteExtra::init} != (bool(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::init})
-            m->registerHook(base+0x125450, extract((bool(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::init}));
+        if ((c3){&$CCMenuItemSpriteExtra::init} != (d3){&D::init})
+            m->registerHook(base+0x125450, extract((d3){&D::init}));
     }
 };
 
@@ -585,30 +611,30 @@ class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
 public:
     inline ~$CCMenuItemToggler() {}
 
-    inline static CCMenuItemToggler* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
-        if ((CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&$CCMenuItemToggler::create} != (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::create})
-            return reinterpret_cast<CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)>(m->getOriginal(base+0x38400))(p0, p1, p2, p3);
+    using c0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    dupable static CCMenuItemToggler* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
         return CCMenuItemToggler::create(p0, p1, p2, p3);
     }
 
-    inline void setSizeMult(float p0) {
-        if ((void($CCMenuItemToggler::*)(float)){&$CCMenuItemToggler::setSizeMult} != (void(D::*)(float)){&D::setSizeMult})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x38a40))(this, p0);
+    using c1 = void($CCMenuItemToggler::*)(float);
+    using d1 = void(D::*)(float);
+    using f1 = void(*)($CCMenuItemToggler*, float);
+    dupable void setSizeMult(float p0) {
         return CCMenuItemToggler::setSizeMult(p0);
     }
 
+    inline $CCMenuItemToggler(bool) {}
     inline $CCMenuItemToggler() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&$CCMenuItemToggler::create} != (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::create})
-            m->registerHook(base+0x38400, (CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler)){&D::create});
+        if ((c0){&$CCMenuItemToggler::create} != (c0){&D::create})
+            m->registerHook(base+0x38400, (c0){&D::create});
 
-        if ((void($CCMenuItemToggler::*)(float)){&$CCMenuItemToggler::setSizeMult} != (void(D::*)(float)){&D::setSizeMult})
-            m->registerHook(base+0x38a40, extract((void(D::*)(float)){&D::setSizeMult}));
+        if ((c1){&$CCMenuItemToggler::setSizeMult} != (d1){&D::setSizeMult})
+            m->registerHook(base+0x38a40, extract((d1){&D::setSizeMult}));
     }
 };
 
@@ -617,102 +643,112 @@ class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
 public:
     inline ~$CCScrollLayerExt() {}
 
-    inline void visit() {
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::visit} != (void(D::*)()){&D::visit})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x236550))(this);
+    using c1 = void($CCScrollLayerExt::*)();
+    using d1 = void(D::*)();
+    using f1 = void(*)($CCScrollLayerExt*);
+    dupable void visit() {
         return CCScrollLayerExt::visit();
     }
 
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((bool($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x235ef0))(this, p0, p1);
+    using c2 = bool($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d2 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f2 = bool(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCScrollLayerExt::ccTouchBegan(p0, p1);
     }
 
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x236300))(this, p0, p1);
+    using c3 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d3 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f3 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCScrollLayerExt::ccTouchMoved(p0, p1);
     }
 
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x236020))(this, p0, p1);
+    using c4 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d4 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f4 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCScrollLayerExt::ccTouchEnded(p0, p1);
     }
 
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x2362a0))(this, p0, p1);
+    using c5 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d5 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f5 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCScrollLayerExt::ccTouchCancelled(p0, p1);
     }
 
-    inline void registerWithTouchDispatcher() {
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x235eb0))(this);
+    using c6 = void($CCScrollLayerExt::*)();
+    using d6 = void(D::*)();
+    using f6 = void(*)($CCScrollLayerExt*);
+    dupable void registerWithTouchDispatcher() {
         return CCScrollLayerExt::registerWithTouchDispatcher();
     }
 
-    inline void preVisitWithClippingRect(cocos2d::CCRect p0) {
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCRect)){&$CCScrollLayerExt::preVisitWithClippingRect} != (void(D::*)(cocos2d::CCRect)){&D::preVisitWithClippingRect})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCRect)>(m->getOriginal(base+0x2366a0))(this, p0);
+    using c7 = void($CCScrollLayerExt::*)(cocos2d::CCRect);
+    using d7 = void(D::*)(cocos2d::CCRect);
+    using f7 = void(*)($CCScrollLayerExt*, cocos2d::CCRect);
+    dupable void preVisitWithClippingRect(cocos2d::CCRect p0) {
         return CCScrollLayerExt::preVisitWithClippingRect(p0);
     }
 
-    inline void postVisit() {
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::postVisit} != (void(D::*)()){&D::postVisit})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x236720))(this);
+    using c8 = void($CCScrollLayerExt::*)();
+    using d8 = void(D::*)();
+    using f8 = void(*)($CCScrollLayerExt*);
+    dupable void postVisit() {
         return CCScrollLayerExt::postVisit();
     }
 
-    inline void moveToTop() {
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::moveToTop} != (void(D::*)()){&D::moveToTop})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x235870))(this);
+    using c9 = void($CCScrollLayerExt::*)();
+    using d9 = void(D::*)();
+    using f9 = void(*)($CCScrollLayerExt*);
+    dupable void moveToTop() {
         return CCScrollLayerExt::moveToTop();
     }
 
-    inline void moveToTopWithOffset(float p0) {
-        if ((void($CCScrollLayerExt::*)(float)){&$CCScrollLayerExt::moveToTopWithOffset} != (void(D::*)(float)){&D::moveToTopWithOffset})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x2357d0))(this, p0);
+    using c10 = void($CCScrollLayerExt::*)(float);
+    using d10 = void(D::*)(float);
+    using f10 = void(*)($CCScrollLayerExt*, float);
+    dupable void moveToTopWithOffset(float p0) {
         return CCScrollLayerExt::moveToTopWithOffset(p0);
     }
 
+    inline $CCScrollLayerExt(bool) {}
     inline $CCScrollLayerExt() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::visit} != (void(D::*)()){&D::visit})
-            m->registerHook(base+0x236550, extract_virtual(V, (void(D::*)()){&D::visit}));
+        if ((c1){&$CCScrollLayerExt::visit} != (d1){&D::visit})
+            m->registerHook(base+0x236550, extract_virtual(V, (d1){&D::visit}));
 
-        if ((bool($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(base+0x235ef0, extract_virtual(V, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+        if ((c2){&$CCScrollLayerExt::ccTouchBegan} != (d2){&D::ccTouchBegan})
+            m->registerHook(base+0x235ef0, extract_virtual(V, (d2){&D::ccTouchBegan}));
 
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            m->registerHook(base+0x236300, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
+        if ((c3){&$CCScrollLayerExt::ccTouchMoved} != (d3){&D::ccTouchMoved})
+            m->registerHook(base+0x236300, extract_virtual(V, (d3){&D::ccTouchMoved}));
 
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(base+0x236020, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
+        if ((c4){&$CCScrollLayerExt::ccTouchEnded} != (d4){&D::ccTouchEnded})
+            m->registerHook(base+0x236020, extract_virtual(V, (d4){&D::ccTouchEnded}));
 
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCScrollLayerExt::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            m->registerHook(base+0x2362a0, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
+        if ((c5){&$CCScrollLayerExt::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
+            m->registerHook(base+0x2362a0, extract_virtual(V, (d5){&D::ccTouchCancelled}));
 
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x235eb0, extract_virtual(V, (void(D::*)()){&D::registerWithTouchDispatcher}));
+        if ((c6){&$CCScrollLayerExt::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
+            m->registerHook(base+0x235eb0, extract_virtual(V, (d6){&D::registerWithTouchDispatcher}));
 
-        if ((void($CCScrollLayerExt::*)(cocos2d::CCRect)){&$CCScrollLayerExt::preVisitWithClippingRect} != (void(D::*)(cocos2d::CCRect)){&D::preVisitWithClippingRect})
-            m->registerHook(base+0x2366a0, extract_virtual(V, (void(D::*)(cocos2d::CCRect)){&D::preVisitWithClippingRect}));
+        if ((c7){&$CCScrollLayerExt::preVisitWithClippingRect} != (d7){&D::preVisitWithClippingRect})
+            m->registerHook(base+0x2366a0, extract_virtual(V, (d7){&D::preVisitWithClippingRect}));
 
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::postVisit} != (void(D::*)()){&D::postVisit})
-            m->registerHook(base+0x236720, extract_virtual(V, (void(D::*)()){&D::postVisit}));
+        if ((c8){&$CCScrollLayerExt::postVisit} != (d8){&D::postVisit})
+            m->registerHook(base+0x236720, extract_virtual(V, (d8){&D::postVisit}));
 
-        if ((void($CCScrollLayerExt::*)()){&$CCScrollLayerExt::moveToTop} != (void(D::*)()){&D::moveToTop})
-            m->registerHook(base+0x235870, extract((void(D::*)()){&D::moveToTop}));
+        if ((c9){&$CCScrollLayerExt::moveToTop} != (d9){&D::moveToTop})
+            m->registerHook(base+0x235870, extract((d9){&D::moveToTop}));
 
-        if ((void($CCScrollLayerExt::*)(float)){&$CCScrollLayerExt::moveToTopWithOffset} != (void(D::*)(float)){&D::moveToTopWithOffset})
-            m->registerHook(base+0x2357d0, extract((void(D::*)(float)){&D::moveToTopWithOffset}));
+        if ((c10){&$CCScrollLayerExt::moveToTopWithOffset} != (d10){&D::moveToTopWithOffset})
+            m->registerHook(base+0x2357d0, extract((d10){&D::moveToTopWithOffset}));
     }
 };
 
@@ -721,120 +757,128 @@ class $FLAlertLayer : public FLAlertLayer, public $CacBase {
 public:
     inline ~$FLAlertLayer() {}
 
-    inline void onEnter() {
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::onEnter} != (void(D::*)()){&D::onEnter})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x25f350))(this);
+    using c1 = void($FLAlertLayer::*)();
+    using d1 = void(D::*)();
+    using f1 = void(*)($FLAlertLayer*);
+    dupable void onEnter() {
         return FLAlertLayer::onEnter();
     }
 
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25ee40))(this, p0, p1);
+    using c2 = bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d2 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f2 = bool(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return FLAlertLayer::ccTouchBegan(p0, p1);
     }
 
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25f0a0))(this, p0, p1);
+    using c3 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d3 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f3 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return FLAlertLayer::ccTouchMoved(p0, p1);
     }
 
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25ef60))(this, p0, p1);
+    using c4 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d4 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f4 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return FLAlertLayer::ccTouchEnded(p0, p1);
     }
 
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25f020))(this, p0, p1);
+    using c5 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d5 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f5 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return FLAlertLayer::ccTouchCancelled(p0, p1);
     }
 
-    inline void registerWithTouchDispatcher() {
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x25f2e0))(this);
+    using c6 = void($FLAlertLayer::*)();
+    using d6 = void(D::*)();
+    using f6 = void(*)($FLAlertLayer*);
+    dupable void registerWithTouchDispatcher() {
         return FLAlertLayer::registerWithTouchDispatcher();
     }
 
-    inline void keyBackClicked() {
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x25ed90))(this);
+    using c7 = void($FLAlertLayer::*)();
+    using d7 = void(D::*)();
+    using f7 = void(*)($FLAlertLayer*);
+    dupable void keyBackClicked() {
         return FLAlertLayer::keyBackClicked();
     }
 
-    inline void keyDown(cocos2d::enumKeyCodes p0) {
-        if ((void($FLAlertLayer::*)(cocos2d::enumKeyCodes)){&$FLAlertLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::enumKeyCodes)>(m->getOriginal(base+0x25ece0))(this, p0);
+    using c8 = void($FLAlertLayer::*)(cocos2d::enumKeyCodes);
+    using d8 = void(D::*)(cocos2d::enumKeyCodes);
+    using f8 = void(*)($FLAlertLayer*, cocos2d::enumKeyCodes);
+    dupable void keyDown(cocos2d::enumKeyCodes p0) {
         return FLAlertLayer::keyDown(p0);
     }
 
-    inline void show() {
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::show} != (void(D::*)()){&D::show})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x25f120))(this);
+    using c9 = void($FLAlertLayer::*)();
+    using d9 = void(D::*)();
+    using f9 = void(*)($FLAlertLayer*);
+    dupable void show() {
         return FLAlertLayer::show();
     }
 
-    inline bool init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25e1b0))(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    using c10 = bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    using d10 = bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    using f10 = bool(*)($FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    dupable bool init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
         return FLAlertLayer::init(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
-    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create})
-            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)>(m->getOriginal(base+0x25e0e0))(p0, p1, p2, p3, p4, p5);
+    using c11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
+    dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
         return FLAlertLayer::create(p0, p1, p2, p3, p4, p5);
     }
 
-    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create})
-            return reinterpret_cast<FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)>(m->getOriginal(base+0x25dec0))(p0, p1, p2, p3, p4, p5, p6, p7);
+    using c12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    dupable static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
         return FLAlertLayer::create(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
+    inline $FLAlertLayer(bool) {}
     inline $FLAlertLayer() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::onEnter} != (void(D::*)()){&D::onEnter})
-            m->registerHook(base+0x25f350, extract_virtual(V, (void(D::*)()){&D::onEnter}));
+        if ((c1){&$FLAlertLayer::onEnter} != (d1){&D::onEnter})
+            m->registerHook(base+0x25f350, extract_virtual(V, (d1){&D::onEnter}));
 
-        if ((bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(base+0x25ee40, extract_virtual(V, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+        if ((c2){&$FLAlertLayer::ccTouchBegan} != (d2){&D::ccTouchBegan})
+            m->registerHook(base+0x25ee40, extract_virtual(V, (d2){&D::ccTouchBegan}));
 
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            m->registerHook(base+0x25f0a0, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
+        if ((c3){&$FLAlertLayer::ccTouchMoved} != (d3){&D::ccTouchMoved})
+            m->registerHook(base+0x25f0a0, extract_virtual(V, (d3){&D::ccTouchMoved}));
 
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(base+0x25ef60, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
+        if ((c4){&$FLAlertLayer::ccTouchEnded} != (d4){&D::ccTouchEnded})
+            m->registerHook(base+0x25ef60, extract_virtual(V, (d4){&D::ccTouchEnded}));
 
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            m->registerHook(base+0x25f020, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
+        if ((c5){&$FLAlertLayer::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
+            m->registerHook(base+0x25f020, extract_virtual(V, (d5){&D::ccTouchCancelled}));
 
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x25f2e0, extract_virtual(V, (void(D::*)()){&D::registerWithTouchDispatcher}));
+        if ((c6){&$FLAlertLayer::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
+            m->registerHook(base+0x25f2e0, extract_virtual(V, (d6){&D::registerWithTouchDispatcher}));
 
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            m->registerHook(base+0x25ed90, extract_virtual(V, (void(D::*)()){&D::keyBackClicked}));
+        if ((c7){&$FLAlertLayer::keyBackClicked} != (d7){&D::keyBackClicked})
+            m->registerHook(base+0x25ed90, extract_virtual(V, (d7){&D::keyBackClicked}));
 
-        if ((void($FLAlertLayer::*)(cocos2d::enumKeyCodes)){&$FLAlertLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            m->registerHook(base+0x25ece0, extract_virtual(V, (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
+        if ((c8){&$FLAlertLayer::keyDown} != (d8){&D::keyDown})
+            m->registerHook(base+0x25ece0, extract_virtual(V, (d8){&D::keyDown}));
 
-        if ((void($FLAlertLayer::*)()){&$FLAlertLayer::show} != (void(D::*)()){&D::show})
-            m->registerHook(base+0x25f120, extract_virtual(V, (void(D::*)()){&D::show}));
+        if ((c9){&$FLAlertLayer::show} != (d9){&D::show})
+            m->registerHook(base+0x25f120, extract_virtual(V, (d9){&D::show}));
 
-        if ((bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::init} != (bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init})
-            m->registerHook(base+0x25e1b0, extract((bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::init}));
+        if ((c10){&$FLAlertLayer::init} != (d10){&D::init})
+            m->registerHook(base+0x25e1b0, extract((d10){&D::init}));
 
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create})
-            m->registerHook(base+0x25e0e0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float)){&D::create});
+        if ((c11){&$FLAlertLayer::create} != (c11){&D::create})
+            m->registerHook(base+0x25e0e0, (c11){&D::create});
 
-        if ((FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&$FLAlertLayer::create} != (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create})
-            m->registerHook(base+0x25dec0, (FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float)){&D::create});
+        if ((c12){&$FLAlertLayer::create} != (c12){&D::create})
+            m->registerHook(base+0x25dec0, (c12){&D::create});
     }
 };
 
@@ -843,84 +887,92 @@ class $MenuLayer : public MenuLayer, public $CacBase {
 public:
     inline ~$MenuLayer() {}
 
-    inline bool init() {
-        if ((bool($MenuLayer::*)()){&$MenuLayer::init} != (bool(D::*)()){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x1d14b0))(this);
+    using c1 = bool($MenuLayer::*)();
+    using d1 = bool(D::*)();
+    using f1 = bool(*)($MenuLayer*);
+    dupable bool init() {
         return MenuLayer::init();
     }
 
-    inline void keyBackClicked() {
-        if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x1d3160))(this);
+    using c2 = void($MenuLayer::*)();
+    using d2 = void(D::*)();
+    using f2 = void(*)($MenuLayer*);
+    dupable void keyBackClicked() {
         return MenuLayer::keyBackClicked();
     }
 
-    inline void keyDown(cocos2d::enumKeyCodes p0) {
-        if ((void($MenuLayer::*)(cocos2d::enumKeyCodes)){&$MenuLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::enumKeyCodes)>(m->getOriginal(base+0x1d33d0))(this, p0);
+    using c3 = void($MenuLayer::*)(cocos2d::enumKeyCodes);
+    using d3 = void(D::*)(cocos2d::enumKeyCodes);
+    using f3 = void(*)($MenuLayer*, cocos2d::enumKeyCodes);
+    dupable void keyDown(cocos2d::enumKeyCodes p0) {
         return MenuLayer::keyDown(p0);
     }
 
-    inline void googlePlaySignedIn() {
-        if ((void($MenuLayer::*)()){&$MenuLayer::googlePlaySignedIn} != (void(D::*)()){&D::googlePlaySignedIn})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x1d2f30))(this);
+    using c4 = void($MenuLayer::*)();
+    using d4 = void(D::*)();
+    using f4 = void(*)($MenuLayer*);
+    dupable void googlePlaySignedIn() {
         return MenuLayer::googlePlaySignedIn();
     }
 
-    inline void FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
-        if ((void($MenuLayer::*)(FLAlertLayer*, bool)){&$MenuLayer::FLAlert_Clicked} != (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked})
-            return reinterpret_cast<void(*)(decltype(this), FLAlertLayer*, bool)>(m->getOriginal(base+0x1d3190))(this, p0, p1);
+    using c5 = void($MenuLayer::*)(FLAlertLayer*, bool);
+    using d5 = void(D::*)(FLAlertLayer*, bool);
+    using f5 = void(*)($MenuLayer*, FLAlertLayer*, bool);
+    dupable void FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
         return MenuLayer::FLAlert_Clicked(p0, p1);
     }
 
-    inline void onMoreGames(cocos2d::CCObject* p0) {
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x1d2ad0))(this, p0);
+    using c6 = void($MenuLayer::*)(cocos2d::CCObject*);
+    using d6 = void(D::*)(cocos2d::CCObject*);
+    using f6 = void(*)($MenuLayer*, cocos2d::CCObject*);
+    dupable void onMoreGames(cocos2d::CCObject* p0) {
         return MenuLayer::onMoreGames(p0);
     }
 
-    inline void onQuit(cocos2d::CCObject* p0) {
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x1d2b40))(this, p0);
+    using c7 = void($MenuLayer::*)(cocos2d::CCObject*);
+    using d7 = void(D::*)(cocos2d::CCObject*);
+    using f7 = void(*)($MenuLayer*, cocos2d::CCObject*);
+    dupable void onQuit(cocos2d::CCObject* p0) {
         return MenuLayer::onQuit(p0);
     }
 
-    inline void scene(bool p0) {
-        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x1d12d0))(this, p0);
+    using c8 = void($MenuLayer::*)(bool);
+    using d8 = void(D::*)(bool);
+    using f8 = void(*)($MenuLayer*, bool);
+    dupable void scene(bool p0) {
         return MenuLayer::scene(p0);
     }
 
+    inline $MenuLayer(bool) {}
     inline $MenuLayer() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((bool($MenuLayer::*)()){&$MenuLayer::init} != (bool(D::*)()){&D::init})
-            m->registerHook(base+0x1d14b0, extract_virtual(V, (bool(D::*)()){&D::init}));
+        if ((c1){&$MenuLayer::init} != (d1){&D::init})
+            m->registerHook(base+0x1d14b0, extract_virtual(V, (d1){&D::init}));
 
-        if ((void($MenuLayer::*)()){&$MenuLayer::keyBackClicked} != (void(D::*)()){&D::keyBackClicked})
-            m->registerHook(base+0x1d3160, extract_virtual(V, (void(D::*)()){&D::keyBackClicked}));
+        if ((c2){&$MenuLayer::keyBackClicked} != (d2){&D::keyBackClicked})
+            m->registerHook(base+0x1d3160, extract_virtual(V, (d2){&D::keyBackClicked}));
 
-        if ((void($MenuLayer::*)(cocos2d::enumKeyCodes)){&$MenuLayer::keyDown} != (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown})
-            m->registerHook(base+0x1d33d0, extract_virtual(V, (void(D::*)(cocos2d::enumKeyCodes)){&D::keyDown}));
+        if ((c3){&$MenuLayer::keyDown} != (d3){&D::keyDown})
+            m->registerHook(base+0x1d33d0, extract_virtual(V, (d3){&D::keyDown}));
 
-        if ((void($MenuLayer::*)()){&$MenuLayer::googlePlaySignedIn} != (void(D::*)()){&D::googlePlaySignedIn})
-            m->registerHook(base+0x1d2f30, extract_virtual(V, (void(D::*)()){&D::googlePlaySignedIn}));
+        if ((c4){&$MenuLayer::googlePlaySignedIn} != (d4){&D::googlePlaySignedIn})
+            m->registerHook(base+0x1d2f30, extract_virtual(V, (d4){&D::googlePlaySignedIn}));
 
-        if ((void($MenuLayer::*)(FLAlertLayer*, bool)){&$MenuLayer::FLAlert_Clicked} != (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked})
-            m->registerHook(base+0x1d3190, extract_virtual(V, (void(D::*)(FLAlertLayer*, bool)){&D::FLAlert_Clicked}));
+        if ((c5){&$MenuLayer::FLAlert_Clicked} != (d5){&D::FLAlert_Clicked})
+            m->registerHook(base+0x1d3190, extract_virtual(V, (d5){&D::FLAlert_Clicked}));
 
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onMoreGames} != (void(D::*)(cocos2d::CCObject*)){&D::onMoreGames})
-            m->registerHook(base+0x1d2ad0, extract((void(D::*)(cocos2d::CCObject*)){&D::onMoreGames}));
+        if ((c6){&$MenuLayer::onMoreGames} != (d6){&D::onMoreGames})
+            m->registerHook(base+0x1d2ad0, extract((d6){&D::onMoreGames}));
 
-        if ((void($MenuLayer::*)(cocos2d::CCObject*)){&$MenuLayer::onQuit} != (void(D::*)(cocos2d::CCObject*)){&D::onQuit})
-            m->registerHook(base+0x1d2b40, extract((void(D::*)(cocos2d::CCObject*)){&D::onQuit}));
+        if ((c7){&$MenuLayer::onQuit} != (d7){&D::onQuit})
+            m->registerHook(base+0x1d2b40, extract((d7){&D::onQuit}));
 
-        if ((void($MenuLayer::*)(bool)){&$MenuLayer::scene} != (void(D::*)(bool)){&D::scene})
-            m->registerHook(base+0x1d12d0, extract((void(D::*)(bool)){&D::scene}));
+        if ((c8){&$MenuLayer::scene} != (d8){&D::scene})
+            m->registerHook(base+0x1d12d0, extract((d8){&D::scene}));
     }
 };
 
@@ -929,57 +981,54 @@ class $ButtonSprite : public ButtonSprite, public $CacBase {
 public:
     inline ~$ButtonSprite() {}
 
-    inline static ButtonSprite* create(char const* p0) {
-        if ((ButtonSprite*(*)(char const*)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*)){&D::create})
-            return reinterpret_cast<ButtonSprite*(*)(char const*)>(m->getOriginal(base+0x4fa10))(p0);
+    using c0 = ButtonSprite*(*)(char const*);
+    dupable static ButtonSprite* create(char const* p0) {
         return ButtonSprite::create(p0);
     }
 
-    inline static ButtonSprite* create(char const* p0, int p1, int p2, float p3, bool p4) {
-        if ((ButtonSprite*(*)(char const*, int, int, float, bool)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, int, int, float, bool)){&D::create})
-            return reinterpret_cast<ButtonSprite*(*)(char const*, int, int, float, bool)>(m->getOriginal(base+0x4fa40))(p0, p1, p2, p3, p4);
+    using c1 = ButtonSprite*(*)(char const*, int, int, float, bool);
+    dupable static ButtonSprite* create(char const* p0, int p1, int p2, float p3, bool p4) {
         return ButtonSprite::create(p0, p1, p2, p3, p4);
     }
 
-    inline void updateBGImage(char const* p0) {
-        if ((void($ButtonSprite::*)(char const*)){&$ButtonSprite::updateBGImage} != (void(D::*)(char const*)){&D::updateBGImage})
-            return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(base+0x502d0))(this, p0);
+    using c2 = void($ButtonSprite::*)(char const*);
+    using d2 = void(D::*)(char const*);
+    using f2 = void(*)($ButtonSprite*, char const*);
+    dupable void updateBGImage(char const* p0) {
         return ButtonSprite::updateBGImage(p0);
     }
 
-    inline static ButtonSprite* create(char const* p0, float p1) {
-        if ((ButtonSprite*(*)(char const*, float)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, float)){&D::create})
-            return reinterpret_cast<ButtonSprite*(*)(char const*, float)>(m->getOriginal(base+0x4fa60))(p0, p1);
+    using c3 = ButtonSprite*(*)(char const*, float);
+    dupable static ButtonSprite* create(char const* p0, float p1) {
         return ButtonSprite::create(p0, p1);
     }
 
-    inline static ButtonSprite* create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
-        if ((ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)){&$ButtonSprite::create} != (ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)){&D::create})
-            return reinterpret_cast<ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)>(m->getOriginal(base+0x4fa90))(p0, p1, p2, p3, p4, p5, p6, p7);
+    using c4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+    dupable static ButtonSprite* create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
         return ButtonSprite::create(p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
+    inline $ButtonSprite(bool) {}
     inline $ButtonSprite() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((ButtonSprite*(*)(char const*)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*)){&D::create})
-            m->registerHook(base+0x4fa10, (ButtonSprite*(*)(char const*)){&D::create});
+        if ((c0){&$ButtonSprite::create} != (c0){&D::create})
+            m->registerHook(base+0x4fa10, (c0){&D::create});
 
-        if ((ButtonSprite*(*)(char const*, int, int, float, bool)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, int, int, float, bool)){&D::create})
-            m->registerHook(base+0x4fa40, (ButtonSprite*(*)(char const*, int, int, float, bool)){&D::create});
+        if ((c1){&$ButtonSprite::create} != (c1){&D::create})
+            m->registerHook(base+0x4fa40, (c1){&D::create});
 
-        if ((void($ButtonSprite::*)(char const*)){&$ButtonSprite::updateBGImage} != (void(D::*)(char const*)){&D::updateBGImage})
-            m->registerHook(base+0x502d0, extract((void(D::*)(char const*)){&D::updateBGImage}));
+        if ((c2){&$ButtonSprite::updateBGImage} != (d2){&D::updateBGImage})
+            m->registerHook(base+0x502d0, extract((d2){&D::updateBGImage}));
 
-        if ((ButtonSprite*(*)(char const*, float)){&$ButtonSprite::create} != (ButtonSprite*(*)(char const*, float)){&D::create})
-            m->registerHook(base+0x4fa60, (ButtonSprite*(*)(char const*, float)){&D::create});
+        if ((c3){&$ButtonSprite::create} != (c3){&D::create})
+            m->registerHook(base+0x4fa60, (c3){&D::create});
 
-        if ((ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)){&$ButtonSprite::create} != (ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)){&D::create})
-            m->registerHook(base+0x4fa90, (ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool)){&D::create});
+        if ((c4){&$ButtonSprite::create} != (c4){&D::create})
+            m->registerHook(base+0x4fa90, (c4){&D::create});
     }
 };
 
@@ -988,246 +1037,270 @@ class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 public:
     inline ~$CCTextInputNode() {}
 
-    inline static CCTextInputNode* create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
-        if ((CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create} != (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create})
-            return reinterpret_cast<CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)>(m->getOriginal(base+0x5cfb0))(p0, p1, p2, p3, p4, p5);
+    using c0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
+    dupable static CCTextInputNode* create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
         return CCTextInputNode::create(p0, p1, p2, p3, p4, p5);
     }
 
-    inline gd::string getString() {
-        if ((gd::string($CCTextInputNode::*)()){&$CCTextInputNode::getString} != (gd::string(D::*)()){&D::getString})
-            return reinterpret_cast<gd::string(*)(decltype(this))>(m->getOriginal(base+0x5d6f0))(this);
+    using c1 = gd::string($CCTextInputNode::*)();
+    using d1 = gd::string(D::*)();
+    using f1 = gd::string(*)($CCTextInputNode*);
+    dupable gd::string getString() {
         return CCTextInputNode::getString();
     }
 
-    inline void refreshLabel() {
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::refreshLabel} != (void(D::*)()){&D::refreshLabel})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x5d730))(this);
+    using c2 = void($CCTextInputNode::*)();
+    using d2 = void(D::*)();
+    using f2 = void(*)($CCTextInputNode*);
+    dupable void refreshLabel() {
         return CCTextInputNode::refreshLabel();
     }
 
-    inline void setAllowedChars(gd::string p0) {
-        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(gd::string)){&D::setAllowedChars})
-            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x5d360))(this, p0);
+    using c3 = void($CCTextInputNode::*)(gd::string);
+    using d3 = void(D::*)(gd::string);
+    using f3 = void(*)($CCTextInputNode*, gd::string);
+    dupable void setAllowedChars(gd::string p0) {
         return CCTextInputNode::setAllowedChars(p0);
     }
 
-    inline void setLabelNormalColor(cocos2d::_ccColor3B p0) {
-        if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelNormalColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B)>(m->getOriginal(base+0x5dab0))(this, p0);
+    using c4 = void($CCTextInputNode::*)(cocos2d::_ccColor3B);
+    using d4 = void(D::*)(cocos2d::_ccColor3B);
+    using f4 = void(*)($CCTextInputNode*, cocos2d::_ccColor3B);
+    dupable void setLabelNormalColor(cocos2d::_ccColor3B p0) {
         return CCTextInputNode::setLabelNormalColor(p0);
     }
 
-    inline void setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
-        if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelPlaceholderColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelPlaceholderColor})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B)>(m->getOriginal(base+0x5da90))(this, p0);
+    using c5 = void($CCTextInputNode::*)(cocos2d::_ccColor3B);
+    using d5 = void(D::*)(cocos2d::_ccColor3B);
+    using f5 = void(*)($CCTextInputNode*, cocos2d::_ccColor3B);
+    dupable void setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
         return CCTextInputNode::setLabelPlaceholderColor(p0);
     }
 
-    inline void setLabelPlaceholderScale(float p0) {
-        if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setLabelPlaceholderScale} != (void(D::*)(float)){&D::setLabelPlaceholderScale})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x5da70))(this, p0);
+    using c6 = void($CCTextInputNode::*)(float);
+    using d6 = void(D::*)(float);
+    using f6 = void(*)($CCTextInputNode*, float);
+    dupable void setLabelPlaceholderScale(float p0) {
         return CCTextInputNode::setLabelPlaceholderScale(p0);
     }
 
-    inline void setMaxLabelScale(float p0) {
-        if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setMaxLabelScale} != (void(D::*)(float)){&D::setMaxLabelScale})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x5da30))(this, p0);
+    using c7 = void($CCTextInputNode::*)(float);
+    using d7 = void(D::*)(float);
+    using f7 = void(*)($CCTextInputNode*, float);
+    dupable void setMaxLabelScale(float p0) {
         return CCTextInputNode::setMaxLabelScale(p0);
     }
 
-    inline void setMaxLabelWidth(float p0) {
-        if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setMaxLabelWidth} != (void(D::*)(float)){&D::setMaxLabelWidth})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x5da50))(this, p0);
+    using c8 = void($CCTextInputNode::*)(float);
+    using d8 = void(D::*)(float);
+    using f8 = void(*)($CCTextInputNode*, float);
+    dupable void setMaxLabelWidth(float p0) {
         return CCTextInputNode::setMaxLabelWidth(p0);
     }
 
-    inline void setString(gd::string p0) {
-        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setString} != (void(D::*)(gd::string)){&D::setString})
-            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x5d3e0))(this, p0);
+    using c9 = void($CCTextInputNode::*)(gd::string);
+    using d9 = void(D::*)(gd::string);
+    using f9 = void(*)($CCTextInputNode*, gd::string);
+    dupable void setString(gd::string p0) {
         return CCTextInputNode::setString(p0);
     }
 
-    inline void updateLabel(gd::string p0) {
-        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(gd::string)){&D::updateLabel})
-            return reinterpret_cast<void(*)(decltype(this), gd::string)>(m->getOriginal(base+0x5d4a0))(this, p0);
+    using c10 = void($CCTextInputNode::*)(gd::string);
+    using d10 = void(D::*)(gd::string);
+    using f10 = void(*)($CCTextInputNode*, gd::string);
+    dupable void updateLabel(gd::string p0) {
         return CCTextInputNode::updateLabel(p0);
     }
 
-    inline void forceOffset() {
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::forceOffset} != (void(D::*)()){&D::forceOffset})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x5ec70))(this);
+    using c11 = void($CCTextInputNode::*)();
+    using d11 = void(D::*)();
+    using f11 = void(*)($CCTextInputNode*);
+    dupable void forceOffset() {
         return CCTextInputNode::forceOffset();
     }
 
-    inline void registerWithTouchDispatcher() {
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x5eec0))(this);
+    using c12 = void($CCTextInputNode::*)();
+    using d12 = void(D::*)();
+    using f12 = void(*)($CCTextInputNode*);
+    dupable void registerWithTouchDispatcher() {
         return CCTextInputNode::registerWithTouchDispatcher();
     }
 
-    inline bool init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
-        if ((bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::init} != (bool(D::*)(float, float, char const*, char const*, int, char const*)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), float, float, char const*, char const*, int, char const*)>(m->getOriginal(base+0x5d180))(this, p0, p1, p2, p3, p4, p5);
+    using c13 = bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*);
+    using d13 = bool(D::*)(float, float, char const*, char const*, int, char const*);
+    using f13 = bool(*)($CCTextInputNode*, float, float, char const*, char const*, int, char const*);
+    dupable bool init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
         return CCTextInputNode::init(p0, p1, p2, p3, p4, p5);
     }
 
-    inline void visit() {
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::visit} != (void(D::*)()){&D::visit})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x5d380))(this);
+    using c14 = void($CCTextInputNode::*)();
+    using d14 = void(D::*)();
+    using f14 = void(*)($CCTextInputNode*);
+    dupable void visit() {
         return CCTextInputNode::visit();
     }
 
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x5ec80))(this, p0, p1);
+    using c15 = bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d15 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f15 = bool(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCTextInputNode::ccTouchBegan(p0, p1);
     }
 
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x5ee80))(this, p0, p1);
+    using c16 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d16 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f16 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCTextInputNode::ccTouchCancelled(p0, p1);
     }
 
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x5ee60))(this, p0, p1);
+    using c17 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d17 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f17 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCTextInputNode::ccTouchEnded(p0, p1);
     }
 
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x5eea0))(this, p0, p1);
+    using c18 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using d18 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
+    using f18 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+    dupable void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         return CCTextInputNode::ccTouchMoved(p0, p1);
     }
 
-    inline void textChanged() {
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::textChanged} != (void(D::*)()){&D::textChanged})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x5dd70))(this);
+    using c19 = void($CCTextInputNode::*)();
+    using d19 = void(D::*)();
+    using f19 = void(*)($CCTextInputNode*);
+    dupable void textChanged() {
         return CCTextInputNode::textChanged();
     }
 
-    inline void onClickTrackNode(bool p0) {
-        if ((void($CCTextInputNode::*)(bool)){&$CCTextInputNode::onClickTrackNode} != (void(D::*)(bool)){&D::onClickTrackNode})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x5dd40))(this, p0);
+    using c20 = void($CCTextInputNode::*)(bool);
+    using d20 = void(D::*)(bool);
+    using f20 = void(*)($CCTextInputNode*, bool);
+    dupable void onClickTrackNode(bool p0) {
         return CCTextInputNode::onClickTrackNode(p0);
     }
 
-    inline void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillShow} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillShow})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCIMEKeyboardNotificationInfo&)>(m->getOriginal(base+0x5dad0))(this, p0);
+    using c21 = void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
+    using d21 = void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
+    using f21 = void(*)($CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
+    dupable void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
         return CCTextInputNode::keyboardWillShow(p0);
     }
 
-    inline void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillHide} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillHide})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCIMEKeyboardNotificationInfo&)>(m->getOriginal(base+0x5dc20))(this, p0);
+    using c22 = void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
+    using d22 = void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
+    using f22 = void(*)($CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
+    dupable void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
         return CCTextInputNode::keyboardWillHide(p0);
     }
 
-    inline bool onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) {
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&$CCTextInputNode::onTextFieldInsertText} != (bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&D::onTextFieldInsertText})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTextFieldTTF*, char const*, int)>(m->getOriginal(base+0x5de50))(this, p0, p1, p2);
+    using c23 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int);
+    using d23 = bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int);
+    using f23 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*, char const*, int);
+    dupable bool onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) {
         return CCTextInputNode::onTextFieldInsertText(p0, p1, p2);
     }
 
-    inline bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) {
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldAttachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldAttachWithIME})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTextFieldTTF*)>(m->getOriginal(base+0x5e2c0))(this, p0);
+    using c24 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*);
+    using d24 = bool(D::*)(cocos2d::CCTextFieldTTF*);
+    using f24 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*);
+    dupable bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) {
         return CCTextInputNode::onTextFieldAttachWithIME(p0);
     }
 
-    inline bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) {
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldDetachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldDetachWithIME})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTextFieldTTF*)>(m->getOriginal(base+0x5e610))(this, p0);
+    using c25 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*);
+    using d25 = bool(D::*)(cocos2d::CCTextFieldTTF*);
+    using f25 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*);
+    dupable bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) {
         return CCTextInputNode::onTextFieldDetachWithIME(p0);
     }
 
+    inline $CCTextInputNode(bool) {}
     inline $CCTextInputNode() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::create} != (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create})
-            m->registerHook(base+0x5cfb0, (CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*)){&D::create});
+        if ((c0){&$CCTextInputNode::create} != (c0){&D::create})
+            m->registerHook(base+0x5cfb0, (c0){&D::create});
 
-        if ((gd::string($CCTextInputNode::*)()){&$CCTextInputNode::getString} != (gd::string(D::*)()){&D::getString})
-            m->registerHook(base+0x5d6f0, extract((gd::string(D::*)()){&D::getString}));
+        if ((c1){&$CCTextInputNode::getString} != (d1){&D::getString})
+            m->registerHook(base+0x5d6f0, extract((d1){&D::getString}));
 
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::refreshLabel} != (void(D::*)()){&D::refreshLabel})
-            m->registerHook(base+0x5d730, extract((void(D::*)()){&D::refreshLabel}));
+        if ((c2){&$CCTextInputNode::refreshLabel} != (d2){&D::refreshLabel})
+            m->registerHook(base+0x5d730, extract((d2){&D::refreshLabel}));
 
-        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setAllowedChars} != (void(D::*)(gd::string)){&D::setAllowedChars})
-            m->registerHook(base+0x5d360, extract((void(D::*)(gd::string)){&D::setAllowedChars}));
+        if ((c3){&$CCTextInputNode::setAllowedChars} != (d3){&D::setAllowedChars})
+            m->registerHook(base+0x5d360, extract((d3){&D::setAllowedChars}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelNormalColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor})
-            m->registerHook(base+0x5dab0, extract((void(D::*)(cocos2d::_ccColor3B)){&D::setLabelNormalColor}));
+        if ((c4){&$CCTextInputNode::setLabelNormalColor} != (d4){&D::setLabelNormalColor})
+            m->registerHook(base+0x5dab0, extract((d4){&D::setLabelNormalColor}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::_ccColor3B)){&$CCTextInputNode::setLabelPlaceholderColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::setLabelPlaceholderColor})
-            m->registerHook(base+0x5da90, extract((void(D::*)(cocos2d::_ccColor3B)){&D::setLabelPlaceholderColor}));
+        if ((c5){&$CCTextInputNode::setLabelPlaceholderColor} != (d5){&D::setLabelPlaceholderColor})
+            m->registerHook(base+0x5da90, extract((d5){&D::setLabelPlaceholderColor}));
 
-        if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setLabelPlaceholderScale} != (void(D::*)(float)){&D::setLabelPlaceholderScale})
-            m->registerHook(base+0x5da70, extract((void(D::*)(float)){&D::setLabelPlaceholderScale}));
+        if ((c6){&$CCTextInputNode::setLabelPlaceholderScale} != (d6){&D::setLabelPlaceholderScale})
+            m->registerHook(base+0x5da70, extract((d6){&D::setLabelPlaceholderScale}));
 
-        if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setMaxLabelScale} != (void(D::*)(float)){&D::setMaxLabelScale})
-            m->registerHook(base+0x5da30, extract((void(D::*)(float)){&D::setMaxLabelScale}));
+        if ((c7){&$CCTextInputNode::setMaxLabelScale} != (d7){&D::setMaxLabelScale})
+            m->registerHook(base+0x5da30, extract((d7){&D::setMaxLabelScale}));
 
-        if ((void($CCTextInputNode::*)(float)){&$CCTextInputNode::setMaxLabelWidth} != (void(D::*)(float)){&D::setMaxLabelWidth})
-            m->registerHook(base+0x5da50, extract((void(D::*)(float)){&D::setMaxLabelWidth}));
+        if ((c8){&$CCTextInputNode::setMaxLabelWidth} != (d8){&D::setMaxLabelWidth})
+            m->registerHook(base+0x5da50, extract((d8){&D::setMaxLabelWidth}));
 
-        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::setString} != (void(D::*)(gd::string)){&D::setString})
-            m->registerHook(base+0x5d3e0, extract((void(D::*)(gd::string)){&D::setString}));
+        if ((c9){&$CCTextInputNode::setString} != (d9){&D::setString})
+            m->registerHook(base+0x5d3e0, extract((d9){&D::setString}));
 
-        if ((void($CCTextInputNode::*)(gd::string)){&$CCTextInputNode::updateLabel} != (void(D::*)(gd::string)){&D::updateLabel})
-            m->registerHook(base+0x5d4a0, extract((void(D::*)(gd::string)){&D::updateLabel}));
+        if ((c10){&$CCTextInputNode::updateLabel} != (d10){&D::updateLabel})
+            m->registerHook(base+0x5d4a0, extract((d10){&D::updateLabel}));
 
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::forceOffset} != (void(D::*)()){&D::forceOffset})
-            m->registerHook(base+0x5ec70, extract((void(D::*)()){&D::forceOffset}));
+        if ((c11){&$CCTextInputNode::forceOffset} != (d11){&D::forceOffset})
+            m->registerHook(base+0x5ec70, extract((d11){&D::forceOffset}));
 
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::registerWithTouchDispatcher} != (void(D::*)()){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x5eec0, extract_virtual(V, (void(D::*)()){&D::registerWithTouchDispatcher}));
+        if ((c12){&$CCTextInputNode::registerWithTouchDispatcher} != (d12){&D::registerWithTouchDispatcher})
+            m->registerHook(base+0x5eec0, extract_virtual(V, (d12){&D::registerWithTouchDispatcher}));
 
-        if ((bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*)){&$CCTextInputNode::init} != (bool(D::*)(float, float, char const*, char const*, int, char const*)){&D::init})
-            m->registerHook(base+0x5d180, extract((bool(D::*)(float, float, char const*, char const*, int, char const*)){&D::init}));
+        if ((c13){&$CCTextInputNode::init} != (d13){&D::init})
+            m->registerHook(base+0x5d180, extract((d13){&D::init}));
 
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::visit} != (void(D::*)()){&D::visit})
-            m->registerHook(base+0x5d380, extract_virtual(V, (void(D::*)()){&D::visit}));
+        if ((c14){&$CCTextInputNode::visit} != (d14){&D::visit})
+            m->registerHook(base+0x5d380, extract_virtual(V, (d14){&D::visit}));
 
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchBegan} != (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan})
-            m->registerHook(base+0x5ec80, extract_virtual(V, (bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchBegan}));
+        if ((c15){&$CCTextInputNode::ccTouchBegan} != (d15){&D::ccTouchBegan})
+            m->registerHook(base+0x5ec80, extract_virtual(V, (d15){&D::ccTouchBegan}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
-            m->registerHook(base+0x5ee80, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
+        if ((c16){&$CCTextInputNode::ccTouchCancelled} != (d16){&D::ccTouchCancelled})
+            m->registerHook(base+0x5ee80, extract_virtual(V, (d16){&D::ccTouchCancelled}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(base+0x5ee60, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
+        if ((c17){&$CCTextInputNode::ccTouchEnded} != (d17){&D::ccTouchEnded})
+            m->registerHook(base+0x5ee60, extract_virtual(V, (d17){&D::ccTouchEnded}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$CCTextInputNode::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
-            m->registerHook(base+0x5eea0, extract_virtual(V, (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
+        if ((c18){&$CCTextInputNode::ccTouchMoved} != (d18){&D::ccTouchMoved})
+            m->registerHook(base+0x5eea0, extract_virtual(V, (d18){&D::ccTouchMoved}));
 
-        if ((void($CCTextInputNode::*)()){&$CCTextInputNode::textChanged} != (void(D::*)()){&D::textChanged})
-            m->registerHook(base+0x5dd70, extract_virtual(V, (void(D::*)()){&D::textChanged}));
+        if ((c19){&$CCTextInputNode::textChanged} != (d19){&D::textChanged})
+            m->registerHook(base+0x5dd70, extract_virtual(V, (d19){&D::textChanged}));
 
-        if ((void($CCTextInputNode::*)(bool)){&$CCTextInputNode::onClickTrackNode} != (void(D::*)(bool)){&D::onClickTrackNode})
-            m->registerHook(base+0x5dd40, extract_virtual(V, (void(D::*)(bool)){&D::onClickTrackNode}));
+        if ((c20){&$CCTextInputNode::onClickTrackNode} != (d20){&D::onClickTrackNode})
+            m->registerHook(base+0x5dd40, extract_virtual(V, (d20){&D::onClickTrackNode}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillShow} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillShow})
-            m->registerHook(base+0x5dad0, extract_virtual(V, (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillShow}));
+        if ((c21){&$CCTextInputNode::keyboardWillShow} != (d21){&D::keyboardWillShow})
+            m->registerHook(base+0x5dad0, extract_virtual(V, (d21){&D::keyboardWillShow}));
 
-        if ((void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&$CCTextInputNode::keyboardWillHide} != (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillHide})
-            m->registerHook(base+0x5dc20, extract_virtual(V, (void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&)){&D::keyboardWillHide}));
+        if ((c22){&$CCTextInputNode::keyboardWillHide} != (d22){&D::keyboardWillHide})
+            m->registerHook(base+0x5dc20, extract_virtual(V, (d22){&D::keyboardWillHide}));
 
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&$CCTextInputNode::onTextFieldInsertText} != (bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&D::onTextFieldInsertText})
-            m->registerHook(base+0x5de50, extract_virtual(V, (bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int)){&D::onTextFieldInsertText}));
+        if ((c23){&$CCTextInputNode::onTextFieldInsertText} != (d23){&D::onTextFieldInsertText})
+            m->registerHook(base+0x5de50, extract_virtual(V, (d23){&D::onTextFieldInsertText}));
 
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldAttachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldAttachWithIME})
-            m->registerHook(base+0x5e2c0, extract_virtual(V, (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldAttachWithIME}));
+        if ((c24){&$CCTextInputNode::onTextFieldAttachWithIME} != (d24){&D::onTextFieldAttachWithIME})
+            m->registerHook(base+0x5e2c0, extract_virtual(V, (d24){&D::onTextFieldAttachWithIME}));
 
-        if ((bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*)){&$CCTextInputNode::onTextFieldDetachWithIME} != (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldDetachWithIME})
-            m->registerHook(base+0x5e610, extract_virtual(V, (bool(D::*)(cocos2d::CCTextFieldTTF*)){&D::onTextFieldDetachWithIME}));
+        if ((c25){&$CCTextInputNode::onTextFieldDetachWithIME} != (d25){&D::onTextFieldDetachWithIME})
+            m->registerHook(base+0x5e610, extract_virtual(V, (d25){&D::onTextFieldDetachWithIME}));
     }
 };
 
@@ -1236,30 +1309,30 @@ class $TableView : public TableView, public $CacBase {
 public:
     inline ~$TableView() {}
 
-    inline static TableView* create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
-        if ((TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&$TableView::create} != (TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&D::create})
-            return reinterpret_cast<TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)>(m->getOriginal(base+0x37eb30))(p0, p1, p2);
+    using c0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    dupable static TableView* create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
         return TableView::create(p0, p1, p2);
     }
 
-    inline void reloadData() {
-        if ((void($TableView::*)()){&$TableView::reloadData} != (void(D::*)()){&D::reloadData})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x37f970))(this);
+    using c1 = void($TableView::*)();
+    using d1 = void(D::*)();
+    using f1 = void(*)($TableView*);
+    dupable void reloadData() {
         return TableView::reloadData();
     }
 
+    inline $TableView(bool) {}
     inline $TableView() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&$TableView::create} != (TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&D::create})
-            m->registerHook(base+0x37eb30, (TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect)){&D::create});
+        if ((c0){&$TableView::create} != (c0){&D::create})
+            m->registerHook(base+0x37eb30, (c0){&D::create});
 
-        if ((void($TableView::*)()){&$TableView::reloadData} != (void(D::*)()){&D::reloadData})
-            m->registerHook(base+0x37f970, extract((void(D::*)()){&D::reloadData}));
+        if ((c1){&$TableView::reloadData} != (d1){&D::reloadData})
+            m->registerHook(base+0x37f970, extract((d1){&D::reloadData}));
     }
 };
 
@@ -1268,138 +1341,150 @@ class $BoomListView : public BoomListView, public $CacBase {
 public:
     inline ~$BoomListView() {}
 
-    inline static BoomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-        if ((BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::create} != (BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
-            return reinterpret_cast<BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)>(m->getOriginal(base+0x18ecb0))(p0, p1, p2, p3, p4);
+    using c0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    dupable static BoomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
         return BoomListView::create(p0, p1, p2, p3, p4);
     }
 
-    inline bool init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-        if ((bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::init} != (bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::init})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCArray*, float, float, int, BoomListType)>(m->getOriginal(base+0x18ee00))(this, p0, p1, p2, p3, p4);
+    using c1 = bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using d1 = bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using f1 = bool(*)($BoomListView*, cocos2d::CCArray*, float, float, int, BoomListType);
+    dupable bool init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
         return BoomListView::init(p0, p1, p2, p3, p4);
     }
 
-    inline void draw() {
-        if ((void($BoomListView::*)()){&$BoomListView::draw} != (void(D::*)()){&D::draw})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x18f790))(this);
+    using c2 = void($BoomListView::*)();
+    using d2 = void(D::*)();
+    using f2 = void(*)($BoomListView*);
+    dupable void draw() {
         return BoomListView::draw();
     }
 
-    inline void setupList() {
-        if ((void($BoomListView::*)()){&$BoomListView::setupList} != (void(D::*)()){&D::setupList})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x18ef90))(this);
+    using c3 = void($BoomListView::*)();
+    using d3 = void(D::*)();
+    using f3 = void(*)($BoomListView*);
+    dupable void setupList() {
         return BoomListView::setupList();
     }
 
-    inline void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
-        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillDisplayCellForRowAtIndexPath})
-            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableViewCell*, TableView*)>(m->getOriginal(base+0x18f030))(this, p0, p1, p2);
+    using c4 = void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*);
+    using d4 = void(D::*)(CCIndexPath&, TableViewCell*, TableView*);
+    using f4 = void(*)($BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
+    dupable void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
         return BoomListView::TableViewWillDisplayCellForRowAtIndexPath(p0, p1, p2);
     }
 
-    inline void cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellHeightForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellHeightForRowAtIndexPath})
-            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableView*)>(m->getOriginal(base+0x18f070))(this, p0, p1);
+    using c5 = void($BoomListView::*)(CCIndexPath&, TableView*);
+    using d5 = void(D::*)(CCIndexPath&, TableView*);
+    using f5 = void(*)($BoomListView*, CCIndexPath&, TableView*);
+    dupable void cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
         return BoomListView::cellHeightForRowAtIndexPath(p0, p1);
     }
 
-    inline void didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::didSelectRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::didSelectRowAtIndexPath})
-            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableView*)>(m->getOriginal(base+0x18f090))(this, p0, p1);
+    using c6 = void($BoomListView::*)(CCIndexPath&, TableView*);
+    using d6 = void(D::*)(CCIndexPath&, TableView*);
+    using f6 = void(*)($BoomListView*, CCIndexPath&, TableView*);
+    dupable void didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
         return BoomListView::didSelectRowAtIndexPath(p0, p1);
     }
 
-    inline int numberOfRowsInSection(unsigned int p0, TableView* p1) {
-        if ((int($BoomListView::*)(unsigned int, TableView*)){&$BoomListView::numberOfRowsInSection} != (int(D::*)(unsigned int, TableView*)){&D::numberOfRowsInSection})
-            return reinterpret_cast<int(*)(decltype(this), unsigned int, TableView*)>(m->getOriginal(base+0x18f0b0))(this, p0, p1);
+    using c7 = int($BoomListView::*)(unsigned int, TableView*);
+    using d7 = int(D::*)(unsigned int, TableView*);
+    using f7 = int(*)($BoomListView*, unsigned int, TableView*);
+    dupable int numberOfRowsInSection(unsigned int p0, TableView* p1) {
         return BoomListView::numberOfRowsInSection(p0, p1);
     }
 
-    inline void numberOfSectionsInTableView(TableView* p0) {
-        if ((void($BoomListView::*)(TableView*)){&$BoomListView::numberOfSectionsInTableView} != (void(D::*)(TableView*)){&D::numberOfSectionsInTableView})
-            return reinterpret_cast<void(*)(decltype(this), TableView*)>(m->getOriginal(base+0x18f0e0))(this, p0);
+    using c8 = void($BoomListView::*)(TableView*);
+    using d8 = void(D::*)(TableView*);
+    using f8 = void(*)($BoomListView*, TableView*);
+    dupable void numberOfSectionsInTableView(TableView* p0) {
         return BoomListView::numberOfSectionsInTableView(p0);
     }
 
-    inline void cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
-        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellForRowAtIndexPath})
-            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableView*)>(m->getOriginal(base+0x18f100))(this, p0, p1);
+    using c9 = void($BoomListView::*)(CCIndexPath&, TableView*);
+    using d9 = void(D::*)(CCIndexPath&, TableView*);
+    using f9 = void(*)($BoomListView*, CCIndexPath&, TableView*);
+    dupable void cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
         return BoomListView::cellForRowAtIndexPath(p0, p1);
     }
 
-    inline void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) {
-        if ((void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
-            return reinterpret_cast<void(*)(decltype(this), TableView*, TableViewCellEditingStyle, CCIndexPath&)>(m->getOriginal(base+0x18f770))(this, p0, p1, p2);
+    using c10 = void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&);
+    using d10 = void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&);
+    using f10 = void(*)($BoomListView*, TableView*, TableViewCellEditingStyle, CCIndexPath&);
+    dupable void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) {
         return BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath(p0, p1, p2);
     }
 
-    inline void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
-        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillReloadCellForRowAtIndexPath})
-            return reinterpret_cast<void(*)(decltype(this), CCIndexPath&, TableViewCell*, TableView*)>(m->getOriginal(base+0x18f050))(this, p0, p1, p2);
+    using c11 = void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*);
+    using d11 = void(D::*)(CCIndexPath&, TableViewCell*, TableView*);
+    using f11 = void(*)($BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
+    dupable void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
         return BoomListView::TableViewWillReloadCellForRowAtIndexPath(p0, p1, p2);
     }
 
-    inline TableViewCell* getListCell(char const* p0) {
-        if ((TableViewCell*($BoomListView::*)(char const*)){&$BoomListView::getListCell} != (TableViewCell*(D::*)(char const*)){&D::getListCell})
-            return reinterpret_cast<TableViewCell*(*)(decltype(this), char const*)>(m->getOriginal(base+0x18f200))(this, p0);
+    using c12 = TableViewCell*($BoomListView::*)(char const*);
+    using d12 = TableViewCell*(D::*)(char const*);
+    using f12 = TableViewCell*(*)($BoomListView*, char const*);
+    dupable TableViewCell* getListCell(char const* p0) {
         return BoomListView::getListCell(p0);
     }
 
-    inline void loadCell(TableViewCell* p0, int p1) {
-        if ((void($BoomListView::*)(TableViewCell*, int)){&$BoomListView::loadCell} != (void(D::*)(TableViewCell*, int)){&D::loadCell})
-            return reinterpret_cast<void(*)(decltype(this), TableViewCell*, int)>(m->getOriginal(base+0x18f4a0))(this, p0, p1);
+    using c13 = void($BoomListView::*)(TableViewCell*, int);
+    using d13 = void(D::*)(TableViewCell*, int);
+    using f13 = void(*)($BoomListView*, TableViewCell*, int);
+    dupable void loadCell(TableViewCell* p0, int p1) {
         return BoomListView::loadCell(p0, p1);
     }
 
+    inline $BoomListView(bool) {}
     inline $BoomListView() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::create} != (BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
-            m->registerHook(base+0x18ecb0, (BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create});
+        if ((c0){&$BoomListView::create} != (c0){&D::create})
+            m->registerHook(base+0x18ecb0, (c0){&D::create});
 
-        if ((bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$BoomListView::init} != (bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::init})
-            m->registerHook(base+0x18ee00, extract((bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::init}));
+        if ((c1){&$BoomListView::init} != (d1){&D::init})
+            m->registerHook(base+0x18ee00, extract((d1){&D::init}));
 
-        if ((void($BoomListView::*)()){&$BoomListView::draw} != (void(D::*)()){&D::draw})
-            m->registerHook(base+0x18f790, extract((void(D::*)()){&D::draw}));
+        if ((c2){&$BoomListView::draw} != (d2){&D::draw})
+            m->registerHook(base+0x18f790, extract((d2){&D::draw}));
 
-        if ((void($BoomListView::*)()){&$BoomListView::setupList} != (void(D::*)()){&D::setupList})
-            m->registerHook(base+0x18ef90, extract_virtual(V, (void(D::*)()){&D::setupList}));
+        if ((c3){&$BoomListView::setupList} != (d3){&D::setupList})
+            m->registerHook(base+0x18ef90, extract_virtual(V, (d3){&D::setupList}));
 
-        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillDisplayCellForRowAtIndexPath})
-            m->registerHook(base+0x18f030, extract_virtual(V, (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillDisplayCellForRowAtIndexPath}));
+        if ((c4){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (d4){&D::TableViewWillDisplayCellForRowAtIndexPath})
+            m->registerHook(base+0x18f030, extract_virtual(V, (d4){&D::TableViewWillDisplayCellForRowAtIndexPath}));
 
-        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellHeightForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellHeightForRowAtIndexPath})
-            m->registerHook(base+0x18f070, extract_virtual(V, (void(D::*)(CCIndexPath&, TableView*)){&D::cellHeightForRowAtIndexPath}));
+        if ((c5){&$BoomListView::cellHeightForRowAtIndexPath} != (d5){&D::cellHeightForRowAtIndexPath})
+            m->registerHook(base+0x18f070, extract_virtual(V, (d5){&D::cellHeightForRowAtIndexPath}));
 
-        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::didSelectRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::didSelectRowAtIndexPath})
-            m->registerHook(base+0x18f090, extract_virtual(V, (void(D::*)(CCIndexPath&, TableView*)){&D::didSelectRowAtIndexPath}));
+        if ((c6){&$BoomListView::didSelectRowAtIndexPath} != (d6){&D::didSelectRowAtIndexPath})
+            m->registerHook(base+0x18f090, extract_virtual(V, (d6){&D::didSelectRowAtIndexPath}));
 
-        if ((int($BoomListView::*)(unsigned int, TableView*)){&$BoomListView::numberOfRowsInSection} != (int(D::*)(unsigned int, TableView*)){&D::numberOfRowsInSection})
-            m->registerHook(base+0x18f0b0, extract_virtual(V, (int(D::*)(unsigned int, TableView*)){&D::numberOfRowsInSection}));
+        if ((c7){&$BoomListView::numberOfRowsInSection} != (d7){&D::numberOfRowsInSection})
+            m->registerHook(base+0x18f0b0, extract_virtual(V, (d7){&D::numberOfRowsInSection}));
 
-        if ((void($BoomListView::*)(TableView*)){&$BoomListView::numberOfSectionsInTableView} != (void(D::*)(TableView*)){&D::numberOfSectionsInTableView})
-            m->registerHook(base+0x18f0e0, extract_virtual(V, (void(D::*)(TableView*)){&D::numberOfSectionsInTableView}));
+        if ((c8){&$BoomListView::numberOfSectionsInTableView} != (d8){&D::numberOfSectionsInTableView})
+            m->registerHook(base+0x18f0e0, extract_virtual(V, (d8){&D::numberOfSectionsInTableView}));
 
-        if ((void($BoomListView::*)(CCIndexPath&, TableView*)){&$BoomListView::cellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableView*)){&D::cellForRowAtIndexPath})
-            m->registerHook(base+0x18f100, extract_virtual(V, (void(D::*)(CCIndexPath&, TableView*)){&D::cellForRowAtIndexPath}));
+        if ((c9){&$BoomListView::cellForRowAtIndexPath} != (d9){&D::cellForRowAtIndexPath})
+            m->registerHook(base+0x18f100, extract_virtual(V, (d9){&D::cellForRowAtIndexPath}));
 
-        if ((void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
-            m->registerHook(base+0x18f770, extract_virtual(V, (void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&)){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
+        if ((c10){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
+            m->registerHook(base+0x18f770, extract_virtual(V, (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
 
-        if ((void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*)){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillReloadCellForRowAtIndexPath})
-            m->registerHook(base+0x18f050, extract_virtual(V, (void(D::*)(CCIndexPath&, TableViewCell*, TableView*)){&D::TableViewWillReloadCellForRowAtIndexPath}));
+        if ((c11){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (d11){&D::TableViewWillReloadCellForRowAtIndexPath})
+            m->registerHook(base+0x18f050, extract_virtual(V, (d11){&D::TableViewWillReloadCellForRowAtIndexPath}));
 
-        if ((TableViewCell*($BoomListView::*)(char const*)){&$BoomListView::getListCell} != (TableViewCell*(D::*)(char const*)){&D::getListCell})
-            m->registerHook(base+0x18f200, extract_virtual(V, (TableViewCell*(D::*)(char const*)){&D::getListCell}));
+        if ((c12){&$BoomListView::getListCell} != (d12){&D::getListCell})
+            m->registerHook(base+0x18f200, extract_virtual(V, (d12){&D::getListCell}));
 
-        if ((void($BoomListView::*)(TableViewCell*, int)){&$BoomListView::loadCell} != (void(D::*)(TableViewCell*, int)){&D::loadCell})
-            m->registerHook(base+0x18f4a0, extract_virtual(V, (void(D::*)(TableViewCell*, int)){&D::loadCell}));
+        if ((c13){&$BoomListView::loadCell} != (d13){&D::loadCell})
+            m->registerHook(base+0x18f4a0, extract_virtual(V, (d13){&D::loadCell}));
     }
 };
 
@@ -1408,48 +1493,50 @@ class $CustomListView : public CustomListView, public $CacBase {
 public:
     inline ~$CustomListView() {}
 
-    inline static CustomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
-        if ((CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$CustomListView::create} != (CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
-            return reinterpret_cast<CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)>(m->getOriginal(base+0x10d410))(p0, p1, p2, p3, p4);
+    using c0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    dupable static CustomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
         return CustomListView::create(p0, p1, p2, p3, p4);
     }
 
-    inline void getListCell(char const* p0) {
-        if ((void($CustomListView::*)(char const*)){&$CustomListView::getListCell} != (void(D::*)(char const*)){&D::getListCell})
-            return reinterpret_cast<void(*)(decltype(this), char const*)>(m->getOriginal(base+0x10d560))(this, p0);
+    using c1 = void($CustomListView::*)(char const*);
+    using d1 = void(D::*)(char const*);
+    using f1 = void(*)($CustomListView*, char const*);
+    dupable void getListCell(char const* p0) {
         return CustomListView::getListCell(p0);
     }
 
-    inline void loadCell(TableViewCell* p0, int p1) {
-        if ((void($CustomListView::*)(TableViewCell*, int)){&$CustomListView::loadCell} != (void(D::*)(TableViewCell*, int)){&D::loadCell})
-            return reinterpret_cast<void(*)(decltype(this), TableViewCell*, int)>(m->getOriginal(base+0x10e610))(this, p0, p1);
+    using c2 = void($CustomListView::*)(TableViewCell*, int);
+    using d2 = void(D::*)(TableViewCell*, int);
+    using f2 = void(*)($CustomListView*, TableViewCell*, int);
+    dupable void loadCell(TableViewCell* p0, int p1) {
         return CustomListView::loadCell(p0, p1);
     }
 
-    inline void setupList() {
-        if ((void($CustomListView::*)()){&$CustomListView::setupList} != (void(D::*)()){&D::setupList})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x116e70))(this);
+    using c3 = void($CustomListView::*)();
+    using d3 = void(D::*)();
+    using f3 = void(*)($CustomListView*);
+    dupable void setupList() {
         return CustomListView::setupList();
     }
 
+    inline $CustomListView(bool) {}
     inline $CustomListView() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&$CustomListView::create} != (CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create})
-            m->registerHook(base+0x10d410, (CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType)){&D::create});
+        if ((c0){&$CustomListView::create} != (c0){&D::create})
+            m->registerHook(base+0x10d410, (c0){&D::create});
 
-        if ((void($CustomListView::*)(char const*)){&$CustomListView::getListCell} != (void(D::*)(char const*)){&D::getListCell})
-            m->registerHook(base+0x10d560, extract((void(D::*)(char const*)){&D::getListCell}));
+        if ((c1){&$CustomListView::getListCell} != (d1){&D::getListCell})
+            m->registerHook(base+0x10d560, extract((d1){&D::getListCell}));
 
-        if ((void($CustomListView::*)(TableViewCell*, int)){&$CustomListView::loadCell} != (void(D::*)(TableViewCell*, int)){&D::loadCell})
-            m->registerHook(base+0x10e610, extract((void(D::*)(TableViewCell*, int)){&D::loadCell}));
+        if ((c2){&$CustomListView::loadCell} != (d2){&D::loadCell})
+            m->registerHook(base+0x10e610, extract((d2){&D::loadCell}));
 
-        if ((void($CustomListView::*)()){&$CustomListView::setupList} != (void(D::*)()){&D::setupList})
-            m->registerHook(base+0x116e70, extract((void(D::*)()){&D::setupList}));
+        if ((c3){&$CustomListView::setupList} != (d3){&D::setupList})
+            m->registerHook(base+0x116e70, extract((d3){&D::setupList}));
     }
 };
 
@@ -1458,11 +1545,13 @@ class $TableViewCell : public TableViewCell, public $CacBase {
 public:
     inline ~$TableViewCell() {}
 
+    inline $TableViewCell(bool) {}
     inline $TableViewCell() {
-        if (_lock) return;
-        _lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        _lock = false;
+        auto i = new D();
+        auto V = *rcast<uintptr_t*>(i);
+        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
+
+#undef rcast

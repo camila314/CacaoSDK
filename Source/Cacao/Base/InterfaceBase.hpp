@@ -56,7 +56,8 @@ public:
 // deprecated
 #define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
 
-#define dupable inline __attribute__((noinline))
+// repurposed
+#define dupable inline __attribute__((always_inline))
 
 #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
