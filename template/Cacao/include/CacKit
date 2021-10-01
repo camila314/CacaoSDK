@@ -30,12 +30,6 @@ public:
         else return FLAlertLayer::ccTouchMoved(p0, p1);
     }
 
-    dupable void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25ef60))(this, p0, p1);
-        else return FLAlertLayer::ccTouchEnded(p0, p1);
-    }
-
     dupable void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
             return reinterpret_cast<void(*)(decltype(this), cocos2d::CCTouch*, cocos2d::CCEvent*)>(m->getOriginal(base+0x25f020))(this, p0, p1);
@@ -99,9 +93,6 @@ public:
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchMoved} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved})
             m->registerHook(base+0x25f0a0, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchMoved}));
-
-        if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchEnded} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded})
-            m->registerHook(base+0x25ef60, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchEnded}));
 
         if ((void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&$FLAlertLayer::ccTouchCancelled} != (void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled})
             m->registerHook(base+0x25f020, extract((void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*)){&D::ccTouchCancelled}));
@@ -2430,6 +2421,12 @@ public:
         else return EditorUI::onDeselectAll(p0);
     }
 
+    dupable void onDeleteSelected(cocos2d::CCObject* p0) {
+        if ((void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::onDeleteSelected} != (void(D::*)(cocos2d::CCObject*)){&D::onDeleteSelected})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0xb990))(this, p0);
+        else return EditorUI::onDeleteSelected(p0);
+    }
+
     dupable void disableButton(CreateMenuItem* p0) {
         if ((void($EditorUI::*)(CreateMenuItem*)){&$EditorUI::disableButton} != (void(D::*)(CreateMenuItem*)){&D::disableButton})
             return reinterpret_cast<void(*)(decltype(this), CreateMenuItem*)>(m->getOriginal(base+0x1c0f0))(this, p0);
@@ -2598,6 +2595,9 @@ public:
 
         if ((void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::onDeselectAll} != (void(D::*)(cocos2d::CCObject*)){&D::onDeselectAll})
             m->registerHook(base+0x19cd0, extract((void(D::*)(cocos2d::CCObject*)){&D::onDeselectAll}));
+
+        if ((void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::onDeleteSelected} != (void(D::*)(cocos2d::CCObject*)){&D::onDeleteSelected})
+            m->registerHook(base+0xb990, extract((void(D::*)(cocos2d::CCObject*)){&D::onDeleteSelected}));
 
         if ((void($EditorUI::*)(CreateMenuItem*)){&$EditorUI::disableButton} != (void(D::*)(CreateMenuItem*)){&D::disableButton})
             m->registerHook(base+0x1c0f0, extract((void(D::*)(CreateMenuItem*)){&D::disableButton}));
@@ -5577,7 +5577,7 @@ public:
         else return GameManager::getGTexture(p0);
     }
 
-    dupable bool init() {
+    dupable bool init() override {
         if ((bool($GameManager::*)()){&$GameManager::init} != (bool(D::*)()){&D::init})
             return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x1c2ec0))(this);
         else return GameManager::init();
@@ -5595,7 +5595,7 @@ public:
         else return GameManager::resolutionForKey(p0);
     }
 
-    dupable void update(float p0) {
+    dupable void update(float p0) override {
         if ((void($GameManager::*)(float)){&$GameManager::update} != (void(D::*)(float)){&D::update})
             return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x1d0270))(this, p0);
         else return GameManager::update(p0);
@@ -5672,7 +5672,7 @@ public:
             m->registerHook(base+0x1cca40, extract((void(D::*)(int)){&D::getGTexture}));
 
         if ((bool($GameManager::*)()){&$GameManager::init} != (bool(D::*)()){&D::init})
-            m->registerHook(base+0x1c2ec0, extract((bool(D::*)()){&D::init}));
+            m->registerHook(base+0x1c2ec0, extract_virtual(V, (bool(D::*)()){&D::init}));
 
         if ((void($GameManager::*)(char const*, int, bool)){&$GameManager::reportAchievementWithID} != (void(D::*)(char const*, int, bool)){&D::reportAchievementWithID})
             m->registerHook(base+0x1c6460, extract((void(D::*)(char const*, int, bool)){&D::reportAchievementWithID}));
@@ -5681,7 +5681,7 @@ public:
             m->registerHook(base+0x1d0b40, extract((void(D::*)(int)){&D::resolutionForKey}));
 
         if ((void($GameManager::*)(float)){&$GameManager::update} != (void(D::*)(float)){&D::update})
-            m->registerHook(base+0x1d0270, extract((void(D::*)(float)){&D::update}));
+            m->registerHook(base+0x1d0270, extract_virtual(V, (void(D::*)(float)){&D::update}));
     }
 };
 
@@ -6273,6 +6273,12 @@ public:
         else return GameObject::updateSyncedAnimation(p0);
     }
 
+    dupable GJSpriteColor* getRelativeSpriteColor(int p0) {
+        if ((GJSpriteColor*($GameObject::*)(int)){&$GameObject::getRelativeSpriteColor} != (GJSpriteColor*(D::*)(int)){&D::getRelativeSpriteColor})
+            return reinterpret_cast<GJSpriteColor*(*)(decltype(this), int)>(m->getOriginal(base+0x334c60))(this, p0);
+        else return GameObject::getRelativeSpriteColor(p0);
+    }
+
     dupable $GameObject() {
         if ($lock) return;
         $lock = true;
@@ -6570,6 +6576,9 @@ public:
 
         if ((void($GameObject::*)(float)){&$GameObject::updateSyncedAnimation} != (void(D::*)(float)){&D::updateSyncedAnimation})
             m->registerHook(base+0x337f00, extract((void(D::*)(float)){&D::updateSyncedAnimation}));
+
+        if ((GJSpriteColor*($GameObject::*)(int)){&$GameObject::getRelativeSpriteColor} != (GJSpriteColor*(D::*)(int)){&D::getRelativeSpriteColor})
+            m->registerHook(base+0x334c60, extract((GJSpriteColor*(D::*)(int)){&D::getRelativeSpriteColor}));
     }
 };
 
@@ -7161,6 +7170,12 @@ public:
         else return EffectGameObject::triggerObject(p0);
     }
 
+    dupable gd::string getSaveString() {
+        if ((gd::string($EffectGameObject::*)()){&$EffectGameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
+            return reinterpret_cast<gd::string(*)(decltype(this))>(m->getOriginal(base+0xcd7e0))(this);
+        else return EffectGameObject::getSaveString();
+    }
+
     dupable $EffectGameObject() {
         if ($lock) return;
         $lock = true;
@@ -7176,6 +7191,9 @@ public:
 
         if ((void($EffectGameObject::*)(GJBaseGameLayer*)){&$EffectGameObject::triggerObject} != (void(D::*)(GJBaseGameLayer*)){&D::triggerObject})
             m->registerHook(base+0xc9870, extract((void(D::*)(GJBaseGameLayer*)){&D::triggerObject}));
+
+        if ((gd::string($EffectGameObject::*)()){&$EffectGameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
+            m->registerHook(base+0xcd7e0, extract((gd::string(D::*)()){&D::getSaveString}));
     }
 };
 

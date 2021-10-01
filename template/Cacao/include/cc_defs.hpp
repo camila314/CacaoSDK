@@ -55,6 +55,17 @@ typedef struct LevelDifficulty {
     int32_t numerator;  
 } LevelDifficulty;
 
+struct GJSpriteColor : cocos2d::CCNode {
+    int colorID;
+    int defaultColorID;
+    float _opacity; // its unused
+    float hue;
+    float sat;
+    float bright;
+    bool satEnabled;
+    bool brightEnabled;
+};
+
 #define CLASS_PARAM(__TYPE__, __GETTER__, __OFFSET__) \
     inline __TYPE__& _##__GETTER__() { \
         return *((__TYPE__*)((long)this + __OFFSET__)); \
@@ -259,7 +270,6 @@ public:
     virtual void onEnter();
     bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*);
     void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*);
     void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*);
     virtual void registerWithTouchDispatcher();
     virtual void keyBackClicked();
@@ -269,6 +279,7 @@ public:
     virtual ~FLAlertLayer();
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    static FLAlertLayer* create(FLAlertLayerProtocol* a, char const* b, char const* d, char const* e, gd::string c) {return FLAlertLayer::create(a,b,c,d,e,300.0);}
     static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
     cocos2d::CCMenu* m_buttonMenu;
     int m_controlConnected;
@@ -756,6 +767,7 @@ public:
     void create(LevelEditorLayer*);
     void deselectAll();
     void onDeselectAll(cocos2d::CCObject*);
+    void onDeleteSelected(cocos2d::CCObject*);
     void disableButton(CreateMenuItem*);
     void editButtonUsable();
     void editObject(cocos2d::CCObject*);
@@ -892,13 +904,78 @@ public:
     void updateOBB2(cocos2d::CCRect);
     void updateQueuedLabels();
     ~GJBaseGameLayer();
-    CLASS_PARAM(GJEffectManager*, effectManager, 0x180);
-    CLASS_PARAM(cocos2d::CCLayer*, objectLayer, 0x188);
-    CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
-    CLASS_PARAM(PlayerObject*, player1, 0x380);
-    CLASS_PARAM(PlayerObject*, player2, 0x388);
-    CLASS_PARAM(LevelSettingsObject*, levelSettings, 0x390);
-    CLASS_PARAM(cocos2d::CCDictionary*, unknownDict, 0x398);
+    __attribute__((noinline)) cocos2d::CCArray* getAllObjects() {return m_objects;}
+    void* m_pad_idk;
+    OBB2D* m_boundingBox;
+    GJEffectManager* m_effectManager;
+    cocos2d::CCLayer* m_objectLayer;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop4;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlowTop3;
+    CCNodeContainer* m_unk140;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlowTop2;
+    CCNodeContainer* m_unk160;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNode;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAdd;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlow;
+    CCNodeContainer* m_unk180;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop1;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop1;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop1;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop1;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodePlayer;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddPlayer;
+    cocos2d::CCSpriteBatchNode* m_unk19C;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddMid;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottomGlow;
+    CCNodeContainer* m_unk1B0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeText;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddText;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNode;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAdd;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom2Glow;
+    CCNodeContainer* m_unk1D0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom3Glow;
+    CCNodeContainer* m_unk1F0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom4Glow;
+    CCNodeContainer* m_unk210;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot4;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot4;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot4;
+    PlayerObject* m_player1;
+    PlayerObject* m_player2;
+    LevelSettingsObject* m_levelSettings;
+    cocos2d::CCDictionary* m_unknownDict;
+    cocos2d::CCArray* m_objects;
 };
 
 class GJColorSetupLayer : public GDObj {
@@ -1288,10 +1365,10 @@ public:
     static GameManager* sharedState();
     ~GameManager();
     void getGTexture(int);
-    bool init();
+    virtual bool init();
     void reportAchievementWithID(char const*, int, bool);
     void resolutionForKey(int);
-    void update(float);
+    virtual void update(float);
     CLASS_PARAM(PlayLayer*, playLayer, 0x180);
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x188);
     CLASS_PARAM(int, scene, 0x1f4);
@@ -1397,6 +1474,7 @@ public:
     void updateStartValues();
     void updateState();
     void updateSyncedAnimation(float);
+    GJSpriteColor* getRelativeSpriteColor(int);
     CLASS_PARAM(int, type, 0x370);
     CLASS_PARAM(int, id, 0x3c4);
     CLASS_PARAM(OBB2D*, hitbox, 0x2b0);
@@ -1511,6 +1589,7 @@ public:
     static EffectGameObject* create(char const*);
     void getTargetColorIndex();
     void triggerObject(GJBaseGameLayer*);
+    gd::string getSaveString();
     CLASS_PARAM(int, targetGroup, 0x4F8);
     CLASS_PARAM(bool, activateGroup, 0x578);
     CLASS_PARAM(bool, touchHoldMode, 0x579);

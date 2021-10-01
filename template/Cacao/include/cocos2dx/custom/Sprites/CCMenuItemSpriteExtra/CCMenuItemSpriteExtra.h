@@ -11,5 +11,6 @@ public:
 	virtual void activate() override;
 	virtual void setScale(float scale) override;
 	static CCMenuItemSpriteExtra* create(CCNode *normalSprite, CCNode *selectedSprite, CCObject *target, cocos2d::SEL_MenuHandler selector);
+	inline static CCMenuItemSpriteExtra* create(CCNode *sprite, CCObject *target, cocos2d::SEL_MenuHandler selector) {return CCMenuItemSpriteExtra::create(sprite, sprite, target, selector);}
 	void setSizeMult(float multiplier) { m_sizeMult = multiplier; }
 };

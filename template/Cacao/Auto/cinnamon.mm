@@ -3,7 +3,7 @@
     virtual void onEnter() = 0x25f350;
     bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ee40, 288;
     void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f0a0, 288;
-    void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 288;
+    //void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25ef60, 288;
     void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x25f020, 288;
     virtual void registerWithTouchDispatcher() = 0x25f2e0;
     virtual void keyBackClicked() = 0x25ed90, 304;
@@ -14,7 +14,7 @@
     
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) = 0x25e0e0;
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
-    
+    volatile static FLAlertLayer* create(FLAlertLayerProtocol* a, char const* b, char const* d, char const* e, gd::string c) {return FLAlertLayer::create(a,b,c,d,e,300.0);}
     volatile static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
 
     cocos2d::CCMenu* m_buttonMenu; // 0x1f8
@@ -227,6 +227,7 @@
 
 @interface CCMenuItemSpriteExtra
     static CCMenuItemSpriteExtra* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x1253c0;
+    volatile inline static CCMenuItemSpriteExtra* create(cocos2d::CCNode* a, cocos2d::CCObject* b, cocos2d::SEL_MenuHandler c) {return CCMenuItemSpriteExtra::create(a, a, b, c);}
     void setSizeMult(float) = 0x1255e0;
     CCMenuItemSpriteExtra() = 0x32670;
     bool init(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x125450;
@@ -463,6 +464,7 @@
     void create(LevelEditorLayer*) = 0x8a80;
     void deselectAll() = 0x1f300;
     void onDeselectAll(cocos2d::CCObject*) = 0x19cd0;
+    void onDeleteSelected(cocos2d::CCObject*) = 0xb990;
     void disableButton(CreateMenuItem*) = 0x1c0f0;
     void editButtonUsable() = 0x28f30;
     void editObject(cocos2d::CCObject*) = 0x195a0;
@@ -601,13 +603,82 @@
     void updateQueuedLabels() = 0xb9f30;
     ~GJBaseGameLayer() = 0xaf990;
 
-    GJEffectManager* m_effectManager = 0x180;
-    cocos2d::CCLayer* m_objectLayer = 0x188;
-    cocos2d::CCArray* m_objects = 0x3a0;
-    PlayerObject* m_player1 = 0x380;
-    PlayerObject* m_player2 = 0x388;
-    LevelSettingsObject* m_levelSettings = 0x390;
-    cocos2d::CCDictionary* m_unknownDict = 0x398;
+    volatile __attribute__((noinline)) cocos2d::CCArray* getAllObjects() {return m_objects;}
+
+    void* m_pad_idk;
+    OBB2D* m_boundingBox;
+    GJEffectManager* m_effectManager;
+    cocos2d::CCLayer* m_objectLayer;
+
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop4;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlowTop3;
+    CCNodeContainer* unk140;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlowTop2;
+    CCNodeContainer* unk160;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNode;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAdd;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlow;
+    CCNodeContainer* unk180;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop1;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop1;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop1;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop1;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodePlayer;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddPlayer;
+    cocos2d::CCSpriteBatchNode* unk19C;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddMid;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottomGlow;
+    CCNodeContainer* unk1B0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeText;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddText;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNode;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAdd;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom2Glow;
+    CCNodeContainer* unk1D0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot2;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom3Glow;
+    CCNodeContainer* unk1F0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot3;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom4Glow;
+    CCNodeContainer* unk210;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot4;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot4;
+    cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot4;
+
+    PlayerObject* m_player1;
+    PlayerObject* m_player2;
+
+    LevelSettingsObject* m_levelSettings;
+    cocos2d::CCDictionary* m_unknownDict;
+    cocos2d::CCArray* m_objects;
 @end
 
 @interface GJColorSetupLayer
@@ -979,10 +1050,10 @@
     static GameManager* sharedState() = 0x1c2b30;
     ~GameManager() = 0x1d0e00;
     void getGTexture(int) = 0x1cca40;
-    bool init() = 0x1c2ec0;
+    virtual bool init() = 0x1c2ec0;
     void reportAchievementWithID(char const*, int, bool) = 0x1c6460;
     void resolutionForKey(int) = 0x1d0b40;
-    void update(float) = 0x1d0270;
+    virtual void update(float) = 0x1d0270;
 
     PlayLayer* m_playLayer = 0x180;
     LevelEditorLayer* m_editorLayer = 0x188;
@@ -1088,6 +1159,7 @@
     void updateStartValues() = 0x2fa800;
     void updateState() = 0x3369e0;
     void updateSyncedAnimation(float) = 0x337f00;
+    GJSpriteColor* getRelativeSpriteColor(int) = 0x334c60;
 
     int m_type = 0x370;
     int m_id = 0x3c4;
@@ -1193,6 +1265,7 @@
     static EffectGameObject* create(char const*) = 0xc9790;
     void getTargetColorIndex() = 0xca1f0;
     void triggerObject(GJBaseGameLayer*) = 0xc9870;
+    gd::string getSaveString() = 0xcd7e0;
 
     int m_targetGroup = 0x4F8;
     bool m_activateGroup = 0x578;

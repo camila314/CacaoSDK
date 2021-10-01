@@ -37,6 +37,7 @@
 #include "kazmath/kazmath.h"
 #include "script_support/CCScriptSupport.h"
 #include "CCProtocols.h"
+#include <stl_compat/libstdcpp.h>
 
 NS_CC_BEGIN
 

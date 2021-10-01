@@ -55,6 +55,17 @@ typedef struct LevelDifficulty {
     int32_t numerator;  
 } LevelDifficulty;
 
+struct GJSpriteColor : cocos2d::CCNode {
+    int colorID;
+    int defaultColorID;
+    float _opacity; // its unused
+    float hue;
+    float sat;
+    float bright;
+    bool satEnabled;
+    bool brightEnabled;
+};
+
 #define CLASS_PARAM(__TYPE__, __GETTER__, __OFFSET__) \
     inline __TYPE__& _##__GETTER__() { \
         return *((__TYPE__*)((long)this + __OFFSET__)); \
