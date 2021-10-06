@@ -9,6 +9,7 @@
 template<class D>
 class $AppDelegate : public AppDelegate, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$AppDelegate() {}
 
     using c0 = void($AppDelegate::*)();
@@ -76,9 +77,12 @@ public:
 
     inline $AppDelegate(bool) {}
     inline $AppDelegate() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$AppDelegate::bgScale} != (d0){&D::bgScale})
@@ -106,20 +110,24 @@ public:
             m->registerHook(base+0x3aaf40, extract_virtual(V, (d7){&D::willSwitchToScene}));
 
         if ((c8){&$AppDelegate::get} != (d8){&D::get})
-            m->registerHook(base+0x3aab10, (d8){&D::get});
+            m->registerHook(base+0x3aab10, extract((d8){&D::get}));
     }
 };
 
 template<class D>
 class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCCircleWaveDelegate() {}
 
     inline $CCCircleWaveDelegate(bool) {}
     inline $CCCircleWaveDelegate() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -127,13 +135,17 @@ public:
 template<class D>
 class $TableViewDelegate : public TableViewDelegate, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$TableViewDelegate() {}
 
     inline $TableViewDelegate(bool) {}
     inline $TableViewDelegate() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -141,13 +153,17 @@ public:
 template<class D>
 class $TableViewDataSource : public TableViewDataSource, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$TableViewDataSource() {}
 
     inline $TableViewDataSource(bool) {}
     inline $TableViewDataSource() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -155,13 +171,17 @@ public:
 template<class D>
 class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCScrollLayerExtDelegate() {}
 
     inline $CCScrollLayerExtDelegate(bool) {}
     inline $CCScrollLayerExtDelegate() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -169,13 +189,17 @@ public:
 template<class D>
 class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$GJSpecialColorSelectDelegate() {}
 
     inline $GJSpecialColorSelectDelegate(bool) {}
     inline $GJSpecialColorSelectDelegate() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -183,13 +207,17 @@ public:
 template<class D>
 class $TextInputDelegate : public TextInputDelegate, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$TextInputDelegate() {}
 
     inline $TextInputDelegate(bool) {}
     inline $TextInputDelegate() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -197,13 +225,17 @@ public:
 template<class D>
 class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$FLAlertLayerProtocol() {}
 
     inline $FLAlertLayerProtocol(bool) {}
     inline $FLAlertLayerProtocol() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };
@@ -211,6 +243,7 @@ public:
 template<class D>
 class $CCSpritePlus : public CCSpritePlus, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCSpritePlus() {}
 
     using c0 = bool($CCSpritePlus::*)(char const*);
@@ -222,9 +255,12 @@ public:
 
     inline $CCSpritePlus(bool) {}
     inline $CCSpritePlus() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCSpritePlus::initWithSpriteFrameName} != (d0){&D::initWithSpriteFrameName})
@@ -235,6 +271,7 @@ public:
 template<class D>
 class $CCMoveCNode : public CCMoveCNode, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCMoveCNode() {}
 
     using c0 = CCMoveCNode*(*)();
@@ -253,13 +290,16 @@ public:
 
     inline $CCMoveCNode(bool) {}
     inline $CCMoveCNode() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCMoveCNode::create} != (d0){&D::create})
-            m->registerHook(base+0x1842a0, (d0){&D::create});
+            m->registerHook(base+0x1842a0, extract((d0){&D::create}));
 
         if ((c1){&$CCMoveCNode::init} != (d1){&D::init})
             m->registerHook(base+0x18b3d0, extract((d1){&D::init}));
@@ -269,6 +309,7 @@ public:
 template<class D>
 class $CCNodeContainer : public CCNodeContainer, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCNodeContainer() {}
 
     using c0 = CCNodeContainer*(*)();
@@ -294,13 +335,16 @@ public:
 
     inline $CCNodeContainer(bool) {}
     inline $CCNodeContainer() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCNodeContainer::create} != (d0){&D::create})
-            m->registerHook(base+0xb1090, (d0){&D::create});
+            m->registerHook(base+0xb1090, extract((d0){&D::create}));
 
         if ((c1){&$CCNodeContainer::init} != (d1){&D::init})
             m->registerHook(base+0xba950, extract((d1){&D::init}));
@@ -313,6 +357,7 @@ public:
 template<class D>
 class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCAnimatedSprite() {}
 
     using c0 = void($CCAnimatedSprite::*)(gd::string);
@@ -331,9 +376,12 @@ public:
 
     inline $CCAnimatedSprite(bool) {}
     inline $CCAnimatedSprite() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCAnimatedSprite::runAnimation} != (d0){&D::runAnimation})
@@ -347,6 +395,7 @@ public:
 template<class D>
 class $CCBlockLayer : public CCBlockLayer, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCBlockLayer() {}
 
     using c0 = void($CCBlockLayer::*)();
@@ -435,9 +484,12 @@ public:
 
     inline $CCBlockLayer(bool) {}
     inline $CCBlockLayer() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCBlockLayer::disableUI} != (d0){&D::disableUI})
@@ -481,6 +533,7 @@ public:
 template<class D>
 class $CCCircleWave : public CCCircleWave, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCCircleWave() {}
 
     using c0 = CCCircleWave*(*)(float, float, float, bool);
@@ -520,16 +573,19 @@ public:
 
     inline $CCCircleWave(bool) {}
     inline $CCCircleWave() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCCircleWave::create} != (d0){&D::create})
-            m->registerHook(base+0xbd270, (d0){&D::create});
+            m->registerHook(base+0xbd270, extract((d0){&D::create}));
 
         if ((c1){&$CCCircleWave::create} != (d1){&D::create})
-            m->registerHook(base+0xbd290, (d1){&D::create});
+            m->registerHook(base+0xbd290, extract((d1){&D::create}));
 
         if ((c2){&$CCCircleWave::init} != (d2){&D::init})
             m->registerHook(base+0xbd380, extract((d2){&D::init}));
@@ -545,6 +601,7 @@ public:
 template<class D>
 class $CCLightFlash : public CCLightFlash, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCLightFlash() {}
 
     using c0 = CCLightFlash*(*)();
@@ -563,13 +620,16 @@ public:
 
     inline $CCLightFlash(bool) {}
     inline $CCLightFlash() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCLightFlash::create} != (d0){&D::create})
-            m->registerHook(base+0x295870, (d0){&D::create});
+            m->registerHook(base+0x295870, extract((d0){&D::create}));
 
         if ((c1){&$CCLightFlash::playEffect} != (d1){&D::playEffect})
             m->registerHook(base+0x295900, extract((d1){&D::playEffect}));
@@ -579,6 +639,7 @@ public:
 template<class D>
 class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCMenuItemSpriteExtra() {}
 
     using c0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
@@ -604,13 +665,16 @@ public:
 
     inline $CCMenuItemSpriteExtra(bool) {}
     inline $CCMenuItemSpriteExtra() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCMenuItemSpriteExtra::create} != (d0){&D::create})
-            m->registerHook(base+0x1253c0, (d0){&D::create});
+            m->registerHook(base+0x1253c0, extract((d0){&D::create}));
 
         if ((c1){&$CCMenuItemSpriteExtra::setSizeMult} != (d1){&D::setSizeMult})
             m->registerHook(base+0x1255e0, extract((d1){&D::setSizeMult}));
@@ -623,6 +687,7 @@ public:
 template<class D>
 class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCMenuItemToggler() {}
 
     using c0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
@@ -641,13 +706,16 @@ public:
 
     inline $CCMenuItemToggler(bool) {}
     inline $CCMenuItemToggler() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCMenuItemToggler::create} != (d0){&D::create})
-            m->registerHook(base+0x38400, (d0){&D::create});
+            m->registerHook(base+0x38400, extract((d0){&D::create}));
 
         if ((c1){&$CCMenuItemToggler::setSizeMult} != (d1){&D::setSizeMult})
             m->registerHook(base+0x38a40, extract((d1){&D::setSizeMult}));
@@ -657,6 +725,7 @@ public:
 template<class D>
 class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCScrollLayerExt() {}
 
     using c1 = void($CCScrollLayerExt::*)();
@@ -731,9 +800,12 @@ public:
 
     inline $CCScrollLayerExt(bool) {}
     inline $CCScrollLayerExt() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c1){&$CCScrollLayerExt::visit} != (d1){&D::visit})
@@ -771,6 +843,7 @@ public:
 template<class D>
 class $FLAlertLayer : public FLAlertLayer, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$FLAlertLayer() {}
 
     using c1 = void($FLAlertLayer::*)();
@@ -859,9 +932,12 @@ public:
 
     inline $FLAlertLayer(bool) {}
     inline $FLAlertLayer() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c1){&$FLAlertLayer::onEnter} != (d1){&D::onEnter})
@@ -895,16 +971,17 @@ public:
             m->registerHook(base+0x25e1b0, extract((d10){&D::init}));
 
         if ((c11){&$FLAlertLayer::create} != (d11){&D::create})
-            m->registerHook(base+0x25e0e0, (d11){&D::create});
+            m->registerHook(base+0x25e0e0, extract((d11){&D::create}));
 
         if ((c12){&$FLAlertLayer::create} != (d12){&D::create})
-            m->registerHook(base+0x25dec0, (d12){&D::create});
+            m->registerHook(base+0x25dec0, extract((d12){&D::create}));
     }
 };
 
 template<class D>
 class $MenuLayer : public MenuLayer, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$MenuLayer() {}
 
     using c1 = bool($MenuLayer::*)();
@@ -965,9 +1042,12 @@ public:
 
     inline $MenuLayer(bool) {}
     inline $MenuLayer() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c1){&$MenuLayer::init} != (d1){&D::init})
@@ -999,6 +1079,7 @@ public:
 template<class D>
 class $ButtonSprite : public ButtonSprite, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$ButtonSprite() {}
 
     using c0 = ButtonSprite*(*)(char const*);
@@ -1038,31 +1119,35 @@ public:
 
     inline $ButtonSprite(bool) {}
     inline $ButtonSprite() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$ButtonSprite::create} != (d0){&D::create})
-            m->registerHook(base+0x4fa10, (d0){&D::create});
+            m->registerHook(base+0x4fa10, extract((d0){&D::create}));
 
         if ((c1){&$ButtonSprite::create} != (d1){&D::create})
-            m->registerHook(base+0x4fa40, (d1){&D::create});
+            m->registerHook(base+0x4fa40, extract((d1){&D::create}));
 
         if ((c2){&$ButtonSprite::updateBGImage} != (d2){&D::updateBGImage})
             m->registerHook(base+0x502d0, extract((d2){&D::updateBGImage}));
 
         if ((c3){&$ButtonSprite::create} != (d3){&D::create})
-            m->registerHook(base+0x4fa60, (d3){&D::create});
+            m->registerHook(base+0x4fa60, extract((d3){&D::create}));
 
         if ((c4){&$ButtonSprite::create} != (d4){&D::create})
-            m->registerHook(base+0x4fa90, (d4){&D::create});
+            m->registerHook(base+0x4fa90, extract((d4){&D::create}));
     }
 };
 
 template<class D>
 class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CCTextInputNode() {}
 
     using c0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
@@ -1249,13 +1334,16 @@ public:
 
     inline $CCTextInputNode(bool) {}
     inline $CCTextInputNode() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCTextInputNode::create} != (d0){&D::create})
-            m->registerHook(base+0x5cfb0, (d0){&D::create});
+            m->registerHook(base+0x5cfb0, extract((d0){&D::create}));
 
         if ((c1){&$CCTextInputNode::getString} != (d1){&D::getString})
             m->registerHook(base+0x5d6f0, extract((d1){&D::getString}));
@@ -1337,6 +1425,7 @@ public:
 template<class D>
 class $TableView : public TableView, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$TableView() {}
 
     using c0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
@@ -1355,13 +1444,16 @@ public:
 
     inline $TableView(bool) {}
     inline $TableView() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$TableView::create} != (d0){&D::create})
-            m->registerHook(base+0x37eb30, (d0){&D::create});
+            m->registerHook(base+0x37eb30, extract((d0){&D::create}));
 
         if ((c1){&$TableView::reloadData} != (d1){&D::reloadData})
             m->registerHook(base+0x37f970, extract((d1){&D::reloadData}));
@@ -1371,6 +1463,7 @@ public:
 template<class D>
 class $BoomListView : public BoomListView, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$BoomListView() {}
 
     using c0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
@@ -1473,13 +1566,16 @@ public:
 
     inline $BoomListView(bool) {}
     inline $BoomListView() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$BoomListView::create} != (d0){&D::create})
-            m->registerHook(base+0x18ecb0, (d0){&D::create});
+            m->registerHook(base+0x18ecb0, extract((d0){&D::create}));
 
         if ((c1){&$BoomListView::init} != (d1){&D::init})
             m->registerHook(base+0x18ee00, extract((d1){&D::init}));
@@ -1525,6 +1621,7 @@ public:
 template<class D>
 class $CustomListView : public CustomListView, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$CustomListView() {}
 
     using c0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
@@ -1557,13 +1654,16 @@ public:
 
     inline $CustomListView(bool) {}
     inline $CustomListView() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CustomListView::create} != (d0){&D::create})
-            m->registerHook(base+0x10d410, (d0){&D::create});
+            m->registerHook(base+0x10d410, extract((d0){&D::create}));
 
         if ((c1){&$CustomListView::getListCell} != (d1){&D::getListCell})
             m->registerHook(base+0x10d560, extract((d1){&D::getListCell}));
@@ -1579,13 +1679,17 @@ public:
 template<class D>
 class $TableViewCell : public TableViewCell, public $CacBase {
 public:
+    static inline bool lock = false;
     inline ~$TableViewCell() {}
 
     inline $TableViewCell(bool) {}
     inline $TableViewCell() {
+        if (lock) return;
+        lock = true;
+        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
+        lock = false;
         auto V = *rcast<uintptr_t*>(i);
-        delete i;
         m->registerHook(extract_destructor(V), +[](){});
     }
 };

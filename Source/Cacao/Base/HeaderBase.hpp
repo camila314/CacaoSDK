@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <Compat/gdstdlib.hpp>
-#include <GDML/GDML.hpp>
+#include <Core/Core.hpp>
 // #include <CCMenuItemSpriteExtra.h>
 #include <Base/InterfaceBase.hpp>
 #include <cocos2dx/cocos2d.h>

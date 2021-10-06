@@ -200,6 +200,10 @@ namespace gd {
       public:
         typedef _rb_tree_node<std::pair<K,V> >* _tree_node;
 
+        std::map<K, V> std() {
+            return (std::map<K, V>)(*this);
+        }
+
         operator std::map<K, V>() {
             auto iter_node = static_cast<_tree_node>(m_header.m_left);
             auto end_node = static_cast<_tree_node>(&m_header);

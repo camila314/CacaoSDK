@@ -5,10 +5,10 @@
 
 #include <stdint.h>
 
-extern uintptr_t getBase();
+uintptr_t getBase();
 inline uintptr_t const base = getBase();
 
-#include <GDML/GDML.hpp>
+#include <Core/Core.hpp>
 #include <Header.hpp>
 
 #ifndef CAC_PROJ_NAME
@@ -17,7 +17,7 @@ inline uintptr_t const base = getBase();
 
 inline ModContainer* const m = new ModContainer(CAC_PROJ_NAME);
 
-inline bool _lock = false;
+// inline bool _lock = false;
 
 // "A destructor is used to destroy objects of its class type. The address of a destructor shall not be taken."
 // - C++ standard 12.4.2
@@ -57,14 +57,16 @@ public:
 #define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
 
 // repurposed
-#define dupable inline __attribute__((always_inline))
+// #define dupable inline
+
+#define hidden __attribute__((visibility("hidden")))
 
 #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
 #define CONCAT_(x, y) x##y
 #define CONCAT(x, y) CONCAT_(x, y)
 
-#define REDIRECT__(base, derived) derived: public base<derived>
+#define REDIRECT__(base, derived) hidden derived: public base<derived>
 #define REDIRECT_(base, counter) REDIRECT__(base, CONCAT($hook, counter))
 #define REDIRECT(base) REDIRECT_($##base, __COUNTER__)
 

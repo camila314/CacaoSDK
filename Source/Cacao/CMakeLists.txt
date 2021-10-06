@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
-add_subdirectory(GDML)
+add_subdirectory(Core)
 
 add_library(Cacao STATIC Source.cpp)
 
-target_link_libraries(Cacao GDML)
+target_link_libraries(Cacao Core)
 
 add_custom_command(
     COMMAND "" ALL
