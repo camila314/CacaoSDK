@@ -14,7 +14,7 @@ build_body1 = """
     using c{id} = {type}({const}${cl}::*)({params3});
     using d{id} = {type}({const}D::*)({params3});
     using f{id} = {type}(*)({const}${cl}*{params2});
-    dupable {type} {name}({params}) {const}{{
+    inline {type} {name}({params}) {const}{{
         {function}
     }}
 """
@@ -23,7 +23,7 @@ build_body1_virtual = """
     using c{id} = {type}({const}${cl}::*)({params3});
     using d{id} = {type}({const}D::*)({params3});
     using f{id} = {type}(*)({const}${cl}*{params2});
-    dupable {type} {name}({params}) {const}{{
+    inline {type} {name}({params}) {const}{{
         {function}
     }}
 """
@@ -32,7 +32,7 @@ build_body1_static = """
     using c{id} = {type}(*)({params3});
     using d{id} = {type}(*)({params3});
     using f{id} = {type}(*)({params3});
-    dupable static {type} {name}({params}) {const}{{
+    inline static {type} {name}({params}) {const}{{
         {function}
     }}
 """
