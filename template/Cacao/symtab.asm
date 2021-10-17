@@ -21,7 +21,6 @@ __Z10setAsmBasev:
     call __Z13setCommonRTTIv
 
     mov rax, [rel _asmBase]
-    
 
     pop rbp
     ret
@@ -1885,7 +1884,7 @@ defit __ZN15SetupPulsePopupD1Ev, 0x1e6b40
 defit __ZN15SetupPulsePopupD2Ev, 0x1e6b40
 
 section .bss
-
+global _asmBase
 _asmBase: resq 1
 
 nul __ZTI10ArtistCell

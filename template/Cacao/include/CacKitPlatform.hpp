@@ -2,8 +2,10 @@
 
 #include <stdint.h>
 
+#define __nogotbs __attribute__((visibility("hidden")))
+
 extern uintptr_t setAsmBase();
-inline volatile uintptr_t const base = setAsmBase();
+__nogotbs inline volatile uintptr_t const base = setAsmBase();
 
 #include <GDML/GDML.hpp>
 

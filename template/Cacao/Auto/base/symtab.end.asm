@@ -1,6 +1,6 @@
 
 section .bss
-
+global _asmBase
 _asmBase: resq 1
 
 nul __ZTI10ArtistCell

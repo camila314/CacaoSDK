@@ -21,7 +21,6 @@ __Z10setAsmBasev:
     call __Z13setCommonRTTIv
 
     mov rax, [rel _asmBase]
-    
 
     pop rbp
     ret
