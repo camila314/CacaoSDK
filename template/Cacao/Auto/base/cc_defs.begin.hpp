@@ -40,6 +40,60 @@ enum SearchType {
     kSavedLevels     = 0x63
 };
 
+// thanks hjfod
+enum GameObjectType {
+    kGameObjectTypeSolid = 0,
+    kGameObjectTypeHazard = 2,
+    kGameObjectTypeInverseGravityPortal = 3,
+    kGameObjectTypeNormalGravityPortal = 4,
+    kGameObjectTypeShipPortal = 5,
+    kGameObjectTypeCubePortal = 6,
+    kGameObjectTypeDecoration = 7,
+    kGameObjectTypeYellowJumpPad = 8,
+    kGameObjectTypePinkJumpPad = 9,
+    kGameObjectTypeGravityPad = 10,
+    kGameObjectTypeYellowJumpRing = 11,
+    kGameObjectTypePinkJumpRing = 12,
+    kGameObjectTypeGravityRing = 13,
+    kGameObjectTypeInverseMirrorPortal = 14,
+    kGameObjectTypeNormalMirrorPortal = 15,
+    kGameObjectTypeBallPortal = 16,
+    kGameObjectTypeRegularSizePortal = 17,
+    kGameObjectTypeMiniSizePortal = 18,
+    kGameObjectTypeUfoPortal = 19,
+    kGameObjectTypeModifier = 20,
+    kGameObjectTypeSecretCoin = 22,
+    kGameObjectTypeDualPortal = 23,
+    kGameObjectTypeSoloPortal = 24,
+    kGameObjectTypeSlope = 25,
+    kGameObjectTypeWavePortal = 26,
+    kGameObjectTypeRobotPortal = 27,
+    kGameObjectTypeTeleportPortal = 28,
+    kGameObjectTypeGreenRing = 29,
+    kGameObjectTypeCollectible = 30,
+    kGameObjectTypeUserCoin = 31,
+    kGameObjectTypeDropRing = 32,
+    kGameObjectTypeSpiderPortal = 33,
+    kGameObjectTypeRedJumpPad = 34,
+    kGameObjectTypeRedJumpRing = 35,
+    kGameObjectTypeCustomRing = 36,
+    kGameObjectTypeDashRing = 37,
+    kGameObjectTypeGravityDashRing = 38,
+    kGameObjectTypeCollisionObject = 39,
+    kGameObjectTypeSpecial = 40,
+};
+
+// thanks camila314 (me)
+enum VehicleType {
+    kVehicleCube = 0,
+    kVehicleSpider = 0x10,
+    kVehicleRobot = 0x1000,
+    kVehicleDart = 0x100000,
+    kVehicleBall = 0x10000000,
+    kVehicleBird = 0x1000000000,
+    kVehicleShip = 0x100000000000
+};
+
 typedef struct GameModes {
     bool cube;
     bool ship;
@@ -92,7 +146,6 @@ public:
 };
 
 
-enum GameObjectType {};
 enum PulseEffectType {};
 enum TouchTriggerType {};
 enum PlayerButton {};

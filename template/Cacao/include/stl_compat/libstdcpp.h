@@ -29,12 +29,33 @@ namespace gd {
         operator std::string() const {
             return std::string((char*)m_data, m_data[-1].m_len);
         }
-        string(string const& lol) : string(std::string(lol)) {}
+        string(const string&  lol) {
+            std::string stub = std::string(lol);
+
+            m_data = reinterpret_cast<_internal_string*>((long)malloc(sizeof(_internal_string) + stub.size()) + sizeof(_internal_string));
+            m_data[-1].m_len = stub.size();
+            m_data[-1].m_capacity = stub.capacity();
+            m_data[-1].m_refcount = 0;
+            strncpy((char*)m_data, stub.c_str(), stub.size());
+            //return *this;
+        }
+        string& operator=(const string&  lol) {
+            std::string stub = std::string(lol);
+
+            m_data = reinterpret_cast<_internal_string*>((long)malloc(sizeof(_internal_string) + stub.size()) + sizeof(_internal_string));
+            m_data[-1].m_len = stub.size();
+            m_data[-1].m_capacity = stub.capacity();
+            m_data[-1].m_refcount = 0;
+            strncpy((char*)m_data, stub.c_str(), stub.size());
+            return *this;
+        }
+       // string(string&& lol) {}
+
         __attribute__((noinline)) ~string() {
-            --m_data[-1].m_refcount;
-            if (m_data[-1].m_refcount <= 0) {
+            //--m_data[-1].m_refcount;
+            //if (m_data[-1].m_refcount <= 0) {
                 free(&m_data[-1]);
-            }
+            //}
         }
      protected: 
         _internal_string*       m_data;

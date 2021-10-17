@@ -6821,7 +6821,7 @@ _ZN10GameObject13createWithKeyEi
 GameObject::createWithTexture(cocos2d::CCTexture2D*)
 _ZN10GameObject17createWithTextureEPN7cocos2d11CCTexture2DE
 GameObject::customObjectSetup(gd::map<gd::string, gd::string>&)
-_ZN10GameObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
+_ZN10GameObject17customObjectSetupERN2gd3mapINS0_6stringES2_EE
 GameObject::customScaleMod(char const*)
 _ZN10GameObject14customScaleModEPKc
 GameObject::customSetup()
@@ -6883,7 +6883,7 @@ _ZN10GameObject13getObjectRectEv
 GameObject::getObjectRect2(float, float)
 _ZN10GameObject14getObjectRect2Eff
 GameObject::getObjectRectDirty() const
-_ZNK10GameObject18getObjectRectDirtyEv
+_ZN10GameObject18getObjectRectDirtyEv
 GameObject::getObjectTextureRect()
 _ZN10GameObject20getObjectTextureRectEv
 GameObject::getObjectZLayer()
@@ -6893,7 +6893,7 @@ _ZN10GameObject15getObjectZOrderEv
 GameObject::getOrientedBox()
 _ZN10GameObject14getOrientedBoxEv
 GameObject::getOrientedRectDirty() const
-_ZNK10GameObject20getOrientedRectDirtyEv
+_ZN10GameObject20getOrientedRectDirtyEv
 GameObject::getOuterObjectRect()
 _ZN10GameObject18getOuterObjectRectEv
 GameObject::getParentMode()
@@ -6915,9 +6915,9 @@ _ZN10GameObject21getSecondaryColorModeEv
 GameObject::getSectionIdx()
 _ZN10GameObject13getSectionIdxEv
 GameObject::getStartPos() const
-_ZNK10GameObject11getStartPosEv
+_ZN10GameObject11getStartPosEv
 GameObject::getType() const
-_ZNK10GameObject7getTypeEv
+_ZN10GameObject7getTypeEv
 GameObject::getUpdateLastPos()
 _ZN10GameObject16getUpdateLastPosEv
 GameObject::groupColor(cocos2d::_ccColor3B const&, bool)
@@ -8036,6 +8036,8 @@ LabelGameObject::addMainSpriteToParent(bool)
 _ZN15LabelGameObject21addMainSpriteToParentEb
 LabelGameObject::create()
 _ZN15LabelGameObject6createEv
+LabelGameObject::create(char const*)
+_ZN15LabelGameObject6createEPKc
 LabelGameObject::customObjectSetup(gd::map<gd::string, gd::string>&)
 _ZN15LabelGameObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 LabelGameObject::getSaveString()
@@ -10662,6 +10664,8 @@ PlayerObject::testForMoving(float, GameObject*)
 _ZN12PlayerObject13testForMovingEfP10GameObject
 PlayerObject::toggleBirdMode(bool)
 _ZN12PlayerObject14toggleBirdModeEb
+PlayerObject::toggleShipMode(bool)
+_ZN12PlayerObject14toggleShipModeEb
 PlayerObject::toggleDartMode(bool)
 _ZN12PlayerObject14toggleDartModeEb
 PlayerObject::toggleFlyMode(bool)
@@ -11142,6 +11146,8 @@ RewardsPage::~RewardsPage()
 _ZN11RewardsPageD2Ev
 RingObject::create(char const*)
 _ZN10RingObject6createEPKc
+RingObject::create()
+_ZN10RingObject6createEv
 RingObject::customObjectSetup(gd::map<gd::string, gd::string>&)
 _ZN10RingObject17customObjectSetupERSt3mapIN2gd6stringEN2gd6stringESt4lessIN2gd6stringEESaISt4pairIKN2gd6stringEN2gd6stringEEEE
 RingObject::getSaveString()

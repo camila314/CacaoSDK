@@ -54,11 +54,6 @@
     void willSwitchToScene(cocos2d::CCScene*) = 0x4650b0;
 @end
 
-@interface AnimatedGameObject
-    void playAnimation(int) = 0xc93d0;
-    void updateChildSpriteColor(cocos2d::_ccColor3B) = 0xc8450;
-@end
-
 @interface AppDelegate
     void bgScale() = 0x3aaab0;
     virtual bool applicationDidFinishLaunching() = 0x3aa900;
@@ -585,7 +580,7 @@
     void reorderObjectSection(GameObject*) = 0xb7cb0;
     void resetGroupCounters(bool) = 0xba300;
     void resetMoveOptimizedValue() = 0xb9670;
-    void sectionForPos(float) = 0xb6120;
+    int sectionForPos(float) = 0xb6120;
     void setupLayers() = 0xaffe0;
     void shouldExitHackedLevel() = 0xb1100;
     void spawnGroupTriggered(int, float, int) = 0xb7020;
@@ -677,8 +672,12 @@
     PlayerObject* m_player2;
 
     LevelSettingsObject* m_levelSettings;
-    cocos2d::CCDictionary* m_unknownDict;
+    cocos2d::CCDictionary* m_unusedDict;
     cocos2d::CCArray* m_objects;
+    cocos2d::CCArray* m_sections;
+    cocos2d::CCArray* m_collisionBlocks;
+    cocos2d::CCArray* m_triggerQueue;
+    cocos2d::CCArray* m_triggers;
 @end
 
 @interface GJColorSetupLayer
@@ -1035,6 +1034,7 @@
     void fadeInMusic(char const*) = 0x1c2ff0;
     void getBGTexture(int) = 0x1cca00;
     void getFontFile(int) = 0x1cc5f0;
+    char const* getFontTexture(int) = 0x1cc640;
     bool getGameVariable(char const*) = 0x1cccd0;
     int getIntGameVariable(char const*) = 0x1cd1d0;
     void getUGV(char const*) = 0x1ccfa0;
@@ -1059,50 +1059,40 @@
     LevelEditorLayer* m_editorLayer = 0x188;
     int m_scene = 0x1f4;
     bool m_ldm = 0x2a1;
+    int m_editorFont = 0x2d8;
 @end
 
 @interface GameObject : CCSpritePlus
-    void activateObject() = 0x2faf60;
+    GameObject() = 0xdc4c0;
+    ~GameObject() = 0x2f4ca0;
+    static GameObject* createWithFrame(char const*) = 0x2f5490;
+    static GameObject* createWithKey(int) = 0x2f4ce0;
+    static GameObject* objectFromString(gd::string, bool) = 0x33b720;
+
+    bool init(char const*) = 0x2f5520;
+    bool initWithTexture(cocos2d::CCTexture2D*) = 0x2f56a0;
+    const cocos2d::_ccColor3B& getColorIndex() = 0x343b90;
+    int getGroupID(int) = 0x33ae10;
     void activatedByPlayer(GameObject*) = 0x342a20;
     void addColorSprite() = 0x2f7fe0;
     void addColorSpriteToParent(bool) = 0x2fb470;
-    void addMainSpriteToParent(bool) = 0x33a5b0;
-    void addToGroup(int) = 0x33ad00;
     void addToTempOffset(float, float) = 0x335700;
     void calculateOrientedBox() = 0x342b20;
-    void calculateSpawnXPos() = 0x336970;
     void canChangeCustomColor() = 0x342db0;
     void colorForMode(int, bool) = 0x343460;
     void commonSetup() = 0x2f5570;
     void copyGroups(GameObject*) = 0x33ae30;
-    static GameObject* createWithFrame(char const*) = 0x2f5490;
-    static GameObject* createWithKey(int) = 0x2f4ce0;
-    void customSetup() = 0x2fbba0;
-    void deactivateObject(bool) = 0x2fb8f0;
     void destroyObject() = 0x336a00;
     void determineSlopeDirection() = 0x33a9e0;
     void getActiveColorForMode(int, bool) = 0x343860;
     void getBallFrame(int) = 0x341bf0;
     void getBoxOffset() = 0x3353d0;
-    const cocos2d::_ccColor3B& getColorIndex() = 0x343b90;
     void getDidUpdateLastPosition() = 0x343a20;
-    int getGroupID(int) = 0x33ae10;
     void getLastPosition() = 0x3439d0;
     void getMainColorMode() = 0x334c30;
-    cocos2d::CCRect* getObjectRect() = 0x3352b0;
-    void getObjectRect(float, float) = 0x3352d0;
-    void getObjectRect2(float, float) = 0x3354e0;
-    void getObjectRectDirty() = 0xdc1d0;
-    void getObjectTextureRect() = 0x3355b0;
     void getObjectZOrder() = 0x337d70;
-    void getOrientedRectDirty() = 0xdc1f0;
-    void getRScaleX() = 0x335e50;
-    void getRScaleY() = 0x335e80;
-    gd::string getSaveString() = 0x33d3d0;
     void getSecondaryColorMode() = 0x341c20;
     void getSectionIdx() = 0x343a00;
-    void getStartPos() = 0xdc230;
-    void getType() = 0xdc210;
     void groupWasDisabled() = 0x33b110;
     void groupWasEnabled() = 0x33b0f0;
     void hasBeenActivated() = 0x342a80;
@@ -1110,19 +1100,12 @@
     void hasSecondaryColor() = 0x342f80;
     void ignoreEnter() = 0x3352a0;
     void ignoreFade() = 0x335290;
-    bool initWithTexture(cocos2d::CCTexture2D*) = 0x2f56a0;
     void isBasicTrigger() = 0x343d10;
     void isColorTrigger() = 0x343b40;
-    void isFlipX() = 0x335a40;
-    void isFlipY() = 0x335a50;
     void isSpawnableTrigger() = 0x343a60;
     void isSpecialObject() = 0x343c40;
-    static GameObject* objectFromString(gd::string, bool) = 0x33b720;
     void playShineEffect() = 0x2fa9d0;
-    void powerOffObject() = 0x3369c0;
-    void powerOnObject() = 0x3369a0;
     void quickUpdatePosition() = 0x335790;
-    void removeFromGroup(int) = 0x33ada0;
     void removeGlow() = 0x2f7f70;
     void resetGroupDisabled() = 0x2fa7e0;
     void saveActiveColors() = 0x33d250;
@@ -1130,51 +1113,100 @@
     void setChildColor(cocos2d::_ccColor3B const&) = 0x341f20;
     void setDefaultMainColorMode(int) = 0x304fc0;
     void setDidUpdateLastPosition(bool const&) = 0x343a30;
-    void setGlowColor(cocos2d::_ccColor3B const&) = 0x341ed0;
     void setGlowOpacity(unsigned char) = 0x336200;
     void setLastPosition(cocos2d::CCPoint const&) = 0x3439e0;
     void setMainColorMode(int) = 0x342e70;
-    void setObjectColor(cocos2d::_ccColor3B const&) = 0x341c90;
-    void setObjectRectDirty(bool) = 0xdc1e0;
-    void setOrientedRectDirty(bool) = 0xdc200;
     void setPosition(cocos2d::CCPoint const&) = 0x335850;
-    void setRScale(float) = 0x335e10;
-    void setRScaleX(float) = 0x335cb0;
-    void setRScaleY(float) = 0x335d60;
     void setSectionIdx(int const&) = 0x343a10;
-    void setStartPos(cocos2d::CCPoint) = 0x2fa520;
-    void setType(GameObjectType) = 0xdc220;
     void setupCoinArt() = 0x337dd0;
-    void setupCustomSprites() = 0x307f60;
     void slopeFloorTop() = 0x342800;
     void slopeWallLeft() = 0x3427e0;
-    void spawnXPosition() = 0xdc1b0;
-    void triggerActivated(float) = 0x336990;
-    void triggerObject(GJBaseGameLayer*) = 0x2fa8f0;
     void updateCustomScale(float) = 0x335eb0;
     void updateMainColor() = 0x343340;
     void updateOrientedBox() = 0x342b50;
     void updateSecondaryColor() = 0x343740;
     void updateStartPos() = 0x2fa590;
-    void updateStartValues() = 0x2fa800;
     void updateState() = 0x3369e0;
     void updateSyncedAnimation(float) = 0x337f00;
     GJSpriteColor* getRelativeSpriteColor(int) = 0x334c60;
 
-    int m_type = 0x370;
+    virtual void setFlipX(bool) = 0x335a60;
+    virtual void setFlipY(bool) = 0x335ab0;
+    virtual void customSetup() = 0x2fbba0;
+    virtual void setupCustomSprites() = 0x307f60;
+    virtual void addMainSpriteToParent(bool) = 0x33a5b0;
+    virtual void resetObject() = 0x2fa620;
+    virtual void triggerObject(GJBaseGameLayer*) = 0x2fa8f0;
+    virtual void activateObject() = 0x2faf60;
+    virtual void deactivateObject(bool) = 0x2fb8f0;
+    virtual cocos2d::CCRect* getObjectRect() = 0x3352b0;
+    virtual cocos2d::CCRect* getObjectRect(float,float) = 0x3352d0;
+    virtual cocos2d::CCRect* getObjectRect2(float,float) = 0x3354e0;
+    virtual cocos2d::CCRect* getObjectTextureRect() = 0x3355b0;
+    virtual cocos2d::CCPoint getRealPosition() = 0x335750;
+    virtual void setStartPos(cocos2d::CCPoint) = 0x2fa520;
+    virtual void updateStartValues() = 0x2fa800;
+    virtual void customObjectSetup(gd::map<gd::string, gd::string>&) = 0xdc1a0;
+    virtual gd::string getSaveString() = 0x33d3d0;
+    virtual void isFlipX() = 0x335a40;
+    virtual void isFlipY() = 0x335a50;
+    virtual void setRScaleX(float) = 0x335cb0;
+    virtual void setRScaleY(float) = 0x335d60;
+    virtual void setRScale(float) = 0x335e10;
+    virtual void getRScaleX() = 0x335e50;
+    virtual void getRScaleY() = 0x335e80;
+    virtual void calculateSpawnXPos() = 0x336970;
+    virtual void triggerActivated(float) = 0x336990;
+    virtual void powerOnObject() = 0x3369a0;
+    virtual void powerOffObject() = 0x3369c0;
+    virtual void setObjectColor(cocos2d::_ccColor3B const&) = 0x341c90;
+    virtual void setGlowColor(cocos2d::_ccColor3B const&) = 0x341ed0;
+    virtual OBB2D* getOrientedBox() = 0x342ad0;
+    virtual void addToGroup(int) = 0x33ad00;
+    virtual void removeFromGroup(int) = 0x33ada0;
+    virtual void spawnXPosition() = 0xdc1b0;
+    virtual void getObjectRectDirty() = 0xdc1d0;
+    virtual void setObjectRectDirty(bool) = 0xdc1e0;
+    virtual void getOrientedRectDirty() = 0xdc1f0;
+    virtual void setOrientedRectDirty(bool) = 0xdc200;
+    virtual GameObjectType getType() = 0xdc210;
+    virtual void setType(GameObjectType) = 0xdc220;
+    virtual void getStartPos()  = 0xdc230;
+
+    float m_float250;
+    float m_float254;
+    float m_float258;
+    float m_float25c;
+    bool m_bool260;
+    float m_animationSpeed;
+    bool m_isAnimatedCircle;
+    bool m_randomizeAnimationStart;
+    float m_animationSpeed2; //what
+    bool m_black;
+    bool m_showSelection;
+    bool m_blackOpacity;
+    bool m_bool278;
+    bool m_inEditorMode;
+    
+
+    GameObjectType m_type = 0x370;
     int m_id = 0x3c4;
     OBB2D* m_hitbox = 0x2b0;
     bool m_inEditLayer = 0x279;
     cocos2d::CCPoint m_startPos = 0x37c;
     bool m_touchTriggered = 0x378;
     bool m_spawnTriggered = 0x379;
+    gd::string m_textureName = 0x388;
     int m_uuid = 0x36c;
     int m_colorID = 0x3bc;
     int m_zOrder = 0x42c;
     int m_unknownType = 0x3d4;
+    bool m_effectSheet = 0x3d8;
     int m_coinID = 0x3e8;
     float m_scale = 0x3c0;
     float m_multiScaleMultiplier = 0x44c;
+    bool m_isTrigger = 0x4b9;
+    char m_pad[0x2a0];
 @end
 
 @interface GameObjectCopy
@@ -1287,6 +1319,7 @@
 @interface LabelGameObject : GameObject
     bool init() = 0x2f5520;
     void setObjectColor(cocos2d::_ccColor3B const&) = 0xdbca0;
+    static LabelGameObject* create(char const*) = 0xc9790;
 @end
 
 @interface LevelBrowserLayer : cocos2d::CCLayer
@@ -1470,6 +1503,12 @@
 @interface PlatformToolbox
     void hideCursor() = 0x27c340;
     void showCursor() = 0x27c360;
+@end
+
+@interface AnimatedGameObject : GameObject
+    void playAnimation(int) = 0xc93d0;
+    void updateChildSpriteColor(cocos2d::_ccColor3B) = 0xc8450;
+    static AnimatedGameObject* create(int) = 0xc79f0;
 @end
 
 @interface PlayLayer : GJBaseGameLayer, CCCircleWaveDelegate
@@ -1666,8 +1705,8 @@
     void getActiveMode() = 0x22b950;
     void getModifiedSlopeYVel() = 0x21bff0;
     void getOldPosition(float) = 0x21a830;
-    virtual void getOrientedBox() = 0x22dee0;
-    virtual void getRealPosition() = 0x22d5f0;
+    virtual OBB2D* getOrientedBox() = 0x22dee0;
+    virtual cocos2d::CCPoint getRealPosition() = 0x22d5f0;
     void getSecondColor() = 0x22cee0;
     void gravityDown() = 0x22e930;
     void gravityUp() = 0x22e900;
@@ -1746,6 +1785,7 @@
     void storeCollision(bool, int) = 0x21cc60;
     void switchedToMode(GameObjectType) = 0x22b9a0;
     void testForMoving(float, GameObject*) = 0x21eb70;
+    void toggleShipMode(bool) = 0x223820;
     void toggleBirdMode(bool) = 0x224070;
     void toggleDartMode(bool) = 0x2243f0;
     void toggleFlyMode(bool) = 0x223820;
@@ -1793,6 +1833,7 @@
     void yStartUp() = 0x22e990;
     ~PlayerObject() = 0x217100;
 
+    volatile VehicleType& vehicleEnum() {return reinterpret_cast<VehicleType&>(_isShip());}
     HardStreak* m_waveStreak = 0x600;
     double m_speed = 0x608;
     double m_gravity = 0x618;
@@ -1821,6 +1862,7 @@
     cocos2d::_ccColor3B m_pCol2 = 0x7c5;
     float m_xPos = 0x7c8;
     float m_yPos = 0x7cc;
+    float m_groundHeight = 0x7e8;
 @end
 
 @interface PulseEffectAction : cocos2d::CCNode
@@ -1831,6 +1873,11 @@
 
 @interface RetryLevelLayer
     static RetryLevelLayer* create() = 0x28dd60;
+@end
+
+@interface RingObject : GameObject
+    static RingObject* create() = 0xdb8e0;
+    static RingObject* create(char const*) = 0xc6d40;
 @end
 
 @interface SetGroupIDLayer
@@ -1971,13 +2018,17 @@
     bool init(GameObject*, int, float) = 0x77400;
 @end
 
+@interface StartPosObject : GameObject
+    static StartPosObject* create() = 0xda7c0;
+@end
+
 @interface TableViewDelegate
     void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) = 0x120480;
     void didEndTweenToIndexPath(CCIndexPath&, TableView*) = 0x120470;
     void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) = 0x120460;
 @end
 
-@interface TeleportPortalObject
+@interface TeleportPortalObject : GameObject
     static TeleportPortalObject* create(char const*) = 0xdaa50;
     void getTeleportXOff(cocos2d::CCNode*) = 0xdac20;
 @end
@@ -2581,6 +2632,7 @@
     void createWithSpriteFrameName(char const*) = 0x132dc0;
     void displayFrame() = 0x135760;
     void setChildColor(cocos2d::_ccColor3B const&) = 0x135160;
+    void setColor(cocos2d::_ccColor3B const&) = 0x134ff0, 288;
     bool init() = 0x132ef0;
     ~CCSprite() = 0x133430;
     void draw() = 0x134070;
@@ -2630,9 +2682,13 @@
     void updateDisplayedOpacity(unsigned char) = 0x1354c0, 288;
     void updateTransform() = 0x133b70;
     void createWithTexture(cocos2d::CCTexture2D*) = 0x132790;
-    void setFlipX(bool) = 0x134be0;
+    virtual void setFlipX(bool) = 0x134be0;
     void setScaleX(float) = 0x134900;
     void setScaleY(float) = 0x134980;
+    void setOpacity(unsigned char) = 0x134da0, 288;
+    void setVisible(bool) = 0x134b70;
+    void setRotation(float) = 0x1346d0;
+    void setScale(float) = 0x134a00, 288;
 @end
 
 @interface cocos2d::CCSpriteBatchNode
@@ -2646,6 +2702,11 @@
     void addSpriteFramesWithFile(char const*) = 0x199a10;
     void sharedSpriteFrameCache() = 0x198970;
     void spriteFrameByName(char const*) = 0x19a7e0;
+@end
+
+@interface cocos2d::CCSpriteFrame
+    cocos2d::CCPoint& getOffset() = 0x1ad110;
+    CCTexture2D* getTexture() = 0x1ad250;
 @end
 
 @interface cocos2d::CCString

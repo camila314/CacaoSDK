@@ -175,8 +175,12 @@ def parse_func(tok):
                 arglist = []
                 break
             if tok.type == "COMMA":
-                fi.args.append(" ".join(arglist))
-                arglist = []
+                text = " ".join(arglist)
+                if text.count("<") > text.count(">"):
+                    arglist.append(tok.value)
+                else:
+                    fi.args.append(text)
+                    arglist = []
                 continue
             if tok.type != "IDENT":
                 print(tok.value)
@@ -203,6 +207,7 @@ def parse_func(tok):
                 #     fi.thunk = tok.value
                 #     tok = ensure_next()
         if tok.type != "SEMI":
+            print(tok)
             raise ValueError("Expected semicolon")
         return fi
     else:

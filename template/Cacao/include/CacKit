@@ -245,39 +245,6 @@ public:
 
 
 template<class D>
-class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
-public:
-    dupable ~$AnimatedGameObject() override {}
-
-    dupable void playAnimation(int p0) {
-        if ((void($AnimatedGameObject::*)(int)){&$AnimatedGameObject::playAnimation} != (void(D::*)(int)){&D::playAnimation})
-            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(base+0xc93d0))(this, p0);
-        else return AnimatedGameObject::playAnimation(p0);
-    }
-
-    dupable void updateChildSpriteColor(cocos2d::_ccColor3B p0) {
-        if ((void($AnimatedGameObject::*)(cocos2d::_ccColor3B)){&$AnimatedGameObject::updateChildSpriteColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::updateChildSpriteColor})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B)>(m->getOriginal(base+0xc8450))(this, p0);
-        else return AnimatedGameObject::updateChildSpriteColor(p0);
-    }
-
-    dupable $AnimatedGameObject() {
-        if ($lock) return;
-        $lock = true;
-        auto V = *reinterpret_cast<uintptr_t*>(new D());
-        $lock = false;
-        m->registerHook(extract_destructor(V), +[](){});
-
-        if ((void($AnimatedGameObject::*)(int)){&$AnimatedGameObject::playAnimation} != (void(D::*)(int)){&D::playAnimation})
-            m->registerHook(base+0xc93d0, extract((void(D::*)(int)){&D::playAnimation}));
-
-        if ((void($AnimatedGameObject::*)(cocos2d::_ccColor3B)){&$AnimatedGameObject::updateChildSpriteColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::updateChildSpriteColor})
-            m->registerHook(base+0xc8450, extract((void(D::*)(cocos2d::_ccColor3B)){&D::updateChildSpriteColor}));
-    }
-};
-
-
-template<class D>
 class $AppDelegate : public AppDelegate, public $CacBase {
 public:
     dupable ~$AppDelegate() override {}
@@ -3120,9 +3087,9 @@ public:
         else return GJBaseGameLayer::resetMoveOptimizedValue();
     }
 
-    dupable void sectionForPos(float p0) {
-        if ((void($GJBaseGameLayer::*)(float)){&$GJBaseGameLayer::sectionForPos} != (void(D::*)(float)){&D::sectionForPos})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0xb6120))(this, p0);
+    dupable int sectionForPos(float p0) {
+        if ((int($GJBaseGameLayer::*)(float)){&$GJBaseGameLayer::sectionForPos} != (int(D::*)(float)){&D::sectionForPos})
+            return reinterpret_cast<int(*)(decltype(this), float)>(m->getOriginal(base+0xb6120))(this, p0);
         else return GJBaseGameLayer::sectionForPos(p0);
     }
 
@@ -3379,8 +3346,8 @@ public:
         if ((void($GJBaseGameLayer::*)()){&$GJBaseGameLayer::resetMoveOptimizedValue} != (void(D::*)()){&D::resetMoveOptimizedValue})
             m->registerHook(base+0xb9670, extract((void(D::*)()){&D::resetMoveOptimizedValue}));
 
-        if ((void($GJBaseGameLayer::*)(float)){&$GJBaseGameLayer::sectionForPos} != (void(D::*)(float)){&D::sectionForPos})
-            m->registerHook(base+0xb6120, extract((void(D::*)(float)){&D::sectionForPos}));
+        if ((int($GJBaseGameLayer::*)(float)){&$GJBaseGameLayer::sectionForPos} != (int(D::*)(float)){&D::sectionForPos})
+            m->registerHook(base+0xb6120, extract((int(D::*)(float)){&D::sectionForPos}));
 
         if ((void($GJBaseGameLayer::*)()){&$GJBaseGameLayer::setupLayers} != (void(D::*)()){&D::setupLayers})
             m->registerHook(base+0xaffe0, extract((void(D::*)()){&D::setupLayers}));
@@ -5493,6 +5460,12 @@ public:
         else return GameManager::getFontFile(p0);
     }
 
+    dupable char const* getFontTexture(int p0) {
+        if ((char const*($GameManager::*)(int)){&$GameManager::getFontTexture} != (char const*(D::*)(int)){&D::getFontTexture})
+            return reinterpret_cast<char const*(*)(decltype(this), int)>(m->getOriginal(base+0x1cc640))(this, p0);
+        else return GameManager::getFontTexture(p0);
+    }
+
     dupable bool getGameVariable(char const* p0) {
         if ((bool($GameManager::*)(char const*)){&$GameManager::getGameVariable} != (bool(D::*)(char const*)){&D::getGameVariable})
             return reinterpret_cast<bool(*)(decltype(this), char const*)>(m->getOriginal(base+0x1cccd0))(this, p0);
@@ -5629,6 +5602,9 @@ public:
         if ((void($GameManager::*)(int)){&$GameManager::getFontFile} != (void(D::*)(int)){&D::getFontFile})
             m->registerHook(base+0x1cc5f0, extract((void(D::*)(int)){&D::getFontFile}));
 
+        if ((char const*($GameManager::*)(int)){&$GameManager::getFontTexture} != (char const*(D::*)(int)){&D::getFontTexture})
+            m->registerHook(base+0x1cc640, extract((char const*(D::*)(int)){&D::getFontTexture}));
+
         if ((bool($GameManager::*)(char const*)){&$GameManager::getGameVariable} != (bool(D::*)(char const*)){&D::getGameVariable})
             m->registerHook(base+0x1cccd0, extract((bool(D::*)(char const*)){&D::getGameVariable}));
 
@@ -5691,10 +5667,46 @@ class $GameObject : public GameObject, public $CacBase {
 public:
     dupable ~$GameObject() override {}
 
-    dupable void activateObject() {
-        if ((void($GameObject::*)()){&$GameObject::activateObject} != (void(D::*)()){&D::activateObject})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2faf60))(this);
-        else return GameObject::activateObject();
+    dupable static GameObject* createWithFrame(char const* p0) {
+        if ((GameObject*(*)(char const*)){&$GameObject::createWithFrame} != (GameObject*(*)(char const*)){&D::createWithFrame})
+            return reinterpret_cast<GameObject*(*)(char const*)>(m->getOriginal(base+0x2f5490))(p0);
+        else return GameObject::createWithFrame(p0);
+    }
+
+    dupable static GameObject* createWithKey(int p0) {
+        if ((GameObject*(*)(int)){&$GameObject::createWithKey} != (GameObject*(*)(int)){&D::createWithKey})
+            return reinterpret_cast<GameObject*(*)(int)>(m->getOriginal(base+0x2f4ce0))(p0);
+        else return GameObject::createWithKey(p0);
+    }
+
+    dupable static GameObject* objectFromString(gd::string p0, bool p1) {
+        if ((GameObject*(*)(gd::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(gd::string, bool)){&D::objectFromString})
+            return reinterpret_cast<GameObject*(*)(gd::string, bool)>(m->getOriginal(base+0x33b720))(p0, p1);
+        else return GameObject::objectFromString(p0, p1);
+    }
+
+    dupable bool init(char const* p0) {
+        if ((bool($GameObject::*)(char const*)){&$GameObject::init} != (bool(D::*)(char const*)){&D::init})
+            return reinterpret_cast<bool(*)(decltype(this), char const*)>(m->getOriginal(base+0x2f5520))(this, p0);
+        else return GameObject::init(p0);
+    }
+
+    dupable bool initWithTexture(cocos2d::CCTexture2D* p0) {
+        if ((bool($GameObject::*)(cocos2d::CCTexture2D*)){&$GameObject::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture})
+            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTexture2D*)>(m->getOriginal(base+0x2f56a0))(this, p0);
+        else return GameObject::initWithTexture(p0);
+    }
+
+    dupable const cocos2d::_ccColor3B& getColorIndex() {
+        if ((const cocos2d::_ccColor3B&($GameObject::*)()){&$GameObject::getColorIndex} != (const cocos2d::_ccColor3B&(D::*)()){&D::getColorIndex})
+            return reinterpret_cast<const cocos2d::_ccColor3B&(*)(decltype(this))>(m->getOriginal(base+0x343b90))(this);
+        else return GameObject::getColorIndex();
+    }
+
+    dupable int getGroupID(int p0) {
+        if ((int($GameObject::*)(int)){&$GameObject::getGroupID} != (int(D::*)(int)){&D::getGroupID})
+            return reinterpret_cast<int(*)(decltype(this), int)>(m->getOriginal(base+0x33ae10))(this, p0);
+        else return GameObject::getGroupID(p0);
     }
 
     dupable void activatedByPlayer(GameObject* p0) {
@@ -5715,18 +5727,6 @@ public:
         else return GameObject::addColorSpriteToParent(p0);
     }
 
-    dupable void addMainSpriteToParent(bool p0) {
-        if ((void($GameObject::*)(bool)){&$GameObject::addMainSpriteToParent} != (void(D::*)(bool)){&D::addMainSpriteToParent})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x33a5b0))(this, p0);
-        else return GameObject::addMainSpriteToParent(p0);
-    }
-
-    dupable void addToGroup(int p0) {
-        if ((void($GameObject::*)(int)){&$GameObject::addToGroup} != (void(D::*)(int)){&D::addToGroup})
-            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(base+0x33ad00))(this, p0);
-        else return GameObject::addToGroup(p0);
-    }
-
     dupable void addToTempOffset(float p0, float p1) {
         if ((void($GameObject::*)(float, float)){&$GameObject::addToTempOffset} != (void(D::*)(float, float)){&D::addToTempOffset})
             return reinterpret_cast<void(*)(decltype(this), float, float)>(m->getOriginal(base+0x335700))(this, p0, p1);
@@ -5737,12 +5737,6 @@ public:
         if ((void($GameObject::*)()){&$GameObject::calculateOrientedBox} != (void(D::*)()){&D::calculateOrientedBox})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x342b20))(this);
         else return GameObject::calculateOrientedBox();
-    }
-
-    dupable void calculateSpawnXPos() {
-        if ((void($GameObject::*)()){&$GameObject::calculateSpawnXPos} != (void(D::*)()){&D::calculateSpawnXPos})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x336970))(this);
-        else return GameObject::calculateSpawnXPos();
     }
 
     dupable void canChangeCustomColor() {
@@ -5767,30 +5761,6 @@ public:
         if ((void($GameObject::*)(GameObject*)){&$GameObject::copyGroups} != (void(D::*)(GameObject*)){&D::copyGroups})
             return reinterpret_cast<void(*)(decltype(this), GameObject*)>(m->getOriginal(base+0x33ae30))(this, p0);
         else return GameObject::copyGroups(p0);
-    }
-
-    dupable static GameObject* createWithFrame(char const* p0) {
-        if ((GameObject*(*)(char const*)){&$GameObject::createWithFrame} != (GameObject*(*)(char const*)){&D::createWithFrame})
-            return reinterpret_cast<GameObject*(*)(char const*)>(m->getOriginal(base+0x2f5490))(p0);
-        else return GameObject::createWithFrame(p0);
-    }
-
-    dupable static GameObject* createWithKey(int p0) {
-        if ((GameObject*(*)(int)){&$GameObject::createWithKey} != (GameObject*(*)(int)){&D::createWithKey})
-            return reinterpret_cast<GameObject*(*)(int)>(m->getOriginal(base+0x2f4ce0))(p0);
-        else return GameObject::createWithKey(p0);
-    }
-
-    dupable void customSetup() {
-        if ((void($GameObject::*)()){&$GameObject::customSetup} != (void(D::*)()){&D::customSetup})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2fbba0))(this);
-        else return GameObject::customSetup();
-    }
-
-    dupable void deactivateObject(bool p0) {
-        if ((void($GameObject::*)(bool)){&$GameObject::deactivateObject} != (void(D::*)(bool)){&D::deactivateObject})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x2fb8f0))(this, p0);
-        else return GameObject::deactivateObject(p0);
     }
 
     dupable void destroyObject() {
@@ -5823,22 +5793,10 @@ public:
         else return GameObject::getBoxOffset();
     }
 
-    dupable const cocos2d::_ccColor3B& getColorIndex() {
-        if ((const cocos2d::_ccColor3B&($GameObject::*)()){&$GameObject::getColorIndex} != (const cocos2d::_ccColor3B&(D::*)()){&D::getColorIndex})
-            return reinterpret_cast<const cocos2d::_ccColor3B&(*)(decltype(this))>(m->getOriginal(base+0x343b90))(this);
-        else return GameObject::getColorIndex();
-    }
-
     dupable void getDidUpdateLastPosition() {
         if ((void($GameObject::*)()){&$GameObject::getDidUpdateLastPosition} != (void(D::*)()){&D::getDidUpdateLastPosition})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x343a20))(this);
         else return GameObject::getDidUpdateLastPosition();
-    }
-
-    dupable int getGroupID(int p0) {
-        if ((int($GameObject::*)(int)){&$GameObject::getGroupID} != (int(D::*)(int)){&D::getGroupID})
-            return reinterpret_cast<int(*)(decltype(this), int)>(m->getOriginal(base+0x33ae10))(this, p0);
-        else return GameObject::getGroupID(p0);
     }
 
     dupable void getLastPosition() {
@@ -5853,64 +5811,10 @@ public:
         else return GameObject::getMainColorMode();
     }
 
-    dupable cocos2d::CCRect* getObjectRect() {
-        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectRect})
-            return reinterpret_cast<cocos2d::CCRect*(*)(decltype(this))>(m->getOriginal(base+0x3352b0))(this);
-        else return GameObject::getObjectRect();
-    }
-
-    dupable void getObjectRect(float p0, float p1) {
-        if ((void($GameObject::*)(float, float)){&$GameObject::getObjectRect} != (void(D::*)(float, float)){&D::getObjectRect})
-            return reinterpret_cast<void(*)(decltype(this), float, float)>(m->getOriginal(base+0x3352d0))(this, p0, p1);
-        else return GameObject::getObjectRect(p0, p1);
-    }
-
-    dupable void getObjectRect2(float p0, float p1) {
-        if ((void($GameObject::*)(float, float)){&$GameObject::getObjectRect2} != (void(D::*)(float, float)){&D::getObjectRect2})
-            return reinterpret_cast<void(*)(decltype(this), float, float)>(m->getOriginal(base+0x3354e0))(this, p0, p1);
-        else return GameObject::getObjectRect2(p0, p1);
-    }
-
-    dupable void getObjectRectDirty() {
-        if ((void($GameObject::*)()){&$GameObject::getObjectRectDirty} != (void(D::*)()){&D::getObjectRectDirty})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc1d0))(this);
-        else return GameObject::getObjectRectDirty();
-    }
-
-    dupable void getObjectTextureRect() {
-        if ((void($GameObject::*)()){&$GameObject::getObjectTextureRect} != (void(D::*)()){&D::getObjectTextureRect})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3355b0))(this);
-        else return GameObject::getObjectTextureRect();
-    }
-
     dupable void getObjectZOrder() {
         if ((void($GameObject::*)()){&$GameObject::getObjectZOrder} != (void(D::*)()){&D::getObjectZOrder})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x337d70))(this);
         else return GameObject::getObjectZOrder();
-    }
-
-    dupable void getOrientedRectDirty() {
-        if ((void($GameObject::*)()){&$GameObject::getOrientedRectDirty} != (void(D::*)()){&D::getOrientedRectDirty})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc1f0))(this);
-        else return GameObject::getOrientedRectDirty();
-    }
-
-    dupable void getRScaleX() {
-        if ((void($GameObject::*)()){&$GameObject::getRScaleX} != (void(D::*)()){&D::getRScaleX})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335e50))(this);
-        else return GameObject::getRScaleX();
-    }
-
-    dupable void getRScaleY() {
-        if ((void($GameObject::*)()){&$GameObject::getRScaleY} != (void(D::*)()){&D::getRScaleY})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335e80))(this);
-        else return GameObject::getRScaleY();
-    }
-
-    dupable gd::string getSaveString() {
-        if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
-            return reinterpret_cast<gd::string(*)(decltype(this))>(m->getOriginal(base+0x33d3d0))(this);
-        else return GameObject::getSaveString();
     }
 
     dupable void getSecondaryColorMode() {
@@ -5923,18 +5827,6 @@ public:
         if ((void($GameObject::*)()){&$GameObject::getSectionIdx} != (void(D::*)()){&D::getSectionIdx})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x343a00))(this);
         else return GameObject::getSectionIdx();
-    }
-
-    dupable void getStartPos() {
-        if ((void($GameObject::*)()){&$GameObject::getStartPos} != (void(D::*)()){&D::getStartPos})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc230))(this);
-        else return GameObject::getStartPos();
-    }
-
-    dupable void getType() {
-        if ((void($GameObject::*)()){&$GameObject::getType} != (void(D::*)()){&D::getType})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc210))(this);
-        else return GameObject::getType();
     }
 
     dupable void groupWasDisabled() {
@@ -5979,12 +5871,6 @@ public:
         else return GameObject::ignoreFade();
     }
 
-    dupable bool initWithTexture(cocos2d::CCTexture2D* p0) {
-        if ((bool($GameObject::*)(cocos2d::CCTexture2D*)){&$GameObject::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture})
-            return reinterpret_cast<bool(*)(decltype(this), cocos2d::CCTexture2D*)>(m->getOriginal(base+0x2f56a0))(this, p0);
-        else return GameObject::initWithTexture(p0);
-    }
-
     dupable void isBasicTrigger() {
         if ((void($GameObject::*)()){&$GameObject::isBasicTrigger} != (void(D::*)()){&D::isBasicTrigger})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x343d10))(this);
@@ -5995,18 +5881,6 @@ public:
         if ((void($GameObject::*)()){&$GameObject::isColorTrigger} != (void(D::*)()){&D::isColorTrigger})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x343b40))(this);
         else return GameObject::isColorTrigger();
-    }
-
-    dupable void isFlipX() {
-        if ((void($GameObject::*)()){&$GameObject::isFlipX} != (void(D::*)()){&D::isFlipX})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335a40))(this);
-        else return GameObject::isFlipX();
-    }
-
-    dupable void isFlipY() {
-        if ((void($GameObject::*)()){&$GameObject::isFlipY} != (void(D::*)()){&D::isFlipY})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335a50))(this);
-        else return GameObject::isFlipY();
     }
 
     dupable void isSpawnableTrigger() {
@@ -6021,40 +5895,16 @@ public:
         else return GameObject::isSpecialObject();
     }
 
-    dupable static GameObject* objectFromString(gd::string p0, bool p1) {
-        if ((GameObject*(*)(gd::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(gd::string, bool)){&D::objectFromString})
-            return reinterpret_cast<GameObject*(*)(gd::string, bool)>(m->getOriginal(base+0x33b720))(p0, p1);
-        else return GameObject::objectFromString(p0, p1);
-    }
-
     dupable void playShineEffect() {
         if ((void($GameObject::*)()){&$GameObject::playShineEffect} != (void(D::*)()){&D::playShineEffect})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2fa9d0))(this);
         else return GameObject::playShineEffect();
     }
 
-    dupable void powerOffObject() {
-        if ((void($GameObject::*)()){&$GameObject::powerOffObject} != (void(D::*)()){&D::powerOffObject})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3369c0))(this);
-        else return GameObject::powerOffObject();
-    }
-
-    dupable void powerOnObject() {
-        if ((void($GameObject::*)()){&$GameObject::powerOnObject} != (void(D::*)()){&D::powerOnObject})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3369a0))(this);
-        else return GameObject::powerOnObject();
-    }
-
     dupable void quickUpdatePosition() {
         if ((void($GameObject::*)()){&$GameObject::quickUpdatePosition} != (void(D::*)()){&D::quickUpdatePosition})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335790))(this);
         else return GameObject::quickUpdatePosition();
-    }
-
-    dupable void removeFromGroup(int p0) {
-        if ((void($GameObject::*)(int)){&$GameObject::removeFromGroup} != (void(D::*)(int)){&D::removeFromGroup})
-            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(base+0x33ada0))(this, p0);
-        else return GameObject::removeFromGroup(p0);
     }
 
     dupable void removeGlow() {
@@ -6099,12 +5949,6 @@ public:
         else return GameObject::setDidUpdateLastPosition(p0);
     }
 
-    dupable void setGlowColor(cocos2d::_ccColor3B const& p0) {
-        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setGlowColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setGlowColor})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(base+0x341ed0))(this, p0);
-        else return GameObject::setGlowColor(p0);
-    }
-
     dupable void setGlowOpacity(unsigned char p0) {
         if ((void($GameObject::*)(unsigned char)){&$GameObject::setGlowOpacity} != (void(D::*)(unsigned char)){&D::setGlowOpacity})
             return reinterpret_cast<void(*)(decltype(this), unsigned char)>(m->getOriginal(base+0x336200))(this, p0);
@@ -6123,46 +5967,10 @@ public:
         else return GameObject::setMainColorMode(p0);
     }
 
-    dupable void setObjectColor(cocos2d::_ccColor3B const& p0) {
-        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setObjectColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(base+0x341c90))(this, p0);
-        else return GameObject::setObjectColor(p0);
-    }
-
-    dupable void setObjectRectDirty(bool p0) {
-        if ((void($GameObject::*)(bool)){&$GameObject::setObjectRectDirty} != (void(D::*)(bool)){&D::setObjectRectDirty})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0xdc1e0))(this, p0);
-        else return GameObject::setObjectRectDirty(p0);
-    }
-
-    dupable void setOrientedRectDirty(bool p0) {
-        if ((void($GameObject::*)(bool)){&$GameObject::setOrientedRectDirty} != (void(D::*)(bool)){&D::setOrientedRectDirty})
-            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0xdc200))(this, p0);
-        else return GameObject::setOrientedRectDirty(p0);
-    }
-
     dupable void setPosition(cocos2d::CCPoint const& p0) {
         if ((void($GameObject::*)(cocos2d::CCPoint const&)){&$GameObject::setPosition} != (void(D::*)(cocos2d::CCPoint const&)){&D::setPosition})
             return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint const&)>(m->getOriginal(base+0x335850))(this, p0);
         else return GameObject::setPosition(p0);
-    }
-
-    dupable void setRScale(float p0) {
-        if ((void($GameObject::*)(float)){&$GameObject::setRScale} != (void(D::*)(float)){&D::setRScale})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x335e10))(this, p0);
-        else return GameObject::setRScale(p0);
-    }
-
-    dupable void setRScaleX(float p0) {
-        if ((void($GameObject::*)(float)){&$GameObject::setRScaleX} != (void(D::*)(float)){&D::setRScaleX})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x335cb0))(this, p0);
-        else return GameObject::setRScaleX(p0);
-    }
-
-    dupable void setRScaleY(float p0) {
-        if ((void($GameObject::*)(float)){&$GameObject::setRScaleY} != (void(D::*)(float)){&D::setRScaleY})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x335d60))(this, p0);
-        else return GameObject::setRScaleY(p0);
     }
 
     dupable void setSectionIdx(int const& p0) {
@@ -6171,28 +5979,10 @@ public:
         else return GameObject::setSectionIdx(p0);
     }
 
-    dupable void setStartPos(cocos2d::CCPoint p0) {
-        if ((void($GameObject::*)(cocos2d::CCPoint)){&$GameObject::setStartPos} != (void(D::*)(cocos2d::CCPoint)){&D::setStartPos})
-            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint)>(m->getOriginal(base+0x2fa520))(this, p0);
-        else return GameObject::setStartPos(p0);
-    }
-
-    dupable void setType(GameObjectType p0) {
-        if ((void($GameObject::*)(GameObjectType)){&$GameObject::setType} != (void(D::*)(GameObjectType)){&D::setType})
-            return reinterpret_cast<void(*)(decltype(this), GameObjectType)>(m->getOriginal(base+0xdc220))(this, p0);
-        else return GameObject::setType(p0);
-    }
-
     dupable void setupCoinArt() {
         if ((void($GameObject::*)()){&$GameObject::setupCoinArt} != (void(D::*)()){&D::setupCoinArt})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x337dd0))(this);
         else return GameObject::setupCoinArt();
-    }
-
-    dupable void setupCustomSprites() {
-        if ((void($GameObject::*)()){&$GameObject::setupCustomSprites} != (void(D::*)()){&D::setupCustomSprites})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x307f60))(this);
-        else return GameObject::setupCustomSprites();
     }
 
     dupable void slopeFloorTop() {
@@ -6205,24 +5995,6 @@ public:
         if ((void($GameObject::*)()){&$GameObject::slopeWallLeft} != (void(D::*)()){&D::slopeWallLeft})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3427e0))(this);
         else return GameObject::slopeWallLeft();
-    }
-
-    dupable void spawnXPosition() {
-        if ((void($GameObject::*)()){&$GameObject::spawnXPosition} != (void(D::*)()){&D::spawnXPosition})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc1b0))(this);
-        else return GameObject::spawnXPosition();
-    }
-
-    dupable void triggerActivated(float p0) {
-        if ((void($GameObject::*)(float)){&$GameObject::triggerActivated} != (void(D::*)(float)){&D::triggerActivated})
-            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x336990))(this, p0);
-        else return GameObject::triggerActivated(p0);
-    }
-
-    dupable void triggerObject(GJBaseGameLayer* p0) {
-        if ((void($GameObject::*)(GJBaseGameLayer*)){&$GameObject::triggerObject} != (void(D::*)(GJBaseGameLayer*)){&D::triggerObject})
-            return reinterpret_cast<void(*)(decltype(this), GJBaseGameLayer*)>(m->getOriginal(base+0x2fa8f0))(this, p0);
-        else return GameObject::triggerObject(p0);
     }
 
     dupable void updateCustomScale(float p0) {
@@ -6255,12 +6027,6 @@ public:
         else return GameObject::updateStartPos();
     }
 
-    dupable void updateStartValues() {
-        if ((void($GameObject::*)()){&$GameObject::updateStartValues} != (void(D::*)()){&D::updateStartValues})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2fa800))(this);
-        else return GameObject::updateStartValues();
-    }
-
     dupable void updateState() {
         if ((void($GameObject::*)()){&$GameObject::updateState} != (void(D::*)()){&D::updateState})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3369e0))(this);
@@ -6279,6 +6045,258 @@ public:
         else return GameObject::getRelativeSpriteColor(p0);
     }
 
+    dupable void setFlipX(bool p0) override {
+        if ((void($GameObject::*)(bool)){&$GameObject::setFlipX} != (void(D::*)(bool)){&D::setFlipX})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x335a60))(this, p0);
+        else return GameObject::setFlipX(p0);
+    }
+
+    dupable void setFlipY(bool p0) override {
+        if ((void($GameObject::*)(bool)){&$GameObject::setFlipY} != (void(D::*)(bool)){&D::setFlipY})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x335ab0))(this, p0);
+        else return GameObject::setFlipY(p0);
+    }
+
+    dupable void customSetup() override {
+        if ((void($GameObject::*)()){&$GameObject::customSetup} != (void(D::*)()){&D::customSetup})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2fbba0))(this);
+        else return GameObject::customSetup();
+    }
+
+    dupable void setupCustomSprites() override {
+        if ((void($GameObject::*)()){&$GameObject::setupCustomSprites} != (void(D::*)()){&D::setupCustomSprites})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x307f60))(this);
+        else return GameObject::setupCustomSprites();
+    }
+
+    dupable void addMainSpriteToParent(bool p0) override {
+        if ((void($GameObject::*)(bool)){&$GameObject::addMainSpriteToParent} != (void(D::*)(bool)){&D::addMainSpriteToParent})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x33a5b0))(this, p0);
+        else return GameObject::addMainSpriteToParent(p0);
+    }
+
+    dupable void resetObject() override {
+        if ((void($GameObject::*)()){&$GameObject::resetObject} != (void(D::*)()){&D::resetObject})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2fa620))(this);
+        else return GameObject::resetObject();
+    }
+
+    dupable void triggerObject(GJBaseGameLayer* p0) override {
+        if ((void($GameObject::*)(GJBaseGameLayer*)){&$GameObject::triggerObject} != (void(D::*)(GJBaseGameLayer*)){&D::triggerObject})
+            return reinterpret_cast<void(*)(decltype(this), GJBaseGameLayer*)>(m->getOriginal(base+0x2fa8f0))(this, p0);
+        else return GameObject::triggerObject(p0);
+    }
+
+    dupable void activateObject() override {
+        if ((void($GameObject::*)()){&$GameObject::activateObject} != (void(D::*)()){&D::activateObject})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2faf60))(this);
+        else return GameObject::activateObject();
+    }
+
+    dupable void deactivateObject(bool p0) override {
+        if ((void($GameObject::*)(bool)){&$GameObject::deactivateObject} != (void(D::*)(bool)){&D::deactivateObject})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x2fb8f0))(this, p0);
+        else return GameObject::deactivateObject(p0);
+    }
+
+    dupable cocos2d::CCRect* getObjectRect() override {
+        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectRect})
+            return reinterpret_cast<cocos2d::CCRect*(*)(decltype(this))>(m->getOriginal(base+0x3352b0))(this);
+        else return GameObject::getObjectRect();
+    }
+
+    dupable cocos2d::CCRect* getObjectRect(float p0, float p1) override {
+        if ((cocos2d::CCRect*($GameObject::*)(float, float)){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)(float, float)){&D::getObjectRect})
+            return reinterpret_cast<cocos2d::CCRect*(*)(decltype(this), float, float)>(m->getOriginal(base+0x3352d0))(this, p0, p1);
+        else return GameObject::getObjectRect(p0, p1);
+    }
+
+    dupable cocos2d::CCRect* getObjectRect2(float p0, float p1) override {
+        if ((cocos2d::CCRect*($GameObject::*)(float, float)){&$GameObject::getObjectRect2} != (cocos2d::CCRect*(D::*)(float, float)){&D::getObjectRect2})
+            return reinterpret_cast<cocos2d::CCRect*(*)(decltype(this), float, float)>(m->getOriginal(base+0x3354e0))(this, p0, p1);
+        else return GameObject::getObjectRect2(p0, p1);
+    }
+
+    dupable cocos2d::CCRect* getObjectTextureRect() override {
+        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectTextureRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectTextureRect})
+            return reinterpret_cast<cocos2d::CCRect*(*)(decltype(this))>(m->getOriginal(base+0x3355b0))(this);
+        else return GameObject::getObjectTextureRect();
+    }
+
+    dupable cocos2d::CCPoint getRealPosition() override {
+        if ((cocos2d::CCPoint($GameObject::*)()){&$GameObject::getRealPosition} != (cocos2d::CCPoint(D::*)()){&D::getRealPosition})
+            return reinterpret_cast<cocos2d::CCPoint(*)(decltype(this))>(m->getOriginal(base+0x335750))(this);
+        else return GameObject::getRealPosition();
+    }
+
+    dupable void setStartPos(cocos2d::CCPoint p0) override {
+        if ((void($GameObject::*)(cocos2d::CCPoint)){&$GameObject::setStartPos} != (void(D::*)(cocos2d::CCPoint)){&D::setStartPos})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCPoint)>(m->getOriginal(base+0x2fa520))(this, p0);
+        else return GameObject::setStartPos(p0);
+    }
+
+    dupable void updateStartValues() override {
+        if ((void($GameObject::*)()){&$GameObject::updateStartValues} != (void(D::*)()){&D::updateStartValues})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x2fa800))(this);
+        else return GameObject::updateStartValues();
+    }
+
+    dupable void customObjectSetup(gd::map<gd::string , gd::string>& p0) override {
+        if ((void($GameObject::*)(gd::map<gd::string , gd::string>&)){&$GameObject::customObjectSetup} != (void(D::*)(gd::map<gd::string , gd::string>&)){&D::customObjectSetup})
+            return reinterpret_cast<void(*)(decltype(this), gd::map<gd::string , gd::string>&)>(m->getOriginal(base+0xdc1a0))(this, p0);
+        else return GameObject::customObjectSetup(p0);
+    }
+
+    dupable gd::string getSaveString() override {
+        if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
+            return reinterpret_cast<gd::string(*)(decltype(this))>(m->getOriginal(base+0x33d3d0))(this);
+        else return GameObject::getSaveString();
+    }
+
+    dupable void isFlipX() override {
+        if ((void($GameObject::*)()){&$GameObject::isFlipX} != (void(D::*)()){&D::isFlipX})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335a40))(this);
+        else return GameObject::isFlipX();
+    }
+
+    dupable void isFlipY() override {
+        if ((void($GameObject::*)()){&$GameObject::isFlipY} != (void(D::*)()){&D::isFlipY})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335a50))(this);
+        else return GameObject::isFlipY();
+    }
+
+    dupable void setRScaleX(float p0) override {
+        if ((void($GameObject::*)(float)){&$GameObject::setRScaleX} != (void(D::*)(float)){&D::setRScaleX})
+            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x335cb0))(this, p0);
+        else return GameObject::setRScaleX(p0);
+    }
+
+    dupable void setRScaleY(float p0) override {
+        if ((void($GameObject::*)(float)){&$GameObject::setRScaleY} != (void(D::*)(float)){&D::setRScaleY})
+            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x335d60))(this, p0);
+        else return GameObject::setRScaleY(p0);
+    }
+
+    dupable void setRScale(float p0) override {
+        if ((void($GameObject::*)(float)){&$GameObject::setRScale} != (void(D::*)(float)){&D::setRScale})
+            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x335e10))(this, p0);
+        else return GameObject::setRScale(p0);
+    }
+
+    dupable void getRScaleX() override {
+        if ((void($GameObject::*)()){&$GameObject::getRScaleX} != (void(D::*)()){&D::getRScaleX})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335e50))(this);
+        else return GameObject::getRScaleX();
+    }
+
+    dupable void getRScaleY() override {
+        if ((void($GameObject::*)()){&$GameObject::getRScaleY} != (void(D::*)()){&D::getRScaleY})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335e80))(this);
+        else return GameObject::getRScaleY();
+    }
+
+    dupable void calculateSpawnXPos() override {
+        if ((void($GameObject::*)()){&$GameObject::calculateSpawnXPos} != (void(D::*)()){&D::calculateSpawnXPos})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x336970))(this);
+        else return GameObject::calculateSpawnXPos();
+    }
+
+    dupable void triggerActivated(float p0) override {
+        if ((void($GameObject::*)(float)){&$GameObject::triggerActivated} != (void(D::*)(float)){&D::triggerActivated})
+            return reinterpret_cast<void(*)(decltype(this), float)>(m->getOriginal(base+0x336990))(this, p0);
+        else return GameObject::triggerActivated(p0);
+    }
+
+    dupable void powerOnObject() override {
+        if ((void($GameObject::*)()){&$GameObject::powerOnObject} != (void(D::*)()){&D::powerOnObject})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3369a0))(this);
+        else return GameObject::powerOnObject();
+    }
+
+    dupable void powerOffObject() override {
+        if ((void($GameObject::*)()){&$GameObject::powerOffObject} != (void(D::*)()){&D::powerOffObject})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x3369c0))(this);
+        else return GameObject::powerOffObject();
+    }
+
+    dupable void setObjectColor(cocos2d::_ccColor3B const& p0) override {
+        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setObjectColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(base+0x341c90))(this, p0);
+        else return GameObject::setObjectColor(p0);
+    }
+
+    dupable void setGlowColor(cocos2d::_ccColor3B const& p0) override {
+        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setGlowColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setGlowColor})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B const&)>(m->getOriginal(base+0x341ed0))(this, p0);
+        else return GameObject::setGlowColor(p0);
+    }
+
+    dupable OBB2D* getOrientedBox() override {
+        if ((OBB2D*($GameObject::*)()){&$GameObject::getOrientedBox} != (OBB2D*(D::*)()){&D::getOrientedBox})
+            return reinterpret_cast<OBB2D*(*)(decltype(this))>(m->getOriginal(base+0x342ad0))(this);
+        else return GameObject::getOrientedBox();
+    }
+
+    dupable void addToGroup(int p0) override {
+        if ((void($GameObject::*)(int)){&$GameObject::addToGroup} != (void(D::*)(int)){&D::addToGroup})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(base+0x33ad00))(this, p0);
+        else return GameObject::addToGroup(p0);
+    }
+
+    dupable void removeFromGroup(int p0) override {
+        if ((void($GameObject::*)(int)){&$GameObject::removeFromGroup} != (void(D::*)(int)){&D::removeFromGroup})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(base+0x33ada0))(this, p0);
+        else return GameObject::removeFromGroup(p0);
+    }
+
+    dupable void spawnXPosition() override {
+        if ((void($GameObject::*)()){&$GameObject::spawnXPosition} != (void(D::*)()){&D::spawnXPosition})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc1b0))(this);
+        else return GameObject::spawnXPosition();
+    }
+
+    dupable void getObjectRectDirty() override {
+        if ((void($GameObject::*)()){&$GameObject::getObjectRectDirty} != (void(D::*)()){&D::getObjectRectDirty})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc1d0))(this);
+        else return GameObject::getObjectRectDirty();
+    }
+
+    dupable void setObjectRectDirty(bool p0) override {
+        if ((void($GameObject::*)(bool)){&$GameObject::setObjectRectDirty} != (void(D::*)(bool)){&D::setObjectRectDirty})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0xdc1e0))(this, p0);
+        else return GameObject::setObjectRectDirty(p0);
+    }
+
+    dupable void getOrientedRectDirty() override {
+        if ((void($GameObject::*)()){&$GameObject::getOrientedRectDirty} != (void(D::*)()){&D::getOrientedRectDirty})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc1f0))(this);
+        else return GameObject::getOrientedRectDirty();
+    }
+
+    dupable void setOrientedRectDirty(bool p0) override {
+        if ((void($GameObject::*)(bool)){&$GameObject::setOrientedRectDirty} != (void(D::*)(bool)){&D::setOrientedRectDirty})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0xdc200))(this, p0);
+        else return GameObject::setOrientedRectDirty(p0);
+    }
+
+    dupable GameObjectType getType() override {
+        if ((GameObjectType($GameObject::*)()){&$GameObject::getType} != (GameObjectType(D::*)()){&D::getType})
+            return reinterpret_cast<GameObjectType(*)(decltype(this))>(m->getOriginal(base+0xdc210))(this);
+        else return GameObject::getType();
+    }
+
+    dupable void setType(GameObjectType p0) override {
+        if ((void($GameObject::*)(GameObjectType)){&$GameObject::setType} != (void(D::*)(GameObjectType)){&D::setType})
+            return reinterpret_cast<void(*)(decltype(this), GameObjectType)>(m->getOriginal(base+0xdc220))(this, p0);
+        else return GameObject::setType(p0);
+    }
+
+    dupable void getStartPos() override {
+        if ((void($GameObject::*)()){&$GameObject::getStartPos} != (void(D::*)()){&D::getStartPos})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0xdc230))(this);
+        else return GameObject::getStartPos();
+    }
+
     dupable $GameObject() {
         if ($lock) return;
         $lock = true;
@@ -6286,8 +6304,26 @@ public:
         $lock = false;
         m->registerHook(extract_destructor(V), +[](){});
 
-        if ((void($GameObject::*)()){&$GameObject::activateObject} != (void(D::*)()){&D::activateObject})
-            m->registerHook(base+0x2faf60, extract((void(D::*)()){&D::activateObject}));
+        if ((GameObject*(*)(char const*)){&$GameObject::createWithFrame} != (GameObject*(*)(char const*)){&D::createWithFrame})
+            m->registerHook(base+0x2f5490, (GameObject*(*)(char const*)){&D::createWithFrame});
+
+        if ((GameObject*(*)(int)){&$GameObject::createWithKey} != (GameObject*(*)(int)){&D::createWithKey})
+            m->registerHook(base+0x2f4ce0, (GameObject*(*)(int)){&D::createWithKey});
+
+        if ((GameObject*(*)(gd::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(gd::string, bool)){&D::objectFromString})
+            m->registerHook(base+0x33b720, (GameObject*(*)(gd::string, bool)){&D::objectFromString});
+
+        if ((bool($GameObject::*)(char const*)){&$GameObject::init} != (bool(D::*)(char const*)){&D::init})
+            m->registerHook(base+0x2f5520, extract((bool(D::*)(char const*)){&D::init}));
+
+        if ((bool($GameObject::*)(cocos2d::CCTexture2D*)){&$GameObject::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture})
+            m->registerHook(base+0x2f56a0, extract((bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture}));
+
+        if ((const cocos2d::_ccColor3B&($GameObject::*)()){&$GameObject::getColorIndex} != (const cocos2d::_ccColor3B&(D::*)()){&D::getColorIndex})
+            m->registerHook(base+0x343b90, extract((const cocos2d::_ccColor3B&(D::*)()){&D::getColorIndex}));
+
+        if ((int($GameObject::*)(int)){&$GameObject::getGroupID} != (int(D::*)(int)){&D::getGroupID})
+            m->registerHook(base+0x33ae10, extract((int(D::*)(int)){&D::getGroupID}));
 
         if ((void($GameObject::*)(GameObject*)){&$GameObject::activatedByPlayer} != (void(D::*)(GameObject*)){&D::activatedByPlayer})
             m->registerHook(base+0x342a20, extract((void(D::*)(GameObject*)){&D::activatedByPlayer}));
@@ -6298,20 +6334,11 @@ public:
         if ((void($GameObject::*)(bool)){&$GameObject::addColorSpriteToParent} != (void(D::*)(bool)){&D::addColorSpriteToParent})
             m->registerHook(base+0x2fb470, extract((void(D::*)(bool)){&D::addColorSpriteToParent}));
 
-        if ((void($GameObject::*)(bool)){&$GameObject::addMainSpriteToParent} != (void(D::*)(bool)){&D::addMainSpriteToParent})
-            m->registerHook(base+0x33a5b0, extract((void(D::*)(bool)){&D::addMainSpriteToParent}));
-
-        if ((void($GameObject::*)(int)){&$GameObject::addToGroup} != (void(D::*)(int)){&D::addToGroup})
-            m->registerHook(base+0x33ad00, extract((void(D::*)(int)){&D::addToGroup}));
-
         if ((void($GameObject::*)(float, float)){&$GameObject::addToTempOffset} != (void(D::*)(float, float)){&D::addToTempOffset})
             m->registerHook(base+0x335700, extract((void(D::*)(float, float)){&D::addToTempOffset}));
 
         if ((void($GameObject::*)()){&$GameObject::calculateOrientedBox} != (void(D::*)()){&D::calculateOrientedBox})
             m->registerHook(base+0x342b20, extract((void(D::*)()){&D::calculateOrientedBox}));
-
-        if ((void($GameObject::*)()){&$GameObject::calculateSpawnXPos} != (void(D::*)()){&D::calculateSpawnXPos})
-            m->registerHook(base+0x336970, extract((void(D::*)()){&D::calculateSpawnXPos}));
 
         if ((void($GameObject::*)()){&$GameObject::canChangeCustomColor} != (void(D::*)()){&D::canChangeCustomColor})
             m->registerHook(base+0x342db0, extract((void(D::*)()){&D::canChangeCustomColor}));
@@ -6324,18 +6351,6 @@ public:
 
         if ((void($GameObject::*)(GameObject*)){&$GameObject::copyGroups} != (void(D::*)(GameObject*)){&D::copyGroups})
             m->registerHook(base+0x33ae30, extract((void(D::*)(GameObject*)){&D::copyGroups}));
-
-        if ((GameObject*(*)(char const*)){&$GameObject::createWithFrame} != (GameObject*(*)(char const*)){&D::createWithFrame})
-            m->registerHook(base+0x2f5490, (GameObject*(*)(char const*)){&D::createWithFrame});
-
-        if ((GameObject*(*)(int)){&$GameObject::createWithKey} != (GameObject*(*)(int)){&D::createWithKey})
-            m->registerHook(base+0x2f4ce0, (GameObject*(*)(int)){&D::createWithKey});
-
-        if ((void($GameObject::*)()){&$GameObject::customSetup} != (void(D::*)()){&D::customSetup})
-            m->registerHook(base+0x2fbba0, extract((void(D::*)()){&D::customSetup}));
-
-        if ((void($GameObject::*)(bool)){&$GameObject::deactivateObject} != (void(D::*)(bool)){&D::deactivateObject})
-            m->registerHook(base+0x2fb8f0, extract((void(D::*)(bool)){&D::deactivateObject}));
 
         if ((void($GameObject::*)()){&$GameObject::destroyObject} != (void(D::*)()){&D::destroyObject})
             m->registerHook(base+0x336a00, extract((void(D::*)()){&D::destroyObject}));
@@ -6352,14 +6367,8 @@ public:
         if ((void($GameObject::*)()){&$GameObject::getBoxOffset} != (void(D::*)()){&D::getBoxOffset})
             m->registerHook(base+0x3353d0, extract((void(D::*)()){&D::getBoxOffset}));
 
-        if ((const cocos2d::_ccColor3B&($GameObject::*)()){&$GameObject::getColorIndex} != (const cocos2d::_ccColor3B&(D::*)()){&D::getColorIndex})
-            m->registerHook(base+0x343b90, extract((const cocos2d::_ccColor3B&(D::*)()){&D::getColorIndex}));
-
         if ((void($GameObject::*)()){&$GameObject::getDidUpdateLastPosition} != (void(D::*)()){&D::getDidUpdateLastPosition})
             m->registerHook(base+0x343a20, extract((void(D::*)()){&D::getDidUpdateLastPosition}));
-
-        if ((int($GameObject::*)(int)){&$GameObject::getGroupID} != (int(D::*)(int)){&D::getGroupID})
-            m->registerHook(base+0x33ae10, extract((int(D::*)(int)){&D::getGroupID}));
 
         if ((void($GameObject::*)()){&$GameObject::getLastPosition} != (void(D::*)()){&D::getLastPosition})
             m->registerHook(base+0x3439d0, extract((void(D::*)()){&D::getLastPosition}));
@@ -6367,47 +6376,14 @@ public:
         if ((void($GameObject::*)()){&$GameObject::getMainColorMode} != (void(D::*)()){&D::getMainColorMode})
             m->registerHook(base+0x334c30, extract((void(D::*)()){&D::getMainColorMode}));
 
-        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectRect})
-            m->registerHook(base+0x3352b0, extract((cocos2d::CCRect*(D::*)()){&D::getObjectRect}));
-
-        if ((void($GameObject::*)(float, float)){&$GameObject::getObjectRect} != (void(D::*)(float, float)){&D::getObjectRect})
-            m->registerHook(base+0x3352d0, extract((void(D::*)(float, float)){&D::getObjectRect}));
-
-        if ((void($GameObject::*)(float, float)){&$GameObject::getObjectRect2} != (void(D::*)(float, float)){&D::getObjectRect2})
-            m->registerHook(base+0x3354e0, extract((void(D::*)(float, float)){&D::getObjectRect2}));
-
-        if ((void($GameObject::*)()){&$GameObject::getObjectRectDirty} != (void(D::*)()){&D::getObjectRectDirty})
-            m->registerHook(base+0xdc1d0, extract((void(D::*)()){&D::getObjectRectDirty}));
-
-        if ((void($GameObject::*)()){&$GameObject::getObjectTextureRect} != (void(D::*)()){&D::getObjectTextureRect})
-            m->registerHook(base+0x3355b0, extract((void(D::*)()){&D::getObjectTextureRect}));
-
         if ((void($GameObject::*)()){&$GameObject::getObjectZOrder} != (void(D::*)()){&D::getObjectZOrder})
             m->registerHook(base+0x337d70, extract((void(D::*)()){&D::getObjectZOrder}));
-
-        if ((void($GameObject::*)()){&$GameObject::getOrientedRectDirty} != (void(D::*)()){&D::getOrientedRectDirty})
-            m->registerHook(base+0xdc1f0, extract((void(D::*)()){&D::getOrientedRectDirty}));
-
-        if ((void($GameObject::*)()){&$GameObject::getRScaleX} != (void(D::*)()){&D::getRScaleX})
-            m->registerHook(base+0x335e50, extract((void(D::*)()){&D::getRScaleX}));
-
-        if ((void($GameObject::*)()){&$GameObject::getRScaleY} != (void(D::*)()){&D::getRScaleY})
-            m->registerHook(base+0x335e80, extract((void(D::*)()){&D::getRScaleY}));
-
-        if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
-            m->registerHook(base+0x33d3d0, extract((gd::string(D::*)()){&D::getSaveString}));
 
         if ((void($GameObject::*)()){&$GameObject::getSecondaryColorMode} != (void(D::*)()){&D::getSecondaryColorMode})
             m->registerHook(base+0x341c20, extract((void(D::*)()){&D::getSecondaryColorMode}));
 
         if ((void($GameObject::*)()){&$GameObject::getSectionIdx} != (void(D::*)()){&D::getSectionIdx})
             m->registerHook(base+0x343a00, extract((void(D::*)()){&D::getSectionIdx}));
-
-        if ((void($GameObject::*)()){&$GameObject::getStartPos} != (void(D::*)()){&D::getStartPos})
-            m->registerHook(base+0xdc230, extract((void(D::*)()){&D::getStartPos}));
-
-        if ((void($GameObject::*)()){&$GameObject::getType} != (void(D::*)()){&D::getType})
-            m->registerHook(base+0xdc210, extract((void(D::*)()){&D::getType}));
 
         if ((void($GameObject::*)()){&$GameObject::groupWasDisabled} != (void(D::*)()){&D::groupWasDisabled})
             m->registerHook(base+0x33b110, extract((void(D::*)()){&D::groupWasDisabled}));
@@ -6430,20 +6406,11 @@ public:
         if ((void($GameObject::*)()){&$GameObject::ignoreFade} != (void(D::*)()){&D::ignoreFade})
             m->registerHook(base+0x335290, extract((void(D::*)()){&D::ignoreFade}));
 
-        if ((bool($GameObject::*)(cocos2d::CCTexture2D*)){&$GameObject::initWithTexture} != (bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture})
-            m->registerHook(base+0x2f56a0, extract((bool(D::*)(cocos2d::CCTexture2D*)){&D::initWithTexture}));
-
         if ((void($GameObject::*)()){&$GameObject::isBasicTrigger} != (void(D::*)()){&D::isBasicTrigger})
             m->registerHook(base+0x343d10, extract((void(D::*)()){&D::isBasicTrigger}));
 
         if ((void($GameObject::*)()){&$GameObject::isColorTrigger} != (void(D::*)()){&D::isColorTrigger})
             m->registerHook(base+0x343b40, extract((void(D::*)()){&D::isColorTrigger}));
-
-        if ((void($GameObject::*)()){&$GameObject::isFlipX} != (void(D::*)()){&D::isFlipX})
-            m->registerHook(base+0x335a40, extract((void(D::*)()){&D::isFlipX}));
-
-        if ((void($GameObject::*)()){&$GameObject::isFlipY} != (void(D::*)()){&D::isFlipY})
-            m->registerHook(base+0x335a50, extract((void(D::*)()){&D::isFlipY}));
 
         if ((void($GameObject::*)()){&$GameObject::isSpawnableTrigger} != (void(D::*)()){&D::isSpawnableTrigger})
             m->registerHook(base+0x343a60, extract((void(D::*)()){&D::isSpawnableTrigger}));
@@ -6451,23 +6418,11 @@ public:
         if ((void($GameObject::*)()){&$GameObject::isSpecialObject} != (void(D::*)()){&D::isSpecialObject})
             m->registerHook(base+0x343c40, extract((void(D::*)()){&D::isSpecialObject}));
 
-        if ((GameObject*(*)(gd::string, bool)){&$GameObject::objectFromString} != (GameObject*(*)(gd::string, bool)){&D::objectFromString})
-            m->registerHook(base+0x33b720, (GameObject*(*)(gd::string, bool)){&D::objectFromString});
-
         if ((void($GameObject::*)()){&$GameObject::playShineEffect} != (void(D::*)()){&D::playShineEffect})
             m->registerHook(base+0x2fa9d0, extract((void(D::*)()){&D::playShineEffect}));
 
-        if ((void($GameObject::*)()){&$GameObject::powerOffObject} != (void(D::*)()){&D::powerOffObject})
-            m->registerHook(base+0x3369c0, extract((void(D::*)()){&D::powerOffObject}));
-
-        if ((void($GameObject::*)()){&$GameObject::powerOnObject} != (void(D::*)()){&D::powerOnObject})
-            m->registerHook(base+0x3369a0, extract((void(D::*)()){&D::powerOnObject}));
-
         if ((void($GameObject::*)()){&$GameObject::quickUpdatePosition} != (void(D::*)()){&D::quickUpdatePosition})
             m->registerHook(base+0x335790, extract((void(D::*)()){&D::quickUpdatePosition}));
-
-        if ((void($GameObject::*)(int)){&$GameObject::removeFromGroup} != (void(D::*)(int)){&D::removeFromGroup})
-            m->registerHook(base+0x33ada0, extract((void(D::*)(int)){&D::removeFromGroup}));
 
         if ((void($GameObject::*)()){&$GameObject::removeGlow} != (void(D::*)()){&D::removeGlow})
             m->registerHook(base+0x2f7f70, extract((void(D::*)()){&D::removeGlow}));
@@ -6490,9 +6445,6 @@ public:
         if ((void($GameObject::*)(bool const&)){&$GameObject::setDidUpdateLastPosition} != (void(D::*)(bool const&)){&D::setDidUpdateLastPosition})
             m->registerHook(base+0x343a30, extract((void(D::*)(bool const&)){&D::setDidUpdateLastPosition}));
 
-        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setGlowColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setGlowColor})
-            m->registerHook(base+0x341ed0, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setGlowColor}));
-
         if ((void($GameObject::*)(unsigned char)){&$GameObject::setGlowOpacity} != (void(D::*)(unsigned char)){&D::setGlowOpacity})
             m->registerHook(base+0x336200, extract((void(D::*)(unsigned char)){&D::setGlowOpacity}));
 
@@ -6502,56 +6454,20 @@ public:
         if ((void($GameObject::*)(int)){&$GameObject::setMainColorMode} != (void(D::*)(int)){&D::setMainColorMode})
             m->registerHook(base+0x342e70, extract((void(D::*)(int)){&D::setMainColorMode}));
 
-        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setObjectColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor})
-            m->registerHook(base+0x341c90, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor}));
-
-        if ((void($GameObject::*)(bool)){&$GameObject::setObjectRectDirty} != (void(D::*)(bool)){&D::setObjectRectDirty})
-            m->registerHook(base+0xdc1e0, extract((void(D::*)(bool)){&D::setObjectRectDirty}));
-
-        if ((void($GameObject::*)(bool)){&$GameObject::setOrientedRectDirty} != (void(D::*)(bool)){&D::setOrientedRectDirty})
-            m->registerHook(base+0xdc200, extract((void(D::*)(bool)){&D::setOrientedRectDirty}));
-
         if ((void($GameObject::*)(cocos2d::CCPoint const&)){&$GameObject::setPosition} != (void(D::*)(cocos2d::CCPoint const&)){&D::setPosition})
             m->registerHook(base+0x335850, extract((void(D::*)(cocos2d::CCPoint const&)){&D::setPosition}));
-
-        if ((void($GameObject::*)(float)){&$GameObject::setRScale} != (void(D::*)(float)){&D::setRScale})
-            m->registerHook(base+0x335e10, extract((void(D::*)(float)){&D::setRScale}));
-
-        if ((void($GameObject::*)(float)){&$GameObject::setRScaleX} != (void(D::*)(float)){&D::setRScaleX})
-            m->registerHook(base+0x335cb0, extract((void(D::*)(float)){&D::setRScaleX}));
-
-        if ((void($GameObject::*)(float)){&$GameObject::setRScaleY} != (void(D::*)(float)){&D::setRScaleY})
-            m->registerHook(base+0x335d60, extract((void(D::*)(float)){&D::setRScaleY}));
 
         if ((void($GameObject::*)(int const&)){&$GameObject::setSectionIdx} != (void(D::*)(int const&)){&D::setSectionIdx})
             m->registerHook(base+0x343a10, extract((void(D::*)(int const&)){&D::setSectionIdx}));
 
-        if ((void($GameObject::*)(cocos2d::CCPoint)){&$GameObject::setStartPos} != (void(D::*)(cocos2d::CCPoint)){&D::setStartPos})
-            m->registerHook(base+0x2fa520, extract((void(D::*)(cocos2d::CCPoint)){&D::setStartPos}));
-
-        if ((void($GameObject::*)(GameObjectType)){&$GameObject::setType} != (void(D::*)(GameObjectType)){&D::setType})
-            m->registerHook(base+0xdc220, extract((void(D::*)(GameObjectType)){&D::setType}));
-
         if ((void($GameObject::*)()){&$GameObject::setupCoinArt} != (void(D::*)()){&D::setupCoinArt})
             m->registerHook(base+0x337dd0, extract((void(D::*)()){&D::setupCoinArt}));
-
-        if ((void($GameObject::*)()){&$GameObject::setupCustomSprites} != (void(D::*)()){&D::setupCustomSprites})
-            m->registerHook(base+0x307f60, extract((void(D::*)()){&D::setupCustomSprites}));
 
         if ((void($GameObject::*)()){&$GameObject::slopeFloorTop} != (void(D::*)()){&D::slopeFloorTop})
             m->registerHook(base+0x342800, extract((void(D::*)()){&D::slopeFloorTop}));
 
         if ((void($GameObject::*)()){&$GameObject::slopeWallLeft} != (void(D::*)()){&D::slopeWallLeft})
             m->registerHook(base+0x3427e0, extract((void(D::*)()){&D::slopeWallLeft}));
-
-        if ((void($GameObject::*)()){&$GameObject::spawnXPosition} != (void(D::*)()){&D::spawnXPosition})
-            m->registerHook(base+0xdc1b0, extract((void(D::*)()){&D::spawnXPosition}));
-
-        if ((void($GameObject::*)(float)){&$GameObject::triggerActivated} != (void(D::*)(float)){&D::triggerActivated})
-            m->registerHook(base+0x336990, extract((void(D::*)(float)){&D::triggerActivated}));
-
-        if ((void($GameObject::*)(GJBaseGameLayer*)){&$GameObject::triggerObject} != (void(D::*)(GJBaseGameLayer*)){&D::triggerObject})
-            m->registerHook(base+0x2fa8f0, extract((void(D::*)(GJBaseGameLayer*)){&D::triggerObject}));
 
         if ((void($GameObject::*)(float)){&$GameObject::updateCustomScale} != (void(D::*)(float)){&D::updateCustomScale})
             m->registerHook(base+0x335eb0, extract((void(D::*)(float)){&D::updateCustomScale}));
@@ -6568,9 +6484,6 @@ public:
         if ((void($GameObject::*)()){&$GameObject::updateStartPos} != (void(D::*)()){&D::updateStartPos})
             m->registerHook(base+0x2fa590, extract((void(D::*)()){&D::updateStartPos}));
 
-        if ((void($GameObject::*)()){&$GameObject::updateStartValues} != (void(D::*)()){&D::updateStartValues})
-            m->registerHook(base+0x2fa800, extract((void(D::*)()){&D::updateStartValues}));
-
         if ((void($GameObject::*)()){&$GameObject::updateState} != (void(D::*)()){&D::updateState})
             m->registerHook(base+0x3369e0, extract((void(D::*)()){&D::updateState}));
 
@@ -6579,6 +6492,132 @@ public:
 
         if ((GJSpriteColor*($GameObject::*)(int)){&$GameObject::getRelativeSpriteColor} != (GJSpriteColor*(D::*)(int)){&D::getRelativeSpriteColor})
             m->registerHook(base+0x334c60, extract((GJSpriteColor*(D::*)(int)){&D::getRelativeSpriteColor}));
+
+        if ((void($GameObject::*)(bool)){&$GameObject::setFlipX} != (void(D::*)(bool)){&D::setFlipX})
+            m->registerHook(base+0x335a60, extract_virtual(V, (void(D::*)(bool)){&D::setFlipX}));
+
+        if ((void($GameObject::*)(bool)){&$GameObject::setFlipY} != (void(D::*)(bool)){&D::setFlipY})
+            m->registerHook(base+0x335ab0, extract_virtual(V, (void(D::*)(bool)){&D::setFlipY}));
+
+        if ((void($GameObject::*)()){&$GameObject::customSetup} != (void(D::*)()){&D::customSetup})
+            m->registerHook(base+0x2fbba0, extract_virtual(V, (void(D::*)()){&D::customSetup}));
+
+        if ((void($GameObject::*)()){&$GameObject::setupCustomSprites} != (void(D::*)()){&D::setupCustomSprites})
+            m->registerHook(base+0x307f60, extract_virtual(V, (void(D::*)()){&D::setupCustomSprites}));
+
+        if ((void($GameObject::*)(bool)){&$GameObject::addMainSpriteToParent} != (void(D::*)(bool)){&D::addMainSpriteToParent})
+            m->registerHook(base+0x33a5b0, extract_virtual(V, (void(D::*)(bool)){&D::addMainSpriteToParent}));
+
+        if ((void($GameObject::*)()){&$GameObject::resetObject} != (void(D::*)()){&D::resetObject})
+            m->registerHook(base+0x2fa620, extract_virtual(V, (void(D::*)()){&D::resetObject}));
+
+        if ((void($GameObject::*)(GJBaseGameLayer*)){&$GameObject::triggerObject} != (void(D::*)(GJBaseGameLayer*)){&D::triggerObject})
+            m->registerHook(base+0x2fa8f0, extract_virtual(V, (void(D::*)(GJBaseGameLayer*)){&D::triggerObject}));
+
+        if ((void($GameObject::*)()){&$GameObject::activateObject} != (void(D::*)()){&D::activateObject})
+            m->registerHook(base+0x2faf60, extract_virtual(V, (void(D::*)()){&D::activateObject}));
+
+        if ((void($GameObject::*)(bool)){&$GameObject::deactivateObject} != (void(D::*)(bool)){&D::deactivateObject})
+            m->registerHook(base+0x2fb8f0, extract_virtual(V, (void(D::*)(bool)){&D::deactivateObject}));
+
+        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectRect})
+            m->registerHook(base+0x3352b0, extract_virtual(V, (cocos2d::CCRect*(D::*)()){&D::getObjectRect}));
+
+        if ((cocos2d::CCRect*($GameObject::*)(float, float)){&$GameObject::getObjectRect} != (cocos2d::CCRect*(D::*)(float, float)){&D::getObjectRect})
+            m->registerHook(base+0x3352d0, extract_virtual(V, (cocos2d::CCRect*(D::*)(float, float)){&D::getObjectRect}));
+
+        if ((cocos2d::CCRect*($GameObject::*)(float, float)){&$GameObject::getObjectRect2} != (cocos2d::CCRect*(D::*)(float, float)){&D::getObjectRect2})
+            m->registerHook(base+0x3354e0, extract_virtual(V, (cocos2d::CCRect*(D::*)(float, float)){&D::getObjectRect2}));
+
+        if ((cocos2d::CCRect*($GameObject::*)()){&$GameObject::getObjectTextureRect} != (cocos2d::CCRect*(D::*)()){&D::getObjectTextureRect})
+            m->registerHook(base+0x3355b0, extract_virtual(V, (cocos2d::CCRect*(D::*)()){&D::getObjectTextureRect}));
+
+        if ((cocos2d::CCPoint($GameObject::*)()){&$GameObject::getRealPosition} != (cocos2d::CCPoint(D::*)()){&D::getRealPosition})
+            m->registerHook(base+0x335750, extract_virtual(V, (cocos2d::CCPoint(D::*)()){&D::getRealPosition}));
+
+        if ((void($GameObject::*)(cocos2d::CCPoint)){&$GameObject::setStartPos} != (void(D::*)(cocos2d::CCPoint)){&D::setStartPos})
+            m->registerHook(base+0x2fa520, extract_virtual(V, (void(D::*)(cocos2d::CCPoint)){&D::setStartPos}));
+
+        if ((void($GameObject::*)()){&$GameObject::updateStartValues} != (void(D::*)()){&D::updateStartValues})
+            m->registerHook(base+0x2fa800, extract_virtual(V, (void(D::*)()){&D::updateStartValues}));
+
+        if ((void($GameObject::*)(gd::map<gd::string , gd::string>&)){&$GameObject::customObjectSetup} != (void(D::*)(gd::map<gd::string , gd::string>&)){&D::customObjectSetup})
+            m->registerHook(base+0xdc1a0, extract_virtual(V, (void(D::*)(gd::map<gd::string , gd::string>&)){&D::customObjectSetup}));
+
+        if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
+            m->registerHook(base+0x33d3d0, extract_virtual(V, (gd::string(D::*)()){&D::getSaveString}));
+
+        if ((void($GameObject::*)()){&$GameObject::isFlipX} != (void(D::*)()){&D::isFlipX})
+            m->registerHook(base+0x335a40, extract_virtual(V, (void(D::*)()){&D::isFlipX}));
+
+        if ((void($GameObject::*)()){&$GameObject::isFlipY} != (void(D::*)()){&D::isFlipY})
+            m->registerHook(base+0x335a50, extract_virtual(V, (void(D::*)()){&D::isFlipY}));
+
+        if ((void($GameObject::*)(float)){&$GameObject::setRScaleX} != (void(D::*)(float)){&D::setRScaleX})
+            m->registerHook(base+0x335cb0, extract_virtual(V, (void(D::*)(float)){&D::setRScaleX}));
+
+        if ((void($GameObject::*)(float)){&$GameObject::setRScaleY} != (void(D::*)(float)){&D::setRScaleY})
+            m->registerHook(base+0x335d60, extract_virtual(V, (void(D::*)(float)){&D::setRScaleY}));
+
+        if ((void($GameObject::*)(float)){&$GameObject::setRScale} != (void(D::*)(float)){&D::setRScale})
+            m->registerHook(base+0x335e10, extract_virtual(V, (void(D::*)(float)){&D::setRScale}));
+
+        if ((void($GameObject::*)()){&$GameObject::getRScaleX} != (void(D::*)()){&D::getRScaleX})
+            m->registerHook(base+0x335e50, extract_virtual(V, (void(D::*)()){&D::getRScaleX}));
+
+        if ((void($GameObject::*)()){&$GameObject::getRScaleY} != (void(D::*)()){&D::getRScaleY})
+            m->registerHook(base+0x335e80, extract_virtual(V, (void(D::*)()){&D::getRScaleY}));
+
+        if ((void($GameObject::*)()){&$GameObject::calculateSpawnXPos} != (void(D::*)()){&D::calculateSpawnXPos})
+            m->registerHook(base+0x336970, extract_virtual(V, (void(D::*)()){&D::calculateSpawnXPos}));
+
+        if ((void($GameObject::*)(float)){&$GameObject::triggerActivated} != (void(D::*)(float)){&D::triggerActivated})
+            m->registerHook(base+0x336990, extract_virtual(V, (void(D::*)(float)){&D::triggerActivated}));
+
+        if ((void($GameObject::*)()){&$GameObject::powerOnObject} != (void(D::*)()){&D::powerOnObject})
+            m->registerHook(base+0x3369a0, extract_virtual(V, (void(D::*)()){&D::powerOnObject}));
+
+        if ((void($GameObject::*)()){&$GameObject::powerOffObject} != (void(D::*)()){&D::powerOffObject})
+            m->registerHook(base+0x3369c0, extract_virtual(V, (void(D::*)()){&D::powerOffObject}));
+
+        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setObjectColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor})
+            m->registerHook(base+0x341c90, extract_virtual(V, (void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor}));
+
+        if ((void($GameObject::*)(cocos2d::_ccColor3B const&)){&$GameObject::setGlowColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setGlowColor})
+            m->registerHook(base+0x341ed0, extract_virtual(V, (void(D::*)(cocos2d::_ccColor3B const&)){&D::setGlowColor}));
+
+        if ((OBB2D*($GameObject::*)()){&$GameObject::getOrientedBox} != (OBB2D*(D::*)()){&D::getOrientedBox})
+            m->registerHook(base+0x342ad0, extract_virtual(V, (OBB2D*(D::*)()){&D::getOrientedBox}));
+
+        if ((void($GameObject::*)(int)){&$GameObject::addToGroup} != (void(D::*)(int)){&D::addToGroup})
+            m->registerHook(base+0x33ad00, extract_virtual(V, (void(D::*)(int)){&D::addToGroup}));
+
+        if ((void($GameObject::*)(int)){&$GameObject::removeFromGroup} != (void(D::*)(int)){&D::removeFromGroup})
+            m->registerHook(base+0x33ada0, extract_virtual(V, (void(D::*)(int)){&D::removeFromGroup}));
+
+        if ((void($GameObject::*)()){&$GameObject::spawnXPosition} != (void(D::*)()){&D::spawnXPosition})
+            m->registerHook(base+0xdc1b0, extract_virtual(V, (void(D::*)()){&D::spawnXPosition}));
+
+        if ((void($GameObject::*)()){&$GameObject::getObjectRectDirty} != (void(D::*)()){&D::getObjectRectDirty})
+            m->registerHook(base+0xdc1d0, extract_virtual(V, (void(D::*)()){&D::getObjectRectDirty}));
+
+        if ((void($GameObject::*)(bool)){&$GameObject::setObjectRectDirty} != (void(D::*)(bool)){&D::setObjectRectDirty})
+            m->registerHook(base+0xdc1e0, extract_virtual(V, (void(D::*)(bool)){&D::setObjectRectDirty}));
+
+        if ((void($GameObject::*)()){&$GameObject::getOrientedRectDirty} != (void(D::*)()){&D::getOrientedRectDirty})
+            m->registerHook(base+0xdc1f0, extract_virtual(V, (void(D::*)()){&D::getOrientedRectDirty}));
+
+        if ((void($GameObject::*)(bool)){&$GameObject::setOrientedRectDirty} != (void(D::*)(bool)){&D::setOrientedRectDirty})
+            m->registerHook(base+0xdc200, extract_virtual(V, (void(D::*)(bool)){&D::setOrientedRectDirty}));
+
+        if ((GameObjectType($GameObject::*)()){&$GameObject::getType} != (GameObjectType(D::*)()){&D::getType})
+            m->registerHook(base+0xdc210, extract_virtual(V, (GameObjectType(D::*)()){&D::getType}));
+
+        if ((void($GameObject::*)(GameObjectType)){&$GameObject::setType} != (void(D::*)(GameObjectType)){&D::setType})
+            m->registerHook(base+0xdc220, extract_virtual(V, (void(D::*)(GameObjectType)){&D::setType}));
+
+        if ((void($GameObject::*)()){&$GameObject::getStartPos} != (void(D::*)()){&D::getStartPos})
+            m->registerHook(base+0xdc230, extract_virtual(V, (void(D::*)()){&D::getStartPos}));
     }
 };
 
@@ -7248,6 +7287,12 @@ public:
         else return LabelGameObject::setObjectColor(p0);
     }
 
+    dupable static LabelGameObject* create(char const* p0) {
+        if ((LabelGameObject*(*)(char const*)){&$LabelGameObject::create} != (LabelGameObject*(*)(char const*)){&D::create})
+            return reinterpret_cast<LabelGameObject*(*)(char const*)>(m->getOriginal(base+0xc9790))(p0);
+        else return LabelGameObject::create(p0);
+    }
+
     dupable $LabelGameObject() {
         if ($lock) return;
         $lock = true;
@@ -7260,6 +7305,9 @@ public:
 
         if ((void($LabelGameObject::*)(cocos2d::_ccColor3B const&)){&$LabelGameObject::setObjectColor} != (void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor})
             m->registerHook(base+0xdbca0, extract((void(D::*)(cocos2d::_ccColor3B const&)){&D::setObjectColor}));
+
+        if ((LabelGameObject*(*)(char const*)){&$LabelGameObject::create} != (LabelGameObject*(*)(char const*)){&D::create})
+            m->registerHook(base+0xc9790, (LabelGameObject*(*)(char const*)){&D::create});
     }
 };
 
@@ -8505,6 +8553,48 @@ public:
 
         if ((void($PlatformToolbox::*)()){&$PlatformToolbox::showCursor} != (void(D::*)()){&D::showCursor})
             m->registerHook(base+0x27c360, extract((void(D::*)()){&D::showCursor}));
+    }
+};
+
+
+template<class D>
+class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
+public:
+    dupable ~$AnimatedGameObject() override {}
+
+    dupable void playAnimation(int p0) {
+        if ((void($AnimatedGameObject::*)(int)){&$AnimatedGameObject::playAnimation} != (void(D::*)(int)){&D::playAnimation})
+            return reinterpret_cast<void(*)(decltype(this), int)>(m->getOriginal(base+0xc93d0))(this, p0);
+        else return AnimatedGameObject::playAnimation(p0);
+    }
+
+    dupable void updateChildSpriteColor(cocos2d::_ccColor3B p0) {
+        if ((void($AnimatedGameObject::*)(cocos2d::_ccColor3B)){&$AnimatedGameObject::updateChildSpriteColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::updateChildSpriteColor})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::_ccColor3B)>(m->getOriginal(base+0xc8450))(this, p0);
+        else return AnimatedGameObject::updateChildSpriteColor(p0);
+    }
+
+    dupable static AnimatedGameObject* create(int p0) {
+        if ((AnimatedGameObject*(*)(int)){&$AnimatedGameObject::create} != (AnimatedGameObject*(*)(int)){&D::create})
+            return reinterpret_cast<AnimatedGameObject*(*)(int)>(m->getOriginal(base+0xc79f0))(p0);
+        else return AnimatedGameObject::create(p0);
+    }
+
+    dupable $AnimatedGameObject() {
+        if ($lock) return;
+        $lock = true;
+        auto V = *reinterpret_cast<uintptr_t*>(new D());
+        $lock = false;
+        m->registerHook(extract_destructor(V), +[](){});
+
+        if ((void($AnimatedGameObject::*)(int)){&$AnimatedGameObject::playAnimation} != (void(D::*)(int)){&D::playAnimation})
+            m->registerHook(base+0xc93d0, extract((void(D::*)(int)){&D::playAnimation}));
+
+        if ((void($AnimatedGameObject::*)(cocos2d::_ccColor3B)){&$AnimatedGameObject::updateChildSpriteColor} != (void(D::*)(cocos2d::_ccColor3B)){&D::updateChildSpriteColor})
+            m->registerHook(base+0xc8450, extract((void(D::*)(cocos2d::_ccColor3B)){&D::updateChildSpriteColor}));
+
+        if ((AnimatedGameObject*(*)(int)){&$AnimatedGameObject::create} != (AnimatedGameObject*(*)(int)){&D::create})
+            m->registerHook(base+0xc79f0, (AnimatedGameObject*(*)(int)){&D::create});
     }
 };
 
@@ -10050,15 +10140,15 @@ public:
         else return PlayerObject::getOldPosition(p0);
     }
 
-    dupable void getOrientedBox() override {
-        if ((void($PlayerObject::*)()){&$PlayerObject::getOrientedBox} != (void(D::*)()){&D::getOrientedBox})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x22dee0))(this);
+    dupable OBB2D* getOrientedBox() override {
+        if ((OBB2D*($PlayerObject::*)()){&$PlayerObject::getOrientedBox} != (OBB2D*(D::*)()){&D::getOrientedBox})
+            return reinterpret_cast<OBB2D*(*)(decltype(this))>(m->getOriginal(base+0x22dee0))(this);
         else return PlayerObject::getOrientedBox();
     }
 
-    dupable void getRealPosition() override {
-        if ((void($PlayerObject::*)()){&$PlayerObject::getRealPosition} != (void(D::*)()){&D::getRealPosition})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x22d5f0))(this);
+    dupable cocos2d::CCPoint getRealPosition() override {
+        if ((cocos2d::CCPoint($PlayerObject::*)()){&$PlayerObject::getRealPosition} != (cocos2d::CCPoint(D::*)()){&D::getRealPosition})
+            return reinterpret_cast<cocos2d::CCPoint(*)(decltype(this))>(m->getOriginal(base+0x22d5f0))(this);
         else return PlayerObject::getRealPosition();
     }
 
@@ -10530,6 +10620,12 @@ public:
         else return PlayerObject::testForMoving(p0, p1);
     }
 
+    dupable void toggleShipMode(bool p0) {
+        if ((void($PlayerObject::*)(bool)){&$PlayerObject::toggleShipMode} != (void(D::*)(bool)){&D::toggleShipMode})
+            return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x223820))(this, p0);
+        else return PlayerObject::toggleShipMode(p0);
+    }
+
     dupable void toggleBirdMode(bool p0) {
         if ((void($PlayerObject::*)(bool)){&$PlayerObject::toggleBirdMode} != (void(D::*)(bool)){&D::toggleBirdMode})
             return reinterpret_cast<void(*)(decltype(this), bool)>(m->getOriginal(base+0x224070))(this, p0);
@@ -10876,11 +10972,11 @@ public:
         if ((void($PlayerObject::*)(float)){&$PlayerObject::getOldPosition} != (void(D::*)(float)){&D::getOldPosition})
             m->registerHook(base+0x21a830, extract((void(D::*)(float)){&D::getOldPosition}));
 
-        if ((void($PlayerObject::*)()){&$PlayerObject::getOrientedBox} != (void(D::*)()){&D::getOrientedBox})
-            m->registerHook(base+0x22dee0, extract_virtual(V, (void(D::*)()){&D::getOrientedBox}));
+        if ((OBB2D*($PlayerObject::*)()){&$PlayerObject::getOrientedBox} != (OBB2D*(D::*)()){&D::getOrientedBox})
+            m->registerHook(base+0x22dee0, extract_virtual(V, (OBB2D*(D::*)()){&D::getOrientedBox}));
 
-        if ((void($PlayerObject::*)()){&$PlayerObject::getRealPosition} != (void(D::*)()){&D::getRealPosition})
-            m->registerHook(base+0x22d5f0, extract_virtual(V, (void(D::*)()){&D::getRealPosition}));
+        if ((cocos2d::CCPoint($PlayerObject::*)()){&$PlayerObject::getRealPosition} != (cocos2d::CCPoint(D::*)()){&D::getRealPosition})
+            m->registerHook(base+0x22d5f0, extract_virtual(V, (cocos2d::CCPoint(D::*)()){&D::getRealPosition}));
 
         if ((void($PlayerObject::*)()){&$PlayerObject::getSecondColor} != (void(D::*)()){&D::getSecondColor})
             m->registerHook(base+0x22cee0, extract((void(D::*)()){&D::getSecondColor}));
@@ -11116,6 +11212,9 @@ public:
         if ((void($PlayerObject::*)(float, GameObject*)){&$PlayerObject::testForMoving} != (void(D::*)(float, GameObject*)){&D::testForMoving})
             m->registerHook(base+0x21eb70, extract((void(D::*)(float, GameObject*)){&D::testForMoving}));
 
+        if ((void($PlayerObject::*)(bool)){&$PlayerObject::toggleShipMode} != (void(D::*)(bool)){&D::toggleShipMode})
+            m->registerHook(base+0x223820, extract((void(D::*)(bool)){&D::toggleShipMode}));
+
         if ((void($PlayerObject::*)(bool)){&$PlayerObject::toggleBirdMode} != (void(D::*)(bool)){&D::toggleBirdMode})
             m->registerHook(base+0x224070, extract((void(D::*)(bool)){&D::toggleBirdMode}));
 
@@ -11307,6 +11406,39 @@ public:
 
         if ((RetryLevelLayer*(*)()){&$RetryLevelLayer::create} != (RetryLevelLayer*(*)()){&D::create})
             m->registerHook(base+0x28dd60, (RetryLevelLayer*(*)()){&D::create});
+    }
+};
+
+
+template<class D>
+class $RingObject : public RingObject, public $CacBase {
+public:
+    dupable ~$RingObject() override {}
+
+    dupable static RingObject* create() {
+        if ((RingObject*(*)()){&$RingObject::create} != (RingObject*(*)()){&D::create})
+            return reinterpret_cast<RingObject*(*)()>(m->getOriginal(base+0xdb8e0))();
+        else return RingObject::create();
+    }
+
+    dupable static RingObject* create(char const* p0) {
+        if ((RingObject*(*)(char const*)){&$RingObject::create} != (RingObject*(*)(char const*)){&D::create})
+            return reinterpret_cast<RingObject*(*)(char const*)>(m->getOriginal(base+0xc6d40))(p0);
+        else return RingObject::create(p0);
+    }
+
+    dupable $RingObject() {
+        if ($lock) return;
+        $lock = true;
+        auto V = *reinterpret_cast<uintptr_t*>(new D());
+        $lock = false;
+        m->registerHook(extract_destructor(V), +[](){});
+
+        if ((RingObject*(*)()){&$RingObject::create} != (RingObject*(*)()){&D::create})
+            m->registerHook(base+0xdb8e0, (RingObject*(*)()){&D::create});
+
+        if ((RingObject*(*)(char const*)){&$RingObject::create} != (RingObject*(*)(char const*)){&D::create})
+            m->registerHook(base+0xc6d40, (RingObject*(*)(char const*)){&D::create});
     }
 };
 
@@ -12216,6 +12348,30 @@ public:
 
         if ((bool($SpeedObject::*)(GameObject*, int, float)){&$SpeedObject::init} != (bool(D::*)(GameObject*, int, float)){&D::init})
             m->registerHook(base+0x77400, extract((bool(D::*)(GameObject*, int, float)){&D::init}));
+    }
+};
+
+
+template<class D>
+class $StartPosObject : public StartPosObject, public $CacBase {
+public:
+    dupable ~$StartPosObject() override {}
+
+    dupable static StartPosObject* create() {
+        if ((StartPosObject*(*)()){&$StartPosObject::create} != (StartPosObject*(*)()){&D::create})
+            return reinterpret_cast<StartPosObject*(*)()>(m->getOriginal(base+0xda7c0))();
+        else return StartPosObject::create();
+    }
+
+    dupable $StartPosObject() {
+        if ($lock) return;
+        $lock = true;
+        auto V = *reinterpret_cast<uintptr_t*>(new D());
+        $lock = false;
+        m->registerHook(extract_destructor(V), +[](){});
+
+        if ((StartPosObject*(*)()){&$StartPosObject::create} != (StartPosObject*(*)()){&D::create})
+            m->registerHook(base+0xda7c0, (StartPosObject*(*)()){&D::create});
     }
 };
 

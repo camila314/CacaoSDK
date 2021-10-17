@@ -1411,7 +1411,7 @@ private:
      */
     CCPoint convertToWindowSpace(const CCPoint& nodePoint);
 
-protected:
+public:
     float m_fRotationX;                 ///< rotation angle on x-axis
     float m_fRotationY;                 ///< rotation angle on y-axis
     

@@ -522,7 +522,7 @@ public:
 
 
     
-protected:
+public:
     void updateColor(void);
     //Robtop Modification
     virtual void setTextureCoords(const CCRect& rect);

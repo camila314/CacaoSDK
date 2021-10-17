@@ -71,4 +71,4 @@ public:
 #define REDIRECT(base) REDIRECT_($##base, __COUNTER__)
 
 #define $redirect(base) REDIRECT_($##base, __COUNTER__)
-#define $implement(base, derived) REDIRECT__(base, derived)
+#define $implement(base, derived) REDIRECT__($##base, derived)

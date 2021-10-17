@@ -40,6 +40,60 @@ enum SearchType {
     kSavedLevels     = 0x63
 };
 
+// thanks hjfod
+enum GameObjectType {
+    kGameObjectTypeSolid = 0,
+    kGameObjectTypeHazard = 2,
+    kGameObjectTypeInverseGravityPortal = 3,
+    kGameObjectTypeNormalGravityPortal = 4,
+    kGameObjectTypeShipPortal = 5,
+    kGameObjectTypeCubePortal = 6,
+    kGameObjectTypeDecoration = 7,
+    kGameObjectTypeYellowJumpPad = 8,
+    kGameObjectTypePinkJumpPad = 9,
+    kGameObjectTypeGravityPad = 10,
+    kGameObjectTypeYellowJumpRing = 11,
+    kGameObjectTypePinkJumpRing = 12,
+    kGameObjectTypeGravityRing = 13,
+    kGameObjectTypeInverseMirrorPortal = 14,
+    kGameObjectTypeNormalMirrorPortal = 15,
+    kGameObjectTypeBallPortal = 16,
+    kGameObjectTypeRegularSizePortal = 17,
+    kGameObjectTypeMiniSizePortal = 18,
+    kGameObjectTypeUfoPortal = 19,
+    kGameObjectTypeModifier = 20,
+    kGameObjectTypeSecretCoin = 22,
+    kGameObjectTypeDualPortal = 23,
+    kGameObjectTypeSoloPortal = 24,
+    kGameObjectTypeSlope = 25,
+    kGameObjectTypeWavePortal = 26,
+    kGameObjectTypeRobotPortal = 27,
+    kGameObjectTypeTeleportPortal = 28,
+    kGameObjectTypeGreenRing = 29,
+    kGameObjectTypeCollectible = 30,
+    kGameObjectTypeUserCoin = 31,
+    kGameObjectTypeDropRing = 32,
+    kGameObjectTypeSpiderPortal = 33,
+    kGameObjectTypeRedJumpPad = 34,
+    kGameObjectTypeRedJumpRing = 35,
+    kGameObjectTypeCustomRing = 36,
+    kGameObjectTypeDashRing = 37,
+    kGameObjectTypeGravityDashRing = 38,
+    kGameObjectTypeCollisionObject = 39,
+    kGameObjectTypeSpecial = 40,
+};
+
+// thanks camila314 (me)
+enum VehicleType {
+    kVehicleCube = 0,
+    kVehicleSpider = 0x10,
+    kVehicleRobot = 0x1000,
+    kVehicleDart = 0x100000,
+    kVehicleBall = 0x10000000,
+    kVehicleBird = 0x1000000000,
+    kVehicleShip = 0x100000000000
+};
+
 typedef struct GameModes {
     bool cube;
     bool ship;
@@ -92,7 +146,6 @@ public:
 };
 
 
-enum GameObjectType {};
 enum PulseEffectType {};
 enum TouchTriggerType {};
 enum PlayerButton {};
@@ -106,7 +159,6 @@ class AchievementCell;
 class AchievementsLayer;
 class AchievementManager;
 class AchievementNotifier;
-class AnimatedGameObject;
 class AppDelegate;
 class SongInfoObject;
 class ArtistCell;
@@ -225,11 +277,13 @@ class ObjectToolbox;
 class OpacityEffectAction;
 class PauseLayer;
 class PlatformToolbox;
+class AnimatedGameObject;
 class PlayLayer;
 class PlayerCheckpoint;
 class PlayerObject;
 class PulseEffectAction;
 class RetryLevelLayer;
+class RingObject;
 class SetGroupIDLayer;
 class SetIDLayer;
 class SetIDPopup;
@@ -251,6 +305,7 @@ class Slider;
 class SliderThumb;
 class SpawnTriggerAction;
 class SpeedObject;
+class StartPosObject;
 class TeleportPortalObject;
 class TextArea;
 class TextInputDelegate;
@@ -320,12 +375,6 @@ class AchievementNotifier : public cocos2d::CCNode, public GDObj {
 public:
     void sharedState();
     void willSwitchToScene(cocos2d::CCScene*);
-};
-
-class AnimatedGameObject : public GDObj {
-public:
-    void playAnimation(int);
-    void updateChildSpriteColor(cocos2d::_ccColor3B);
 };
 
 class AppDelegate : public GDObj {
@@ -887,7 +936,7 @@ public:
     void reorderObjectSection(GameObject*);
     void resetGroupCounters(bool);
     void resetMoveOptimizedValue();
-    void sectionForPos(float);
+    int sectionForPos(float);
     void setupLayers();
     void shouldExitHackedLevel();
     void spawnGroupTriggered(int, float, int);
@@ -974,8 +1023,12 @@ public:
     PlayerObject* m_player1;
     PlayerObject* m_player2;
     LevelSettingsObject* m_levelSettings;
-    cocos2d::CCDictionary* m_unknownDict;
+    cocos2d::CCDictionary* m_unusedDict;
     cocos2d::CCArray* m_objects;
+    cocos2d::CCArray* m_sections;
+    cocos2d::CCArray* m_collisionBlocks;
+    cocos2d::CCArray* m_triggerQueue;
+    cocos2d::CCArray* m_triggers;
 };
 
 class GJColorSetupLayer : public GDObj {
@@ -1350,6 +1403,7 @@ public:
     void fadeInMusic(char const*);
     void getBGTexture(int);
     void getFontFile(int);
+    char const* getFontTexture(int);
     bool getGameVariable(char const*);
     int getIntGameVariable(char const*);
     void getUGV(char const*);
@@ -1373,51 +1427,40 @@ public:
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x188);
     CLASS_PARAM(int, scene, 0x1f4);
     CLASS_PARAM(bool, ldm, 0x2a1);
+    CLASS_PARAM(int, editorFont, 0x2d8);
 };
 
 class GameObject : public CCSpritePlus{
 public:
-    void activateObject();
+    GameObject();
+    ~GameObject();
+    static GameObject* createWithFrame(char const*);
+    static GameObject* createWithKey(int);
+    static GameObject* objectFromString(gd::string, bool);
+    bool init(char const*);
+    bool initWithTexture(cocos2d::CCTexture2D*);
+    const cocos2d::_ccColor3B& getColorIndex();
+    int getGroupID(int);
     void activatedByPlayer(GameObject*);
     void addColorSprite();
     void addColorSpriteToParent(bool);
-    void addMainSpriteToParent(bool);
-    void addToGroup(int);
     void addToTempOffset(float, float);
     void calculateOrientedBox();
-    void calculateSpawnXPos();
     void canChangeCustomColor();
     void colorForMode(int, bool);
     void commonSetup();
     void copyGroups(GameObject*);
-    static GameObject* createWithFrame(char const*);
-    static GameObject* createWithKey(int);
-    void customSetup();
-    void deactivateObject(bool);
     void destroyObject();
     void determineSlopeDirection();
     void getActiveColorForMode(int, bool);
     void getBallFrame(int);
     void getBoxOffset();
-    const cocos2d::_ccColor3B& getColorIndex();
     void getDidUpdateLastPosition();
-    int getGroupID(int);
     void getLastPosition();
     void getMainColorMode();
-    cocos2d::CCRect* getObjectRect();
-    void getObjectRect(float, float);
-    void getObjectRect2(float, float);
-    void getObjectRectDirty();
-    void getObjectTextureRect();
     void getObjectZOrder();
-    void getOrientedRectDirty();
-    void getRScaleX();
-    void getRScaleY();
-    gd::string getSaveString();
     void getSecondaryColorMode();
     void getSectionIdx();
-    void getStartPos();
-    void getType();
     void groupWasDisabled();
     void groupWasEnabled();
     void hasBeenActivated();
@@ -1425,19 +1468,12 @@ public:
     void hasSecondaryColor();
     void ignoreEnter();
     void ignoreFade();
-    bool initWithTexture(cocos2d::CCTexture2D*);
     void isBasicTrigger();
     void isColorTrigger();
-    void isFlipX();
-    void isFlipY();
     void isSpawnableTrigger();
     void isSpecialObject();
-    static GameObject* objectFromString(gd::string, bool);
     void playShineEffect();
-    void powerOffObject();
-    void powerOnObject();
     void quickUpdatePosition();
-    void removeFromGroup(int);
     void removeGlow();
     void resetGroupDisabled();
     void saveActiveColors();
@@ -1445,50 +1481,96 @@ public:
     void setChildColor(cocos2d::_ccColor3B const&);
     void setDefaultMainColorMode(int);
     void setDidUpdateLastPosition(bool const&);
-    void setGlowColor(cocos2d::_ccColor3B const&);
     void setGlowOpacity(unsigned char);
     void setLastPosition(cocos2d::CCPoint const&);
     void setMainColorMode(int);
-    void setObjectColor(cocos2d::_ccColor3B const&);
-    void setObjectRectDirty(bool);
-    void setOrientedRectDirty(bool);
     void setPosition(cocos2d::CCPoint const&);
-    void setRScale(float);
-    void setRScaleX(float);
-    void setRScaleY(float);
     void setSectionIdx(int const&);
-    void setStartPos(cocos2d::CCPoint);
-    void setType(GameObjectType);
     void setupCoinArt();
-    void setupCustomSprites();
     void slopeFloorTop();
     void slopeWallLeft();
-    void spawnXPosition();
-    void triggerActivated(float);
-    void triggerObject(GJBaseGameLayer*);
     void updateCustomScale(float);
     void updateMainColor();
     void updateOrientedBox();
     void updateSecondaryColor();
     void updateStartPos();
-    void updateStartValues();
     void updateState();
     void updateSyncedAnimation(float);
     GJSpriteColor* getRelativeSpriteColor(int);
-    CLASS_PARAM(int, type, 0x370);
+    virtual void setFlipX(bool);
+    virtual void setFlipY(bool);
+    virtual void customSetup();
+    virtual void setupCustomSprites();
+    virtual void addMainSpriteToParent(bool);
+    virtual void resetObject();
+    virtual void triggerObject(GJBaseGameLayer*);
+    virtual void activateObject();
+    virtual void deactivateObject(bool);
+    virtual cocos2d::CCRect* getObjectRect();
+    virtual cocos2d::CCRect* getObjectRect(float, float);
+    virtual cocos2d::CCRect* getObjectRect2(float, float);
+    virtual cocos2d::CCRect* getObjectTextureRect();
+    virtual cocos2d::CCPoint getRealPosition();
+    virtual void setStartPos(cocos2d::CCPoint);
+    virtual void updateStartValues();
+    virtual void customObjectSetup(gd::map<gd::string , gd::string>&);
+    virtual gd::string getSaveString();
+    virtual void isFlipX();
+    virtual void isFlipY();
+    virtual void setRScaleX(float);
+    virtual void setRScaleY(float);
+    virtual void setRScale(float);
+    virtual void getRScaleX();
+    virtual void getRScaleY();
+    virtual void calculateSpawnXPos();
+    virtual void triggerActivated(float);
+    virtual void powerOnObject();
+    virtual void powerOffObject();
+    virtual void setObjectColor(cocos2d::_ccColor3B const&);
+    virtual void setGlowColor(cocos2d::_ccColor3B const&);
+    virtual OBB2D* getOrientedBox();
+    virtual void addToGroup(int);
+    virtual void removeFromGroup(int);
+    virtual void spawnXPosition();
+    virtual void getObjectRectDirty();
+    virtual void setObjectRectDirty(bool);
+    virtual void getOrientedRectDirty();
+    virtual void setOrientedRectDirty(bool);
+    virtual GameObjectType getType();
+    virtual void setType(GameObjectType);
+    virtual void getStartPos();
+    float m_float250;
+    float m_float254;
+    float m_float258;
+    float m_float25c;
+    bool m_bool260;
+    float m_animationSpeed;
+    bool m_isAnimatedCircle;
+    bool m_randomizeAnimationStart;
+    float m_animationSpeed2;
+    bool m_black;
+    bool m_showSelection;
+    bool m_blackOpacity;
+    bool m_bool278;
+    bool m_inEditorMode;
+    CLASS_PARAM(GameObjectType, type, 0x370);
     CLASS_PARAM(int, id, 0x3c4);
     CLASS_PARAM(OBB2D*, hitbox, 0x2b0);
     CLASS_PARAM(bool, inEditLayer, 0x279);
     CLASS_PARAM(cocos2d::CCPoint, startPos, 0x37c);
     CLASS_PARAM(bool, touchTriggered, 0x378);
     CLASS_PARAM(bool, spawnTriggered, 0x379);
+    CLASS_PARAM(gd::string, textureName, 0x388);
     CLASS_PARAM(int, uuid, 0x36c);
     CLASS_PARAM(int, colorID, 0x3bc);
     CLASS_PARAM(int, zOrder, 0x42c);
     CLASS_PARAM(int, unknownType, 0x3d4);
+    CLASS_PARAM(bool, effectSheet, 0x3d8);
     CLASS_PARAM(int, coinID, 0x3e8);
     CLASS_PARAM(float, scale, 0x3c0);
     CLASS_PARAM(float, multiScaleMultiplier, 0x44c);
+    CLASS_PARAM(bool, isTrigger, 0x4b9);
+    char m_pad[0x2a0];
 };
 
 class GameObjectCopy : public GDObj {
@@ -1612,6 +1694,7 @@ class LabelGameObject : public GameObject{
 public:
     bool init();
     void setObjectColor(cocos2d::_ccColor3B const&);
+    static LabelGameObject* create(char const*);
 };
 
 class LevelBrowserLayer : public cocos2d::CCLayer, public GDObj {
@@ -1810,6 +1893,13 @@ public:
     void showCursor();
 };
 
+class AnimatedGameObject : public GameObject{
+public:
+    void playAnimation(int);
+    void updateChildSpriteColor(cocos2d::_ccColor3B);
+    static AnimatedGameObject* create(int);
+};
+
 class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate{
 public:
     void addCircle(CCCircleWave*);
@@ -2006,8 +2096,8 @@ public:
     void getActiveMode();
     void getModifiedSlopeYVel();
     void getOldPosition(float);
-    virtual void getOrientedBox();
-    virtual void getRealPosition();
+    virtual OBB2D* getOrientedBox();
+    virtual cocos2d::CCPoint getRealPosition();
     void getSecondColor();
     void gravityDown();
     void gravityUp();
@@ -2086,6 +2176,7 @@ public:
     void storeCollision(bool, int);
     void switchedToMode(GameObjectType);
     void testForMoving(float, GameObject*);
+    void toggleShipMode(bool);
     void toggleBirdMode(bool);
     void toggleDartMode(bool);
     void toggleFlyMode(bool);
@@ -2132,6 +2223,7 @@ public:
     void yStartDown();
     void yStartUp();
     ~PlayerObject();
+    VehicleType& vehicleEnum() {return reinterpret_cast<VehicleType&>(_isShip());}
     CLASS_PARAM(HardStreak*, waveStreak, 0x600);
     CLASS_PARAM(double, speed, 0x608);
     CLASS_PARAM(double, gravity, 0x618);
@@ -2160,6 +2252,7 @@ public:
     CLASS_PARAM(cocos2d::_ccColor3B, pCol2, 0x7c5);
     CLASS_PARAM(float, xPos, 0x7c8);
     CLASS_PARAM(float, yPos, 0x7cc);
+    CLASS_PARAM(float, groundHeight, 0x7e8);
 };
 
 class PulseEffectAction : public cocos2d::CCNode, public GDObj {
@@ -2172,6 +2265,12 @@ public:
 class RetryLevelLayer : public GDObj {
 public:
     static RetryLevelLayer* create();
+};
+
+class RingObject : public GameObject{
+public:
+    static RingObject* create();
+    static RingObject* create(char const*);
 };
 
 class SetGroupIDLayer : public GDObj {
@@ -2332,7 +2431,12 @@ public:
     bool init(GameObject*, int, float);
 };
 
-class TeleportPortalObject : public GDObj {
+class StartPosObject : public GameObject{
+public:
+    static StartPosObject* create();
+};
+
+class TeleportPortalObject : public GameObject{
 public:
     static TeleportPortalObject* create(char const*);
     void getTeleportXOff(cocos2d::CCNode*);
