@@ -8,7 +8,7 @@ reserved = {
     '@end': 'END'
 }
 
-tokens = ['ASSIGN','ADDRESS','IDENT','LPAREN','RPAREN', 'WHITESPACE', 'SEMI', 'COMMA', 'COLON', 'NUM', 'VOLATILE', 'VOLATILEDATA'] + list(reserved.values())
+tokens = ['ASSIGN','ADDRESS','IDENT','LPAREN','RPAREN', 'WHITESPACE', 'SEMI', 'COMMA', 'COLON', 'NUM', 'VOLATILE', 'VOLATILEDATA', 'VOLATILESTART', 'VOLATILESTOP'] + list(reserved.values())
 
 states = (
     ('volatile','exclusive'),
@@ -72,7 +72,9 @@ def t_VOLATILE(t):
     t.lexer.begin('volatile')
     return t
 
-t_volatile_VOLATILEDATA = r".+"
+t_volatile_VOLATILESTART = r"{"
+t_volatile_VOLATILESTOP = r"}"
+t_volatile_VOLATILEDATA = r"[^}{]+"
 
 def t_IDENT(t):
     r'[a-zA-Z_@~.][:a-zA-Z0-9_&\[\]\*/+\-=%<>.]*'
@@ -90,7 +92,7 @@ def t_error(t):
     raise ValueError("yeah it errored")
 
 def t_volatile_error(t):
-    # print("error!", t)
+    print("error!", t)
     raise ValueError("yeah it errored")
 
 import ply.lex as lex
@@ -126,9 +128,25 @@ def parse_func(tok):
     fi = FunkyInfo()
     if tok.type == "VOLATILE":
         fi.volatile = True
-        tok = ensure_next()
-        fi.data = tok.value[1:]
+        tipping_scale = 0.5
+        volatile_data = ""
+        while tipping_scale != 0:
+            tok = ensure_next()
+            if tok.type == "VOLATILESTART":
+                if tipping_scale == 0.5:
+                    tipping_scale = 1
+                else:
+                    tipping_scale += 1
+
+                volatile_data += tok.value
+            elif tok.type == "VOLATILESTOP":
+                tipping_scale -= 1
+                volatile_data += tok.value
+            else:
+                volatile_data += tok.value
+
         lexer.begin('INITIAL')
+        fi.data = volatile_data
         return fi
     if tok.type == "STATIC":
         fi.static = True

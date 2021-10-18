@@ -104,7 +104,7 @@
 
 @interface TableViewCell : cocos2d::CCLayer
     TableViewCell(char const*, float, float) = 0x383de0;
-    volatile char pad[0x1c0-0x170];
+    char pad[0x1c0-0x170];
     float m_parentHeight;
     float m_height;
     cocos2d::CCLayerColor* m_backgroundLayer;
@@ -485,6 +485,7 @@
     void updateObjectInfoLabel() = 0x1cb10;
     void updateSlider() = 0x18a90;
     void updateZoom(float) = 0x248c0;
+    void onPause(cocos2d::CCObject*) = 0x18650;
 
     LevelEditorLayer* m_editorLayer = 0x408;
     cocos2d::CCArray* m_editBars = 0x358;
@@ -507,7 +508,7 @@
 @end
 
 @interface FLAlertLayerProtocol
-    volatile virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
+    volatile virtual void FLAlert_Clicked(FLAlertLayer*, bool) {}
 @end
 
 @interface FMODAudioEngine : cocos2d::CCNode
@@ -1082,6 +1083,7 @@
     void colorForMode(int, bool) = 0x343460;
     void commonSetup() = 0x2f5570;
     void copyGroups(GameObject*) = 0x33ae30;
+    void createAndAddParticle(int, char const*, int, cocos2d::tCCPositionType) = 0x305070;
     void destroyObject() = 0x336a00;
     void determineSlopeDirection() = 0x33a9e0;
     void getActiveColorForMode(int, bool) = 0x343860;
@@ -1399,6 +1401,7 @@
     void updateToggledGroups() = 0x9bb10;
     void updateVisibility(float) = 0x92c70;
     void xPosForTime(float) = 0x9c800;
+    void onPausePlaytest() = 0x0a1570;
     ~LevelEditorLayer() = 0x90a00;
 
     cocos2d::CCArray* m_objects = 0x3a0;
@@ -2038,12 +2041,12 @@
 @end
 
 @interface TextInputDelegate
-    volatile virtual void textChanged(CCTextInputNode*) {};
-    volatile virtual void textInputOpened(CCTextInputNode*) {};
-    volatile virtual void textInputClosed(CCTextInputNode*) {};
-    volatile virtual void textInputShouldOffset(CCTextInputNode*, float) {};
-    volatile virtual void textInputReturn(CCTextInputNode*) {};
-    volatile virtual bool allowTextInput(CCTextInputNode*) {return true;};
+    volatile virtual void textChanged(CCTextInputNode*) {}
+    volatile virtual void textInputOpened(CCTextInputNode*) {}
+    volatile virtual void textInputClosed(CCTextInputNode*) {}
+    volatile virtual void textInputShouldOffset(CCTextInputNode*, float) {}
+    volatile virtual void textInputReturn(CCTextInputNode*) {}
+    volatile virtual bool allowTextInput(CCTextInputNode*) {return true;}
 @end
 
 @interface ToggleTriggerAction
@@ -2840,4 +2843,25 @@
     cocos2d::CCSprite* m_prevColorSpr = 0x2d8;
     int m_pulseMode = 0x38c;
     int m_targetMode = 0x390;
+@end
+
+@interface StaticTools
+    // https://stackoverflow.com/a/29752943/9319361 (i modified slightly)
+    volatile std::string replaceAll(const std::string& source, const std::string& from, const std::string& to) {
+        std::string newString;
+        newString.reserve(source.length());
+
+        std::string::size_type lastPos = 0;
+        std::string::size_type findPos;
+
+        while(std::string::npos != (findPos = source.find(from, lastPos))) {
+            newString.append(source, lastPos, findPos - lastPos);
+            newString += to;
+            lastPos = findPos + from.length();
+        }
+
+        newString += source.substr(lastPos);
+
+        return newString;
+    }
 @end

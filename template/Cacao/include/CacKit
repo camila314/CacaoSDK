@@ -2544,6 +2544,12 @@ public:
         else return EditorUI::updateZoom(p0);
     }
 
+    dupable void onPause(cocos2d::CCObject* p0) {
+        if ((void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::onPause} != (void(D::*)(cocos2d::CCObject*)){&D::onPause})
+            return reinterpret_cast<void(*)(decltype(this), cocos2d::CCObject*)>(m->getOriginal(base+0x18650))(this, p0);
+        else return EditorUI::onPause(p0);
+    }
+
     dupable $EditorUI() {
         if ($lock) return;
         $lock = true;
@@ -2640,6 +2646,9 @@ public:
 
         if ((void($EditorUI::*)(float)){&$EditorUI::updateZoom} != (void(D::*)(float)){&D::updateZoom})
             m->registerHook(base+0x248c0, extract((void(D::*)(float)){&D::updateZoom}));
+
+        if ((void($EditorUI::*)(cocos2d::CCObject*)){&$EditorUI::onPause} != (void(D::*)(cocos2d::CCObject*)){&D::onPause})
+            m->registerHook(base+0x18650, extract((void(D::*)(cocos2d::CCObject*)){&D::onPause}));
     }
 };
 
@@ -5763,6 +5772,12 @@ public:
         else return GameObject::copyGroups(p0);
     }
 
+    dupable void createAndAddParticle(int p0, char const* p1, int p2, cocos2d::tCCPositionType p3) {
+        if ((void($GameObject::*)(int, char const*, int, cocos2d::tCCPositionType)){&$GameObject::createAndAddParticle} != (void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::createAndAddParticle})
+            return reinterpret_cast<void(*)(decltype(this), int, char const*, int, cocos2d::tCCPositionType)>(m->getOriginal(base+0x305070))(this, p0, p1, p2, p3);
+        else return GameObject::createAndAddParticle(p0, p1, p2, p3);
+    }
+
     dupable void destroyObject() {
         if ((void($GameObject::*)()){&$GameObject::destroyObject} != (void(D::*)()){&D::destroyObject})
             return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x336a00))(this);
@@ -6351,6 +6366,9 @@ public:
 
         if ((void($GameObject::*)(GameObject*)){&$GameObject::copyGroups} != (void(D::*)(GameObject*)){&D::copyGroups})
             m->registerHook(base+0x33ae30, extract((void(D::*)(GameObject*)){&D::copyGroups}));
+
+        if ((void($GameObject::*)(int, char const*, int, cocos2d::tCCPositionType)){&$GameObject::createAndAddParticle} != (void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::createAndAddParticle})
+            m->registerHook(base+0x305070, extract((void(D::*)(int, char const*, int, cocos2d::tCCPositionType)){&D::createAndAddParticle}));
 
         if ((void($GameObject::*)()){&$GameObject::destroyObject} != (void(D::*)()){&D::destroyObject})
             m->registerHook(base+0x336a00, extract((void(D::*)()){&D::destroyObject}));
@@ -7779,6 +7797,12 @@ public:
         else return LevelEditorLayer::xPosForTime(p0);
     }
 
+    dupable void onPausePlaytest() {
+        if ((void($LevelEditorLayer::*)()){&$LevelEditorLayer::onPausePlaytest} != (void(D::*)()){&D::onPausePlaytest})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x0a1570))(this);
+        else return LevelEditorLayer::onPausePlaytest();
+    }
+
     dupable $LevelEditorLayer() {
         if ($lock) return;
         $lock = true;
@@ -7995,6 +8019,9 @@ public:
 
         if ((void($LevelEditorLayer::*)(float)){&$LevelEditorLayer::xPosForTime} != (void(D::*)(float)){&D::xPosForTime})
             m->registerHook(base+0x9c800, extract((void(D::*)(float)){&D::xPosForTime}));
+
+        if ((void($LevelEditorLayer::*)()){&$LevelEditorLayer::onPausePlaytest} != (void(D::*)()){&D::onPausePlaytest})
+            m->registerHook(base+0x0a1570, extract((void(D::*)()){&D::onPausePlaytest}));
     }
 };
 
@@ -12984,5 +13011,20 @@ public:
 
         if ((void($SetupPulsePopup::*)()){&$SetupPulsePopup::updateTextInputLabel} != (void(D::*)()){&D::updateTextInputLabel})
             m->registerHook(base+0x1eb8d0, extract((void(D::*)()){&D::updateTextInputLabel}));
+    }
+};
+
+
+template<class D>
+class $StaticTools : public StaticTools, public $CacBase {
+public:
+    dupable ~$StaticTools() override {}
+
+    dupable $StaticTools() {
+        if ($lock) return;
+        $lock = true;
+        auto V = *reinterpret_cast<uintptr_t*>(new D());
+        $lock = false;
+        m->registerHook(extract_destructor(V), +[](){});
     }
 };

@@ -326,6 +326,7 @@ defit __ZN8EditorUI13updateButtonsEv, 0x1a300
 defit __ZN8EditorUI21updateObjectInfoLabelEv, 0x1cb10
 defit __ZN8EditorUI12updateSliderEv, 0x18a90
 defit __ZN8EditorUI10updateZoomEf, 0x248c0
+defit __ZN8EditorUI7onPauseEPN7cocos2d8CCObjectE, 0x18650
 defit __ZN13EndLevelLayer6createEv, 0x2787d0
 defit __ZN14ScrollingLayer6createEN7cocos2d6CCSizeENS0_7CCPointEf, 0x41a900
 thunk __ZThn314158_N14ScrollingLayer6createEN7cocos2d6CCSizeENS0_7CCPointEf, __ZN14ScrollingLayer6createEN7cocos2d6CCSizeENS0_7CCPointEf, 314158
@@ -633,6 +634,7 @@ defit __ZN10GameObject20canChangeCustomColorEv, 0x342db0
 defit __ZN10GameObject12colorForModeEib, 0x343460
 defit __ZN10GameObject11commonSetupEv, 0x2f5570
 defit __ZN10GameObject10copyGroupsEPS_, 0x33ae30
+defit __ZN10GameObject20createAndAddParticleEiPKciN7cocos2d15tCCPositionTypeE, 0x305070
 defit __ZN10GameObject13destroyObjectEv, 0x336a00
 defit __ZN10GameObject23determineSlopeDirectionEv, 0x33a9e0
 defit __ZN10GameObject21getActiveColorForModeEib, 0x343860
@@ -854,6 +856,7 @@ defit __ZN16LevelEditorLayer13updateOptionsEv, 0x91ed0
 defit __ZN16LevelEditorLayer19updateToggledGroupsEv, 0x9bb10
 defit __ZN16LevelEditorLayer16updateVisibilityEf, 0x92c70
 defit __ZN16LevelEditorLayer11xPosForTimeEf, 0x9c800
+defit __ZN16LevelEditorLayer15onPausePlaytestEv, 0x0a1570
 defit __ZN16LevelEditorLayerD1Ev, 0x90a00
 defit __ZN16LevelEditorLayerD2Ev, 0x90a00
 defit __ZN18LevelSettingsLayer6createEP19LevelSettingsObjectP16LevelEditorLayer, 0xa7c30

@@ -318,6 +318,7 @@ class UndoCommand;
 class UndoObject;
 class ColorSelectPopup;
 class SetupPulsePopup;
+class StaticTools;
 
 
 class FLAlertLayer : public cocos2d::CCLayerColor, public GDObj {
@@ -334,8 +335,8 @@ public:
     virtual ~FLAlertLayer();
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    static FLAlertLayer* create(FLAlertLayerProtocol* a, char const* b, char const* d, char const* e, gd::string c) {return FLAlertLayer::create(a,b,c,d,e,300.0);}
-    static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
+     static FLAlertLayer* create(FLAlertLayerProtocol* a, char const* b, char const* d, char const* e, gd::string c) {return FLAlertLayer::create(a,b,c,d,e,300.0);}
+     static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {return FLAlertLayer::create(NULL, title, desc, btn, NULL, 300.0);}
     cocos2d::CCMenu* m_buttonMenu;
     int m_controlConnected;
     void* m_alertProtocol;
@@ -431,7 +432,7 @@ public:
 class TableViewCell : public cocos2d::CCLayer, public GDObj {
 public:
     TableViewCell(char const*, float, float);
-    char pad[0x1c0-0x170];
+    char m_pad[0x1c0-0x170];
     float m_parentHeight;
     float m_height;
     cocos2d::CCLayerColor* m_backgroundLayer;
@@ -440,10 +441,10 @@ public:
 
 class TableViewDelegate : public GDObj {
 public:
-    virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;}
-    virtual void numberOfSectionsInTableView(TableView*) {}
-    virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {}
-    virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {}
+     virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;}
+     virtual void numberOfSectionsInTableView(TableView*) {}
+     virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {}
+     virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {}
     void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*);
     void didEndTweenToIndexPath(CCIndexPath&, TableView*);
     void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*);
@@ -451,13 +452,13 @@ public:
 
 class TableViewDataSource : public GDObj {
 public:
-    virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
-    virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {}
-    virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
-    virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
-    virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
-    virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {}
-    virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {}
+     virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+     virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {}
+     virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+     virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+     virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {}
+     virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {}
+     virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {}
 };
 
 class CCScrollLayerExt : public GDObj {
@@ -587,8 +588,8 @@ public:
 class CCSpritePlus : public cocos2d::CCSprite, public GDObj {
 public:
     bool initWithSpriteFrameName(char const*);
-    inline CCSpritePlus* getFollowingSprite() {return m_followingSprite;}
-    inline void setFollowingSprite(CCSpritePlus* setter) {m_followingSprite = setter;}
+     inline CCSpritePlus* getFollowingSprite() {return m_followingSprite;}
+     inline void setFollowingSprite(CCSpritePlus* setter) {m_followingSprite = setter;}
     cocos2d::CCArray* m_followers;
     CCSpritePlus* m_followingSprite;
     bool m_hasFollower;
@@ -842,6 +843,7 @@ public:
     void updateObjectInfoLabel();
     void updateSlider();
     void updateZoom(float);
+    void onPause(cocos2d::CCObject*);
     CLASS_PARAM(LevelEditorLayer*, editorLayer, 0x408);
     CLASS_PARAM(cocos2d::CCArray*, editBars, 0x358);
     CLASS_PARAM(cocos2d::CCNode*, locationSlider, 0x228);
@@ -861,7 +863,7 @@ public:
 
 class FLAlertLayerProtocol : public GDObj {
 public:
-    virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
+     virtual void FLAlert_Clicked(FLAlertLayer*, bool) {}
 };
 
 class FMODAudioEngine : public cocos2d::CCNode, public GDObj {
@@ -953,7 +955,7 @@ public:
     void updateOBB2(cocos2d::CCRect);
     void updateQueuedLabels();
     ~GJBaseGameLayer();
-    __attribute__((noinline)) cocos2d::CCArray* getAllObjects() {return m_objects;}
+     __attribute__((noinline)) cocos2d::CCArray* getAllObjects() {return m_objects;}
     void* m_pad_idk;
     OBB2D* m_boundingBox;
     GJEffectManager* m_effectManager;
@@ -1373,7 +1375,7 @@ public:
 
 class GManager : public cocos2d::CCNode, public GDObj {
 public:
-    virtual void setup() {}
+     virtual void setup() {}
     void save();
     void saveData(DS_Dictionary*, gd::string);
     void saveGMTo(gd::string);
@@ -1450,6 +1452,7 @@ public:
     void colorForMode(int, bool);
     void commonSetup();
     void copyGroups(GameObject*);
+    void createAndAddParticle(int, char const*, int, cocos2d::tCCPositionType);
     void destroyObject();
     void determineSlopeDirection();
     void getActiveColorForMode(int, bool);
@@ -1776,6 +1779,7 @@ public:
     void updateToggledGroups();
     void updateVisibility(float);
     void xPosForTime(float);
+    void onPausePlaytest();
     ~LevelEditorLayer();
     CLASS_PARAM(cocos2d::CCArray*, objects, 0x3a0);
     CLASS_PARAM(EditorUI*, editorUI, 0x5d8);
@@ -2223,7 +2227,7 @@ public:
     void yStartDown();
     void yStartUp();
     ~PlayerObject();
-    VehicleType& vehicleEnum() {return reinterpret_cast<VehicleType&>(_isShip());}
+     VehicleType& vehicleEnum() {return reinterpret_cast<VehicleType&>(_isShip());}
     CLASS_PARAM(HardStreak*, waveStreak, 0x600);
     CLASS_PARAM(double, speed, 0x608);
     CLASS_PARAM(double, gravity, 0x618);
@@ -2449,12 +2453,12 @@ public:
 
 class TextInputDelegate : public GDObj {
 public:
-    virtual void textChanged(CCTextInputNode*) {};
-    virtual void textInputOpened(CCTextInputNode*) {};
-    virtual void textInputClosed(CCTextInputNode*) {};
-    virtual void textInputShouldOffset(CCTextInputNode*, float) {};
-    virtual void textInputReturn(CCTextInputNode*) {};
-    virtual bool allowTextInput(CCTextInputNode*) {return true;};
+     virtual void textChanged(CCTextInputNode*) {}
+     virtual void textInputOpened(CCTextInputNode*) {}
+     virtual void textInputClosed(CCTextInputNode*) {}
+     virtual void textInputShouldOffset(CCTextInputNode*, float) {}
+     virtual void textInputReturn(CCTextInputNode*) {}
+     virtual bool allowTextInput(CCTextInputNode*) {return true;}
 };
 
 class ToggleTriggerAction : public GDObj {
@@ -2549,5 +2553,26 @@ public:
     CLASS_PARAM(cocos2d::CCSprite*, prevColorSpr, 0x2d8);
     CLASS_PARAM(int, pulseMode, 0x38c);
     CLASS_PARAM(int, targetMode, 0x390);
+};
+
+class StaticTools : public GDObj {
+public:
+     std::string replaceAll(const std::string& source, const std::string& from, const std::string& to) {
+        std::string newString;
+        newString.reserve(source.length());
+
+        std::string::size_type lastPos = 0;
+        std::string::size_type findPos;
+
+        while(std::string::npos != (findPos = source.find(from, lastPos))) {
+            newString.append(source, lastPos, findPos - lastPos);
+            newString += to;
+            lastPos = findPos + from.length();
+        }
+
+        newString += source.substr(lastPos);
+
+        return newString;
+    }
 };
 
