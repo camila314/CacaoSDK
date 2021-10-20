@@ -3,6 +3,7 @@ section .text
 
 %macro defit 2
 global %1
+align 8
 %1:
     mov rax, [rel _asmBase]
     add rax, %2
@@ -217,6 +218,9 @@ defit __ZN15CCNodeContainer6createEv, 0xb1090
 defit __ZN15CCNodeContainer4initEv, 0xba950
 defit __ZN15CCNodeContainer5visitEv, 0xba960
 defit __ZN12CCSpritePlus23initWithSpriteFrameNameEPKc, 0x248670
+defit __ZN12CCSpritePlus25createWithSpriteFrameNameEPKc, 0x2485a0
+defit __ZN12CCSpritePlus10stopFollowEv, 0x248bb0
+defit __ZN12CCSpritePlus12followSpriteEPS_, 0x248b60
 defit __ZN15CCTextInputNode6createEffPKcS1_iS1_, 0x5cfb0
 defit __ZN15CCTextInputNode9getStringEv, 0x5d6f0
 defit __ZN15CCTextInputNode12refreshLabelEv, 0x5d730
@@ -1325,7 +1329,9 @@ defit __ZN7cocos2d7CCArray12removeObjectEPNS_8CCObjectEb, 0x41a490
 defit __ZN7cocos2d7CCArray19removeObjectAtIndexEjb, 0x41a4b0
 defit __ZN7cocos2d7CCArray13stringAtIndexEj, 0x41a320
 defit __ZN7cocos2d10CCBezierTo6createEfRKNS_15_ccBezierConfigE, 0x1f6c10
-defit __ZN7cocos2d10CCCallFunc6createEi, 0x454d90
+defit __ZN7cocos2d10CCCallFunc6createEPNS_8CCObjectEMS1_FvvE, 0x454d90
+defit __ZN7cocos2d10CCCallFunc7executeEv, 0x455130
+defit __ZN7cocos2d10CCCallFunc6updateEf, 0x455120
 defit __ZN7cocos2d14CCClippingNode6createEv, 0x4192a0
 defit __ZN7cocos2d14CCClippingNode6createEPNS_6CCNodeE, 0x419330
 defit __ZNK7cocos2d14CCClippingNode17getAlphaThresholdEv, 0x419a10
@@ -1382,6 +1388,7 @@ defit __ZN7cocos2d16CCEaseElasticOut6createEPNS_16CCActionIntervalEf, 0x2a3080
 defit __ZN7cocos2d8CCEaseIn6createEPNS_16CCActionIntervalEf, 0x2a1960
 defit __ZN7cocos2d11CCEaseInOut6createEPNS_16CCActionIntervalEf, 0x2a1d80
 defit __ZN7cocos2d9CCEaseOut6createEPNS_16CCActionIntervalEf, 0x2a1b70
+defit __ZN7cocos2d8CCFadeIn6createEf, 0x1f7b20
 defit __ZN7cocos2d9CCFadeOut6createEf, 0x1f7d80
 defit __ZN7cocos2d8CCFadeTo6createEfh, 0x1f7ff0
 defit __ZN7cocos2d6CCHide6createEv, 0x4543e0

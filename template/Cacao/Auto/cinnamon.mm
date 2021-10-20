@@ -253,9 +253,11 @@
 
 @interface CCSpritePlus : cocos2d::CCSprite
     bool initWithSpriteFrameName(char const*) = 0x248670;
+    static CCSpritePlus* createWithSpriteFrameName(char const*) = 0x2485a0;
     volatile inline CCSpritePlus* getFollowingSprite() {return m_followingSprite;}
     volatile inline void setFollowingSprite(CCSpritePlus* setter) {m_followingSprite = setter;}
-
+    void stopFollow() = 0x248bb0;
+    void followSprite(CCSpritePlus*) = 0x248b60;
     cocos2d::CCArray* m_followers;
     CCSpritePlus* m_followingSprite;
     bool m_hasFollower;
@@ -1150,8 +1152,8 @@
     virtual void updateStartValues() = 0x2fa800;
     virtual void customObjectSetup(gd::map<gd::string, gd::string>&) = 0xdc1a0;
     virtual gd::string getSaveString() = 0x33d3d0;
-    virtual void isFlipX() = 0x335a40;
-    virtual void isFlipY() = 0x335a50;
+    virtual bool isFlipX() = 0x335a40;
+    virtual bool isFlipY() = 0x335a50;
     virtual void setRScaleX(float) = 0x335cb0;
     virtual void setRScaleY(float) = 0x335d60;
     virtual void setRScale(float) = 0x335e10;
@@ -1174,6 +1176,7 @@
     virtual GameObjectType getType() = 0xdc210;
     virtual void setType(GameObjectType) = 0xdc220;
     virtual void getStartPos()  = 0xdc230;
+    int _pad;
 
     float m_float250;
     float m_float254;
@@ -1186,20 +1189,69 @@
     float m_animationSpeed2; //what
     bool m_black;
     bool m_showSelection;
-    bool m_blackOpacity;
+    float m_blackOpacity;
     bool m_bool278;
     bool m_inEditorMode;
-    
+    bool m_toggledOff;
+    bool m_colorOnTop;
+    int m_int27c;
+    int m_int280;
+    float m_float284;
+    cocos2d::CCPoint m_relativeMovePos;
+    float m_relativeRotation;
+    bool m_isTrigger;
+    bool m_flippedX;
+    bool m_flippedY;
+    cocos2d::CCPoint m_origHitboxOffset;
+    char m_unused0;
+    cocos2d::CCPoint m_adjustedHitboxOffset;
+    OBB2D* m_orientedBox;
+    bool m_useOrientedBox;
+    cocos2d::CCSprite* m_glowSprite;
+    bool m_inPlaylayer;
+    cocos2d::CCAction* m_myAction; // rob named it not me
+    bool m_dontRunAction;
+    bool m_runActionOnObject;
+    bool m_poweredOn;
+    cocos2d::CCSize m_objectSize;
+    bool m_modifierBlock;
+    bool m_active;
+    bool m_animationFinished;
+    cocos2d::CCParticleSystemQuad* m_particleSystem;
+    gd::string m_effectPlist;
+    bool m_particleAdded;
+    bool m_hasParticles;
+    bool m_customRing;
+    cocos2d::CCPoint m_portalPosition;
+    bool m_pulseWithMusic;
+    cocos2d::CCRect m_textureRect;
+    bool m_textureRectDirty;
+    float m_textureRectCenterX;
+    cocos2d::CCRect m_objectRect;
+    bool m_objectRectDirty;
+    bool m_orientdBoxDirty;
+    bool m_activated;
+    bool m_activatedByP2;
+    bool m_hasAnimatedPart;
+    int m_linkedGroup;
+    bool m_isSpinning;
+    float m_rotationSpeed;
+    bool m_disableRotation;
+    cocos2d::CCPoint m_point348;
+    cocos2d::CCSprite* m_animatedPart;
+    bool m_bool358;
+    float m_hitboxScale;
+    bool m_onSide;
+    cocos2d::CCSize m_unknown364;
+    int m_uuid;
+    GameObjectType m_type;
+    int m_section;
+    bool m_touchTriggered;
+    bool m_spawnTriggered;
+    cocos2d::CCPoint m_startPosition;
+    gd::string m_textureName; //0x388
 
-    GameObjectType m_type = 0x370;
     int m_id = 0x3c4;
-    OBB2D* m_hitbox = 0x2b0;
-    bool m_inEditLayer = 0x279;
-    cocos2d::CCPoint m_startPos = 0x37c;
-    bool m_touchTriggered = 0x378;
-    bool m_spawnTriggered = 0x379;
-    gd::string m_textureName = 0x388;
-    int m_uuid = 0x36c;
     int m_colorID = 0x3bc;
     int m_zOrder = 0x42c;
     int m_unknownType = 0x3d4;
@@ -2138,7 +2190,10 @@
 @end
 
 @interface cocos2d::CCCallFunc
-    static cocos2d::CCCallFunc* create(int) = 0x454d90;
+    static cocos2d::CCCallFunc* create(cocos2d::CCObject*, cocos2d::SEL_CallFunc) = 0x454d90;
+    virtual bool initWithTarget(CCObject*) = 0x454eb0;
+    virtual void execute() = 0x455130;
+    virtual void update(float) = 0x455120;
 @end
 
 @interface cocos2d::CCClippingNode
@@ -2225,6 +2280,10 @@
 
 @interface cocos2d::CCEaseOut
     static cocos2d::CCEaseOut* create(cocos2d::CCActionInterval*, float) = 0x2a1b70;
+@end
+
+@interface cocos2d::CCFadeIn
+    static cocos2d::CCFadeIn* create(float) = 0x1f7b20;
 @end
 
 @interface cocos2d::CCFadeOut
@@ -2847,7 +2906,7 @@
 
 @interface StaticTools
     // https://stackoverflow.com/a/29752943/9319361 (i modified slightly)
-    volatile std::string replaceAll(const std::string& source, const std::string& from, const std::string& to) {
+    volatile static std::string replaceAll(const std::string& source, const std::string& from, const std::string& to) {
         std::string newString;
         newString.reserve(source.length());
 

@@ -36,7 +36,7 @@ class FunkyInfo:
         #     return syms[int(self.mang)][1][:-1]
         # return None
         try:
-            n = f"{self.parent.name}::{self.name}({','.join(self.args)})".replace(" ", "").replace("const", "").replace("cocos2d::SEL_SCHEDULE", "").replace("cocos2d::SEL_MenuHandler", "")
+            n = f"{self.parent.name}::{self.name}({','.join(self.args)})".replace(" ", "").replace("const", "").replace("cocos2d::SEL_SCHEDULE", "").replace("cocos2d::SEL_MenuHandler", "").replace("cocos2d::SEL_CallFunc", "")
             return [a[1] for a in filter(lambda x: n == x[0], syms[self.parent.name])]
         except ValueError:
             print(syms2[self.parent.name])
@@ -104,7 +104,7 @@ syms3 = {}
 with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
     s = f.readlines()
     for k, m in zip(s[0::2], s[1::2]):
-        k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "").replace("std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >", "std::map<std::string, std::string>")
+        k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)()", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "").replace("std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >", "std::map<std::string, std::string>")
 
         t = k.split("::")
         ke = t[0]

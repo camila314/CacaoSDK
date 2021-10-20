@@ -588,8 +588,11 @@ public:
 class CCSpritePlus : public cocos2d::CCSprite, public GDObj {
 public:
     bool initWithSpriteFrameName(char const*);
+    static CCSpritePlus* createWithSpriteFrameName(char const*);
      inline CCSpritePlus* getFollowingSprite() {return m_followingSprite;}
      inline void setFollowingSprite(CCSpritePlus* setter) {m_followingSprite = setter;}
+    void stopFollow();
+    void followSprite(CCSpritePlus*);
     cocos2d::CCArray* m_followers;
     CCSpritePlus* m_followingSprite;
     bool m_hasFollower;
@@ -1518,8 +1521,8 @@ public:
     virtual void updateStartValues();
     virtual void customObjectSetup(gd::map<gd::string , gd::string>&);
     virtual gd::string getSaveString();
-    virtual void isFlipX();
-    virtual void isFlipY();
+    virtual bool isFlipX();
+    virtual bool isFlipY();
     virtual void setRScaleX(float);
     virtual void setRScaleY(float);
     virtual void setRScale(float);
@@ -1542,6 +1545,7 @@ public:
     virtual GameObjectType getType();
     virtual void setType(GameObjectType);
     virtual void getStartPos();
+    int m__pad;
     float m_float250;
     float m_float254;
     float m_float258;
@@ -1553,18 +1557,68 @@ public:
     float m_animationSpeed2;
     bool m_black;
     bool m_showSelection;
-    bool m_blackOpacity;
+    float m_blackOpacity;
     bool m_bool278;
     bool m_inEditorMode;
-    CLASS_PARAM(GameObjectType, type, 0x370);
+    bool m_toggledOff;
+    bool m_colorOnTop;
+    int m_int27c;
+    int m_int280;
+    float m_float284;
+    cocos2d::CCPoint m_relativeMovePos;
+    float m_relativeRotation;
+    bool m_isTrigger;
+    bool m_flippedX;
+    bool m_flippedY;
+    cocos2d::CCPoint m_origHitboxOffset;
+    char m_unused0;
+    cocos2d::CCPoint m_adjustedHitboxOffset;
+    OBB2D* m_orientedBox;
+    bool m_useOrientedBox;
+    cocos2d::CCSprite* m_glowSprite;
+    bool m_inPlaylayer;
+    cocos2d::CCAction* m_myAction;
+    bool m_dontRunAction;
+    bool m_runActionOnObject;
+    bool m_poweredOn;
+    cocos2d::CCSize m_objectSize;
+    bool m_modifierBlock;
+    bool m_active;
+    bool m_animationFinished;
+    cocos2d::CCParticleSystemQuad* m_particleSystem;
+    gd::string m_effectPlist;
+    bool m_particleAdded;
+    bool m_hasParticles;
+    bool m_customRing;
+    cocos2d::CCPoint m_portalPosition;
+    bool m_pulseWithMusic;
+    cocos2d::CCRect m_textureRect;
+    bool m_textureRectDirty;
+    float m_textureRectCenterX;
+    cocos2d::CCRect m_objectRect;
+    bool m_objectRectDirty;
+    bool m_orientdBoxDirty;
+    bool m_activated;
+    bool m_activatedByP2;
+    bool m_hasAnimatedPart;
+    int m_linkedGroup;
+    bool m_isSpinning;
+    float m_rotationSpeed;
+    bool m_disableRotation;
+    cocos2d::CCPoint m_point348;
+    cocos2d::CCSprite* m_animatedPart;
+    bool m_bool358;
+    float m_hitboxScale;
+    bool m_onSide;
+    cocos2d::CCSize m_unknown364;
+    int m_uuid;
+    GameObjectType m_type;
+    int m_section;
+    bool m_touchTriggered;
+    bool m_spawnTriggered;
+    cocos2d::CCPoint m_startPosition;
+    gd::string m_textureName;
     CLASS_PARAM(int, id, 0x3c4);
-    CLASS_PARAM(OBB2D*, hitbox, 0x2b0);
-    CLASS_PARAM(bool, inEditLayer, 0x279);
-    CLASS_PARAM(cocos2d::CCPoint, startPos, 0x37c);
-    CLASS_PARAM(bool, touchTriggered, 0x378);
-    CLASS_PARAM(bool, spawnTriggered, 0x379);
-    CLASS_PARAM(gd::string, textureName, 0x388);
-    CLASS_PARAM(int, uuid, 0x36c);
     CLASS_PARAM(int, colorID, 0x3bc);
     CLASS_PARAM(int, zOrder, 0x42c);
     CLASS_PARAM(int, unknownType, 0x3d4);
@@ -2557,7 +2611,7 @@ public:
 
 class StaticTools : public GDObj {
 public:
-     std::string replaceAll(const std::string& source, const std::string& from, const std::string& to) {
+     static std::string replaceAll(const std::string& source, const std::string& from, const std::string& to) {
         std::string newString;
         newString.reserve(source.length());
 

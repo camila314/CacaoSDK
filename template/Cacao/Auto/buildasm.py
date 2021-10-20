@@ -25,8 +25,6 @@ def build_cls(funky_cls):
                     out += f"defit _{mang}, {addr}\n"
                     if thunk is not None:
                         out += f"thunk __ZThn{thunk}_{mang[2:]}, _{mang}, {thunk}\n"
-        else:
-            print(mangs, addr)
     return out
 
 full_code = starter_code + ''.join(build_cls(cl) for cl in parsecac.parse(sys.argv[1]).values()) + ender_code

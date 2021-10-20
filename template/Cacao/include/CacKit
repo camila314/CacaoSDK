@@ -1266,6 +1266,24 @@ public:
         else return CCSpritePlus::initWithSpriteFrameName(p0);
     }
 
+    dupable static CCSpritePlus* createWithSpriteFrameName(char const* p0) {
+        if ((CCSpritePlus*(*)(char const*)){&$CCSpritePlus::createWithSpriteFrameName} != (CCSpritePlus*(*)(char const*)){&D::createWithSpriteFrameName})
+            return reinterpret_cast<CCSpritePlus*(*)(char const*)>(m->getOriginal(base+0x2485a0))(p0);
+        else return CCSpritePlus::createWithSpriteFrameName(p0);
+    }
+
+    dupable void stopFollow() {
+        if ((void($CCSpritePlus::*)()){&$CCSpritePlus::stopFollow} != (void(D::*)()){&D::stopFollow})
+            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x248bb0))(this);
+        else return CCSpritePlus::stopFollow();
+    }
+
+    dupable void followSprite(CCSpritePlus* p0) {
+        if ((void($CCSpritePlus::*)(CCSpritePlus*)){&$CCSpritePlus::followSprite} != (void(D::*)(CCSpritePlus*)){&D::followSprite})
+            return reinterpret_cast<void(*)(decltype(this), CCSpritePlus*)>(m->getOriginal(base+0x248b60))(this, p0);
+        else return CCSpritePlus::followSprite(p0);
+    }
+
     dupable $CCSpritePlus() {
         if ($lock) return;
         $lock = true;
@@ -1275,6 +1293,15 @@ public:
 
         if ((bool($CCSpritePlus::*)(char const*)){&$CCSpritePlus::initWithSpriteFrameName} != (bool(D::*)(char const*)){&D::initWithSpriteFrameName})
             m->registerHook(base+0x248670, extract((bool(D::*)(char const*)){&D::initWithSpriteFrameName}));
+
+        if ((CCSpritePlus*(*)(char const*)){&$CCSpritePlus::createWithSpriteFrameName} != (CCSpritePlus*(*)(char const*)){&D::createWithSpriteFrameName})
+            m->registerHook(base+0x2485a0, (CCSpritePlus*(*)(char const*)){&D::createWithSpriteFrameName});
+
+        if ((void($CCSpritePlus::*)()){&$CCSpritePlus::stopFollow} != (void(D::*)()){&D::stopFollow})
+            m->registerHook(base+0x248bb0, extract((void(D::*)()){&D::stopFollow}));
+
+        if ((void($CCSpritePlus::*)(CCSpritePlus*)){&$CCSpritePlus::followSprite} != (void(D::*)(CCSpritePlus*)){&D::followSprite})
+            m->registerHook(base+0x248b60, extract((void(D::*)(CCSpritePlus*)){&D::followSprite}));
     }
 };
 
@@ -6168,15 +6195,15 @@ public:
         else return GameObject::getSaveString();
     }
 
-    dupable void isFlipX() override {
-        if ((void($GameObject::*)()){&$GameObject::isFlipX} != (void(D::*)()){&D::isFlipX})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335a40))(this);
+    dupable bool isFlipX() override {
+        if ((bool($GameObject::*)()){&$GameObject::isFlipX} != (bool(D::*)()){&D::isFlipX})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x335a40))(this);
         else return GameObject::isFlipX();
     }
 
-    dupable void isFlipY() override {
-        if ((void($GameObject::*)()){&$GameObject::isFlipY} != (void(D::*)()){&D::isFlipY})
-            return reinterpret_cast<void(*)(decltype(this))>(m->getOriginal(base+0x335a50))(this);
+    dupable bool isFlipY() override {
+        if ((bool($GameObject::*)()){&$GameObject::isFlipY} != (bool(D::*)()){&D::isFlipY})
+            return reinterpret_cast<bool(*)(decltype(this))>(m->getOriginal(base+0x335a50))(this);
         else return GameObject::isFlipY();
     }
 
@@ -6565,11 +6592,11 @@ public:
         if ((gd::string($GameObject::*)()){&$GameObject::getSaveString} != (gd::string(D::*)()){&D::getSaveString})
             m->registerHook(base+0x33d3d0, extract_virtual(V, (gd::string(D::*)()){&D::getSaveString}));
 
-        if ((void($GameObject::*)()){&$GameObject::isFlipX} != (void(D::*)()){&D::isFlipX})
-            m->registerHook(base+0x335a40, extract_virtual(V, (void(D::*)()){&D::isFlipX}));
+        if ((bool($GameObject::*)()){&$GameObject::isFlipX} != (bool(D::*)()){&D::isFlipX})
+            m->registerHook(base+0x335a40, extract_virtual(V, (bool(D::*)()){&D::isFlipX}));
 
-        if ((void($GameObject::*)()){&$GameObject::isFlipY} != (void(D::*)()){&D::isFlipY})
-            m->registerHook(base+0x335a50, extract_virtual(V, (void(D::*)()){&D::isFlipY}));
+        if ((bool($GameObject::*)()){&$GameObject::isFlipY} != (bool(D::*)()){&D::isFlipY})
+            m->registerHook(base+0x335a50, extract_virtual(V, (bool(D::*)()){&D::isFlipY}));
 
         if ((void($GameObject::*)(float)){&$GameObject::setRScaleX} != (void(D::*)(float)){&D::setRScaleX})
             m->registerHook(base+0x335cb0, extract_virtual(V, (void(D::*)(float)){&D::setRScaleX}));

@@ -3,6 +3,7 @@ section .text
 
 %macro defit 2
 global %1
+align 8
 %1:
     mov rax, [rel _asmBase]
     add rax, %2
