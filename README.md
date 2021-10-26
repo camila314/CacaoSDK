@@ -6,11 +6,11 @@ Cacao uses a modified version of [rd_route](https://github.com/rodionovd/rd_rout
 ## How to use
 
 
-### CacKit
+### Cacao
 
-Cacao comes with a neat little way to hook very quickly with a tool called CacKit (amazing name, right). This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the CacKit classes and overriding some of the methods. CacKit classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$redirect`. To use it I give the macro the class I want to hook. You'll also notice that I assign a variable to it. This is because the variable allows me to activate the hooking automatically. And to apply all the hooks to the GD I use a macro called `$apply`. Example:
+Cacao comes with a neat little way to hook functions very quickly. This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the Cacao classes and overriding some of the methods. Cacao classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$redirect`. To use it I give the macro the class I want to hook. You'll also notice that I assign a variable to it. This is because the variable allows me to activate the hooking automatically. And to apply all the hooks to the GD I use a macro called `$apply`. Example:
 ```cpp
-#include <CacKit>
+#include <Cacao>
 #include <iostream>
 
 class $redirect(EditorUI) {
@@ -25,7 +25,7 @@ $apply();
 
 If you want to call the original function, there is also an easy way to do that as well:
 ```cpp
-#include <CacKit>
+#include <Cacao>
 #include <iostream>
 
 class $redirect(EditorUI) {
@@ -38,9 +38,9 @@ public:
 
 $apply();
 ```
-Since the CacKit classes subclass the GD classes, we can use the members and functions like we would in a normal class. 
+Since the Cacao classes subclass the GD classes, we can use the members and functions like we would in a normal class. 
 ```cpp
-#include <CacKit>
+#include <Cacao>
 #include <iostream>
 
 class $redirect(EditorUI) {
@@ -54,10 +54,10 @@ public:
 $apply();
 ```
 
-If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The function needs to be declared before the `$apply` however. The variable "m" is reserved for the mod container that is automatically created by CacKit. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include CacKit.
+If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The function needs to be declared before the `$apply` however. The variable "m" is reserved for the mod container that is automatically created by Cacao. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include Cacao.
 ```cpp
 #define CAC_PROJ_NAME "My first mod"
-#include <CacKit>
+#include <Cacao>
 #include <iostream>
 
 class $redirect(EditorUI) {
@@ -76,7 +76,7 @@ $apply();
 
 ```
 
-If theres a function/class you want to be added to the CacKit catalog just create an issue or tell me on discord.
+If theres a function/class you want to be added to the Cacao catalog just create an issue or tell me on discord.
 
 ### GDML
 
@@ -120,7 +120,7 @@ func_t orig = m->getOriginal(base+0x543210);
 The `getOriginal` function by default returns a type `func_t` (aka `void (*)()`). If you want to quickly cast it into the same type as the hook, you can use the `FCAST` macro provided. Full code example:
 
 ```cpp
-#include <Cacao.hpp>
+#include <Cacao>
 ModContainer* m;
 
 void hook(int param1, char param2) {
@@ -141,7 +141,7 @@ $apply();
 There is actually a more visually pleasing way of calling the original function using the macro `ORIG`. This macro only works if the ModContainer instance is named `m`. Here is an example:
 
 ```cpp
-#include <Cacao.hpp>
+#include <Cacao>
 ModContainer* m;
 
 int cool(void* param1, char* param2) {
