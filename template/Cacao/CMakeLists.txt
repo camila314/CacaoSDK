@@ -6,35 +6,35 @@ add_subdirectory(GDML)
 enable_language(ASM_NASM)
 set(CMAKE_ASM_NASM_OBJECT_FORMAT macho64)
 
-add_library(Cacao STATIC Cacao.cpp symtab.asm)
+add_library(Cacao STATIC Src/Helpers.cpp Src/stubs.asm)
 
 target_link_libraries(Cacao GDML)
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py "${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/CacKit"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildcackit.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cackit.end.hpp
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/kitgen.py "${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/source.mm" "${CMAKE_CURRENT_SOURCE_DIR}/Include/Cacao"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/source.mm ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/kitgen.py ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/base/cackit.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/base/cackit.end.hpp
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime
     COMMENT "Generating Cackit"
 )
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py "${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/symtab.asm"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildasm.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.begin.asm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/symtab.end.asm
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/asmgen.py "${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/source.mm" "${CMAKE_CURRENT_SOURCE_DIR}/Src/stubs.asm"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/source.mm ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/asmgen.py ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/base/stubs.begin.asm ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/base/stubs.end.asm
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime1
     COMMENT "Generating symbols"
 )
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py "${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm" "${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp"
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Auto/cinnamon.mm ${CMAKE_CURRENT_SOURCE_DIR}/Auto/buildccdefs.py ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/Auto/base/cc_defs.end.hpp
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime2
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/headergen.py "${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/source.mm" "${CMAKE_CURRENT_SOURCE_DIR}/Include/Defs.hpp"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/source.mm ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/headergen.py ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/base/Defs.begin.hpp ${CMAKE_CURRENT_SOURCE_DIR}/CacKitGen/base/Defs.end.hpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Include/Defs.hpp ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime2
     COMMENT "Generating headers"
 )
 
 add_custom_target(Cackit ALL
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/runeverytime1
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/include/cc_defs.hpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Include/Defs.hpp
 )
 
 add_dependencies(Cacao Cackit)

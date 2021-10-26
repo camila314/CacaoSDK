@@ -1,4 +1,4 @@
-import parsecac
+import parser
 import os
 import sys
 
@@ -113,4 +113,4 @@ def build_cls(funky_cls):
     out += build_body2_end
     out += build_end
     return out
-open(sys.argv[2], "w").write(starter_code + ''.join(build_cls(cl) for cl in parsecac.parse(sys.argv[1]).values()) + ender_code)
+open(sys.argv[2], "w").write(starter_code + ''.join(build_cls(cl) for cl in parser.parse(sys.argv[1]).values()) + ender_code)

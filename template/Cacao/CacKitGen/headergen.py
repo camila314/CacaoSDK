@@ -1,10 +1,10 @@
-import parsecac
+import parser
 import os
 import sys
 
-starter_code = open(os.path.dirname(__file__) + "/base/cc_defs.begin.hpp", "r").read()
+starter_code = open(os.path.dirname(__file__) + "/base/defs.begin.hpp", "r").read()
 
-ender_code = open(os.path.dirname(__file__) + "/base/cc_defs.end.hpp", "r").read()
+ender_code = open(os.path.dirname(__file__) + "/base/defs.end.hpp", "r").read()
 
 def build_cls(funky_cls):
     gdobj = "public GDObj "
@@ -48,5 +48,5 @@ def build_cls(funky_cls):
 
     return out
 
-d = parsecac.parse(sys.argv[1])
+d = parser.parse(sys.argv[1])
 open(sys.argv[2], "w").write(starter_code + ''.join(f'class {cl};\n' for cl in d.keys() if "cocos2d" not in cl) + "\n\n" + ''.join(build_cls(cl) for cl in d.values()) + ender_code)

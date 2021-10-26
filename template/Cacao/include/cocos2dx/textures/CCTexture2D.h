@@ -270,7 +270,7 @@ public:
 
     //Robtop Modification:
     void releaseGLTexture(void);
-private:
+public:
     bool initPremultipliedATextureWithImage(CCImage * image, unsigned int pixelsWide, unsigned int pixelsHigh);
     
     // By default PVR images are treated as if they don't have the alpha channel premultiplied

@@ -1,11 +1,12 @@
 // Copyright camila314 2021
 #pragma once
 
-#include <cc_defs.hpp>
+#include <Defs.hpp>
 #include <map>
 #include <vector>
 #include <type_traits>
-#include <CacKit>
+#include <Cacao>
+#include <iostream>
 
 #define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 
@@ -91,6 +92,82 @@ namespace Cacao {
     template <typename T>
     std::vector<T> ccToVec(cocos2d::CCArray* arr) {
         return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
+    }
+
+    template <typename T, typename = typename std::enable_if<std::is_convertible<T, cocos2d::CCObject*>::value>::type>
+    void ccAsVec(cocos2d::CCArray* arr, std::function<void(std::vector<T>&)> cb) {
+        std::vector<T> swag(ccToVec<T>(arr));
+        cb(swag);
+        for (auto i : ccToVec<T>(arr)) {
+            if (std::find(swag.begin(), swag.end(), i) == swag.end()) {
+                printf("item removed\n");
+                i->release();
+            }
+        }
+
+        if (swag.size() == 0) {
+            arr->data->num = swag.size();
+            arr->data->max = swag.size() ? swag.size() : 1;
+
+            arr->removeAllObjects();
+            printf("nothing\n");
+        } else if (swag != ccToVec<T>(arr)){
+            arr->data->num = swag.size();
+            arr->data->max = swag.size() ? swag.size() : 1;
+
+            free(arr->data->arr);
+            arr->data->arr = (cocos2d::CCObject**)malloc(swag.size() * sizeof(T));
+            memcpy(arr->data->arr, &swag[0], swag.size() * sizeof(T));
+
+            printf("its %p\n", arr->data->arr);
+        } else {
+            printf("no change\n");
+        }
+    }
+
+    template <typename K, typename V, 
+              typename = typename std::enable_if<std::is_convertible<V, cocos2d::CCObject*>::value>::type,
+              typename = typename std::enable_if<std::is_same<K, int>::value || std::is_same<K, std::string>::value>::type>
+    void ccAsMap(cocos2d::CCDictionary* dict, std::function<void(std::map<K, V>&)> cb) {
+        std::map<K, V> swag;
+
+        constexpr bool isInt = std::is_same<K, int>::value;
+        constexpr bool isStr = std::is_same<K, std::string>::value;
+        typedef typename std::conditional<isInt, cocos2d::CCInteger*, cocos2d::CCString*>::type ccKeyType;
+
+        if (dict->m_eDictType == cocos2d::CCDictionary::kCCDictInt && isStr)
+            std::cerr << "Error: tried to access an int dict as if it was a string dict" << std::endl; 
+        else if (dict->m_eDictType == cocos2d::CCDictionary::kCCDictStr && isInt)
+            std::cerr << "Error: tried to access a string dict as if it was an int dict" << std::endl;
+        else
+            dict->m_eDictType = isInt ? cocos2d::CCDictionary::kCCDictInt : cocos2d::CCDictionary::kCCDictStr;
+
+        using namespace cocos2d;
+
+        CCDictElement* element;
+        CCDICT_FOREACH(dict, element) {
+            if constexpr (isInt) {
+                auto key = element->getIntKey();
+                swag[key] = reinterpret_cast<V>(element->getObject());
+            } else {
+                auto key = element->getStrKey();
+                //printf("a %p\n", element->getObject());
+                swag[key] = reinterpret_cast<V>(element->getObject());
+            }
+        }
+
+        dict->removeAllObjects();
+
+        cb(swag);
+
+        for (auto [k, v] : swag) {
+            if constexpr (isStr) {
+                gd::string mystr(k.c_str());
+                printf("c %s b %p\n", std::string(mystr).c_str(), v);
+                dict->setObject(v, mystr);
+            } else 
+                dict->setObject(v, k);
+        }
     }
 
     cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay);

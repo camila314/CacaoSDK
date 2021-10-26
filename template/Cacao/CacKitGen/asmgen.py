@@ -1,10 +1,10 @@
-import parsecac
+import parser
 import os
 import sys
 
-starter_code = open(os.path.dirname(__file__) + "/base/symtab.begin.asm", "r").read()
+starter_code = open(os.path.dirname(__file__) + "/base/stubs.begin.asm", "r").read()
 
-ender_code = open(os.path.dirname(__file__) + "/base/symtab.end.asm", "r").read()
+ender_code = open(os.path.dirname(__file__) + "/base/stubs.end.asm", "r").read()
 
 build_data = """"""
 
@@ -27,7 +27,7 @@ def build_cls(funky_cls):
                         out += f"thunk __ZThn{thunk}_{mang[2:]}, _{mang}, {thunk}\n"
     return out
 
-full_code = starter_code + ''.join(build_cls(cl) for cl in parsecac.parse(sys.argv[1]).values()) + ender_code
+full_code = starter_code + ''.join(build_cls(cl) for cl in parser.parse(sys.argv[1]).values()) + ender_code
 
 if open(sys.argv[2], "r").read() != full_code:
     open(sys.argv[2], "w").write(full_code)

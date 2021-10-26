@@ -613,7 +613,7 @@
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTop3;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop3;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlowTop3;
-    CCNodeContainer* unk140;
+    CCNodeContainer* m_pBatchNodeTop3Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop3;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop3;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop3;
@@ -621,7 +621,7 @@
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTop2;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTop2;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlowTop2;
-    CCNodeContainer* unk160;
+    CCNodeContainer* m_pBatchNodeTop2Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop2;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop2;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop2;
@@ -629,43 +629,43 @@
     cocos2d::CCSpriteBatchNode* m_pBatchNode;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAdd;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddGlow;
-    CCNodeContainer* unk180;
+    CCNodeContainer* m_pBatchNodeTop1Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTextTop1;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextTop1;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeTop1;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddTop1;
     cocos2d::CCSpriteBatchNode* m_pBatchNodePlayer;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddPlayer;
-    cocos2d::CCSpriteBatchNode* unk19C;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodePlayerGlow;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddMid;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottomGlow;
-    CCNodeContainer* unk1B0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBot;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBotGlow;
+    CCNodeContainer* m_pBatchNodeBot1Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeText;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddText;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNode;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAdd;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom2;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom2;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom2Glow;
-    CCNodeContainer* unk1D0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBot2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot2;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot2Glow;
+    CCNodeContainer* m_pBatchNodeBot2Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot2;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot2;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot2;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot2;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom3;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom3;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom3Glow;
-    CCNodeContainer* unk1F0;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBot3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot3;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot3Glow;
+    CCNodeContainer* m_pBatchNodeBot3Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot3;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot3;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot3;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeAddBot3;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeBottom4;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom4;
-    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBottom4Glow;
-    CCNodeContainer* unk210;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeBot4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot4;
+    cocos2d::CCSpriteBatchNode* m_pBatchNodeAddBot4Glow;
+    CCNodeContainer* m_pBatchNodeBot4Container;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeTextBot4;
     cocos2d::CCSpriteBatchNode* m_pBatchNodeAddTextBot4;
     cocos2d::CCSpriteBatchNode* m_pEffectBatchNodeBot4;
@@ -681,6 +681,32 @@
     cocos2d::CCArray* m_collisionBlocks;
     cocos2d::CCArray* m_triggerQueue;
     cocos2d::CCArray* m_triggers;
+    cocos2d::CCArray* m_array3c8;
+    cocos2d::CCNode*  m_node3d0;
+    std::vector<GameObject*> m_vec3d8;
+    std::vector<void*> m_vec3f0; // idk the types for the rest of the vectors
+    cocos2d::CCDictionary* m_dict408;
+    cocos2d::CCDictionary* m_dict410;
+    cocos2d::CCDictionary* m_dict418;
+    std::vector<void*> m_vec420;
+    std::vector<void*> m_vec438;
+    std::vector<void*> m_vec450;
+    cocos2d::CCArray* m_array468;
+    cocos2d::CCArray* m_array470;
+    cocos2d::CCDictionary* m_dict478;
+    cocos2d::CCDictionary* m_dict480;
+    bool m_didntUpdateCapacity;
+    bool m_dualMode;//489
+    int m_enterExitEffect;
+    bool m_dualTouch;
+    int m_jumps;
+    int m_currentSection;
+    int m_oldSection;
+    bool m_disaledObjects;
+    bool m_blending;
+    int m_int4a4;
+    void* m_ptr4a8;
+
 @end
 
 @interface GJColorSetupLayer
@@ -1122,6 +1148,7 @@
     void setMainColorMode(int) = 0x342e70;
     void setPosition(cocos2d::CCPoint const&) = 0x335850;
     void setSectionIdx(int const&) = 0x343a10;
+    void setVisible(bool) = 0x336280;
     void setupCoinArt() = 0x337dd0;
     void slopeFloorTop() = 0x342800;
     void slopeWallLeft() = 0x3427e0;
@@ -1232,7 +1259,8 @@
     bool m_orientdBoxDirty;
     bool m_activated;
     bool m_activatedByP2;
-    bool m_hasAnimatedPart;
+    bool m_hasDetailChannel;
+    bool m_pulsingStick;
     int m_linkedGroup;
     bool m_isSpinning;
     float m_rotationSpeed;
@@ -1242,7 +1270,7 @@
     bool m_bool358;
     float m_hitboxScale;
     bool m_onSide;
-    cocos2d::CCSize m_unknown364;
+    cocos2d::CCSize m_collisionBox;
     int m_uuid;
     GameObjectType m_type;
     int m_section;
@@ -1251,6 +1279,7 @@
     cocos2d::CCPoint m_startPosition;
     gd::string m_textureName; //0x388
 
+    float m_objSize = 0x3c0;
     int m_id = 0x3c4;
     int m_colorID = 0x3bc;
     int m_zOrder = 0x42c;
@@ -1260,6 +1289,7 @@
     float m_scale = 0x3c0;
     float m_multiScaleMultiplier = 0x44c;
     bool m_isTrigger = 0x4b9;
+    int m_batchLayer = 0x3b4;
     char m_pad[0x2a0];
 @end
 
@@ -2141,6 +2171,22 @@
     ~UndoObject() = 0xa2f70;
 @end
 
+@interface cocos2d::CCAction
+    volatile void update(float dt) {}
+    void stop() = 0x35b860;
+    CCAction() = 0x35b610;
+    ~CCAction() = 0x35b690;
+@end
+
+@interface cocos2d::CCActionInterval
+    virtual ~CCActionInterval() = 0x1f9d60;
+    virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*) = 0x1f2550;
+    virtual bool isDone() = 0x1f2640;
+    virtual void step(float) = 0x1f2660;
+    virtual void startWithTarget(cocos2d::CCNode*) = 0x1f2700;
+    virtual cocos2d::CCActionInterval* reverse() = 0x1f2720;
+@end
+
 @interface cocos2d::CCActionTween
     static cocos2d::CCActionTween* create(float, char const*, float, float) = 0x447590;
 @end
@@ -2769,6 +2815,7 @@
 @interface cocos2d::CCSpriteFrame
     cocos2d::CCPoint& getOffset() = 0x1ad110;
     CCTexture2D* getTexture() = 0x1ad250;
+    static cocos2d::CCSpriteFrame* createWithTexture(cocos2d::CCTexture2D*, cocos2d::CCRect&) = 0x1ac390;
 @end
 
 @interface cocos2d::CCString

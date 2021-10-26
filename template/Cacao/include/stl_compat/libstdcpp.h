@@ -16,11 +16,11 @@ namespace gd {
         string(char const* ok) {
             std::string stub = std::string(ok);
 
-            m_data = reinterpret_cast<_internal_string*>((long)malloc(sizeof(_internal_string) + stub.size()) + sizeof(_internal_string));
+            m_data = reinterpret_cast<_internal_string*>((long)calloc(1, sizeof(_internal_string) + stub.size()+1) + sizeof(_internal_string));
             m_data[-1].m_len = stub.size();
-            m_data[-1].m_capacity = stub.capacity();
+            m_data[-1].m_capacity = stub.size();
             m_data[-1].m_refcount = 0;
-            strncpy((char*)m_data, ok, stub.size());
+            strncpy((char*)m_data, ok, stub.size()+1);
         }
         string(std::string ok) : string(ok.c_str()) {}
         operator std::string() {
@@ -34,7 +34,7 @@ namespace gd {
 
             m_data = reinterpret_cast<_internal_string*>((long)malloc(sizeof(_internal_string) + stub.size()) + sizeof(_internal_string));
             m_data[-1].m_len = stub.size();
-            m_data[-1].m_capacity = stub.capacity();
+            m_data[-1].m_capacity = stub.size();
             m_data[-1].m_refcount = 0;
             strncpy((char*)m_data, stub.c_str(), stub.size());
             //return *this;
@@ -44,7 +44,7 @@ namespace gd {
 
             m_data = reinterpret_cast<_internal_string*>((long)malloc(sizeof(_internal_string) + stub.size()) + sizeof(_internal_string));
             m_data[-1].m_len = stub.size();
-            m_data[-1].m_capacity = stub.capacity();
+            m_data[-1].m_capacity = stub.size();
             m_data[-1].m_refcount = 0;
             strncpy((char*)m_data, stub.c_str(), stub.size());
             return *this;
