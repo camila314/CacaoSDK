@@ -47,7 +47,7 @@ for cl in classes:
         if isinstance(info, str) and "cocos2d" in cl.name:
             out += "\n" + info.replace("\n    ", "\n") + "\n"
             continue
-        if not isinstance(info, CinnamonFunction):
+        if not isinstance(info, GenFunction):
             continue
         body = functionBody
         if info.static:

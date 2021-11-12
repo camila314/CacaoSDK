@@ -4,13 +4,13 @@
 #pragma once 
 
 #include <iostream>
-#include <Compat/gdstdlib.hpp>
-#include <Core/Core.hpp>
+#include <compat/gdstdlib.hpp>
+#include <Core.hpp>
 // #include <CCMenuItemSpriteExtra.h>
 
-#include <Base/MacroBase.hpp>
-#include <Base/FunctionBase.hpp>
-#include <Base/Base.hpp>
+#include <MacroBase.hpp>
+#include <FunctionBase.hpp>
+#include <Base.hpp>
 #include <cocos2dx/cocos2d.h>
 #include <cocos2dext/cocos-ext.h>
 

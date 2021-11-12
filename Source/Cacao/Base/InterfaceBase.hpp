@@ -3,10 +3,10 @@
 //
 #pragma once
 
-#include <Base/Base.hpp>
-#include <Core/Core.hpp>
-#include <Base/MacroBase.hpp>
-#include <Base/FunctionBase.hpp>
+#include <Base.hpp>
+#include <Core.hpp>
+#include <MacroBase.hpp>
+#include <FunctionBase.hpp>
 
 #include <Header.hpp>
 #include <Cacao.hpp>

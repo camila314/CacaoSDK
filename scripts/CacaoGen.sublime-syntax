@@ -1,13 +1,13 @@
 %YAML 1.2
 ---
 # http://www.sublimetext.com/docs/3/syntax.html
-name: Cackit
+name: CacaoGen
 file_extensions:
-  - Cackit
-  - cackit
-  - CacKit
+  - mm
+  - M
+  - h
 scope: source.c++
 extends: Packages/C++/C++.sublime-syntax
 
 variables:
-  compiler_directive: 'thiscall|stdcall|optcall|dupable|inline|restrict|__restrict__|__restrict'
+  compiler_directive: 'thiscall|stdcall|optcall|membercall|inline'

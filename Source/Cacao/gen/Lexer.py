@@ -11,6 +11,7 @@ reserved = {
     'stdcall': 'STDCALL',
     'thiscall': 'THISCALL',
     'optcall': 'OPTCALL',
+    'membercall': 'MEMBERCALL',
     'unsigned': 'UNSIGNED',
     'class': 'CLASS',
     'const*': 'CONSTP',
@@ -51,7 +52,6 @@ states = (
 
 t_info_ASSIGN = r"="
 t_info_ADDRESS = r"0x[0-9a-fA-F]+"
-t_info_NUM = r"[0-9]+"
 t_info_LPAREN = r"\("
 t_info_RPAREN = r"\)"
 

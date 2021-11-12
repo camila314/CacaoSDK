@@ -7,7 +7,7 @@ def debugout(*args):
     # print(*args)
     pass
 
-class CinnamonDeclaration:
+class GenDeclaration:
     def __init__(self):
         self.type = None
         self.name = None
@@ -22,7 +22,7 @@ class CinnamonDeclaration:
     #         return getName(default)
     #     return f"{getType(default)} {getName(default)}"
 
-class CinnamonFunction:
+class GenFunction:
     def __init__(self):
         self.static = False
         self.virtual = False
@@ -41,14 +41,14 @@ class CinnamonFunction:
     #     ', '.join(p.getExpr(i) for i, p in enumerate(self.parameters))
 
 
-class CinnamonMember:
+class GenMember:
     def __init__(self):
         self.declare = None
         self.offset = None
     def __repr__(self):
         return f"{self.declare} = {self.offset}"
 
-class CinnamonClass:
+class GenClass:
     def __init__(self):
         self.info = []
         self.name = ""
@@ -118,18 +118,18 @@ def p_bodypure_include(p):
 # class implementation
 def p_class_class(p):
     'class : CLASS IDENT'
-    c = CinnamonClass()
+    c = GenClass()
     c.name = p[2]
     p[0] = c
     debugout(p[0:10], "p_class_class")
 
 def p_class_based(p):
     'class : CLASS IDENT COLON classbase'
-    c = CinnamonClass()
+    c = GenClass()
     c.name = p[2]
     c.base = p[4]
     for a in p[4]:
-        if isinstance(a, CinnamonFunction):
+        if isinstance(a, GenFunction):
             a.parent = c
     p[0] = c
     debugout(p[0:10], "p_class_based")
@@ -172,16 +172,44 @@ def p_info_member(p):
 # member implementation
 def p_member_normal(p):
     'member : declaration offset SEMI'
-    m = CinnamonMember()
+    m = GenMember()
     m.declare = p[1]
     m.offset = p[2]
     p[0] = m
 
 def p_member_offsetless(p):
     'member : declaration SEMI'
-    m = CinnamonMember()
+    m = GenMember()
     m.declare = p[1]
     p[0] = m
+
+
+
+# convention implementation
+def p_convention_empty(p):
+    'convention : empty'
+    p[0] = p[1]
+    debugout(p[0:10], "p_convention_empty")
+
+def p_convention_stdcall(p):
+    'convention : STDCALL'
+    p[0] = p[1]
+    debugout(p[0:10], "p_convention_stdcall")
+
+def p_convention_thiscall(p):
+    'convention : THISCALL'
+    p[0] = p[1]
+    debugout(p[0:10], "p_convention_thiscall")
+
+def p_convention_optcall(p):
+    'convention : OPTCALL'
+    p[0] = p[1]
+    debugout(p[0:10], "p_convention_optcall")
+
+def p_convention_membercall(p):
+    'convention : MEMBERCALL'
+    p[0] = p[1]
+    debugout(p[0:10], "p_convention_membercall")
 
 
 
@@ -189,6 +217,7 @@ def p_member_offsetless(p):
 def p_function_virtual(p):
     'function : VIRTUAL purefunction offset SEMI'
     f = p[2]
+    #f.convention = p[1]
     f.virtual = True
     f.offset = p[3]
     p[0] = f
@@ -197,6 +226,7 @@ def p_function_virtual(p):
 def p_function_static(p):
     'function : STATIC purefunction offset SEMI'
     f = p[2]
+    #f.convention = p[1]
     f.static = True
     f.offset = p[3]
     p[0] = f
@@ -205,13 +235,14 @@ def p_function_static(p):
 def p_function_normal(p):
     'function : purefunction offset SEMI'
     f = p[1]
+    #f.convention = p[1]
     f.offset = p[2]
     p[0] = f
     debugout(p[0:10], "p_function_normal")
 
 def p_purefunction_pure(p):
     'purefunction : declaration parameter'
-    f = CinnamonFunction()
+    f = GenFunction()
     f.declare = p[1]
     f.parameters = p[2]
     p[0] = f
@@ -219,7 +250,7 @@ def p_purefunction_pure(p):
 
 def p_purefunction_const(p):
     'purefunction : declaration parameter CONST'
-    f = CinnamonFunction()
+    f = GenFunction()
     f.declare = p[1]
     f.parameters = p[2]
     f.const = True
@@ -228,7 +259,7 @@ def p_purefunction_const(p):
 
 def p_purefunction_returnless(p):
     'purefunction : name parameter'
-    f = CinnamonFunction()
+    f = GenFunction()
     f.declare = p[1]
     f.parameters = p[2]
     p[0] = f
@@ -282,7 +313,7 @@ def p_declaration_declaration(p):
 
 def p_name_name(p):
     'name : IDENT'
-    d = CinnamonDeclaration()
+    d = GenDeclaration()
     d.name = p[1]
     p[0] = d
     debugout(p[0:10], "p_name_name")
@@ -292,7 +323,7 @@ def p_name_name(p):
 # type implementation
 def p_type_type(p):
     'type : puretype'
-    d = CinnamonDeclaration()
+    d = GenDeclaration()
     d.type = p[1]
     p[0] = d
     debugout(p[0:10], "p_type_type")
@@ -399,5 +430,5 @@ parser = yacc.yacc()
 result = parser.parse(preprocessed)
 
 # result = parser.parse(open(entryFile,"r").read())
-pickle.dump(result, open(os.path.join(os.path.dirname(__file__), "cinnamon.pickle"), "wb"))
+pickle.dump(result, open(os.path.join(os.path.dirname(__file__), "gen.pickle"), "wb"))
 # print(result)
