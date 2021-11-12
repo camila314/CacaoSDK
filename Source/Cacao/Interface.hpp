@@ -8,10 +8,16 @@
 template<class D>
 class $AppDelegate : public AppDelegate, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AppDelegate() {
         endDestructor();
     }
-    $AppDelegate() {}
+    $AppDelegate() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AppDelegate>().bgScale());
     using c0 = r0($AppDelegate::*)() ;
@@ -95,7 +101,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AppDelegate::bgScale} != (d0){&D::bgScale})
@@ -125,122 +131,170 @@ public:
         if ((c8){&$AppDelegate::get} != (d8){&D::get})
             m->registerHook(base+0x3aab10, FunctionScrapper::addressOfNonVirtual((d8){&D::get}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCCircleWaveDelegate() {
         endDestructor();
     }
-    $CCCircleWaveDelegate() {}
+    $CCCircleWaveDelegate() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TableViewDelegate : public TableViewDelegate, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TableViewDelegate() {
         endDestructor();
     }
-    $TableViewDelegate() {}
+    $TableViewDelegate() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TableViewDataSource : public TableViewDataSource, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TableViewDataSource() {
         endDestructor();
     }
-    $TableViewDataSource() {}
+    $TableViewDataSource() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCScrollLayerExtDelegate() {
         endDestructor();
     }
-    $CCScrollLayerExtDelegate() {}
+    $CCScrollLayerExtDelegate() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJSpecialColorSelectDelegate() {
         endDestructor();
     }
-    $GJSpecialColorSelectDelegate() {}
+    $GJSpecialColorSelectDelegate() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TextInputDelegate : public TextInputDelegate, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TextInputDelegate() {
         endDestructor();
     }
-    $TextInputDelegate() {}
+    $TextInputDelegate() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$FLAlertLayerProtocol() {
         endDestructor();
     }
-    $FLAlertLayerProtocol() {}
+    $FLAlertLayerProtocol() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCSpritePlus : public CCSpritePlus, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCSpritePlus() {
         endDestructor();
     }
-    $CCSpritePlus() {}
+    $CCSpritePlus() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCSpritePlus>().initWithSpriteFrameName(std::declval<char const*>()));
     using c0 = r0($CCSpritePlus::*)(char const*) ;
@@ -251,23 +305,29 @@ public:
         return reinterpret_cast<f0>(base+0x248670)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCSpritePlus::initWithSpriteFrameName} != (d0){&D::initWithSpriteFrameName})
             m->registerHook(base+0x248670, FunctionScrapper::addressOfNonVirtual((d0){&D::initWithSpriteFrameName}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCMoveCNode : public CCMoveCNode, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCMoveCNode() {
         endDestructor();
     }
-    $CCMoveCNode() {}
+    $CCMoveCNode() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCMoveCNode>().create());
     using c0 = r0(*)();
@@ -288,7 +348,7 @@ public:
         return reinterpret_cast<f1>(base+0x18b3d0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCMoveCNode::create} != (d0){&D::create})
@@ -297,17 +357,23 @@ public:
         if ((c1){&$CCMoveCNode::init} != (d1){&D::init})
             m->registerHook(base+0x18b3d0, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCNodeContainer : public CCNodeContainer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCNodeContainer() {
         endDestructor();
     }
-    $CCNodeContainer() {}
+    $CCNodeContainer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCNodeContainer>().create());
     using c0 = r0(*)();
@@ -337,7 +403,7 @@ public:
         return reinterpret_cast<f2>(base+0xba960)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCNodeContainer::create} != (d0){&D::create})
@@ -349,17 +415,23 @@ public:
         if ((c2){&$CCNodeContainer::visit} != (d2){&D::visit})
             m->registerHook(base+0xba960, FunctionScrapper::addressOfNonVirtual((d2){&D::visit}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCAnimatedSprite() {
         endDestructor();
     }
-    $CCAnimatedSprite() {}
+    $CCAnimatedSprite() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCAnimatedSprite>().runAnimation(std::declval<gd::string>()));
     using c0 = r0($CCAnimatedSprite::*)(gd::string) ;
@@ -379,7 +451,7 @@ public:
         return reinterpret_cast<f1>(base+0x1a65b0)(this, p0, p1);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCAnimatedSprite::runAnimation} != (d0){&D::runAnimation})
@@ -388,17 +460,23 @@ public:
         if ((c1){&$CCAnimatedSprite::tweenToAnimation} != (d1){&D::tweenToAnimation})
             m->registerHook(base+0x1a65b0, FunctionScrapper::addressOfNonVirtual((d1){&D::tweenToAnimation}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCBlockLayer : public CCBlockLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCBlockLayer() {
         endDestructor();
     }
-    $CCBlockLayer() {}
+    $CCBlockLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCBlockLayer>().disableUI());
     using c0 = r0($CCBlockLayer::*)() ;
@@ -508,7 +586,7 @@ public:
         return reinterpret_cast<f11>(base+0x2a5b90)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCBlockLayer::disableUI} != (d0){&D::disableUI})
@@ -547,17 +625,23 @@ public:
         if ((c11){&$CCBlockLayer::showLayer} != (d11){&D::showLayer})
             m->registerHook(base+0x2a5b90, FunctionScrapper::addressOfNonVirtual((d11){&D::showLayer}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCCircleWave : public CCCircleWave, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCCircleWave() {
         endDestructor();
     }
-    $CCCircleWave() {}
+    $CCCircleWave() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCCircleWave>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
     using c0 = r0(*)(float, float, float, bool);
@@ -606,7 +690,7 @@ public:
         return reinterpret_cast<f4>(base+0xbd630)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCCircleWave::create} != (d0){&D::create})
@@ -624,17 +708,23 @@ public:
         if ((c4){&$CCCircleWave::updatePosition} != (d4){&D::updatePosition})
             m->registerHook(base+0xbd630, FunctionScrapper::addressOfNonVirtual((d4){&D::updatePosition}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCLightFlash : public CCLightFlash, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCLightFlash() {
         endDestructor();
     }
-    $CCLightFlash() {}
+    $CCLightFlash() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCLightFlash>().create());
     using c0 = r0(*)();
@@ -655,7 +745,7 @@ public:
         return reinterpret_cast<f1>(base+0x295900)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCLightFlash::create} != (d0){&D::create})
@@ -664,17 +754,23 @@ public:
         if ((c1){&$CCLightFlash::playEffect} != (d1){&D::playEffect})
             m->registerHook(base+0x295900, FunctionScrapper::addressOfNonVirtual((d1){&D::playEffect}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCMenuItemSpriteExtra() {
         endDestructor();
     }
-    $CCMenuItemSpriteExtra() {}
+    $CCMenuItemSpriteExtra() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCMenuItemSpriteExtra>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
     using c0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
@@ -704,7 +800,7 @@ public:
         return reinterpret_cast<f3>(base+0x125450)(this, p0, p1, p2, p3);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCMenuItemSpriteExtra::create} != (d0){&D::create})
@@ -716,17 +812,23 @@ public:
         if ((c3){&$CCMenuItemSpriteExtra::init} != (d3){&D::init})
             m->registerHook(base+0x125450, FunctionScrapper::addressOfNonVirtual((d3){&D::init}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCMenuItemToggler() {
         endDestructor();
     }
-    $CCMenuItemToggler() {}
+    $CCMenuItemToggler() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCMenuItemToggler>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
     using c0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
@@ -747,7 +849,7 @@ public:
         return reinterpret_cast<f1>(base+0x38a40)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCMenuItemToggler::create} != (d0){&D::create})
@@ -756,17 +858,23 @@ public:
         if ((c1){&$CCMenuItemToggler::setSizeMult} != (d1){&D::setSizeMult})
             m->registerHook(base+0x38a40, FunctionScrapper::addressOfNonVirtual((d1){&D::setSizeMult}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCScrollLayerExt() {
         endDestructor();
     }
-    $CCScrollLayerExt() {}
+    $CCScrollLayerExt() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<CCScrollLayerExt>().visit());
     using c1 = r1($CCScrollLayerExt::*)() ;
@@ -858,7 +966,7 @@ public:
         return reinterpret_cast<f10>(base+0x2357d0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$CCScrollLayerExt::visit} != (d1){&D::visit})
@@ -891,17 +999,23 @@ public:
         if ((c10){&$CCScrollLayerExt::moveToTopWithOffset} != (d10){&D::moveToTopWithOffset})
             m->registerHook(base+0x2357d0, FunctionScrapper::addressOfNonVirtual((d10){&D::moveToTopWithOffset}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GManager : public GManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GManager() {
         endDestructor();
     }
-    $GManager() {}
+    $GManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GManager>().save());
     using c1 = r1($GManager::*)() ;
@@ -930,7 +1044,7 @@ public:
         return reinterpret_cast<f3>(base+0x26f3b0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GManager::save} != (d1){&D::save})
@@ -942,17 +1056,23 @@ public:
         if ((c3){&$GManager::saveGMTo} != (d3){&D::saveGMTo})
             m->registerHook(base+0x26f3b0, FunctionScrapper::addressOfNonVirtual((d3){&D::saveGMTo}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GameLevelManager : public GameLevelManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GameLevelManager() {
         endDestructor();
     }
-    $GameLevelManager() {}
+    $GameLevelManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GameLevelManager>().createNewLevel());
     using c0 = r0($GameLevelManager::*)() ;
@@ -1018,7 +1138,7 @@ public:
         return reinterpret_cast<f6>(base+0x2bfd90)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GameLevelManager::createNewLevel} != (d0){&D::createNewLevel})
@@ -1042,17 +1162,23 @@ public:
         if ((c6){&$GameLevelManager::makeTimeStamp} != (d6){&D::makeTimeStamp})
             m->registerHook(base+0x2bfd90, FunctionScrapper::addressOfNonVirtual((d6){&D::makeTimeStamp}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GameManager : public GameManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GameManager() {
         endDestructor();
     }
-    $GameManager() {}
+    $GameManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GameManager>().accountStatusChanged());
     using c0 = r0($GameManager::*)() ;
@@ -1271,7 +1397,7 @@ public:
         return reinterpret_cast<f24>(base+0x1d0270)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GameManager::accountStatusChanged} != (d0){&D::accountStatusChanged})
@@ -1346,17 +1472,23 @@ public:
         if ((c24){&$GameManager::update} != (d24){&D::update})
             m->registerHook(base+0x1d0270, FunctionScrapper::addressOfNonVirtual((d24){&D::update}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GameSoundManager : public GameSoundManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GameSoundManager() {
         endDestructor();
     }
-    $GameSoundManager() {}
+    $GameSoundManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GameSoundManager>().disableMetering());
     using c0 = r0($GameSoundManager::*)() ;
@@ -1421,7 +1553,7 @@ public:
         return reinterpret_cast<f6>(base+0x362130)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GameSoundManager::disableMetering} != (d0){&D::disableMetering})
@@ -1445,17 +1577,23 @@ public:
         if ((c6){&$GameSoundManager::stopBackgroundMusic} != (d6){&D::stopBackgroundMusic})
             m->registerHook(base+0x362130, FunctionScrapper::addressOfNonVirtual((d6){&D::stopBackgroundMusic}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GameStatsManager : public GameStatsManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GameStatsManager() {
         endDestructor();
     }
-    $GameStatsManager() {}
+    $GameStatsManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GameStatsManager>().awardCurrencyForLevel(std::declval<GJGameLevel*>()));
     using c0 = r0($GameStatsManager::*)(GJGameLevel*) ;
@@ -1583,7 +1721,7 @@ public:
         return reinterpret_cast<f13>(base+0x42890)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GameStatsManager::awardCurrencyForLevel} != (d0){&D::awardCurrencyForLevel})
@@ -1628,17 +1766,23 @@ public:
         if ((c13){&$GameStatsManager::storeUserCoin} != (d13){&D::storeUserCoin})
             m->registerHook(base+0x42890, FunctionScrapper::addressOfNonVirtual((d13){&D::storeUserCoin}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $LocalLevelManager : public LocalLevelManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$LocalLevelManager() {
         endDestructor();
     }
-    $LocalLevelManager() {}
+    $LocalLevelManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<LocalLevelManager>().sharedState());
     using c0 = r0(*)();
@@ -1650,23 +1794,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$LocalLevelManager::sharedState} != (d0){&D::sharedState})
             m->registerHook(base+0x35dd60, FunctionScrapper::addressOfNonVirtual((d0){&D::sharedState}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$MusicDownloadManager() {
         endDestructor();
     }
-    $MusicDownloadManager() {}
+    $MusicDownloadManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<MusicDownloadManager>().incrementPriorityForSong(std::declval<int>()));
     using c0 = r0($MusicDownloadManager::*)(int) ;
@@ -1687,7 +1837,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$MusicDownloadManager::incrementPriorityForSong} != (d0){&D::incrementPriorityForSong})
@@ -1696,17 +1846,23 @@ public:
         if ((c1){&$MusicDownloadManager::sharedState} != (d1){&D::sharedState})
             m->registerHook(base+0x2ee4c0, FunctionScrapper::addressOfNonVirtual((d1){&D::sharedState}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ObjectToolbox : public ObjectToolbox, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ObjectToolbox() {
         endDestructor();
     }
-    $ObjectToolbox() {}
+    $ObjectToolbox() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<ObjectToolbox>().init());
     using c0 = r0($ObjectToolbox::*)() ;
@@ -1736,7 +1892,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$ObjectToolbox::init} != (d0){&D::init})
@@ -1748,17 +1904,23 @@ public:
         if ((c2){&$ObjectToolbox::sharedState} != (d2){&D::sharedState})
             m->registerHook(base+0x3b2bc0, FunctionScrapper::addressOfNonVirtual((d2){&D::sharedState}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $PlatformToolbox : public PlatformToolbox, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$PlatformToolbox() {
         endDestructor();
     }
-    $PlatformToolbox() {}
+    $PlatformToolbox() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<PlatformToolbox>().hideCursor());
     using c0 = r0($PlatformToolbox::*)() ;
@@ -1778,7 +1940,7 @@ public:
         return reinterpret_cast<f1>(base+0x27c360)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$PlatformToolbox::hideCursor} != (d0){&D::hideCursor})
@@ -1787,17 +1949,23 @@ public:
         if ((c1){&$PlatformToolbox::showCursor} != (d1){&D::showCursor})
             m->registerHook(base+0x27c360, FunctionScrapper::addressOfNonVirtual((d1){&D::showCursor}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJEffectManager : public GJEffectManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJEffectManager() {
         endDestructor();
     }
-    $GJEffectManager() {}
+    $GJEffectManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GJEffectManager>().init());
     using c0 = r0($GJEffectManager::*)() ;
@@ -2556,7 +2724,7 @@ public:
         return reinterpret_cast<f83>(base+0x181820)(this, p0, p1);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GJEffectManager::init} != (d0){&D::init})
@@ -2811,17 +2979,23 @@ public:
         if ((c83){&$GJEffectManager::wouldCreateLoop} != (d83){&D::wouldCreateLoop})
             m->registerHook(base+0x181820, FunctionScrapper::addressOfNonVirtual((d83){&D::wouldCreateLoop}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $FLAlertLayer : public FLAlertLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$FLAlertLayer() {
         endDestructor();
     }
-    $FLAlertLayer() {}
+    $FLAlertLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<FLAlertLayer>().onEnter());
     using c1 = r1($FLAlertLayer::*)() ;
@@ -2933,7 +3107,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$FLAlertLayer::onEnter} != (d1){&D::onEnter})
@@ -2972,17 +3146,23 @@ public:
         if ((c12){&$FLAlertLayer::create} != (d12){&D::create})
             m->registerHook(base+0x25dec0, FunctionScrapper::addressOfNonVirtual((d12){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJBaseGameLayer() {
         endDestructor();
     }
-    $GJBaseGameLayer() {}
+    $GJBaseGameLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GJBaseGameLayer>().objectsCollided(std::declval<int>(), std::declval<int>()));
     using c0 = r0($GJBaseGameLayer::*)(int, int) ;
@@ -3596,7 +3776,7 @@ public:
         return reinterpret_cast<f67>(base+0xb9f30)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GJBaseGameLayer::objectsCollided} != (d0){&D::objectsCollided})
@@ -3803,17 +3983,23 @@ public:
         if ((c67){&$GJBaseGameLayer::updateQueuedLabels} != (d67){&D::updateQueuedLabels})
             m->registerHook(base+0xb9f30, FunctionScrapper::addressOfNonVirtual((d67){&D::updateQueuedLabels}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJDropDownLayer() {
         endDestructor();
     }
-    $GJDropDownLayer() {}
+    $GJDropDownLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<GJDropDownLayer>().customSetup());
     using c0 = r0($GJDropDownLayer::*)() ;
@@ -3951,7 +4137,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$GJDropDownLayer::customSetup} != (d0){&D::customSetup})
@@ -3999,17 +4185,23 @@ public:
         if ((c14){&$GJDropDownLayer::create} != (d14){&D::create})
             m->registerHook(base+0x352530, FunctionScrapper::addressOfNonVirtual((d14){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $UILayer : public UILayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$UILayer() {
         endDestructor();
     }
-    $UILayer() {}
+    $UILayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<UILayer>().create());
     using c0 = r0(*)();
@@ -4057,7 +4249,7 @@ public:
         return reinterpret_cast<f4>(base+0x280430)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$UILayer::create} != (d0){&D::create})
@@ -4075,17 +4267,23 @@ public:
         if ((c4){&$UILayer::toggleCheckpointsMenu} != (d4){&D::toggleCheckpointsMenu})
             m->registerHook(base+0x280430, FunctionScrapper::addressOfNonVirtual((d4){&D::toggleCheckpointsMenu}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$RetryLevelLayer() {
         endDestructor();
     }
-    $RetryLevelLayer() {}
+    $RetryLevelLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<RetryLevelLayer>().create());
     using c0 = r0(*)();
@@ -4097,23 +4295,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$RetryLevelLayer::create} != (d0){&D::create})
             m->registerHook(base+0x28dd60, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetGroupIDLayer() {
         endDestructor();
     }
-    $SetGroupIDLayer() {}
+    $SetGroupIDLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetGroupIDLayer>().onNextGroupID1(std::declval<cocos2d::CCObject*>()));
     using c0 = r0($SetGroupIDLayer::*)(cocos2d::CCObject*) ;
@@ -4142,7 +4346,7 @@ public:
         return reinterpret_cast<f2>(base+0x197260)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetGroupIDLayer::onNextGroupID1} != (d0){&D::onNextGroupID1})
@@ -4154,17 +4358,23 @@ public:
         if ((c2){&$SetGroupIDLayer::updateGroupIDLabel} != (d2){&D::updateGroupIDLabel})
             m->registerHook(base+0x197260, FunctionScrapper::addressOfNonVirtual((d2){&D::updateGroupIDLabel}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetIDLayer : public SetIDLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetIDLayer() {
         endDestructor();
     }
-    $SetIDLayer() {}
+    $SetIDLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetIDLayer>().create(std::declval<GameObject*>()));
     using c0 = r0(*)(GameObject*);
@@ -4176,38 +4386,50 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetIDLayer::create} != (d0){&D::create})
             m->registerHook(base+0x168f20, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetIDPopup : public SetIDPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetIDPopup() {
         endDestructor();
     }
-    $SetIDPopup() {}
+    $SetIDPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetItemIDLayer() {
         endDestructor();
     }
-    $SetItemIDLayer() {}
+    $SetItemIDLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetItemIDLayer>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4219,23 +4441,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetItemIDLayer::create} != (d0){&D::create})
             m->registerHook(base+0x5a830, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetTargetIDLayer() {
         endDestructor();
     }
-    $SetTargetIDLayer() {}
+    $SetTargetIDLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetTargetIDLayer>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>(), std::declval<gd::string>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*, gd::string);
@@ -4274,7 +4502,7 @@ public:
         return reinterpret_cast<f3>(base+0x15b4a0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetTargetIDLayer::create} != (d0){&D::create})
@@ -4289,17 +4517,23 @@ public:
         if ((c3){&$SetTargetIDLayer::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x15b4a0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupAnimationPopup() {
         endDestructor();
     }
-    $SetupAnimationPopup() {}
+    $SetupAnimationPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupAnimationPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4338,7 +4572,7 @@ public:
         return reinterpret_cast<f3>(base+0x20a910)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupAnimationPopup::create} != (d0){&D::create})
@@ -4353,17 +4587,23 @@ public:
         if ((c3){&$SetupAnimationPopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x20a910, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupCollisionTriggerPopup() {
         endDestructor();
     }
-    $SetupCollisionTriggerPopup() {}
+    $SetupCollisionTriggerPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupCollisionTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4402,7 +4642,7 @@ public:
         return reinterpret_cast<f3>(base+0x1d82b0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupCollisionTriggerPopup::create} != (d0){&D::create})
@@ -4417,17 +4657,23 @@ public:
         if ((c3){&$SetupCollisionTriggerPopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x1d82b0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupCountTriggerPopup() {
         endDestructor();
     }
-    $SetupCountTriggerPopup() {}
+    $SetupCountTriggerPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupCountTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4466,7 +4712,7 @@ public:
         return reinterpret_cast<f3>(base+0x15e8a0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupCountTriggerPopup::create} != (d0){&D::create})
@@ -4481,17 +4727,23 @@ public:
         if ((c3){&$SetupCountTriggerPopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x15e8a0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupInstantCountPopup() {
         endDestructor();
     }
-    $SetupInstantCountPopup() {}
+    $SetupInstantCountPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupInstantCountPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4530,7 +4782,7 @@ public:
         return reinterpret_cast<f3>(base+0x355170)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupInstantCountPopup::create} != (d0){&D::create})
@@ -4545,17 +4797,23 @@ public:
         if ((c3){&$SetupInstantCountPopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x355170, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupInteractObjectPopup() {
         endDestructor();
     }
-    $SetupInteractObjectPopup() {}
+    $SetupInteractObjectPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupInteractObjectPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4594,7 +4852,7 @@ public:
         return reinterpret_cast<f3>(base+0x29c120)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupInteractObjectPopup::create} != (d0){&D::create})
@@ -4609,17 +4867,23 @@ public:
         if ((c3){&$SetupInteractObjectPopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x29c120, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupObjectTogglePopup() {
         endDestructor();
     }
-    $SetupObjectTogglePopup() {}
+    $SetupObjectTogglePopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupObjectTogglePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4667,7 +4931,7 @@ public:
         return reinterpret_cast<f4>(base+0x1c2440)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupObjectTogglePopup::create} != (d0){&D::create})
@@ -4685,17 +4949,23 @@ public:
         if ((c4){&$SetupObjectTogglePopup::updateTargetID} != (d4){&D::updateTargetID})
             m->registerHook(base+0x1c2440, FunctionScrapper::addressOfNonVirtual((d4){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupOpacityPopup() {
         endDestructor();
     }
-    $SetupOpacityPopup() {}
+    $SetupOpacityPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupOpacityPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4734,7 +5004,7 @@ public:
         return reinterpret_cast<f3>(base+0x34760)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupOpacityPopup::create} != (d0){&D::create})
@@ -4749,17 +5019,23 @@ public:
         if ((c3){&$SetupOpacityPopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x34760, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupPickupTriggerPopup() {
         endDestructor();
     }
-    $SetupPickupTriggerPopup() {}
+    $SetupPickupTriggerPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupPickupTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4807,7 +5083,7 @@ public:
         return reinterpret_cast<f4>(base+0x37ab0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupPickupTriggerPopup::create} != (d0){&D::create})
@@ -4825,17 +5101,23 @@ public:
         if ((c4){&$SetupPickupTriggerPopup::updateItemID} != (d4){&D::updateItemID})
             m->registerHook(base+0x37ab0, FunctionScrapper::addressOfNonVirtual((d4){&D::updateItemID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupShakePopup : public SetupShakePopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupShakePopup() {
         endDestructor();
     }
-    $SetupShakePopup() {}
+    $SetupShakePopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupShakePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4847,23 +5129,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupShakePopup::create} != (d0){&D::create})
             m->registerHook(base+0x3adc00, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupSpawnPopup() {
         endDestructor();
     }
-    $SetupSpawnPopup() {}
+    $SetupSpawnPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupSpawnPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4911,7 +5199,7 @@ public:
         return reinterpret_cast<f4>(base+0x13b770)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupSpawnPopup::create} != (d0){&D::create})
@@ -4929,17 +5217,23 @@ public:
         if ((c4){&$SetupSpawnPopup::updateTargetID} != (d4){&D::updateTargetID})
             m->registerHook(base+0x13b770, FunctionScrapper::addressOfNonVirtual((d4){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SetupTouchTogglePopup() {
         endDestructor();
     }
-    $SetupTouchTogglePopup() {}
+    $SetupTouchTogglePopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SetupTouchTogglePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -4978,7 +5272,7 @@ public:
         return reinterpret_cast<f3>(base+0x159480)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SetupTouchTogglePopup::create} != (d0){&D::create})
@@ -4993,17 +5287,23 @@ public:
         if ((c3){&$SetupTouchTogglePopup::updateTargetID} != (d3){&D::updateTargetID})
             m->registerHook(base+0x159480, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $PauseLayer : public PauseLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$PauseLayer() {
         endDestructor();
     }
-    $PauseLayer() {}
+    $PauseLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<PauseLayer>().create(std::declval<bool>()));
     using c0 = r0(*)(bool);
@@ -5024,7 +5324,7 @@ public:
         return reinterpret_cast<f1>(base+0x20c630)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$PauseLayer::create} != (d0){&D::create})
@@ -5033,17 +5333,23 @@ public:
         if ((c1){&$PauseLayer::onEdit} != (d1){&D::onEdit})
             m->registerHook(base+0x20c630, FunctionScrapper::addressOfNonVirtual((d1){&D::onEdit}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TopArtistsLayer() {
         endDestructor();
     }
-    $TopArtistsLayer() {}
+    $TopArtistsLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<TopArtistsLayer>().create());
     using c0 = r0(*)();
@@ -5091,7 +5397,7 @@ public:
         return reinterpret_cast<f4>(base+0x193730)(this, p0, p1);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$TopArtistsLayer::create} != (d0){&D::create})
@@ -5109,17 +5415,23 @@ public:
         if ((c4){&$TopArtistsLayer::setupPageInfo} != (d4){&D::setupPageInfo})
             m->registerHook(base+0x193730, FunctionScrapper::addressOfNonVirtual((d4){&D::setupPageInfo}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $MenuGameLayer : public MenuGameLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$MenuGameLayer() {
         endDestructor();
     }
-    $MenuGameLayer() {}
+    $MenuGameLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<MenuGameLayer>().resetPlayer());
     using c0 = r0($MenuGameLayer::*)() ;
@@ -5139,7 +5451,7 @@ public:
         return reinterpret_cast<f1>(base+0x28fa70)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$MenuGameLayer::resetPlayer} != (d0){&D::resetPlayer})
@@ -5148,17 +5460,23 @@ public:
         if ((c1){&$MenuGameLayer::update} != (d1){&D::update})
             m->registerHook(base+0x28fa70, FunctionScrapper::addressOfNonVirtual((d1){&D::update}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$MoreVideoOptionsLayer() {
         endDestructor();
     }
-    $MoreVideoOptionsLayer() {}
+    $MoreVideoOptionsLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<MoreVideoOptionsLayer>().create());
     using c0 = r0(*)();
@@ -5179,7 +5497,7 @@ public:
         return reinterpret_cast<f1>(base+0x444150)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$MoreVideoOptionsLayer::create} != (d0){&D::create})
@@ -5188,17 +5506,23 @@ public:
         if ((c1){&$MoreVideoOptionsLayer::init} != (d1){&D::init})
             m->registerHook(base+0x444150, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AudioEffectsLayer() {
         endDestructor();
     }
-    $AudioEffectsLayer() {}
+    $AudioEffectsLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AudioEffectsLayer>().audioStep(std::declval<float>()));
     using c0 = r0($AudioEffectsLayer::*)(float) ;
@@ -5228,7 +5552,7 @@ public:
         return reinterpret_cast<f2>(base+0x271ee0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AudioEffectsLayer::audioStep} != (d0){&D::audioStep})
@@ -5240,17 +5564,23 @@ public:
         if ((c2){&$AudioEffectsLayer::resetAudioVars} != (d2){&D::resetAudioVars})
             m->registerHook(base+0x271ee0, FunctionScrapper::addressOfNonVirtual((d2){&D::resetAudioVars}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CollisionBlockPopup() {
         endDestructor();
     }
-    $CollisionBlockPopup() {}
+    $CollisionBlockPopup() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CollisionBlockPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
     using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
@@ -5271,7 +5601,7 @@ public:
         return reinterpret_cast<f1>(base+0x130e60)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CollisionBlockPopup::create} != (d0){&D::create})
@@ -5280,17 +5610,23 @@ public:
         if ((c1){&$CollisionBlockPopup::onNextItemID} != (d1){&D::onNextItemID})
             m->registerHook(base+0x130e60, FunctionScrapper::addressOfNonVirtual((d1){&D::onNextItemID}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CreatorLayer : public CreatorLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CreatorLayer() {
         endDestructor();
     }
-    $CreatorLayer() {}
+    $CreatorLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CreatorLayer>().onMyLevels(std::declval<cocos2d::CCObject*>()));
     using c0 = r0($CreatorLayer::*)(cocos2d::CCObject*) ;
@@ -5310,7 +5646,7 @@ public:
         return reinterpret_cast<f1>(base+0x142860)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CreatorLayer::onMyLevels} != (d0){&D::onMyLevels})
@@ -5319,17 +5655,23 @@ public:
         if ((c1){&$CreatorLayer::onSavedLevels} != (d1){&D::onSavedLevels})
             m->registerHook(base+0x142860, FunctionScrapper::addressOfNonVirtual((d1){&D::onSavedLevels}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CustomSongLayer : public CustomSongLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CustomSongLayer() {
         endDestructor();
     }
-    $CustomSongLayer() {}
+    $CustomSongLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CustomSongLayer>().init(std::declval<LevelSettingsObject*>()));
     using c0 = r0($CustomSongLayer::*)(LevelSettingsObject*) ;
@@ -5358,7 +5700,7 @@ public:
         return reinterpret_cast<f2>(base+0xf18a0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CustomSongLayer::init} != (d0){&D::init})
@@ -5370,17 +5712,23 @@ public:
         if ((c2){&$CustomSongLayer::onSongBrowser} != (d2){&D::onSongBrowser})
             m->registerHook(base+0xf18a0, FunctionScrapper::addressOfNonVirtual((d2){&D::onSongBrowser}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$EditorOptionsLayer() {
         endDestructor();
     }
-    $EditorOptionsLayer() {}
+    $EditorOptionsLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<EditorOptionsLayer>().onButtonsPerRow(std::declval<cocos2d::CCObject*>()));
     using c0 = r0($EditorOptionsLayer::*)(cocos2d::CCObject*) ;
@@ -5391,23 +5739,29 @@ public:
         return reinterpret_cast<f0>(base+0x147b30)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$EditorOptionsLayer::onButtonsPerRow} != (d0){&D::onButtonsPerRow})
             m->registerHook(base+0x147b30, FunctionScrapper::addressOfNonVirtual((d0){&D::onButtonsPerRow}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $EndLevelLayer : public EndLevelLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$EndLevelLayer() {
         endDestructor();
     }
-    $EndLevelLayer() {}
+    $EndLevelLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<EndLevelLayer>().create());
     using c0 = r0(*)();
@@ -5419,23 +5773,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$EndLevelLayer::create} != (d0){&D::create})
             m->registerHook(base+0x2787d0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$EditorPauseLayer() {
         endDestructor();
     }
-    $EditorPauseLayer() {}
+    $EditorPauseLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<EditorPauseLayer>().keyBackClicked());
     using c1 = r1($EditorPauseLayer::*)() ;
@@ -5501,7 +5861,7 @@ public:
         return reinterpret_cast<f7>(base+0x13c7a0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$EditorPauseLayer::keyBackClicked} != (d1){&D::keyBackClicked})
@@ -5525,17 +5885,23 @@ public:
         if ((c7){&$EditorPauseLayer::init} != (d7){&D::init})
             m->registerHook(base+0x13c7a0, FunctionScrapper::addressOfNonVirtual((d7){&D::init}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ScrollingLayer : public ScrollingLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ScrollingLayer() {
         endDestructor();
     }
-    $ScrollingLayer() {}
+    $ScrollingLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<ScrollingLayer>().create(std::declval<cocos2d::CCSize>(), std::declval<cocos2d::CCPoint>(), std::declval<float>()));
     using c0 = r0(*)(cocos2d::CCSize, cocos2d::CCPoint, float);
@@ -5547,38 +5913,50 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$ScrollingLayer::create} != (d0){&D::create})
             m->registerHook(base+0x41a900, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJListLayer : public GJListLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJListLayer() {
         endDestructor();
     }
-    $GJListLayer() {}
+    $GJListLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CurrencyRewardLayer : public CurrencyRewardLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CurrencyRewardLayer() {
         endDestructor();
     }
-    $CurrencyRewardLayer() {}
+    $CurrencyRewardLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<CurrencyRewardLayer>().update(std::declval<float>()));
     using c1 = r1($CurrencyRewardLayer::*)(float) ;
@@ -5589,23 +5967,29 @@ public:
         return reinterpret_cast<f1>(base+0x44a5c0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$CurrencyRewardLayer::update} != (d1){&D::update})
             m->registerHook(base+0x44a5c0, FunctionScrapper::addressOfVirtual(i, (d1){&D::update}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $DialogLayer : public DialogLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$DialogLayer() {
         endDestructor();
     }
-    $DialogLayer() {}
+    $DialogLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<DialogLayer>().onEnter());
     using c1 = r1($DialogLayer::*)() ;
@@ -5688,7 +6072,7 @@ public:
         return reinterpret_cast<f9>(base+0x205930)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$DialogLayer::onEnter} != (d1){&D::onEnter})
@@ -5718,17 +6102,23 @@ public:
         if ((c9){&$DialogLayer::fadeInTextFinished} != (d9){&D::fadeInTextFinished})
             m->registerHook(base+0x205930, FunctionScrapper::addressOfVirtual(i, (d9){&D::fadeInTextFinished}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJCommentListLayer : public GJCommentListLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJCommentListLayer() {
         endDestructor();
     }
-    $GJCommentListLayer() {}
+    $GJCommentListLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GJCommentListLayer>().create(std::declval<BoomListView*>(), std::declval<char const*>(), std::declval<cocos2d::_ccColor4B>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
     using c1 = r1(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool);
@@ -5740,23 +6130,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GJCommentListLayer::create} != (d1){&D::create})
             m->registerHook(base+0x147d00, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $MenuLayer : public MenuLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$MenuLayer() {
         endDestructor();
     }
-    $MenuLayer() {}
+    $MenuLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<MenuLayer>().init());
     using c1 = r1($MenuLayer::*)() ;
@@ -5830,7 +6226,7 @@ public:
         return reinterpret_cast<f8>(base+0x1d12d0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$MenuLayer::init} != (d1){&D::init})
@@ -5857,17 +6253,23 @@ public:
         if ((c8){&$MenuLayer::scene} != (d8){&D::scene})
             m->registerHook(base+0x1d12d0, FunctionScrapper::addressOfNonVirtual((d8){&D::scene}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $PlayLayer : public PlayLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$PlayLayer() {
         endDestructor();
     }
-    $PlayLayer() {}
+    $PlayLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<PlayLayer>().addCircle(std::declval<CCCircleWave*>()));
     using c0 = r0($PlayLayer::*)(CCCircleWave*) ;
@@ -7229,7 +7631,7 @@ public:
         return reinterpret_cast<f150>(base+0x7d140)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$PlayLayer::addCircle} != (d0){&D::addCircle})
@@ -7685,17 +8087,23 @@ public:
         if ((c150){&$PlayLayer::xPosForTime} != (d150){&D::xPosForTime})
             m->registerHook(base+0x7d140, FunctionScrapper::addressOfNonVirtual((d150){&D::xPosForTime}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$LevelEditorLayer() {
         endDestructor();
     }
-    $LevelEditorLayer() {}
+    $LevelEditorLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<LevelEditorLayer>().update(std::declval<float>()));
     using c1 = r1($LevelEditorLayer::*)(float) ;
@@ -8328,7 +8736,7 @@ public:
         return reinterpret_cast<f70>(base+0x92c70)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$LevelEditorLayer::update} != (d1){&D::update})
@@ -8541,17 +8949,23 @@ public:
         if ((c70){&$LevelEditorLayer::updateVisibility} != (d70){&D::updateVisibility})
             m->registerHook(base+0x92c70, FunctionScrapper::addressOfNonVirtual((d70){&D::updateVisibility}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $EditorUI : public EditorUI, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$EditorUI() {
         endDestructor();
     }
-    $EditorUI() {}
+    $EditorUI() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<EditorUI>().constrainGameLayerPosition());
     using c0 = r0($EditorUI::*)() ;
@@ -8814,7 +9228,7 @@ public:
         return reinterpret_cast<f28>(base+0x248c0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$EditorUI::constrainGameLayerPosition} != (d0){&D::constrainGameLayerPosition})
@@ -8904,17 +9318,23 @@ public:
         if ((c28){&$EditorUI::updateZoom} != (d28){&D::updateZoom})
             m->registerHook(base+0x248c0, FunctionScrapper::addressOfNonVirtual((d28){&D::updateZoom}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ButtonSprite : public ButtonSprite, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ButtonSprite() {
         endDestructor();
     }
-    $ButtonSprite() {}
+    $ButtonSprite() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>()));
     using c0 = r0(*)(char const*);
@@ -8965,7 +9385,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$ButtonSprite::create} != (d0){&D::create})
@@ -8983,17 +9403,23 @@ public:
         if ((c4){&$ButtonSprite::create} != (d4){&D::create})
             m->registerHook(base+0x4fa90, FunctionScrapper::addressOfNonVirtual((d4){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CCTextInputNode() {
         endDestructor();
     }
-    $CCTextInputNode() {}
+    $CCTextInputNode() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CCTextInputNode>().create(std::declval<float>(), std::declval<float>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<int>(), std::declval<char const*>()));
     using c0 = r0(*)(float, float, char const*, char const*, int, char const*);
@@ -9230,7 +9656,7 @@ public:
         return reinterpret_cast<f26>(base+0x5e610)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CCTextInputNode::create} != (d0){&D::create})
@@ -9311,17 +9737,23 @@ public:
         if ((c26){&$CCTextInputNode::onTextFieldDetachWithIME} != (d26){&D::onTextFieldDetachWithIME})
             m->registerHook(base+0x5e610, FunctionScrapper::addressOfVirtual(i, (d26){&D::onTextFieldDetachWithIME}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TextArea : public TextArea, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TextArea() {
         endDestructor();
     }
-    $TextArea() {}
+    $TextArea() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<TextArea>().draw());
     using c1 = r1($TextArea::*)() ;
@@ -9351,7 +9783,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$TextArea::draw} != (d1){&D::draw})
@@ -9363,17 +9795,23 @@ public:
         if ((c3){&$TextArea::create} != (d3){&D::create})
             m->registerHook(base+0x19eb40, FunctionScrapper::addressOfNonVirtual((d3){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $Slider : public Slider, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$Slider() {
         endDestructor();
     }
-    $Slider() {}
+    $Slider() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<Slider>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>()));
     using c0 = r0(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, char const*, char const*, char const*, char const*, float);
@@ -9422,7 +9860,7 @@ public:
         return reinterpret_cast<f4>(base+0x18e170)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$Slider::create} != (d0){&D::create})
@@ -9440,17 +9878,23 @@ public:
         if ((c4){&$Slider::setValue} != (d4){&D::setValue})
             m->registerHook(base+0x18e170, FunctionScrapper::addressOfNonVirtual((d4){&D::setValue}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SliderThumb : public SliderThumb, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SliderThumb() {
         endDestructor();
     }
-    $SliderThumb() {}
+    $SliderThumb() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SliderThumb>().getValue());
     using c0 = r0($SliderThumb::*)() ;
@@ -9461,38 +9905,50 @@ public:
         return reinterpret_cast<f0>(base+0x18ce80)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SliderThumb::getValue} != (d0){&D::getValue})
             m->registerHook(base+0x18ce80, FunctionScrapper::addressOfNonVirtual((d0){&D::getValue}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $BoomScrollLayer : public BoomScrollLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$BoomScrollLayer() {
         endDestructor();
     }
-    $BoomScrollLayer() {}
+    $BoomScrollLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TableView : public TableView, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TableView() {
         endDestructor();
     }
-    $TableView() {}
+    $TableView() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<TableView>().create(std::declval<TableViewDelegate*>(), std::declval<TableViewDataSource*>(), std::declval<cocos2d::CCRect>()));
     using c0 = r0(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
@@ -9513,7 +9969,7 @@ public:
         return reinterpret_cast<f1>(base+0x37f970)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$TableView::create} != (d0){&D::create})
@@ -9522,17 +9978,23 @@ public:
         if ((c1){&$TableView::reloadData} != (d1){&D::reloadData})
             m->registerHook(base+0x37f970, FunctionScrapper::addressOfNonVirtual((d1){&D::reloadData}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $BoomListView : public BoomListView, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$BoomListView() {
         endDestructor();
     }
-    $BoomListView() {}
+    $BoomListView() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<BoomListView>().create(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
     using c0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
@@ -9661,7 +10123,7 @@ public:
         return reinterpret_cast<f13>(base+0x18f4a0)(this, p0, p1);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$BoomListView::create} != (d0){&D::create})
@@ -9706,32 +10168,44 @@ public:
         if ((c13){&$BoomListView::loadCell} != (d13){&D::loadCell})
             m->registerHook(base+0x18f4a0, FunctionScrapper::addressOfVirtual(i, (d13){&D::loadCell}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CreateMenuItem : public CreateMenuItem, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CreateMenuItem() {
         endDestructor();
     }
-    $CreateMenuItem() {}
+    $CreateMenuItem() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CustomListView : public CustomListView, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CustomListView() {
         endDestructor();
     }
-    $CustomListView() {}
+    $CustomListView() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CustomListView>().create(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
     using c0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
@@ -9770,7 +10244,7 @@ public:
         return reinterpret_cast<f3>(base+0x116e70)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CustomListView::create} != (d0){&D::create})
@@ -9785,32 +10259,44 @@ public:
         if ((c3){&$CustomListView::setupList} != (d3){&D::setupList})
             m->registerHook(base+0x116e70, FunctionScrapper::addressOfNonVirtual((d3){&D::setupList}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $InheritanceNode : public InheritanceNode, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$InheritanceNode() {
         endDestructor();
     }
-    $InheritanceNode() {}
+    $InheritanceNode() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $HardStreak : public HardStreak, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$HardStreak() {
         endDestructor();
     }
-    $HardStreak() {}
+    $HardStreak() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<HardStreak>().init());
     using c1 = r1($HardStreak::*)() ;
@@ -9857,7 +10343,7 @@ public:
         return reinterpret_cast<f5>(base+0x5c8f0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$HardStreak::init} != (d1){&D::init})
@@ -9875,17 +10361,23 @@ public:
         if ((c5){&$HardStreak::stopStroke} != (d5){&D::stopStroke})
             m->registerHook(base+0x5c8f0, FunctionScrapper::addressOfNonVirtual((d5){&D::stopStroke}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GameObject : public GameObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GameObject() {
         endDestructor();
     }
-    $GameObject() {}
+    $GameObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GameObject>().update(std::declval<float>()));
     using c1 = r1($GameObject::*)(float) ;
@@ -10871,7 +11363,7 @@ public:
         return reinterpret_cast<f109>(base+0x337f00)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GameObject::update} != (d1){&D::update})
@@ -11201,17 +11693,23 @@ public:
         if ((c109){&$GameObject::updateSyncedAnimation} != (d109){&D::updateSyncedAnimation})
             m->registerHook(base+0x337f00, FunctionScrapper::addressOfNonVirtual((d109){&D::updateSyncedAnimation}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GameObjectCopy : public GameObjectCopy, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GameObjectCopy() {
         endDestructor();
     }
-    $GameObjectCopy() {}
+    $GameObjectCopy() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GameObjectCopy>().create(std::declval<GameObject*>()));
     using c1 = r1(*)(GameObject*);
@@ -11232,7 +11730,7 @@ public:
         return reinterpret_cast<f2>(base+0x976a0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GameObjectCopy::create} != (d1){&D::create})
@@ -11241,17 +11739,23 @@ public:
         if ((c2){&$GameObjectCopy::resetObject} != (d2){&D::resetObject})
             m->registerHook(base+0x976a0, FunctionScrapper::addressOfNonVirtual((d2){&D::resetObject}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $PlayerObject : public PlayerObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$PlayerObject() {
         endDestructor();
     }
-    $PlayerObject() {}
+    $PlayerObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<PlayerObject>().update(std::declval<float>()));
     using c1 = r1($PlayerObject::*)(float) ;
@@ -12586,7 +13090,7 @@ public:
         return reinterpret_cast<f148>(base+0x22e990)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$PlayerObject::update} != (d1){&D::update})
@@ -13033,17 +13537,23 @@ public:
         if ((c148){&$PlayerObject::yStartUp} != (d148){&D::yStartUp})
             m->registerHook(base+0x22e990, FunctionScrapper::addressOfNonVirtual((d148){&D::yStartUp}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SimplePlayer : public SimplePlayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SimplePlayer() {
         endDestructor();
     }
-    $SimplePlayer() {}
+    $SimplePlayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SimplePlayer>().create(std::declval<int>()));
     using c0 = r0(*)(int);
@@ -13082,7 +13592,7 @@ public:
         return reinterpret_cast<f3>(base+0x1b62f0)(this, p0, p1);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SimplePlayer::create} != (d0){&D::create})
@@ -13097,17 +13607,23 @@ public:
         if ((c3){&$SimplePlayer::updatePlayerFrame} != (d3){&D::updatePlayerFrame})
             m->registerHook(base+0x1b62f0, FunctionScrapper::addressOfNonVirtual((d3){&D::updatePlayerFrame}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AnimatedGameObject() {
         endDestructor();
     }
-    $AnimatedGameObject() {}
+    $AnimatedGameObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AnimatedGameObject>().playAnimation(std::declval<int>()));
     using c0 = r0($AnimatedGameObject::*)(int) ;
@@ -13127,7 +13643,7 @@ public:
         return reinterpret_cast<f1>(base+0xc8450)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AnimatedGameObject::playAnimation} != (d0){&D::playAnimation})
@@ -13136,17 +13652,23 @@ public:
         if ((c1){&$AnimatedGameObject::updateChildSpriteColor} != (d1){&D::updateChildSpriteColor})
             m->registerHook(base+0xc8450, FunctionScrapper::addressOfNonVirtual((d1){&D::updateChildSpriteColor}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CheckpointObject : public CheckpointObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CheckpointObject() {
         endDestructor();
     }
-    $CheckpointObject() {}
+    $CheckpointObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CheckpointObject>().create());
     using c0 = r0(*)();
@@ -13167,7 +13689,7 @@ public:
         return reinterpret_cast<f1>(base+0x7ef50)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CheckpointObject::create} != (d0){&D::create})
@@ -13176,17 +13698,23 @@ public:
         if ((c1){&$CheckpointObject::getObject} != (d1){&D::getObject})
             m->registerHook(base+0x7ef50, FunctionScrapper::addressOfNonVirtual((d1){&D::getObject}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $EffectGameObject : public EffectGameObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$EffectGameObject() {
         endDestructor();
     }
-    $EffectGameObject() {}
+    $EffectGameObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<EffectGameObject>().create(std::declval<char const*>()));
     using c0 = r0(*)(char const*);
@@ -13216,7 +13744,7 @@ public:
         return reinterpret_cast<f2>(base+0xc9870)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$EffectGameObject::create} != (d0){&D::create})
@@ -13228,17 +13756,23 @@ public:
         if ((c2){&$EffectGameObject::triggerObject} != (d2){&D::triggerObject})
             m->registerHook(base+0xc9870, FunctionScrapper::addressOfNonVirtual((d2){&D::triggerObject}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $EndPortalObject : public EndPortalObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$EndPortalObject() {
         endDestructor();
     }
-    $EndPortalObject() {}
+    $EndPortalObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<EndPortalObject>().create());
     using c0 = r0(*)();
@@ -13259,7 +13793,7 @@ public:
         return reinterpret_cast<f1>(base+0x1dacb0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$EndPortalObject::create} != (d0){&D::create})
@@ -13268,17 +13802,23 @@ public:
         if ((c1){&$EndPortalObject::updateColors} != (d1){&D::updateColors})
             m->registerHook(base+0x1dacb0, FunctionScrapper::addressOfNonVirtual((d1){&D::updateColors}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $LabelGameObject : public LabelGameObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$LabelGameObject() {
         endDestructor();
     }
-    $LabelGameObject() {}
+    $LabelGameObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<LabelGameObject>().init());
     using c0 = r0($LabelGameObject::*)() ;
@@ -13298,7 +13838,7 @@ public:
         return reinterpret_cast<f1>(base+0xdbca0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$LabelGameObject::init} != (d0){&D::init})
@@ -13307,17 +13847,23 @@ public:
         if ((c1){&$LabelGameObject::setObjectColor} != (d1){&D::setObjectColor})
             m->registerHook(base+0xdbca0, FunctionScrapper::addressOfNonVirtual((d1){&D::setObjectColor}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $UndoObject : public UndoObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$UndoObject() {
         endDestructor();
     }
-    $UndoObject() {}
+    $UndoObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<UndoObject>().create(std::declval<GameObject*>(), std::declval<UndoCommand>()));
     using c1 = r1(*)(GameObject*, UndoCommand);
@@ -13339,7 +13885,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$UndoObject::create} != (d1){&D::create})
@@ -13348,17 +13894,23 @@ public:
         if ((c2){&$UndoObject::createWithArray} != (d2){&D::createWithArray})
             m->registerHook(base+0x96ee0, FunctionScrapper::addressOfNonVirtual((d2){&D::createWithArray}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$PlayerCheckpoint() {
         endDestructor();
     }
-    $PlayerCheckpoint() {}
+    $PlayerCheckpoint() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<PlayerCheckpoint>().init());
     using c1 = r1($PlayerCheckpoint::*)() ;
@@ -13379,7 +13931,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$PlayerCheckpoint::init} != (d1){&D::init})
@@ -13388,17 +13940,23 @@ public:
         if ((c2){&$PlayerCheckpoint::create} != (d2){&D::create})
             m->registerHook(base+0x7e8c0, FunctionScrapper::addressOfNonVirtual((d2){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SongInfoObject : public SongInfoObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SongInfoObject() {
         endDestructor();
     }
-    $SongInfoObject() {}
+    $SongInfoObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<SongInfoObject>().encodeWithCoder(std::declval<DS_Dictionary*>()));
     using c1 = r1($SongInfoObject::*)(DS_Dictionary*) ;
@@ -13418,7 +13976,7 @@ public:
         return reinterpret_cast<f2>(base+0x2f2da0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$SongInfoObject::encodeWithCoder} != (d1){&D::encodeWithCoder})
@@ -13427,17 +13985,23 @@ public:
         if ((c2){&$SongInfoObject::canEncode} != (d2){&D::canEncode})
             m->registerHook(base+0x2f2da0, FunctionScrapper::addressOfVirtual(i, (d2){&D::canEncode}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJGameLevel : public GJGameLevel, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJGameLevel() {
         endDestructor();
     }
-    $GJGameLevel() {}
+    $GJGameLevel() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GJGameLevel>().encodeWithCoder(std::declval<DS_Dictionary*>()));
     using c1 = r1($GJGameLevel::*)(DS_Dictionary*) ;
@@ -13530,7 +14094,7 @@ public:
         return reinterpret_cast<f10>(base+0x2db700)(this, p0, p1, p2, p3, p4);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GJGameLevel::encodeWithCoder} != (d1){&D::encodeWithCoder})
@@ -13563,17 +14127,23 @@ public:
         if ((c10){&$GJGameLevel::savePercentage} != (d10){&D::savePercentage})
             m->registerHook(base+0x2db700, FunctionScrapper::addressOfNonVirtual((d10){&D::savePercentage}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$LevelSettingsObject() {
         endDestructor();
     }
-    $LevelSettingsObject() {}
+    $LevelSettingsObject() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<LevelSettingsObject>().init());
     using c1 = r1($LevelSettingsObject::*)() ;
@@ -13622,7 +14192,7 @@ public:
         return reinterpret_cast<f5>(base+0xa6a30)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$LevelSettingsObject::init} != (d1){&D::init})
@@ -13640,32 +14210,44 @@ public:
         if ((c5){&$LevelSettingsObject::setupColorsFromLegacyMode} != (d5){&D::setupColorsFromLegacyMode})
             m->registerHook(base+0xa6a30, FunctionScrapper::addressOfNonVirtual((d5){&D::setupColorsFromLegacyMode}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $UndoCommand : public UndoCommand, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$UndoCommand() {
         endDestructor();
     }
-    $UndoCommand() {}
+    $UndoCommand() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $OBB2D : public OBB2D, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$OBB2D() {
         endDestructor();
     }
-    $OBB2D() {}
+    $OBB2D() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<OBB2D>().calculateWithCenter(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
     using c0 = r0($OBB2D::*)(cocos2d::CCPoint, float, float, float) ;
@@ -13713,7 +14295,7 @@ public:
         return reinterpret_cast<f4>(base+0x35b0d0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$OBB2D::calculateWithCenter} != (d0){&D::calculateWithCenter})
@@ -13731,17 +14313,23 @@ public:
         if ((c4){&$OBB2D::overlaps1Way} != (d4){&D::overlaps1Way})
             m->registerHook(base+0x35b0d0, FunctionScrapper::addressOfNonVirtual((d4){&D::overlaps1Way}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJComment : public GJComment, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJComment() {
         endDestructor();
     }
-    $GJComment() {}
+    $GJComment() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GJComment>().init());
     using c1 = r1($GJComment::*)() ;
@@ -13752,38 +14340,50 @@ public:
         return reinterpret_cast<f1>(base+0x2dfec0)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GJComment::init} != (d1){&D::init})
             m->registerHook(base+0x2dfec0, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TableViewCell : public TableViewCell, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TableViewCell() {
         endDestructor();
     }
-    $TableViewCell() {}
+    $TableViewCell() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ArtistCell : public ArtistCell, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ArtistCell() {
         endDestructor();
     }
-    $ArtistCell() {}
+    $ArtistCell() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<ArtistCell>().draw());
     using c1 = r1($ArtistCell::*)() ;
@@ -13830,7 +14430,7 @@ public:
         return reinterpret_cast<f5>(base+0x110460)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$ArtistCell::draw} != (d1){&D::draw})
@@ -13848,17 +14448,23 @@ public:
         if ((c5){&$ArtistCell::updateBGColor} != (d5){&D::updateBGColor})
             m->registerHook(base+0x110460, FunctionScrapper::addressOfNonVirtual((d5){&D::updateBGColor}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CommentCell : public CommentCell, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CommentCell() {
         endDestructor();
     }
-    $CommentCell() {}
+    $CommentCell() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CommentCell>().loadFromComment(std::declval<GJComment*>()));
     using c0 = r0($CommentCell::*)(GJComment*) ;
@@ -13869,23 +14475,29 @@ public:
         return reinterpret_cast<f0>(base+0x111c70)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CommentCell::loadFromComment} != (d0){&D::loadFromComment})
             m->registerHook(base+0x111c70, FunctionScrapper::addressOfNonVirtual((d0){&D::loadFromComment}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CustomSongCell : public CustomSongCell, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CustomSongCell() {
         endDestructor();
     }
-    $CustomSongCell() {}
+    $CustomSongCell() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CustomSongCell>().loadFromObject(std::declval<SongInfoObject*>()));
     using c0 = r0($CustomSongCell::*)(SongInfoObject*) ;
@@ -13896,23 +14508,29 @@ public:
         return reinterpret_cast<f0>(base+0x110220)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CustomSongCell::loadFromObject} != (d0){&D::loadFromObject})
             m->registerHook(base+0x110220, FunctionScrapper::addressOfNonVirtual((d0){&D::loadFromObject}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$SpawnTriggerAction() {
         endDestructor();
     }
-    $SpawnTriggerAction() {}
+    $SpawnTriggerAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<SpawnTriggerAction>().createFromString(std::declval<gd::string>()));
     using c0 = r0(*)(gd::string);
@@ -13924,23 +14542,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$SpawnTriggerAction::createFromString} != (d0){&D::createFromString})
             m->registerHook(base+0x17bf50, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $PulseEffectAction : public PulseEffectAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$PulseEffectAction() {
         endDestructor();
     }
-    $PulseEffectAction() {}
+    $PulseEffectAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<PulseEffectAction>().createFromString(std::declval<gd::string>()));
     using c0 = r0(*)(gd::string);
@@ -13961,7 +14585,7 @@ public:
         return reinterpret_cast<f1>(base+0x17a850)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$PulseEffectAction::createFromString} != (d0){&D::createFromString})
@@ -13970,17 +14594,23 @@ public:
         if ((c1){&$PulseEffectAction::getSaveString} != (d1){&D::getSaveString})
             m->registerHook(base+0x17a850, FunctionScrapper::addressOfNonVirtual((d1){&D::getSaveString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ToggleTriggerAction() {
         endDestructor();
     }
-    $ToggleTriggerAction() {}
+    $ToggleTriggerAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<ToggleTriggerAction>().createFromString(std::declval<gd::string>()));
     using c0 = r0(*)(gd::string);
@@ -13992,23 +14622,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$ToggleTriggerAction::createFromString} != (d0){&D::createFromString})
             m->registerHook(base+0x1765e0, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$OpacityEffectAction() {
         endDestructor();
     }
-    $OpacityEffectAction() {}
+    $OpacityEffectAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<OpacityEffectAction>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
     using c0 = r0(*)(float, float, float, int);
@@ -14048,7 +14684,7 @@ public:
         return reinterpret_cast<f3>(base+0x178b90)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$OpacityEffectAction::create} != (d0){&D::create})
@@ -14063,17 +14699,23 @@ public:
         if ((c3){&$OpacityEffectAction::step} != (d3){&D::step})
             m->registerHook(base+0x178b90, FunctionScrapper::addressOfNonVirtual((d3){&D::step}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $TouchToggleAction : public TouchToggleAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$TouchToggleAction() {
         endDestructor();
     }
-    $TouchToggleAction() {}
+    $TouchToggleAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<TouchToggleAction>().createFromString(std::declval<gd::string>()));
     using c0 = r0(*)(gd::string);
@@ -14085,23 +14727,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$TouchToggleAction::createFromString} != (d0){&D::createFromString})
             m->registerHook(base+0x177e10, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CollisionTriggerAction() {
         endDestructor();
     }
-    $CollisionTriggerAction() {}
+    $CollisionTriggerAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CollisionTriggerAction>().createFromString(std::declval<gd::string>()));
     using c0 = r0(*)(gd::string);
@@ -14113,23 +14761,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CollisionTriggerAction::createFromString} != (d0){&D::createFromString})
             m->registerHook(base+0x176ee0, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ColorAction : public ColorAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ColorAction() {
         endDestructor();
     }
-    $ColorAction() {}
+    $ColorAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<ColorAction>().getSaveString());
     using c0 = r0($ColorAction::*)() ;
@@ -14158,7 +14812,7 @@ public:
         return reinterpret_cast<f2>(base+0x17f270)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$ColorAction::getSaveString} != (d0){&D::getSaveString})
@@ -14170,32 +14824,44 @@ public:
         if ((c2){&$ColorAction::setupFromString} != (d2){&D::setupFromString})
             m->registerHook(base+0x17f270, FunctionScrapper::addressOfNonVirtual((d2){&D::setupFromString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ColorActionSprite : public ColorActionSprite, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ColorActionSprite() {
         endDestructor();
     }
-    $ColorActionSprite() {}
+    $ColorActionSprite() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$ColorChannelSprite() {
         endDestructor();
     }
-    $ColorChannelSprite() {}
+    $ColorChannelSprite() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<ColorChannelSprite>().updateBlending(std::declval<bool>()));
     using c0 = r0($ColorChannelSprite::*)(bool) ;
@@ -14233,7 +14899,7 @@ public:
         return reinterpret_cast<f3>(base+0x16e2e0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$ColorChannelSprite::updateBlending} != (d0){&D::updateBlending})
@@ -14248,17 +14914,23 @@ public:
         if ((c3){&$ColorChannelSprite::updateValues} != (d3){&D::updateValues})
             m->registerHook(base+0x16e2e0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateValues}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $CountTriggerAction : public CountTriggerAction, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$CountTriggerAction() {
         endDestructor();
     }
-    $CountTriggerAction() {}
+    $CountTriggerAction() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<CountTriggerAction>().createFromString(std::declval<gd::string>()));
     using c0 = r0(*)(gd::string);
@@ -14270,23 +14942,29 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$CountTriggerAction::createFromString} != (d0){&D::createFromString})
             m->registerHook(base+0x1754f0, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJRobotSprite : public GJRobotSprite, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJRobotSprite() {
         endDestructor();
     }
-    $GJRobotSprite() {}
+    $GJRobotSprite() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GJRobotSprite>().init());
     using c1 = r1($GJRobotSprite::*)() ;
@@ -14343,7 +15021,7 @@ public:
         return reinterpret_cast<f6>(base+0x34bdd0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GJRobotSprite::init} != (d1){&D::init})
@@ -14364,17 +15042,23 @@ public:
         if ((c6){&$GJRobotSprite::updateFrame} != (d6){&D::updateFrame})
             m->registerHook(base+0x34bdd0, FunctionScrapper::addressOfNonVirtual((d6){&D::updateFrame}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$GJSpiderSprite() {
         endDestructor();
     }
-    $GJSpiderSprite() {}
+    $GJSpiderSprite() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r1 = decltype(std::declval<GJSpiderSprite>().init());
     using c1 = r1($GJSpiderSprite::*)() ;
@@ -14395,7 +15079,7 @@ public:
 
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c1){&$GJSpiderSprite::init} != (d1){&D::init})
@@ -14404,17 +15088,23 @@ public:
         if ((c2){&$GJSpiderSprite::create} != (d2){&D::create})
             m->registerHook(base+0x34c5b0, FunctionScrapper::addressOfNonVirtual((d2){&D::create}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $AchievementCell : public AchievementCell, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AchievementCell() {
         endDestructor();
     }
-    $AchievementCell() {}
+    $AchievementCell() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AchievementCell>().loadFromDict(std::declval<cocos2d::CCDictionary*>()));
     using c0 = r0($AchievementCell::*)(cocos2d::CCDictionary*) ;
@@ -14425,23 +15115,29 @@ public:
         return reinterpret_cast<f0>(base+0x10eaa0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AchievementCell::loadFromDict} != (d0){&D::loadFromDict})
             m->registerHook(base+0x10eaa0, FunctionScrapper::addressOfNonVirtual((d0){&D::loadFromDict}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $AchievementsLayer : public AchievementsLayer, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AchievementsLayer() {
         endDestructor();
     }
-    $AchievementsLayer() {}
+    $AchievementsLayer() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AchievementsLayer>().customSetup());
     using c0 = r0($AchievementsLayer::*)() ;
@@ -14461,7 +15157,7 @@ public:
         return reinterpret_cast<f1>(base+0x1be190)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AchievementsLayer::customSetup} != (d0){&D::customSetup})
@@ -14470,17 +15166,23 @@ public:
         if ((c1){&$AchievementsLayer::loadPage} != (d1){&D::loadPage})
             m->registerHook(base+0x1be190, FunctionScrapper::addressOfNonVirtual((d1){&D::loadPage}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $AchievementManager : public AchievementManager, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AchievementManager() {
         endDestructor();
     }
-    $AchievementManager() {}
+    $AchievementManager() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AchievementManager>().getAllAchievements());
     using c0 = r0($AchievementManager::*)() ;
@@ -14500,7 +15202,7 @@ public:
         return reinterpret_cast<f1>(base+0x424420)(this);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AchievementManager::getAllAchievements} != (d0){&D::getAllAchievements})
@@ -14509,17 +15211,23 @@ public:
         if ((c1){&$AchievementManager::sharedState} != (d1){&D::sharedState})
             m->registerHook(base+0x424420, FunctionScrapper::addressOfNonVirtual((d1){&D::sharedState}));
 
-        // delete i;
+        delete i;
     }
 };
 
 template<class D>
 class $AchievementNotifier : public AchievementNotifier, public $CacBase {
 public:
+    static inline bool _init = false;
     ~$AchievementNotifier() {
         endDestructor();
     }
-    $AchievementNotifier() {}
+    $AchievementNotifier() {
+        if (!_init) {
+            _init = true;
+            _apply();
+        }
+    }
 
     using r0 = decltype(std::declval<AchievementNotifier>().sharedState());
     using c0 = r0($AchievementNotifier::*)() ;
@@ -14539,7 +15247,7 @@ public:
         return reinterpret_cast<f1>(base+0x4650b0)(this, p0);
     }
 
-    static void apply() {
+    static void _apply() {
         auto i = new D();
 
         if ((c0){&$AchievementNotifier::sharedState} != (d0){&D::sharedState})
@@ -14548,6 +15256,6 @@ public:
         if ((c1){&$AchievementNotifier::willSwitchToScene} != (d1){&D::willSwitchToScene})
             m->registerHook(base+0x4650b0, FunctionScrapper::addressOfNonVirtual((d1){&D::willSwitchToScene}));
 
-        // delete i;
+        delete i;
     }
 };

@@ -6,10 +6,16 @@ build_start = """
 template<class D>
 class ${cl} : public {cl}, public $CacBase {{
 public:
+    static inline bool _init = false;
     ~${cl}() {{
         endDestructor();
     }}
-    ${cl}() {{}}
+    ${cl}() {{
+        if (!_init) {{
+            _init = true;
+            _apply();
+        }}
+    }}
 """
 
 build_body1 = """
@@ -67,7 +73,7 @@ build_body1_static = """
 # """
 
 build_body2_start = """
-    static void apply() {{
+    static void _apply() {{
         auto i = new D();
 """
     
@@ -88,7 +94,7 @@ build_body2_body_virtual = """
 """
 
 build_body2_end = """
-        // delete i;
+        delete i;
     }\n"""
 build_end = "};\n"
 

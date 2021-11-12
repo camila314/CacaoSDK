@@ -111,9 +111,3 @@ public:
  */
 #define $redirect(base) REDIRECT_($##base, __COUNTER__)
 #define $implement(base, derived) REDIRECT__($##base, derived)
-
-/**
- * My solution to the destructor problem
- * another syntax change but i couldn't care less
-*/
-#define endImplement(derived) ; static int const CONCAT(_, derived) = (derived::apply(), 0);
