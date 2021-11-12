@@ -18,12 +18,12 @@ Cacao comes with a neat little way to hook very quickly with a tool called CacKi
 #include <CacKit>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $implement(EditorUI, MyEditorUIHook) {
 public:
     void undoLastAction(CCObject* p0) {
         std::cout << "Undo!" << std::endl;
     }
-} MyEditorUIHook;
+} endImplement(MyEditorUIHook);
 
 $apply();
 ```
@@ -33,13 +33,13 @@ If you want to call the original function, there is also an easy way to do that 
 #include <CacKit>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $implement(EditorUI, MyEditorUIHook) {
 public:
     void undoLastAction(CCObject* p0) {
         std::cout << "Undo!" << std::endl;
         $EditorUI::undoLastAction(p0);
     }
-} MyEditorUIHook;
+} endImplement(MyEditorUIHook);
 
 $apply();
 ```
@@ -48,13 +48,13 @@ Since the CacKit classes subclass the GD classes, we can use the members and fun
 #include <CacKit>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $implement(EditorUI, MyEditorUIHook) {
 public:
     void undoLastAction(CCObject* p0) {
         std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
         $EditorUI::undoLastAction(p0);
     }
-} MyEditorUIHook;
+} endImplement(MyEditorUIHook);
 
 $apply();
 ```
@@ -65,13 +65,13 @@ If you want, you can also use a function with the name `inject` to run code befo
 #include <CacKit>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $implement(EditorUI, MyEditorUIHook) {
 public:
     void undoLastAction(CCObject* p0) {
         std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
         $EditorUI::undoLastAction(p0);
     }
-} MyEditorUIHook;
+} endImplement(MyEditorUIHook);
 
 void inject() {
     std::cout << "Hello!" << std::endl;
