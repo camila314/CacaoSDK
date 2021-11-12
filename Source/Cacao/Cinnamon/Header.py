@@ -72,6 +72,5 @@ for cl in classes:
             body = body,
         )
 
-
 with open(os.path.join(os.path.dirname(__file__), "..", "Header.hpp"), "w") as f:
     f.write(out)

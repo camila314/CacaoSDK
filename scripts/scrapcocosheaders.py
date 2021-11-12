@@ -3,18 +3,18 @@ import re
 
 
 
-for root, dirs, files in os.walk("../template/Cacao/include"):
+for root, dirs, files in os.walk("../Source/Cacao/Include"):
     for name in filter(lambda x: x[-2:] == ".h", files):
         with open(os.path.join(root, name), "r") as h:
             try:
                 data = h.read()
                 for clm in re.finditer(r"class CC_DLL (\w+).*\n?{([^$]+)\n};", data):
                     cl, content = clm.group(1), clm.group(2);
-                    print("\n@interface", cl)
+                    print("\nclass ", cl, "{")
                     for funm in re.finditer(r"    (?:virtual )?(?:static )?(\w[\w* &]+?) (\w+)\(.*\)( const)?;", content):
                         ret, fun, const = funm.group(1), funm.group(2), funm.group(3) is not None
-                        print("    ", ret, fun, const)
-                    print("@end", cl, "\n")
+                        print("    ", ret, fun)
+                    print("}")
             except:
                 print("error", os.path.join(root, name))
 

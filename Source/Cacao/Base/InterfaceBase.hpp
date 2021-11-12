@@ -33,17 +33,6 @@ inline uintptr_t extract_destructor(V vtable) {
 };
 
 /**
- * For some reason converting a virtual function address to 
- *  uintptr_t the value increases by 1 so we need to decrease
- *  by 1 to make it align 
- */
-template <typename F, typename V>
-inline uintptr_t extract_virtual(V vtable, F func) { 
-    return *reinterpret_cast<uintptr_t*>(reinterpret_cast<uintptr_t>(vtable)+reinterpret_cast<uintptr_t&>(func)-0x1);
-};
-
-
-/**
  * it’s actually kinda sick because you can use the ref cast 
  *  thingy to convert almost anything to anything else  ~camila
  * 
@@ -53,6 +42,30 @@ inline uintptr_t extract_virtual(V vtable, F func) {
 template <typename F>
 inline uintptr_t extract(F func) {
     return reinterpret_cast<uintptr_t&>(func);
+};
+
+/**
+ * The ultimate member extract function
+ * based on what the compiler actually compiles to
+ */
+template <typename T, typename D, typename R, typename ...Ps>
+inline uintptr_t extract(T* self, R(D::*func)(Ps...)) { // get the function
+    union {
+        struct {
+            T* self;
+            R(T::*func)(Ps...);
+        };
+        struct {
+            uintptr_t base;
+            ptrdiff_t offset;
+            ptrdiff_t thunk;
+        };
+    } clean = {self, (R(T::*)(Ps...)){func}};
+
+    if (clean.offset & 1) // it is a virtual function
+        return *(uintptr_t*)(*(uintptr_t*)(clean.base + clean.thunk) + clean.offset - 1);
+    else // it is not a virtual function
+        return clean.offset;
 };
 
 // Just in case if we ever need to add shared implementations
@@ -106,9 +119,16 @@ public:
  * 
  * $redirect is for when you don't need the name of the class
  * class $redirect(MenuLayer) {};
+ * (cant be used because using end implement now)
  * 
  * $implement is for when you need the name of the class
  * class $implement(MenuLayer, MyMenuLayerInterface) {};
  */
-#define $redirect(base) REDIRECT_($##base, __COUNTER__)
+//#define $redirect(base) REDIRECT_($##base, __COUNTER__)
 #define $implement(base, derived) REDIRECT__(base, derived)
+
+/**
+ * My solution to the destructor problem
+ * another syntax change but i couldn't care less
+*/
+#define endImplement(derived) ; static int const CONCAT(_, derived) = (CONCAT(derived, ::apply()), 0);

@@ -55,6 +55,17 @@ struct LevelDifficulty {
 
 #endif
 
+
+
+#if defined(__APPLE__) 
+    #define getFunction(type, offset, ...) reinterpret_cast<type>(base+offset)(__VA_ARGS__)
+#elif defined(__WIN32)
+
+#else
+    
+#endif
+
+
 //thanks pie
 enum SearchType {
     kSearch          = 0x0,

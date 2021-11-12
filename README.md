@@ -1,7 +1,7 @@
 # CacaoSDK
 Cacao is a revolutionary Geometry Dash modding framework for MacOS users. Cacao requires CMake so make sure you have that. To start, run the `create` file and specify a location
 
-Cacao uses [Lilac Core](https://github.com/lilac-sdk/core/) for function hooking.
+Cacao uses [a modified version of Lilac Core](https://github.com/altalk23/core/) for function hooking.
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ public:
 
 $apply();
 ```
-Since the CacKit classes subclass the GD classes, we can use the members and functions like we would in a normal class. 
+Since the CacKit classes subclass the GD classes, we can use the members and functions like we would in a normal class.
 ```cpp
 #include <CacKit>
 #include <iostream>

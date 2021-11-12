@@ -15,6 +15,8 @@ namespace gd {
 
     class string {
      public:
+        //default cause idk
+        string() = default;
         string(char const* ok) {
             std::string stub = std::string(ok);
 

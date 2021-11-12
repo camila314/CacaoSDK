@@ -4,7 +4,7 @@ classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
-class ${cl} : public {cl}, public $CacBase {{
+class ${cl} : public Null{cl}, public $CacBase {{
 public:
     static inline bool lock = false;
     inline ~${cl}() {{}}
@@ -72,14 +72,12 @@ build_body2_start = """
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){{}});
 """
     
 
 build_body2_body = """
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, extract((d{id}){{&D::{name}}}));
+            m->registerHook(base+{offset}, extract(i, (d{id}){{&D::{name}}}));
 """
 
 build_body2_body_static = """
@@ -89,7 +87,7 @@ build_body2_body_static = """
 
 build_body2_body_virtual = """
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, extract_virtual(V, (d{id}){{&D::{name}}}));
+            m->registerHook(base+{offset}, extract(i, (d{id}){{&D::{name}}}));
 """
 
 build_body2_end = "    }\n"

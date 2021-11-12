@@ -7,7 +7,7 @@
 #define rcast reinterpret_cast
 
 template<class D>
-class $AppDelegate : public AppDelegate, public $CacBase {
+class $AppDelegate : public NullAppDelegate, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$AppDelegate() {}
@@ -82,32 +82,30 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$AppDelegate::bgScale} != (d0){&D::bgScale})
-            m->registerHook(base+0x3aaab0, extract((d0){&D::bgScale}));
+            m->registerHook(base+0x3aaab0, extract(i, (d0){&D::bgScale}));
 
         if ((c1){&$AppDelegate::applicationDidFinishLaunching} != (d1){&D::applicationDidFinishLaunching})
-            m->registerHook(base+0x3aa900, extract_virtual(V, (d1){&D::applicationDidFinishLaunching}));
+            m->registerHook(base+0x3aa900, extract(i, (d1){&D::applicationDidFinishLaunching}));
 
         if ((c2){&$AppDelegate::applicationDidEnterBackground} != (d2){&D::applicationDidEnterBackground})
-            m->registerHook(base+0x3aabe0, extract_virtual(V, (d2){&D::applicationDidEnterBackground}));
+            m->registerHook(base+0x3aabe0, extract(i, (d2){&D::applicationDidEnterBackground}));
 
         if ((c3){&$AppDelegate::applicationWillEnterForeground} != (d3){&D::applicationWillEnterForeground})
-            m->registerHook(base+0x3aac80, extract_virtual(V, (d3){&D::applicationWillEnterForeground}));
+            m->registerHook(base+0x3aac80, extract(i, (d3){&D::applicationWillEnterForeground}));
 
         if ((c4){&$AppDelegate::applicationWillBecomeActive} != (d4){&D::applicationWillBecomeActive})
-            m->registerHook(base+0x3aab30, extract_virtual(V, (d4){&D::applicationWillBecomeActive}));
+            m->registerHook(base+0x3aab30, extract(i, (d4){&D::applicationWillBecomeActive}));
 
         if ((c5){&$AppDelegate::applicationWillResignActive} != (d5){&D::applicationWillResignActive})
-            m->registerHook(base+0x3aab50, extract_virtual(V, (d5){&D::applicationWillResignActive}));
+            m->registerHook(base+0x3aab50, extract(i, (d5){&D::applicationWillResignActive}));
 
         if ((c6){&$AppDelegate::trySaveGame} != (d6){&D::trySaveGame})
-            m->registerHook(base+0x3aaf10, extract_virtual(V, (d6){&D::trySaveGame}));
+            m->registerHook(base+0x3aaf10, extract(i, (d6){&D::trySaveGame}));
 
         if ((c7){&$AppDelegate::willSwitchToScene} != (d7){&D::willSwitchToScene})
-            m->registerHook(base+0x3aaf40, extract_virtual(V, (d7){&D::willSwitchToScene}));
+            m->registerHook(base+0x3aaf40, extract(i, (d7){&D::willSwitchToScene}));
 
         if ((c8){&$AppDelegate::get} != (d8){&D::get})
             m->registerHook(base+0x3aab10, extract((d8){&D::get}));
@@ -115,7 +113,7 @@ public:
 };
 
 template<class D>
-class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
+class $CCCircleWaveDelegate : public NullCCCircleWaveDelegate, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCCircleWaveDelegate() {}
@@ -127,13 +125,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $TableViewDelegate : public TableViewDelegate, public $CacBase {
+class $TableViewDelegate : public NullTableViewDelegate, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$TableViewDelegate() {}
@@ -145,13 +141,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $TableViewDataSource : public TableViewDataSource, public $CacBase {
+class $TableViewDataSource : public NullTableViewDataSource, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$TableViewDataSource() {}
@@ -163,13 +157,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBase {
+class $CCScrollLayerExtDelegate : public NullCCScrollLayerExtDelegate, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCScrollLayerExtDelegate() {}
@@ -181,13 +173,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, public $CacBase {
+class $GJSpecialColorSelectDelegate : public NullGJSpecialColorSelectDelegate, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$GJSpecialColorSelectDelegate() {}
@@ -199,13 +189,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $TextInputDelegate : public TextInputDelegate, public $CacBase {
+class $TextInputDelegate : public NullTextInputDelegate, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$TextInputDelegate() {}
@@ -217,13 +205,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
+class $FLAlertLayerProtocol : public NullFLAlertLayerProtocol, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$FLAlertLayerProtocol() {}
@@ -235,13 +221,11 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
 template<class D>
-class $CCSpritePlus : public CCSpritePlus, public $CacBase {
+class $CCSpritePlus : public NullCCSpritePlus, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCSpritePlus() {}
@@ -260,16 +244,14 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCSpritePlus::initWithSpriteFrameName} != (d0){&D::initWithSpriteFrameName})
-            m->registerHook(base+0x248670, extract((d0){&D::initWithSpriteFrameName}));
+            m->registerHook(base+0x248670, extract(i, (d0){&D::initWithSpriteFrameName}));
     }
 };
 
 template<class D>
-class $CCMoveCNode : public CCMoveCNode, public $CacBase {
+class $CCMoveCNode : public NullCCMoveCNode, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCMoveCNode() {}
@@ -295,19 +277,17 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCMoveCNode::create} != (d0){&D::create})
             m->registerHook(base+0x1842a0, extract((d0){&D::create}));
 
         if ((c1){&$CCMoveCNode::init} != (d1){&D::init})
-            m->registerHook(base+0x18b3d0, extract((d1){&D::init}));
+            m->registerHook(base+0x18b3d0, extract(i, (d1){&D::init}));
     }
 };
 
 template<class D>
-class $CCNodeContainer : public CCNodeContainer, public $CacBase {
+class $CCNodeContainer : public NullCCNodeContainer, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCNodeContainer() {}
@@ -340,22 +320,20 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCNodeContainer::create} != (d0){&D::create})
             m->registerHook(base+0xb1090, extract((d0){&D::create}));
 
         if ((c1){&$CCNodeContainer::init} != (d1){&D::init})
-            m->registerHook(base+0xba950, extract((d1){&D::init}));
+            m->registerHook(base+0xba950, extract(i, (d1){&D::init}));
 
         if ((c2){&$CCNodeContainer::visit} != (d2){&D::visit})
-            m->registerHook(base+0xba960, extract((d2){&D::visit}));
+            m->registerHook(base+0xba960, extract(i, (d2){&D::visit}));
     }
 };
 
 template<class D>
-class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
+class $CCAnimatedSprite : public NullCCAnimatedSprite, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCAnimatedSprite() {}
@@ -381,19 +359,17 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCAnimatedSprite::runAnimation} != (d0){&D::runAnimation})
-            m->registerHook(base+0x1a6430, extract((d0){&D::runAnimation}));
+            m->registerHook(base+0x1a6430, extract(i, (d0){&D::runAnimation}));
 
         if ((c1){&$CCAnimatedSprite::tweenToAnimation} != (d1){&D::tweenToAnimation})
-            m->registerHook(base+0x1a65b0, extract((d1){&D::tweenToAnimation}));
+            m->registerHook(base+0x1a65b0, extract(i, (d1){&D::tweenToAnimation}));
     }
 };
 
 template<class D>
-class $CCBlockLayer : public CCBlockLayer, public $CacBase {
+class $CCBlockLayer : public NullCCBlockLayer, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCBlockLayer() {}
@@ -489,49 +465,47 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCBlockLayer::disableUI} != (d0){&D::disableUI})
-            m->registerHook(base+0x2a5a80, extract((d0){&D::disableUI}));
+            m->registerHook(base+0x2a5a80, extract(i, (d0){&D::disableUI}));
 
         if ((c1){&$CCBlockLayer::draw} != (d1){&D::draw})
-            m->registerHook(base+0x2a5c20, extract((d1){&D::draw}));
+            m->registerHook(base+0x2a5c20, extract(i, (d1){&D::draw}));
 
         if ((c2){&$CCBlockLayer::enableUI} != (d2){&D::enableUI})
-            m->registerHook(base+0x2a5a90, extract((d2){&D::enableUI}));
+            m->registerHook(base+0x2a5a90, extract(i, (d2){&D::enableUI}));
 
         if ((c3){&$CCBlockLayer::enterAnimFinished} != (d3){&D::enterAnimFinished})
-            m->registerHook(base+0x2a5bb0, extract((d3){&D::enterAnimFinished}));
+            m->registerHook(base+0x2a5bb0, extract(i, (d3){&D::enterAnimFinished}));
 
         if ((c4){&$CCBlockLayer::enterLayer} != (d4){&D::enterLayer})
-            m->registerHook(base+0x2a5aa0, extract((d4){&D::enterLayer}));
+            m->registerHook(base+0x2a5aa0, extract(i, (d4){&D::enterLayer}));
 
         if ((c5){&$CCBlockLayer::exitLayer} != (d5){&D::exitLayer})
-            m->registerHook(base+0x2a5b40, extract((d5){&D::exitLayer}));
+            m->registerHook(base+0x2a5b40, extract(i, (d5){&D::exitLayer}));
 
         if ((c6){&$CCBlockLayer::hideLayer} != (d6){&D::hideLayer})
-            m->registerHook(base+0x2a5ba0, extract((d6){&D::hideLayer}));
+            m->registerHook(base+0x2a5ba0, extract(i, (d6){&D::hideLayer}));
 
         if ((c7){&$CCBlockLayer::init} != (d7){&D::init})
-            m->registerHook(base+0x2a59c0, extract((d7){&D::init}));
+            m->registerHook(base+0x2a59c0, extract(i, (d7){&D::init}));
 
         if ((c8){&$CCBlockLayer::layerHidden} != (d8){&D::layerHidden})
-            m->registerHook(base+0x2a5be0, extract((d8){&D::layerHidden}));
+            m->registerHook(base+0x2a5be0, extract(i, (d8){&D::layerHidden}));
 
         if ((c9){&$CCBlockLayer::layerVisible} != (d9){&D::layerVisible})
-            m->registerHook(base+0x2a5bc0, extract((d9){&D::layerVisible}));
+            m->registerHook(base+0x2a5bc0, extract(i, (d9){&D::layerVisible}));
 
         if ((c10){&$CCBlockLayer::registerWithTouchDispatcher} != (d10){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x2a5ad0, extract((d10){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x2a5ad0, extract(i, (d10){&D::registerWithTouchDispatcher}));
 
         if ((c11){&$CCBlockLayer::showLayer} != (d11){&D::showLayer})
-            m->registerHook(base+0x2a5b90, extract((d11){&D::showLayer}));
+            m->registerHook(base+0x2a5b90, extract(i, (d11){&D::showLayer}));
     }
 };
 
 template<class D>
-class $CCCircleWave : public CCCircleWave, public $CacBase {
+class $CCCircleWave : public NullCCCircleWave, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCCircleWave() {}
@@ -578,8 +552,6 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCCircleWave::create} != (d0){&D::create})
             m->registerHook(base+0xbd270, extract((d0){&D::create}));
@@ -588,18 +560,18 @@ public:
             m->registerHook(base+0xbd290, extract((d1){&D::create}));
 
         if ((c2){&$CCCircleWave::init} != (d2){&D::init})
-            m->registerHook(base+0xbd380, extract((d2){&D::init}));
+            m->registerHook(base+0xbd380, extract(i, (d2){&D::init}));
 
         if ((c3){&$CCCircleWave::followObject} != (d3){&D::followObject})
-            m->registerHook(base+0xbd670, extract((d3){&D::followObject}));
+            m->registerHook(base+0xbd670, extract(i, (d3){&D::followObject}));
 
         if ((c4){&$CCCircleWave::updatePosition} != (d4){&D::updatePosition})
-            m->registerHook(base+0xbd630, extract((d4){&D::updatePosition}));
+            m->registerHook(base+0xbd630, extract(i, (d4){&D::updatePosition}));
     }
 };
 
 template<class D>
-class $CCLightFlash : public CCLightFlash, public $CacBase {
+class $CCLightFlash : public NullCCLightFlash, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCLightFlash() {}
@@ -625,19 +597,17 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCLightFlash::create} != (d0){&D::create})
             m->registerHook(base+0x295870, extract((d0){&D::create}));
 
         if ((c1){&$CCLightFlash::playEffect} != (d1){&D::playEffect})
-            m->registerHook(base+0x295900, extract((d1){&D::playEffect}));
+            m->registerHook(base+0x295900, extract(i, (d1){&D::playEffect}));
     }
 };
 
 template<class D>
-class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
+class $CCMenuItemSpriteExtra : public NullCCMenuItemSpriteExtra, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCMenuItemSpriteExtra() {}
@@ -670,22 +640,20 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCMenuItemSpriteExtra::create} != (d0){&D::create})
             m->registerHook(base+0x1253c0, extract((d0){&D::create}));
 
         if ((c1){&$CCMenuItemSpriteExtra::setSizeMult} != (d1){&D::setSizeMult})
-            m->registerHook(base+0x1255e0, extract((d1){&D::setSizeMult}));
+            m->registerHook(base+0x1255e0, extract(i, (d1){&D::setSizeMult}));
 
         if ((c3){&$CCMenuItemSpriteExtra::init} != (d3){&D::init})
-            m->registerHook(base+0x125450, extract((d3){&D::init}));
+            m->registerHook(base+0x125450, extract(i, (d3){&D::init}));
     }
 };
 
 template<class D>
-class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
+class $CCMenuItemToggler : public NullCCMenuItemToggler, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCMenuItemToggler() {}
@@ -711,19 +679,17 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCMenuItemToggler::create} != (d0){&D::create})
             m->registerHook(base+0x38400, extract((d0){&D::create}));
 
         if ((c1){&$CCMenuItemToggler::setSizeMult} != (d1){&D::setSizeMult})
-            m->registerHook(base+0x38a40, extract((d1){&D::setSizeMult}));
+            m->registerHook(base+0x38a40, extract(i, (d1){&D::setSizeMult}));
     }
 };
 
 template<class D>
-class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
+class $CCScrollLayerExt : public NullCCScrollLayerExt, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCScrollLayerExt() {}
@@ -805,43 +771,41 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c1){&$CCScrollLayerExt::visit} != (d1){&D::visit})
-            m->registerHook(base+0x236550, extract_virtual(V, (d1){&D::visit}));
+            m->registerHook(base+0x236550, extract(i, (d1){&D::visit}));
 
         if ((c2){&$CCScrollLayerExt::ccTouchBegan} != (d2){&D::ccTouchBegan})
-            m->registerHook(base+0x235ef0, extract_virtual(V, (d2){&D::ccTouchBegan}));
+            m->registerHook(base+0x235ef0, extract(i, (d2){&D::ccTouchBegan}));
 
         if ((c3){&$CCScrollLayerExt::ccTouchMoved} != (d3){&D::ccTouchMoved})
-            m->registerHook(base+0x236300, extract_virtual(V, (d3){&D::ccTouchMoved}));
+            m->registerHook(base+0x236300, extract(i, (d3){&D::ccTouchMoved}));
 
         if ((c4){&$CCScrollLayerExt::ccTouchEnded} != (d4){&D::ccTouchEnded})
-            m->registerHook(base+0x236020, extract_virtual(V, (d4){&D::ccTouchEnded}));
+            m->registerHook(base+0x236020, extract(i, (d4){&D::ccTouchEnded}));
 
         if ((c5){&$CCScrollLayerExt::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
-            m->registerHook(base+0x2362a0, extract_virtual(V, (d5){&D::ccTouchCancelled}));
+            m->registerHook(base+0x2362a0, extract(i, (d5){&D::ccTouchCancelled}));
 
         if ((c6){&$CCScrollLayerExt::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x235eb0, extract_virtual(V, (d6){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x235eb0, extract(i, (d6){&D::registerWithTouchDispatcher}));
 
         if ((c7){&$CCScrollLayerExt::preVisitWithClippingRect} != (d7){&D::preVisitWithClippingRect})
-            m->registerHook(base+0x2366a0, extract_virtual(V, (d7){&D::preVisitWithClippingRect}));
+            m->registerHook(base+0x2366a0, extract(i, (d7){&D::preVisitWithClippingRect}));
 
         if ((c8){&$CCScrollLayerExt::postVisit} != (d8){&D::postVisit})
-            m->registerHook(base+0x236720, extract_virtual(V, (d8){&D::postVisit}));
+            m->registerHook(base+0x236720, extract(i, (d8){&D::postVisit}));
 
         if ((c9){&$CCScrollLayerExt::moveToTop} != (d9){&D::moveToTop})
-            m->registerHook(base+0x235870, extract((d9){&D::moveToTop}));
+            m->registerHook(base+0x235870, extract(i, (d9){&D::moveToTop}));
 
         if ((c10){&$CCScrollLayerExt::moveToTopWithOffset} != (d10){&D::moveToTopWithOffset})
-            m->registerHook(base+0x2357d0, extract((d10){&D::moveToTopWithOffset}));
+            m->registerHook(base+0x2357d0, extract(i, (d10){&D::moveToTopWithOffset}));
     }
 };
 
 template<class D>
-class $FLAlertLayer : public FLAlertLayer, public $CacBase {
+class $FLAlertLayer : public NullFLAlertLayer, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$FLAlertLayer() {}
@@ -937,38 +901,36 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c1){&$FLAlertLayer::onEnter} != (d1){&D::onEnter})
-            m->registerHook(base+0x25f350, extract_virtual(V, (d1){&D::onEnter}));
+            m->registerHook(base+0x25f350, extract(i, (d1){&D::onEnter}));
 
         if ((c2){&$FLAlertLayer::ccTouchBegan} != (d2){&D::ccTouchBegan})
-            m->registerHook(base+0x25ee40, extract_virtual(V, (d2){&D::ccTouchBegan}));
+            m->registerHook(base+0x25ee40, extract(i, (d2){&D::ccTouchBegan}));
 
         if ((c3){&$FLAlertLayer::ccTouchMoved} != (d3){&D::ccTouchMoved})
-            m->registerHook(base+0x25f0a0, extract_virtual(V, (d3){&D::ccTouchMoved}));
+            m->registerHook(base+0x25f0a0, extract(i, (d3){&D::ccTouchMoved}));
 
         if ((c4){&$FLAlertLayer::ccTouchEnded} != (d4){&D::ccTouchEnded})
-            m->registerHook(base+0x25ef60, extract_virtual(V, (d4){&D::ccTouchEnded}));
+            m->registerHook(base+0x25ef60, extract(i, (d4){&D::ccTouchEnded}));
 
         if ((c5){&$FLAlertLayer::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
-            m->registerHook(base+0x25f020, extract_virtual(V, (d5){&D::ccTouchCancelled}));
+            m->registerHook(base+0x25f020, extract(i, (d5){&D::ccTouchCancelled}));
 
         if ((c6){&$FLAlertLayer::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x25f2e0, extract_virtual(V, (d6){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x25f2e0, extract(i, (d6){&D::registerWithTouchDispatcher}));
 
         if ((c7){&$FLAlertLayer::keyBackClicked} != (d7){&D::keyBackClicked})
-            m->registerHook(base+0x25ed90, extract_virtual(V, (d7){&D::keyBackClicked}));
+            m->registerHook(base+0x25ed90, extract(i, (d7){&D::keyBackClicked}));
 
         if ((c8){&$FLAlertLayer::keyDown} != (d8){&D::keyDown})
-            m->registerHook(base+0x25ece0, extract_virtual(V, (d8){&D::keyDown}));
+            m->registerHook(base+0x25ece0, extract(i, (d8){&D::keyDown}));
 
         if ((c9){&$FLAlertLayer::show} != (d9){&D::show})
-            m->registerHook(base+0x25f120, extract_virtual(V, (d9){&D::show}));
+            m->registerHook(base+0x25f120, extract(i, (d9){&D::show}));
 
         if ((c10){&$FLAlertLayer::init} != (d10){&D::init})
-            m->registerHook(base+0x25e1b0, extract((d10){&D::init}));
+            m->registerHook(base+0x25e1b0, extract(i, (d10){&D::init}));
 
         if ((c11){&$FLAlertLayer::create} != (d11){&D::create})
             m->registerHook(base+0x25e0e0, extract((d11){&D::create}));
@@ -979,7 +941,7 @@ public:
 };
 
 template<class D>
-class $MenuLayer : public MenuLayer, public $CacBase {
+class $MenuLayer : public NullMenuLayer, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$MenuLayer() {}
@@ -1047,37 +1009,35 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c1){&$MenuLayer::init} != (d1){&D::init})
-            m->registerHook(base+0x1d14b0, extract_virtual(V, (d1){&D::init}));
+            m->registerHook(base+0x1d14b0, extract(i, (d1){&D::init}));
 
         if ((c2){&$MenuLayer::keyBackClicked} != (d2){&D::keyBackClicked})
-            m->registerHook(base+0x1d3160, extract_virtual(V, (d2){&D::keyBackClicked}));
+            m->registerHook(base+0x1d3160, extract(i, (d2){&D::keyBackClicked}));
 
         if ((c3){&$MenuLayer::keyDown} != (d3){&D::keyDown})
-            m->registerHook(base+0x1d33d0, extract_virtual(V, (d3){&D::keyDown}));
+            m->registerHook(base+0x1d33d0, extract(i, (d3){&D::keyDown}));
 
         if ((c4){&$MenuLayer::googlePlaySignedIn} != (d4){&D::googlePlaySignedIn})
-            m->registerHook(base+0x1d2f30, extract_virtual(V, (d4){&D::googlePlaySignedIn}));
+            m->registerHook(base+0x1d2f30, extract(i, (d4){&D::googlePlaySignedIn}));
 
         if ((c5){&$MenuLayer::FLAlert_Clicked} != (d5){&D::FLAlert_Clicked})
-            m->registerHook(base+0x1d3190, extract_virtual(V, (d5){&D::FLAlert_Clicked}));
+            m->registerHook(base+0x1d3190, extract(i, (d5){&D::FLAlert_Clicked}));
 
         if ((c6){&$MenuLayer::onMoreGames} != (d6){&D::onMoreGames})
-            m->registerHook(base+0x1d2ad0, extract((d6){&D::onMoreGames}));
+            m->registerHook(base+0x1d2ad0, extract(i, (d6){&D::onMoreGames}));
 
         if ((c7){&$MenuLayer::onQuit} != (d7){&D::onQuit})
-            m->registerHook(base+0x1d2b40, extract((d7){&D::onQuit}));
+            m->registerHook(base+0x1d2b40, extract(i, (d7){&D::onQuit}));
 
         if ((c8){&$MenuLayer::scene} != (d8){&D::scene})
-            m->registerHook(base+0x1d12d0, extract((d8){&D::scene}));
+            m->registerHook(base+0x1d12d0, extract(i, (d8){&D::scene}));
     }
 };
 
 template<class D>
-class $ButtonSprite : public ButtonSprite, public $CacBase {
+class $ButtonSprite : public NullButtonSprite, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$ButtonSprite() {}
@@ -1124,8 +1084,6 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$ButtonSprite::create} != (d0){&D::create})
             m->registerHook(base+0x4fa10, extract((d0){&D::create}));
@@ -1134,7 +1092,7 @@ public:
             m->registerHook(base+0x4fa40, extract((d1){&D::create}));
 
         if ((c2){&$ButtonSprite::updateBGImage} != (d2){&D::updateBGImage})
-            m->registerHook(base+0x502d0, extract((d2){&D::updateBGImage}));
+            m->registerHook(base+0x502d0, extract(i, (d2){&D::updateBGImage}));
 
         if ((c3){&$ButtonSprite::create} != (d3){&D::create})
             m->registerHook(base+0x4fa60, extract((d3){&D::create}));
@@ -1145,7 +1103,7 @@ public:
 };
 
 template<class D>
-class $CCTextInputNode : public CCTextInputNode, public $CacBase {
+class $CCTextInputNode : public NullCCTextInputNode, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CCTextInputNode() {}
@@ -1339,91 +1297,89 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CCTextInputNode::create} != (d0){&D::create})
             m->registerHook(base+0x5cfb0, extract((d0){&D::create}));
 
         if ((c1){&$CCTextInputNode::getString} != (d1){&D::getString})
-            m->registerHook(base+0x5d6f0, extract((d1){&D::getString}));
+            m->registerHook(base+0x5d6f0, extract(i, (d1){&D::getString}));
 
         if ((c2){&$CCTextInputNode::refreshLabel} != (d2){&D::refreshLabel})
-            m->registerHook(base+0x5d730, extract((d2){&D::refreshLabel}));
+            m->registerHook(base+0x5d730, extract(i, (d2){&D::refreshLabel}));
 
         if ((c3){&$CCTextInputNode::setAllowedChars} != (d3){&D::setAllowedChars})
-            m->registerHook(base+0x5d360, extract((d3){&D::setAllowedChars}));
+            m->registerHook(base+0x5d360, extract(i, (d3){&D::setAllowedChars}));
 
         if ((c4){&$CCTextInputNode::setLabelNormalColor} != (d4){&D::setLabelNormalColor})
-            m->registerHook(base+0x5dab0, extract((d4){&D::setLabelNormalColor}));
+            m->registerHook(base+0x5dab0, extract(i, (d4){&D::setLabelNormalColor}));
 
         if ((c5){&$CCTextInputNode::setLabelPlaceholderColor} != (d5){&D::setLabelPlaceholderColor})
-            m->registerHook(base+0x5da90, extract((d5){&D::setLabelPlaceholderColor}));
+            m->registerHook(base+0x5da90, extract(i, (d5){&D::setLabelPlaceholderColor}));
 
         if ((c6){&$CCTextInputNode::setLabelPlaceholderScale} != (d6){&D::setLabelPlaceholderScale})
-            m->registerHook(base+0x5da70, extract((d6){&D::setLabelPlaceholderScale}));
+            m->registerHook(base+0x5da70, extract(i, (d6){&D::setLabelPlaceholderScale}));
 
         if ((c7){&$CCTextInputNode::setMaxLabelScale} != (d7){&D::setMaxLabelScale})
-            m->registerHook(base+0x5da30, extract((d7){&D::setMaxLabelScale}));
+            m->registerHook(base+0x5da30, extract(i, (d7){&D::setMaxLabelScale}));
 
         if ((c8){&$CCTextInputNode::setMaxLabelWidth} != (d8){&D::setMaxLabelWidth})
-            m->registerHook(base+0x5da50, extract((d8){&D::setMaxLabelWidth}));
+            m->registerHook(base+0x5da50, extract(i, (d8){&D::setMaxLabelWidth}));
 
         if ((c9){&$CCTextInputNode::setString} != (d9){&D::setString})
-            m->registerHook(base+0x5d3e0, extract((d9){&D::setString}));
+            m->registerHook(base+0x5d3e0, extract(i, (d9){&D::setString}));
 
         if ((c10){&$CCTextInputNode::updateLabel} != (d10){&D::updateLabel})
-            m->registerHook(base+0x5d4a0, extract((d10){&D::updateLabel}));
+            m->registerHook(base+0x5d4a0, extract(i, (d10){&D::updateLabel}));
 
         if ((c11){&$CCTextInputNode::forceOffset} != (d11){&D::forceOffset})
-            m->registerHook(base+0x5ec70, extract((d11){&D::forceOffset}));
+            m->registerHook(base+0x5ec70, extract(i, (d11){&D::forceOffset}));
 
         if ((c12){&$CCTextInputNode::registerWithTouchDispatcher} != (d12){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x5eec0, extract_virtual(V, (d12){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x5eec0, extract(i, (d12){&D::registerWithTouchDispatcher}));
 
         if ((c13){&$CCTextInputNode::init} != (d13){&D::init})
-            m->registerHook(base+0x5d180, extract((d13){&D::init}));
+            m->registerHook(base+0x5d180, extract(i, (d13){&D::init}));
 
         if ((c14){&$CCTextInputNode::visit} != (d14){&D::visit})
-            m->registerHook(base+0x5d380, extract_virtual(V, (d14){&D::visit}));
+            m->registerHook(base+0x5d380, extract(i, (d14){&D::visit}));
 
         if ((c15){&$CCTextInputNode::ccTouchBegan} != (d15){&D::ccTouchBegan})
-            m->registerHook(base+0x5ec80, extract_virtual(V, (d15){&D::ccTouchBegan}));
+            m->registerHook(base+0x5ec80, extract(i, (d15){&D::ccTouchBegan}));
 
         if ((c16){&$CCTextInputNode::ccTouchCancelled} != (d16){&D::ccTouchCancelled})
-            m->registerHook(base+0x5ee80, extract_virtual(V, (d16){&D::ccTouchCancelled}));
+            m->registerHook(base+0x5ee80, extract(i, (d16){&D::ccTouchCancelled}));
 
         if ((c17){&$CCTextInputNode::ccTouchEnded} != (d17){&D::ccTouchEnded})
-            m->registerHook(base+0x5ee60, extract_virtual(V, (d17){&D::ccTouchEnded}));
+            m->registerHook(base+0x5ee60, extract(i, (d17){&D::ccTouchEnded}));
 
         if ((c18){&$CCTextInputNode::ccTouchMoved} != (d18){&D::ccTouchMoved})
-            m->registerHook(base+0x5eea0, extract_virtual(V, (d18){&D::ccTouchMoved}));
+            m->registerHook(base+0x5eea0, extract(i, (d18){&D::ccTouchMoved}));
 
         if ((c19){&$CCTextInputNode::textChanged} != (d19){&D::textChanged})
-            m->registerHook(base+0x5dd70, extract_virtual(V, (d19){&D::textChanged}));
+            m->registerHook(base+0x5dd70, extract(i, (d19){&D::textChanged}));
 
         if ((c20){&$CCTextInputNode::onClickTrackNode} != (d20){&D::onClickTrackNode})
-            m->registerHook(base+0x5dd40, extract_virtual(V, (d20){&D::onClickTrackNode}));
+            m->registerHook(base+0x5dd40, extract(i, (d20){&D::onClickTrackNode}));
 
         if ((c21){&$CCTextInputNode::keyboardWillShow} != (d21){&D::keyboardWillShow})
-            m->registerHook(base+0x5dad0, extract_virtual(V, (d21){&D::keyboardWillShow}));
+            m->registerHook(base+0x5dad0, extract(i, (d21){&D::keyboardWillShow}));
 
         if ((c22){&$CCTextInputNode::keyboardWillHide} != (d22){&D::keyboardWillHide})
-            m->registerHook(base+0x5dc20, extract_virtual(V, (d22){&D::keyboardWillHide}));
+            m->registerHook(base+0x5dc20, extract(i, (d22){&D::keyboardWillHide}));
 
         if ((c23){&$CCTextInputNode::onTextFieldInsertText} != (d23){&D::onTextFieldInsertText})
-            m->registerHook(base+0x5de50, extract_virtual(V, (d23){&D::onTextFieldInsertText}));
+            m->registerHook(base+0x5de50, extract(i, (d23){&D::onTextFieldInsertText}));
 
         if ((c24){&$CCTextInputNode::onTextFieldAttachWithIME} != (d24){&D::onTextFieldAttachWithIME})
-            m->registerHook(base+0x5e2c0, extract_virtual(V, (d24){&D::onTextFieldAttachWithIME}));
+            m->registerHook(base+0x5e2c0, extract(i, (d24){&D::onTextFieldAttachWithIME}));
 
         if ((c25){&$CCTextInputNode::onTextFieldDetachWithIME} != (d25){&D::onTextFieldDetachWithIME})
-            m->registerHook(base+0x5e610, extract_virtual(V, (d25){&D::onTextFieldDetachWithIME}));
+            m->registerHook(base+0x5e610, extract(i, (d25){&D::onTextFieldDetachWithIME}));
     }
 };
 
 template<class D>
-class $TableView : public TableView, public $CacBase {
+class $TableView : public NullTableView, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$TableView() {}
@@ -1449,19 +1405,17 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$TableView::create} != (d0){&D::create})
             m->registerHook(base+0x37eb30, extract((d0){&D::create}));
 
         if ((c1){&$TableView::reloadData} != (d1){&D::reloadData})
-            m->registerHook(base+0x37f970, extract((d1){&D::reloadData}));
+            m->registerHook(base+0x37f970, extract(i, (d1){&D::reloadData}));
     }
 };
 
 template<class D>
-class $BoomListView : public BoomListView, public $CacBase {
+class $BoomListView : public NullBoomListView, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$BoomListView() {}
@@ -1571,55 +1525,53 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$BoomListView::create} != (d0){&D::create})
             m->registerHook(base+0x18ecb0, extract((d0){&D::create}));
 
         if ((c1){&$BoomListView::init} != (d1){&D::init})
-            m->registerHook(base+0x18ee00, extract((d1){&D::init}));
+            m->registerHook(base+0x18ee00, extract(i, (d1){&D::init}));
 
         if ((c2){&$BoomListView::draw} != (d2){&D::draw})
-            m->registerHook(base+0x18f790, extract((d2){&D::draw}));
+            m->registerHook(base+0x18f790, extract(i, (d2){&D::draw}));
 
         if ((c3){&$BoomListView::setupList} != (d3){&D::setupList})
-            m->registerHook(base+0x18ef90, extract_virtual(V, (d3){&D::setupList}));
+            m->registerHook(base+0x18ef90, extract(i, (d3){&D::setupList}));
 
         if ((c4){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (d4){&D::TableViewWillDisplayCellForRowAtIndexPath})
-            m->registerHook(base+0x18f030, extract_virtual(V, (d4){&D::TableViewWillDisplayCellForRowAtIndexPath}));
+            m->registerHook(base+0x18f030, extract(i, (d4){&D::TableViewWillDisplayCellForRowAtIndexPath}));
 
         if ((c5){&$BoomListView::cellHeightForRowAtIndexPath} != (d5){&D::cellHeightForRowAtIndexPath})
-            m->registerHook(base+0x18f070, extract_virtual(V, (d5){&D::cellHeightForRowAtIndexPath}));
+            m->registerHook(base+0x18f070, extract(i, (d5){&D::cellHeightForRowAtIndexPath}));
 
         if ((c6){&$BoomListView::didSelectRowAtIndexPath} != (d6){&D::didSelectRowAtIndexPath})
-            m->registerHook(base+0x18f090, extract_virtual(V, (d6){&D::didSelectRowAtIndexPath}));
+            m->registerHook(base+0x18f090, extract(i, (d6){&D::didSelectRowAtIndexPath}));
 
         if ((c7){&$BoomListView::numberOfRowsInSection} != (d7){&D::numberOfRowsInSection})
-            m->registerHook(base+0x18f0b0, extract_virtual(V, (d7){&D::numberOfRowsInSection}));
+            m->registerHook(base+0x18f0b0, extract(i, (d7){&D::numberOfRowsInSection}));
 
         if ((c8){&$BoomListView::numberOfSectionsInTableView} != (d8){&D::numberOfSectionsInTableView})
-            m->registerHook(base+0x18f0e0, extract_virtual(V, (d8){&D::numberOfSectionsInTableView}));
+            m->registerHook(base+0x18f0e0, extract(i, (d8){&D::numberOfSectionsInTableView}));
 
         if ((c9){&$BoomListView::cellForRowAtIndexPath} != (d9){&D::cellForRowAtIndexPath})
-            m->registerHook(base+0x18f100, extract_virtual(V, (d9){&D::cellForRowAtIndexPath}));
+            m->registerHook(base+0x18f100, extract(i, (d9){&D::cellForRowAtIndexPath}));
 
         if ((c10){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
-            m->registerHook(base+0x18f770, extract_virtual(V, (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
+            m->registerHook(base+0x18f770, extract(i, (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
 
         if ((c11){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (d11){&D::TableViewWillReloadCellForRowAtIndexPath})
-            m->registerHook(base+0x18f050, extract_virtual(V, (d11){&D::TableViewWillReloadCellForRowAtIndexPath}));
+            m->registerHook(base+0x18f050, extract(i, (d11){&D::TableViewWillReloadCellForRowAtIndexPath}));
 
         if ((c12){&$BoomListView::getListCell} != (d12){&D::getListCell})
-            m->registerHook(base+0x18f200, extract_virtual(V, (d12){&D::getListCell}));
+            m->registerHook(base+0x18f200, extract(i, (d12){&D::getListCell}));
 
         if ((c13){&$BoomListView::loadCell} != (d13){&D::loadCell})
-            m->registerHook(base+0x18f4a0, extract_virtual(V, (d13){&D::loadCell}));
+            m->registerHook(base+0x18f4a0, extract(i, (d13){&D::loadCell}));
     }
 };
 
 template<class D>
-class $CustomListView : public CustomListView, public $CacBase {
+class $CustomListView : public NullCustomListView, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$CustomListView() {}
@@ -1659,25 +1611,23 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
 
         if ((c0){&$CustomListView::create} != (d0){&D::create})
             m->registerHook(base+0x10d410, extract((d0){&D::create}));
 
         if ((c1){&$CustomListView::getListCell} != (d1){&D::getListCell})
-            m->registerHook(base+0x10d560, extract((d1){&D::getListCell}));
+            m->registerHook(base+0x10d560, extract(i, (d1){&D::getListCell}));
 
         if ((c2){&$CustomListView::loadCell} != (d2){&D::loadCell})
-            m->registerHook(base+0x10e610, extract((d2){&D::loadCell}));
+            m->registerHook(base+0x10e610, extract(i, (d2){&D::loadCell}));
 
         if ((c3){&$CustomListView::setupList} != (d3){&D::setupList})
-            m->registerHook(base+0x116e70, extract((d3){&D::setupList}));
+            m->registerHook(base+0x116e70, extract(i, (d3){&D::setupList}));
     }
 };
 
 template<class D>
-class $TableViewCell : public TableViewCell, public $CacBase {
+class $TableViewCell : public NullTableViewCell, public $CacBase {
 public:
     static inline bool lock = false;
     inline ~$TableViewCell() {}
@@ -1689,8 +1639,6 @@ public:
         // i wanted to delete i but sadly the destructor isn't hooked yet soooo
         auto i = new D();
         lock = false;
-        auto V = *rcast<uintptr_t*>(i);
-        m->registerHook(extract_destructor(V), +[](){});
     }
 };
 
