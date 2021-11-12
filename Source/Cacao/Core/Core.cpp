@@ -18,10 +18,13 @@ namespace Cacao::core {
     }
 
     void BaseContainer::enable() {
-        // writePM(address, byteCount, moddedBytes);
     }
+
     void BaseContainer::disable() {
-        // writePM(address, byteCount, originalBytes);
+    }
+
+    uintptr_t BaseContainer::getAddress() {
+        return m_address;
     }
 
     // Memory container implementation
@@ -40,6 +43,14 @@ namespace Cacao::core {
         m_originalBytes = buf;
         m_moddedBytes = bytes;
     }
+
+    void MemoryContainer::enable() {
+        lilac::Memory::write((void*)m_address, (void*)m_moddedBytes, m_byteCount);
+    }
+    void MemoryContainer::disable() {
+        lilac::Memory::write((void*)m_address, (void*)m_originalBytes, m_byteCount);
+    }
+
 
     MemoryContainer::~MemoryContainer() {
         CoreLog("Bye from memory, %p", address)
@@ -78,6 +89,10 @@ namespace Cacao::core {
     }
     ModContainer::~ModContainer() {
         disable();
+    }
+
+    std::vector<BaseContainer*> ModContainer::getMods() {
+        return m_mods;
     }
 
     std::string ModContainer::getName() {

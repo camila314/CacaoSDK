@@ -290,93 +290,6 @@ class GJUserCell {
     void loadFromScore(GJUserScore*) = 0x115300;
 }
 
-class GManager : cocos2d::CCNode {
-    volatile virtual void setup() {}
-
-    void save() = 0x26f300;
-    void saveData(DS_Dictionary*, gd::string) = 0x26f4b0;
-    void saveGMTo(gd::string) = 0x26f3b0;
-
-    gd::string m_sFileName;
-    bool m_bSetup;
-    bool m_bSaved;
-}
-
-class GameLevelManager {
-    GJGameLevel* createNewLevel() = 0x2b8180;
-    static GameLevelManager* sharedState() = 0x2a8340;
-    void getPageInfo(char const*) = 0x2c0050;
-    cocos2d::CCArray* getStoredOnlineLevels(char const*) = 0x2bfe80;
-    void getTopArtists(int, int) = 0x2ce3d0;
-    void getTopArtistsKey(int) = 0x2ce7a0;
-    void makeTimeStamp(char const*) = 0x2bfd90;
-
-    cocos2d::CCDictionary* m_timerDict = 0x1e8;
-}
-
-class GameManager : cocos2d::CCNode {
-    void accountStatusChanged() = 0x1cdad0;
-    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80;
-    void didExitPlayscene() = 0x1d0230;
-    void doQuickSave() = 0x1d0200;
-    void fadeInMusic(char const*) = 0x1c2ff0;
-    void getBGTexture(int) = 0x1cca00;
-    void getFontFile(int) = 0x1cc5f0;
-    bool getGameVariable(char const*) = 0x1cccd0;
-    int getIntGameVariable(char const*) = 0x1cd1d0;
-    void getUGV(char const*) = 0x1ccfa0;
-    void loadDeathEffect(int) = 0x1cc690;
-    void loadFont(int) = 0x1cc550;
-    void reloadAll(bool, bool, bool) = 0x1d08a0;
-    void reloadAllStep5() = 0x1d0b00;
-    void reportPercentageForLevel(int, int, bool) = 0x1c5b00;
-    void setGameVariable(char const*, bool) = 0x1cca80;
-    void setIntGameVariable(char const*, int) = 0x1cd0e0;
-    void setUGV(char const*, bool) = 0x1cce50;
-    static GameManager* sharedState() = 0x1c2b30;
-    ~GameManager() = 0x1d0e00;
-    void getGTexture(int) = 0x1cca40;
-    bool init() = 0x1c2ec0;
-    void reportAchievementWithID(char const*, int, bool) = 0x1c6460;
-    void resolutionForKey(int) = 0x1d0b40;
-    void update(float) = 0x1d0270;
-
-    PlayLayer* m_playLayer = 0x180;
-    LevelEditorLayer* m_editorLayer = 0x188;
-    int m_scene = 0x1f4;
-    bool m_ldm = 0x2a1;
-}
-
-
-
-class GameSoundManager {
-    void disableMetering() = 0x362d80;
-    void enableMetering() = 0x362d00;
-    void getMeteringValue() = 0x362db0;
-    void playBackgroundMusic(gd::string, bool, bool) = 0x362070;
-    void playEffect(gd::string, float, float, float) = 0x3623d0;
-    void sharedManager() = 0x3610f0;
-    void stopBackgroundMusic() = 0x362130;
-    ~GameSoundManager() = 0x362c00;
-}
-
-class GameStatsManager {
-    void awardCurrencyForLevel(GJGameLevel*) = 0x43600;
-    void awardDiamondsForLevel(GJGameLevel*) = 0x43c60;
-    void awardSecretKey() = 0x4b1e0;
-    void getSecretCoinKey(char const*) = 0x429f0;
-    void getStat(char const*) = 0x3d310;
-    void hasPendingUserCoin(char const*) = 0x42730;
-    void hasSecretCoin(char const*) = 0x40730;
-    void hasUserCoin(char const*) = 0x427e0;
-    void incrementStat(char const*) = 0x3d6d0;
-    void incrementStat(char const*, int) = 0x3d6e0;
-    void sharedState() = 0x38f20;
-    void storePendingUserCoin(char const*) = 0x42940;
-    void storeSecretCoin(char const*) = 0x42a10;
-    void storeUserCoin(char const*) = 0x42890;
-}
-
 class GameToolbox : cocos2d::CCNode {
     static void createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x28bdd0;
     static void getRelativeOffset(GameObject*, cocos2d::CCPoint) = 0x28c060;
@@ -770,21 +683,7 @@ class cocos2d::CCKeyboardDelegate {
     void keyUp(cocos2d::enumKeyCodes) = 0x61a0;
 }
 
-class cocos2d::CCKeyboardDispatcher // :trol: {
-    void dispatchKeyboardMSG(cocos2d::enumKeyCodes, bool) = 0xe8190, 9193848;
-}
 
-class cocos2d::CCLabelBMFont {
-    static cocos2d::CCLabelBMFont* create(char const*, char const*) = 0x347660;
-    void limitLabelWidth(float, float, float) = 0x34a6e0;
-    void setScale(float) = 0x34a5d0;
-    void setString(char const*, bool) = 0x3489e0;
-    void setAnchorPoint(cocos2d::CCPoint const&) = 0x349440;
-}
-
-class cocos2d::CCLabelTTF {
-    void updateTexture() = 0x1fadc0;
-}
 
 class cocos2d::CCLayer {
     CCLayer() = 0x2725b0;

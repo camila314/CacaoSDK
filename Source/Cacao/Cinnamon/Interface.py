@@ -4,36 +4,38 @@ classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
-class ${cl} : public Null{cl}, public $CacBase {{
+class ${cl} : public {cl}, public $CacBase {{
 public:
-    static inline bool lock = false;
-    inline ~${cl}() {{}}
+    ~${cl}() {{
+        endDestructor();
+    }}
+    ${cl}() {{}}
 """
 
 build_body1 = """
-    using c{id} = {type}({const}${cl}::*)({params3});
-    using d{id} = {type}({const}D::*)({params3});
-    using f{id} = {type}(*)({const}${cl}*{params2});
-    inline {type} {name}({params}) {const}{{
-        {function}
+    using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
+    using c{id} = r{id}(${cl}::*)({params3}) {const};
+    using d{id} = r{id}(D::*)({params3}) {const};
+    r{id} {name}({params}) {const}{{
+{function}
     }}
 """
 
 build_body1_virtual = """
-    using c{id} = {type}({const}${cl}::*)({params3});
-    using d{id} = {type}({const}D::*)({params3});
-    using f{id} = {type}(*)({const}${cl}*{params2});
-    inline {type} {name}({params}) {const}{{
-        {function}
+    using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
+    using c{id} = r{id}(${cl}::*)({params3}) {const};
+    using d{id} = r{id}(D::*)({params3}) {const};
+    r{id} {name}({params}) {const}{{
+{function}
     }}
 """
 
 build_body1_static = """
-    using c{id} = {type}(*)({params3});
-    using d{id} = {type}(*)({params3});
-    using f{id} = {type}(*)({params3});
-    inline static {type} {name}({params}) {const}{{
-        {function}
+    using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
+    using c{id} = r{id}(*)({params3});
+    using d{id} = r{id}(*)({params3});
+    static r{id} {name}({params}) {const}{{
+{function}
     }}
 """
 
@@ -65,32 +67,29 @@ build_body1_static = """
 # """
 
 build_body2_start = """
-    inline ${cl}(bool) {{}}
-    inline ${cl}() {{
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {{
         auto i = new D();
-        lock = false;
 """
     
 
 build_body2_body = """
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, extract(i, (d{id}){{&D::{name}}}));
+            m->registerHook(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_static = """
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, extract((d{id}){{&D::{name}}}));
+            m->registerHook(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_virtual = """
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, extract(i, (d{id}){{&D::{name}}}));
+            m->registerHook(base+{offset}, FunctionScrapper::addressOfVirtual(i, (d{id}){{&D::{name}}}));
 """
 
-build_body2_end = "    }\n"
+build_body2_end = """
+        // delete i;
+    }\n"""
 build_end = "};\n"
 
 out = """// 
@@ -99,7 +98,6 @@ out = """//
 //
 #pragma once
 #include <Base/InterfaceBase.hpp>
-#define rcast reinterpret_cast
 """
 for cl in classes:
     if "cocos2d" in cl.name:
@@ -129,6 +127,7 @@ for cl in classes:
             const = "const " if info.const else "",
             id = i,
             function = getFunctionImplementation(cl, info, i),
+            defaults = ', '.join(f"std::declval<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
         )
 
     out += build_body2_start.format(cl=cl.name)
@@ -154,9 +153,6 @@ for cl in classes:
     out += build_body2_end
     out += build_end
 
-out += """
-#undef rcast
-"""
 
 with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "w") as f:
     f.write(out)

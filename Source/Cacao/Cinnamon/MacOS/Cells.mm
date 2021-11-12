@@ -1,5 +1,7 @@
 class TableViewCell : cocos2d::CCLayer {
     TableViewCell(char const*, float, float) = 0x383de0;
+    // default constructor
+    volatile TableViewCell() {}
     volatile char pad[0x1c0-0x170];
     float m_parentHeight;
     float m_height;
@@ -17,12 +19,12 @@ class ArtistCell : TableViewCell {
     void* m_idk;
 }
 
-// class CommentCell : TableViewCell {
-//     void loadFromComment(GJComment*) = 0x111c70;
-// }
+class CommentCell : TableViewCell {
+    void loadFromComment(GJComment*) = 0x111c70;
+}
 
-// class CustomSongCell : TableViewCell {
-//     void loadFromObject(SongInfoObject*) = 0x110220;
-// }
+class CustomSongCell : TableViewCell {
+    void loadFromObject(SongInfoObject*) = 0x110220;
+}
 
 

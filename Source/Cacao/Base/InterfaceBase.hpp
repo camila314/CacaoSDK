@@ -3,13 +3,13 @@
 //
 #pragma once
 
-#include <stdint.h>
-
-uintptr_t getBase();
-inline uintptr_t const base = getBase();
-
+#include <Base/Base.hpp>
 #include <Core/Core.hpp>
+#include <Base/MacroBase.hpp>
+#include <Base/FunctionBase.hpp>
+
 #include <Header.hpp>
+#include <Cacao.hpp>
 
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
@@ -17,56 +17,7 @@ inline uintptr_t const base = getBase();
 
 inline ModContainer* const m = new ModContainer(CAC_PROJ_NAME);
 
-/**
- * "A destructor is used to destroy objects of its class type. 
- *  The address of a destructor shall not be taken."
- *  - C++ standard 12.4.2
- * 
- * Therefore, we shall not take the destructor of the class and 
- *  replace it with an empty function.  ~alk
- *
- * The destructor is at the address vtable + 0x8, so we do that
- */
-template <typename V>
-inline uintptr_t extract_destructor(V vtable) {
-    return *reinterpret_cast<uintptr_t*>(reinterpret_cast<uintptr_t>(vtable)+0x8);
-};
 
-/**
- * it’s actually kinda sick because you can use the ref cast 
- *  thingy to convert almost anything to anything else  ~camila
- * 
- * This is the kind-of-hack to convert the member function pointers
- * to uintptr_t, which is actually usable
- */
-template <typename F>
-inline uintptr_t extract(F func) {
-    return reinterpret_cast<uintptr_t&>(func);
-};
-
-/**
- * The ultimate member extract function
- * based on what the compiler actually compiles to
- */
-template <typename T, typename D, typename R, typename ...Ps>
-inline uintptr_t extract(T* self, R(D::*func)(Ps...)) { // get the function
-    union {
-        struct {
-            T* self;
-            R(T::*func)(Ps...);
-        };
-        struct {
-            uintptr_t base;
-            ptrdiff_t offset;
-            ptrdiff_t thunk;
-        };
-    } clean = {self, (R(T::*)(Ps...)){func}};
-
-    if (clean.offset & 1) // it is a virtual function
-        return *(uintptr_t*)(*(uintptr_t*)(clean.base + clean.thunk) + clean.offset - 1);
-    else // it is not a virtual function
-        return clean.offset;
-};
 
 // Just in case if we ever need to add shared implementations
 class $CacBase {
@@ -93,11 +44,45 @@ public:
 #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
 /**
- * Low level macro concatenation, needs 2 levels of indirection 
- * for some reason
+ * Get type of a function
  */
-#define CONCAT_(x, y) x##y
-#define CONCAT(x, y) CONCAT_(x, y)
+#define getReturnOf(Class, Function, ...) decltype(std::declval<Class>().Function(__VA_ARGS__))
+
+/**
+ * 
+ */
+// template <class F>
+// struct GetReturn {
+//     typedef typename F::something_made_up type;
+
+// };
+
+// template<typename R, typename T, typename ...Ps>
+// struct GetReturn<R(T::*)(Ps...) const> {
+//     using type = R;
+// };
+
+// template<typename R, typename T, typename ...Ps>
+// struct GetReturn<R(T::*)(Ps...)> {
+//     using type = R;
+// };
+
+// template<typename R, typename ...Ps>
+// struct GetReturn<R(*)(Ps...)> {
+//     using type = R;
+// };
+
+
+// template<typename C, typename R, typename T, typename ...Ps>
+// struct GetDerived {
+//     using type = R(D::*)(Ps...);
+// };
+
+// template<typename C, typename R, typename T, typename ...Ps>
+// struct GetStatic {
+//     using type = R(*)(Ps...);
+// };
+
 
 /**
  * Main class implementation, it has the structure
@@ -124,11 +109,11 @@ public:
  * $implement is for when you need the name of the class
  * class $implement(MenuLayer, MyMenuLayerInterface) {};
  */
-//#define $redirect(base) REDIRECT_($##base, __COUNTER__)
-#define $implement(base, derived) REDIRECT__(base, derived)
+#define $redirect(base) REDIRECT_($##base, __COUNTER__)
+#define $implement(base, derived) REDIRECT__($##base, derived)
 
 /**
  * My solution to the destructor problem
  * another syntax change but i couldn't care less
 */
-#define endImplement(derived) ; static int const CONCAT(_, derived) = (CONCAT(derived, ::apply()), 0);
+#define endImplement(derived) ; static int const CONCAT(_, derived) = (derived::apply(), 0);

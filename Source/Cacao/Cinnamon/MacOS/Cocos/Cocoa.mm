@@ -1,14 +1,16 @@
 class cocos2d::CCObject {
-    virtual ~CCObject() = 0x250d90;
-    virtual bool isEqual(cocos2d::CCObject const*) = 0x250f20;
-    virtual void acceptVisitor(cocos2d::CCDataVisitor&) = 0x250f30;
-    virtual void update(float) = 0x32660;
-    virtual void encodeWithCoder(DS_Dictionary*) = 0x250f70;
-    virtual bool canEncode() = 0x250f90;
-    virtual int getTag() const = 0x250f50;
-    virtual void setTag(int) = 0x250f60;
-
     CCObject() = 0x250ca0;
+    void acceptVisitor(cocos2d::CCDataVisitor&) = 0x250f30;
+    void autorelease() = 0x250ed0;
+    void canEncode() = 0x250f90;
+    void encodeWithCoder(DS_Dictionary*) = 0x250f70;
+    void getTag() const = 0x250f50;
+    void isEqual(cocos2d::CCObject const*) = 0x250f20;
+    void release() = 0x250ea0;
+    void retain() = 0x250ec0;
+    void setTag(int) = 0x250f60;
+    void update(float) = 0x32660;
+    ~CCObject() = 0x250d90;
 }
 
 class cocos2d::CCCopying {

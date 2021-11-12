@@ -7,7 +7,10 @@
 #include <Compat/gdstdlib.hpp>
 #include <Core/Core.hpp>
 // #include <CCMenuItemSpriteExtra.h>
-#include <Base/InterfaceBase.hpp>
+
+#include <Base/MacroBase.hpp>
+#include <Base/FunctionBase.hpp>
+#include <Base/Base.hpp>
 #include <cocos2dx/cocos2d.h>
 #include <cocos2dext/cocos-ext.h>
 
@@ -43,15 +46,40 @@ struct LevelDifficulty {
         return *(__TYPE__*)((long)this+__OFFSET__);         \
     }
 
+#if defined(__GNUC__) && defined(__APPLE__) 
+    #define jumpDestructor(address) asm volatile(                                           \
+        "pop %%rbp \n"                                                                      \
+        STR(addq CONCAT($, address), %%rax\n)                                               \
+        "jmpq *%%rax" : : "r" (base)                                                        \
+    );                                                                                      \
+    __builtin_unreachable();      
 
-#ifndef __APPLE__
-    #define returnXMM(type)                                 \
-    type ret;                                               \
-    __asm movss ret, xmm0                                   \
-    return ret
+    #define endDestructor() asm volatile(                                                   \
+        "pop %%rbp \n"                                                                      \
+        "ret" : :                                                                           \
+    );                                                                                      \
+    __builtin_unreachable();                                                            
 
-    #define returnFloat() returnXMM(float)
-    #define returnDouble() returnXMM(double)
+#elif defined(_MSC_VER) 
+    #pragma warning( disable : 4731 ) // pop ebp warning
+    #define jumpDestructor(address) __asm {                                                 \
+        __asm mov esp, ebp                                                                  \
+        __asm pop ebp                                                                       \
+        __asm mov eax, [base]                                                               \
+        __asm add eax, address                                                              \
+        __asm jmp eax                                                                       \
+    };                                                                                      \
+    __assume(0);
+
+    #define endDestructor() __asm {                                                         \
+        __asm mov esp, ebp                                                                  \
+        __asm pop ebp                                                                       \
+        __asm ret                                                                           \
+    };                                                                                      \
+    __assume(0);
+
+#else // ???
+    #define jumpDestructor(address)
 
 #endif
 

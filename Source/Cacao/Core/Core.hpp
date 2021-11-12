@@ -51,6 +51,12 @@ namespace Cacao::core {
         // Constructs a memory container for the address with bytes of byteCount long
         MemoryContainer(uintptr_t address, size_t byteCount, char* bytes);
 
+        // Enables the specific memory container
+        virtual void enable();
+
+        // Disables the specific memory container
+        virtual void disable();
+
         // Destructs the specific memory container
         virtual ~MemoryContainer();
     };

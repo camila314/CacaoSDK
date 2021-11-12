@@ -24,6 +24,7 @@ class CCTextInputNode : cocos2d::CCLayer, cocos2d::CCIMEDelegate, cocos2d::CCTex
     virtual void registerWithTouchDispatcher() = 0x5eec0;
 
     bool init(float, float, char const*, char const*, int, char const*) = 0x5d180;
+    virtual ~CCTextInputNode() = 0x5ceb0;
     virtual void visit() = 0x5d380;
     virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x5ec80;
     virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x5ee80;
@@ -58,29 +59,29 @@ class CCTextInputNode : cocos2d::CCLayer, cocos2d::CCIMEDelegate, cocos2d::CCTex
 }
 
 
-// class TextArea : ButtonSprite {
-//     virtual ~TextArea() = 0x19faa0;
-//     virtual void draw() = 0x19f890;
-//     virtual void setOpacity(unsigned char) = 0x19f760;
+class TextArea : ButtonSprite {
+    virtual ~TextArea() = 0x19faa0;
+    virtual void draw() = 0x19f890;
+    virtual void setOpacity(unsigned char) = 0x19f760;
 
-//     static TextArea* create(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool) = 0x19eb40;
-// }
+    static TextArea* create(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool) = 0x19eb40;
+}
 
-// class Slider : cocos2d::CCLayer {
-//     static Slider* create(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, char const*, char const*, char const*, char const*, float) = 0x18dd80;
-//     static Slider* create(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, float) = 0x18dc40;
-//     void getValue() = 0x18e0c0;
-//     void setBarVisibility(bool) = 0x18e280;
-//     void setValue(float) = 0x18e170;
-// }
+class Slider : cocos2d::CCLayer {
+    static Slider* create(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, char const*, char const*, char const*, char const*, float) = 0x18dd80;
+    static Slider* create(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, float) = 0x18dc40;
+    void getValue() = 0x18e0c0;
+    void setBarVisibility(bool) = 0x18e280;
+    void setValue(float) = 0x18e170;
+}
 
-// class SliderThumb {
-//     void getValue() = 0x18ce80;
-// }
+class SliderThumb {
+    void getValue() = 0x18ce80;
+}
 
-// class BoomScrollLayer {
-//     BoomScrollLayer() = 0x1e42f0;
-// }
+class BoomScrollLayer {
+    BoomScrollLayer() = 0x1e42f0;
+}
 
 class TableView : CCScrollLayerExt, CCScrollLayerExtDelegate {
     static TableView* create(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect) = 0x37eb30;
@@ -115,9 +116,9 @@ class BoomListView : cocos2d::CCLayer, TableViewDataSource, TableViewDelegate {
     int m_page;
 }
 
-// class CreateMenuItem : CCMenuItemSpriteExtra {
-//     static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x1c580;
-// }
+class CreateMenuItem : CCMenuItemSpriteExtra {
+    static CreateMenuItem* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x1c580;
+}
 
 class CustomListView : cocos2d::CCLayerColor {
     static CustomListView* create(cocos2d::CCArray*, float, float, int, BoomListType) = 0x10d410;
@@ -126,22 +127,22 @@ class CustomListView : cocos2d::CCLayerColor {
     void setupList() = 0x116e70;
 }
 
-// class InheritanceNode : cocos2d::CCObject {
+class InheritanceNode : cocos2d::CCObject {
 
-// }
+}
 
-// class HardStreak : cocos2d::CCDrawNode {
-//     virtual ~HardStreak() = 0x5bf00;
-//     virtual bool init() = 0x5c090;
+class HardStreak : cocos2d::CCDrawNode {
+    virtual ~HardStreak() = 0x5bf00;
+    virtual bool init() = 0x5c090;
     
-//     void addPoint(cocos2d::CCPoint) = 0x5c950;
-//     void reset() = 0x5c930;
-//     void resumeStroke() = 0x5c210;
-//     void stopStroke() = 0x5c8f0;
+    void addPoint(cocos2d::CCPoint) = 0x5c950;
+    void reset() = 0x5c930;
+    void resumeStroke() = 0x5c210;
+    void stopStroke() = 0x5c8f0;
 
-//     cocos2d::CCArray* m_pointsArr; // 0x0160
-//     cocos2d::CCPoint m_currentPoint; // 0x0168
-//     float m_waveSize; // 0x0170
-//     float m_pulseSize; // 0x0174
-//     bool m_isSolid; // 0x0178
-// }
+    cocos2d::CCArray* m_pointsArr; // 0x0160
+    cocos2d::CCPoint m_currentPoint; // 0x0168
+    float m_waveSize; // 0x0170
+    float m_pulseSize; // 0x0174
+    bool m_isSolid; // 0x0178
+}

@@ -4,1642 +4,14550 @@
 //
 #pragma once
 #include <Base/InterfaceBase.hpp>
-#define rcast reinterpret_cast
 
 template<class D>
-class $AppDelegate : public NullAppDelegate, public $CacBase {
+class $AppDelegate : public AppDelegate, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$AppDelegate() {}
+    ~$AppDelegate() {
+        endDestructor();
+    }
+    $AppDelegate() {}
 
-    using c0 = void($AppDelegate::*)();
-    using d0 = void(D::*)();
-    using f0 = void(*)($AppDelegate*);
-    inline void bgScale() {
+    using r0 = decltype(std::declval<AppDelegate>().bgScale());
+    using c0 = r0($AppDelegate::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 bgScale() {
+        using r0 = decltype(std::declval<AppDelegate>().bgScale());
+        using f0 = r0(*)(AppDelegate*);
         return reinterpret_cast<f0>(base+0x3aaab0)(this);
     }
 
-    using c1 = bool($AppDelegate::*)();
-    using d1 = bool(D::*)();
-    using f1 = bool(*)($AppDelegate*);
-    inline bool applicationDidFinishLaunching() {
+    using r1 = decltype(std::declval<AppDelegate>().applicationDidFinishLaunching());
+    using c1 = r1($AppDelegate::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 applicationDidFinishLaunching() {
+        using r1 = decltype(std::declval<AppDelegate>().applicationDidFinishLaunching());
+        using f1 = r1(*)(AppDelegate*);
         return reinterpret_cast<f1>(base+0x3aa900)(this);
     }
 
-    using c2 = void($AppDelegate::*)();
-    using d2 = void(D::*)();
-    using f2 = void(*)($AppDelegate*);
-    inline void applicationDidEnterBackground() {
+    using r2 = decltype(std::declval<AppDelegate>().applicationDidEnterBackground());
+    using c2 = r2($AppDelegate::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 applicationDidEnterBackground() {
+        using r2 = decltype(std::declval<AppDelegate>().applicationDidEnterBackground());
+        using f2 = r2(*)(AppDelegate*);
         return reinterpret_cast<f2>(base+0x3aabe0)(this);
     }
 
-    using c3 = void($AppDelegate::*)();
-    using d3 = void(D::*)();
-    using f3 = void(*)($AppDelegate*);
-    inline void applicationWillEnterForeground() {
+    using r3 = decltype(std::declval<AppDelegate>().applicationWillEnterForeground());
+    using c3 = r3($AppDelegate::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 applicationWillEnterForeground() {
+        using r3 = decltype(std::declval<AppDelegate>().applicationWillEnterForeground());
+        using f3 = r3(*)(AppDelegate*);
         return reinterpret_cast<f3>(base+0x3aac80)(this);
     }
 
-    using c4 = bool($AppDelegate::*)();
-    using d4 = bool(D::*)();
-    using f4 = bool(*)($AppDelegate*);
-    inline bool applicationWillBecomeActive() {
+    using r4 = decltype(std::declval<AppDelegate>().applicationWillBecomeActive());
+    using c4 = r4($AppDelegate::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 applicationWillBecomeActive() {
+        using r4 = decltype(std::declval<AppDelegate>().applicationWillBecomeActive());
+        using f4 = r4(*)(AppDelegate*);
         return reinterpret_cast<f4>(base+0x3aab30)(this);
     }
 
-    using c5 = bool($AppDelegate::*)();
-    using d5 = bool(D::*)();
-    using f5 = bool(*)($AppDelegate*);
-    inline bool applicationWillResignActive() {
+    using r5 = decltype(std::declval<AppDelegate>().applicationWillResignActive());
+    using c5 = r5($AppDelegate::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 applicationWillResignActive() {
+        using r5 = decltype(std::declval<AppDelegate>().applicationWillResignActive());
+        using f5 = r5(*)(AppDelegate*);
         return reinterpret_cast<f5>(base+0x3aab50)(this);
     }
 
-    using c6 = void($AppDelegate::*)();
-    using d6 = void(D::*)();
-    using f6 = void(*)($AppDelegate*);
-    inline void trySaveGame() {
+    using r6 = decltype(std::declval<AppDelegate>().trySaveGame());
+    using c6 = r6($AppDelegate::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 trySaveGame() {
+        using r6 = decltype(std::declval<AppDelegate>().trySaveGame());
+        using f6 = r6(*)(AppDelegate*);
         return reinterpret_cast<f6>(base+0x3aaf10)(this);
     }
 
-    using c7 = void($AppDelegate::*)(cocos2d::CCScene*);
-    using d7 = void(D::*)(cocos2d::CCScene*);
-    using f7 = void(*)($AppDelegate*, cocos2d::CCScene*);
-    inline void willSwitchToScene(cocos2d::CCScene* p0) {
+    using r7 = decltype(std::declval<AppDelegate>().willSwitchToScene(std::declval<cocos2d::CCScene*>()));
+    using c7 = r7($AppDelegate::*)(cocos2d::CCScene*) ;
+    using d7 = r7(D::*)(cocos2d::CCScene*) ;
+    r7 willSwitchToScene(cocos2d::CCScene* p0) {
+        using r7 = decltype(std::declval<AppDelegate>().willSwitchToScene(std::declval<cocos2d::CCScene*>()));
+        using f7 = r7(*)(AppDelegate*, cocos2d::CCScene*);
         return reinterpret_cast<f7>(base+0x3aaf40)(this, p0);
     }
 
-    using c8 = AppDelegate*(*)();
-    using d8 = AppDelegate*(*)();
-    using f8 = AppDelegate*(*)();
-    inline static AppDelegate* get() {
+    using r8 = decltype(std::declval<AppDelegate>().get());
+    using c8 = r8(*)();
+    using d8 = r8(*)();
+    static r8 get() {
+        using r8 = decltype(std::declval<AppDelegate>().get());
+        using f8 = r8(*)();
         return reinterpret_cast<f8>(base+0x3aab10)();
+
     }
 
-    inline $AppDelegate(bool) {}
-    inline $AppDelegate() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$AppDelegate::bgScale} != (d0){&D::bgScale})
-            m->registerHook(base+0x3aaab0, extract(i, (d0){&D::bgScale}));
+            m->registerHook(base+0x3aaab0, FunctionScrapper::addressOfNonVirtual((d0){&D::bgScale}));
 
         if ((c1){&$AppDelegate::applicationDidFinishLaunching} != (d1){&D::applicationDidFinishLaunching})
-            m->registerHook(base+0x3aa900, extract(i, (d1){&D::applicationDidFinishLaunching}));
+            m->registerHook(base+0x3aa900, FunctionScrapper::addressOfVirtual(i, (d1){&D::applicationDidFinishLaunching}));
 
         if ((c2){&$AppDelegate::applicationDidEnterBackground} != (d2){&D::applicationDidEnterBackground})
-            m->registerHook(base+0x3aabe0, extract(i, (d2){&D::applicationDidEnterBackground}));
+            m->registerHook(base+0x3aabe0, FunctionScrapper::addressOfVirtual(i, (d2){&D::applicationDidEnterBackground}));
 
         if ((c3){&$AppDelegate::applicationWillEnterForeground} != (d3){&D::applicationWillEnterForeground})
-            m->registerHook(base+0x3aac80, extract(i, (d3){&D::applicationWillEnterForeground}));
+            m->registerHook(base+0x3aac80, FunctionScrapper::addressOfVirtual(i, (d3){&D::applicationWillEnterForeground}));
 
         if ((c4){&$AppDelegate::applicationWillBecomeActive} != (d4){&D::applicationWillBecomeActive})
-            m->registerHook(base+0x3aab30, extract(i, (d4){&D::applicationWillBecomeActive}));
+            m->registerHook(base+0x3aab30, FunctionScrapper::addressOfVirtual(i, (d4){&D::applicationWillBecomeActive}));
 
         if ((c5){&$AppDelegate::applicationWillResignActive} != (d5){&D::applicationWillResignActive})
-            m->registerHook(base+0x3aab50, extract(i, (d5){&D::applicationWillResignActive}));
+            m->registerHook(base+0x3aab50, FunctionScrapper::addressOfVirtual(i, (d5){&D::applicationWillResignActive}));
 
         if ((c6){&$AppDelegate::trySaveGame} != (d6){&D::trySaveGame})
-            m->registerHook(base+0x3aaf10, extract(i, (d6){&D::trySaveGame}));
+            m->registerHook(base+0x3aaf10, FunctionScrapper::addressOfVirtual(i, (d6){&D::trySaveGame}));
 
         if ((c7){&$AppDelegate::willSwitchToScene} != (d7){&D::willSwitchToScene})
-            m->registerHook(base+0x3aaf40, extract(i, (d7){&D::willSwitchToScene}));
+            m->registerHook(base+0x3aaf40, FunctionScrapper::addressOfVirtual(i, (d7){&D::willSwitchToScene}));
 
         if ((c8){&$AppDelegate::get} != (d8){&D::get})
-            m->registerHook(base+0x3aab10, extract((d8){&D::get}));
+            m->registerHook(base+0x3aab10, FunctionScrapper::addressOfNonVirtual((d8){&D::get}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCCircleWaveDelegate : public NullCCCircleWaveDelegate, public $CacBase {
+class $CCCircleWaveDelegate : public CCCircleWaveDelegate, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCCircleWaveDelegate() {}
+    ~$CCCircleWaveDelegate() {
+        endDestructor();
+    }
+    $CCCircleWaveDelegate() {}
 
-    inline $CCCircleWaveDelegate(bool) {}
-    inline $CCCircleWaveDelegate() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $TableViewDelegate : public NullTableViewDelegate, public $CacBase {
+class $TableViewDelegate : public TableViewDelegate, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$TableViewDelegate() {}
+    ~$TableViewDelegate() {
+        endDestructor();
+    }
+    $TableViewDelegate() {}
 
-    inline $TableViewDelegate(bool) {}
-    inline $TableViewDelegate() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $TableViewDataSource : public NullTableViewDataSource, public $CacBase {
+class $TableViewDataSource : public TableViewDataSource, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$TableViewDataSource() {}
+    ~$TableViewDataSource() {
+        endDestructor();
+    }
+    $TableViewDataSource() {}
 
-    inline $TableViewDataSource(bool) {}
-    inline $TableViewDataSource() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCScrollLayerExtDelegate : public NullCCScrollLayerExtDelegate, public $CacBase {
+class $CCScrollLayerExtDelegate : public CCScrollLayerExtDelegate, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCScrollLayerExtDelegate() {}
+    ~$CCScrollLayerExtDelegate() {
+        endDestructor();
+    }
+    $CCScrollLayerExtDelegate() {}
 
-    inline $CCScrollLayerExtDelegate(bool) {}
-    inline $CCScrollLayerExtDelegate() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $GJSpecialColorSelectDelegate : public NullGJSpecialColorSelectDelegate, public $CacBase {
+class $GJSpecialColorSelectDelegate : public GJSpecialColorSelectDelegate, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$GJSpecialColorSelectDelegate() {}
+    ~$GJSpecialColorSelectDelegate() {
+        endDestructor();
+    }
+    $GJSpecialColorSelectDelegate() {}
 
-    inline $GJSpecialColorSelectDelegate(bool) {}
-    inline $GJSpecialColorSelectDelegate() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $TextInputDelegate : public NullTextInputDelegate, public $CacBase {
+class $TextInputDelegate : public TextInputDelegate, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$TextInputDelegate() {}
+    ~$TextInputDelegate() {
+        endDestructor();
+    }
+    $TextInputDelegate() {}
 
-    inline $TextInputDelegate(bool) {}
-    inline $TextInputDelegate() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $FLAlertLayerProtocol : public NullFLAlertLayerProtocol, public $CacBase {
+class $FLAlertLayerProtocol : public FLAlertLayerProtocol, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$FLAlertLayerProtocol() {}
+    ~$FLAlertLayerProtocol() {
+        endDestructor();
+    }
+    $FLAlertLayerProtocol() {}
 
-    inline $FLAlertLayerProtocol(bool) {}
-    inline $FLAlertLayerProtocol() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCSpritePlus : public NullCCSpritePlus, public $CacBase {
+class $CCSpritePlus : public CCSpritePlus, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCSpritePlus() {}
+    ~$CCSpritePlus() {
+        endDestructor();
+    }
+    $CCSpritePlus() {}
 
-    using c0 = bool($CCSpritePlus::*)(char const*);
-    using d0 = bool(D::*)(char const*);
-    using f0 = bool(*)($CCSpritePlus*, char const*);
-    inline bool initWithSpriteFrameName(char const* p0) {
+    using r0 = decltype(std::declval<CCSpritePlus>().initWithSpriteFrameName(std::declval<char const*>()));
+    using c0 = r0($CCSpritePlus::*)(char const*) ;
+    using d0 = r0(D::*)(char const*) ;
+    r0 initWithSpriteFrameName(char const* p0) {
+        using r0 = decltype(std::declval<CCSpritePlus>().initWithSpriteFrameName(std::declval<char const*>()));
+        using f0 = r0(*)(CCSpritePlus*, char const*);
         return reinterpret_cast<f0>(base+0x248670)(this, p0);
     }
 
-    inline $CCSpritePlus(bool) {}
-    inline $CCSpritePlus() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCSpritePlus::initWithSpriteFrameName} != (d0){&D::initWithSpriteFrameName})
-            m->registerHook(base+0x248670, extract(i, (d0){&D::initWithSpriteFrameName}));
+            m->registerHook(base+0x248670, FunctionScrapper::addressOfNonVirtual((d0){&D::initWithSpriteFrameName}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCMoveCNode : public NullCCMoveCNode, public $CacBase {
+class $CCMoveCNode : public CCMoveCNode, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCMoveCNode() {}
+    ~$CCMoveCNode() {
+        endDestructor();
+    }
+    $CCMoveCNode() {}
 
-    using c0 = CCMoveCNode*(*)();
-    using d0 = CCMoveCNode*(*)();
-    using f0 = CCMoveCNode*(*)();
-    inline static CCMoveCNode* create() {
+    using r0 = decltype(std::declval<CCMoveCNode>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<CCMoveCNode>().create());
+        using f0 = r0(*)();
         return reinterpret_cast<f0>(base+0x1842a0)();
+
     }
 
-    using c1 = bool($CCMoveCNode::*)();
-    using d1 = bool(D::*)();
-    using f1 = bool(*)($CCMoveCNode*);
-    inline bool init() {
+    using r1 = decltype(std::declval<CCMoveCNode>().init());
+    using c1 = r1($CCMoveCNode::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<CCMoveCNode>().init());
+        using f1 = r1(*)(CCMoveCNode*);
         return reinterpret_cast<f1>(base+0x18b3d0)(this);
     }
 
-    inline $CCMoveCNode(bool) {}
-    inline $CCMoveCNode() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCMoveCNode::create} != (d0){&D::create})
-            m->registerHook(base+0x1842a0, extract((d0){&D::create}));
+            m->registerHook(base+0x1842a0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCMoveCNode::init} != (d1){&D::init})
-            m->registerHook(base+0x18b3d0, extract(i, (d1){&D::init}));
+            m->registerHook(base+0x18b3d0, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCNodeContainer : public NullCCNodeContainer, public $CacBase {
+class $CCNodeContainer : public CCNodeContainer, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCNodeContainer() {}
+    ~$CCNodeContainer() {
+        endDestructor();
+    }
+    $CCNodeContainer() {}
 
-    using c0 = CCNodeContainer*(*)();
-    using d0 = CCNodeContainer*(*)();
-    using f0 = CCNodeContainer*(*)();
-    inline static CCNodeContainer* create() {
+    using r0 = decltype(std::declval<CCNodeContainer>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<CCNodeContainer>().create());
+        using f0 = r0(*)();
         return reinterpret_cast<f0>(base+0xb1090)();
+
     }
 
-    using c1 = bool($CCNodeContainer::*)();
-    using d1 = bool(D::*)();
-    using f1 = bool(*)($CCNodeContainer*);
-    inline bool init() {
+    using r1 = decltype(std::declval<CCNodeContainer>().init());
+    using c1 = r1($CCNodeContainer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<CCNodeContainer>().init());
+        using f1 = r1(*)(CCNodeContainer*);
         return reinterpret_cast<f1>(base+0xba950)(this);
     }
 
-    using c2 = void($CCNodeContainer::*)();
-    using d2 = void(D::*)();
-    using f2 = void(*)($CCNodeContainer*);
-    inline void visit() {
+    using r2 = decltype(std::declval<CCNodeContainer>().visit());
+    using c2 = r2($CCNodeContainer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 visit() {
+        using r2 = decltype(std::declval<CCNodeContainer>().visit());
+        using f2 = r2(*)(CCNodeContainer*);
         return reinterpret_cast<f2>(base+0xba960)(this);
     }
 
-    inline $CCNodeContainer(bool) {}
-    inline $CCNodeContainer() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCNodeContainer::create} != (d0){&D::create})
-            m->registerHook(base+0xb1090, extract((d0){&D::create}));
+            m->registerHook(base+0xb1090, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCNodeContainer::init} != (d1){&D::init})
-            m->registerHook(base+0xba950, extract(i, (d1){&D::init}));
+            m->registerHook(base+0xba950, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
 
         if ((c2){&$CCNodeContainer::visit} != (d2){&D::visit})
-            m->registerHook(base+0xba960, extract(i, (d2){&D::visit}));
+            m->registerHook(base+0xba960, FunctionScrapper::addressOfNonVirtual((d2){&D::visit}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCAnimatedSprite : public NullCCAnimatedSprite, public $CacBase {
+class $CCAnimatedSprite : public CCAnimatedSprite, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCAnimatedSprite() {}
+    ~$CCAnimatedSprite() {
+        endDestructor();
+    }
+    $CCAnimatedSprite() {}
 
-    using c0 = void($CCAnimatedSprite::*)(gd::string);
-    using d0 = void(D::*)(gd::string);
-    using f0 = void(*)($CCAnimatedSprite*, gd::string);
-    inline void runAnimation(gd::string p0) {
+    using r0 = decltype(std::declval<CCAnimatedSprite>().runAnimation(std::declval<gd::string>()));
+    using c0 = r0($CCAnimatedSprite::*)(gd::string) ;
+    using d0 = r0(D::*)(gd::string) ;
+    r0 runAnimation(gd::string p0) {
+        using r0 = decltype(std::declval<CCAnimatedSprite>().runAnimation(std::declval<gd::string>()));
+        using f0 = r0(*)(CCAnimatedSprite*, gd::string);
         return reinterpret_cast<f0>(base+0x1a6430)(this, p0);
     }
 
-    using c1 = void($CCAnimatedSprite::*)(gd::string, float);
-    using d1 = void(D::*)(gd::string, float);
-    using f1 = void(*)($CCAnimatedSprite*, gd::string, float);
-    inline void tweenToAnimation(gd::string p0, float p1) {
+    using r1 = decltype(std::declval<CCAnimatedSprite>().tweenToAnimation(std::declval<gd::string>(), std::declval<float>()));
+    using c1 = r1($CCAnimatedSprite::*)(gd::string, float) ;
+    using d1 = r1(D::*)(gd::string, float) ;
+    r1 tweenToAnimation(gd::string p0, float p1) {
+        using r1 = decltype(std::declval<CCAnimatedSprite>().tweenToAnimation(std::declval<gd::string>(), std::declval<float>()));
+        using f1 = r1(*)(CCAnimatedSprite*, gd::string, float);
         return reinterpret_cast<f1>(base+0x1a65b0)(this, p0, p1);
     }
 
-    inline $CCAnimatedSprite(bool) {}
-    inline $CCAnimatedSprite() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCAnimatedSprite::runAnimation} != (d0){&D::runAnimation})
-            m->registerHook(base+0x1a6430, extract(i, (d0){&D::runAnimation}));
+            m->registerHook(base+0x1a6430, FunctionScrapper::addressOfNonVirtual((d0){&D::runAnimation}));
 
         if ((c1){&$CCAnimatedSprite::tweenToAnimation} != (d1){&D::tweenToAnimation})
-            m->registerHook(base+0x1a65b0, extract(i, (d1){&D::tweenToAnimation}));
+            m->registerHook(base+0x1a65b0, FunctionScrapper::addressOfNonVirtual((d1){&D::tweenToAnimation}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCBlockLayer : public NullCCBlockLayer, public $CacBase {
+class $CCBlockLayer : public CCBlockLayer, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCBlockLayer() {}
+    ~$CCBlockLayer() {
+        endDestructor();
+    }
+    $CCBlockLayer() {}
 
-    using c0 = void($CCBlockLayer::*)();
-    using d0 = void(D::*)();
-    using f0 = void(*)($CCBlockLayer*);
-    inline void disableUI() {
+    using r0 = decltype(std::declval<CCBlockLayer>().disableUI());
+    using c0 = r0($CCBlockLayer::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 disableUI() {
+        using r0 = decltype(std::declval<CCBlockLayer>().disableUI());
+        using f0 = r0(*)(CCBlockLayer*);
         return reinterpret_cast<f0>(base+0x2a5a80)(this);
     }
 
-    using c1 = void($CCBlockLayer::*)();
-    using d1 = void(D::*)();
-    using f1 = void(*)($CCBlockLayer*);
-    inline void draw() {
+    using r1 = decltype(std::declval<CCBlockLayer>().draw());
+    using c1 = r1($CCBlockLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 draw() {
+        using r1 = decltype(std::declval<CCBlockLayer>().draw());
+        using f1 = r1(*)(CCBlockLayer*);
         return reinterpret_cast<f1>(base+0x2a5c20)(this);
     }
 
-    using c2 = void($CCBlockLayer::*)();
-    using d2 = void(D::*)();
-    using f2 = void(*)($CCBlockLayer*);
-    inline void enableUI() {
+    using r2 = decltype(std::declval<CCBlockLayer>().enableUI());
+    using c2 = r2($CCBlockLayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 enableUI() {
+        using r2 = decltype(std::declval<CCBlockLayer>().enableUI());
+        using f2 = r2(*)(CCBlockLayer*);
         return reinterpret_cast<f2>(base+0x2a5a90)(this);
     }
 
-    using c3 = void($CCBlockLayer::*)();
-    using d3 = void(D::*)();
-    using f3 = void(*)($CCBlockLayer*);
-    inline void enterAnimFinished() {
+    using r3 = decltype(std::declval<CCBlockLayer>().enterAnimFinished());
+    using c3 = r3($CCBlockLayer::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 enterAnimFinished() {
+        using r3 = decltype(std::declval<CCBlockLayer>().enterAnimFinished());
+        using f3 = r3(*)(CCBlockLayer*);
         return reinterpret_cast<f3>(base+0x2a5bb0)(this);
     }
 
-    using c4 = void($CCBlockLayer::*)();
-    using d4 = void(D::*)();
-    using f4 = void(*)($CCBlockLayer*);
-    inline void enterLayer() {
+    using r4 = decltype(std::declval<CCBlockLayer>().enterLayer());
+    using c4 = r4($CCBlockLayer::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 enterLayer() {
+        using r4 = decltype(std::declval<CCBlockLayer>().enterLayer());
+        using f4 = r4(*)(CCBlockLayer*);
         return reinterpret_cast<f4>(base+0x2a5aa0)(this);
     }
 
-    using c5 = void($CCBlockLayer::*)();
-    using d5 = void(D::*)();
-    using f5 = void(*)($CCBlockLayer*);
-    inline void exitLayer() {
+    using r5 = decltype(std::declval<CCBlockLayer>().exitLayer());
+    using c5 = r5($CCBlockLayer::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 exitLayer() {
+        using r5 = decltype(std::declval<CCBlockLayer>().exitLayer());
+        using f5 = r5(*)(CCBlockLayer*);
         return reinterpret_cast<f5>(base+0x2a5b40)(this);
     }
 
-    using c6 = void($CCBlockLayer::*)(bool);
-    using d6 = void(D::*)(bool);
-    using f6 = void(*)($CCBlockLayer*, bool);
-    inline void hideLayer(bool p0) {
+    using r6 = decltype(std::declval<CCBlockLayer>().hideLayer(std::declval<bool>()));
+    using c6 = r6($CCBlockLayer::*)(bool) ;
+    using d6 = r6(D::*)(bool) ;
+    r6 hideLayer(bool p0) {
+        using r6 = decltype(std::declval<CCBlockLayer>().hideLayer(std::declval<bool>()));
+        using f6 = r6(*)(CCBlockLayer*, bool);
         return reinterpret_cast<f6>(base+0x2a5ba0)(this, p0);
     }
 
-    using c7 = bool($CCBlockLayer::*)();
-    using d7 = bool(D::*)();
-    using f7 = bool(*)($CCBlockLayer*);
-    inline bool init() {
+    using r7 = decltype(std::declval<CCBlockLayer>().init());
+    using c7 = r7($CCBlockLayer::*)() ;
+    using d7 = r7(D::*)() ;
+    r7 init() {
+        using r7 = decltype(std::declval<CCBlockLayer>().init());
+        using f7 = r7(*)(CCBlockLayer*);
         return reinterpret_cast<f7>(base+0x2a59c0)(this);
     }
 
-    using c8 = void($CCBlockLayer::*)();
-    using d8 = void(D::*)();
-    using f8 = void(*)($CCBlockLayer*);
-    inline void layerHidden() {
+    using r8 = decltype(std::declval<CCBlockLayer>().layerHidden());
+    using c8 = r8($CCBlockLayer::*)() ;
+    using d8 = r8(D::*)() ;
+    r8 layerHidden() {
+        using r8 = decltype(std::declval<CCBlockLayer>().layerHidden());
+        using f8 = r8(*)(CCBlockLayer*);
         return reinterpret_cast<f8>(base+0x2a5be0)(this);
     }
 
-    using c9 = void($CCBlockLayer::*)();
-    using d9 = void(D::*)();
-    using f9 = void(*)($CCBlockLayer*);
-    inline void layerVisible() {
+    using r9 = decltype(std::declval<CCBlockLayer>().layerVisible());
+    using c9 = r9($CCBlockLayer::*)() ;
+    using d9 = r9(D::*)() ;
+    r9 layerVisible() {
+        using r9 = decltype(std::declval<CCBlockLayer>().layerVisible());
+        using f9 = r9(*)(CCBlockLayer*);
         return reinterpret_cast<f9>(base+0x2a5bc0)(this);
     }
 
-    using c10 = void($CCBlockLayer::*)();
-    using d10 = void(D::*)();
-    using f10 = void(*)($CCBlockLayer*);
-    inline void registerWithTouchDispatcher() {
+    using r10 = decltype(std::declval<CCBlockLayer>().registerWithTouchDispatcher());
+    using c10 = r10($CCBlockLayer::*)() ;
+    using d10 = r10(D::*)() ;
+    r10 registerWithTouchDispatcher() {
+        using r10 = decltype(std::declval<CCBlockLayer>().registerWithTouchDispatcher());
+        using f10 = r10(*)(CCBlockLayer*);
         return reinterpret_cast<f10>(base+0x2a5ad0)(this);
     }
 
-    using c11 = void($CCBlockLayer::*)(bool);
-    using d11 = void(D::*)(bool);
-    using f11 = void(*)($CCBlockLayer*, bool);
-    inline void showLayer(bool p0) {
+    using r11 = decltype(std::declval<CCBlockLayer>().showLayer(std::declval<bool>()));
+    using c11 = r11($CCBlockLayer::*)(bool) ;
+    using d11 = r11(D::*)(bool) ;
+    r11 showLayer(bool p0) {
+        using r11 = decltype(std::declval<CCBlockLayer>().showLayer(std::declval<bool>()));
+        using f11 = r11(*)(CCBlockLayer*, bool);
         return reinterpret_cast<f11>(base+0x2a5b90)(this, p0);
     }
 
-    inline $CCBlockLayer(bool) {}
-    inline $CCBlockLayer() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCBlockLayer::disableUI} != (d0){&D::disableUI})
-            m->registerHook(base+0x2a5a80, extract(i, (d0){&D::disableUI}));
+            m->registerHook(base+0x2a5a80, FunctionScrapper::addressOfNonVirtual((d0){&D::disableUI}));
 
         if ((c1){&$CCBlockLayer::draw} != (d1){&D::draw})
-            m->registerHook(base+0x2a5c20, extract(i, (d1){&D::draw}));
+            m->registerHook(base+0x2a5c20, FunctionScrapper::addressOfNonVirtual((d1){&D::draw}));
 
         if ((c2){&$CCBlockLayer::enableUI} != (d2){&D::enableUI})
-            m->registerHook(base+0x2a5a90, extract(i, (d2){&D::enableUI}));
+            m->registerHook(base+0x2a5a90, FunctionScrapper::addressOfNonVirtual((d2){&D::enableUI}));
 
         if ((c3){&$CCBlockLayer::enterAnimFinished} != (d3){&D::enterAnimFinished})
-            m->registerHook(base+0x2a5bb0, extract(i, (d3){&D::enterAnimFinished}));
+            m->registerHook(base+0x2a5bb0, FunctionScrapper::addressOfNonVirtual((d3){&D::enterAnimFinished}));
 
         if ((c4){&$CCBlockLayer::enterLayer} != (d4){&D::enterLayer})
-            m->registerHook(base+0x2a5aa0, extract(i, (d4){&D::enterLayer}));
+            m->registerHook(base+0x2a5aa0, FunctionScrapper::addressOfNonVirtual((d4){&D::enterLayer}));
 
         if ((c5){&$CCBlockLayer::exitLayer} != (d5){&D::exitLayer})
-            m->registerHook(base+0x2a5b40, extract(i, (d5){&D::exitLayer}));
+            m->registerHook(base+0x2a5b40, FunctionScrapper::addressOfNonVirtual((d5){&D::exitLayer}));
 
         if ((c6){&$CCBlockLayer::hideLayer} != (d6){&D::hideLayer})
-            m->registerHook(base+0x2a5ba0, extract(i, (d6){&D::hideLayer}));
+            m->registerHook(base+0x2a5ba0, FunctionScrapper::addressOfNonVirtual((d6){&D::hideLayer}));
 
         if ((c7){&$CCBlockLayer::init} != (d7){&D::init})
-            m->registerHook(base+0x2a59c0, extract(i, (d7){&D::init}));
+            m->registerHook(base+0x2a59c0, FunctionScrapper::addressOfNonVirtual((d7){&D::init}));
 
         if ((c8){&$CCBlockLayer::layerHidden} != (d8){&D::layerHidden})
-            m->registerHook(base+0x2a5be0, extract(i, (d8){&D::layerHidden}));
+            m->registerHook(base+0x2a5be0, FunctionScrapper::addressOfNonVirtual((d8){&D::layerHidden}));
 
         if ((c9){&$CCBlockLayer::layerVisible} != (d9){&D::layerVisible})
-            m->registerHook(base+0x2a5bc0, extract(i, (d9){&D::layerVisible}));
+            m->registerHook(base+0x2a5bc0, FunctionScrapper::addressOfNonVirtual((d9){&D::layerVisible}));
 
         if ((c10){&$CCBlockLayer::registerWithTouchDispatcher} != (d10){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x2a5ad0, extract(i, (d10){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x2a5ad0, FunctionScrapper::addressOfNonVirtual((d10){&D::registerWithTouchDispatcher}));
 
         if ((c11){&$CCBlockLayer::showLayer} != (d11){&D::showLayer})
-            m->registerHook(base+0x2a5b90, extract(i, (d11){&D::showLayer}));
+            m->registerHook(base+0x2a5b90, FunctionScrapper::addressOfNonVirtual((d11){&D::showLayer}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCCircleWave : public NullCCCircleWave, public $CacBase {
+class $CCCircleWave : public CCCircleWave, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCCircleWave() {}
+    ~$CCCircleWave() {
+        endDestructor();
+    }
+    $CCCircleWave() {}
 
-    using c0 = CCCircleWave*(*)(float, float, float, bool);
-    using d0 = CCCircleWave*(*)(float, float, float, bool);
-    using f0 = CCCircleWave*(*)(float, float, float, bool);
-    inline static CCCircleWave* create(float p0, float p1, float p2, bool p3) {
+    using r0 = decltype(std::declval<CCCircleWave>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
+    using c0 = r0(*)(float, float, float, bool);
+    using d0 = r0(*)(float, float, float, bool);
+    static r0 create(float p0, float p1, float p2, bool p3) {
+        using r0 = decltype(std::declval<CCCircleWave>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
+        using f0 = r0(*)(float, float, float, bool);
         return reinterpret_cast<f0>(base+0xbd270)(p0, p1, p2, p3);
+
     }
 
-    using c1 = CCCircleWave*(*)(float, float, float, bool, bool);
-    using d1 = CCCircleWave*(*)(float, float, float, bool, bool);
-    using f1 = CCCircleWave*(*)(float, float, float, bool, bool);
-    inline static CCCircleWave* create(float p0, float p1, float p2, bool p3, bool p4) {
+    using r1 = decltype(std::declval<CCCircleWave>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>()));
+    using c1 = r1(*)(float, float, float, bool, bool);
+    using d1 = r1(*)(float, float, float, bool, bool);
+    static r1 create(float p0, float p1, float p2, bool p3, bool p4) {
+        using r1 = decltype(std::declval<CCCircleWave>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>()));
+        using f1 = r1(*)(float, float, float, bool, bool);
         return reinterpret_cast<f1>(base+0xbd290)(p0, p1, p2, p3, p4);
+
     }
 
-    using c2 = bool($CCCircleWave::*)(float, float, float, bool, bool);
-    using d2 = bool(D::*)(float, float, float, bool, bool);
-    using f2 = bool(*)($CCCircleWave*, float, float, float, bool, bool);
-    inline bool init(float p0, float p1, float p2, bool p3, bool p4) {
+    using r2 = decltype(std::declval<CCCircleWave>().init(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>()));
+    using c2 = r2($CCCircleWave::*)(float, float, float, bool, bool) ;
+    using d2 = r2(D::*)(float, float, float, bool, bool) ;
+    r2 init(float p0, float p1, float p2, bool p3, bool p4) {
+        using r2 = decltype(std::declval<CCCircleWave>().init(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>()));
+        using f2 = r2(*)(CCCircleWave*, float, float, float, bool, bool);
         return reinterpret_cast<f2>(base+0xbd380)(this, p0, p1, p2, p3, p4);
     }
 
-    using c3 = void($CCCircleWave::*)(cocos2d::CCNode*, bool);
-    using d3 = void(D::*)(cocos2d::CCNode*, bool);
-    using f3 = void(*)($CCCircleWave*, cocos2d::CCNode*, bool);
-    inline void followObject(cocos2d::CCNode* p0, bool p1) {
+    using r3 = decltype(std::declval<CCCircleWave>().followObject(std::declval<cocos2d::CCNode*>(), std::declval<bool>()));
+    using c3 = r3($CCCircleWave::*)(cocos2d::CCNode*, bool) ;
+    using d3 = r3(D::*)(cocos2d::CCNode*, bool) ;
+    r3 followObject(cocos2d::CCNode* p0, bool p1) {
+        using r3 = decltype(std::declval<CCCircleWave>().followObject(std::declval<cocos2d::CCNode*>(), std::declval<bool>()));
+        using f3 = r3(*)(CCCircleWave*, cocos2d::CCNode*, bool);
         return reinterpret_cast<f3>(base+0xbd670)(this, p0, p1);
     }
 
-    using c4 = void($CCCircleWave::*)(float);
-    using d4 = void(D::*)(float);
-    using f4 = void(*)($CCCircleWave*, float);
-    inline void updatePosition(float p0) {
+    using r4 = decltype(std::declval<CCCircleWave>().updatePosition(std::declval<float>()));
+    using c4 = r4($CCCircleWave::*)(float) ;
+    using d4 = r4(D::*)(float) ;
+    r4 updatePosition(float p0) {
+        using r4 = decltype(std::declval<CCCircleWave>().updatePosition(std::declval<float>()));
+        using f4 = r4(*)(CCCircleWave*, float);
         return reinterpret_cast<f4>(base+0xbd630)(this, p0);
     }
 
-    inline $CCCircleWave(bool) {}
-    inline $CCCircleWave() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCCircleWave::create} != (d0){&D::create})
-            m->registerHook(base+0xbd270, extract((d0){&D::create}));
+            m->registerHook(base+0xbd270, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCCircleWave::create} != (d1){&D::create})
-            m->registerHook(base+0xbd290, extract((d1){&D::create}));
+            m->registerHook(base+0xbd290, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
 
         if ((c2){&$CCCircleWave::init} != (d2){&D::init})
-            m->registerHook(base+0xbd380, extract(i, (d2){&D::init}));
+            m->registerHook(base+0xbd380, FunctionScrapper::addressOfNonVirtual((d2){&D::init}));
 
         if ((c3){&$CCCircleWave::followObject} != (d3){&D::followObject})
-            m->registerHook(base+0xbd670, extract(i, (d3){&D::followObject}));
+            m->registerHook(base+0xbd670, FunctionScrapper::addressOfNonVirtual((d3){&D::followObject}));
 
         if ((c4){&$CCCircleWave::updatePosition} != (d4){&D::updatePosition})
-            m->registerHook(base+0xbd630, extract(i, (d4){&D::updatePosition}));
+            m->registerHook(base+0xbd630, FunctionScrapper::addressOfNonVirtual((d4){&D::updatePosition}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCLightFlash : public NullCCLightFlash, public $CacBase {
+class $CCLightFlash : public CCLightFlash, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCLightFlash() {}
+    ~$CCLightFlash() {
+        endDestructor();
+    }
+    $CCLightFlash() {}
 
-    using c0 = CCLightFlash*(*)();
-    using d0 = CCLightFlash*(*)();
-    using f0 = CCLightFlash*(*)();
-    inline static CCLightFlash* create() {
+    using r0 = decltype(std::declval<CCLightFlash>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<CCLightFlash>().create());
+        using f0 = r0(*)();
         return reinterpret_cast<f0>(base+0x295870)();
+
     }
 
-    using c1 = void($CCLightFlash::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
-    using d1 = void(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
-    using f1 = void(*)($CCLightFlash*, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
-    inline void playEffect(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1, float p2, float p3, float p4, float p5, float p6, float p7, float p8, float p9, float p10, float p11, float p12, float p13, float p14, float p15, int p16, bool p17, bool p18, float p19) {
+    using r1 = decltype(std::declval<CCLightFlash>().playEffect(std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<float>()));
+    using c1 = r1($CCLightFlash::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float) ;
+    using d1 = r1(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float) ;
+    r1 playEffect(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1, float p2, float p3, float p4, float p5, float p6, float p7, float p8, float p9, float p10, float p11, float p12, float p13, float p14, float p15, int p16, bool p17, bool p18, float p19) {
+        using r1 = decltype(std::declval<CCLightFlash>().playEffect(std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<float>()));
+        using f1 = r1(*)(CCLightFlash*, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, float, float, float, float, float, float, float, float, float, float, float, float, int, bool, bool, float);
         return reinterpret_cast<f1>(base+0x295900)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
     }
 
-    inline $CCLightFlash(bool) {}
-    inline $CCLightFlash() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCLightFlash::create} != (d0){&D::create})
-            m->registerHook(base+0x295870, extract((d0){&D::create}));
+            m->registerHook(base+0x295870, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCLightFlash::playEffect} != (d1){&D::playEffect})
-            m->registerHook(base+0x295900, extract(i, (d1){&D::playEffect}));
+            m->registerHook(base+0x295900, FunctionScrapper::addressOfNonVirtual((d1){&D::playEffect}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCMenuItemSpriteExtra : public NullCCMenuItemSpriteExtra, public $CacBase {
+class $CCMenuItemSpriteExtra : public CCMenuItemSpriteExtra, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCMenuItemSpriteExtra() {}
+    ~$CCMenuItemSpriteExtra() {
+        endDestructor();
+    }
+    $CCMenuItemSpriteExtra() {}
 
-    using c0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    using d0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    using f0 = CCMenuItemSpriteExtra*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    inline static CCMenuItemSpriteExtra* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
+    using r0 = decltype(std::declval<CCMenuItemSpriteExtra>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
+    using c0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using d0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    static r0 create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
+        using r0 = decltype(std::declval<CCMenuItemSpriteExtra>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
+        using f0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
         return reinterpret_cast<f0>(base+0x1253c0)(p0, p1, p2, p3);
+
     }
 
-    using c1 = void($CCMenuItemSpriteExtra::*)(float);
-    using d1 = void(D::*)(float);
-    using f1 = void(*)($CCMenuItemSpriteExtra*, float);
-    inline void setSizeMult(float p0) {
+    using r1 = decltype(std::declval<CCMenuItemSpriteExtra>().setSizeMult(std::declval<float>()));
+    using c1 = r1($CCMenuItemSpriteExtra::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 setSizeMult(float p0) {
+        using r1 = decltype(std::declval<CCMenuItemSpriteExtra>().setSizeMult(std::declval<float>()));
+        using f1 = r1(*)(CCMenuItemSpriteExtra*, float);
         return reinterpret_cast<f1>(base+0x1255e0)(this, p0);
     }
 
-    using c3 = bool($CCMenuItemSpriteExtra::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    using d3 = bool(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    using f3 = bool(*)($CCMenuItemSpriteExtra*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    inline bool init(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
+    using r3 = decltype(std::declval<CCMenuItemSpriteExtra>().init(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
+    using c3 = r3($CCMenuItemSpriteExtra::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) ;
+    using d3 = r3(D::*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) ;
+    r3 init(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
+        using r3 = decltype(std::declval<CCMenuItemSpriteExtra>().init(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
+        using f3 = r3(*)(CCMenuItemSpriteExtra*, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
         return reinterpret_cast<f3>(base+0x125450)(this, p0, p1, p2, p3);
     }
 
-    inline $CCMenuItemSpriteExtra(bool) {}
-    inline $CCMenuItemSpriteExtra() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCMenuItemSpriteExtra::create} != (d0){&D::create})
-            m->registerHook(base+0x1253c0, extract((d0){&D::create}));
+            m->registerHook(base+0x1253c0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCMenuItemSpriteExtra::setSizeMult} != (d1){&D::setSizeMult})
-            m->registerHook(base+0x1255e0, extract(i, (d1){&D::setSizeMult}));
+            m->registerHook(base+0x1255e0, FunctionScrapper::addressOfNonVirtual((d1){&D::setSizeMult}));
 
         if ((c3){&$CCMenuItemSpriteExtra::init} != (d3){&D::init})
-            m->registerHook(base+0x125450, extract(i, (d3){&D::init}));
+            m->registerHook(base+0x125450, FunctionScrapper::addressOfNonVirtual((d3){&D::init}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCMenuItemToggler : public NullCCMenuItemToggler, public $CacBase {
+class $CCMenuItemToggler : public CCMenuItemToggler, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCMenuItemToggler() {}
+    ~$CCMenuItemToggler() {
+        endDestructor();
+    }
+    $CCMenuItemToggler() {}
 
-    using c0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    using d0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    using f0 = CCMenuItemToggler*(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
-    inline static CCMenuItemToggler* create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
+    using r0 = decltype(std::declval<CCMenuItemToggler>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
+    using c0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    using d0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
+    static r0 create(cocos2d::CCNode* p0, cocos2d::CCNode* p1, cocos2d::CCObject* p2, cocos2d::SEL_MenuHandler p3) {
+        using r0 = decltype(std::declval<CCMenuItemToggler>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::CCObject*>(), std::declval<cocos2d::SEL_MenuHandler>()));
+        using f0 = r0(*)(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler);
         return reinterpret_cast<f0>(base+0x38400)(p0, p1, p2, p3);
+
     }
 
-    using c1 = void($CCMenuItemToggler::*)(float);
-    using d1 = void(D::*)(float);
-    using f1 = void(*)($CCMenuItemToggler*, float);
-    inline void setSizeMult(float p0) {
+    using r1 = decltype(std::declval<CCMenuItemToggler>().setSizeMult(std::declval<float>()));
+    using c1 = r1($CCMenuItemToggler::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 setSizeMult(float p0) {
+        using r1 = decltype(std::declval<CCMenuItemToggler>().setSizeMult(std::declval<float>()));
+        using f1 = r1(*)(CCMenuItemToggler*, float);
         return reinterpret_cast<f1>(base+0x38a40)(this, p0);
     }
 
-    inline $CCMenuItemToggler(bool) {}
-    inline $CCMenuItemToggler() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCMenuItemToggler::create} != (d0){&D::create})
-            m->registerHook(base+0x38400, extract((d0){&D::create}));
+            m->registerHook(base+0x38400, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCMenuItemToggler::setSizeMult} != (d1){&D::setSizeMult})
-            m->registerHook(base+0x38a40, extract(i, (d1){&D::setSizeMult}));
+            m->registerHook(base+0x38a40, FunctionScrapper::addressOfNonVirtual((d1){&D::setSizeMult}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCScrollLayerExt : public NullCCScrollLayerExt, public $CacBase {
+class $CCScrollLayerExt : public CCScrollLayerExt, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCScrollLayerExt() {}
+    ~$CCScrollLayerExt() {
+        endDestructor();
+    }
+    $CCScrollLayerExt() {}
 
-    using c1 = void($CCScrollLayerExt::*)();
-    using d1 = void(D::*)();
-    using f1 = void(*)($CCScrollLayerExt*);
-    inline void visit() {
+    using r1 = decltype(std::declval<CCScrollLayerExt>().visit());
+    using c1 = r1($CCScrollLayerExt::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 visit() {
+        using r1 = decltype(std::declval<CCScrollLayerExt>().visit());
+        using f1 = r1(*)(CCScrollLayerExt*);
         return reinterpret_cast<f1>(base+0x236550)(this);
     }
 
-    using c2 = bool($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d2 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f2 = bool(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r2 = decltype(std::declval<CCScrollLayerExt>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c2 = r2($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d2 = r2(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r2 ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r2 = decltype(std::declval<CCScrollLayerExt>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f2 = r2(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f2>(base+0x235ef0)(this, p0, p1);
     }
 
-    using c3 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d3 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f3 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r3 = decltype(std::declval<CCScrollLayerExt>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c3 = r3($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d3 = r3(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r3 ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r3 = decltype(std::declval<CCScrollLayerExt>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f3 = r3(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f3>(base+0x236300)(this, p0, p1);
     }
 
-    using c4 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d4 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f4 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r4 = decltype(std::declval<CCScrollLayerExt>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c4 = r4($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d4 = r4(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r4 ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r4 = decltype(std::declval<CCScrollLayerExt>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f4 = r4(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f4>(base+0x236020)(this, p0, p1);
     }
 
-    using c5 = void($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d5 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f5 = void(*)($CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r5 = decltype(std::declval<CCScrollLayerExt>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c5 = r5($CCScrollLayerExt::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d5 = r5(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r5 ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r5 = decltype(std::declval<CCScrollLayerExt>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f5 = r5(*)(CCScrollLayerExt*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f5>(base+0x2362a0)(this, p0, p1);
     }
 
-    using c6 = void($CCScrollLayerExt::*)();
-    using d6 = void(D::*)();
-    using f6 = void(*)($CCScrollLayerExt*);
-    inline void registerWithTouchDispatcher() {
+    using r6 = decltype(std::declval<CCScrollLayerExt>().registerWithTouchDispatcher());
+    using c6 = r6($CCScrollLayerExt::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 registerWithTouchDispatcher() {
+        using r6 = decltype(std::declval<CCScrollLayerExt>().registerWithTouchDispatcher());
+        using f6 = r6(*)(CCScrollLayerExt*);
         return reinterpret_cast<f6>(base+0x235eb0)(this);
     }
 
-    using c7 = void($CCScrollLayerExt::*)(cocos2d::CCRect);
-    using d7 = void(D::*)(cocos2d::CCRect);
-    using f7 = void(*)($CCScrollLayerExt*, cocos2d::CCRect);
-    inline void preVisitWithClippingRect(cocos2d::CCRect p0) {
+    using r7 = decltype(std::declval<CCScrollLayerExt>().preVisitWithClippingRect(std::declval<cocos2d::CCRect>()));
+    using c7 = r7($CCScrollLayerExt::*)(cocos2d::CCRect) ;
+    using d7 = r7(D::*)(cocos2d::CCRect) ;
+    r7 preVisitWithClippingRect(cocos2d::CCRect p0) {
+        using r7 = decltype(std::declval<CCScrollLayerExt>().preVisitWithClippingRect(std::declval<cocos2d::CCRect>()));
+        using f7 = r7(*)(CCScrollLayerExt*, cocos2d::CCRect);
         return reinterpret_cast<f7>(base+0x2366a0)(this, p0);
     }
 
-    using c8 = void($CCScrollLayerExt::*)();
-    using d8 = void(D::*)();
-    using f8 = void(*)($CCScrollLayerExt*);
-    inline void postVisit() {
+    using r8 = decltype(std::declval<CCScrollLayerExt>().postVisit());
+    using c8 = r8($CCScrollLayerExt::*)() ;
+    using d8 = r8(D::*)() ;
+    r8 postVisit() {
+        using r8 = decltype(std::declval<CCScrollLayerExt>().postVisit());
+        using f8 = r8(*)(CCScrollLayerExt*);
         return reinterpret_cast<f8>(base+0x236720)(this);
     }
 
-    using c9 = void($CCScrollLayerExt::*)();
-    using d9 = void(D::*)();
-    using f9 = void(*)($CCScrollLayerExt*);
-    inline void moveToTop() {
+    using r9 = decltype(std::declval<CCScrollLayerExt>().moveToTop());
+    using c9 = r9($CCScrollLayerExt::*)() ;
+    using d9 = r9(D::*)() ;
+    r9 moveToTop() {
+        using r9 = decltype(std::declval<CCScrollLayerExt>().moveToTop());
+        using f9 = r9(*)(CCScrollLayerExt*);
         return reinterpret_cast<f9>(base+0x235870)(this);
     }
 
-    using c10 = void($CCScrollLayerExt::*)(float);
-    using d10 = void(D::*)(float);
-    using f10 = void(*)($CCScrollLayerExt*, float);
-    inline void moveToTopWithOffset(float p0) {
+    using r10 = decltype(std::declval<CCScrollLayerExt>().moveToTopWithOffset(std::declval<float>()));
+    using c10 = r10($CCScrollLayerExt::*)(float) ;
+    using d10 = r10(D::*)(float) ;
+    r10 moveToTopWithOffset(float p0) {
+        using r10 = decltype(std::declval<CCScrollLayerExt>().moveToTopWithOffset(std::declval<float>()));
+        using f10 = r10(*)(CCScrollLayerExt*, float);
         return reinterpret_cast<f10>(base+0x2357d0)(this, p0);
     }
 
-    inline $CCScrollLayerExt(bool) {}
-    inline $CCScrollLayerExt() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c1){&$CCScrollLayerExt::visit} != (d1){&D::visit})
-            m->registerHook(base+0x236550, extract(i, (d1){&D::visit}));
+            m->registerHook(base+0x236550, FunctionScrapper::addressOfVirtual(i, (d1){&D::visit}));
 
         if ((c2){&$CCScrollLayerExt::ccTouchBegan} != (d2){&D::ccTouchBegan})
-            m->registerHook(base+0x235ef0, extract(i, (d2){&D::ccTouchBegan}));
+            m->registerHook(base+0x235ef0, FunctionScrapper::addressOfVirtual(i, (d2){&D::ccTouchBegan}));
 
         if ((c3){&$CCScrollLayerExt::ccTouchMoved} != (d3){&D::ccTouchMoved})
-            m->registerHook(base+0x236300, extract(i, (d3){&D::ccTouchMoved}));
+            m->registerHook(base+0x236300, FunctionScrapper::addressOfVirtual(i, (d3){&D::ccTouchMoved}));
 
         if ((c4){&$CCScrollLayerExt::ccTouchEnded} != (d4){&D::ccTouchEnded})
-            m->registerHook(base+0x236020, extract(i, (d4){&D::ccTouchEnded}));
+            m->registerHook(base+0x236020, FunctionScrapper::addressOfVirtual(i, (d4){&D::ccTouchEnded}));
 
         if ((c5){&$CCScrollLayerExt::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
-            m->registerHook(base+0x2362a0, extract(i, (d5){&D::ccTouchCancelled}));
+            m->registerHook(base+0x2362a0, FunctionScrapper::addressOfVirtual(i, (d5){&D::ccTouchCancelled}));
 
         if ((c6){&$CCScrollLayerExt::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x235eb0, extract(i, (d6){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x235eb0, FunctionScrapper::addressOfVirtual(i, (d6){&D::registerWithTouchDispatcher}));
 
         if ((c7){&$CCScrollLayerExt::preVisitWithClippingRect} != (d7){&D::preVisitWithClippingRect})
-            m->registerHook(base+0x2366a0, extract(i, (d7){&D::preVisitWithClippingRect}));
+            m->registerHook(base+0x2366a0, FunctionScrapper::addressOfVirtual(i, (d7){&D::preVisitWithClippingRect}));
 
         if ((c8){&$CCScrollLayerExt::postVisit} != (d8){&D::postVisit})
-            m->registerHook(base+0x236720, extract(i, (d8){&D::postVisit}));
+            m->registerHook(base+0x236720, FunctionScrapper::addressOfVirtual(i, (d8){&D::postVisit}));
 
         if ((c9){&$CCScrollLayerExt::moveToTop} != (d9){&D::moveToTop})
-            m->registerHook(base+0x235870, extract(i, (d9){&D::moveToTop}));
+            m->registerHook(base+0x235870, FunctionScrapper::addressOfNonVirtual((d9){&D::moveToTop}));
 
         if ((c10){&$CCScrollLayerExt::moveToTopWithOffset} != (d10){&D::moveToTopWithOffset})
-            m->registerHook(base+0x2357d0, extract(i, (d10){&D::moveToTopWithOffset}));
+            m->registerHook(base+0x2357d0, FunctionScrapper::addressOfNonVirtual((d10){&D::moveToTopWithOffset}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $FLAlertLayer : public NullFLAlertLayer, public $CacBase {
+class $GManager : public GManager, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$FLAlertLayer() {}
+    ~$GManager() {
+        endDestructor();
+    }
+    $GManager() {}
 
-    using c1 = void($FLAlertLayer::*)();
-    using d1 = void(D::*)();
-    using f1 = void(*)($FLAlertLayer*);
-    inline void onEnter() {
+    using r1 = decltype(std::declval<GManager>().save());
+    using c1 = r1($GManager::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 save() {
+        using r1 = decltype(std::declval<GManager>().save());
+        using f1 = r1(*)(GManager*);
+        return reinterpret_cast<f1>(base+0x26f300)(this);
+    }
+
+    using r2 = decltype(std::declval<GManager>().saveData(std::declval<DS_Dictionary*>(), std::declval<gd::string>()));
+    using c2 = r2($GManager::*)(DS_Dictionary*, gd::string) ;
+    using d2 = r2(D::*)(DS_Dictionary*, gd::string) ;
+    r2 saveData(DS_Dictionary* p0, gd::string p1) {
+        using r2 = decltype(std::declval<GManager>().saveData(std::declval<DS_Dictionary*>(), std::declval<gd::string>()));
+        using f2 = r2(*)(GManager*, DS_Dictionary*, gd::string);
+        return reinterpret_cast<f2>(base+0x26f4b0)(this, p0, p1);
+    }
+
+    using r3 = decltype(std::declval<GManager>().saveGMTo(std::declval<gd::string>()));
+    using c3 = r3($GManager::*)(gd::string) ;
+    using d3 = r3(D::*)(gd::string) ;
+    r3 saveGMTo(gd::string p0) {
+        using r3 = decltype(std::declval<GManager>().saveGMTo(std::declval<gd::string>()));
+        using f3 = r3(*)(GManager*, gd::string);
+        return reinterpret_cast<f3>(base+0x26f3b0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GManager::save} != (d1){&D::save})
+            m->registerHook(base+0x26f300, FunctionScrapper::addressOfNonVirtual((d1){&D::save}));
+
+        if ((c2){&$GManager::saveData} != (d2){&D::saveData})
+            m->registerHook(base+0x26f4b0, FunctionScrapper::addressOfNonVirtual((d2){&D::saveData}));
+
+        if ((c3){&$GManager::saveGMTo} != (d3){&D::saveGMTo})
+            m->registerHook(base+0x26f3b0, FunctionScrapper::addressOfNonVirtual((d3){&D::saveGMTo}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GameLevelManager : public GameLevelManager, public $CacBase {
+public:
+    ~$GameLevelManager() {
+        endDestructor();
+    }
+    $GameLevelManager() {}
+
+    using r0 = decltype(std::declval<GameLevelManager>().createNewLevel());
+    using c0 = r0($GameLevelManager::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 createNewLevel() {
+        using r0 = decltype(std::declval<GameLevelManager>().createNewLevel());
+        using f0 = r0(*)(GameLevelManager*);
+        return reinterpret_cast<f0>(base+0x2b8180)(this);
+    }
+
+    using r1 = decltype(std::declval<GameLevelManager>().sharedState());
+    using c1 = r1(*)();
+    using d1 = r1(*)();
+    static r1 sharedState() {
+        using r1 = decltype(std::declval<GameLevelManager>().sharedState());
+        using f1 = r1(*)();
+        return reinterpret_cast<f1>(base+0x2a8340)();
+
+    }
+
+    using r2 = decltype(std::declval<GameLevelManager>().getPageInfo(std::declval<char const*>()));
+    using c2 = r2($GameLevelManager::*)(char const*) ;
+    using d2 = r2(D::*)(char const*) ;
+    r2 getPageInfo(char const* p0) {
+        using r2 = decltype(std::declval<GameLevelManager>().getPageInfo(std::declval<char const*>()));
+        using f2 = r2(*)(GameLevelManager*, char const*);
+        return reinterpret_cast<f2>(base+0x2c0050)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<GameLevelManager>().getStoredOnlineLevels(std::declval<char const*>()));
+    using c3 = r3($GameLevelManager::*)(char const*) ;
+    using d3 = r3(D::*)(char const*) ;
+    r3 getStoredOnlineLevels(char const* p0) {
+        using r3 = decltype(std::declval<GameLevelManager>().getStoredOnlineLevels(std::declval<char const*>()));
+        using f3 = r3(*)(GameLevelManager*, char const*);
+        return reinterpret_cast<f3>(base+0x2bfe80)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<GameLevelManager>().getTopArtists(std::declval<int>(), std::declval<int>()));
+    using c4 = r4($GameLevelManager::*)(int, int) ;
+    using d4 = r4(D::*)(int, int) ;
+    r4 getTopArtists(int p0, int p1) {
+        using r4 = decltype(std::declval<GameLevelManager>().getTopArtists(std::declval<int>(), std::declval<int>()));
+        using f4 = r4(*)(GameLevelManager*, int, int);
+        return reinterpret_cast<f4>(base+0x2ce3d0)(this, p0, p1);
+    }
+
+    using r5 = decltype(std::declval<GameLevelManager>().getTopArtistsKey(std::declval<int>()));
+    using c5 = r5($GameLevelManager::*)(int) ;
+    using d5 = r5(D::*)(int) ;
+    r5 getTopArtistsKey(int p0) {
+        using r5 = decltype(std::declval<GameLevelManager>().getTopArtistsKey(std::declval<int>()));
+        using f5 = r5(*)(GameLevelManager*, int);
+        return reinterpret_cast<f5>(base+0x2ce7a0)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<GameLevelManager>().makeTimeStamp(std::declval<char const*>()));
+    using c6 = r6($GameLevelManager::*)(char const*) ;
+    using d6 = r6(D::*)(char const*) ;
+    r6 makeTimeStamp(char const* p0) {
+        using r6 = decltype(std::declval<GameLevelManager>().makeTimeStamp(std::declval<char const*>()));
+        using f6 = r6(*)(GameLevelManager*, char const*);
+        return reinterpret_cast<f6>(base+0x2bfd90)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GameLevelManager::createNewLevel} != (d0){&D::createNewLevel})
+            m->registerHook(base+0x2b8180, FunctionScrapper::addressOfNonVirtual((d0){&D::createNewLevel}));
+
+        if ((c1){&$GameLevelManager::sharedState} != (d1){&D::sharedState})
+            m->registerHook(base+0x2a8340, FunctionScrapper::addressOfNonVirtual((d1){&D::sharedState}));
+
+        if ((c2){&$GameLevelManager::getPageInfo} != (d2){&D::getPageInfo})
+            m->registerHook(base+0x2c0050, FunctionScrapper::addressOfNonVirtual((d2){&D::getPageInfo}));
+
+        if ((c3){&$GameLevelManager::getStoredOnlineLevels} != (d3){&D::getStoredOnlineLevels})
+            m->registerHook(base+0x2bfe80, FunctionScrapper::addressOfNonVirtual((d3){&D::getStoredOnlineLevels}));
+
+        if ((c4){&$GameLevelManager::getTopArtists} != (d4){&D::getTopArtists})
+            m->registerHook(base+0x2ce3d0, FunctionScrapper::addressOfNonVirtual((d4){&D::getTopArtists}));
+
+        if ((c5){&$GameLevelManager::getTopArtistsKey} != (d5){&D::getTopArtistsKey})
+            m->registerHook(base+0x2ce7a0, FunctionScrapper::addressOfNonVirtual((d5){&D::getTopArtistsKey}));
+
+        if ((c6){&$GameLevelManager::makeTimeStamp} != (d6){&D::makeTimeStamp})
+            m->registerHook(base+0x2bfd90, FunctionScrapper::addressOfNonVirtual((d6){&D::makeTimeStamp}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GameManager : public GameManager, public $CacBase {
+public:
+    ~$GameManager() {
+        endDestructor();
+    }
+    $GameManager() {}
+
+    using r0 = decltype(std::declval<GameManager>().accountStatusChanged());
+    using c0 = r0($GameManager::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 accountStatusChanged() {
+        using r0 = decltype(std::declval<GameManager>().accountStatusChanged());
+        using f0 = r0(*)(GameManager*);
+        return reinterpret_cast<f0>(base+0x1cdad0)(this);
+    }
+
+    using r1 = decltype(std::declval<GameManager>().colorForIdx(std::declval<int>()));
+    using c1 = r1($GameManager::*)(int) ;
+    using d1 = r1(D::*)(int) ;
+    r1 colorForIdx(int p0) {
+        using r1 = decltype(std::declval<GameManager>().colorForIdx(std::declval<int>()));
+        using f1 = r1(*)(GameManager*, int);
+        return reinterpret_cast<f1>(base+0x1cbc80)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<GameManager>().didExitPlayscene());
+    using c2 = r2($GameManager::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 didExitPlayscene() {
+        using r2 = decltype(std::declval<GameManager>().didExitPlayscene());
+        using f2 = r2(*)(GameManager*);
+        return reinterpret_cast<f2>(base+0x1d0230)(this);
+    }
+
+    using r3 = decltype(std::declval<GameManager>().doQuickSave());
+    using c3 = r3($GameManager::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 doQuickSave() {
+        using r3 = decltype(std::declval<GameManager>().doQuickSave());
+        using f3 = r3(*)(GameManager*);
+        return reinterpret_cast<f3>(base+0x1d0200)(this);
+    }
+
+    using r4 = decltype(std::declval<GameManager>().fadeInMusic(std::declval<char const*>()));
+    using c4 = r4($GameManager::*)(char const*) ;
+    using d4 = r4(D::*)(char const*) ;
+    r4 fadeInMusic(char const* p0) {
+        using r4 = decltype(std::declval<GameManager>().fadeInMusic(std::declval<char const*>()));
+        using f4 = r4(*)(GameManager*, char const*);
+        return reinterpret_cast<f4>(base+0x1c2ff0)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<GameManager>().getBGTexture(std::declval<int>()));
+    using c5 = r5($GameManager::*)(int) ;
+    using d5 = r5(D::*)(int) ;
+    r5 getBGTexture(int p0) {
+        using r5 = decltype(std::declval<GameManager>().getBGTexture(std::declval<int>()));
+        using f5 = r5(*)(GameManager*, int);
+        return reinterpret_cast<f5>(base+0x1cca00)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<GameManager>().getFontFile(std::declval<int>()));
+    using c6 = r6($GameManager::*)(int) ;
+    using d6 = r6(D::*)(int) ;
+    r6 getFontFile(int p0) {
+        using r6 = decltype(std::declval<GameManager>().getFontFile(std::declval<int>()));
+        using f6 = r6(*)(GameManager*, int);
+        return reinterpret_cast<f6>(base+0x1cc5f0)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<GameManager>().getGameVariable(std::declval<char const*>()));
+    using c7 = r7($GameManager::*)(char const*) ;
+    using d7 = r7(D::*)(char const*) ;
+    r7 getGameVariable(char const* p0) {
+        using r7 = decltype(std::declval<GameManager>().getGameVariable(std::declval<char const*>()));
+        using f7 = r7(*)(GameManager*, char const*);
+        return reinterpret_cast<f7>(base+0x1cccd0)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<GameManager>().getIntGameVariable(std::declval<char const*>()));
+    using c8 = r8($GameManager::*)(char const*) ;
+    using d8 = r8(D::*)(char const*) ;
+    r8 getIntGameVariable(char const* p0) {
+        using r8 = decltype(std::declval<GameManager>().getIntGameVariable(std::declval<char const*>()));
+        using f8 = r8(*)(GameManager*, char const*);
+        return reinterpret_cast<f8>(base+0x1cd1d0)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<GameManager>().getUGV(std::declval<char const*>()));
+    using c9 = r9($GameManager::*)(char const*) ;
+    using d9 = r9(D::*)(char const*) ;
+    r9 getUGV(char const* p0) {
+        using r9 = decltype(std::declval<GameManager>().getUGV(std::declval<char const*>()));
+        using f9 = r9(*)(GameManager*, char const*);
+        return reinterpret_cast<f9>(base+0x1ccfa0)(this, p0);
+    }
+
+    using r10 = decltype(std::declval<GameManager>().loadDeathEffect(std::declval<int>()));
+    using c10 = r10($GameManager::*)(int) ;
+    using d10 = r10(D::*)(int) ;
+    r10 loadDeathEffect(int p0) {
+        using r10 = decltype(std::declval<GameManager>().loadDeathEffect(std::declval<int>()));
+        using f10 = r10(*)(GameManager*, int);
+        return reinterpret_cast<f10>(base+0x1cc690)(this, p0);
+    }
+
+    using r11 = decltype(std::declval<GameManager>().loadFont(std::declval<int>()));
+    using c11 = r11($GameManager::*)(int) ;
+    using d11 = r11(D::*)(int) ;
+    r11 loadFont(int p0) {
+        using r11 = decltype(std::declval<GameManager>().loadFont(std::declval<int>()));
+        using f11 = r11(*)(GameManager*, int);
+        return reinterpret_cast<f11>(base+0x1cc550)(this, p0);
+    }
+
+    using r12 = decltype(std::declval<GameManager>().reloadAll(std::declval<bool>(), std::declval<bool>(), std::declval<bool>()));
+    using c12 = r12($GameManager::*)(bool, bool, bool) ;
+    using d12 = r12(D::*)(bool, bool, bool) ;
+    r12 reloadAll(bool p0, bool p1, bool p2) {
+        using r12 = decltype(std::declval<GameManager>().reloadAll(std::declval<bool>(), std::declval<bool>(), std::declval<bool>()));
+        using f12 = r12(*)(GameManager*, bool, bool, bool);
+        return reinterpret_cast<f12>(base+0x1d08a0)(this, p0, p1, p2);
+    }
+
+    using r13 = decltype(std::declval<GameManager>().reloadAllStep5());
+    using c13 = r13($GameManager::*)() ;
+    using d13 = r13(D::*)() ;
+    r13 reloadAllStep5() {
+        using r13 = decltype(std::declval<GameManager>().reloadAllStep5());
+        using f13 = r13(*)(GameManager*);
+        return reinterpret_cast<f13>(base+0x1d0b00)(this);
+    }
+
+    using r14 = decltype(std::declval<GameManager>().reportPercentageForLevel(std::declval<int>(), std::declval<int>(), std::declval<bool>()));
+    using c14 = r14($GameManager::*)(int, int, bool) ;
+    using d14 = r14(D::*)(int, int, bool) ;
+    r14 reportPercentageForLevel(int p0, int p1, bool p2) {
+        using r14 = decltype(std::declval<GameManager>().reportPercentageForLevel(std::declval<int>(), std::declval<int>(), std::declval<bool>()));
+        using f14 = r14(*)(GameManager*, int, int, bool);
+        return reinterpret_cast<f14>(base+0x1c5b00)(this, p0, p1, p2);
+    }
+
+    using r15 = decltype(std::declval<GameManager>().setGameVariable(std::declval<char const*>(), std::declval<bool>()));
+    using c15 = r15($GameManager::*)(char const*, bool) ;
+    using d15 = r15(D::*)(char const*, bool) ;
+    r15 setGameVariable(char const* p0, bool p1) {
+        using r15 = decltype(std::declval<GameManager>().setGameVariable(std::declval<char const*>(), std::declval<bool>()));
+        using f15 = r15(*)(GameManager*, char const*, bool);
+        return reinterpret_cast<f15>(base+0x1cca80)(this, p0, p1);
+    }
+
+    using r16 = decltype(std::declval<GameManager>().setIntGameVariable(std::declval<char const*>(), std::declval<int>()));
+    using c16 = r16($GameManager::*)(char const*, int) ;
+    using d16 = r16(D::*)(char const*, int) ;
+    r16 setIntGameVariable(char const* p0, int p1) {
+        using r16 = decltype(std::declval<GameManager>().setIntGameVariable(std::declval<char const*>(), std::declval<int>()));
+        using f16 = r16(*)(GameManager*, char const*, int);
+        return reinterpret_cast<f16>(base+0x1cd0e0)(this, p0, p1);
+    }
+
+    using r17 = decltype(std::declval<GameManager>().setUGV(std::declval<char const*>(), std::declval<bool>()));
+    using c17 = r17($GameManager::*)(char const*, bool) ;
+    using d17 = r17(D::*)(char const*, bool) ;
+    r17 setUGV(char const* p0, bool p1) {
+        using r17 = decltype(std::declval<GameManager>().setUGV(std::declval<char const*>(), std::declval<bool>()));
+        using f17 = r17(*)(GameManager*, char const*, bool);
+        return reinterpret_cast<f17>(base+0x1cce50)(this, p0, p1);
+    }
+
+    using r18 = decltype(std::declval<GameManager>().sharedState());
+    using c18 = r18(*)();
+    using d18 = r18(*)();
+    static r18 sharedState() {
+        using r18 = decltype(std::declval<GameManager>().sharedState());
+        using f18 = r18(*)();
+        return reinterpret_cast<f18>(base+0x1c2b30)();
+
+    }
+
+    using r20 = decltype(std::declval<GameManager>().getGTexture(std::declval<int>()));
+    using c20 = r20($GameManager::*)(int) ;
+    using d20 = r20(D::*)(int) ;
+    r20 getGTexture(int p0) {
+        using r20 = decltype(std::declval<GameManager>().getGTexture(std::declval<int>()));
+        using f20 = r20(*)(GameManager*, int);
+        return reinterpret_cast<f20>(base+0x1cca40)(this, p0);
+    }
+
+    using r21 = decltype(std::declval<GameManager>().init());
+    using c21 = r21($GameManager::*)() ;
+    using d21 = r21(D::*)() ;
+    r21 init() {
+        using r21 = decltype(std::declval<GameManager>().init());
+        using f21 = r21(*)(GameManager*);
+        return reinterpret_cast<f21>(base+0x1c2ec0)(this);
+    }
+
+    using r22 = decltype(std::declval<GameManager>().reportAchievementWithID(std::declval<char const*>(), std::declval<int>(), std::declval<bool>()));
+    using c22 = r22($GameManager::*)(char const*, int, bool) ;
+    using d22 = r22(D::*)(char const*, int, bool) ;
+    r22 reportAchievementWithID(char const* p0, int p1, bool p2) {
+        using r22 = decltype(std::declval<GameManager>().reportAchievementWithID(std::declval<char const*>(), std::declval<int>(), std::declval<bool>()));
+        using f22 = r22(*)(GameManager*, char const*, int, bool);
+        return reinterpret_cast<f22>(base+0x1c6460)(this, p0, p1, p2);
+    }
+
+    using r23 = decltype(std::declval<GameManager>().resolutionForKey(std::declval<int>()));
+    using c23 = r23($GameManager::*)(int) ;
+    using d23 = r23(D::*)(int) ;
+    r23 resolutionForKey(int p0) {
+        using r23 = decltype(std::declval<GameManager>().resolutionForKey(std::declval<int>()));
+        using f23 = r23(*)(GameManager*, int);
+        return reinterpret_cast<f23>(base+0x1d0b40)(this, p0);
+    }
+
+    using r24 = decltype(std::declval<GameManager>().update(std::declval<float>()));
+    using c24 = r24($GameManager::*)(float) ;
+    using d24 = r24(D::*)(float) ;
+    r24 update(float p0) {
+        using r24 = decltype(std::declval<GameManager>().update(std::declval<float>()));
+        using f24 = r24(*)(GameManager*, float);
+        return reinterpret_cast<f24>(base+0x1d0270)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GameManager::accountStatusChanged} != (d0){&D::accountStatusChanged})
+            m->registerHook(base+0x1cdad0, FunctionScrapper::addressOfNonVirtual((d0){&D::accountStatusChanged}));
+
+        if ((c1){&$GameManager::colorForIdx} != (d1){&D::colorForIdx})
+            m->registerHook(base+0x1cbc80, FunctionScrapper::addressOfNonVirtual((d1){&D::colorForIdx}));
+
+        if ((c2){&$GameManager::didExitPlayscene} != (d2){&D::didExitPlayscene})
+            m->registerHook(base+0x1d0230, FunctionScrapper::addressOfNonVirtual((d2){&D::didExitPlayscene}));
+
+        if ((c3){&$GameManager::doQuickSave} != (d3){&D::doQuickSave})
+            m->registerHook(base+0x1d0200, FunctionScrapper::addressOfNonVirtual((d3){&D::doQuickSave}));
+
+        if ((c4){&$GameManager::fadeInMusic} != (d4){&D::fadeInMusic})
+            m->registerHook(base+0x1c2ff0, FunctionScrapper::addressOfNonVirtual((d4){&D::fadeInMusic}));
+
+        if ((c5){&$GameManager::getBGTexture} != (d5){&D::getBGTexture})
+            m->registerHook(base+0x1cca00, FunctionScrapper::addressOfNonVirtual((d5){&D::getBGTexture}));
+
+        if ((c6){&$GameManager::getFontFile} != (d6){&D::getFontFile})
+            m->registerHook(base+0x1cc5f0, FunctionScrapper::addressOfNonVirtual((d6){&D::getFontFile}));
+
+        if ((c7){&$GameManager::getGameVariable} != (d7){&D::getGameVariable})
+            m->registerHook(base+0x1cccd0, FunctionScrapper::addressOfNonVirtual((d7){&D::getGameVariable}));
+
+        if ((c8){&$GameManager::getIntGameVariable} != (d8){&D::getIntGameVariable})
+            m->registerHook(base+0x1cd1d0, FunctionScrapper::addressOfNonVirtual((d8){&D::getIntGameVariable}));
+
+        if ((c9){&$GameManager::getUGV} != (d9){&D::getUGV})
+            m->registerHook(base+0x1ccfa0, FunctionScrapper::addressOfNonVirtual((d9){&D::getUGV}));
+
+        if ((c10){&$GameManager::loadDeathEffect} != (d10){&D::loadDeathEffect})
+            m->registerHook(base+0x1cc690, FunctionScrapper::addressOfNonVirtual((d10){&D::loadDeathEffect}));
+
+        if ((c11){&$GameManager::loadFont} != (d11){&D::loadFont})
+            m->registerHook(base+0x1cc550, FunctionScrapper::addressOfNonVirtual((d11){&D::loadFont}));
+
+        if ((c12){&$GameManager::reloadAll} != (d12){&D::reloadAll})
+            m->registerHook(base+0x1d08a0, FunctionScrapper::addressOfNonVirtual((d12){&D::reloadAll}));
+
+        if ((c13){&$GameManager::reloadAllStep5} != (d13){&D::reloadAllStep5})
+            m->registerHook(base+0x1d0b00, FunctionScrapper::addressOfNonVirtual((d13){&D::reloadAllStep5}));
+
+        if ((c14){&$GameManager::reportPercentageForLevel} != (d14){&D::reportPercentageForLevel})
+            m->registerHook(base+0x1c5b00, FunctionScrapper::addressOfNonVirtual((d14){&D::reportPercentageForLevel}));
+
+        if ((c15){&$GameManager::setGameVariable} != (d15){&D::setGameVariable})
+            m->registerHook(base+0x1cca80, FunctionScrapper::addressOfNonVirtual((d15){&D::setGameVariable}));
+
+        if ((c16){&$GameManager::setIntGameVariable} != (d16){&D::setIntGameVariable})
+            m->registerHook(base+0x1cd0e0, FunctionScrapper::addressOfNonVirtual((d16){&D::setIntGameVariable}));
+
+        if ((c17){&$GameManager::setUGV} != (d17){&D::setUGV})
+            m->registerHook(base+0x1cce50, FunctionScrapper::addressOfNonVirtual((d17){&D::setUGV}));
+
+        if ((c18){&$GameManager::sharedState} != (d18){&D::sharedState})
+            m->registerHook(base+0x1c2b30, FunctionScrapper::addressOfNonVirtual((d18){&D::sharedState}));
+
+        if ((c20){&$GameManager::getGTexture} != (d20){&D::getGTexture})
+            m->registerHook(base+0x1cca40, FunctionScrapper::addressOfNonVirtual((d20){&D::getGTexture}));
+
+        if ((c21){&$GameManager::init} != (d21){&D::init})
+            m->registerHook(base+0x1c2ec0, FunctionScrapper::addressOfNonVirtual((d21){&D::init}));
+
+        if ((c22){&$GameManager::reportAchievementWithID} != (d22){&D::reportAchievementWithID})
+            m->registerHook(base+0x1c6460, FunctionScrapper::addressOfNonVirtual((d22){&D::reportAchievementWithID}));
+
+        if ((c23){&$GameManager::resolutionForKey} != (d23){&D::resolutionForKey})
+            m->registerHook(base+0x1d0b40, FunctionScrapper::addressOfNonVirtual((d23){&D::resolutionForKey}));
+
+        if ((c24){&$GameManager::update} != (d24){&D::update})
+            m->registerHook(base+0x1d0270, FunctionScrapper::addressOfNonVirtual((d24){&D::update}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GameSoundManager : public GameSoundManager, public $CacBase {
+public:
+    ~$GameSoundManager() {
+        endDestructor();
+    }
+    $GameSoundManager() {}
+
+    using r0 = decltype(std::declval<GameSoundManager>().disableMetering());
+    using c0 = r0($GameSoundManager::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 disableMetering() {
+        using r0 = decltype(std::declval<GameSoundManager>().disableMetering());
+        using f0 = r0(*)(GameSoundManager*);
+        return reinterpret_cast<f0>(base+0x362d80)(this);
+    }
+
+    using r1 = decltype(std::declval<GameSoundManager>().enableMetering());
+    using c1 = r1($GameSoundManager::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 enableMetering() {
+        using r1 = decltype(std::declval<GameSoundManager>().enableMetering());
+        using f1 = r1(*)(GameSoundManager*);
+        return reinterpret_cast<f1>(base+0x362d00)(this);
+    }
+
+    using r2 = decltype(std::declval<GameSoundManager>().getMeteringValue());
+    using c2 = r2($GameSoundManager::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 getMeteringValue() {
+        using r2 = decltype(std::declval<GameSoundManager>().getMeteringValue());
+        using f2 = r2(*)(GameSoundManager*);
+        return reinterpret_cast<f2>(base+0x362db0)(this);
+    }
+
+    using r3 = decltype(std::declval<GameSoundManager>().playBackgroundMusic(std::declval<gd::string>(), std::declval<bool>(), std::declval<bool>()));
+    using c3 = r3($GameSoundManager::*)(gd::string, bool, bool) ;
+    using d3 = r3(D::*)(gd::string, bool, bool) ;
+    r3 playBackgroundMusic(gd::string p0, bool p1, bool p2) {
+        using r3 = decltype(std::declval<GameSoundManager>().playBackgroundMusic(std::declval<gd::string>(), std::declval<bool>(), std::declval<bool>()));
+        using f3 = r3(*)(GameSoundManager*, gd::string, bool, bool);
+        return reinterpret_cast<f3>(base+0x362070)(this, p0, p1, p2);
+    }
+
+    using r4 = decltype(std::declval<GameSoundManager>().playEffect(std::declval<gd::string>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c4 = r4($GameSoundManager::*)(gd::string, float, float, float) ;
+    using d4 = r4(D::*)(gd::string, float, float, float) ;
+    r4 playEffect(gd::string p0, float p1, float p2, float p3) {
+        using r4 = decltype(std::declval<GameSoundManager>().playEffect(std::declval<gd::string>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f4 = r4(*)(GameSoundManager*, gd::string, float, float, float);
+        return reinterpret_cast<f4>(base+0x3623d0)(this, p0, p1, p2, p3);
+    }
+
+    using r5 = decltype(std::declval<GameSoundManager>().sharedManager());
+    using c5 = r5($GameSoundManager::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 sharedManager() {
+        using r5 = decltype(std::declval<GameSoundManager>().sharedManager());
+        using f5 = r5(*)(GameSoundManager*);
+        return reinterpret_cast<f5>(base+0x3610f0)(this);
+    }
+
+    using r6 = decltype(std::declval<GameSoundManager>().stopBackgroundMusic());
+    using c6 = r6($GameSoundManager::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 stopBackgroundMusic() {
+        using r6 = decltype(std::declval<GameSoundManager>().stopBackgroundMusic());
+        using f6 = r6(*)(GameSoundManager*);
+        return reinterpret_cast<f6>(base+0x362130)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GameSoundManager::disableMetering} != (d0){&D::disableMetering})
+            m->registerHook(base+0x362d80, FunctionScrapper::addressOfNonVirtual((d0){&D::disableMetering}));
+
+        if ((c1){&$GameSoundManager::enableMetering} != (d1){&D::enableMetering})
+            m->registerHook(base+0x362d00, FunctionScrapper::addressOfNonVirtual((d1){&D::enableMetering}));
+
+        if ((c2){&$GameSoundManager::getMeteringValue} != (d2){&D::getMeteringValue})
+            m->registerHook(base+0x362db0, FunctionScrapper::addressOfNonVirtual((d2){&D::getMeteringValue}));
+
+        if ((c3){&$GameSoundManager::playBackgroundMusic} != (d3){&D::playBackgroundMusic})
+            m->registerHook(base+0x362070, FunctionScrapper::addressOfNonVirtual((d3){&D::playBackgroundMusic}));
+
+        if ((c4){&$GameSoundManager::playEffect} != (d4){&D::playEffect})
+            m->registerHook(base+0x3623d0, FunctionScrapper::addressOfNonVirtual((d4){&D::playEffect}));
+
+        if ((c5){&$GameSoundManager::sharedManager} != (d5){&D::sharedManager})
+            m->registerHook(base+0x3610f0, FunctionScrapper::addressOfNonVirtual((d5){&D::sharedManager}));
+
+        if ((c6){&$GameSoundManager::stopBackgroundMusic} != (d6){&D::stopBackgroundMusic})
+            m->registerHook(base+0x362130, FunctionScrapper::addressOfNonVirtual((d6){&D::stopBackgroundMusic}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GameStatsManager : public GameStatsManager, public $CacBase {
+public:
+    ~$GameStatsManager() {
+        endDestructor();
+    }
+    $GameStatsManager() {}
+
+    using r0 = decltype(std::declval<GameStatsManager>().awardCurrencyForLevel(std::declval<GJGameLevel*>()));
+    using c0 = r0($GameStatsManager::*)(GJGameLevel*) ;
+    using d0 = r0(D::*)(GJGameLevel*) ;
+    r0 awardCurrencyForLevel(GJGameLevel* p0) {
+        using r0 = decltype(std::declval<GameStatsManager>().awardCurrencyForLevel(std::declval<GJGameLevel*>()));
+        using f0 = r0(*)(GameStatsManager*, GJGameLevel*);
+        return reinterpret_cast<f0>(base+0x43600)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<GameStatsManager>().awardDiamondsForLevel(std::declval<GJGameLevel*>()));
+    using c1 = r1($GameStatsManager::*)(GJGameLevel*) ;
+    using d1 = r1(D::*)(GJGameLevel*) ;
+    r1 awardDiamondsForLevel(GJGameLevel* p0) {
+        using r1 = decltype(std::declval<GameStatsManager>().awardDiamondsForLevel(std::declval<GJGameLevel*>()));
+        using f1 = r1(*)(GameStatsManager*, GJGameLevel*);
+        return reinterpret_cast<f1>(base+0x43c60)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<GameStatsManager>().awardSecretKey());
+    using c2 = r2($GameStatsManager::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 awardSecretKey() {
+        using r2 = decltype(std::declval<GameStatsManager>().awardSecretKey());
+        using f2 = r2(*)(GameStatsManager*);
+        return reinterpret_cast<f2>(base+0x4b1e0)(this);
+    }
+
+    using r3 = decltype(std::declval<GameStatsManager>().getSecretCoinKey(std::declval<char const*>()));
+    using c3 = r3($GameStatsManager::*)(char const*) ;
+    using d3 = r3(D::*)(char const*) ;
+    r3 getSecretCoinKey(char const* p0) {
+        using r3 = decltype(std::declval<GameStatsManager>().getSecretCoinKey(std::declval<char const*>()));
+        using f3 = r3(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f3>(base+0x429f0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<GameStatsManager>().getStat(std::declval<char const*>()));
+    using c4 = r4($GameStatsManager::*)(char const*) ;
+    using d4 = r4(D::*)(char const*) ;
+    r4 getStat(char const* p0) {
+        using r4 = decltype(std::declval<GameStatsManager>().getStat(std::declval<char const*>()));
+        using f4 = r4(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f4>(base+0x3d310)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<GameStatsManager>().hasPendingUserCoin(std::declval<char const*>()));
+    using c5 = r5($GameStatsManager::*)(char const*) ;
+    using d5 = r5(D::*)(char const*) ;
+    r5 hasPendingUserCoin(char const* p0) {
+        using r5 = decltype(std::declval<GameStatsManager>().hasPendingUserCoin(std::declval<char const*>()));
+        using f5 = r5(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f5>(base+0x42730)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<GameStatsManager>().hasSecretCoin(std::declval<char const*>()));
+    using c6 = r6($GameStatsManager::*)(char const*) ;
+    using d6 = r6(D::*)(char const*) ;
+    r6 hasSecretCoin(char const* p0) {
+        using r6 = decltype(std::declval<GameStatsManager>().hasSecretCoin(std::declval<char const*>()));
+        using f6 = r6(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f6>(base+0x40730)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<GameStatsManager>().hasUserCoin(std::declval<char const*>()));
+    using c7 = r7($GameStatsManager::*)(char const*) ;
+    using d7 = r7(D::*)(char const*) ;
+    r7 hasUserCoin(char const* p0) {
+        using r7 = decltype(std::declval<GameStatsManager>().hasUserCoin(std::declval<char const*>()));
+        using f7 = r7(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f7>(base+0x427e0)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<GameStatsManager>().incrementStat(std::declval<char const*>()));
+    using c8 = r8($GameStatsManager::*)(char const*) ;
+    using d8 = r8(D::*)(char const*) ;
+    r8 incrementStat(char const* p0) {
+        using r8 = decltype(std::declval<GameStatsManager>().incrementStat(std::declval<char const*>()));
+        using f8 = r8(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f8>(base+0x3d6d0)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<GameStatsManager>().incrementStat(std::declval<char const*>(), std::declval<int>()));
+    using c9 = r9($GameStatsManager::*)(char const*, int) ;
+    using d9 = r9(D::*)(char const*, int) ;
+    r9 incrementStat(char const* p0, int p1) {
+        using r9 = decltype(std::declval<GameStatsManager>().incrementStat(std::declval<char const*>(), std::declval<int>()));
+        using f9 = r9(*)(GameStatsManager*, char const*, int);
+        return reinterpret_cast<f9>(base+0x3d6e0)(this, p0, p1);
+    }
+
+    using r10 = decltype(std::declval<GameStatsManager>().sharedState());
+    using c10 = r10($GameStatsManager::*)() ;
+    using d10 = r10(D::*)() ;
+    r10 sharedState() {
+        using r10 = decltype(std::declval<GameStatsManager>().sharedState());
+        using f10 = r10(*)(GameStatsManager*);
+        return reinterpret_cast<f10>(base+0x38f20)(this);
+    }
+
+    using r11 = decltype(std::declval<GameStatsManager>().storePendingUserCoin(std::declval<char const*>()));
+    using c11 = r11($GameStatsManager::*)(char const*) ;
+    using d11 = r11(D::*)(char const*) ;
+    r11 storePendingUserCoin(char const* p0) {
+        using r11 = decltype(std::declval<GameStatsManager>().storePendingUserCoin(std::declval<char const*>()));
+        using f11 = r11(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f11>(base+0x42940)(this, p0);
+    }
+
+    using r12 = decltype(std::declval<GameStatsManager>().storeSecretCoin(std::declval<char const*>()));
+    using c12 = r12($GameStatsManager::*)(char const*) ;
+    using d12 = r12(D::*)(char const*) ;
+    r12 storeSecretCoin(char const* p0) {
+        using r12 = decltype(std::declval<GameStatsManager>().storeSecretCoin(std::declval<char const*>()));
+        using f12 = r12(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f12>(base+0x42a10)(this, p0);
+    }
+
+    using r13 = decltype(std::declval<GameStatsManager>().storeUserCoin(std::declval<char const*>()));
+    using c13 = r13($GameStatsManager::*)(char const*) ;
+    using d13 = r13(D::*)(char const*) ;
+    r13 storeUserCoin(char const* p0) {
+        using r13 = decltype(std::declval<GameStatsManager>().storeUserCoin(std::declval<char const*>()));
+        using f13 = r13(*)(GameStatsManager*, char const*);
+        return reinterpret_cast<f13>(base+0x42890)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GameStatsManager::awardCurrencyForLevel} != (d0){&D::awardCurrencyForLevel})
+            m->registerHook(base+0x43600, FunctionScrapper::addressOfNonVirtual((d0){&D::awardCurrencyForLevel}));
+
+        if ((c1){&$GameStatsManager::awardDiamondsForLevel} != (d1){&D::awardDiamondsForLevel})
+            m->registerHook(base+0x43c60, FunctionScrapper::addressOfNonVirtual((d1){&D::awardDiamondsForLevel}));
+
+        if ((c2){&$GameStatsManager::awardSecretKey} != (d2){&D::awardSecretKey})
+            m->registerHook(base+0x4b1e0, FunctionScrapper::addressOfNonVirtual((d2){&D::awardSecretKey}));
+
+        if ((c3){&$GameStatsManager::getSecretCoinKey} != (d3){&D::getSecretCoinKey})
+            m->registerHook(base+0x429f0, FunctionScrapper::addressOfNonVirtual((d3){&D::getSecretCoinKey}));
+
+        if ((c4){&$GameStatsManager::getStat} != (d4){&D::getStat})
+            m->registerHook(base+0x3d310, FunctionScrapper::addressOfNonVirtual((d4){&D::getStat}));
+
+        if ((c5){&$GameStatsManager::hasPendingUserCoin} != (d5){&D::hasPendingUserCoin})
+            m->registerHook(base+0x42730, FunctionScrapper::addressOfNonVirtual((d5){&D::hasPendingUserCoin}));
+
+        if ((c6){&$GameStatsManager::hasSecretCoin} != (d6){&D::hasSecretCoin})
+            m->registerHook(base+0x40730, FunctionScrapper::addressOfNonVirtual((d6){&D::hasSecretCoin}));
+
+        if ((c7){&$GameStatsManager::hasUserCoin} != (d7){&D::hasUserCoin})
+            m->registerHook(base+0x427e0, FunctionScrapper::addressOfNonVirtual((d7){&D::hasUserCoin}));
+
+        if ((c8){&$GameStatsManager::incrementStat} != (d8){&D::incrementStat})
+            m->registerHook(base+0x3d6d0, FunctionScrapper::addressOfNonVirtual((d8){&D::incrementStat}));
+
+        if ((c9){&$GameStatsManager::incrementStat} != (d9){&D::incrementStat})
+            m->registerHook(base+0x3d6e0, FunctionScrapper::addressOfNonVirtual((d9){&D::incrementStat}));
+
+        if ((c10){&$GameStatsManager::sharedState} != (d10){&D::sharedState})
+            m->registerHook(base+0x38f20, FunctionScrapper::addressOfNonVirtual((d10){&D::sharedState}));
+
+        if ((c11){&$GameStatsManager::storePendingUserCoin} != (d11){&D::storePendingUserCoin})
+            m->registerHook(base+0x42940, FunctionScrapper::addressOfNonVirtual((d11){&D::storePendingUserCoin}));
+
+        if ((c12){&$GameStatsManager::storeSecretCoin} != (d12){&D::storeSecretCoin})
+            m->registerHook(base+0x42a10, FunctionScrapper::addressOfNonVirtual((d12){&D::storeSecretCoin}));
+
+        if ((c13){&$GameStatsManager::storeUserCoin} != (d13){&D::storeUserCoin})
+            m->registerHook(base+0x42890, FunctionScrapper::addressOfNonVirtual((d13){&D::storeUserCoin}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $LocalLevelManager : public LocalLevelManager, public $CacBase {
+public:
+    ~$LocalLevelManager() {
+        endDestructor();
+    }
+    $LocalLevelManager() {}
+
+    using r0 = decltype(std::declval<LocalLevelManager>().sharedState());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 sharedState() {
+        using r0 = decltype(std::declval<LocalLevelManager>().sharedState());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x35dd60)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$LocalLevelManager::sharedState} != (d0){&D::sharedState})
+            m->registerHook(base+0x35dd60, FunctionScrapper::addressOfNonVirtual((d0){&D::sharedState}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $MusicDownloadManager : public MusicDownloadManager, public $CacBase {
+public:
+    ~$MusicDownloadManager() {
+        endDestructor();
+    }
+    $MusicDownloadManager() {}
+
+    using r0 = decltype(std::declval<MusicDownloadManager>().incrementPriorityForSong(std::declval<int>()));
+    using c0 = r0($MusicDownloadManager::*)(int) ;
+    using d0 = r0(D::*)(int) ;
+    r0 incrementPriorityForSong(int p0) {
+        using r0 = decltype(std::declval<MusicDownloadManager>().incrementPriorityForSong(std::declval<int>()));
+        using f0 = r0(*)(MusicDownloadManager*, int);
+        return reinterpret_cast<f0>(base+0x2ef750)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<MusicDownloadManager>().sharedState());
+    using c1 = r1(*)();
+    using d1 = r1(*)();
+    static r1 sharedState() {
+        using r1 = decltype(std::declval<MusicDownloadManager>().sharedState());
+        using f1 = r1(*)();
+        return reinterpret_cast<f1>(base+0x2ee4c0)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$MusicDownloadManager::incrementPriorityForSong} != (d0){&D::incrementPriorityForSong})
+            m->registerHook(base+0x2ef750, FunctionScrapper::addressOfNonVirtual((d0){&D::incrementPriorityForSong}));
+
+        if ((c1){&$MusicDownloadManager::sharedState} != (d1){&D::sharedState})
+            m->registerHook(base+0x2ee4c0, FunctionScrapper::addressOfNonVirtual((d1){&D::sharedState}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ObjectToolbox : public ObjectToolbox, public $CacBase {
+public:
+    ~$ObjectToolbox() {
+        endDestructor();
+    }
+    $ObjectToolbox() {}
+
+    using r0 = decltype(std::declval<ObjectToolbox>().init());
+    using c0 = r0($ObjectToolbox::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 init() {
+        using r0 = decltype(std::declval<ObjectToolbox>().init());
+        using f0 = r0(*)(ObjectToolbox*);
+        return reinterpret_cast<f0>(base+0x3b2d80)(this);
+    }
+
+    using r1 = decltype(std::declval<ObjectToolbox>().intKeyToFrame(std::declval<int>()));
+    using c1 = r1($ObjectToolbox::*)(int) ;
+    using d1 = r1(D::*)(int) ;
+    r1 intKeyToFrame(int p0) {
+        using r1 = decltype(std::declval<ObjectToolbox>().intKeyToFrame(std::declval<int>()));
+        using f1 = r1(*)(ObjectToolbox*, int);
+        return reinterpret_cast<f1>(base+0x4173b0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<ObjectToolbox>().sharedState());
+    using c2 = r2(*)();
+    using d2 = r2(*)();
+    static r2 sharedState() {
+        using r2 = decltype(std::declval<ObjectToolbox>().sharedState());
+        using f2 = r2(*)();
+        return reinterpret_cast<f2>(base+0x3b2bc0)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$ObjectToolbox::init} != (d0){&D::init})
+            m->registerHook(base+0x3b2d80, FunctionScrapper::addressOfNonVirtual((d0){&D::init}));
+
+        if ((c1){&$ObjectToolbox::intKeyToFrame} != (d1){&D::intKeyToFrame})
+            m->registerHook(base+0x4173b0, FunctionScrapper::addressOfNonVirtual((d1){&D::intKeyToFrame}));
+
+        if ((c2){&$ObjectToolbox::sharedState} != (d2){&D::sharedState})
+            m->registerHook(base+0x3b2bc0, FunctionScrapper::addressOfNonVirtual((d2){&D::sharedState}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $PlatformToolbox : public PlatformToolbox, public $CacBase {
+public:
+    ~$PlatformToolbox() {
+        endDestructor();
+    }
+    $PlatformToolbox() {}
+
+    using r0 = decltype(std::declval<PlatformToolbox>().hideCursor());
+    using c0 = r0($PlatformToolbox::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 hideCursor() {
+        using r0 = decltype(std::declval<PlatformToolbox>().hideCursor());
+        using f0 = r0(*)(PlatformToolbox*);
+        return reinterpret_cast<f0>(base+0x27c340)(this);
+    }
+
+    using r1 = decltype(std::declval<PlatformToolbox>().showCursor());
+    using c1 = r1($PlatformToolbox::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 showCursor() {
+        using r1 = decltype(std::declval<PlatformToolbox>().showCursor());
+        using f1 = r1(*)(PlatformToolbox*);
+        return reinterpret_cast<f1>(base+0x27c360)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$PlatformToolbox::hideCursor} != (d0){&D::hideCursor})
+            m->registerHook(base+0x27c340, FunctionScrapper::addressOfNonVirtual((d0){&D::hideCursor}));
+
+        if ((c1){&$PlatformToolbox::showCursor} != (d1){&D::showCursor})
+            m->registerHook(base+0x27c360, FunctionScrapper::addressOfNonVirtual((d1){&D::showCursor}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJEffectManager : public GJEffectManager, public $CacBase {
+public:
+    ~$GJEffectManager() {
+        endDestructor();
+    }
+    $GJEffectManager() {}
+
+    using r0 = decltype(std::declval<GJEffectManager>().init());
+    using c0 = r0($GJEffectManager::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 init() {
+        using r0 = decltype(std::declval<GJEffectManager>().init());
+        using f0 = r0(*)(GJEffectManager*);
+        return reinterpret_cast<f0>(base+0x180230)(this);
+    }
+
+    using r1 = decltype(std::declval<GJEffectManager>().activeColorForIndex(std::declval<int>()));
+    using c1 = r1($GJEffectManager::*)(int) ;
+    using d1 = r1(D::*)(int) ;
+    r1 activeColorForIndex(int p0) {
+        using r1 = decltype(std::declval<GJEffectManager>().activeColorForIndex(std::declval<int>()));
+        using f1 = r1(*)(GJEffectManager*, int);
+        return reinterpret_cast<f1>(base+0x180cb0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<GJEffectManager>().activeOpacityForIndex(std::declval<int>()));
+    using c2 = r2($GJEffectManager::*)(int) ;
+    using d2 = r2(D::*)(int) ;
+    r2 activeOpacityForIndex(int p0) {
+        using r2 = decltype(std::declval<GJEffectManager>().activeOpacityForIndex(std::declval<int>()));
+        using f2 = r2(*)(GJEffectManager*, int);
+        return reinterpret_cast<f2>(base+0x180e10)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<GJEffectManager>().addAllInheritedColorActions(std::declval<cocos2d::CCArray*>()));
+    using c3 = r3($GJEffectManager::*)(cocos2d::CCArray*) ;
+    using d3 = r3(D::*)(cocos2d::CCArray*) ;
+    r3 addAllInheritedColorActions(cocos2d::CCArray* p0) {
+        using r3 = decltype(std::declval<GJEffectManager>().addAllInheritedColorActions(std::declval<cocos2d::CCArray*>()));
+        using f3 = r3(*)(GJEffectManager*, cocos2d::CCArray*);
+        return reinterpret_cast<f3>(base+0x1817a0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<GJEffectManager>().addGroupPulseEffect(std::declval<PulseEffectAction*>()));
+    using c4 = r4($GJEffectManager::*)(PulseEffectAction*) ;
+    using d4 = r4(D::*)(PulseEffectAction*) ;
+    r4 addGroupPulseEffect(PulseEffectAction* p0) {
+        using r4 = decltype(std::declval<GJEffectManager>().addGroupPulseEffect(std::declval<PulseEffectAction*>()));
+        using f4 = r4(*)(GJEffectManager*, PulseEffectAction*);
+        return reinterpret_cast<f4>(base+0x184c10)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<GJEffectManager>().calculateBaseActiveColors());
+    using c5 = r5($GJEffectManager::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 calculateBaseActiveColors() {
+        using r5 = decltype(std::declval<GJEffectManager>().calculateBaseActiveColors());
+        using f5 = r5(*)(GJEffectManager*);
+        return reinterpret_cast<f5>(base+0x180f70)(this);
+    }
+
+    using r6 = decltype(std::declval<GJEffectManager>().calculateInheritedColor(std::declval<int>(), std::declval<ColorAction*>()));
+    using c6 = r6($GJEffectManager::*)(int, ColorAction*) ;
+    using d6 = r6(D::*)(int, ColorAction*) ;
+    r6 calculateInheritedColor(int p0, ColorAction* p1) {
+        using r6 = decltype(std::declval<GJEffectManager>().calculateInheritedColor(std::declval<int>(), std::declval<ColorAction*>()));
+        using f6 = r6(*)(GJEffectManager*, int, ColorAction*);
+        return reinterpret_cast<f6>(base+0x1818f0)(this, p0, p1);
+    }
+
+    using r7 = decltype(std::declval<GJEffectManager>().calculateLightBGColor(std::declval<cocos2d::_ccColor3B>()));
+    using c7 = r7($GJEffectManager::*)(cocos2d::_ccColor3B) ;
+    using d7 = r7(D::*)(cocos2d::_ccColor3B) ;
+    r7 calculateLightBGColor(cocos2d::_ccColor3B p0) {
+        using r7 = decltype(std::declval<GJEffectManager>().calculateLightBGColor(std::declval<cocos2d::_ccColor3B>()));
+        using f7 = r7(*)(GJEffectManager*, cocos2d::_ccColor3B);
+        return reinterpret_cast<f7>(base+0x185b90)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<GJEffectManager>().colorActionChanged(std::declval<ColorAction*>()));
+    using c8 = r8($GJEffectManager::*)(ColorAction*) ;
+    using d8 = r8(D::*)(ColorAction*) ;
+    r8 colorActionChanged(ColorAction* p0) {
+        using r8 = decltype(std::declval<GJEffectManager>().colorActionChanged(std::declval<ColorAction*>()));
+        using f8 = r8(*)(GJEffectManager*, ColorAction*);
+        return reinterpret_cast<f8>(base+0x181dc0)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<GJEffectManager>().colorExists(std::declval<int>()));
+    using c9 = r9($GJEffectManager::*)(int) ;
+    using d9 = r9(D::*)(int) ;
+    r9 colorExists(int p0) {
+        using r9 = decltype(std::declval<GJEffectManager>().colorExists(std::declval<int>()));
+        using f9 = r9(*)(GJEffectManager*, int);
+        return reinterpret_cast<f9>(base+0x181da0)(this, p0);
+    }
+
+    using r10 = decltype(std::declval<GJEffectManager>().colorForEffect(std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccHSVValue>()));
+    using c10 = r10($GJEffectManager::*)(cocos2d::_ccColor3B, cocos2d::_ccHSVValue) ;
+    using d10 = r10(D::*)(cocos2d::_ccColor3B, cocos2d::_ccHSVValue) ;
+    r10 colorForEffect(cocos2d::_ccColor3B p0, cocos2d::_ccHSVValue p1) {
+        using r10 = decltype(std::declval<GJEffectManager>().colorForEffect(std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccHSVValue>()));
+        using f10 = r10(*)(GJEffectManager*, cocos2d::_ccColor3B, cocos2d::_ccHSVValue);
+        return reinterpret_cast<f10>(base+0x182650)(this, p0, p1);
+    }
+
+    using r11 = decltype(std::declval<GJEffectManager>().colorForGroupID(std::declval<int>(), std::declval<cocos2d::_ccColor3B const&>(), std::declval<bool>()));
+    using c11 = r11($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool) ;
+    using d11 = r11(D::*)(int, cocos2d::_ccColor3B const&, bool) ;
+    r11 colorForGroupID(int p0, cocos2d::_ccColor3B const& p1, bool p2) {
+        using r11 = decltype(std::declval<GJEffectManager>().colorForGroupID(std::declval<int>(), std::declval<cocos2d::_ccColor3B const&>(), std::declval<bool>()));
+        using f11 = r11(*)(GJEffectManager*, int, cocos2d::_ccColor3B const&, bool);
+        return reinterpret_cast<f11>(base+0x184f90)(this, p0, p1, p2);
+    }
+
+    using r12 = decltype(std::declval<GJEffectManager>().colorForIndex(std::declval<int>()));
+    using c12 = r12($GJEffectManager::*)(int) ;
+    using d12 = r12(D::*)(int) ;
+    r12 colorForIndex(int p0) {
+        using r12 = decltype(std::declval<GJEffectManager>().colorForIndex(std::declval<int>()));
+        using f12 = r12(*)(GJEffectManager*, int);
+        return reinterpret_cast<f12>(base+0x180ad0)(this, p0);
+    }
+
+    using r13 = decltype(std::declval<GJEffectManager>().colorForPulseEffect(std::declval<cocos2d::_ccColor3B const&>(), std::declval<PulseEffectAction*>()));
+    using c13 = r13($GJEffectManager::*)(cocos2d::_ccColor3B const&, PulseEffectAction*) ;
+    using d13 = r13(D::*)(cocos2d::_ccColor3B const&, PulseEffectAction*) ;
+    r13 colorForPulseEffect(cocos2d::_ccColor3B const& p0, PulseEffectAction* p1) {
+        using r13 = decltype(std::declval<GJEffectManager>().colorForPulseEffect(std::declval<cocos2d::_ccColor3B const&>(), std::declval<PulseEffectAction*>()));
+        using f13 = r13(*)(GJEffectManager*, cocos2d::_ccColor3B const&, PulseEffectAction*);
+        return reinterpret_cast<f13>(base+0x181bf0)(this, p0, p1);
+    }
+
+    using r14 = decltype(std::declval<GJEffectManager>().countChangedForItem(std::declval<int>()));
+    using c14 = r14($GJEffectManager::*)(int) ;
+    using d14 = r14(D::*)(int) ;
+    r14 countChangedForItem(int p0) {
+        using r14 = decltype(std::declval<GJEffectManager>().countChangedForItem(std::declval<int>()));
+        using f14 = r14(*)(GJEffectManager*, int);
+        return reinterpret_cast<f14>(base+0x185a40)(this, p0);
+    }
+
+    using r15 = decltype(std::declval<GJEffectManager>().countForItem(std::declval<int>()));
+    using c15 = r15($GJEffectManager::*)(int) ;
+    using d15 = r15(D::*)(int) ;
+    r15 countForItem(int p0) {
+        using r15 = decltype(std::declval<GJEffectManager>().countForItem(std::declval<int>()));
+        using f15 = r15(*)(GJEffectManager*, int);
+        return reinterpret_cast<f15>(base+0x185a10)(this, p0);
+    }
+
+    using r16 = decltype(std::declval<GJEffectManager>().create());
+    using c16 = r16(*)();
+    using d16 = r16(*)();
+    static r16 create() {
+        using r16 = decltype(std::declval<GJEffectManager>().create());
+        using f16 = r16(*)();
+        return reinterpret_cast<f16>(base+0x1800f0)();
+
+    }
+
+    using r17 = decltype(std::declval<GJEffectManager>().createFollowCommand(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+    using c17 = r17($GJEffectManager::*)(float, float, float, int, int, bool, int) ;
+    using d17 = r17(D::*)(float, float, float, int, int, bool, int) ;
+    r17 createFollowCommand(float p0, float p1, float p2, int p3, int p4, bool p5, int p6) {
+        using r17 = decltype(std::declval<GJEffectManager>().createFollowCommand(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+        using f17 = r17(*)(GJEffectManager*, float, float, float, int, int, bool, int);
+        return reinterpret_cast<f17>(base+0x182ed0)(this, p0, p1, p2, p3, p4, p5, p6);
+    }
+
+    using r18 = decltype(std::declval<GJEffectManager>().createMoveCommand(std::declval<cocos2d::CCPoint>(), std::declval<int>(), std::declval<float>(), std::declval<int>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+    using c18 = r18($GJEffectManager::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int) ;
+    using d18 = r18(D::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int) ;
+    r18 createMoveCommand(cocos2d::CCPoint p0, int p1, float p2, int p3, float p4, bool p5, bool p6, int p7) {
+        using r18 = decltype(std::declval<GJEffectManager>().createMoveCommand(std::declval<cocos2d::CCPoint>(), std::declval<int>(), std::declval<float>(), std::declval<int>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+        using f18 = r18(*)(GJEffectManager*, cocos2d::CCPoint, int, float, int, float, bool, bool, int);
+        return reinterpret_cast<f18>(base+0x182cc0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    }
+
+    using r19 = decltype(std::declval<GJEffectManager>().createPlayerFollowCommand(std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<int>()));
+    using c19 = r19($GJEffectManager::*)(float, float, int, float, float, int, int) ;
+    using d19 = r19(D::*)(float, float, int, float, float, int, int) ;
+    r19 createPlayerFollowCommand(float p0, float p1, int p2, float p3, float p4, int p5, int p6) {
+        using r19 = decltype(std::declval<GJEffectManager>().createPlayerFollowCommand(std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<int>()));
+        using f19 = r19(*)(GJEffectManager*, float, float, int, float, float, int, int);
+        return reinterpret_cast<f19>(base+0x182fe0)(this, p0, p1, p2, p3, p4, p5, p6);
+    }
+
+    using r20 = decltype(std::declval<GJEffectManager>().createRotateCommand(std::declval<int>(), std::declval<float>(), std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<float>(), std::declval<bool>(), std::declval<int>()));
+    using c20 = r20($GJEffectManager::*)(int, float, int, int, int, float, bool, int) ;
+    using d20 = r20(D::*)(int, float, int, int, int, float, bool, int) ;
+    r20 createRotateCommand(int p0, float p1, int p2, int p3, int p4, float p5, bool p6, int p7) {
+        using r20 = decltype(std::declval<GJEffectManager>().createRotateCommand(std::declval<int>(), std::declval<float>(), std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<float>(), std::declval<bool>(), std::declval<int>()));
+        using f20 = r20(*)(GJEffectManager*, int, float, int, int, int, float, bool, int);
+        return reinterpret_cast<f20>(base+0x182df0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    }
+
+    using r21 = decltype(std::declval<GJEffectManager>().getAllColorActions());
+    using c21 = r21($GJEffectManager::*)() ;
+    using d21 = r21(D::*)() ;
+    r21 getAllColorActions() {
+        using r21 = decltype(std::declval<GJEffectManager>().getAllColorActions());
+        using f21 = r21(*)(GJEffectManager*);
+        return reinterpret_cast<f21>(base+0x180980)(this);
+    }
+
+    using r22 = decltype(std::declval<GJEffectManager>().getAllColorSprites());
+    using c22 = r22($GJEffectManager::*)() ;
+    using d22 = r22(D::*)() ;
+    r22 getAllColorSprites() {
+        using r22 = decltype(std::declval<GJEffectManager>().getAllColorSprites());
+        using f22 = r22(*)(GJEffectManager*);
+        return reinterpret_cast<f22>(base+0x1809e0)(this);
+    }
+
+    using r23 = decltype(std::declval<GJEffectManager>().getColorAction(std::declval<int>()));
+    using c23 = r23($GJEffectManager::*)(int) ;
+    using d23 = r23(D::*)(int) ;
+    r23 getColorAction(int p0) {
+        using r23 = decltype(std::declval<GJEffectManager>().getColorAction(std::declval<int>()));
+        using f23 = r23(*)(GJEffectManager*, int);
+        return reinterpret_cast<f23>(base+0x180b00)(this, p0);
+    }
+
+    using r24 = decltype(std::declval<GJEffectManager>().getColorSprite(std::declval<int>()));
+    using c24 = r24($GJEffectManager::*)(int) ;
+    using d24 = r24(D::*)(int) ;
+    r24 getColorSprite(int p0) {
+        using r24 = decltype(std::declval<GJEffectManager>().getColorSprite(std::declval<int>()));
+        using f24 = r24(*)(GJEffectManager*, int);
+        return reinterpret_cast<f24>(base+0x180d00)(this, p0);
+    }
+
+    using r25 = decltype(std::declval<GJEffectManager>().getCurrentStateString());
+    using c25 = r25($GJEffectManager::*)() ;
+    using d25 = r25(D::*)() ;
+    r25 getCurrentStateString() {
+        using r25 = decltype(std::declval<GJEffectManager>().getCurrentStateString());
+        using f25 = r25(*)(GJEffectManager*);
+        return reinterpret_cast<f25>(base+0x1867e0)(this);
+    }
+
+    using r26 = decltype(std::declval<GJEffectManager>().getLoadedMoveOffset());
+    using c26 = r26($GJEffectManager::*)() ;
+    using d26 = r26(D::*)() ;
+    r26 getLoadedMoveOffset() {
+        using r26 = decltype(std::declval<GJEffectManager>().getLoadedMoveOffset());
+        using f26 = r26(*)(GJEffectManager*);
+        return reinterpret_cast<f26>(base+0x184390)(this);
+    }
+
+    using r27 = decltype(std::declval<GJEffectManager>().getMixedColor(std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccColor3B>(), std::declval<float>()));
+    using c27 = r27($GJEffectManager::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) ;
+    using d27 = r27(D::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B, float) ;
+    r27 getMixedColor(cocos2d::_ccColor3B p0, cocos2d::_ccColor3B p1, float p2) {
+        using r27 = decltype(std::declval<GJEffectManager>().getMixedColor(std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccColor3B>(), std::declval<float>()));
+        using f27 = r27(*)(GJEffectManager*, cocos2d::_ccColor3B, cocos2d::_ccColor3B, float);
+        return reinterpret_cast<f27>(base+0x185d30)(this, p0, p1, p2);
+    }
+
+    using r28 = decltype(std::declval<GJEffectManager>().getOpacityActionForGroup(std::declval<int>()));
+    using c28 = r28($GJEffectManager::*)(int) ;
+    using d28 = r28(D::*)(int) ;
+    r28 getOpacityActionForGroup(int p0) {
+        using r28 = decltype(std::declval<GJEffectManager>().getOpacityActionForGroup(std::declval<int>()));
+        using f28 = r28(*)(GJEffectManager*, int);
+        return reinterpret_cast<f28>(base+0x1845b0)(this, p0);
+    }
+
+    using r29 = decltype(std::declval<GJEffectManager>().getSaveString());
+    using c29 = r29($GJEffectManager::*)() ;
+    using d29 = r29(D::*)() ;
+    r29 getSaveString() {
+        using r29 = decltype(std::declval<GJEffectManager>().getSaveString());
+        using f29 = r29(*)(GJEffectManager*);
+        return reinterpret_cast<f29>(base+0x185e90)(this);
+    }
+
+    using r30 = decltype(std::declval<GJEffectManager>().handleObjectCollision(std::declval<bool>(), std::declval<int>(), std::declval<int>()));
+    using c30 = r30($GJEffectManager::*)(bool, int, int) ;
+    using d30 = r30(D::*)(bool, int, int) ;
+    r30 handleObjectCollision(bool p0, int p1, int p2) {
+        using r30 = decltype(std::declval<GJEffectManager>().handleObjectCollision(std::declval<bool>(), std::declval<int>(), std::declval<int>()));
+        using f30 = r30(*)(GJEffectManager*, bool, int, int);
+        return reinterpret_cast<f30>(base+0x1828f0)(this, p0, p1, p2);
+    }
+
+    using r31 = decltype(std::declval<GJEffectManager>().hasActiveDualTouch());
+    using c31 = r31($GJEffectManager::*)() ;
+    using d31 = r31(D::*)() ;
+    r31 hasActiveDualTouch() {
+        using r31 = decltype(std::declval<GJEffectManager>().hasActiveDualTouch());
+        using f31 = r31(*)(GJEffectManager*);
+        return reinterpret_cast<f31>(base+0x185540)(this);
+    }
+
+    using r32 = decltype(std::declval<GJEffectManager>().hasBeenTriggered(std::declval<int>()));
+    using c32 = r32($GJEffectManager::*)(int) ;
+    using d32 = r32(D::*)(int) ;
+    r32 hasBeenTriggered(int p0) {
+        using r32 = decltype(std::declval<GJEffectManager>().hasBeenTriggered(std::declval<int>()));
+        using f32 = r32(*)(GJEffectManager*, int);
+        return reinterpret_cast<f32>(base+0x1853b0)(this, p0);
+    }
+
+    using r33 = decltype(std::declval<GJEffectManager>().hasPulseEffectForGroupID(std::declval<int>()));
+    using c33 = r33($GJEffectManager::*)(int) ;
+    using d33 = r33(D::*)(int) ;
+    r33 hasPulseEffectForGroupID(int p0) {
+        using r33 = decltype(std::declval<GJEffectManager>().hasPulseEffectForGroupID(std::declval<int>()));
+        using f33 = r33(*)(GJEffectManager*, int);
+        return reinterpret_cast<f33>(base+0x184f60)(this, p0);
+    }
+
+    using r34 = decltype(std::declval<GJEffectManager>().isGroupEnabled(std::declval<int>()));
+    using c34 = r34($GJEffectManager::*)(int) ;
+    using d34 = r34(D::*)(int) ;
+    r34 isGroupEnabled(int p0) {
+        using r34 = decltype(std::declval<GJEffectManager>().isGroupEnabled(std::declval<int>()));
+        using f34 = r34(*)(GJEffectManager*, int);
+        return reinterpret_cast<f34>(base+0x1853d0)(this, p0);
+    }
+
+    using r35 = decltype(std::declval<GJEffectManager>().keyForGroupIDColor(std::declval<int>(), std::declval<cocos2d::_ccColor3B const&>(), std::declval<bool>()));
+    using c35 = r35($GJEffectManager::*)(int, cocos2d::_ccColor3B const&, bool) ;
+    using d35 = r35(D::*)(int, cocos2d::_ccColor3B const&, bool) ;
+    r35 keyForGroupIDColor(int p0, cocos2d::_ccColor3B const& p1, bool p2) {
+        using r35 = decltype(std::declval<GJEffectManager>().keyForGroupIDColor(std::declval<int>(), std::declval<cocos2d::_ccColor3B const&>(), std::declval<bool>()));
+        using f35 = r35(*)(GJEffectManager*, int, cocos2d::_ccColor3B const&, bool);
+        return reinterpret_cast<f35>(base+0x184c90)(this, p0, p1, p2);
+    }
+
+    using r36 = decltype(std::declval<GJEffectManager>().loadState(std::declval<gd::string>()));
+    using c36 = r36($GJEffectManager::*)(gd::string) ;
+    using d36 = r36(D::*)(gd::string) ;
+    r36 loadState(gd::string p0) {
+        using r36 = decltype(std::declval<GJEffectManager>().loadState(std::declval<gd::string>()));
+        using f36 = r36(*)(GJEffectManager*, gd::string);
+        return reinterpret_cast<f36>(base+0x188db0)(this, p0);
+    }
+
+    using r37 = decltype(std::declval<GJEffectManager>().objectsCollided(std::declval<int>(), std::declval<int>()));
+    using c37 = r37($GJEffectManager::*)(int, int) ;
+    using d37 = r37(D::*)(int, int) ;
+    r37 objectsCollided(int p0, int p1) {
+        using r37 = decltype(std::declval<GJEffectManager>().objectsCollided(std::declval<int>(), std::declval<int>()));
+        using f37 = r37(*)(GJEffectManager*, int, int);
+        return reinterpret_cast<f37>(base+0x182a00)(this, p0, p1);
+    }
+
+    using r38 = decltype(std::declval<GJEffectManager>().opacityForIndex(std::declval<int>()));
+    using c38 = r38($GJEffectManager::*)(int) ;
+    using d38 = r38(D::*)(int) ;
+    r38 opacityForIndex(int p0) {
+        using r38 = decltype(std::declval<GJEffectManager>().opacityForIndex(std::declval<int>()));
+        using f38 = r38(*)(GJEffectManager*, int);
+        return reinterpret_cast<f38>(base+0x180c80)(this, p0);
+    }
+
+    using r39 = decltype(std::declval<GJEffectManager>().opacityModForGroup(std::declval<int>()));
+    using c39 = r39($GJEffectManager::*)(int) ;
+    using d39 = r39(D::*)(int) ;
+    r39 opacityModForGroup(int p0) {
+        using r39 = decltype(std::declval<GJEffectManager>().opacityModForGroup(std::declval<int>()));
+        using f39 = r39(*)(GJEffectManager*, int);
+        return reinterpret_cast<f39>(base+0x184740)(this, p0);
+    }
+
+    using r40 = decltype(std::declval<GJEffectManager>().playerButton(std::declval<bool>(), std::declval<bool>()));
+    using c40 = r40($GJEffectManager::*)(bool, bool) ;
+    using d40 = r40(D::*)(bool, bool) ;
+    r40 playerButton(bool p0, bool p1) {
+        using r40 = decltype(std::declval<GJEffectManager>().playerButton(std::declval<bool>(), std::declval<bool>()));
+        using f40 = r40(*)(GJEffectManager*, bool, bool);
+        return reinterpret_cast<f40>(base+0x1855a0)(this, p0, p1);
+    }
+
+    using r41 = decltype(std::declval<GJEffectManager>().playerDied());
+    using c41 = r41($GJEffectManager::*)() ;
+    using d41 = r41(D::*)() ;
+    r41 playerDied() {
+        using r41 = decltype(std::declval<GJEffectManager>().playerDied());
+        using f41 = r41(*)(GJEffectManager*);
+        return reinterpret_cast<f41>(base+0x185860)(this);
+    }
+
+    using r42 = decltype(std::declval<GJEffectManager>().postCollisionCheck());
+    using c42 = r42($GJEffectManager::*)() ;
+    using d42 = r42(D::*)() ;
+    r42 postCollisionCheck() {
+        using r42 = decltype(std::declval<GJEffectManager>().postCollisionCheck());
+        using f42 = r42(*)(GJEffectManager*);
+        return reinterpret_cast<f42>(base+0x182720)(this);
+    }
+
+    using r43 = decltype(std::declval<GJEffectManager>().preCollisionCheck());
+    using c43 = r43($GJEffectManager::*)() ;
+    using d43 = r43(D::*)() ;
+    r43 preCollisionCheck() {
+        using r43 = decltype(std::declval<GJEffectManager>().preCollisionCheck());
+        using f43 = r43(*)(GJEffectManager*);
+        return reinterpret_cast<f43>(base+0x182680)(this);
+    }
+
+    using r44 = decltype(std::declval<GJEffectManager>().prepareMoveActions(std::declval<float>(), std::declval<bool>()));
+    using c44 = r44($GJEffectManager::*)(float, bool) ;
+    using d44 = r44(D::*)(float, bool) ;
+    r44 prepareMoveActions(float p0, bool p1) {
+        using r44 = decltype(std::declval<GJEffectManager>().prepareMoveActions(std::declval<float>(), std::declval<bool>()));
+        using f44 = r44(*)(GJEffectManager*, float, bool);
+        return reinterpret_cast<f44>(base+0x183660)(this, p0, p1);
+    }
+
+    using r45 = decltype(std::declval<GJEffectManager>().processColors());
+    using c45 = r45($GJEffectManager::*)() ;
+    using d45 = r45(D::*)() ;
+    r45 processColors() {
+        using r45 = decltype(std::declval<GJEffectManager>().processColors());
+        using f45 = r45(*)(GJEffectManager*);
+        return reinterpret_cast<f45>(base+0x180e70)(this);
+    }
+
+    using r46 = decltype(std::declval<GJEffectManager>().processCopyColorPulseActions());
+    using c46 = r46($GJEffectManager::*)() ;
+    using d46 = r46(D::*)() ;
+    r46 processCopyColorPulseActions() {
+        using r46 = decltype(std::declval<GJEffectManager>().processCopyColorPulseActions());
+        using f46 = r46(*)(GJEffectManager*);
+        return reinterpret_cast<f46>(base+0x181530)(this);
+    }
+
+    using r47 = decltype(std::declval<GJEffectManager>().processInheritedColors());
+    using c47 = r47($GJEffectManager::*)() ;
+    using d47 = r47(D::*)() ;
+    r47 processInheritedColors() {
+        using r47 = decltype(std::declval<GJEffectManager>().processInheritedColors());
+        using f47 = r47(*)(GJEffectManager*);
+        return reinterpret_cast<f47>(base+0x181190)(this);
+    }
+
+    using r48 = decltype(std::declval<GJEffectManager>().processPulseActions());
+    using c48 = r48($GJEffectManager::*)() ;
+    using d48 = r48(D::*)() ;
+    r48 processPulseActions() {
+        using r48 = decltype(std::declval<GJEffectManager>().processPulseActions());
+        using f48 = r48(*)(GJEffectManager*);
+        return reinterpret_cast<f48>(base+0x181040)(this);
+    }
+
+    using r49 = decltype(std::declval<GJEffectManager>().registerCollisionTrigger(std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+    using c49 = r49($GJEffectManager::*)(int, int, int, bool, bool, int) ;
+    using d49 = r49(D::*)(int, int, int, bool, bool, int) ;
+    r49 registerCollisionTrigger(int p0, int p1, int p2, bool p3, bool p4, int p5) {
+        using r49 = decltype(std::declval<GJEffectManager>().registerCollisionTrigger(std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+        using f49 = r49(*)(GJEffectManager*, int, int, int, bool, bool, int);
+        return reinterpret_cast<f49>(base+0x182b70)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r50 = decltype(std::declval<GJEffectManager>().removeAllPulseActions());
+    using c50 = r50($GJEffectManager::*)() ;
+    using d50 = r50(D::*)() ;
+    r50 removeAllPulseActions() {
+        using r50 = decltype(std::declval<GJEffectManager>().removeAllPulseActions());
+        using f50 = r50(*)(GJEffectManager*);
+        return reinterpret_cast<f50>(base+0x1825e0)(this);
+    }
+
+    using r51 = decltype(std::declval<GJEffectManager>().removeColorAction(std::declval<int>()));
+    using c51 = r51($GJEffectManager::*)(int) ;
+    using d51 = r51(D::*)(int) ;
+    r51 removeColorAction(int p0) {
+        using r51 = decltype(std::declval<GJEffectManager>().removeColorAction(std::declval<int>()));
+        using f51 = r51(*)(GJEffectManager*, int);
+        return reinterpret_cast<f51>(base+0x181d60)(this, p0);
+    }
+
+    using r52 = decltype(std::declval<GJEffectManager>().reset());
+    using c52 = r52($GJEffectManager::*)() ;
+    using d52 = r52(D::*)() ;
+    r52 reset() {
+        using r52 = decltype(std::declval<GJEffectManager>().reset());
+        using f52 = r52(*)(GJEffectManager*);
+        return reinterpret_cast<f52>(base+0x180690)(this);
+    }
+
+    using r53 = decltype(std::declval<GJEffectManager>().resetColorCache());
+    using c53 = r53($GJEffectManager::*)() ;
+    using d53 = r53(D::*)() ;
+    r53 resetColorCache() {
+        using r53 = decltype(std::declval<GJEffectManager>().resetColorCache());
+        using f53 = r53(*)(GJEffectManager*);
+        return reinterpret_cast<f53>(base+0x185280)(this);
+    }
+
+    using r54 = decltype(std::declval<GJEffectManager>().resetEffects());
+    using c54 = r54($GJEffectManager::*)() ;
+    using d54 = r54(D::*)() ;
+    r54 resetEffects() {
+        using r54 = decltype(std::declval<GJEffectManager>().resetEffects());
+        using f54 = r54(*)(GJEffectManager*);
+        return reinterpret_cast<f54>(base+0x1807d0)(this);
+    }
+
+    using r55 = decltype(std::declval<GJEffectManager>().resetMoveActions());
+    using c55 = r55($GJEffectManager::*)() ;
+    using d55 = r55(D::*)() ;
+    r55 resetMoveActions() {
+        using r55 = decltype(std::declval<GJEffectManager>().resetMoveActions());
+        using f55 = r55(*)(GJEffectManager*);
+        return reinterpret_cast<f55>(base+0x180940)(this);
+    }
+
+    using r56 = decltype(std::declval<GJEffectManager>().resetToggledGroups());
+    using c56 = r56($GJEffectManager::*)() ;
+    using d56 = r56(D::*)() ;
+    r56 resetToggledGroups() {
+        using r56 = decltype(std::declval<GJEffectManager>().resetToggledGroups());
+        using f56 = r56(*)(GJEffectManager*);
+        return reinterpret_cast<f56>(base+0x1853f0)(this);
+    }
+
+    using r57 = decltype(std::declval<GJEffectManager>().resetTriggeredIDs());
+    using c57 = r57($GJEffectManager::*)() ;
+    using d57 = r57(D::*)() ;
+    r57 resetTriggeredIDs() {
+        using r57 = decltype(std::declval<GJEffectManager>().resetTriggeredIDs());
+        using f57 = r57(*)(GJEffectManager*);
+        return reinterpret_cast<f57>(base+0x182630)(this);
+    }
+
+    using r58 = decltype(std::declval<GJEffectManager>().runCountTrigger(std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+    using c58 = r58($GJEffectManager::*)(int, int, bool, int, bool, int) ;
+    using d58 = r58(D::*)(int, int, bool, int, bool, int) ;
+    r58 runCountTrigger(int p0, int p1, bool p2, int p3, bool p4, int p5) {
+        using r58 = decltype(std::declval<GJEffectManager>().runCountTrigger(std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+        using f58 = r58(*)(GJEffectManager*, int, int, bool, int, bool, int);
+        return reinterpret_cast<f58>(base+0x1858d0)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r59 = decltype(std::declval<GJEffectManager>().runDeathTrigger(std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+    using c59 = r59($GJEffectManager::*)(int, bool, int) ;
+    using d59 = r59(D::*)(int, bool, int) ;
+    r59 runDeathTrigger(int p0, bool p1, int p2) {
+        using r59 = decltype(std::declval<GJEffectManager>().runDeathTrigger(std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+        using f59 = r59(*)(GJEffectManager*, int, bool, int);
+        return reinterpret_cast<f59>(base+0x1857a0)(this, p0, p1, p2);
+    }
+
+    using r60 = decltype(std::declval<GJEffectManager>().runOpacityActionOnGroup(std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
+    using c60 = r60($GJEffectManager::*)(int, float, float, int) ;
+    using d60 = r60(D::*)(int, float, float, int) ;
+    r60 runOpacityActionOnGroup(int p0, float p1, float p2, int p3) {
+        using r60 = decltype(std::declval<GJEffectManager>().runOpacityActionOnGroup(std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
+        using f60 = r60(*)(GJEffectManager*, int, float, float, int);
+        return reinterpret_cast<f60>(base+0x1845d0)(this, p0, p1, p2, p3);
+    }
+
+    using r61 = decltype(std::declval<GJEffectManager>().runPulseEffect(std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<PulseEffectType>(), std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+    using c61 = r61($GJEffectManager::*)(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int) ;
+    using d61 = r61(D::*)(int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int) ;
+    r61 runPulseEffect(int p0, bool p1, float p2, float p3, float p4, PulseEffectType p5, cocos2d::_ccColor3B p6, cocos2d::_ccHSVValue p7, int p8, bool p9, bool p10, bool p11, int p12) {
+        using r61 = decltype(std::declval<GJEffectManager>().runPulseEffect(std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<PulseEffectType>(), std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+        using f61 = r61(*)(GJEffectManager*, int, bool, float, float, float, PulseEffectType, cocos2d::_ccColor3B, cocos2d::_ccHSVValue, int, bool, bool, bool, int);
+        return reinterpret_cast<f61>(base+0x184890)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+    }
+
+    using r62 = decltype(std::declval<GJEffectManager>().runTouchTriggerCommand(std::declval<int>(), std::declval<bool>(), std::declval<TouchTriggerType>(), std::declval<bool>(), std::declval<int>()));
+    using c62 = r62($GJEffectManager::*)(int, bool, TouchTriggerType, bool, int) ;
+    using d62 = r62(D::*)(int, bool, TouchTriggerType, bool, int) ;
+    r62 runTouchTriggerCommand(int p0, bool p1, TouchTriggerType p2, bool p3, int p4) {
+        using r62 = decltype(std::declval<GJEffectManager>().runTouchTriggerCommand(std::declval<int>(), std::declval<bool>(), std::declval<TouchTriggerType>(), std::declval<bool>(), std::declval<int>()));
+        using f62 = r62(*)(GJEffectManager*, int, bool, TouchTriggerType, bool, int);
+        return reinterpret_cast<f62>(base+0x185460)(this, p0, p1, p2, p3, p4);
+    }
+
+    using r63 = decltype(std::declval<GJEffectManager>().setColorAction(std::declval<ColorAction*>(), std::declval<int>()));
+    using c63 = r63($GJEffectManager::*)(ColorAction*, int) ;
+    using d63 = r63(D::*)(ColorAction*, int) ;
+    r63 setColorAction(ColorAction* p0, int p1) {
+        using r63 = decltype(std::declval<GJEffectManager>().setColorAction(std::declval<ColorAction*>(), std::declval<int>()));
+        using f63 = r63(*)(GJEffectManager*, ColorAction*, int);
+        return reinterpret_cast<f63>(base+0x181d00)(this, p0, p1);
+    }
+
+    using r64 = decltype(std::declval<GJEffectManager>().setFollowing(std::declval<int>(), std::declval<int>(), std::declval<bool>()));
+    using c64 = r64($GJEffectManager::*)(int, int, bool) ;
+    using d64 = r64(D::*)(int, int, bool) ;
+    r64 setFollowing(int p0, int p1, bool p2) {
+        using r64 = decltype(std::declval<GJEffectManager>().setFollowing(std::declval<int>(), std::declval<int>(), std::declval<bool>()));
+        using f64 = r64(*)(GJEffectManager*, int, int, bool);
+        return reinterpret_cast<f64>(base+0x185e00)(this, p0, p1, p2);
+    }
+
+    using r65 = decltype(std::declval<GJEffectManager>().setupFromString(std::declval<gd::string>()));
+    using c65 = r65($GJEffectManager::*)(gd::string) ;
+    using d65 = r65(D::*)(gd::string) ;
+    r65 setupFromString(gd::string p0) {
+        using r65 = decltype(std::declval<GJEffectManager>().setupFromString(std::declval<gd::string>()));
+        using f65 = r65(*)(GJEffectManager*, gd::string);
+        return reinterpret_cast<f65>(base+0x186290)(this, p0);
+    }
+
+    using r66 = decltype(std::declval<GJEffectManager>().shouldBlend(std::declval<int>()));
+    using c66 = r66($GJEffectManager::*)(int) ;
+    using d66 = r66(D::*)(int) ;
+    r66 shouldBlend(int p0) {
+        using r66 = decltype(std::declval<GJEffectManager>().shouldBlend(std::declval<int>()));
+        using f66 = r66(*)(GJEffectManager*, int);
+        return reinterpret_cast<f66>(base+0x180e40)(this, p0);
+    }
+
+    using r67 = decltype(std::declval<GJEffectManager>().spawnGroup(std::declval<int>(), std::declval<float>(), std::declval<int>()));
+    using c67 = r67($GJEffectManager::*)(int, float, int) ;
+    using d67 = r67(D::*)(int, float, int) ;
+    r67 spawnGroup(int p0, float p1, int p2) {
+        using r67 = decltype(std::declval<GJEffectManager>().spawnGroup(std::declval<int>(), std::declval<float>(), std::declval<int>()));
+        using f67 = r67(*)(GJEffectManager*, int, float, int);
+        return reinterpret_cast<f67>(base+0x1852a0)(this, p0, p1, p2);
+    }
+
+    using r68 = decltype(std::declval<GJEffectManager>().stopActionsForTrigger(std::declval<EffectGameObject*>()));
+    using c68 = r68($GJEffectManager::*)(EffectGameObject*) ;
+    using d68 = r68(D::*)(EffectGameObject*) ;
+    r68 stopActionsForTrigger(EffectGameObject* p0) {
+        using r68 = decltype(std::declval<GJEffectManager>().stopActionsForTrigger(std::declval<EffectGameObject*>()));
+        using f68 = r68(*)(GJEffectManager*, EffectGameObject*);
+        return reinterpret_cast<f68>(base+0x183150)(this, p0);
+    }
+
+    using r69 = decltype(std::declval<GJEffectManager>().stopMoveActionsForGroup(std::declval<int>()));
+    using c69 = r69($GJEffectManager::*)(int) ;
+    using d69 = r69(D::*)(int) ;
+    r69 stopMoveActionsForGroup(int p0) {
+        using r69 = decltype(std::declval<GJEffectManager>().stopMoveActionsForGroup(std::declval<int>()));
+        using f69 = r69(*)(GJEffectManager*, int);
+        return reinterpret_cast<f69>(base+0x1830e0)(this, p0);
+    }
+
+    using r70 = decltype(std::declval<GJEffectManager>().storeTriggeredID(std::declval<int>()));
+    using c70 = r70($GJEffectManager::*)(int) ;
+    using d70 = r70(D::*)(int) ;
+    r70 storeTriggeredID(int p0) {
+        using r70 = decltype(std::declval<GJEffectManager>().storeTriggeredID(std::declval<int>()));
+        using f70 = r70(*)(GJEffectManager*, int);
+        return reinterpret_cast<f70>(base+0x185380)(this, p0);
+    }
+
+    using r71 = decltype(std::declval<GJEffectManager>().toggleGroup(std::declval<int>(), std::declval<bool>()));
+    using c71 = r71($GJEffectManager::*)(int, bool) ;
+    using d71 = r71(D::*)(int, bool) ;
+    r71 toggleGroup(int p0, bool p1) {
+        using r71 = decltype(std::declval<GJEffectManager>().toggleGroup(std::declval<int>(), std::declval<bool>()));
+        using f71 = r71(*)(GJEffectManager*, int, bool);
+        return reinterpret_cast<f71>(base+0x182c80)(this, p0, p1);
+    }
+
+    using r72 = decltype(std::declval<GJEffectManager>().traverseInheritanceChain(std::declval<InheritanceNode*>()));
+    using c72 = r72($GJEffectManager::*)(InheritanceNode*) ;
+    using d72 = r72(D::*)(InheritanceNode*) ;
+    r72 traverseInheritanceChain(InheritanceNode* p0) {
+        using r72 = decltype(std::declval<GJEffectManager>().traverseInheritanceChain(std::declval<InheritanceNode*>()));
+        using f72 = r72(*)(GJEffectManager*, InheritanceNode*);
+        return reinterpret_cast<f72>(base+0x181850)(this, p0);
+    }
+
+    using r73 = decltype(std::declval<GJEffectManager>().updateActiveOpacityEffects());
+    using c73 = r73($GJEffectManager::*)() ;
+    using d73 = r73(D::*)() ;
+    r73 updateActiveOpacityEffects() {
+        using r73 = decltype(std::declval<GJEffectManager>().updateActiveOpacityEffects());
+        using f73 = r73(*)(GJEffectManager*);
+        return reinterpret_cast<f73>(base+0x1847e0)(this);
+    }
+
+    using r74 = decltype(std::declval<GJEffectManager>().updateColorAction(std::declval<ColorAction*>()));
+    using c74 = r74($GJEffectManager::*)(ColorAction*) ;
+    using d74 = r74(D::*)(ColorAction*) ;
+    r74 updateColorAction(ColorAction* p0) {
+        using r74 = decltype(std::declval<GJEffectManager>().updateColorAction(std::declval<ColorAction*>()));
+        using f74 = r74(*)(GJEffectManager*, ColorAction*);
+        return reinterpret_cast<f74>(base+0x184560)(this, p0);
+    }
+
+    using r75 = decltype(std::declval<GJEffectManager>().updateColorEffects(std::declval<float>()));
+    using c75 = r75($GJEffectManager::*)(float) ;
+    using d75 = r75(D::*)(float) ;
+    r75 updateColorEffects(float p0) {
+        using r75 = decltype(std::declval<GJEffectManager>().updateColorEffects(std::declval<float>()));
+        using f75 = r75(*)(GJEffectManager*, float);
+        return reinterpret_cast<f75>(base+0x181f40)(this, p0);
+    }
+
+    using r76 = decltype(std::declval<GJEffectManager>().updateColors(std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccColor3B>()));
+    using c76 = r76($GJEffectManager::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B) ;
+    using d76 = r76(D::*)(cocos2d::_ccColor3B, cocos2d::_ccColor3B) ;
+    r76 updateColors(cocos2d::_ccColor3B p0, cocos2d::_ccColor3B p1) {
+        using r76 = decltype(std::declval<GJEffectManager>().updateColors(std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccColor3B>()));
+        using f76 = r76(*)(GJEffectManager*, cocos2d::_ccColor3B, cocos2d::_ccColor3B);
+        return reinterpret_cast<f76>(base+0x180a40)(this, p0, p1);
+    }
+
+    using r77 = decltype(std::declval<GJEffectManager>().updateEffects(std::declval<float>()));
+    using c77 = r77($GJEffectManager::*)(float) ;
+    using d77 = r77(D::*)(float) ;
+    r77 updateEffects(float p0) {
+        using r77 = decltype(std::declval<GJEffectManager>().updateEffects(std::declval<float>()));
+        using f77 = r77(*)(GJEffectManager*, float);
+        return reinterpret_cast<f77>(base+0x181df0)(this, p0);
+    }
+
+    using r78 = decltype(std::declval<GJEffectManager>().updateOpacityAction(std::declval<OpacityEffectAction*>()));
+    using c78 = r78($GJEffectManager::*)(OpacityEffectAction*) ;
+    using d78 = r78(D::*)(OpacityEffectAction*) ;
+    r78 updateOpacityAction(OpacityEffectAction* p0) {
+        using r78 = decltype(std::declval<GJEffectManager>().updateOpacityAction(std::declval<OpacityEffectAction*>()));
+        using f78 = r78(*)(GJEffectManager*, OpacityEffectAction*);
+        return reinterpret_cast<f78>(base+0x184780)(this, p0);
+    }
+
+    using r79 = decltype(std::declval<GJEffectManager>().updateOpacityEffects(std::declval<float>()));
+    using c79 = r79($GJEffectManager::*)(float) ;
+    using d79 = r79(D::*)(float) ;
+    r79 updateOpacityEffects(float p0) {
+        using r79 = decltype(std::declval<GJEffectManager>().updateOpacityEffects(std::declval<float>()));
+        using f79 = r79(*)(GJEffectManager*, float);
+        return reinterpret_cast<f79>(base+0x1823e0)(this, p0);
+    }
+
+    using r80 = decltype(std::declval<GJEffectManager>().updatePulseEffects(std::declval<float>()));
+    using c80 = r80($GJEffectManager::*)(float) ;
+    using d80 = r80(D::*)(float) ;
+    r80 updatePulseEffects(float p0) {
+        using r80 = decltype(std::declval<GJEffectManager>().updatePulseEffects(std::declval<float>()));
+        using f80 = r80(*)(GJEffectManager*, float);
+        return reinterpret_cast<f80>(base+0x182130)(this, p0);
+    }
+
+    using r81 = decltype(std::declval<GJEffectManager>().updateSpawnTriggers(std::declval<float>()));
+    using c81 = r81($GJEffectManager::*)(float) ;
+    using d81 = r81(D::*)(float) ;
+    r81 updateSpawnTriggers(float p0) {
+        using r81 = decltype(std::declval<GJEffectManager>().updateSpawnTriggers(std::declval<float>()));
+        using f81 = r81(*)(GJEffectManager*, float);
+        return reinterpret_cast<f81>(base+0x182510)(this, p0);
+    }
+
+    using r82 = decltype(std::declval<GJEffectManager>().wasFollowing(std::declval<int>(), std::declval<int>()));
+    using c82 = r82($GJEffectManager::*)(int, int) ;
+    using d82 = r82(D::*)(int, int) ;
+    r82 wasFollowing(int p0, int p1) {
+        using r82 = decltype(std::declval<GJEffectManager>().wasFollowing(std::declval<int>(), std::declval<int>()));
+        using f82 = r82(*)(GJEffectManager*, int, int);
+        return reinterpret_cast<f82>(base+0x185e60)(this, p0, p1);
+    }
+
+    using r83 = decltype(std::declval<GJEffectManager>().wouldCreateLoop(std::declval<InheritanceNode*>(), std::declval<int>()));
+    using c83 = r83($GJEffectManager::*)(InheritanceNode*, int) ;
+    using d83 = r83(D::*)(InheritanceNode*, int) ;
+    r83 wouldCreateLoop(InheritanceNode* p0, int p1) {
+        using r83 = decltype(std::declval<GJEffectManager>().wouldCreateLoop(std::declval<InheritanceNode*>(), std::declval<int>()));
+        using f83 = r83(*)(GJEffectManager*, InheritanceNode*, int);
+        return reinterpret_cast<f83>(base+0x181820)(this, p0, p1);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GJEffectManager::init} != (d0){&D::init})
+            m->registerHook(base+0x180230, FunctionScrapper::addressOfVirtual(i, (d0){&D::init}));
+
+        if ((c1){&$GJEffectManager::activeColorForIndex} != (d1){&D::activeColorForIndex})
+            m->registerHook(base+0x180cb0, FunctionScrapper::addressOfNonVirtual((d1){&D::activeColorForIndex}));
+
+        if ((c2){&$GJEffectManager::activeOpacityForIndex} != (d2){&D::activeOpacityForIndex})
+            m->registerHook(base+0x180e10, FunctionScrapper::addressOfNonVirtual((d2){&D::activeOpacityForIndex}));
+
+        if ((c3){&$GJEffectManager::addAllInheritedColorActions} != (d3){&D::addAllInheritedColorActions})
+            m->registerHook(base+0x1817a0, FunctionScrapper::addressOfNonVirtual((d3){&D::addAllInheritedColorActions}));
+
+        if ((c4){&$GJEffectManager::addGroupPulseEffect} != (d4){&D::addGroupPulseEffect})
+            m->registerHook(base+0x184c10, FunctionScrapper::addressOfNonVirtual((d4){&D::addGroupPulseEffect}));
+
+        if ((c5){&$GJEffectManager::calculateBaseActiveColors} != (d5){&D::calculateBaseActiveColors})
+            m->registerHook(base+0x180f70, FunctionScrapper::addressOfNonVirtual((d5){&D::calculateBaseActiveColors}));
+
+        if ((c6){&$GJEffectManager::calculateInheritedColor} != (d6){&D::calculateInheritedColor})
+            m->registerHook(base+0x1818f0, FunctionScrapper::addressOfNonVirtual((d6){&D::calculateInheritedColor}));
+
+        if ((c7){&$GJEffectManager::calculateLightBGColor} != (d7){&D::calculateLightBGColor})
+            m->registerHook(base+0x185b90, FunctionScrapper::addressOfNonVirtual((d7){&D::calculateLightBGColor}));
+
+        if ((c8){&$GJEffectManager::colorActionChanged} != (d8){&D::colorActionChanged})
+            m->registerHook(base+0x181dc0, FunctionScrapper::addressOfNonVirtual((d8){&D::colorActionChanged}));
+
+        if ((c9){&$GJEffectManager::colorExists} != (d9){&D::colorExists})
+            m->registerHook(base+0x181da0, FunctionScrapper::addressOfNonVirtual((d9){&D::colorExists}));
+
+        if ((c10){&$GJEffectManager::colorForEffect} != (d10){&D::colorForEffect})
+            m->registerHook(base+0x182650, FunctionScrapper::addressOfNonVirtual((d10){&D::colorForEffect}));
+
+        if ((c11){&$GJEffectManager::colorForGroupID} != (d11){&D::colorForGroupID})
+            m->registerHook(base+0x184f90, FunctionScrapper::addressOfNonVirtual((d11){&D::colorForGroupID}));
+
+        if ((c12){&$GJEffectManager::colorForIndex} != (d12){&D::colorForIndex})
+            m->registerHook(base+0x180ad0, FunctionScrapper::addressOfNonVirtual((d12){&D::colorForIndex}));
+
+        if ((c13){&$GJEffectManager::colorForPulseEffect} != (d13){&D::colorForPulseEffect})
+            m->registerHook(base+0x181bf0, FunctionScrapper::addressOfNonVirtual((d13){&D::colorForPulseEffect}));
+
+        if ((c14){&$GJEffectManager::countChangedForItem} != (d14){&D::countChangedForItem})
+            m->registerHook(base+0x185a40, FunctionScrapper::addressOfNonVirtual((d14){&D::countChangedForItem}));
+
+        if ((c15){&$GJEffectManager::countForItem} != (d15){&D::countForItem})
+            m->registerHook(base+0x185a10, FunctionScrapper::addressOfNonVirtual((d15){&D::countForItem}));
+
+        if ((c16){&$GJEffectManager::create} != (d16){&D::create})
+            m->registerHook(base+0x1800f0, FunctionScrapper::addressOfNonVirtual((d16){&D::create}));
+
+        if ((c17){&$GJEffectManager::createFollowCommand} != (d17){&D::createFollowCommand})
+            m->registerHook(base+0x182ed0, FunctionScrapper::addressOfNonVirtual((d17){&D::createFollowCommand}));
+
+        if ((c18){&$GJEffectManager::createMoveCommand} != (d18){&D::createMoveCommand})
+            m->registerHook(base+0x182cc0, FunctionScrapper::addressOfNonVirtual((d18){&D::createMoveCommand}));
+
+        if ((c19){&$GJEffectManager::createPlayerFollowCommand} != (d19){&D::createPlayerFollowCommand})
+            m->registerHook(base+0x182fe0, FunctionScrapper::addressOfNonVirtual((d19){&D::createPlayerFollowCommand}));
+
+        if ((c20){&$GJEffectManager::createRotateCommand} != (d20){&D::createRotateCommand})
+            m->registerHook(base+0x182df0, FunctionScrapper::addressOfNonVirtual((d20){&D::createRotateCommand}));
+
+        if ((c21){&$GJEffectManager::getAllColorActions} != (d21){&D::getAllColorActions})
+            m->registerHook(base+0x180980, FunctionScrapper::addressOfNonVirtual((d21){&D::getAllColorActions}));
+
+        if ((c22){&$GJEffectManager::getAllColorSprites} != (d22){&D::getAllColorSprites})
+            m->registerHook(base+0x1809e0, FunctionScrapper::addressOfNonVirtual((d22){&D::getAllColorSprites}));
+
+        if ((c23){&$GJEffectManager::getColorAction} != (d23){&D::getColorAction})
+            m->registerHook(base+0x180b00, FunctionScrapper::addressOfNonVirtual((d23){&D::getColorAction}));
+
+        if ((c24){&$GJEffectManager::getColorSprite} != (d24){&D::getColorSprite})
+            m->registerHook(base+0x180d00, FunctionScrapper::addressOfNonVirtual((d24){&D::getColorSprite}));
+
+        if ((c25){&$GJEffectManager::getCurrentStateString} != (d25){&D::getCurrentStateString})
+            m->registerHook(base+0x1867e0, FunctionScrapper::addressOfNonVirtual((d25){&D::getCurrentStateString}));
+
+        if ((c26){&$GJEffectManager::getLoadedMoveOffset} != (d26){&D::getLoadedMoveOffset})
+            m->registerHook(base+0x184390, FunctionScrapper::addressOfNonVirtual((d26){&D::getLoadedMoveOffset}));
+
+        if ((c27){&$GJEffectManager::getMixedColor} != (d27){&D::getMixedColor})
+            m->registerHook(base+0x185d30, FunctionScrapper::addressOfNonVirtual((d27){&D::getMixedColor}));
+
+        if ((c28){&$GJEffectManager::getOpacityActionForGroup} != (d28){&D::getOpacityActionForGroup})
+            m->registerHook(base+0x1845b0, FunctionScrapper::addressOfNonVirtual((d28){&D::getOpacityActionForGroup}));
+
+        if ((c29){&$GJEffectManager::getSaveString} != (d29){&D::getSaveString})
+            m->registerHook(base+0x185e90, FunctionScrapper::addressOfNonVirtual((d29){&D::getSaveString}));
+
+        if ((c30){&$GJEffectManager::handleObjectCollision} != (d30){&D::handleObjectCollision})
+            m->registerHook(base+0x1828f0, FunctionScrapper::addressOfNonVirtual((d30){&D::handleObjectCollision}));
+
+        if ((c31){&$GJEffectManager::hasActiveDualTouch} != (d31){&D::hasActiveDualTouch})
+            m->registerHook(base+0x185540, FunctionScrapper::addressOfNonVirtual((d31){&D::hasActiveDualTouch}));
+
+        if ((c32){&$GJEffectManager::hasBeenTriggered} != (d32){&D::hasBeenTriggered})
+            m->registerHook(base+0x1853b0, FunctionScrapper::addressOfNonVirtual((d32){&D::hasBeenTriggered}));
+
+        if ((c33){&$GJEffectManager::hasPulseEffectForGroupID} != (d33){&D::hasPulseEffectForGroupID})
+            m->registerHook(base+0x184f60, FunctionScrapper::addressOfNonVirtual((d33){&D::hasPulseEffectForGroupID}));
+
+        if ((c34){&$GJEffectManager::isGroupEnabled} != (d34){&D::isGroupEnabled})
+            m->registerHook(base+0x1853d0, FunctionScrapper::addressOfNonVirtual((d34){&D::isGroupEnabled}));
+
+        if ((c35){&$GJEffectManager::keyForGroupIDColor} != (d35){&D::keyForGroupIDColor})
+            m->registerHook(base+0x184c90, FunctionScrapper::addressOfNonVirtual((d35){&D::keyForGroupIDColor}));
+
+        if ((c36){&$GJEffectManager::loadState} != (d36){&D::loadState})
+            m->registerHook(base+0x188db0, FunctionScrapper::addressOfNonVirtual((d36){&D::loadState}));
+
+        if ((c37){&$GJEffectManager::objectsCollided} != (d37){&D::objectsCollided})
+            m->registerHook(base+0x182a00, FunctionScrapper::addressOfNonVirtual((d37){&D::objectsCollided}));
+
+        if ((c38){&$GJEffectManager::opacityForIndex} != (d38){&D::opacityForIndex})
+            m->registerHook(base+0x180c80, FunctionScrapper::addressOfNonVirtual((d38){&D::opacityForIndex}));
+
+        if ((c39){&$GJEffectManager::opacityModForGroup} != (d39){&D::opacityModForGroup})
+            m->registerHook(base+0x184740, FunctionScrapper::addressOfNonVirtual((d39){&D::opacityModForGroup}));
+
+        if ((c40){&$GJEffectManager::playerButton} != (d40){&D::playerButton})
+            m->registerHook(base+0x1855a0, FunctionScrapper::addressOfNonVirtual((d40){&D::playerButton}));
+
+        if ((c41){&$GJEffectManager::playerDied} != (d41){&D::playerDied})
+            m->registerHook(base+0x185860, FunctionScrapper::addressOfNonVirtual((d41){&D::playerDied}));
+
+        if ((c42){&$GJEffectManager::postCollisionCheck} != (d42){&D::postCollisionCheck})
+            m->registerHook(base+0x182720, FunctionScrapper::addressOfNonVirtual((d42){&D::postCollisionCheck}));
+
+        if ((c43){&$GJEffectManager::preCollisionCheck} != (d43){&D::preCollisionCheck})
+            m->registerHook(base+0x182680, FunctionScrapper::addressOfNonVirtual((d43){&D::preCollisionCheck}));
+
+        if ((c44){&$GJEffectManager::prepareMoveActions} != (d44){&D::prepareMoveActions})
+            m->registerHook(base+0x183660, FunctionScrapper::addressOfNonVirtual((d44){&D::prepareMoveActions}));
+
+        if ((c45){&$GJEffectManager::processColors} != (d45){&D::processColors})
+            m->registerHook(base+0x180e70, FunctionScrapper::addressOfNonVirtual((d45){&D::processColors}));
+
+        if ((c46){&$GJEffectManager::processCopyColorPulseActions} != (d46){&D::processCopyColorPulseActions})
+            m->registerHook(base+0x181530, FunctionScrapper::addressOfNonVirtual((d46){&D::processCopyColorPulseActions}));
+
+        if ((c47){&$GJEffectManager::processInheritedColors} != (d47){&D::processInheritedColors})
+            m->registerHook(base+0x181190, FunctionScrapper::addressOfNonVirtual((d47){&D::processInheritedColors}));
+
+        if ((c48){&$GJEffectManager::processPulseActions} != (d48){&D::processPulseActions})
+            m->registerHook(base+0x181040, FunctionScrapper::addressOfNonVirtual((d48){&D::processPulseActions}));
+
+        if ((c49){&$GJEffectManager::registerCollisionTrigger} != (d49){&D::registerCollisionTrigger})
+            m->registerHook(base+0x182b70, FunctionScrapper::addressOfNonVirtual((d49){&D::registerCollisionTrigger}));
+
+        if ((c50){&$GJEffectManager::removeAllPulseActions} != (d50){&D::removeAllPulseActions})
+            m->registerHook(base+0x1825e0, FunctionScrapper::addressOfNonVirtual((d50){&D::removeAllPulseActions}));
+
+        if ((c51){&$GJEffectManager::removeColorAction} != (d51){&D::removeColorAction})
+            m->registerHook(base+0x181d60, FunctionScrapper::addressOfNonVirtual((d51){&D::removeColorAction}));
+
+        if ((c52){&$GJEffectManager::reset} != (d52){&D::reset})
+            m->registerHook(base+0x180690, FunctionScrapper::addressOfNonVirtual((d52){&D::reset}));
+
+        if ((c53){&$GJEffectManager::resetColorCache} != (d53){&D::resetColorCache})
+            m->registerHook(base+0x185280, FunctionScrapper::addressOfNonVirtual((d53){&D::resetColorCache}));
+
+        if ((c54){&$GJEffectManager::resetEffects} != (d54){&D::resetEffects})
+            m->registerHook(base+0x1807d0, FunctionScrapper::addressOfNonVirtual((d54){&D::resetEffects}));
+
+        if ((c55){&$GJEffectManager::resetMoveActions} != (d55){&D::resetMoveActions})
+            m->registerHook(base+0x180940, FunctionScrapper::addressOfNonVirtual((d55){&D::resetMoveActions}));
+
+        if ((c56){&$GJEffectManager::resetToggledGroups} != (d56){&D::resetToggledGroups})
+            m->registerHook(base+0x1853f0, FunctionScrapper::addressOfNonVirtual((d56){&D::resetToggledGroups}));
+
+        if ((c57){&$GJEffectManager::resetTriggeredIDs} != (d57){&D::resetTriggeredIDs})
+            m->registerHook(base+0x182630, FunctionScrapper::addressOfNonVirtual((d57){&D::resetTriggeredIDs}));
+
+        if ((c58){&$GJEffectManager::runCountTrigger} != (d58){&D::runCountTrigger})
+            m->registerHook(base+0x1858d0, FunctionScrapper::addressOfNonVirtual((d58){&D::runCountTrigger}));
+
+        if ((c59){&$GJEffectManager::runDeathTrigger} != (d59){&D::runDeathTrigger})
+            m->registerHook(base+0x1857a0, FunctionScrapper::addressOfNonVirtual((d59){&D::runDeathTrigger}));
+
+        if ((c60){&$GJEffectManager::runOpacityActionOnGroup} != (d60){&D::runOpacityActionOnGroup})
+            m->registerHook(base+0x1845d0, FunctionScrapper::addressOfNonVirtual((d60){&D::runOpacityActionOnGroup}));
+
+        if ((c61){&$GJEffectManager::runPulseEffect} != (d61){&D::runPulseEffect})
+            m->registerHook(base+0x184890, FunctionScrapper::addressOfNonVirtual((d61){&D::runPulseEffect}));
+
+        if ((c62){&$GJEffectManager::runTouchTriggerCommand} != (d62){&D::runTouchTriggerCommand})
+            m->registerHook(base+0x185460, FunctionScrapper::addressOfNonVirtual((d62){&D::runTouchTriggerCommand}));
+
+        if ((c63){&$GJEffectManager::setColorAction} != (d63){&D::setColorAction})
+            m->registerHook(base+0x181d00, FunctionScrapper::addressOfNonVirtual((d63){&D::setColorAction}));
+
+        if ((c64){&$GJEffectManager::setFollowing} != (d64){&D::setFollowing})
+            m->registerHook(base+0x185e00, FunctionScrapper::addressOfNonVirtual((d64){&D::setFollowing}));
+
+        if ((c65){&$GJEffectManager::setupFromString} != (d65){&D::setupFromString})
+            m->registerHook(base+0x186290, FunctionScrapper::addressOfNonVirtual((d65){&D::setupFromString}));
+
+        if ((c66){&$GJEffectManager::shouldBlend} != (d66){&D::shouldBlend})
+            m->registerHook(base+0x180e40, FunctionScrapper::addressOfNonVirtual((d66){&D::shouldBlend}));
+
+        if ((c67){&$GJEffectManager::spawnGroup} != (d67){&D::spawnGroup})
+            m->registerHook(base+0x1852a0, FunctionScrapper::addressOfNonVirtual((d67){&D::spawnGroup}));
+
+        if ((c68){&$GJEffectManager::stopActionsForTrigger} != (d68){&D::stopActionsForTrigger})
+            m->registerHook(base+0x183150, FunctionScrapper::addressOfNonVirtual((d68){&D::stopActionsForTrigger}));
+
+        if ((c69){&$GJEffectManager::stopMoveActionsForGroup} != (d69){&D::stopMoveActionsForGroup})
+            m->registerHook(base+0x1830e0, FunctionScrapper::addressOfNonVirtual((d69){&D::stopMoveActionsForGroup}));
+
+        if ((c70){&$GJEffectManager::storeTriggeredID} != (d70){&D::storeTriggeredID})
+            m->registerHook(base+0x185380, FunctionScrapper::addressOfNonVirtual((d70){&D::storeTriggeredID}));
+
+        if ((c71){&$GJEffectManager::toggleGroup} != (d71){&D::toggleGroup})
+            m->registerHook(base+0x182c80, FunctionScrapper::addressOfNonVirtual((d71){&D::toggleGroup}));
+
+        if ((c72){&$GJEffectManager::traverseInheritanceChain} != (d72){&D::traverseInheritanceChain})
+            m->registerHook(base+0x181850, FunctionScrapper::addressOfNonVirtual((d72){&D::traverseInheritanceChain}));
+
+        if ((c73){&$GJEffectManager::updateActiveOpacityEffects} != (d73){&D::updateActiveOpacityEffects})
+            m->registerHook(base+0x1847e0, FunctionScrapper::addressOfNonVirtual((d73){&D::updateActiveOpacityEffects}));
+
+        if ((c74){&$GJEffectManager::updateColorAction} != (d74){&D::updateColorAction})
+            m->registerHook(base+0x184560, FunctionScrapper::addressOfNonVirtual((d74){&D::updateColorAction}));
+
+        if ((c75){&$GJEffectManager::updateColorEffects} != (d75){&D::updateColorEffects})
+            m->registerHook(base+0x181f40, FunctionScrapper::addressOfNonVirtual((d75){&D::updateColorEffects}));
+
+        if ((c76){&$GJEffectManager::updateColors} != (d76){&D::updateColors})
+            m->registerHook(base+0x180a40, FunctionScrapper::addressOfNonVirtual((d76){&D::updateColors}));
+
+        if ((c77){&$GJEffectManager::updateEffects} != (d77){&D::updateEffects})
+            m->registerHook(base+0x181df0, FunctionScrapper::addressOfNonVirtual((d77){&D::updateEffects}));
+
+        if ((c78){&$GJEffectManager::updateOpacityAction} != (d78){&D::updateOpacityAction})
+            m->registerHook(base+0x184780, FunctionScrapper::addressOfNonVirtual((d78){&D::updateOpacityAction}));
+
+        if ((c79){&$GJEffectManager::updateOpacityEffects} != (d79){&D::updateOpacityEffects})
+            m->registerHook(base+0x1823e0, FunctionScrapper::addressOfNonVirtual((d79){&D::updateOpacityEffects}));
+
+        if ((c80){&$GJEffectManager::updatePulseEffects} != (d80){&D::updatePulseEffects})
+            m->registerHook(base+0x182130, FunctionScrapper::addressOfNonVirtual((d80){&D::updatePulseEffects}));
+
+        if ((c81){&$GJEffectManager::updateSpawnTriggers} != (d81){&D::updateSpawnTriggers})
+            m->registerHook(base+0x182510, FunctionScrapper::addressOfNonVirtual((d81){&D::updateSpawnTriggers}));
+
+        if ((c82){&$GJEffectManager::wasFollowing} != (d82){&D::wasFollowing})
+            m->registerHook(base+0x185e60, FunctionScrapper::addressOfNonVirtual((d82){&D::wasFollowing}));
+
+        if ((c83){&$GJEffectManager::wouldCreateLoop} != (d83){&D::wouldCreateLoop})
+            m->registerHook(base+0x181820, FunctionScrapper::addressOfNonVirtual((d83){&D::wouldCreateLoop}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $FLAlertLayer : public FLAlertLayer, public $CacBase {
+public:
+    ~$FLAlertLayer() {
+        endDestructor();
+    }
+    $FLAlertLayer() {}
+
+    using r1 = decltype(std::declval<FLAlertLayer>().onEnter());
+    using c1 = r1($FLAlertLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 onEnter() {
+        using r1 = decltype(std::declval<FLAlertLayer>().onEnter());
+        using f1 = r1(*)(FLAlertLayer*);
         return reinterpret_cast<f1>(base+0x25f350)(this);
     }
 
-    using c2 = bool($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d2 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f2 = bool(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r2 = decltype(std::declval<FLAlertLayer>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c2 = r2($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d2 = r2(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r2 ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r2 = decltype(std::declval<FLAlertLayer>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f2 = r2(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f2>(base+0x25ee40)(this, p0, p1);
     }
 
-    using c3 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d3 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f3 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r3 = decltype(std::declval<FLAlertLayer>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c3 = r3($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d3 = r3(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r3 ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r3 = decltype(std::declval<FLAlertLayer>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f3 = r3(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f3>(base+0x25f0a0)(this, p0, p1);
     }
 
-    using c4 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d4 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f4 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r4 = decltype(std::declval<FLAlertLayer>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c4 = r4($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d4 = r4(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r4 ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r4 = decltype(std::declval<FLAlertLayer>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f4 = r4(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f4>(base+0x25ef60)(this, p0, p1);
     }
 
-    using c5 = void($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d5 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f5 = void(*)($FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+    using r5 = decltype(std::declval<FLAlertLayer>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c5 = r5($FLAlertLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d5 = r5(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r5 ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r5 = decltype(std::declval<FLAlertLayer>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f5 = r5(*)(FLAlertLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
         return reinterpret_cast<f5>(base+0x25f020)(this, p0, p1);
     }
 
-    using c6 = void($FLAlertLayer::*)();
-    using d6 = void(D::*)();
-    using f6 = void(*)($FLAlertLayer*);
-    inline void registerWithTouchDispatcher() {
+    using r6 = decltype(std::declval<FLAlertLayer>().registerWithTouchDispatcher());
+    using c6 = r6($FLAlertLayer::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 registerWithTouchDispatcher() {
+        using r6 = decltype(std::declval<FLAlertLayer>().registerWithTouchDispatcher());
+        using f6 = r6(*)(FLAlertLayer*);
         return reinterpret_cast<f6>(base+0x25f2e0)(this);
     }
 
-    using c7 = void($FLAlertLayer::*)();
-    using d7 = void(D::*)();
-    using f7 = void(*)($FLAlertLayer*);
-    inline void keyBackClicked() {
+    using r7 = decltype(std::declval<FLAlertLayer>().keyBackClicked());
+    using c7 = r7($FLAlertLayer::*)() ;
+    using d7 = r7(D::*)() ;
+    r7 keyBackClicked() {
+        using r7 = decltype(std::declval<FLAlertLayer>().keyBackClicked());
+        using f7 = r7(*)(FLAlertLayer*);
         return reinterpret_cast<f7>(base+0x25ed90)(this);
     }
 
-    using c8 = void($FLAlertLayer::*)(cocos2d::enumKeyCodes);
-    using d8 = void(D::*)(cocos2d::enumKeyCodes);
-    using f8 = void(*)($FLAlertLayer*, cocos2d::enumKeyCodes);
-    inline void keyDown(cocos2d::enumKeyCodes p0) {
+    using r8 = decltype(std::declval<FLAlertLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+    using c8 = r8($FLAlertLayer::*)(cocos2d::enumKeyCodes) ;
+    using d8 = r8(D::*)(cocos2d::enumKeyCodes) ;
+    r8 keyDown(cocos2d::enumKeyCodes p0) {
+        using r8 = decltype(std::declval<FLAlertLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+        using f8 = r8(*)(FLAlertLayer*, cocos2d::enumKeyCodes);
         return reinterpret_cast<f8>(base+0x25ece0)(this, p0);
     }
 
-    using c9 = void($FLAlertLayer::*)();
-    using d9 = void(D::*)();
-    using f9 = void(*)($FLAlertLayer*);
-    inline void show() {
+    using r9 = decltype(std::declval<FLAlertLayer>().show());
+    using c9 = r9($FLAlertLayer::*)() ;
+    using d9 = r9(D::*)() ;
+    r9 show() {
+        using r9 = decltype(std::declval<FLAlertLayer>().show());
+        using f9 = r9(*)(FLAlertLayer*);
         return reinterpret_cast<f9>(base+0x25f120)(this);
     }
 
-    using c10 = bool($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    using d10 = bool(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    using f10 = bool(*)($FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    inline bool init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+    using r10 = decltype(std::declval<FLAlertLayer>().init(std::declval<FLAlertLayerProtocol*>(), std::declval<char const*>(), std::declval<gd::string>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>(), std::declval<bool>(), std::declval<float>()));
+    using c10 = r10($FLAlertLayer::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) ;
+    using d10 = r10(D::*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) ;
+    r10 init(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+        using r10 = decltype(std::declval<FLAlertLayer>().init(std::declval<FLAlertLayerProtocol*>(), std::declval<char const*>(), std::declval<gd::string>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>(), std::declval<bool>(), std::declval<float>()));
+        using f10 = r10(*)(FLAlertLayer*, FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
         return reinterpret_cast<f10>(base+0x25e1b0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
     }
 
-    using c11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
-    using d11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
-    using f11 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
-    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
+    using r11 = decltype(std::declval<FLAlertLayer>().create(std::declval<FLAlertLayerProtocol*>(), std::declval<char const*>(), std::declval<gd::string>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>()));
+    using c11 = r11(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
+    using d11 = r11(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
+    static r11 create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5) {
+        using r11 = decltype(std::declval<FLAlertLayer>().create(std::declval<FLAlertLayerProtocol*>(), std::declval<char const*>(), std::declval<gd::string>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>()));
+        using f11 = r11(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float);
         return reinterpret_cast<f11>(base+0x25e0e0)(p0, p1, p2, p3, p4, p5);
+
     }
 
-    using c12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    using d12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    using f12 = FLAlertLayer*(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
-    inline static FLAlertLayer* create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+    using r12 = decltype(std::declval<FLAlertLayer>().create(std::declval<FLAlertLayerProtocol*>(), std::declval<char const*>(), std::declval<gd::string>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>(), std::declval<bool>(), std::declval<float>()));
+    using c12 = r12(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    using d12 = r12(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
+    static r12 create(FLAlertLayerProtocol* p0, char const* p1, gd::string p2, char const* p3, char const* p4, float p5, bool p6, float p7) {
+        using r12 = decltype(std::declval<FLAlertLayer>().create(std::declval<FLAlertLayerProtocol*>(), std::declval<char const*>(), std::declval<gd::string>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>(), std::declval<bool>(), std::declval<float>()));
+        using f12 = r12(*)(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float);
         return reinterpret_cast<f12>(base+0x25dec0)(p0, p1, p2, p3, p4, p5, p6, p7);
+
     }
 
-    inline $FLAlertLayer(bool) {}
-    inline $FLAlertLayer() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c1){&$FLAlertLayer::onEnter} != (d1){&D::onEnter})
-            m->registerHook(base+0x25f350, extract(i, (d1){&D::onEnter}));
+            m->registerHook(base+0x25f350, FunctionScrapper::addressOfVirtual(i, (d1){&D::onEnter}));
 
         if ((c2){&$FLAlertLayer::ccTouchBegan} != (d2){&D::ccTouchBegan})
-            m->registerHook(base+0x25ee40, extract(i, (d2){&D::ccTouchBegan}));
+            m->registerHook(base+0x25ee40, FunctionScrapper::addressOfVirtual(i, (d2){&D::ccTouchBegan}));
 
         if ((c3){&$FLAlertLayer::ccTouchMoved} != (d3){&D::ccTouchMoved})
-            m->registerHook(base+0x25f0a0, extract(i, (d3){&D::ccTouchMoved}));
+            m->registerHook(base+0x25f0a0, FunctionScrapper::addressOfVirtual(i, (d3){&D::ccTouchMoved}));
 
         if ((c4){&$FLAlertLayer::ccTouchEnded} != (d4){&D::ccTouchEnded})
-            m->registerHook(base+0x25ef60, extract(i, (d4){&D::ccTouchEnded}));
+            m->registerHook(base+0x25ef60, FunctionScrapper::addressOfVirtual(i, (d4){&D::ccTouchEnded}));
 
         if ((c5){&$FLAlertLayer::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
-            m->registerHook(base+0x25f020, extract(i, (d5){&D::ccTouchCancelled}));
+            m->registerHook(base+0x25f020, FunctionScrapper::addressOfVirtual(i, (d5){&D::ccTouchCancelled}));
 
         if ((c6){&$FLAlertLayer::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x25f2e0, extract(i, (d6){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x25f2e0, FunctionScrapper::addressOfVirtual(i, (d6){&D::registerWithTouchDispatcher}));
 
         if ((c7){&$FLAlertLayer::keyBackClicked} != (d7){&D::keyBackClicked})
-            m->registerHook(base+0x25ed90, extract(i, (d7){&D::keyBackClicked}));
+            m->registerHook(base+0x25ed90, FunctionScrapper::addressOfVirtual(i, (d7){&D::keyBackClicked}));
 
         if ((c8){&$FLAlertLayer::keyDown} != (d8){&D::keyDown})
-            m->registerHook(base+0x25ece0, extract(i, (d8){&D::keyDown}));
+            m->registerHook(base+0x25ece0, FunctionScrapper::addressOfVirtual(i, (d8){&D::keyDown}));
 
         if ((c9){&$FLAlertLayer::show} != (d9){&D::show})
-            m->registerHook(base+0x25f120, extract(i, (d9){&D::show}));
+            m->registerHook(base+0x25f120, FunctionScrapper::addressOfVirtual(i, (d9){&D::show}));
 
         if ((c10){&$FLAlertLayer::init} != (d10){&D::init})
-            m->registerHook(base+0x25e1b0, extract(i, (d10){&D::init}));
+            m->registerHook(base+0x25e1b0, FunctionScrapper::addressOfNonVirtual((d10){&D::init}));
 
         if ((c11){&$FLAlertLayer::create} != (d11){&D::create})
-            m->registerHook(base+0x25e0e0, extract((d11){&D::create}));
+            m->registerHook(base+0x25e0e0, FunctionScrapper::addressOfNonVirtual((d11){&D::create}));
 
         if ((c12){&$FLAlertLayer::create} != (d12){&D::create})
-            m->registerHook(base+0x25dec0, extract((d12){&D::create}));
+            m->registerHook(base+0x25dec0, FunctionScrapper::addressOfNonVirtual((d12){&D::create}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $MenuLayer : public NullMenuLayer, public $CacBase {
+class $GJBaseGameLayer : public GJBaseGameLayer, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$MenuLayer() {}
+    ~$GJBaseGameLayer() {
+        endDestructor();
+    }
+    $GJBaseGameLayer() {}
 
-    using c1 = bool($MenuLayer::*)();
-    using d1 = bool(D::*)();
-    using f1 = bool(*)($MenuLayer*);
-    inline bool init() {
+    using r0 = decltype(std::declval<GJBaseGameLayer>().objectsCollided(std::declval<int>(), std::declval<int>()));
+    using c0 = r0($GJBaseGameLayer::*)(int, int) ;
+    using d0 = r0(D::*)(int, int) ;
+    r0 objectsCollided(int p0, int p1) {
+        using r0 = decltype(std::declval<GJBaseGameLayer>().objectsCollided(std::declval<int>(), std::declval<int>()));
+        using f0 = r0(*)(GJBaseGameLayer*, int, int);
+        return reinterpret_cast<f0>(base+0xb6d90)(this, p0, p1);
+    }
+
+    using r1 = decltype(std::declval<GJBaseGameLayer>().createMoveCommand(std::declval<cocos2d::CCPoint>(), std::declval<int>(), std::declval<float>(), std::declval<int>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+    using c1 = r1($GJBaseGameLayer::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int) ;
+    using d1 = r1(D::*)(cocos2d::CCPoint, int, float, int, float, bool, bool, int) ;
+    r1 createMoveCommand(cocos2d::CCPoint p0, int p1, float p2, int p3, float p4, bool p5, bool p6, int p7) {
+        using r1 = decltype(std::declval<GJBaseGameLayer>().createMoveCommand(std::declval<cocos2d::CCPoint>(), std::declval<int>(), std::declval<float>(), std::declval<int>(), std::declval<float>(), std::declval<bool>(), std::declval<bool>(), std::declval<int>()));
+        using f1 = r1(*)(GJBaseGameLayer*, cocos2d::CCPoint, int, float, int, float, bool, bool, int);
+        return reinterpret_cast<f1>(base+0xb73a0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    }
+
+    using r2 = decltype(std::declval<GJBaseGameLayer>().updateColor(std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<EffectGameObject*>()));
+    using c2 = r2($GJBaseGameLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) ;
+    using d2 = r2(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) ;
+    r2 updateColor(cocos2d::_ccColor3B p0, float p1, int p2, bool p3, float p4, cocos2d::_ccHSVValue p5, int p6, bool p7, int p8, EffectGameObject* p9) {
+        using r2 = decltype(std::declval<GJBaseGameLayer>().updateColor(std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<EffectGameObject*>()));
+        using f2 = r2(*)(GJBaseGameLayer*, cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+        return reinterpret_cast<f2>(base+0xb7420)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+    }
+
+    using r3 = decltype(std::declval<GJBaseGameLayer>().flipGravity(std::declval<PlayerObject*>(), std::declval<bool>(), std::declval<bool>()));
+    using c3 = r3($GJBaseGameLayer::*)(PlayerObject*, bool, bool) ;
+    using d3 = r3(D::*)(PlayerObject*, bool, bool) ;
+    r3 flipGravity(PlayerObject* p0, bool p1, bool p2) {
+        using r3 = decltype(std::declval<GJBaseGameLayer>().flipGravity(std::declval<PlayerObject*>(), std::declval<bool>(), std::declval<bool>()));
+        using f3 = r3(*)(GJBaseGameLayer*, PlayerObject*, bool, bool);
+        return reinterpret_cast<f3>(base+0xba990)(this, p0, p1, p2);
+    }
+
+    using r4 = decltype(std::declval<GJBaseGameLayer>().calculateColorValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<ColorActionSprite*>(), std::declval<GJEffectManager*>()));
+    using c4 = r4($GJBaseGameLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) ;
+    using d4 = r4(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) ;
+    r4 calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
+        using r4 = decltype(std::declval<GJBaseGameLayer>().calculateColorValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<ColorActionSprite*>(), std::declval<GJEffectManager*>()));
+        using f4 = r4(*)(GJBaseGameLayer*, EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+        return reinterpret_cast<f4>(base+0xba9a0)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r5 = decltype(std::declval<GJBaseGameLayer>().toggleGroupTriggered(std::declval<int>(), std::declval<bool>()));
+    using c5 = r5($GJBaseGameLayer::*)(int, bool) ;
+    using d5 = r5(D::*)(int, bool) ;
+    r5 toggleGroupTriggered(int p0, bool p1) {
+        using r5 = decltype(std::declval<GJBaseGameLayer>().toggleGroupTriggered(std::declval<int>(), std::declval<bool>()));
+        using f5 = r5(*)(GJBaseGameLayer*, int, bool);
+        return reinterpret_cast<f5>(base+0xb75a0)(this, p0, p1);
+    }
+
+    using r6 = decltype(std::declval<GJBaseGameLayer>().spawnGroup(std::declval<int>()));
+    using c6 = r6($GJBaseGameLayer::*)(int) ;
+    using d6 = r6(D::*)(int) ;
+    r6 spawnGroup(int p0) {
+        using r6 = decltype(std::declval<GJBaseGameLayer>().spawnGroup(std::declval<int>()));
+        using f6 = r6(*)(GJBaseGameLayer*, int);
+        return reinterpret_cast<f6>(base+0xb7050)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<GJBaseGameLayer>().addToSection(std::declval<GameObject*>()));
+    using c7 = r7($GJBaseGameLayer::*)(GameObject*) ;
+    using d7 = r7(D::*)(GameObject*) ;
+    r7 addToSection(GameObject* p0) {
+        using r7 = decltype(std::declval<GJBaseGameLayer>().addToSection(std::declval<GameObject*>()));
+        using f7 = r7(*)(GJBaseGameLayer*, GameObject*);
+        return reinterpret_cast<f7>(base+0xb7b70)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<GJBaseGameLayer>().addToGroup(std::declval<GameObject*>(), std::declval<int>(), std::declval<bool>()));
+    using c8 = r8($GJBaseGameLayer::*)(GameObject*, int, bool) ;
+    using d8 = r8(D::*)(GameObject*, int, bool) ;
+    r8 addToGroup(GameObject* p0, int p1, bool p2) {
+        using r8 = decltype(std::declval<GJBaseGameLayer>().addToGroup(std::declval<GameObject*>(), std::declval<int>(), std::declval<bool>()));
+        using f8 = r8(*)(GJBaseGameLayer*, GameObject*, int, bool);
+        return reinterpret_cast<f8>(base+0xb77f0)(this, p0, p1, p2);
+    }
+
+    using r9 = decltype(std::declval<GJBaseGameLayer>().removeFromGroup(std::declval<GameObject*>(), std::declval<int>()));
+    using c9 = r9($GJBaseGameLayer::*)(GameObject*, int) ;
+    using d9 = r9(D::*)(GameObject*, int) ;
+    r9 removeFromGroup(GameObject* p0, int p1) {
+        using r9 = decltype(std::declval<GJBaseGameLayer>().removeFromGroup(std::declval<GameObject*>(), std::declval<int>()));
+        using f9 = r9(*)(GJBaseGameLayer*, GameObject*, int);
+        return reinterpret_cast<f9>(base+0xb7a60)(this, p0, p1);
+    }
+
+    using r10 = decltype(std::declval<GJBaseGameLayer>().init());
+    using c10 = r10($GJBaseGameLayer::*)() ;
+    using d10 = r10(D::*)() ;
+    r10 init() {
+        using r10 = decltype(std::declval<GJBaseGameLayer>().init());
+        using f10 = r10(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f10>(base+0xafc90)(this);
+    }
+
+    using r11 = decltype(std::declval<GJBaseGameLayer>().addObjectCounter(std::declval<LabelGameObject*>(), std::declval<int>()));
+    using c11 = r11($GJBaseGameLayer::*)(LabelGameObject*, int) ;
+    using d11 = r11(D::*)(LabelGameObject*, int) ;
+    r11 addObjectCounter(LabelGameObject* p0, int p1) {
+        using r11 = decltype(std::declval<GJBaseGameLayer>().addObjectCounter(std::declval<LabelGameObject*>(), std::declval<int>()));
+        using f11 = r11(*)(GJBaseGameLayer*, LabelGameObject*, int);
+        return reinterpret_cast<f11>(base+0xb9eb0)(this, p0, p1);
+    }
+
+    using r12 = decltype(std::declval<GJBaseGameLayer>().addToGroups(std::declval<GameObject*>(), std::declval<bool>()));
+    using c12 = r12($GJBaseGameLayer::*)(GameObject*, bool) ;
+    using d12 = r12(D::*)(GameObject*, bool) ;
+    r12 addToGroups(GameObject* p0, bool p1) {
+        using r12 = decltype(std::declval<GJBaseGameLayer>().addToGroups(std::declval<GameObject*>(), std::declval<bool>()));
+        using f12 = r12(*)(GJBaseGameLayer*, GameObject*, bool);
+        return reinterpret_cast<f12>(base+0xb7780)(this, p0, p1);
+    }
+
+    using r13 = decltype(std::declval<GJBaseGameLayer>().atlasValue(std::declval<int>()));
+    using c13 = r13($GJBaseGameLayer::*)(int) ;
+    using d13 = r13(D::*)(int) ;
+    r13 atlasValue(int p0) {
+        using r13 = decltype(std::declval<GJBaseGameLayer>().atlasValue(std::declval<int>()));
+        using f13 = r13(*)(GJBaseGameLayer*, int);
+        return reinterpret_cast<f13>(base+0xb21e0)(this, p0);
+    }
+
+    using r14 = decltype(std::declval<GJBaseGameLayer>().bumpPlayer(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+    using c14 = r14($GJBaseGameLayer::*)(PlayerObject*, GameObject*) ;
+    using d14 = r14(D::*)(PlayerObject*, GameObject*) ;
+    r14 bumpPlayer(PlayerObject* p0, GameObject* p1) {
+        using r14 = decltype(std::declval<GJBaseGameLayer>().bumpPlayer(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+        using f14 = r14(*)(GJBaseGameLayer*, PlayerObject*, GameObject*);
+        return reinterpret_cast<f14>(base+0xb6860)(this, p0, p1);
+    }
+
+    using r15 = decltype(std::declval<GJBaseGameLayer>().calculateOpacityValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<float>(), std::declval<GJEffectManager*>()));
+    using c15 = r15($GJBaseGameLayer::*)(EffectGameObject*, EffectGameObject*, float, GJEffectManager*) ;
+    using d15 = r15(D::*)(EffectGameObject*, EffectGameObject*, float, GJEffectManager*) ;
+    r15 calculateOpacityValues(EffectGameObject* p0, EffectGameObject* p1, float p2, GJEffectManager* p3) {
+        using r15 = decltype(std::declval<GJBaseGameLayer>().calculateOpacityValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<float>(), std::declval<GJEffectManager*>()));
+        using f15 = r15(*)(GJBaseGameLayer*, EffectGameObject*, EffectGameObject*, float, GJEffectManager*);
+        return reinterpret_cast<f15>(base+0xb5be0)(this, p0, p1, p2, p3);
+    }
+
+    using r16 = decltype(std::declval<GJBaseGameLayer>().checkSpawnObjects());
+    using c16 = r16($GJBaseGameLayer::*)() ;
+    using d16 = r16(D::*)() ;
+    r16 checkSpawnObjects() {
+        using r16 = decltype(std::declval<GJBaseGameLayer>().checkSpawnObjects());
+        using f16 = r16(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f16>(base+0xb6f90)(this);
+    }
+
+    using r17 = decltype(std::declval<GJBaseGameLayer>().collectItem(std::declval<int>(), std::declval<int>()));
+    using c17 = r17($GJBaseGameLayer::*)(int, int) ;
+    using d17 = r17(D::*)(int, int) ;
+    r17 collectItem(int p0, int p1) {
+        using r17 = decltype(std::declval<GJBaseGameLayer>().collectItem(std::declval<int>(), std::declval<int>()));
+        using f17 = r17(*)(GJBaseGameLayer*, int, int);
+        return reinterpret_cast<f17>(base+0xb9e20)(this, p0, p1);
+    }
+
+    using r18 = decltype(std::declval<GJBaseGameLayer>().collectedObject(std::declval<EffectGameObject*>()));
+    using c18 = r18($GJBaseGameLayer::*)(EffectGameObject*) ;
+    using d18 = r18(D::*)(EffectGameObject*) ;
+    r18 collectedObject(EffectGameObject* p0) {
+        using r18 = decltype(std::declval<GJBaseGameLayer>().collectedObject(std::declval<EffectGameObject*>()));
+        using f18 = r18(*)(GJBaseGameLayer*, EffectGameObject*);
+        return reinterpret_cast<f18>(base+0xb9b60)(this, p0);
+    }
+
+    using r19 = decltype(std::declval<GJBaseGameLayer>().createTextLayers());
+    using c19 = r19($GJBaseGameLayer::*)() ;
+    using d19 = r19(D::*)() ;
+    r19 createTextLayers() {
+        using r19 = decltype(std::declval<GJBaseGameLayer>().createTextLayers());
+        using f19 = r19(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f19>(base+0xb5260)(this);
+    }
+
+    using r20 = decltype(std::declval<GJBaseGameLayer>().damagingObjectsInRect(std::declval<cocos2d::CCRect>()));
+    using c20 = r20($GJBaseGameLayer::*)(cocos2d::CCRect) ;
+    using d20 = r20(D::*)(cocos2d::CCRect) ;
+    r20 damagingObjectsInRect(cocos2d::CCRect p0) {
+        using r20 = decltype(std::declval<GJBaseGameLayer>().damagingObjectsInRect(std::declval<cocos2d::CCRect>()));
+        using f20 = r20(*)(GJBaseGameLayer*, cocos2d::CCRect);
+        return reinterpret_cast<f20>(base+0xb6140)(this, p0);
+    }
+
+    using r21 = decltype(std::declval<GJBaseGameLayer>().enableHighCapacityMode());
+    using c21 = r21($GJBaseGameLayer::*)() ;
+    using d21 = r21(D::*)() ;
+    r21 enableHighCapacityMode() {
+        using r21 = decltype(std::declval<GJBaseGameLayer>().enableHighCapacityMode());
+        using f21 = r21(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f21>(base+0xb11e0)(this);
+    }
+
+    using r22 = decltype(std::declval<GJBaseGameLayer>().getCapacityString());
+    using c22 = r22($GJBaseGameLayer::*)() ;
+    using d22 = r22(D::*)() ;
+    r22 getCapacityString() {
+        using r22 = decltype(std::declval<GJBaseGameLayer>().getCapacityString());
+        using f22 = r22(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f22>(base+0xb2210)(this);
+    }
+
+    using r23 = decltype(std::declval<GJBaseGameLayer>().getGroundHeightForMode(std::declval<int>()));
+    using c23 = r23($GJBaseGameLayer::*)(int) ;
+    using d23 = r23(D::*)(int) ;
+    r23 getGroundHeightForMode(int p0) {
+        using r23 = decltype(std::declval<GJBaseGameLayer>().getGroundHeightForMode(std::declval<int>()));
+        using f23 = r23(*)(GJBaseGameLayer*, int);
+        return reinterpret_cast<f23>(base+0xb6630)(this, p0);
+    }
+
+    using r24 = decltype(std::declval<GJBaseGameLayer>().getGroup(std::declval<int>()));
+    using c24 = r24($GJBaseGameLayer::*)(int) ;
+    using d24 = r24(D::*)(int) ;
+    r24 getGroup(int p0) {
+        using r24 = decltype(std::declval<GJBaseGameLayer>().getGroup(std::declval<int>()));
+        using f24 = r24(*)(GJBaseGameLayer*, int);
+        return reinterpret_cast<f24>(base+0xb6f20)(this, p0);
+    }
+
+    using r25 = decltype(std::declval<GJBaseGameLayer>().getMoveDeltaForObjects(std::declval<int>(), std::declval<int>()));
+    using c25 = r25($GJBaseGameLayer::*)(int, int) ;
+    using d25 = r25(D::*)(int, int) ;
+    r25 getMoveDeltaForObjects(int p0, int p1) {
+        using r25 = decltype(std::declval<GJBaseGameLayer>().getMoveDeltaForObjects(std::declval<int>(), std::declval<int>()));
+        using f25 = r25(*)(GJBaseGameLayer*, int, int);
+        return reinterpret_cast<f25>(base+0xb6db0)(this, p0, p1);
+    }
+
+    using r26 = decltype(std::declval<GJBaseGameLayer>().getOptimizedGroup(std::declval<int>()));
+    using c26 = r26($GJBaseGameLayer::*)(int) ;
+    using d26 = r26(D::*)(int) ;
+    r26 getOptimizedGroup(int p0) {
+        using r26 = decltype(std::declval<GJBaseGameLayer>().getOptimizedGroup(std::declval<int>()));
+        using f26 = r26(*)(GJBaseGameLayer*, int);
+        return reinterpret_cast<f26>(base+0xb7940)(this, p0);
+    }
+
+    using r27 = decltype(std::declval<GJBaseGameLayer>().getStaticGroup(std::declval<int>()));
+    using c27 = r27($GJBaseGameLayer::*)(int) ;
+    using d27 = r27(D::*)(int) ;
+    r27 getStaticGroup(int p0) {
+        using r27 = decltype(std::declval<GJBaseGameLayer>().getStaticGroup(std::declval<int>()));
+        using f27 = r27(*)(GJBaseGameLayer*, int);
+        return reinterpret_cast<f27>(base+0xb79a0)(this, p0);
+    }
+
+    using r28 = decltype(std::declval<GJBaseGameLayer>().isGroupDisabledForObject(std::declval<GameObject*>()));
+    using c28 = r28($GJBaseGameLayer::*)(GameObject*) ;
+    using d28 = r28(D::*)(GameObject*) ;
+    r28 isGroupDisabledForObject(GameObject* p0) {
+        using r28 = decltype(std::declval<GJBaseGameLayer>().isGroupDisabledForObject(std::declval<GameObject*>()));
+        using f28 = r28(*)(GJBaseGameLayer*, GameObject*);
+        return reinterpret_cast<f28>(base+0xb5cc0)(this, p0);
+    }
+
+    using r29 = decltype(std::declval<GJBaseGameLayer>().isGroupDisabledForObjectFull(std::declval<GameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c29 = r29($GJBaseGameLayer::*)(GameObject*, cocos2d::CCArray*) ;
+    using d29 = r29(D::*)(GameObject*, cocos2d::CCArray*) ;
+    r29 isGroupDisabledForObjectFull(GameObject* p0, cocos2d::CCArray* p1) {
+        using r29 = decltype(std::declval<GJBaseGameLayer>().isGroupDisabledForObjectFull(std::declval<GameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f29 = r29(*)(GJBaseGameLayer*, GameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f29>(base+0xb5de0)(this, p0, p1);
+    }
+
+    using r30 = decltype(std::declval<GJBaseGameLayer>().loadUpToPosition(std::declval<float>()));
+    using c30 = r30($GJBaseGameLayer::*)(float) ;
+    using d30 = r30(D::*)(float) ;
+    r30 loadUpToPosition(float p0) {
+        using r30 = decltype(std::declval<GJBaseGameLayer>().loadUpToPosition(std::declval<float>()));
+        using f30 = r30(*)(GJBaseGameLayer*, float);
+        return reinterpret_cast<f30>(base+0xba680)(this, p0);
+    }
+
+    using r31 = decltype(std::declval<GJBaseGameLayer>().objectIntersectsCircle(std::declval<GameObject*>(), std::declval<GameObject*>()));
+    using c31 = r31($GJBaseGameLayer::*)(GameObject*, GameObject*) ;
+    using d31 = r31(D::*)(GameObject*, GameObject*) ;
+    r31 objectIntersectsCircle(GameObject* p0, GameObject* p1) {
+        using r31 = decltype(std::declval<GJBaseGameLayer>().objectIntersectsCircle(std::declval<GameObject*>(), std::declval<GameObject*>()));
+        using f31 = r31(*)(GJBaseGameLayer*, GameObject*, GameObject*);
+        return reinterpret_cast<f31>(base+0xb66e0)(this, p0, p1);
+    }
+
+    using r32 = decltype(std::declval<GJBaseGameLayer>().objectTriggered(std::declval<EffectGameObject*>()));
+    using c32 = r32($GJBaseGameLayer::*)(EffectGameObject*) ;
+    using d32 = r32(D::*)(EffectGameObject*) ;
+    r32 objectTriggered(EffectGameObject* p0) {
+        using r32 = decltype(std::declval<GJBaseGameLayer>().objectTriggered(std::declval<EffectGameObject*>()));
+        using f32 = r32(*)(GJBaseGameLayer*, EffectGameObject*);
+        return reinterpret_cast<f32>(base+0xb71b0)(this, p0);
+    }
+
+    using r33 = decltype(std::declval<GJBaseGameLayer>().optimizeMoveGroups());
+    using c33 = r33($GJBaseGameLayer::*)() ;
+    using d33 = r33(D::*)() ;
+    r33 optimizeMoveGroups() {
+        using r33 = decltype(std::declval<GJBaseGameLayer>().optimizeMoveGroups());
+        using f33 = r33(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f33>(base+0xb96c0)(this);
+    }
+
+    using r34 = decltype(std::declval<GJBaseGameLayer>().parentForZLayer(std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+    using c34 = r34($GJBaseGameLayer::*)(int, bool, int) ;
+    using d34 = r34(D::*)(int, bool, int) ;
+    r34 parentForZLayer(int p0, bool p1, int p2) {
+        using r34 = decltype(std::declval<GJBaseGameLayer>().parentForZLayer(std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+        using f34 = r34(*)(GJBaseGameLayer*, int, bool, int);
+        return reinterpret_cast<f34>(base+0xb55d0)(this, p0, p1, p2);
+    }
+
+    using r35 = decltype(std::declval<GJBaseGameLayer>().playerTouchedRing(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+    using c35 = r35($GJBaseGameLayer::*)(PlayerObject*, GameObject*) ;
+    using d35 = r35(D::*)(PlayerObject*, GameObject*) ;
+    r35 playerTouchedRing(PlayerObject* p0, GameObject* p1) {
+        using r35 = decltype(std::declval<GJBaseGameLayer>().playerTouchedRing(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+        using f35 = r35(*)(GJBaseGameLayer*, PlayerObject*, GameObject*);
+        return reinterpret_cast<f35>(base+0xb69e0)(this, p0, p1);
+    }
+
+    using r36 = decltype(std::declval<GJBaseGameLayer>().processColorObject(std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<cocos2d::CCDictionary*>(), std::declval<float>(), std::declval<GJEffectManager*>()));
+    using c36 = r36($GJBaseGameLayer::*)(EffectGameObject*, int, cocos2d::CCDictionary*, float, GJEffectManager*) ;
+    using d36 = r36(D::*)(EffectGameObject*, int, cocos2d::CCDictionary*, float, GJEffectManager*) ;
+    r36 processColorObject(EffectGameObject* p0, int p1, cocos2d::CCDictionary* p2, float p3, GJEffectManager* p4) {
+        using r36 = decltype(std::declval<GJBaseGameLayer>().processColorObject(std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<cocos2d::CCDictionary*>(), std::declval<float>(), std::declval<GJEffectManager*>()));
+        using f36 = r36(*)(GJBaseGameLayer*, EffectGameObject*, int, cocos2d::CCDictionary*, float, GJEffectManager*);
+        return reinterpret_cast<f36>(base+0xb5a90)(this, p0, p1, p2, p3, p4);
+    }
+
+    using r37 = decltype(std::declval<GJBaseGameLayer>().processFollowActions());
+    using c37 = r37($GJBaseGameLayer::*)() ;
+    using d37 = r37(D::*)() ;
+    r37 processFollowActions() {
+        using r37 = decltype(std::declval<GJBaseGameLayer>().processFollowActions());
+        using f37 = r37(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f37>(base+0xb8fd0)(this);
+    }
+
+    using r38 = decltype(std::declval<GJBaseGameLayer>().processMoveActions());
+    using c38 = r38($GJBaseGameLayer::*)() ;
+    using d38 = r38(D::*)() ;
+    r38 processMoveActions() {
+        using r38 = decltype(std::declval<GJBaseGameLayer>().processMoveActions());
+        using f38 = r38(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f38>(base+0xb86c0)(this);
+    }
+
+    using r39 = decltype(std::declval<GJBaseGameLayer>().processMoveActionsStep(std::declval<float>()));
+    using c39 = r39($GJBaseGameLayer::*)(float) ;
+    using d39 = r39(D::*)(float) ;
+    r39 processMoveActionsStep(float p0) {
+        using r39 = decltype(std::declval<GJBaseGameLayer>().processMoveActionsStep(std::declval<float>()));
+        using f39 = r39(*)(GJBaseGameLayer*, float);
+        return reinterpret_cast<f39>(base+0xb7ea0)(this, p0);
+    }
+
+    using r40 = decltype(std::declval<GJBaseGameLayer>().processOpacityObject(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCDictionary*>(), std::declval<float>(), std::declval<GJEffectManager*>()));
+    using c40 = r40($GJBaseGameLayer::*)(EffectGameObject*, cocos2d::CCDictionary*, float, GJEffectManager*) ;
+    using d40 = r40(D::*)(EffectGameObject*, cocos2d::CCDictionary*, float, GJEffectManager*) ;
+    r40 processOpacityObject(EffectGameObject* p0, cocos2d::CCDictionary* p1, float p2, GJEffectManager* p3) {
+        using r40 = decltype(std::declval<GJBaseGameLayer>().processOpacityObject(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCDictionary*>(), std::declval<float>(), std::declval<GJEffectManager*>()));
+        using f40 = r40(*)(GJBaseGameLayer*, EffectGameObject*, cocos2d::CCDictionary*, float, GJEffectManager*);
+        return reinterpret_cast<f40>(base+0xb5ae0)(this, p0, p1, p2, p3);
+    }
+
+    using r41 = decltype(std::declval<GJBaseGameLayer>().processPlayerFollowActions(std::declval<float>()));
+    using c41 = r41($GJBaseGameLayer::*)(float) ;
+    using d41 = r41(D::*)(float) ;
+    r41 processPlayerFollowActions(float p0) {
+        using r41 = decltype(std::declval<GJBaseGameLayer>().processPlayerFollowActions(std::declval<float>()));
+        using f41 = r41(*)(GJBaseGameLayer*, float);
+        return reinterpret_cast<f41>(base+0xb8b50)(this, p0);
+    }
+
+    using r42 = decltype(std::declval<GJBaseGameLayer>().processRotationActions());
+    using c42 = r42($GJBaseGameLayer::*)() ;
+    using d42 = r42(D::*)() ;
+    r42 processRotationActions() {
+        using r42 = decltype(std::declval<GJBaseGameLayer>().processRotationActions());
+        using f42 = r42(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f42>(base+0xb7fd0)(this);
+    }
+
+    using r43 = decltype(std::declval<GJBaseGameLayer>().pushButton(std::declval<int>(), std::declval<bool>()));
+    using c43 = r43($GJBaseGameLayer::*)(int, bool) ;
+    using d43 = r43(D::*)(int, bool) ;
+    r43 pushButton(int p0, bool p1) {
+        using r43 = decltype(std::declval<GJBaseGameLayer>().pushButton(std::declval<int>(), std::declval<bool>()));
+        using f43 = r43(*)(GJBaseGameLayer*, int, bool);
+        return reinterpret_cast<f43>(base+0xb9920)(this, p0, p1);
+    }
+
+    using r44 = decltype(std::declval<GJBaseGameLayer>().rectIntersectsCircle(std::declval<cocos2d::CCRect>(), std::declval<cocos2d::CCPoint>(), std::declval<float>()));
+    using c44 = r44($GJBaseGameLayer::*)(cocos2d::CCRect, cocos2d::CCPoint, float) ;
+    using d44 = r44(D::*)(cocos2d::CCRect, cocos2d::CCPoint, float) ;
+    r44 rectIntersectsCircle(cocos2d::CCRect p0, cocos2d::CCPoint p1, float p2) {
+        using r44 = decltype(std::declval<GJBaseGameLayer>().rectIntersectsCircle(std::declval<cocos2d::CCRect>(), std::declval<cocos2d::CCPoint>(), std::declval<float>()));
+        using f44 = r44(*)(GJBaseGameLayer*, cocos2d::CCRect, cocos2d::CCPoint, float);
+        return reinterpret_cast<f44>(base+0xb6470)(this, p0, p1, p2);
+    }
+
+    using r45 = decltype(std::declval<GJBaseGameLayer>().refreshCounterLabels());
+    using c45 = r45($GJBaseGameLayer::*)() ;
+    using d45 = r45(D::*)() ;
+    r45 refreshCounterLabels() {
+        using r45 = decltype(std::declval<GJBaseGameLayer>().refreshCounterLabels());
+        using f45 = r45(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f45>(base+0xb9fc0)(this);
+    }
+
+    using r46 = decltype(std::declval<GJBaseGameLayer>().releaseButton(std::declval<int>(), std::declval<bool>()));
+    using c46 = r46($GJBaseGameLayer::*)(int, bool) ;
+    using d46 = r46(D::*)(int, bool) ;
+    r46 releaseButton(int p0, bool p1) {
+        using r46 = decltype(std::declval<GJBaseGameLayer>().releaseButton(std::declval<int>(), std::declval<bool>()));
+        using f46 = r46(*)(GJBaseGameLayer*, int, bool);
+        return reinterpret_cast<f46>(base+0xb9a00)(this, p0, p1);
+    }
+
+    using r47 = decltype(std::declval<GJBaseGameLayer>().removeFromGroups(std::declval<GameObject*>()));
+    using c47 = r47($GJBaseGameLayer::*)(GameObject*) ;
+    using d47 = r47(D::*)(GameObject*) ;
+    r47 removeFromGroups(GameObject* p0) {
+        using r47 = decltype(std::declval<GJBaseGameLayer>().removeFromGroups(std::declval<GameObject*>()));
+        using f47 = r47(*)(GJBaseGameLayer*, GameObject*);
+        return reinterpret_cast<f47>(base+0xb7a00)(this, p0);
+    }
+
+    using r48 = decltype(std::declval<GJBaseGameLayer>().removeObjectFromSection(std::declval<GameObject*>()));
+    using c48 = r48($GJBaseGameLayer::*)(GameObject*) ;
+    using d48 = r48(D::*)(GameObject*) ;
+    r48 removeObjectFromSection(GameObject* p0) {
+        using r48 = decltype(std::declval<GJBaseGameLayer>().removeObjectFromSection(std::declval<GameObject*>()));
+        using f48 = r48(*)(GJBaseGameLayer*, GameObject*);
+        return reinterpret_cast<f48>(base+0xb7e00)(this, p0);
+    }
+
+    using r49 = decltype(std::declval<GJBaseGameLayer>().reorderObjectSection(std::declval<GameObject*>()));
+    using c49 = r49($GJBaseGameLayer::*)(GameObject*) ;
+    using d49 = r49(D::*)(GameObject*) ;
+    r49 reorderObjectSection(GameObject* p0) {
+        using r49 = decltype(std::declval<GJBaseGameLayer>().reorderObjectSection(std::declval<GameObject*>()));
+        using f49 = r49(*)(GJBaseGameLayer*, GameObject*);
+        return reinterpret_cast<f49>(base+0xb7cb0)(this, p0);
+    }
+
+    using r50 = decltype(std::declval<GJBaseGameLayer>().resetGroupCounters(std::declval<bool>()));
+    using c50 = r50($GJBaseGameLayer::*)(bool) ;
+    using d50 = r50(D::*)(bool) ;
+    r50 resetGroupCounters(bool p0) {
+        using r50 = decltype(std::declval<GJBaseGameLayer>().resetGroupCounters(std::declval<bool>()));
+        using f50 = r50(*)(GJBaseGameLayer*, bool);
+        return reinterpret_cast<f50>(base+0xba300)(this, p0);
+    }
+
+    using r51 = decltype(std::declval<GJBaseGameLayer>().resetMoveOptimizedValue());
+    using c51 = r51($GJBaseGameLayer::*)() ;
+    using d51 = r51(D::*)() ;
+    r51 resetMoveOptimizedValue() {
+        using r51 = decltype(std::declval<GJBaseGameLayer>().resetMoveOptimizedValue());
+        using f51 = r51(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f51>(base+0xb9670)(this);
+    }
+
+    using r52 = decltype(std::declval<GJBaseGameLayer>().sectionForPos(std::declval<float>()));
+    using c52 = r52($GJBaseGameLayer::*)(float) ;
+    using d52 = r52(D::*)(float) ;
+    r52 sectionForPos(float p0) {
+        using r52 = decltype(std::declval<GJBaseGameLayer>().sectionForPos(std::declval<float>()));
+        using f52 = r52(*)(GJBaseGameLayer*, float);
+        return reinterpret_cast<f52>(base+0xb6120)(this, p0);
+    }
+
+    using r53 = decltype(std::declval<GJBaseGameLayer>().setupLayers());
+    using c53 = r53($GJBaseGameLayer::*)() ;
+    using d53 = r53(D::*)() ;
+    r53 setupLayers() {
+        using r53 = decltype(std::declval<GJBaseGameLayer>().setupLayers());
+        using f53 = r53(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f53>(base+0xaffe0)(this);
+    }
+
+    using r54 = decltype(std::declval<GJBaseGameLayer>().shouldExitHackedLevel());
+    using c54 = r54($GJBaseGameLayer::*)() ;
+    using d54 = r54(D::*)() ;
+    r54 shouldExitHackedLevel() {
+        using r54 = decltype(std::declval<GJBaseGameLayer>().shouldExitHackedLevel());
+        using f54 = r54(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f54>(base+0xb1100)(this);
+    }
+
+    using r55 = decltype(std::declval<GJBaseGameLayer>().spawnGroupTriggered(std::declval<int>(), std::declval<float>(), std::declval<int>()));
+    using c55 = r55($GJBaseGameLayer::*)(int, float, int) ;
+    using d55 = r55(D::*)(int, float, int) ;
+    r55 spawnGroupTriggered(int p0, float p1, int p2) {
+        using r55 = decltype(std::declval<GJBaseGameLayer>().spawnGroupTriggered(std::declval<int>(), std::declval<float>(), std::declval<int>()));
+        using f55 = r55(*)(GJBaseGameLayer*, int, float, int);
+        return reinterpret_cast<f55>(base+0xb7020)(this, p0, p1, p2);
+    }
+
+    using r56 = decltype(std::declval<GJBaseGameLayer>().staticObjectsInRect(std::declval<cocos2d::CCRect>()));
+    using c56 = r56($GJBaseGameLayer::*)(cocos2d::CCRect) ;
+    using d56 = r56(D::*)(cocos2d::CCRect) ;
+    r56 staticObjectsInRect(cocos2d::CCRect p0) {
+        using r56 = decltype(std::declval<GJBaseGameLayer>().staticObjectsInRect(std::declval<cocos2d::CCRect>()));
+        using f56 = r56(*)(GJBaseGameLayer*, cocos2d::CCRect);
+        return reinterpret_cast<f56>(base+0xb5f90)(this, p0);
+    }
+
+    using r57 = decltype(std::declval<GJBaseGameLayer>().testInstantCountTrigger(std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+    using c57 = r57($GJBaseGameLayer::*)(int, int, int, bool, int) ;
+    using d57 = r57(D::*)(int, int, int, bool, int) ;
+    r57 testInstantCountTrigger(int p0, int p1, int p2, bool p3, int p4) {
+        using r57 = decltype(std::declval<GJBaseGameLayer>().testInstantCountTrigger(std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<int>()));
+        using f57 = r57(*)(GJBaseGameLayer*, int, int, int, bool, int);
+        return reinterpret_cast<f57>(base+0xb9ae0)(this, p0, p1, p2, p3, p4);
+    }
+
+    using r58 = decltype(std::declval<GJBaseGameLayer>().toggleGroup(std::declval<int>(), std::declval<bool>()));
+    using c58 = r58($GJBaseGameLayer::*)(int, bool) ;
+    using d58 = r58(D::*)(int, bool) ;
+    r58 toggleGroup(int p0, bool p1) {
+        using r58 = decltype(std::declval<GJBaseGameLayer>().toggleGroup(std::declval<int>(), std::declval<bool>()));
+        using f58 = r58(*)(GJBaseGameLayer*, int, bool);
+        return reinterpret_cast<f58>(base+0xb75f0)(this, p0, p1);
+    }
+
+    using r59 = decltype(std::declval<GJBaseGameLayer>().togglePlayerVisibility(std::declval<bool>()));
+    using c59 = r59($GJBaseGameLayer::*)(bool) ;
+    using d59 = r59(D::*)(bool) ;
+    r59 togglePlayerVisibility(bool p0) {
+        using r59 = decltype(std::declval<GJBaseGameLayer>().togglePlayerVisibility(std::declval<bool>()));
+        using f59 = r59(*)(GJBaseGameLayer*, bool);
+        return reinterpret_cast<f59>(base+0xba910)(this, p0);
+    }
+
+    using r60 = decltype(std::declval<GJBaseGameLayer>().triggerMoveCommand(std::declval<EffectGameObject*>()));
+    using c60 = r60($GJBaseGameLayer::*)(EffectGameObject*) ;
+    using d60 = r60(D::*)(EffectGameObject*) ;
+    r60 triggerMoveCommand(EffectGameObject* p0) {
+        using r60 = decltype(std::declval<GJBaseGameLayer>().triggerMoveCommand(std::declval<EffectGameObject*>()));
+        using f60 = r60(*)(GJBaseGameLayer*, EffectGameObject*);
+        return reinterpret_cast<f60>(base+0xb7290)(this, p0);
+    }
+
+    using r61 = decltype(std::declval<GJBaseGameLayer>().updateCollisionBlocks());
+    using c61 = r61($GJBaseGameLayer::*)() ;
+    using d61 = r61(D::*)() ;
+    r61 updateCollisionBlocks() {
+        using r61 = decltype(std::declval<GJBaseGameLayer>().updateCollisionBlocks());
+        using f61 = r61(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f61>(base+0xb6a30)(this);
+    }
+
+    using r62 = decltype(std::declval<GJBaseGameLayer>().updateCounters(std::declval<int>(), std::declval<int>()));
+    using c62 = r62($GJBaseGameLayer::*)(int, int) ;
+    using d62 = r62(D::*)(int, int) ;
+    r62 updateCounters(int p0, int p1) {
+        using r62 = decltype(std::declval<GJBaseGameLayer>().updateCounters(std::declval<int>(), std::declval<int>()));
+        using f62 = r62(*)(GJBaseGameLayer*, int, int);
+        return reinterpret_cast<f62>(base+0xb9bc0)(this, p0, p1);
+    }
+
+    using r63 = decltype(std::declval<GJBaseGameLayer>().updateDisabledObjectsLastPos(std::declval<cocos2d::CCArray*>()));
+    using c63 = r63($GJBaseGameLayer::*)(cocos2d::CCArray*) ;
+    using d63 = r63(D::*)(cocos2d::CCArray*) ;
+    r63 updateDisabledObjectsLastPos(cocos2d::CCArray* p0) {
+        using r63 = decltype(std::declval<GJBaseGameLayer>().updateDisabledObjectsLastPos(std::declval<cocos2d::CCArray*>()));
+        using f63 = r63(*)(GJBaseGameLayer*, cocos2d::CCArray*);
+        return reinterpret_cast<f63>(base+0xb95b0)(this, p0);
+    }
+
+    using r64 = decltype(std::declval<GJBaseGameLayer>().updateLayerCapacity(std::declval<gd::string>()));
+    using c64 = r64($GJBaseGameLayer::*)(gd::string) ;
+    using d64 = r64(D::*)(gd::string) ;
+    r64 updateLayerCapacity(gd::string p0) {
+        using r64 = decltype(std::declval<GJBaseGameLayer>().updateLayerCapacity(std::declval<gd::string>()));
+        using f64 = r64(*)(GJBaseGameLayer*, gd::string);
+        return reinterpret_cast<f64>(base+0xb1680)(this, p0);
+    }
+
+    using r65 = decltype(std::declval<GJBaseGameLayer>().updateLegacyLayerCapacity(std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<int>()));
+    using c65 = r65($GJBaseGameLayer::*)(int, int, int, int) ;
+    using d65 = r65(D::*)(int, int, int, int) ;
+    r65 updateLegacyLayerCapacity(int p0, int p1, int p2, int p3) {
+        using r65 = decltype(std::declval<GJBaseGameLayer>().updateLegacyLayerCapacity(std::declval<int>(), std::declval<int>(), std::declval<int>(), std::declval<int>()));
+        using f65 = r65(*)(GJBaseGameLayer*, int, int, int, int);
+        return reinterpret_cast<f65>(base+0xb1590)(this, p0, p1, p2, p3);
+    }
+
+    using r66 = decltype(std::declval<GJBaseGameLayer>().updateOBB2(std::declval<cocos2d::CCRect>()));
+    using c66 = r66($GJBaseGameLayer::*)(cocos2d::CCRect) ;
+    using d66 = r66(D::*)(cocos2d::CCRect) ;
+    r66 updateOBB2(cocos2d::CCRect p0) {
+        using r66 = decltype(std::declval<GJBaseGameLayer>().updateOBB2(std::declval<cocos2d::CCRect>()));
+        using f66 = r66(*)(GJBaseGameLayer*, cocos2d::CCRect);
+        return reinterpret_cast<f66>(base+0xb63f0)(this, p0);
+    }
+
+    using r67 = decltype(std::declval<GJBaseGameLayer>().updateQueuedLabels());
+    using c67 = r67($GJBaseGameLayer::*)() ;
+    using d67 = r67(D::*)() ;
+    r67 updateQueuedLabels() {
+        using r67 = decltype(std::declval<GJBaseGameLayer>().updateQueuedLabels());
+        using f67 = r67(*)(GJBaseGameLayer*);
+        return reinterpret_cast<f67>(base+0xb9f30)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GJBaseGameLayer::objectsCollided} != (d0){&D::objectsCollided})
+            m->registerHook(base+0xb6d90, FunctionScrapper::addressOfVirtual(i, (d0){&D::objectsCollided}));
+
+        if ((c1){&$GJBaseGameLayer::createMoveCommand} != (d1){&D::createMoveCommand})
+            m->registerHook(base+0xb73a0, FunctionScrapper::addressOfVirtual(i, (d1){&D::createMoveCommand}));
+
+        if ((c2){&$GJBaseGameLayer::updateColor} != (d2){&D::updateColor})
+            m->registerHook(base+0xb7420, FunctionScrapper::addressOfVirtual(i, (d2){&D::updateColor}));
+
+        if ((c3){&$GJBaseGameLayer::flipGravity} != (d3){&D::flipGravity})
+            m->registerHook(base+0xba990, FunctionScrapper::addressOfVirtual(i, (d3){&D::flipGravity}));
+
+        if ((c4){&$GJBaseGameLayer::calculateColorValues} != (d4){&D::calculateColorValues})
+            m->registerHook(base+0xba9a0, FunctionScrapper::addressOfVirtual(i, (d4){&D::calculateColorValues}));
+
+        if ((c5){&$GJBaseGameLayer::toggleGroupTriggered} != (d5){&D::toggleGroupTriggered})
+            m->registerHook(base+0xb75a0, FunctionScrapper::addressOfVirtual(i, (d5){&D::toggleGroupTriggered}));
+
+        if ((c6){&$GJBaseGameLayer::spawnGroup} != (d6){&D::spawnGroup})
+            m->registerHook(base+0xb7050, FunctionScrapper::addressOfVirtual(i, (d6){&D::spawnGroup}));
+
+        if ((c7){&$GJBaseGameLayer::addToSection} != (d7){&D::addToSection})
+            m->registerHook(base+0xb7b70, FunctionScrapper::addressOfVirtual(i, (d7){&D::addToSection}));
+
+        if ((c8){&$GJBaseGameLayer::addToGroup} != (d8){&D::addToGroup})
+            m->registerHook(base+0xb77f0, FunctionScrapper::addressOfVirtual(i, (d8){&D::addToGroup}));
+
+        if ((c9){&$GJBaseGameLayer::removeFromGroup} != (d9){&D::removeFromGroup})
+            m->registerHook(base+0xb7a60, FunctionScrapper::addressOfVirtual(i, (d9){&D::removeFromGroup}));
+
+        if ((c10){&$GJBaseGameLayer::init} != (d10){&D::init})
+            m->registerHook(base+0xafc90, FunctionScrapper::addressOfVirtual(i, (d10){&D::init}));
+
+        if ((c11){&$GJBaseGameLayer::addObjectCounter} != (d11){&D::addObjectCounter})
+            m->registerHook(base+0xb9eb0, FunctionScrapper::addressOfNonVirtual((d11){&D::addObjectCounter}));
+
+        if ((c12){&$GJBaseGameLayer::addToGroups} != (d12){&D::addToGroups})
+            m->registerHook(base+0xb7780, FunctionScrapper::addressOfNonVirtual((d12){&D::addToGroups}));
+
+        if ((c13){&$GJBaseGameLayer::atlasValue} != (d13){&D::atlasValue})
+            m->registerHook(base+0xb21e0, FunctionScrapper::addressOfNonVirtual((d13){&D::atlasValue}));
+
+        if ((c14){&$GJBaseGameLayer::bumpPlayer} != (d14){&D::bumpPlayer})
+            m->registerHook(base+0xb6860, FunctionScrapper::addressOfNonVirtual((d14){&D::bumpPlayer}));
+
+        if ((c15){&$GJBaseGameLayer::calculateOpacityValues} != (d15){&D::calculateOpacityValues})
+            m->registerHook(base+0xb5be0, FunctionScrapper::addressOfNonVirtual((d15){&D::calculateOpacityValues}));
+
+        if ((c16){&$GJBaseGameLayer::checkSpawnObjects} != (d16){&D::checkSpawnObjects})
+            m->registerHook(base+0xb6f90, FunctionScrapper::addressOfNonVirtual((d16){&D::checkSpawnObjects}));
+
+        if ((c17){&$GJBaseGameLayer::collectItem} != (d17){&D::collectItem})
+            m->registerHook(base+0xb9e20, FunctionScrapper::addressOfNonVirtual((d17){&D::collectItem}));
+
+        if ((c18){&$GJBaseGameLayer::collectedObject} != (d18){&D::collectedObject})
+            m->registerHook(base+0xb9b60, FunctionScrapper::addressOfNonVirtual((d18){&D::collectedObject}));
+
+        if ((c19){&$GJBaseGameLayer::createTextLayers} != (d19){&D::createTextLayers})
+            m->registerHook(base+0xb5260, FunctionScrapper::addressOfNonVirtual((d19){&D::createTextLayers}));
+
+        if ((c20){&$GJBaseGameLayer::damagingObjectsInRect} != (d20){&D::damagingObjectsInRect})
+            m->registerHook(base+0xb6140, FunctionScrapper::addressOfNonVirtual((d20){&D::damagingObjectsInRect}));
+
+        if ((c21){&$GJBaseGameLayer::enableHighCapacityMode} != (d21){&D::enableHighCapacityMode})
+            m->registerHook(base+0xb11e0, FunctionScrapper::addressOfNonVirtual((d21){&D::enableHighCapacityMode}));
+
+        if ((c22){&$GJBaseGameLayer::getCapacityString} != (d22){&D::getCapacityString})
+            m->registerHook(base+0xb2210, FunctionScrapper::addressOfNonVirtual((d22){&D::getCapacityString}));
+
+        if ((c23){&$GJBaseGameLayer::getGroundHeightForMode} != (d23){&D::getGroundHeightForMode})
+            m->registerHook(base+0xb6630, FunctionScrapper::addressOfNonVirtual((d23){&D::getGroundHeightForMode}));
+
+        if ((c24){&$GJBaseGameLayer::getGroup} != (d24){&D::getGroup})
+            m->registerHook(base+0xb6f20, FunctionScrapper::addressOfNonVirtual((d24){&D::getGroup}));
+
+        if ((c25){&$GJBaseGameLayer::getMoveDeltaForObjects} != (d25){&D::getMoveDeltaForObjects})
+            m->registerHook(base+0xb6db0, FunctionScrapper::addressOfNonVirtual((d25){&D::getMoveDeltaForObjects}));
+
+        if ((c26){&$GJBaseGameLayer::getOptimizedGroup} != (d26){&D::getOptimizedGroup})
+            m->registerHook(base+0xb7940, FunctionScrapper::addressOfNonVirtual((d26){&D::getOptimizedGroup}));
+
+        if ((c27){&$GJBaseGameLayer::getStaticGroup} != (d27){&D::getStaticGroup})
+            m->registerHook(base+0xb79a0, FunctionScrapper::addressOfNonVirtual((d27){&D::getStaticGroup}));
+
+        if ((c28){&$GJBaseGameLayer::isGroupDisabledForObject} != (d28){&D::isGroupDisabledForObject})
+            m->registerHook(base+0xb5cc0, FunctionScrapper::addressOfNonVirtual((d28){&D::isGroupDisabledForObject}));
+
+        if ((c29){&$GJBaseGameLayer::isGroupDisabledForObjectFull} != (d29){&D::isGroupDisabledForObjectFull})
+            m->registerHook(base+0xb5de0, FunctionScrapper::addressOfNonVirtual((d29){&D::isGroupDisabledForObjectFull}));
+
+        if ((c30){&$GJBaseGameLayer::loadUpToPosition} != (d30){&D::loadUpToPosition})
+            m->registerHook(base+0xba680, FunctionScrapper::addressOfNonVirtual((d30){&D::loadUpToPosition}));
+
+        if ((c31){&$GJBaseGameLayer::objectIntersectsCircle} != (d31){&D::objectIntersectsCircle})
+            m->registerHook(base+0xb66e0, FunctionScrapper::addressOfNonVirtual((d31){&D::objectIntersectsCircle}));
+
+        if ((c32){&$GJBaseGameLayer::objectTriggered} != (d32){&D::objectTriggered})
+            m->registerHook(base+0xb71b0, FunctionScrapper::addressOfNonVirtual((d32){&D::objectTriggered}));
+
+        if ((c33){&$GJBaseGameLayer::optimizeMoveGroups} != (d33){&D::optimizeMoveGroups})
+            m->registerHook(base+0xb96c0, FunctionScrapper::addressOfNonVirtual((d33){&D::optimizeMoveGroups}));
+
+        if ((c34){&$GJBaseGameLayer::parentForZLayer} != (d34){&D::parentForZLayer})
+            m->registerHook(base+0xb55d0, FunctionScrapper::addressOfNonVirtual((d34){&D::parentForZLayer}));
+
+        if ((c35){&$GJBaseGameLayer::playerTouchedRing} != (d35){&D::playerTouchedRing})
+            m->registerHook(base+0xb69e0, FunctionScrapper::addressOfNonVirtual((d35){&D::playerTouchedRing}));
+
+        if ((c36){&$GJBaseGameLayer::processColorObject} != (d36){&D::processColorObject})
+            m->registerHook(base+0xb5a90, FunctionScrapper::addressOfNonVirtual((d36){&D::processColorObject}));
+
+        if ((c37){&$GJBaseGameLayer::processFollowActions} != (d37){&D::processFollowActions})
+            m->registerHook(base+0xb8fd0, FunctionScrapper::addressOfNonVirtual((d37){&D::processFollowActions}));
+
+        if ((c38){&$GJBaseGameLayer::processMoveActions} != (d38){&D::processMoveActions})
+            m->registerHook(base+0xb86c0, FunctionScrapper::addressOfNonVirtual((d38){&D::processMoveActions}));
+
+        if ((c39){&$GJBaseGameLayer::processMoveActionsStep} != (d39){&D::processMoveActionsStep})
+            m->registerHook(base+0xb7ea0, FunctionScrapper::addressOfNonVirtual((d39){&D::processMoveActionsStep}));
+
+        if ((c40){&$GJBaseGameLayer::processOpacityObject} != (d40){&D::processOpacityObject})
+            m->registerHook(base+0xb5ae0, FunctionScrapper::addressOfNonVirtual((d40){&D::processOpacityObject}));
+
+        if ((c41){&$GJBaseGameLayer::processPlayerFollowActions} != (d41){&D::processPlayerFollowActions})
+            m->registerHook(base+0xb8b50, FunctionScrapper::addressOfNonVirtual((d41){&D::processPlayerFollowActions}));
+
+        if ((c42){&$GJBaseGameLayer::processRotationActions} != (d42){&D::processRotationActions})
+            m->registerHook(base+0xb7fd0, FunctionScrapper::addressOfNonVirtual((d42){&D::processRotationActions}));
+
+        if ((c43){&$GJBaseGameLayer::pushButton} != (d43){&D::pushButton})
+            m->registerHook(base+0xb9920, FunctionScrapper::addressOfNonVirtual((d43){&D::pushButton}));
+
+        if ((c44){&$GJBaseGameLayer::rectIntersectsCircle} != (d44){&D::rectIntersectsCircle})
+            m->registerHook(base+0xb6470, FunctionScrapper::addressOfNonVirtual((d44){&D::rectIntersectsCircle}));
+
+        if ((c45){&$GJBaseGameLayer::refreshCounterLabels} != (d45){&D::refreshCounterLabels})
+            m->registerHook(base+0xb9fc0, FunctionScrapper::addressOfNonVirtual((d45){&D::refreshCounterLabels}));
+
+        if ((c46){&$GJBaseGameLayer::releaseButton} != (d46){&D::releaseButton})
+            m->registerHook(base+0xb9a00, FunctionScrapper::addressOfNonVirtual((d46){&D::releaseButton}));
+
+        if ((c47){&$GJBaseGameLayer::removeFromGroups} != (d47){&D::removeFromGroups})
+            m->registerHook(base+0xb7a00, FunctionScrapper::addressOfNonVirtual((d47){&D::removeFromGroups}));
+
+        if ((c48){&$GJBaseGameLayer::removeObjectFromSection} != (d48){&D::removeObjectFromSection})
+            m->registerHook(base+0xb7e00, FunctionScrapper::addressOfNonVirtual((d48){&D::removeObjectFromSection}));
+
+        if ((c49){&$GJBaseGameLayer::reorderObjectSection} != (d49){&D::reorderObjectSection})
+            m->registerHook(base+0xb7cb0, FunctionScrapper::addressOfNonVirtual((d49){&D::reorderObjectSection}));
+
+        if ((c50){&$GJBaseGameLayer::resetGroupCounters} != (d50){&D::resetGroupCounters})
+            m->registerHook(base+0xba300, FunctionScrapper::addressOfNonVirtual((d50){&D::resetGroupCounters}));
+
+        if ((c51){&$GJBaseGameLayer::resetMoveOptimizedValue} != (d51){&D::resetMoveOptimizedValue})
+            m->registerHook(base+0xb9670, FunctionScrapper::addressOfNonVirtual((d51){&D::resetMoveOptimizedValue}));
+
+        if ((c52){&$GJBaseGameLayer::sectionForPos} != (d52){&D::sectionForPos})
+            m->registerHook(base+0xb6120, FunctionScrapper::addressOfNonVirtual((d52){&D::sectionForPos}));
+
+        if ((c53){&$GJBaseGameLayer::setupLayers} != (d53){&D::setupLayers})
+            m->registerHook(base+0xaffe0, FunctionScrapper::addressOfNonVirtual((d53){&D::setupLayers}));
+
+        if ((c54){&$GJBaseGameLayer::shouldExitHackedLevel} != (d54){&D::shouldExitHackedLevel})
+            m->registerHook(base+0xb1100, FunctionScrapper::addressOfNonVirtual((d54){&D::shouldExitHackedLevel}));
+
+        if ((c55){&$GJBaseGameLayer::spawnGroupTriggered} != (d55){&D::spawnGroupTriggered})
+            m->registerHook(base+0xb7020, FunctionScrapper::addressOfNonVirtual((d55){&D::spawnGroupTriggered}));
+
+        if ((c56){&$GJBaseGameLayer::staticObjectsInRect} != (d56){&D::staticObjectsInRect})
+            m->registerHook(base+0xb5f90, FunctionScrapper::addressOfNonVirtual((d56){&D::staticObjectsInRect}));
+
+        if ((c57){&$GJBaseGameLayer::testInstantCountTrigger} != (d57){&D::testInstantCountTrigger})
+            m->registerHook(base+0xb9ae0, FunctionScrapper::addressOfNonVirtual((d57){&D::testInstantCountTrigger}));
+
+        if ((c58){&$GJBaseGameLayer::toggleGroup} != (d58){&D::toggleGroup})
+            m->registerHook(base+0xb75f0, FunctionScrapper::addressOfNonVirtual((d58){&D::toggleGroup}));
+
+        if ((c59){&$GJBaseGameLayer::togglePlayerVisibility} != (d59){&D::togglePlayerVisibility})
+            m->registerHook(base+0xba910, FunctionScrapper::addressOfNonVirtual((d59){&D::togglePlayerVisibility}));
+
+        if ((c60){&$GJBaseGameLayer::triggerMoveCommand} != (d60){&D::triggerMoveCommand})
+            m->registerHook(base+0xb7290, FunctionScrapper::addressOfNonVirtual((d60){&D::triggerMoveCommand}));
+
+        if ((c61){&$GJBaseGameLayer::updateCollisionBlocks} != (d61){&D::updateCollisionBlocks})
+            m->registerHook(base+0xb6a30, FunctionScrapper::addressOfNonVirtual((d61){&D::updateCollisionBlocks}));
+
+        if ((c62){&$GJBaseGameLayer::updateCounters} != (d62){&D::updateCounters})
+            m->registerHook(base+0xb9bc0, FunctionScrapper::addressOfNonVirtual((d62){&D::updateCounters}));
+
+        if ((c63){&$GJBaseGameLayer::updateDisabledObjectsLastPos} != (d63){&D::updateDisabledObjectsLastPos})
+            m->registerHook(base+0xb95b0, FunctionScrapper::addressOfNonVirtual((d63){&D::updateDisabledObjectsLastPos}));
+
+        if ((c64){&$GJBaseGameLayer::updateLayerCapacity} != (d64){&D::updateLayerCapacity})
+            m->registerHook(base+0xb1680, FunctionScrapper::addressOfNonVirtual((d64){&D::updateLayerCapacity}));
+
+        if ((c65){&$GJBaseGameLayer::updateLegacyLayerCapacity} != (d65){&D::updateLegacyLayerCapacity})
+            m->registerHook(base+0xb1590, FunctionScrapper::addressOfNonVirtual((d65){&D::updateLegacyLayerCapacity}));
+
+        if ((c66){&$GJBaseGameLayer::updateOBB2} != (d66){&D::updateOBB2})
+            m->registerHook(base+0xb63f0, FunctionScrapper::addressOfNonVirtual((d66){&D::updateOBB2}));
+
+        if ((c67){&$GJBaseGameLayer::updateQueuedLabels} != (d67){&D::updateQueuedLabels})
+            m->registerHook(base+0xb9f30, FunctionScrapper::addressOfNonVirtual((d67){&D::updateQueuedLabels}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJDropDownLayer : public GJDropDownLayer, public $CacBase {
+public:
+    ~$GJDropDownLayer() {
+        endDestructor();
+    }
+    $GJDropDownLayer() {}
+
+    using r0 = decltype(std::declval<GJDropDownLayer>().customSetup());
+    using c0 = r0($GJDropDownLayer::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 customSetup() {
+        using r0 = decltype(std::declval<GJDropDownLayer>().customSetup());
+        using f0 = r0(*)(GJDropDownLayer*);
+        return reinterpret_cast<f0>(base+0x352570)(this);
+    }
+
+    using r1 = decltype(std::declval<GJDropDownLayer>().enterLayer());
+    using c1 = r1($GJDropDownLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 enterLayer() {
+        using r1 = decltype(std::declval<GJDropDownLayer>().enterLayer());
+        using f1 = r1(*)(GJDropDownLayer*);
+        return reinterpret_cast<f1>(base+0x3525c0)(this);
+    }
+
+    using r2 = decltype(std::declval<GJDropDownLayer>().exitLayer(std::declval<cocos2d::CCObject*>()));
+    using c2 = r2($GJDropDownLayer::*)(cocos2d::CCObject*) ;
+    using d2 = r2(D::*)(cocos2d::CCObject*) ;
+    r2 exitLayer(cocos2d::CCObject* p0) {
+        using r2 = decltype(std::declval<GJDropDownLayer>().exitLayer(std::declval<cocos2d::CCObject*>()));
+        using f2 = r2(*)(GJDropDownLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f2>(base+0x352670)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<GJDropDownLayer>().showLayer(std::declval<bool>()));
+    using c3 = r3($GJDropDownLayer::*)(bool) ;
+    using d3 = r3(D::*)(bool) ;
+    r3 showLayer(bool p0) {
+        using r3 = decltype(std::declval<GJDropDownLayer>().showLayer(std::declval<bool>()));
+        using f3 = r3(*)(GJDropDownLayer*, bool);
+        return reinterpret_cast<f3>(base+0x3526c0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<GJDropDownLayer>().hideLayer(std::declval<bool>()));
+    using c4 = r4($GJDropDownLayer::*)(bool) ;
+    using d4 = r4(D::*)(bool) ;
+    r4 hideLayer(bool p0) {
+        using r4 = decltype(std::declval<GJDropDownLayer>().hideLayer(std::declval<bool>()));
+        using f4 = r4(*)(GJDropDownLayer*, bool);
+        return reinterpret_cast<f4>(base+0x3527b0)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<GJDropDownLayer>().layerVisible());
+    using c5 = r5($GJDropDownLayer::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 layerVisible() {
+        using r5 = decltype(std::declval<GJDropDownLayer>().layerVisible());
+        using f5 = r5(*)(GJDropDownLayer*);
+        return reinterpret_cast<f5>(base+0x3528b0)(this);
+    }
+
+    using r6 = decltype(std::declval<GJDropDownLayer>().layerHidden());
+    using c6 = r6($GJDropDownLayer::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 layerHidden() {
+        using r6 = decltype(std::declval<GJDropDownLayer>().layerHidden());
+        using f6 = r6(*)(GJDropDownLayer*);
+        return reinterpret_cast<f6>(base+0x3528d0)(this);
+    }
+
+    using r7 = decltype(std::declval<GJDropDownLayer>().enterAnimFinished());
+    using c7 = r7($GJDropDownLayer::*)() ;
+    using d7 = r7(D::*)() ;
+    r7 enterAnimFinished() {
+        using r7 = decltype(std::declval<GJDropDownLayer>().enterAnimFinished());
+        using f7 = r7(*)(GJDropDownLayer*);
+        return reinterpret_cast<f7>(base+0x3528a0)(this);
+    }
+
+    using r8 = decltype(std::declval<GJDropDownLayer>().disableUI());
+    using c8 = r8($GJDropDownLayer::*)() ;
+    using d8 = r8(D::*)() ;
+    r8 disableUI() {
+        using r8 = decltype(std::declval<GJDropDownLayer>().disableUI());
+        using f8 = r8(*)(GJDropDownLayer*);
+        return reinterpret_cast<f8>(base+0x352580)(this);
+    }
+
+    using r9 = decltype(std::declval<GJDropDownLayer>().enableUI());
+    using c9 = r9($GJDropDownLayer::*)() ;
+    using d9 = r9(D::*)() ;
+    r9 enableUI() {
+        using r9 = decltype(std::declval<GJDropDownLayer>().enableUI());
+        using f9 = r9(*)(GJDropDownLayer*);
+        return reinterpret_cast<f9>(base+0x3525a0)(this);
+    }
+
+    using r10 = decltype(std::declval<GJDropDownLayer>().draw());
+    using c10 = r10($GJDropDownLayer::*)() ;
+    using d10 = r10(D::*)() ;
+    r10 draw() {
+        using r10 = decltype(std::declval<GJDropDownLayer>().draw());
+        using f10 = r10(*)(GJDropDownLayer*);
+        return reinterpret_cast<f10>(base+0x352910)(this);
+    }
+
+    using r11 = decltype(std::declval<GJDropDownLayer>().init(std::declval<char const*>(), std::declval<float>()));
+    using c11 = r11($GJDropDownLayer::*)(char const*, float) ;
+    using d11 = r11(D::*)(char const*, float) ;
+    r11 init(char const* p0, float p1) {
+        using r11 = decltype(std::declval<GJDropDownLayer>().init(std::declval<char const*>(), std::declval<float>()));
+        using f11 = r11(*)(GJDropDownLayer*, char const*, float);
+        return reinterpret_cast<f11>(base+0x352100)(this, p0, p1);
+    }
+
+    using r12 = decltype(std::declval<GJDropDownLayer>().registerWithTouchDispatcher());
+    using c12 = r12($GJDropDownLayer::*)() ;
+    using d12 = r12(D::*)() ;
+    r12 registerWithTouchDispatcher() {
+        using r12 = decltype(std::declval<GJDropDownLayer>().registerWithTouchDispatcher());
+        using f12 = r12(*)(GJDropDownLayer*);
+        return reinterpret_cast<f12>(base+0x3525f0)(this);
+    }
+
+    using r13 = decltype(std::declval<GJDropDownLayer>().keyBackClicked());
+    using c13 = r13($GJDropDownLayer::*)() ;
+    using d13 = r13(D::*)() ;
+    r13 keyBackClicked() {
+        using r13 = decltype(std::declval<GJDropDownLayer>().keyBackClicked());
+        using f13 = r13(*)(GJDropDownLayer*);
+        return reinterpret_cast<f13>(base+0x352630)(this);
+    }
+
+    using r14 = decltype(std::declval<GJDropDownLayer>().create(std::declval<char const*>()));
+    using c14 = r14(*)(char const*);
+    using d14 = r14(*)(char const*);
+    static r14 create(char const* p0) {
+        using r14 = decltype(std::declval<GJDropDownLayer>().create(std::declval<char const*>()));
+        using f14 = r14(*)(char const*);
+        return reinterpret_cast<f14>(base+0x352530)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$GJDropDownLayer::customSetup} != (d0){&D::customSetup})
+            m->registerHook(base+0x352570, FunctionScrapper::addressOfVirtual(i, (d0){&D::customSetup}));
+
+        if ((c1){&$GJDropDownLayer::enterLayer} != (d1){&D::enterLayer})
+            m->registerHook(base+0x3525c0, FunctionScrapper::addressOfVirtual(i, (d1){&D::enterLayer}));
+
+        if ((c2){&$GJDropDownLayer::exitLayer} != (d2){&D::exitLayer})
+            m->registerHook(base+0x352670, FunctionScrapper::addressOfVirtual(i, (d2){&D::exitLayer}));
+
+        if ((c3){&$GJDropDownLayer::showLayer} != (d3){&D::showLayer})
+            m->registerHook(base+0x3526c0, FunctionScrapper::addressOfVirtual(i, (d3){&D::showLayer}));
+
+        if ((c4){&$GJDropDownLayer::hideLayer} != (d4){&D::hideLayer})
+            m->registerHook(base+0x3527b0, FunctionScrapper::addressOfVirtual(i, (d4){&D::hideLayer}));
+
+        if ((c5){&$GJDropDownLayer::layerVisible} != (d5){&D::layerVisible})
+            m->registerHook(base+0x3528b0, FunctionScrapper::addressOfVirtual(i, (d5){&D::layerVisible}));
+
+        if ((c6){&$GJDropDownLayer::layerHidden} != (d6){&D::layerHidden})
+            m->registerHook(base+0x3528d0, FunctionScrapper::addressOfVirtual(i, (d6){&D::layerHidden}));
+
+        if ((c7){&$GJDropDownLayer::enterAnimFinished} != (d7){&D::enterAnimFinished})
+            m->registerHook(base+0x3528a0, FunctionScrapper::addressOfVirtual(i, (d7){&D::enterAnimFinished}));
+
+        if ((c8){&$GJDropDownLayer::disableUI} != (d8){&D::disableUI})
+            m->registerHook(base+0x352580, FunctionScrapper::addressOfVirtual(i, (d8){&D::disableUI}));
+
+        if ((c9){&$GJDropDownLayer::enableUI} != (d9){&D::enableUI})
+            m->registerHook(base+0x3525a0, FunctionScrapper::addressOfVirtual(i, (d9){&D::enableUI}));
+
+        if ((c10){&$GJDropDownLayer::draw} != (d10){&D::draw})
+            m->registerHook(base+0x352910, FunctionScrapper::addressOfVirtual(i, (d10){&D::draw}));
+
+        if ((c11){&$GJDropDownLayer::init} != (d11){&D::init})
+            m->registerHook(base+0x352100, FunctionScrapper::addressOfNonVirtual((d11){&D::init}));
+
+        if ((c12){&$GJDropDownLayer::registerWithTouchDispatcher} != (d12){&D::registerWithTouchDispatcher})
+            m->registerHook(base+0x3525f0, FunctionScrapper::addressOfVirtual(i, (d12){&D::registerWithTouchDispatcher}));
+
+        if ((c13){&$GJDropDownLayer::keyBackClicked} != (d13){&D::keyBackClicked})
+            m->registerHook(base+0x352630, FunctionScrapper::addressOfVirtual(i, (d13){&D::keyBackClicked}));
+
+        if ((c14){&$GJDropDownLayer::create} != (d14){&D::create})
+            m->registerHook(base+0x352530, FunctionScrapper::addressOfNonVirtual((d14){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $UILayer : public UILayer, public $CacBase {
+public:
+    ~$UILayer() {
+        endDestructor();
+    }
+    $UILayer() {}
+
+    using r0 = decltype(std::declval<UILayer>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<UILayer>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x27fd10)();
+
+    }
+
+    using r1 = decltype(std::declval<UILayer>().disableMenu());
+    using c1 = r1($UILayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 disableMenu() {
+        using r1 = decltype(std::declval<UILayer>().disableMenu());
+        using f1 = r1(*)(UILayer*);
+        return reinterpret_cast<f1>(base+0x280960)(this);
+    }
+
+    using r2 = decltype(std::declval<UILayer>().enableMenu());
+    using c2 = r2($UILayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 enableMenu() {
+        using r2 = decltype(std::declval<UILayer>().enableMenu());
+        using f2 = r2(*)(UILayer*);
+        return reinterpret_cast<f2>(base+0x280940)(this);
+    }
+
+    using r3 = decltype(std::declval<UILayer>().pCommand(std::declval<cocos2d::CCNode*>()));
+    using c3 = r3($UILayer::*)(cocos2d::CCNode*) ;
+    using d3 = r3(D::*)(cocos2d::CCNode*) ;
+    r3 pCommand(cocos2d::CCNode* p0) {
+        using r3 = decltype(std::declval<UILayer>().pCommand(std::declval<cocos2d::CCNode*>()));
+        using f3 = r3(*)(UILayer*, cocos2d::CCNode*);
+        return reinterpret_cast<f3>(base+0x280830)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<UILayer>().toggleCheckpointsMenu(std::declval<bool>()));
+    using c4 = r4($UILayer::*)(bool) ;
+    using d4 = r4(D::*)(bool) ;
+    r4 toggleCheckpointsMenu(bool p0) {
+        using r4 = decltype(std::declval<UILayer>().toggleCheckpointsMenu(std::declval<bool>()));
+        using f4 = r4(*)(UILayer*, bool);
+        return reinterpret_cast<f4>(base+0x280430)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$UILayer::create} != (d0){&D::create})
+            m->registerHook(base+0x27fd10, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$UILayer::disableMenu} != (d1){&D::disableMenu})
+            m->registerHook(base+0x280960, FunctionScrapper::addressOfNonVirtual((d1){&D::disableMenu}));
+
+        if ((c2){&$UILayer::enableMenu} != (d2){&D::enableMenu})
+            m->registerHook(base+0x280940, FunctionScrapper::addressOfNonVirtual((d2){&D::enableMenu}));
+
+        if ((c3){&$UILayer::pCommand} != (d3){&D::pCommand})
+            m->registerHook(base+0x280830, FunctionScrapper::addressOfNonVirtual((d3){&D::pCommand}));
+
+        if ((c4){&$UILayer::toggleCheckpointsMenu} != (d4){&D::toggleCheckpointsMenu})
+            m->registerHook(base+0x280430, FunctionScrapper::addressOfNonVirtual((d4){&D::toggleCheckpointsMenu}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $RetryLevelLayer : public RetryLevelLayer, public $CacBase {
+public:
+    ~$RetryLevelLayer() {
+        endDestructor();
+    }
+    $RetryLevelLayer() {}
+
+    using r0 = decltype(std::declval<RetryLevelLayer>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<RetryLevelLayer>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x28dd60)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$RetryLevelLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x28dd60, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetGroupIDLayer : public SetGroupIDLayer, public $CacBase {
+public:
+    ~$SetGroupIDLayer() {
+        endDestructor();
+    }
+    $SetGroupIDLayer() {}
+
+    using r0 = decltype(std::declval<SetGroupIDLayer>().onNextGroupID1(std::declval<cocos2d::CCObject*>()));
+    using c0 = r0($SetGroupIDLayer::*)(cocos2d::CCObject*) ;
+    using d0 = r0(D::*)(cocos2d::CCObject*) ;
+    r0 onNextGroupID1(cocos2d::CCObject* p0) {
+        using r0 = decltype(std::declval<SetGroupIDLayer>().onNextGroupID1(std::declval<cocos2d::CCObject*>()));
+        using f0 = r0(*)(SetGroupIDLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f0>(base+0x1967a0)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<SetGroupIDLayer>().textChanged(std::declval<CCTextInputNode*>()));
+    using c1 = r1($SetGroupIDLayer::*)(CCTextInputNode*) ;
+    using d1 = r1(D::*)(CCTextInputNode*) ;
+    r1 textChanged(CCTextInputNode* p0) {
+        using r1 = decltype(std::declval<SetGroupIDLayer>().textChanged(std::declval<CCTextInputNode*>()));
+        using f1 = r1(*)(SetGroupIDLayer*, CCTextInputNode*);
+        return reinterpret_cast<f1>(base+0x197af0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetGroupIDLayer>().updateGroupIDLabel());
+    using c2 = r2($SetGroupIDLayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 updateGroupIDLabel() {
+        using r2 = decltype(std::declval<SetGroupIDLayer>().updateGroupIDLabel());
+        using f2 = r2(*)(SetGroupIDLayer*);
+        return reinterpret_cast<f2>(base+0x197260)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetGroupIDLayer::onNextGroupID1} != (d0){&D::onNextGroupID1})
+            m->registerHook(base+0x1967a0, FunctionScrapper::addressOfNonVirtual((d0){&D::onNextGroupID1}));
+
+        if ((c1){&$SetGroupIDLayer::textChanged} != (d1){&D::textChanged})
+            m->registerHook(base+0x197af0, FunctionScrapper::addressOfNonVirtual((d1){&D::textChanged}));
+
+        if ((c2){&$SetGroupIDLayer::updateGroupIDLabel} != (d2){&D::updateGroupIDLabel})
+            m->registerHook(base+0x197260, FunctionScrapper::addressOfNonVirtual((d2){&D::updateGroupIDLabel}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetIDLayer : public SetIDLayer, public $CacBase {
+public:
+    ~$SetIDLayer() {
+        endDestructor();
+    }
+    $SetIDLayer() {}
+
+    using r0 = decltype(std::declval<SetIDLayer>().create(std::declval<GameObject*>()));
+    using c0 = r0(*)(GameObject*);
+    using d0 = r0(*)(GameObject*);
+    static r0 create(GameObject* p0) {
+        using r0 = decltype(std::declval<SetIDLayer>().create(std::declval<GameObject*>()));
+        using f0 = r0(*)(GameObject*);
+        return reinterpret_cast<f0>(base+0x168f20)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetIDLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x168f20, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetIDPopup : public SetIDPopup, public $CacBase {
+public:
+    ~$SetIDPopup() {
+        endDestructor();
+    }
+    $SetIDPopup() {}
+
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetItemIDLayer : public SetItemIDLayer, public $CacBase {
+public:
+    ~$SetItemIDLayer() {
+        endDestructor();
+    }
+    $SetItemIDLayer() {}
+
+    using r0 = decltype(std::declval<SetItemIDLayer>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetItemIDLayer>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x5a830)(p0, p1);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetItemIDLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x5a830, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetTargetIDLayer : public SetTargetIDLayer, public $CacBase {
+public:
+    ~$SetTargetIDLayer() {
+        endDestructor();
+    }
+    $SetTargetIDLayer() {}
+
+    using r0 = decltype(std::declval<SetTargetIDLayer>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>(), std::declval<gd::string>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*, gd::string);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*, gd::string);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1, gd::string p2) {
+        using r0 = decltype(std::declval<SetTargetIDLayer>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>(), std::declval<gd::string>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*, gd::string);
+        return reinterpret_cast<f0>(base+0x159d20)(p0, p1, p2);
+
+    }
+
+    using r1 = decltype(std::declval<SetTargetIDLayer>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetTargetIDLayer::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetTargetIDLayer>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetTargetIDLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x15aed0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetTargetIDLayer>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetTargetIDLayer::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetTargetIDLayer>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetTargetIDLayer*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x15b6c0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetTargetIDLayer>().updateTargetID());
+    using c3 = r3($SetTargetIDLayer::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetTargetIDLayer>().updateTargetID());
+        using f3 = r3(*)(SetTargetIDLayer*);
+        return reinterpret_cast<f3>(base+0x15b4a0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetTargetIDLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x159d20, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetTargetIDLayer::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x15aed0, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetTargetIDLayer::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x15b6c0, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetTargetIDLayer::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x15b4a0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupAnimationPopup : public SetupAnimationPopup, public $CacBase {
+public:
+    ~$SetupAnimationPopup() {
+        endDestructor();
+    }
+    $SetupAnimationPopup() {}
+
+    using r0 = decltype(std::declval<SetupAnimationPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupAnimationPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x208b70)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupAnimationPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupAnimationPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupAnimationPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupAnimationPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x209fc0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupAnimationPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupAnimationPopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupAnimationPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupAnimationPopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x20ab30)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupAnimationPopup>().updateTargetID());
+    using c3 = r3($SetupAnimationPopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupAnimationPopup>().updateTargetID());
+        using f3 = r3(*)(SetupAnimationPopup*);
+        return reinterpret_cast<f3>(base+0x20a910)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupAnimationPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x208b70, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupAnimationPopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x209fc0, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupAnimationPopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x20ab30, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupAnimationPopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x20a910, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupCollisionTriggerPopup : public SetupCollisionTriggerPopup, public $CacBase {
+public:
+    ~$SetupCollisionTriggerPopup() {
+        endDestructor();
+    }
+    $SetupCollisionTriggerPopup() {}
+
+    using r0 = decltype(std::declval<SetupCollisionTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupCollisionTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x1d6120)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupCollisionTriggerPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupCollisionTriggerPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupCollisionTriggerPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupCollisionTriggerPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x1d77b0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupCollisionTriggerPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupCollisionTriggerPopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupCollisionTriggerPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupCollisionTriggerPopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x1d84d0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupCollisionTriggerPopup>().updateTargetID());
+    using c3 = r3($SetupCollisionTriggerPopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupCollisionTriggerPopup>().updateTargetID());
+        using f3 = r3(*)(SetupCollisionTriggerPopup*);
+        return reinterpret_cast<f3>(base+0x1d82b0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupCollisionTriggerPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x1d6120, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupCollisionTriggerPopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x1d77b0, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupCollisionTriggerPopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x1d84d0, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupCollisionTriggerPopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x1d82b0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupCountTriggerPopup : public SetupCountTriggerPopup, public $CacBase {
+public:
+    ~$SetupCountTriggerPopup() {
+        endDestructor();
+    }
+    $SetupCountTriggerPopup() {}
+
+    using r0 = decltype(std::declval<SetupCountTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupCountTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x15c6c0)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupCountTriggerPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupCountTriggerPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupCountTriggerPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupCountTriggerPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x15dd40)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupCountTriggerPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupCountTriggerPopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupCountTriggerPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupCountTriggerPopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x15e9a0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupCountTriggerPopup>().updateTargetID());
+    using c3 = r3($SetupCountTriggerPopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupCountTriggerPopup>().updateTargetID());
+        using f3 = r3(*)(SetupCountTriggerPopup*);
+        return reinterpret_cast<f3>(base+0x15e8a0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupCountTriggerPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x15c6c0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupCountTriggerPopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x15dd40, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupCountTriggerPopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x15e9a0, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupCountTriggerPopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x15e8a0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupInstantCountPopup : public SetupInstantCountPopup, public $CacBase {
+public:
+    ~$SetupInstantCountPopup() {
+        endDestructor();
+    }
+    $SetupInstantCountPopup() {}
+
+    using r0 = decltype(std::declval<SetupInstantCountPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupInstantCountPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x352c10)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupInstantCountPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupInstantCountPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupInstantCountPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupInstantCountPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x354520)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupInstantCountPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupInstantCountPopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupInstantCountPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupInstantCountPopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x355270)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupInstantCountPopup>().updateTargetID());
+    using c3 = r3($SetupInstantCountPopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupInstantCountPopup>().updateTargetID());
+        using f3 = r3(*)(SetupInstantCountPopup*);
+        return reinterpret_cast<f3>(base+0x355170)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupInstantCountPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x352c10, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupInstantCountPopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x354520, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupInstantCountPopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x355270, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupInstantCountPopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x355170, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupInteractObjectPopup : public SetupInteractObjectPopup, public $CacBase {
+public:
+    ~$SetupInteractObjectPopup() {
+        endDestructor();
+    }
+    $SetupInteractObjectPopup() {}
+
+    using r0 = decltype(std::declval<SetupInteractObjectPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupInteractObjectPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x29a400)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupInteractObjectPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupInteractObjectPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupInteractObjectPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupInteractObjectPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x29bbc0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupInteractObjectPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupInteractObjectPopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupInteractObjectPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupInteractObjectPopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x29c2b0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupInteractObjectPopup>().updateTargetID());
+    using c3 = r3($SetupInteractObjectPopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupInteractObjectPopup>().updateTargetID());
+        using f3 = r3(*)(SetupInteractObjectPopup*);
+        return reinterpret_cast<f3>(base+0x29c120)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupInteractObjectPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x29a400, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupInteractObjectPopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x29bbc0, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupInteractObjectPopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x29c2b0, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupInteractObjectPopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x29c120, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupObjectTogglePopup : public SetupObjectTogglePopup, public $CacBase {
+public:
+    ~$SetupObjectTogglePopup() {
+        endDestructor();
+    }
+    $SetupObjectTogglePopup() {}
+
+    using r0 = decltype(std::declval<SetupObjectTogglePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupObjectTogglePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x1c0860)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupObjectTogglePopup>().init(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c1 = r1($SetupObjectTogglePopup::*)(EffectGameObject*, cocos2d::CCArray*) ;
+    using d1 = r1(D::*)(EffectGameObject*, cocos2d::CCArray*) ;
+    r1 init(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r1 = decltype(std::declval<SetupObjectTogglePopup>().init(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f1 = r1(*)(SetupObjectTogglePopup*, EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f1>(base+0x1c0a40)(this, p0, p1);
+    }
+
+    using r2 = decltype(std::declval<SetupObjectTogglePopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c2 = r2($SetupObjectTogglePopup::*)(cocos2d::CCObject*) ;
+    using d2 = r2(D::*)(cocos2d::CCObject*) ;
+    r2 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r2 = decltype(std::declval<SetupObjectTogglePopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f2 = r2(*)(SetupObjectTogglePopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f2>(base+0x1c1c40)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupObjectTogglePopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c3 = r3($SetupObjectTogglePopup::*)(CCTextInputNode*) ;
+    using d3 = r3(D::*)(CCTextInputNode*) ;
+    r3 textChanged(CCTextInputNode* p0) {
+        using r3 = decltype(std::declval<SetupObjectTogglePopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f3 = r3(*)(SetupObjectTogglePopup*, CCTextInputNode*);
+        return reinterpret_cast<f3>(base+0x1c2660)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<SetupObjectTogglePopup>().updateTargetID());
+    using c4 = r4($SetupObjectTogglePopup::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 updateTargetID() {
+        using r4 = decltype(std::declval<SetupObjectTogglePopup>().updateTargetID());
+        using f4 = r4(*)(SetupObjectTogglePopup*);
+        return reinterpret_cast<f4>(base+0x1c2440)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupObjectTogglePopup::create} != (d0){&D::create})
+            m->registerHook(base+0x1c0860, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupObjectTogglePopup::init} != (d1){&D::init})
+            m->registerHook(base+0x1c0a40, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
+
+        if ((c2){&$SetupObjectTogglePopup::onTargetIDArrow} != (d2){&D::onTargetIDArrow})
+            m->registerHook(base+0x1c1c40, FunctionScrapper::addressOfNonVirtual((d2){&D::onTargetIDArrow}));
+
+        if ((c3){&$SetupObjectTogglePopup::textChanged} != (d3){&D::textChanged})
+            m->registerHook(base+0x1c2660, FunctionScrapper::addressOfNonVirtual((d3){&D::textChanged}));
+
+        if ((c4){&$SetupObjectTogglePopup::updateTargetID} != (d4){&D::updateTargetID})
+            m->registerHook(base+0x1c2440, FunctionScrapper::addressOfNonVirtual((d4){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupOpacityPopup : public SetupOpacityPopup, public $CacBase {
+public:
+    ~$SetupOpacityPopup() {
+        endDestructor();
+    }
+    $SetupOpacityPopup() {}
+
+    using r0 = decltype(std::declval<SetupOpacityPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupOpacityPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x32b70)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupOpacityPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupOpacityPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupOpacityPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupOpacityPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x340a0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupOpacityPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupOpacityPopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupOpacityPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupOpacityPopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x34a60)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupOpacityPopup>().updateTargetID());
+    using c3 = r3($SetupOpacityPopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupOpacityPopup>().updateTargetID());
+        using f3 = r3(*)(SetupOpacityPopup*);
+        return reinterpret_cast<f3>(base+0x34760)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupOpacityPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x32b70, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupOpacityPopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x340a0, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupOpacityPopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x34a60, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupOpacityPopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x34760, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupPickupTriggerPopup : public SetupPickupTriggerPopup, public $CacBase {
+public:
+    ~$SetupPickupTriggerPopup() {
+        endDestructor();
+    }
+    $SetupPickupTriggerPopup() {}
+
+    using r0 = decltype(std::declval<SetupPickupTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupPickupTriggerPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x35e70)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupPickupTriggerPopup>().onItemIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupPickupTriggerPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onItemIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupPickupTriggerPopup>().onItemIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupPickupTriggerPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x37100)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupPickupTriggerPopup>().onNextItemID(std::declval<cocos2d::CCObject*>()));
+    using c2 = r2($SetupPickupTriggerPopup::*)(cocos2d::CCObject*) ;
+    using d2 = r2(D::*)(cocos2d::CCObject*) ;
+    r2 onNextItemID(cocos2d::CCObject* p0) {
+        using r2 = decltype(std::declval<SetupPickupTriggerPopup>().onNextItemID(std::declval<cocos2d::CCObject*>()));
+        using f2 = r2(*)(SetupPickupTriggerPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f2>(base+0x37260)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupPickupTriggerPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c3 = r3($SetupPickupTriggerPopup::*)(CCTextInputNode*) ;
+    using d3 = r3(D::*)(CCTextInputNode*) ;
+    r3 textChanged(CCTextInputNode* p0) {
+        using r3 = decltype(std::declval<SetupPickupTriggerPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f3 = r3(*)(SetupPickupTriggerPopup*, CCTextInputNode*);
+        return reinterpret_cast<f3>(base+0x37ca0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<SetupPickupTriggerPopup>().updateItemID());
+    using c4 = r4($SetupPickupTriggerPopup::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 updateItemID() {
+        using r4 = decltype(std::declval<SetupPickupTriggerPopup>().updateItemID());
+        using f4 = r4(*)(SetupPickupTriggerPopup*);
+        return reinterpret_cast<f4>(base+0x37ab0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupPickupTriggerPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x35e70, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupPickupTriggerPopup::onItemIDArrow} != (d1){&D::onItemIDArrow})
+            m->registerHook(base+0x37100, FunctionScrapper::addressOfNonVirtual((d1){&D::onItemIDArrow}));
+
+        if ((c2){&$SetupPickupTriggerPopup::onNextItemID} != (d2){&D::onNextItemID})
+            m->registerHook(base+0x37260, FunctionScrapper::addressOfNonVirtual((d2){&D::onNextItemID}));
+
+        if ((c3){&$SetupPickupTriggerPopup::textChanged} != (d3){&D::textChanged})
+            m->registerHook(base+0x37ca0, FunctionScrapper::addressOfNonVirtual((d3){&D::textChanged}));
+
+        if ((c4){&$SetupPickupTriggerPopup::updateItemID} != (d4){&D::updateItemID})
+            m->registerHook(base+0x37ab0, FunctionScrapper::addressOfNonVirtual((d4){&D::updateItemID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupShakePopup : public SetupShakePopup, public $CacBase {
+public:
+    ~$SetupShakePopup() {
+        endDestructor();
+    }
+    $SetupShakePopup() {}
+
+    using r0 = decltype(std::declval<SetupShakePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupShakePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x3adc00)(p0, p1);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupShakePopup::create} != (d0){&D::create})
+            m->registerHook(base+0x3adc00, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupSpawnPopup : public SetupSpawnPopup, public $CacBase {
+public:
+    ~$SetupSpawnPopup() {
+        endDestructor();
+    }
+    $SetupSpawnPopup() {}
+
+    using r0 = decltype(std::declval<SetupSpawnPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupSpawnPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x139790)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupSpawnPopup>().createToggleButton(std::declval<gd::string>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<bool>(), std::declval<cocos2d::CCMenu*>(), std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::CCArray*>()));
+    using c1 = r1($SetupSpawnPopup::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*) ;
+    using d1 = r1(D::*)(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*) ;
+    r1 createToggleButton(gd::string p0, cocos2d::SEL_MenuHandler p1, bool p2, cocos2d::CCMenu* p3, cocos2d::CCPoint p4, cocos2d::CCArray* p5) {
+        using r1 = decltype(std::declval<SetupSpawnPopup>().createToggleButton(std::declval<gd::string>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<bool>(), std::declval<cocos2d::CCMenu*>(), std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::CCArray*>()));
+        using f1 = r1(*)(SetupSpawnPopup*, gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCArray*);
+        return reinterpret_cast<f1>(base+0x13b0e0)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r2 = decltype(std::declval<SetupSpawnPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c2 = r2($SetupSpawnPopup::*)(cocos2d::CCObject*) ;
+    using d2 = r2(D::*)(cocos2d::CCObject*) ;
+    r2 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r2 = decltype(std::declval<SetupSpawnPopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f2 = r2(*)(SetupSpawnPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f2>(base+0x13ad80)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupSpawnPopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c3 = r3($SetupSpawnPopup::*)(CCTextInputNode*) ;
+    using d3 = r3(D::*)(CCTextInputNode*) ;
+    r3 textChanged(CCTextInputNode* p0) {
+        using r3 = decltype(std::declval<SetupSpawnPopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f3 = r3(*)(SetupSpawnPopup*, CCTextInputNode*);
+        return reinterpret_cast<f3>(base+0x13b990)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<SetupSpawnPopup>().updateTargetID());
+    using c4 = r4($SetupSpawnPopup::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 updateTargetID() {
+        using r4 = decltype(std::declval<SetupSpawnPopup>().updateTargetID());
+        using f4 = r4(*)(SetupSpawnPopup*);
+        return reinterpret_cast<f4>(base+0x13b770)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupSpawnPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x139790, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupSpawnPopup::createToggleButton} != (d1){&D::createToggleButton})
+            m->registerHook(base+0x13b0e0, FunctionScrapper::addressOfNonVirtual((d1){&D::createToggleButton}));
+
+        if ((c2){&$SetupSpawnPopup::onTargetIDArrow} != (d2){&D::onTargetIDArrow})
+            m->registerHook(base+0x13ad80, FunctionScrapper::addressOfNonVirtual((d2){&D::onTargetIDArrow}));
+
+        if ((c3){&$SetupSpawnPopup::textChanged} != (d3){&D::textChanged})
+            m->registerHook(base+0x13b990, FunctionScrapper::addressOfNonVirtual((d3){&D::textChanged}));
+
+        if ((c4){&$SetupSpawnPopup::updateTargetID} != (d4){&D::updateTargetID})
+            m->registerHook(base+0x13b770, FunctionScrapper::addressOfNonVirtual((d4){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SetupTouchTogglePopup : public SetupTouchTogglePopup, public $CacBase {
+public:
+    ~$SetupTouchTogglePopup() {
+        endDestructor();
+    }
+    $SetupTouchTogglePopup() {}
+
+    using r0 = decltype(std::declval<SetupTouchTogglePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<SetupTouchTogglePopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x1576a0)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<SetupTouchTogglePopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($SetupTouchTogglePopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onTargetIDArrow(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<SetupTouchTogglePopup>().onTargetIDArrow(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(SetupTouchTogglePopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x158b60)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SetupTouchTogglePopup>().textChanged(std::declval<CCTextInputNode*>()));
+    using c2 = r2($SetupTouchTogglePopup::*)(CCTextInputNode*) ;
+    using d2 = r2(D::*)(CCTextInputNode*) ;
+    r2 textChanged(CCTextInputNode* p0) {
+        using r2 = decltype(std::declval<SetupTouchTogglePopup>().textChanged(std::declval<CCTextInputNode*>()));
+        using f2 = r2(*)(SetupTouchTogglePopup*, CCTextInputNode*);
+        return reinterpret_cast<f2>(base+0x1596a0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<SetupTouchTogglePopup>().updateTargetID());
+    using c3 = r3($SetupTouchTogglePopup::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 updateTargetID() {
+        using r3 = decltype(std::declval<SetupTouchTogglePopup>().updateTargetID());
+        using f3 = r3(*)(SetupTouchTogglePopup*);
+        return reinterpret_cast<f3>(base+0x159480)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SetupTouchTogglePopup::create} != (d0){&D::create})
+            m->registerHook(base+0x1576a0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SetupTouchTogglePopup::onTargetIDArrow} != (d1){&D::onTargetIDArrow})
+            m->registerHook(base+0x158b60, FunctionScrapper::addressOfNonVirtual((d1){&D::onTargetIDArrow}));
+
+        if ((c2){&$SetupTouchTogglePopup::textChanged} != (d2){&D::textChanged})
+            m->registerHook(base+0x1596a0, FunctionScrapper::addressOfNonVirtual((d2){&D::textChanged}));
+
+        if ((c3){&$SetupTouchTogglePopup::updateTargetID} != (d3){&D::updateTargetID})
+            m->registerHook(base+0x159480, FunctionScrapper::addressOfNonVirtual((d3){&D::updateTargetID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $PauseLayer : public PauseLayer, public $CacBase {
+public:
+    ~$PauseLayer() {
+        endDestructor();
+    }
+    $PauseLayer() {}
+
+    using r0 = decltype(std::declval<PauseLayer>().create(std::declval<bool>()));
+    using c0 = r0(*)(bool);
+    using d0 = r0(*)(bool);
+    static r0 create(bool p0) {
+        using r0 = decltype(std::declval<PauseLayer>().create(std::declval<bool>()));
+        using f0 = r0(*)(bool);
+        return reinterpret_cast<f0>(base+0x20b1e0)(p0);
+
+    }
+
+    using r1 = decltype(std::declval<PauseLayer>().onEdit(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($PauseLayer::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onEdit(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<PauseLayer>().onEdit(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(PauseLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x20c630)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$PauseLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x20b1e0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$PauseLayer::onEdit} != (d1){&D::onEdit})
+            m->registerHook(base+0x20c630, FunctionScrapper::addressOfNonVirtual((d1){&D::onEdit}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $TopArtistsLayer : public TopArtistsLayer, public $CacBase {
+public:
+    ~$TopArtistsLayer() {
+        endDestructor();
+    }
+    $TopArtistsLayer() {}
+
+    using r0 = decltype(std::declval<TopArtistsLayer>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<TopArtistsLayer>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x192a90)();
+
+    }
+
+    using r1 = decltype(std::declval<TopArtistsLayer>().setupLeaderboard(std::declval<cocos2d::CCArray*>()));
+    using c1 = r1($TopArtistsLayer::*)(cocos2d::CCArray*) ;
+    using d1 = r1(D::*)(cocos2d::CCArray*) ;
+    r1 setupLeaderboard(cocos2d::CCArray* p0) {
+        using r1 = decltype(std::declval<TopArtistsLayer>().setupLeaderboard(std::declval<cocos2d::CCArray*>()));
+        using f1 = r1(*)(TopArtistsLayer*, cocos2d::CCArray*);
+        return reinterpret_cast<f1>(base+0x193420)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<TopArtistsLayer>().init());
+    using c2 = r2($TopArtistsLayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 init() {
+        using r2 = decltype(std::declval<TopArtistsLayer>().init());
+        using f2 = r2(*)(TopArtistsLayer*);
+        return reinterpret_cast<f2>(base+0x192c30)(this);
+    }
+
+    using r3 = decltype(std::declval<TopArtistsLayer>().loadPage(std::declval<int>()));
+    using c3 = r3($TopArtistsLayer::*)(int) ;
+    using d3 = r3(D::*)(int) ;
+    r3 loadPage(int p0) {
+        using r3 = decltype(std::declval<TopArtistsLayer>().loadPage(std::declval<int>()));
+        using f3 = r3(*)(TopArtistsLayer*, int);
+        return reinterpret_cast<f3>(base+0x193b60)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<TopArtistsLayer>().setupPageInfo(std::declval<gd::string>(), std::declval<char const*>()));
+    using c4 = r4($TopArtistsLayer::*)(gd::string, char const*) ;
+    using d4 = r4(D::*)(gd::string, char const*) ;
+    r4 setupPageInfo(gd::string p0, char const* p1) {
+        using r4 = decltype(std::declval<TopArtistsLayer>().setupPageInfo(std::declval<gd::string>(), std::declval<char const*>()));
+        using f4 = r4(*)(TopArtistsLayer*, gd::string, char const*);
+        return reinterpret_cast<f4>(base+0x193730)(this, p0, p1);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$TopArtistsLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x192a90, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$TopArtistsLayer::setupLeaderboard} != (d1){&D::setupLeaderboard})
+            m->registerHook(base+0x193420, FunctionScrapper::addressOfNonVirtual((d1){&D::setupLeaderboard}));
+
+        if ((c2){&$TopArtistsLayer::init} != (d2){&D::init})
+            m->registerHook(base+0x192c30, FunctionScrapper::addressOfVirtual(i, (d2){&D::init}));
+
+        if ((c3){&$TopArtistsLayer::loadPage} != (d3){&D::loadPage})
+            m->registerHook(base+0x193b60, FunctionScrapper::addressOfNonVirtual((d3){&D::loadPage}));
+
+        if ((c4){&$TopArtistsLayer::setupPageInfo} != (d4){&D::setupPageInfo})
+            m->registerHook(base+0x193730, FunctionScrapper::addressOfNonVirtual((d4){&D::setupPageInfo}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $MenuGameLayer : public MenuGameLayer, public $CacBase {
+public:
+    ~$MenuGameLayer() {
+        endDestructor();
+    }
+    $MenuGameLayer() {}
+
+    using r0 = decltype(std::declval<MenuGameLayer>().resetPlayer());
+    using c0 = r0($MenuGameLayer::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 resetPlayer() {
+        using r0 = decltype(std::declval<MenuGameLayer>().resetPlayer());
+        using f0 = r0(*)(MenuGameLayer*);
+        return reinterpret_cast<f0>(base+0x28fdc0)(this);
+    }
+
+    using r1 = decltype(std::declval<MenuGameLayer>().update(std::declval<float>()));
+    using c1 = r1($MenuGameLayer::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 update(float p0) {
+        using r1 = decltype(std::declval<MenuGameLayer>().update(std::declval<float>()));
+        using f1 = r1(*)(MenuGameLayer*, float);
+        return reinterpret_cast<f1>(base+0x28fa70)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$MenuGameLayer::resetPlayer} != (d0){&D::resetPlayer})
+            m->registerHook(base+0x28fdc0, FunctionScrapper::addressOfNonVirtual((d0){&D::resetPlayer}));
+
+        if ((c1){&$MenuGameLayer::update} != (d1){&D::update})
+            m->registerHook(base+0x28fa70, FunctionScrapper::addressOfNonVirtual((d1){&D::update}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $MoreVideoOptionsLayer : public MoreVideoOptionsLayer, public $CacBase {
+public:
+    ~$MoreVideoOptionsLayer() {
+        endDestructor();
+    }
+    $MoreVideoOptionsLayer() {}
+
+    using r0 = decltype(std::declval<MoreVideoOptionsLayer>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<MoreVideoOptionsLayer>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x443c10)();
+
+    }
+
+    using r1 = decltype(std::declval<MoreVideoOptionsLayer>().init());
+    using c1 = r1($MoreVideoOptionsLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<MoreVideoOptionsLayer>().init());
+        using f1 = r1(*)(MoreVideoOptionsLayer*);
+        return reinterpret_cast<f1>(base+0x444150)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$MoreVideoOptionsLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x443c10, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$MoreVideoOptionsLayer::init} != (d1){&D::init})
+            m->registerHook(base+0x444150, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $AudioEffectsLayer : public AudioEffectsLayer, public $CacBase {
+public:
+    ~$AudioEffectsLayer() {
+        endDestructor();
+    }
+    $AudioEffectsLayer() {}
+
+    using r0 = decltype(std::declval<AudioEffectsLayer>().audioStep(std::declval<float>()));
+    using c0 = r0($AudioEffectsLayer::*)(float) ;
+    using d0 = r0(D::*)(float) ;
+    r0 audioStep(float p0) {
+        using r0 = decltype(std::declval<AudioEffectsLayer>().audioStep(std::declval<float>()));
+        using f0 = r0(*)(AudioEffectsLayer*, float);
+        return reinterpret_cast<f0>(base+0x271f40)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<AudioEffectsLayer>().create(std::declval<gd::string>()));
+    using c1 = r1(*)(gd::string);
+    using d1 = r1(*)(gd::string);
+    static r1 create(gd::string p0) {
+        using r1 = decltype(std::declval<AudioEffectsLayer>().create(std::declval<gd::string>()));
+        using f1 = r1(*)(gd::string);
+        return reinterpret_cast<f1>(base+0x271a00)(p0);
+
+    }
+
+    using r2 = decltype(std::declval<AudioEffectsLayer>().resetAudioVars());
+    using c2 = r2($AudioEffectsLayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 resetAudioVars() {
+        using r2 = decltype(std::declval<AudioEffectsLayer>().resetAudioVars());
+        using f2 = r2(*)(AudioEffectsLayer*);
+        return reinterpret_cast<f2>(base+0x271ee0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$AudioEffectsLayer::audioStep} != (d0){&D::audioStep})
+            m->registerHook(base+0x271f40, FunctionScrapper::addressOfNonVirtual((d0){&D::audioStep}));
+
+        if ((c1){&$AudioEffectsLayer::create} != (d1){&D::create})
+            m->registerHook(base+0x271a00, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        if ((c2){&$AudioEffectsLayer::resetAudioVars} != (d2){&D::resetAudioVars})
+            m->registerHook(base+0x271ee0, FunctionScrapper::addressOfNonVirtual((d2){&D::resetAudioVars}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CollisionBlockPopup : public CollisionBlockPopup, public $CacBase {
+public:
+    ~$CollisionBlockPopup() {
+        endDestructor();
+    }
+    $CollisionBlockPopup() {}
+
+    using r0 = decltype(std::declval<CollisionBlockPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+    using c0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    using d0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+    static r0 create(EffectGameObject* p0, cocos2d::CCArray* p1) {
+        using r0 = decltype(std::declval<CollisionBlockPopup>().create(std::declval<EffectGameObject*>(), std::declval<cocos2d::CCArray*>()));
+        using f0 = r0(*)(EffectGameObject*, cocos2d::CCArray*);
+        return reinterpret_cast<f0>(base+0x130010)(p0, p1);
+
+    }
+
+    using r1 = decltype(std::declval<CollisionBlockPopup>().onNextItemID(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($CollisionBlockPopup::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onNextItemID(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<CollisionBlockPopup>().onNextItemID(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(CollisionBlockPopup*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x130e60)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CollisionBlockPopup::create} != (d0){&D::create})
+            m->registerHook(base+0x130010, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$CollisionBlockPopup::onNextItemID} != (d1){&D::onNextItemID})
+            m->registerHook(base+0x130e60, FunctionScrapper::addressOfNonVirtual((d1){&D::onNextItemID}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CreatorLayer : public CreatorLayer, public $CacBase {
+public:
+    ~$CreatorLayer() {
+        endDestructor();
+    }
+    $CreatorLayer() {}
+
+    using r0 = decltype(std::declval<CreatorLayer>().onMyLevels(std::declval<cocos2d::CCObject*>()));
+    using c0 = r0($CreatorLayer::*)(cocos2d::CCObject*) ;
+    using d0 = r0(D::*)(cocos2d::CCObject*) ;
+    r0 onMyLevels(cocos2d::CCObject* p0) {
+        using r0 = decltype(std::declval<CreatorLayer>().onMyLevels(std::declval<cocos2d::CCObject*>()));
+        using f0 = r0(*)(CreatorLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f0>(base+0x142b70)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<CreatorLayer>().onSavedLevels(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($CreatorLayer::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onSavedLevels(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<CreatorLayer>().onSavedLevels(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(CreatorLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0x142860)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CreatorLayer::onMyLevels} != (d0){&D::onMyLevels})
+            m->registerHook(base+0x142b70, FunctionScrapper::addressOfNonVirtual((d0){&D::onMyLevels}));
+
+        if ((c1){&$CreatorLayer::onSavedLevels} != (d1){&D::onSavedLevels})
+            m->registerHook(base+0x142860, FunctionScrapper::addressOfNonVirtual((d1){&D::onSavedLevels}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CustomSongLayer : public CustomSongLayer, public $CacBase {
+public:
+    ~$CustomSongLayer() {
+        endDestructor();
+    }
+    $CustomSongLayer() {}
+
+    using r0 = decltype(std::declval<CustomSongLayer>().init(std::declval<LevelSettingsObject*>()));
+    using c0 = r0($CustomSongLayer::*)(LevelSettingsObject*) ;
+    using d0 = r0(D::*)(LevelSettingsObject*) ;
+    r0 init(LevelSettingsObject* p0) {
+        using r0 = decltype(std::declval<CustomSongLayer>().init(std::declval<LevelSettingsObject*>()));
+        using f0 = r0(*)(CustomSongLayer*, LevelSettingsObject*);
+        return reinterpret_cast<f0>(base+0xf06f0)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<CustomSongLayer>().onArtists(std::declval<cocos2d::CCObject*>()));
+    using c1 = r1($CustomSongLayer::*)(cocos2d::CCObject*) ;
+    using d1 = r1(D::*)(cocos2d::CCObject*) ;
+    r1 onArtists(cocos2d::CCObject* p0) {
+        using r1 = decltype(std::declval<CustomSongLayer>().onArtists(std::declval<cocos2d::CCObject*>()));
+        using f1 = r1(*)(CustomSongLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f1>(base+0xf1950)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<CustomSongLayer>().onSongBrowser(std::declval<cocos2d::CCObject*>()));
+    using c2 = r2($CustomSongLayer::*)(cocos2d::CCObject*) ;
+    using d2 = r2(D::*)(cocos2d::CCObject*) ;
+    r2 onSongBrowser(cocos2d::CCObject* p0) {
+        using r2 = decltype(std::declval<CustomSongLayer>().onSongBrowser(std::declval<cocos2d::CCObject*>()));
+        using f2 = r2(*)(CustomSongLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f2>(base+0xf18a0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CustomSongLayer::init} != (d0){&D::init})
+            m->registerHook(base+0xf06f0, FunctionScrapper::addressOfNonVirtual((d0){&D::init}));
+
+        if ((c1){&$CustomSongLayer::onArtists} != (d1){&D::onArtists})
+            m->registerHook(base+0xf1950, FunctionScrapper::addressOfNonVirtual((d1){&D::onArtists}));
+
+        if ((c2){&$CustomSongLayer::onSongBrowser} != (d2){&D::onSongBrowser})
+            m->registerHook(base+0xf18a0, FunctionScrapper::addressOfNonVirtual((d2){&D::onSongBrowser}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $EditorOptionsLayer : public EditorOptionsLayer, public $CacBase {
+public:
+    ~$EditorOptionsLayer() {
+        endDestructor();
+    }
+    $EditorOptionsLayer() {}
+
+    using r0 = decltype(std::declval<EditorOptionsLayer>().onButtonsPerRow(std::declval<cocos2d::CCObject*>()));
+    using c0 = r0($EditorOptionsLayer::*)(cocos2d::CCObject*) ;
+    using d0 = r0(D::*)(cocos2d::CCObject*) ;
+    r0 onButtonsPerRow(cocos2d::CCObject* p0) {
+        using r0 = decltype(std::declval<EditorOptionsLayer>().onButtonsPerRow(std::declval<cocos2d::CCObject*>()));
+        using f0 = r0(*)(EditorOptionsLayer*, cocos2d::CCObject*);
+        return reinterpret_cast<f0>(base+0x147b30)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$EditorOptionsLayer::onButtonsPerRow} != (d0){&D::onButtonsPerRow})
+            m->registerHook(base+0x147b30, FunctionScrapper::addressOfNonVirtual((d0){&D::onButtonsPerRow}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $EndLevelLayer : public EndLevelLayer, public $CacBase {
+public:
+    ~$EndLevelLayer() {
+        endDestructor();
+    }
+    $EndLevelLayer() {}
+
+    using r0 = decltype(std::declval<EndLevelLayer>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<EndLevelLayer>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x2787d0)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$EndLevelLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x2787d0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $EditorPauseLayer : public EditorPauseLayer, public $CacBase {
+public:
+    ~$EditorPauseLayer() {
+        endDestructor();
+    }
+    $EditorPauseLayer() {}
+
+    using r1 = decltype(std::declval<EditorPauseLayer>().keyBackClicked());
+    using c1 = r1($EditorPauseLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 keyBackClicked() {
+        using r1 = decltype(std::declval<EditorPauseLayer>().keyBackClicked());
+        using f1 = r1(*)(EditorPauseLayer*);
+        return reinterpret_cast<f1>(base+0x13f320)(this);
+    }
+
+    using r2 = decltype(std::declval<EditorPauseLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+    using c2 = r2($EditorPauseLayer::*)(cocos2d::enumKeyCodes) ;
+    using d2 = r2(D::*)(cocos2d::enumKeyCodes) ;
+    r2 keyDown(cocos2d::enumKeyCodes p0) {
+        using r2 = decltype(std::declval<EditorPauseLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+        using f2 = r2(*)(EditorPauseLayer*, cocos2d::enumKeyCodes);
+        return reinterpret_cast<f2>(base+0x13f3a0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<EditorPauseLayer>().customSetup());
+    using c3 = r3($EditorPauseLayer::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 customSetup() {
+        using r3 = decltype(std::declval<EditorPauseLayer>().customSetup());
+        using f3 = r3(*)(EditorPauseLayer*);
+        return reinterpret_cast<f3>(base+0x13cc00)(this);
+    }
+
+    using r4 = decltype(std::declval<EditorPauseLayer>().FLAlert_Clicked(std::declval<FLAlertLayer*>(), std::declval<bool>()));
+    using c4 = r4($EditorPauseLayer::*)(FLAlertLayer*, bool) ;
+    using d4 = r4(D::*)(FLAlertLayer*, bool) ;
+    r4 FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
+        using r4 = decltype(std::declval<EditorPauseLayer>().FLAlert_Clicked(std::declval<FLAlertLayer*>(), std::declval<bool>()));
+        using f4 = r4(*)(EditorPauseLayer*, FLAlertLayer*, bool);
+        return reinterpret_cast<f4>(base+0x13f1b0)(this, p0, p1);
+    }
+
+    using r5 = decltype(std::declval<EditorPauseLayer>().create(std::declval<LevelEditorLayer*>()));
+    using c5 = r5(*)(LevelEditorLayer*);
+    using d5 = r5(*)(LevelEditorLayer*);
+    static r5 create(LevelEditorLayer* p0) {
+        using r5 = decltype(std::declval<EditorPauseLayer>().create(std::declval<LevelEditorLayer*>()));
+        using f5 = r5(*)(LevelEditorLayer*);
+        return reinterpret_cast<f5>(base+0x13c680)(p0);
+
+    }
+
+    using r6 = decltype(std::declval<EditorPauseLayer>().saveLevel());
+    using c6 = r6($EditorPauseLayer::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 saveLevel() {
+        using r6 = decltype(std::declval<EditorPauseLayer>().saveLevel());
+        using f6 = r6(*)(EditorPauseLayer*);
+        return reinterpret_cast<f6>(base+0x13ebd0)(this);
+    }
+
+    using r7 = decltype(std::declval<EditorPauseLayer>().init(std::declval<LevelEditorLayer*>()));
+    using c7 = r7($EditorPauseLayer::*)(LevelEditorLayer*) ;
+    using d7 = r7(D::*)(LevelEditorLayer*) ;
+    r7 init(LevelEditorLayer* p0) {
+        using r7 = decltype(std::declval<EditorPauseLayer>().init(std::declval<LevelEditorLayer*>()));
+        using f7 = r7(*)(EditorPauseLayer*, LevelEditorLayer*);
+        return reinterpret_cast<f7>(base+0x13c7a0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$EditorPauseLayer::keyBackClicked} != (d1){&D::keyBackClicked})
+            m->registerHook(base+0x13f320, FunctionScrapper::addressOfVirtual(i, (d1){&D::keyBackClicked}));
+
+        if ((c2){&$EditorPauseLayer::keyDown} != (d2){&D::keyDown})
+            m->registerHook(base+0x13f3a0, FunctionScrapper::addressOfVirtual(i, (d2){&D::keyDown}));
+
+        if ((c3){&$EditorPauseLayer::customSetup} != (d3){&D::customSetup})
+            m->registerHook(base+0x13cc00, FunctionScrapper::addressOfVirtual(i, (d3){&D::customSetup}));
+
+        if ((c4){&$EditorPauseLayer::FLAlert_Clicked} != (d4){&D::FLAlert_Clicked})
+            m->registerHook(base+0x13f1b0, FunctionScrapper::addressOfVirtual(i, (d4){&D::FLAlert_Clicked}));
+
+        if ((c5){&$EditorPauseLayer::create} != (d5){&D::create})
+            m->registerHook(base+0x13c680, FunctionScrapper::addressOfNonVirtual((d5){&D::create}));
+
+        if ((c6){&$EditorPauseLayer::saveLevel} != (d6){&D::saveLevel})
+            m->registerHook(base+0x13ebd0, FunctionScrapper::addressOfNonVirtual((d6){&D::saveLevel}));
+
+        if ((c7){&$EditorPauseLayer::init} != (d7){&D::init})
+            m->registerHook(base+0x13c7a0, FunctionScrapper::addressOfNonVirtual((d7){&D::init}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ScrollingLayer : public ScrollingLayer, public $CacBase {
+public:
+    ~$ScrollingLayer() {
+        endDestructor();
+    }
+    $ScrollingLayer() {}
+
+    using r0 = decltype(std::declval<ScrollingLayer>().create(std::declval<cocos2d::CCSize>(), std::declval<cocos2d::CCPoint>(), std::declval<float>()));
+    using c0 = r0(*)(cocos2d::CCSize, cocos2d::CCPoint, float);
+    using d0 = r0(*)(cocos2d::CCSize, cocos2d::CCPoint, float);
+    static r0 create(cocos2d::CCSize p0, cocos2d::CCPoint p1, float p2) {
+        using r0 = decltype(std::declval<ScrollingLayer>().create(std::declval<cocos2d::CCSize>(), std::declval<cocos2d::CCPoint>(), std::declval<float>()));
+        using f0 = r0(*)(cocos2d::CCSize, cocos2d::CCPoint, float);
+        return reinterpret_cast<f0>(base+0x41a900)(p0, p1, p2);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$ScrollingLayer::create} != (d0){&D::create})
+            m->registerHook(base+0x41a900, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJListLayer : public GJListLayer, public $CacBase {
+public:
+    ~$GJListLayer() {
+        endDestructor();
+    }
+    $GJListLayer() {}
+
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CurrencyRewardLayer : public CurrencyRewardLayer, public $CacBase {
+public:
+    ~$CurrencyRewardLayer() {
+        endDestructor();
+    }
+    $CurrencyRewardLayer() {}
+
+    using r1 = decltype(std::declval<CurrencyRewardLayer>().update(std::declval<float>()));
+    using c1 = r1($CurrencyRewardLayer::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 update(float p0) {
+        using r1 = decltype(std::declval<CurrencyRewardLayer>().update(std::declval<float>()));
+        using f1 = r1(*)(CurrencyRewardLayer*, float);
+        return reinterpret_cast<f1>(base+0x44a5c0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$CurrencyRewardLayer::update} != (d1){&D::update})
+            m->registerHook(base+0x44a5c0, FunctionScrapper::addressOfVirtual(i, (d1){&D::update}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $DialogLayer : public DialogLayer, public $CacBase {
+public:
+    ~$DialogLayer() {
+        endDestructor();
+    }
+    $DialogLayer() {}
+
+    using r1 = decltype(std::declval<DialogLayer>().onEnter());
+    using c1 = r1($DialogLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 onEnter() {
+        using r1 = decltype(std::declval<DialogLayer>().onEnter());
+        using f1 = r1(*)(DialogLayer*);
+        return reinterpret_cast<f1>(base+0x205900)(this);
+    }
+
+    using r2 = decltype(std::declval<DialogLayer>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c2 = r2($DialogLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d2 = r2(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r2 ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r2 = decltype(std::declval<DialogLayer>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f2 = r2(*)(DialogLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f2>(base+0x205790)(this, p0, p1);
+    }
+
+    using r3 = decltype(std::declval<DialogLayer>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c3 = r3($DialogLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d3 = r3(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r3 ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r3 = decltype(std::declval<DialogLayer>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f3 = r3(*)(DialogLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f3>(base+0x205820)(this, p0, p1);
+    }
+
+    using r4 = decltype(std::declval<DialogLayer>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c4 = r4($DialogLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d4 = r4(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r4 ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r4 = decltype(std::declval<DialogLayer>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f4 = r4(*)(DialogLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f4>(base+0x2057e0)(this, p0, p1);
+    }
+
+    using r5 = decltype(std::declval<DialogLayer>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c5 = r5($DialogLayer::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d5 = r5(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r5 ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r5 = decltype(std::declval<DialogLayer>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f5 = r5(*)(DialogLayer*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f5>(base+0x205840)(this, p0, p1);
+    }
+
+    using r6 = decltype(std::declval<DialogLayer>().registerWithTouchDispatcher());
+    using c6 = r6($DialogLayer::*)() ;
+    using d6 = r6(D::*)() ;
+    r6 registerWithTouchDispatcher() {
+        using r6 = decltype(std::declval<DialogLayer>().registerWithTouchDispatcher());
+        using f6 = r6(*)(DialogLayer*);
+        return reinterpret_cast<f6>(base+0x205890)(this);
+    }
+
+    using r7 = decltype(std::declval<DialogLayer>().keyBackClicked());
+    using c7 = r7($DialogLayer::*)() ;
+    using d7 = r7(D::*)() ;
+    r7 keyBackClicked() {
+        using r7 = decltype(std::declval<DialogLayer>().keyBackClicked());
+        using f7 = r7(*)(DialogLayer*);
+        return reinterpret_cast<f7>(base+0x2056a0)(this);
+    }
+
+    using r8 = decltype(std::declval<DialogLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+    using c8 = r8($DialogLayer::*)(cocos2d::enumKeyCodes) ;
+    using d8 = r8(D::*)(cocos2d::enumKeyCodes) ;
+    r8 keyDown(cocos2d::enumKeyCodes p0) {
+        using r8 = decltype(std::declval<DialogLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+        using f8 = r8(*)(DialogLayer*, cocos2d::enumKeyCodes);
+        return reinterpret_cast<f8>(base+0x205ce0)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<DialogLayer>().fadeInTextFinished(std::declval<TextArea*>()));
+    using c9 = r9($DialogLayer::*)(TextArea*) ;
+    using d9 = r9(D::*)(TextArea*) ;
+    r9 fadeInTextFinished(TextArea* p0) {
+        using r9 = decltype(std::declval<DialogLayer>().fadeInTextFinished(std::declval<TextArea*>()));
+        using f9 = r9(*)(DialogLayer*, TextArea*);
+        return reinterpret_cast<f9>(base+0x205930)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$DialogLayer::onEnter} != (d1){&D::onEnter})
+            m->registerHook(base+0x205900, FunctionScrapper::addressOfVirtual(i, (d1){&D::onEnter}));
+
+        if ((c2){&$DialogLayer::ccTouchBegan} != (d2){&D::ccTouchBegan})
+            m->registerHook(base+0x205790, FunctionScrapper::addressOfVirtual(i, (d2){&D::ccTouchBegan}));
+
+        if ((c3){&$DialogLayer::ccTouchMoved} != (d3){&D::ccTouchMoved})
+            m->registerHook(base+0x205820, FunctionScrapper::addressOfVirtual(i, (d3){&D::ccTouchMoved}));
+
+        if ((c4){&$DialogLayer::ccTouchEnded} != (d4){&D::ccTouchEnded})
+            m->registerHook(base+0x2057e0, FunctionScrapper::addressOfVirtual(i, (d4){&D::ccTouchEnded}));
+
+        if ((c5){&$DialogLayer::ccTouchCancelled} != (d5){&D::ccTouchCancelled})
+            m->registerHook(base+0x205840, FunctionScrapper::addressOfVirtual(i, (d5){&D::ccTouchCancelled}));
+
+        if ((c6){&$DialogLayer::registerWithTouchDispatcher} != (d6){&D::registerWithTouchDispatcher})
+            m->registerHook(base+0x205890, FunctionScrapper::addressOfVirtual(i, (d6){&D::registerWithTouchDispatcher}));
+
+        if ((c7){&$DialogLayer::keyBackClicked} != (d7){&D::keyBackClicked})
+            m->registerHook(base+0x2056a0, FunctionScrapper::addressOfVirtual(i, (d7){&D::keyBackClicked}));
+
+        if ((c8){&$DialogLayer::keyDown} != (d8){&D::keyDown})
+            m->registerHook(base+0x205ce0, FunctionScrapper::addressOfVirtual(i, (d8){&D::keyDown}));
+
+        if ((c9){&$DialogLayer::fadeInTextFinished} != (d9){&D::fadeInTextFinished})
+            m->registerHook(base+0x205930, FunctionScrapper::addressOfVirtual(i, (d9){&D::fadeInTextFinished}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJCommentListLayer : public GJCommentListLayer, public $CacBase {
+public:
+    ~$GJCommentListLayer() {
+        endDestructor();
+    }
+    $GJCommentListLayer() {}
+
+    using r1 = decltype(std::declval<GJCommentListLayer>().create(std::declval<BoomListView*>(), std::declval<char const*>(), std::declval<cocos2d::_ccColor4B>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
+    using c1 = r1(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool);
+    using d1 = r1(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool);
+    static r1 create(BoomListView* p0, char const* p1, cocos2d::_ccColor4B p2, float p3, float p4, bool p5) {
+        using r1 = decltype(std::declval<GJCommentListLayer>().create(std::declval<BoomListView*>(), std::declval<char const*>(), std::declval<cocos2d::_ccColor4B>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
+        using f1 = r1(*)(BoomListView*, char const*, cocos2d::_ccColor4B, float, float, bool);
+        return reinterpret_cast<f1>(base+0x147d00)(p0, p1, p2, p3, p4, p5);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GJCommentListLayer::create} != (d1){&D::create})
+            m->registerHook(base+0x147d00, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $MenuLayer : public MenuLayer, public $CacBase {
+public:
+    ~$MenuLayer() {
+        endDestructor();
+    }
+    $MenuLayer() {}
+
+    using r1 = decltype(std::declval<MenuLayer>().init());
+    using c1 = r1($MenuLayer::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<MenuLayer>().init());
+        using f1 = r1(*)(MenuLayer*);
         return reinterpret_cast<f1>(base+0x1d14b0)(this);
     }
 
-    using c2 = void($MenuLayer::*)();
-    using d2 = void(D::*)();
-    using f2 = void(*)($MenuLayer*);
-    inline void keyBackClicked() {
+    using r2 = decltype(std::declval<MenuLayer>().keyBackClicked());
+    using c2 = r2($MenuLayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 keyBackClicked() {
+        using r2 = decltype(std::declval<MenuLayer>().keyBackClicked());
+        using f2 = r2(*)(MenuLayer*);
         return reinterpret_cast<f2>(base+0x1d3160)(this);
     }
 
-    using c3 = void($MenuLayer::*)(cocos2d::enumKeyCodes);
-    using d3 = void(D::*)(cocos2d::enumKeyCodes);
-    using f3 = void(*)($MenuLayer*, cocos2d::enumKeyCodes);
-    inline void keyDown(cocos2d::enumKeyCodes p0) {
+    using r3 = decltype(std::declval<MenuLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+    using c3 = r3($MenuLayer::*)(cocos2d::enumKeyCodes) ;
+    using d3 = r3(D::*)(cocos2d::enumKeyCodes) ;
+    r3 keyDown(cocos2d::enumKeyCodes p0) {
+        using r3 = decltype(std::declval<MenuLayer>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+        using f3 = r3(*)(MenuLayer*, cocos2d::enumKeyCodes);
         return reinterpret_cast<f3>(base+0x1d33d0)(this, p0);
     }
 
-    using c4 = void($MenuLayer::*)();
-    using d4 = void(D::*)();
-    using f4 = void(*)($MenuLayer*);
-    inline void googlePlaySignedIn() {
+    using r4 = decltype(std::declval<MenuLayer>().googlePlaySignedIn());
+    using c4 = r4($MenuLayer::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 googlePlaySignedIn() {
+        using r4 = decltype(std::declval<MenuLayer>().googlePlaySignedIn());
+        using f4 = r4(*)(MenuLayer*);
         return reinterpret_cast<f4>(base+0x1d2f30)(this);
     }
 
-    using c5 = void($MenuLayer::*)(FLAlertLayer*, bool);
-    using d5 = void(D::*)(FLAlertLayer*, bool);
-    using f5 = void(*)($MenuLayer*, FLAlertLayer*, bool);
-    inline void FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
+    using r5 = decltype(std::declval<MenuLayer>().FLAlert_Clicked(std::declval<FLAlertLayer*>(), std::declval<bool>()));
+    using c5 = r5($MenuLayer::*)(FLAlertLayer*, bool) ;
+    using d5 = r5(D::*)(FLAlertLayer*, bool) ;
+    r5 FLAlert_Clicked(FLAlertLayer* p0, bool p1) {
+        using r5 = decltype(std::declval<MenuLayer>().FLAlert_Clicked(std::declval<FLAlertLayer*>(), std::declval<bool>()));
+        using f5 = r5(*)(MenuLayer*, FLAlertLayer*, bool);
         return reinterpret_cast<f5>(base+0x1d3190)(this, p0, p1);
     }
 
-    using c6 = void($MenuLayer::*)(cocos2d::CCObject*);
-    using d6 = void(D::*)(cocos2d::CCObject*);
-    using f6 = void(*)($MenuLayer*, cocos2d::CCObject*);
-    inline void onMoreGames(cocos2d::CCObject* p0) {
+    using r6 = decltype(std::declval<MenuLayer>().onMoreGames(std::declval<cocos2d::CCObject*>()));
+    using c6 = r6($MenuLayer::*)(cocos2d::CCObject*) ;
+    using d6 = r6(D::*)(cocos2d::CCObject*) ;
+    r6 onMoreGames(cocos2d::CCObject* p0) {
+        using r6 = decltype(std::declval<MenuLayer>().onMoreGames(std::declval<cocos2d::CCObject*>()));
+        using f6 = r6(*)(MenuLayer*, cocos2d::CCObject*);
         return reinterpret_cast<f6>(base+0x1d2ad0)(this, p0);
     }
 
-    using c7 = void($MenuLayer::*)(cocos2d::CCObject*);
-    using d7 = void(D::*)(cocos2d::CCObject*);
-    using f7 = void(*)($MenuLayer*, cocos2d::CCObject*);
-    inline void onQuit(cocos2d::CCObject* p0) {
+    using r7 = decltype(std::declval<MenuLayer>().onQuit(std::declval<cocos2d::CCObject*>()));
+    using c7 = r7($MenuLayer::*)(cocos2d::CCObject*) ;
+    using d7 = r7(D::*)(cocos2d::CCObject*) ;
+    r7 onQuit(cocos2d::CCObject* p0) {
+        using r7 = decltype(std::declval<MenuLayer>().onQuit(std::declval<cocos2d::CCObject*>()));
+        using f7 = r7(*)(MenuLayer*, cocos2d::CCObject*);
         return reinterpret_cast<f7>(base+0x1d2b40)(this, p0);
     }
 
-    using c8 = void($MenuLayer::*)(bool);
-    using d8 = void(D::*)(bool);
-    using f8 = void(*)($MenuLayer*, bool);
-    inline void scene(bool p0) {
+    using r8 = decltype(std::declval<MenuLayer>().scene(std::declval<bool>()));
+    using c8 = r8($MenuLayer::*)(bool) ;
+    using d8 = r8(D::*)(bool) ;
+    r8 scene(bool p0) {
+        using r8 = decltype(std::declval<MenuLayer>().scene(std::declval<bool>()));
+        using f8 = r8(*)(MenuLayer*, bool);
         return reinterpret_cast<f8>(base+0x1d12d0)(this, p0);
     }
 
-    inline $MenuLayer(bool) {}
-    inline $MenuLayer() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c1){&$MenuLayer::init} != (d1){&D::init})
-            m->registerHook(base+0x1d14b0, extract(i, (d1){&D::init}));
+            m->registerHook(base+0x1d14b0, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
 
         if ((c2){&$MenuLayer::keyBackClicked} != (d2){&D::keyBackClicked})
-            m->registerHook(base+0x1d3160, extract(i, (d2){&D::keyBackClicked}));
+            m->registerHook(base+0x1d3160, FunctionScrapper::addressOfVirtual(i, (d2){&D::keyBackClicked}));
 
         if ((c3){&$MenuLayer::keyDown} != (d3){&D::keyDown})
-            m->registerHook(base+0x1d33d0, extract(i, (d3){&D::keyDown}));
+            m->registerHook(base+0x1d33d0, FunctionScrapper::addressOfVirtual(i, (d3){&D::keyDown}));
 
         if ((c4){&$MenuLayer::googlePlaySignedIn} != (d4){&D::googlePlaySignedIn})
-            m->registerHook(base+0x1d2f30, extract(i, (d4){&D::googlePlaySignedIn}));
+            m->registerHook(base+0x1d2f30, FunctionScrapper::addressOfVirtual(i, (d4){&D::googlePlaySignedIn}));
 
         if ((c5){&$MenuLayer::FLAlert_Clicked} != (d5){&D::FLAlert_Clicked})
-            m->registerHook(base+0x1d3190, extract(i, (d5){&D::FLAlert_Clicked}));
+            m->registerHook(base+0x1d3190, FunctionScrapper::addressOfVirtual(i, (d5){&D::FLAlert_Clicked}));
 
         if ((c6){&$MenuLayer::onMoreGames} != (d6){&D::onMoreGames})
-            m->registerHook(base+0x1d2ad0, extract(i, (d6){&D::onMoreGames}));
+            m->registerHook(base+0x1d2ad0, FunctionScrapper::addressOfNonVirtual((d6){&D::onMoreGames}));
 
         if ((c7){&$MenuLayer::onQuit} != (d7){&D::onQuit})
-            m->registerHook(base+0x1d2b40, extract(i, (d7){&D::onQuit}));
+            m->registerHook(base+0x1d2b40, FunctionScrapper::addressOfNonVirtual((d7){&D::onQuit}));
 
         if ((c8){&$MenuLayer::scene} != (d8){&D::scene})
-            m->registerHook(base+0x1d12d0, extract(i, (d8){&D::scene}));
+            m->registerHook(base+0x1d12d0, FunctionScrapper::addressOfNonVirtual((d8){&D::scene}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $ButtonSprite : public NullButtonSprite, public $CacBase {
+class $PlayLayer : public PlayLayer, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$ButtonSprite() {}
+    ~$PlayLayer() {
+        endDestructor();
+    }
+    $PlayLayer() {}
 
-    using c0 = ButtonSprite*(*)(char const*);
-    using d0 = ButtonSprite*(*)(char const*);
-    using f0 = ButtonSprite*(*)(char const*);
-    inline static ButtonSprite* create(char const* p0) {
+    using r0 = decltype(std::declval<PlayLayer>().addCircle(std::declval<CCCircleWave*>()));
+    using c0 = r0($PlayLayer::*)(CCCircleWave*) ;
+    using d0 = r0(D::*)(CCCircleWave*) ;
+    r0 addCircle(CCCircleWave* p0) {
+        using r0 = decltype(std::declval<PlayLayer>().addCircle(std::declval<CCCircleWave*>()));
+        using f0 = r0(*)(PlayLayer*, CCCircleWave*);
+        return reinterpret_cast<f0>(base+0x7e0f0)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<PlayLayer>().addObject(std::declval<GameObject*>()));
+    using c1 = r1($PlayLayer::*)(GameObject*) ;
+    using d1 = r1(D::*)(GameObject*) ;
+    r1 addObject(GameObject* p0) {
+        using r1 = decltype(std::declval<PlayLayer>().addObject(std::declval<GameObject*>()));
+        using f1 = r1(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f1>(base+0x70e50)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<PlayLayer>().addToGroupOld(std::declval<GameObject*>()));
+    using c2 = r2($PlayLayer::*)(GameObject*) ;
+    using d2 = r2(D::*)(GameObject*) ;
+    r2 addToGroupOld(GameObject* p0) {
+        using r2 = decltype(std::declval<PlayLayer>().addToGroupOld(std::declval<GameObject*>()));
+        using f2 = r2(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f2>(base+0x77680)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<PlayLayer>().addToSpeedObjects(std::declval<GameObject*>()));
+    using c3 = r3($PlayLayer::*)(GameObject*) ;
+    using d3 = r3(D::*)(GameObject*) ;
+    r3 addToSpeedObjects(GameObject* p0) {
+        using r3 = decltype(std::declval<PlayLayer>().addToSpeedObjects(std::declval<GameObject*>()));
+        using f3 = r3(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f3>(base+0x7cfc0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<PlayLayer>().animateInDualGround(std::declval<GameObject*>(), std::declval<float>(), std::declval<bool>()));
+    using c4 = r4($PlayLayer::*)(GameObject*, float, bool) ;
+    using d4 = r4(D::*)(GameObject*, float, bool) ;
+    r4 animateInDualGround(GameObject* p0, float p1, bool p2) {
+        using r4 = decltype(std::declval<PlayLayer>().animateInDualGround(std::declval<GameObject*>(), std::declval<float>(), std::declval<bool>()));
+        using f4 = r4(*)(PlayLayer*, GameObject*, float, bool);
+        return reinterpret_cast<f4>(base+0x7d710)(this, p0, p1, p2);
+    }
+
+    using r5 = decltype(std::declval<PlayLayer>().animateInGround(std::declval<bool>()));
+    using c5 = r5($PlayLayer::*)(bool) ;
+    using d5 = r5(D::*)(bool) ;
+    r5 animateInGround(bool p0) {
+        using r5 = decltype(std::declval<PlayLayer>().animateInGround(std::declval<bool>()));
+        using f5 = r5(*)(PlayLayer*, bool);
+        return reinterpret_cast<f5>(base+0x7d9d0)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<PlayLayer>().animateOutGround(std::declval<bool>()));
+    using c6 = r6($PlayLayer::*)(bool) ;
+    using d6 = r6(D::*)(bool) ;
+    r6 animateOutGround(bool p0) {
+        using r6 = decltype(std::declval<PlayLayer>().animateOutGround(std::declval<bool>()));
+        using f6 = r6(*)(PlayLayer*, bool);
+        return reinterpret_cast<f6>(base+0x6f350)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<PlayLayer>().animateOutGroundFinished());
+    using c7 = r7($PlayLayer::*)() ;
+    using d7 = r7(D::*)() ;
+    r7 animateOutGroundFinished() {
+        using r7 = decltype(std::declval<PlayLayer>().animateOutGroundFinished());
+        using f7 = r7(*)(PlayLayer*);
+        return reinterpret_cast<f7>(base+0x7de80)(this);
+    }
+
+    using r8 = decltype(std::declval<PlayLayer>().applyEnterEffect(std::declval<GameObject*>()));
+    using c8 = r8($PlayLayer::*)(GameObject*) ;
+    using d8 = r8(D::*)(GameObject*) ;
+    r8 applyEnterEffect(GameObject* p0) {
+        using r8 = decltype(std::declval<PlayLayer>().applyEnterEffect(std::declval<GameObject*>()));
+        using f8 = r8(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f8>(base+0x7c310)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<PlayLayer>().calculateColorValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<ColorActionSprite*>(), std::declval<GJEffectManager*>()));
+    using c9 = r9($PlayLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) ;
+    using d9 = r9(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) ;
+    r9 calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
+        using r9 = decltype(std::declval<PlayLayer>().calculateColorValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<ColorActionSprite*>(), std::declval<GJEffectManager*>()));
+        using f9 = r9(*)(PlayLayer*, EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+        return reinterpret_cast<f9>(base+0x7aa10)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r10 = decltype(std::declval<PlayLayer>().cameraMoveX(std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c10 = r10($PlayLayer::*)(float, float, float) ;
+    using d10 = r10(D::*)(float, float, float) ;
+    r10 cameraMoveX(float p0, float p1, float p2) {
+        using r10 = decltype(std::declval<PlayLayer>().cameraMoveX(std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f10 = r10(*)(PlayLayer*, float, float, float);
+        return reinterpret_cast<f10>(base+0x7cbe0)(this, p0, p1, p2);
+    }
+
+    using r11 = decltype(std::declval<PlayLayer>().cameraMoveY(std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c11 = r11($PlayLayer::*)(float, float, float) ;
+    using d11 = r11(D::*)(float, float, float) ;
+    r11 cameraMoveY(float p0, float p1, float p2) {
+        using r11 = decltype(std::declval<PlayLayer>().cameraMoveY(std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f11 = r11(*)(PlayLayer*, float, float, float);
+        return reinterpret_cast<f11>(base+0x7cc60)(this, p0, p1, p2);
+    }
+
+    using r12 = decltype(std::declval<PlayLayer>().checkCollisions(std::declval<PlayerObject*>(), std::declval<float>()));
+    using c12 = r12($PlayLayer::*)(PlayerObject*, float) ;
+    using d12 = r12(D::*)(PlayerObject*, float) ;
+    r12 checkCollisions(PlayerObject* p0, float p1) {
+        using r12 = decltype(std::declval<PlayLayer>().checkCollisions(std::declval<PlayerObject*>(), std::declval<float>()));
+        using f12 = r12(*)(PlayLayer*, PlayerObject*, float);
+        return reinterpret_cast<f12>(base+0x78c90)(this, p0, p1);
+    }
+
+    using r13 = decltype(std::declval<PlayLayer>().circleWaveWillBeRemoved(std::declval<CCCircleWave*>()));
+    using c13 = r13($PlayLayer::*)(CCCircleWave*) ;
+    using d13 = r13(D::*)(CCCircleWave*) ;
+    r13 circleWaveWillBeRemoved(CCCircleWave* p0) {
+        using r13 = decltype(std::declval<PlayLayer>().circleWaveWillBeRemoved(std::declval<CCCircleWave*>()));
+        using f13 = r13(*)(PlayLayer*, CCCircleWave*);
+        return reinterpret_cast<f13>(base+0x7e110)(this, p0);
+    }
+
+    using r14 = decltype(std::declval<PlayLayer>().claimParticle(std::declval<gd::string>()));
+    using c14 = r14($PlayLayer::*)(gd::string) ;
+    using d14 = r14(D::*)(gd::string) ;
+    r14 claimParticle(gd::string p0) {
+        using r14 = decltype(std::declval<PlayLayer>().claimParticle(std::declval<gd::string>()));
+        using f14 = r14(*)(PlayLayer*, gd::string);
+        return reinterpret_cast<f14>(base+0x76ba0)(this, p0);
+    }
+
+    using r15 = decltype(std::declval<PlayLayer>().clearPickedUpItems());
+    using c15 = r15($PlayLayer::*)() ;
+    using d15 = r15(D::*)() ;
+    r15 clearPickedUpItems() {
+        using r15 = decltype(std::declval<PlayLayer>().clearPickedUpItems());
+        using f15 = r15(*)(PlayLayer*);
+        return reinterpret_cast<f15>(base+0x7cfa0)(this);
+    }
+
+    using r16 = decltype(std::declval<PlayLayer>().colorObject(std::declval<int>(), std::declval<cocos2d::_ccColor3B>()));
+    using c16 = r16($PlayLayer::*)(int, cocos2d::_ccColor3B) ;
+    using d16 = r16(D::*)(int, cocos2d::_ccColor3B) ;
+    r16 colorObject(int p0, cocos2d::_ccColor3B p1) {
+        using r16 = decltype(std::declval<PlayLayer>().colorObject(std::declval<int>(), std::declval<cocos2d::_ccColor3B>()));
+        using f16 = r16(*)(PlayLayer*, int, cocos2d::_ccColor3B);
+        return reinterpret_cast<f16>(base+0x77810)(this, p0, p1);
+    }
+
+    using r17 = decltype(std::declval<PlayLayer>().commitJumps());
+    using c17 = r17($PlayLayer::*)() ;
+    using d17 = r17(D::*)() ;
+    r17 commitJumps() {
+        using r17 = decltype(std::declval<PlayLayer>().commitJumps());
+        using f17 = r17(*)(PlayLayer*);
+        return reinterpret_cast<f17>(base+0x737e0)(this);
+    }
+
+    using r18 = decltype(std::declval<PlayLayer>().create(std::declval<GJGameLevel*>()));
+    using c18 = r18(*)(GJGameLevel*);
+    using d18 = r18(*)(GJGameLevel*);
+    static r18 create(GJGameLevel* p0) {
+        using r18 = decltype(std::declval<PlayLayer>().create(std::declval<GJGameLevel*>()));
+        using f18 = r18(*)(GJGameLevel*);
+        return reinterpret_cast<f18>(base+0x6b590)(p0);
+
+    }
+
+    using r19 = decltype(std::declval<PlayLayer>().createCheckpoint());
+    using c19 = r19($PlayLayer::*)() ;
+    using d19 = r19(D::*)() ;
+    r19 createCheckpoint() {
+        using r19 = decltype(std::declval<PlayLayer>().createCheckpoint());
+        using f19 = r19(*)(PlayLayer*);
+        return reinterpret_cast<f19>(base+0x7e470)(this);
+    }
+
+    using r20 = decltype(std::declval<PlayLayer>().createObjectsFromSetup(std::declval<gd::string>()));
+    using c20 = r20($PlayLayer::*)(gd::string) ;
+    using d20 = r20(D::*)(gd::string) ;
+    r20 createObjectsFromSetup(gd::string p0) {
+        using r20 = decltype(std::declval<PlayLayer>().createObjectsFromSetup(std::declval<gd::string>()));
+        using f20 = r20(*)(PlayLayer*, gd::string);
+        return reinterpret_cast<f20>(base+0x6d130)(this, p0);
+    }
+
+    using r21 = decltype(std::declval<PlayLayer>().createParticle(std::declval<int>(), std::declval<char const*>(), std::declval<int>(), std::declval<cocos2d::tCCPositionType>()));
+    using c21 = r21($PlayLayer::*)(int, char const*, int, cocos2d::tCCPositionType) ;
+    using d21 = r21(D::*)(int, char const*, int, cocos2d::tCCPositionType) ;
+    r21 createParticle(int p0, char const* p1, int p2, cocos2d::tCCPositionType p3) {
+        using r21 = decltype(std::declval<PlayLayer>().createParticle(std::declval<int>(), std::declval<char const*>(), std::declval<int>(), std::declval<cocos2d::tCCPositionType>()));
+        using f21 = r21(*)(PlayLayer*, int, char const*, int, cocos2d::tCCPositionType);
+        return reinterpret_cast<f21>(base+0x76800)(this, p0, p1, p2, p3);
+    }
+
+    using r22 = decltype(std::declval<PlayLayer>().currencyWillExit(std::declval<CurrencyRewardLayer*>()));
+    using c22 = r22($PlayLayer::*)(CurrencyRewardLayer*) ;
+    using d22 = r22(D::*)(CurrencyRewardLayer*) ;
+    r22 currencyWillExit(CurrencyRewardLayer* p0) {
+        using r22 = decltype(std::declval<PlayLayer>().currencyWillExit(std::declval<CurrencyRewardLayer*>()));
+        using f22 = r22(*)(PlayLayer*, CurrencyRewardLayer*);
+        return reinterpret_cast<f22>(base+0x7e070)(this, p0);
+    }
+
+    using r23 = decltype(std::declval<PlayLayer>().delayedResetLevel());
+    using c23 = r23($PlayLayer::*)() ;
+    using d23 = r23(D::*)() ;
+    r23 delayedResetLevel() {
+        using r23 = decltype(std::declval<PlayLayer>().delayedResetLevel());
+        using f23 = r23(*)(PlayLayer*);
+        return reinterpret_cast<f23>(base+0x7e050)(this);
+    }
+
+    using r24 = decltype(std::declval<PlayLayer>().destroyPlayer(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+    using c24 = r24($PlayLayer::*)(PlayerObject*, GameObject*) ;
+    using d24 = r24(D::*)(PlayerObject*, GameObject*) ;
+    r24 destroyPlayer(PlayerObject* p0, GameObject* p1) {
+        using r24 = decltype(std::declval<PlayLayer>().destroyPlayer(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+        using f24 = r24(*)(PlayLayer*, PlayerObject*, GameObject*);
+        return reinterpret_cast<f24>(base+0x7ab80)(this, p0, p1);
+    }
+
+    using r25 = decltype(std::declval<PlayLayer>().dialogClosed(std::declval<DialogLayer*>()));
+    using c25 = r25($PlayLayer::*)(DialogLayer*) ;
+    using d25 = r25(D::*)(DialogLayer*) ;
+    r25 dialogClosed(DialogLayer* p0) {
+        using r25 = decltype(std::declval<PlayLayer>().dialogClosed(std::declval<DialogLayer*>()));
+        using f25 = r25(*)(PlayLayer*, DialogLayer*);
+        return reinterpret_cast<f25>(base+0x7e0b0)(this, p0);
+    }
+
+    using r26 = decltype(std::declval<PlayLayer>().draw());
+    using c26 = r26($PlayLayer::*)() ;
+    using d26 = r26(D::*)() ;
+    r26 draw() {
+        using r26 = decltype(std::declval<PlayLayer>().draw());
+        using f26 = r26(*)(PlayLayer*);
+        return reinterpret_cast<f26>(base+0x7d160)(this);
+    }
+
+    using r27 = decltype(std::declval<PlayLayer>().enterDualMode(std::declval<GameObject*>(), std::declval<bool>()));
+    using c27 = r27($PlayLayer::*)(GameObject*, bool) ;
+    using d27 = r27(D::*)(GameObject*, bool) ;
+    r27 enterDualMode(GameObject* p0, bool p1) {
+        using r27 = decltype(std::declval<PlayLayer>().enterDualMode(std::declval<GameObject*>(), std::declval<bool>()));
+        using f27 = r27(*)(PlayLayer*, GameObject*, bool);
+        return reinterpret_cast<f27>(base+0x7d6a0)(this, p0, p1);
+    }
+
+    using r28 = decltype(std::declval<PlayLayer>().exitAirMode());
+    using c28 = r28($PlayLayer::*)() ;
+    using d28 = r28(D::*)() ;
+    r28 exitAirMode() {
+        using r28 = decltype(std::declval<PlayLayer>().exitAirMode());
+        using f28 = r28(*)(PlayLayer*);
+        return reinterpret_cast<f28>(base+0x7dd40)(this);
+    }
+
+    using r29 = decltype(std::declval<PlayLayer>().exitBirdMode(std::declval<PlayerObject*>()));
+    using c29 = r29($PlayLayer::*)(PlayerObject*) ;
+    using d29 = r29(D::*)(PlayerObject*) ;
+    r29 exitBirdMode(PlayerObject* p0) {
+        using r29 = decltype(std::declval<PlayLayer>().exitBirdMode(std::declval<PlayerObject*>()));
+        using f29 = r29(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f29>(base+0x7dd80)(this, p0);
+    }
+
+    using r30 = decltype(std::declval<PlayLayer>().exitDartMode(std::declval<PlayerObject*>()));
+    using c30 = r30($PlayLayer::*)(PlayerObject*) ;
+    using d30 = r30(D::*)(PlayerObject*) ;
+    r30 exitDartMode(PlayerObject* p0) {
+        using r30 = decltype(std::declval<PlayLayer>().exitDartMode(std::declval<PlayerObject*>()));
+        using f30 = r30(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f30>(base+0x7ddd0)(this, p0);
+    }
+
+    using r31 = decltype(std::declval<PlayLayer>().exitFlyMode(std::declval<PlayerObject*>()));
+    using c31 = r31($PlayLayer::*)(PlayerObject*) ;
+    using d31 = r31(D::*)(PlayerObject*) ;
+    r31 exitFlyMode(PlayerObject* p0) {
+        using r31 = decltype(std::declval<PlayLayer>().exitFlyMode(std::declval<PlayerObject*>()));
+        using f31 = r31(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f31>(base+0x7dcf0)(this, p0);
+    }
+
+    using r32 = decltype(std::declval<PlayLayer>().exitRobotMode(std::declval<PlayerObject*>()));
+    using c32 = r32($PlayLayer::*)(PlayerObject*) ;
+    using d32 = r32(D::*)(PlayerObject*) ;
+    r32 exitRobotMode(PlayerObject* p0) {
+        using r32 = decltype(std::declval<PlayLayer>().exitRobotMode(std::declval<PlayerObject*>()));
+        using f32 = r32(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f32>(base+0x7de20)(this, p0);
+    }
+
+    using r33 = decltype(std::declval<PlayLayer>().exitRollMode(std::declval<PlayerObject*>()));
+    using c33 = r33($PlayLayer::*)(PlayerObject*) ;
+    using d33 = r33(D::*)(PlayerObject*) ;
+    r33 exitRollMode(PlayerObject* p0) {
+        using r33 = decltype(std::declval<PlayLayer>().exitRollMode(std::declval<PlayerObject*>()));
+        using f33 = r33(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f33>(base+0x7de60)(this, p0);
+    }
+
+    using r34 = decltype(std::declval<PlayLayer>().exitSpiderMode(std::declval<PlayerObject*>()));
+    using c34 = r34($PlayLayer::*)(PlayerObject*) ;
+    using d34 = r34(D::*)(PlayerObject*) ;
+    r34 exitSpiderMode(PlayerObject* p0) {
+        using r34 = decltype(std::declval<PlayLayer>().exitSpiderMode(std::declval<PlayerObject*>()));
+        using f34 = r34(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f34>(base+0x7de40)(this, p0);
+    }
+
+    using r35 = decltype(std::declval<PlayLayer>().flipFinished());
+    using c35 = r35($PlayLayer::*)() ;
+    using d35 = r35(D::*)() ;
+    r35 flipFinished() {
+        using r35 = decltype(std::declval<PlayLayer>().flipFinished());
+        using f35 = r35(*)(PlayLayer*);
+        return reinterpret_cast<f35>(base+0x7e150)(this);
+    }
+
+    using r36 = decltype(std::declval<PlayLayer>().flipGravity(std::declval<PlayerObject*>(), std::declval<bool>(), std::declval<bool>()));
+    using c36 = r36($PlayLayer::*)(PlayerObject*, bool, bool) ;
+    using d36 = r36(D::*)(PlayerObject*, bool, bool) ;
+    r36 flipGravity(PlayerObject* p0, bool p1, bool p2) {
+        using r36 = decltype(std::declval<PlayLayer>().flipGravity(std::declval<PlayerObject*>(), std::declval<bool>(), std::declval<bool>()));
+        using f36 = r36(*)(PlayLayer*, PlayerObject*, bool, bool);
+        return reinterpret_cast<f36>(base+0x7cd10)(this, p0, p1, p2);
+    }
+
+    using r37 = decltype(std::declval<PlayLayer>().flipObjects());
+    using c37 = r37($PlayLayer::*)() ;
+    using d37 = r37(D::*)() ;
+    r37 flipObjects() {
+        using r37 = decltype(std::declval<PlayLayer>().flipObjects());
+        using f37 = r37(*)(PlayLayer*);
+        return reinterpret_cast<f37>(base+0x76130)(this);
+    }
+
+    using r38 = decltype(std::declval<PlayLayer>().fullReset());
+    using c38 = r38($PlayLayer::*)() ;
+    using d38 = r38(D::*)() ;
+    r38 fullReset() {
+        using r38 = decltype(std::declval<PlayLayer>().fullReset());
+        using f38 = r38(*)(PlayLayer*);
+        return reinterpret_cast<f38>(base+0x7f8e0)(this);
+    }
+
+    using r39 = decltype(std::declval<PlayLayer>().getLastCheckpoint());
+    using c39 = r39($PlayLayer::*)() ;
+    using d39 = r39(D::*)() ;
+    r39 getLastCheckpoint() {
+        using r39 = decltype(std::declval<PlayLayer>().getLastCheckpoint());
+        using f39 = r39(*)(PlayLayer*);
+        return reinterpret_cast<f39>(base+0x7f840)(this);
+    }
+
+    using r40 = decltype(std::declval<PlayLayer>().getMaxPortalY());
+    using c40 = r40($PlayLayer::*)() ;
+    using d40 = r40(D::*)() ;
+    r40 getMaxPortalY() {
+        using r40 = decltype(std::declval<PlayLayer>().getMaxPortalY());
+        using f40 = r40(*)(PlayLayer*);
+        return reinterpret_cast<f40>(base+0x7b4e0)(this);
+    }
+
+    using r41 = decltype(std::declval<PlayLayer>().getMinPortalY());
+    using c41 = r41($PlayLayer::*)() ;
+    using d41 = r41(D::*)() ;
+    r41 getMinPortalY() {
+        using r41 = decltype(std::declval<PlayLayer>().getMinPortalY());
+        using f41 = r41(*)(PlayLayer*);
+        return reinterpret_cast<f41>(base+0x7b550)(this);
+    }
+
+    using r42 = decltype(std::declval<PlayLayer>().getObjectsState());
+    using c42 = r42($PlayLayer::*)() ;
+    using d42 = r42(D::*)() ;
+    r42 getObjectsState() {
+        using r42 = decltype(std::declval<PlayLayer>().getObjectsState());
+        using f42 = r42(*)(PlayLayer*);
+        return reinterpret_cast<f42>(base+0x7e9d0)(this);
+    }
+
+    using r43 = decltype(std::declval<PlayLayer>().getOtherPlayer(std::declval<PlayerObject*>()));
+    using c43 = r43($PlayLayer::*)(PlayerObject*) ;
+    using d43 = r43(D::*)(PlayerObject*) ;
+    r43 getOtherPlayer(PlayerObject* p0) {
+        using r43 = decltype(std::declval<PlayLayer>().getOtherPlayer(std::declval<PlayerObject*>()));
+        using f43 = r43(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f43>(base+0x7dcc0)(this, p0);
+    }
+
+    using r44 = decltype(std::declval<PlayLayer>().getParticleKey(std::declval<int>(), std::declval<char const*>(), std::declval<int>(), std::declval<cocos2d::tCCPositionType>()));
+    using c44 = r44($PlayLayer::*)(int, char const*, int, cocos2d::tCCPositionType) ;
+    using d44 = r44(D::*)(int, char const*, int, cocos2d::tCCPositionType) ;
+    r44 getParticleKey(int p0, char const* p1, int p2, cocos2d::tCCPositionType p3) {
+        using r44 = decltype(std::declval<PlayLayer>().getParticleKey(std::declval<int>(), std::declval<char const*>(), std::declval<int>(), std::declval<cocos2d::tCCPositionType>()));
+        using f44 = r44(*)(PlayLayer*, int, char const*, int, cocos2d::tCCPositionType);
+        return reinterpret_cast<f44>(base+0x764d0)(this, p0, p1, p2, p3);
+    }
+
+    using r45 = decltype(std::declval<PlayLayer>().getParticleKey2(std::declval<gd::string>()));
+    using c45 = r45($PlayLayer::*)(gd::string) ;
+    using d45 = r45(D::*)(gd::string) ;
+    r45 getParticleKey2(gd::string p0) {
+        using r45 = decltype(std::declval<PlayLayer>().getParticleKey2(std::declval<gd::string>()));
+        using f45 = r45(*)(PlayLayer*, gd::string);
+        return reinterpret_cast<f45>(base+0x767b0)(this, p0);
+    }
+
+    using r46 = decltype(std::declval<PlayLayer>().getRelativeMod(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c46 = r46($PlayLayer::*)(cocos2d::CCPoint, float, float, float) ;
+    using d46 = r46(D::*)(cocos2d::CCPoint, float, float, float) ;
+    r46 getRelativeMod(cocos2d::CCPoint p0, float p1, float p2, float p3) {
+        using r46 = decltype(std::declval<PlayLayer>().getRelativeMod(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f46 = r46(*)(PlayLayer*, cocos2d::CCPoint, float, float, float);
+        return reinterpret_cast<f46>(base+0x7c2a0)(this, p0, p1, p2, p3);
+    }
+
+    using r47 = decltype(std::declval<PlayLayer>().getTempMilliTime());
+    using c47 = r47($PlayLayer::*)() ;
+    using d47 = r47(D::*)() ;
+    r47 getTempMilliTime() {
+        using r47 = decltype(std::declval<PlayLayer>().getTempMilliTime());
+        using f47 = r47(*)(PlayLayer*);
+        return reinterpret_cast<f47>(base+0x778e0)(this);
+    }
+
+    using r48 = decltype(std::declval<PlayLayer>().gravityEffectFinished());
+    using c48 = r48($PlayLayer::*)() ;
+    using d48 = r48(D::*)() ;
+    r48 gravityEffectFinished() {
+        using r48 = decltype(std::declval<PlayLayer>().gravityEffectFinished());
+        using f48 = r48(*)(PlayLayer*);
+        return reinterpret_cast<f48>(base+0x7cec0)(this);
+    }
+
+    using r49 = decltype(std::declval<PlayLayer>().hasItem(std::declval<int>()));
+    using c49 = r49($PlayLayer::*)(int) ;
+    using d49 = r49(D::*)(int) ;
+    r49 hasItem(int p0) {
+        using r49 = decltype(std::declval<PlayLayer>().hasItem(std::declval<int>()));
+        using f49 = r49(*)(PlayLayer*, int);
+        return reinterpret_cast<f49>(base+0x7cee0)(this, p0);
+    }
+
+    using r50 = decltype(std::declval<PlayLayer>().hasUniqueCoin(std::declval<GameObject*>()));
+    using c50 = r50($PlayLayer::*)(GameObject*) ;
+    using d50 = r50(D::*)(GameObject*) ;
+    r50 hasUniqueCoin(GameObject* p0) {
+        using r50 = decltype(std::declval<PlayLayer>().hasUniqueCoin(std::declval<GameObject*>()));
+        using f50 = r50(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f50>(base+0x77510)(this, p0);
+    }
+
+    using r51 = decltype(std::declval<PlayLayer>().incrementJumps());
+    using c51 = r51($PlayLayer::*)() ;
+    using d51 = r51(D::*)() ;
+    r51 incrementJumps() {
+        using r51 = decltype(std::declval<PlayLayer>().incrementJumps());
+        using f51 = r51(*)(PlayLayer*);
+        return reinterpret_cast<f51>(base+0x7ff40)(this);
+    }
+
+    using r52 = decltype(std::declval<PlayLayer>().init(std::declval<GJGameLevel*>()));
+    using c52 = r52($PlayLayer::*)(GJGameLevel*) ;
+    using d52 = r52(D::*)(GJGameLevel*) ;
+    r52 init(GJGameLevel* p0) {
+        using r52 = decltype(std::declval<PlayLayer>().init(std::declval<GJGameLevel*>()));
+        using f52 = r52(*)(PlayLayer*, GJGameLevel*);
+        return reinterpret_cast<f52>(base+0x6b5f0)(this, p0);
+    }
+
+    using r53 = decltype(std::declval<PlayLayer>().isFlipping());
+    using c53 = r53($PlayLayer::*)() ;
+    using d53 = r53(D::*)() ;
+    r53 isFlipping() {
+        using r53 = decltype(std::declval<PlayLayer>().isFlipping());
+        using f53 = r53(*)(PlayLayer*);
+        return reinterpret_cast<f53>(base+0x76100)(this);
+    }
+
+    using r54 = decltype(std::declval<PlayLayer>().levelComplete());
+    using c54 = r54($PlayLayer::*)() ;
+    using d54 = r54(D::*)() ;
+    r54 levelComplete() {
+        using r54 = decltype(std::declval<PlayLayer>().levelComplete());
+        using f54 = r54(*)(PlayLayer*);
+        return reinterpret_cast<f54>(base+0x72b80)(this);
+    }
+
+    using r55 = decltype(std::declval<PlayLayer>().lightningFlash(std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>()));
+    using c55 = r55($PlayLayer::*)(cocos2d::CCPoint, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, int, bool, float) ;
+    using d55 = r55(D::*)(cocos2d::CCPoint, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, int, bool, float) ;
+    r55 lightningFlash(cocos2d::CCPoint p0, cocos2d::CCPoint p1, cocos2d::_ccColor3B p2, float p3, float p4, int p5, bool p6, float p7) {
+        using r55 = decltype(std::declval<PlayLayer>().lightningFlash(std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>()));
+        using f55 = r55(*)(PlayLayer*, cocos2d::CCPoint, cocos2d::CCPoint, cocos2d::_ccColor3B, float, float, int, bool, float);
+        return reinterpret_cast<f55>(base+0x75cc0)(this, p0, p1, p2, p3, p4, p5, p6, p7);
+    }
+
+    using r56 = decltype(std::declval<PlayLayer>().lightningFlash(std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::_ccColor3B>()));
+    using c56 = r56($PlayLayer::*)(cocos2d::CCPoint, cocos2d::_ccColor3B) ;
+    using d56 = r56(D::*)(cocos2d::CCPoint, cocos2d::_ccColor3B) ;
+    r56 lightningFlash(cocos2d::CCPoint p0, cocos2d::_ccColor3B p1) {
+        using r56 = decltype(std::declval<PlayLayer>().lightningFlash(std::declval<cocos2d::CCPoint>(), std::declval<cocos2d::_ccColor3B>()));
+        using f56 = r56(*)(PlayLayer*, cocos2d::CCPoint, cocos2d::_ccColor3B);
+        return reinterpret_cast<f56>(base+0x75bf0)(this, p0, p1);
+    }
+
+    using r57 = decltype(std::declval<PlayLayer>().loadDefaultColors());
+    using c57 = r57($PlayLayer::*)() ;
+    using d57 = r57(D::*)() ;
+    r57 loadDefaultColors() {
+        using r57 = decltype(std::declval<PlayLayer>().loadDefaultColors());
+        using f57 = r57(*)(PlayLayer*);
+        return reinterpret_cast<f57>(base+0x6ef30)(this);
+    }
+
+    using r58 = decltype(std::declval<PlayLayer>().loadFromCheckpoint(std::declval<CheckpointObject*>()));
+    using c58 = r58($PlayLayer::*)(CheckpointObject*) ;
+    using d58 = r58(D::*)(CheckpointObject*) ;
+    r58 loadFromCheckpoint(CheckpointObject* p0) {
+        using r58 = decltype(std::declval<PlayLayer>().loadFromCheckpoint(std::declval<CheckpointObject*>()));
+        using f58 = r58(*)(PlayLayer*, CheckpointObject*);
+        return reinterpret_cast<f58>(base+0x7f000)(this, p0);
+    }
+
+    using r59 = decltype(std::declval<PlayLayer>().loadLastCheckpoint());
+    using c59 = r59($PlayLayer::*)() ;
+    using d59 = r59(D::*)() ;
+    r59 loadLastCheckpoint() {
+        using r59 = decltype(std::declval<PlayLayer>().loadLastCheckpoint());
+        using f59 = r59(*)(PlayLayer*);
+        return reinterpret_cast<f59>(base+0x7efc0)(this);
+    }
+
+    using r60 = decltype(std::declval<PlayLayer>().loadSavedObjectsState(std::declval<gd::string>()));
+    using c60 = r60($PlayLayer::*)(gd::string) ;
+    using d60 = r60(D::*)(gd::string) ;
+    r60 loadSavedObjectsState(gd::string p0) {
+        using r60 = decltype(std::declval<PlayLayer>().loadSavedObjectsState(std::declval<gd::string>()));
+        using f60 = r60(*)(PlayLayer*, gd::string);
+        return reinterpret_cast<f60>(base+0x7f3d0)(this, p0);
+    }
+
+    using r61 = decltype(std::declval<PlayLayer>().markCheckpoint());
+    using c61 = r61($PlayLayer::*)() ;
+    using d61 = r61(D::*)() ;
+    r61 markCheckpoint() {
+        using r61 = decltype(std::declval<PlayLayer>().markCheckpoint());
+        using f61 = r61(*)(PlayLayer*);
+        return reinterpret_cast<f61>(base+0x7ef60)(this);
+    }
+
+    using r62 = decltype(std::declval<PlayLayer>().moveCameraToPos(std::declval<cocos2d::CCPoint>()));
+    using c62 = r62($PlayLayer::*)(cocos2d::CCPoint) ;
+    using d62 = r62(D::*)(cocos2d::CCPoint) ;
+    r62 moveCameraToPos(cocos2d::CCPoint p0) {
+        using r62 = decltype(std::declval<PlayLayer>().moveCameraToPos(std::declval<cocos2d::CCPoint>()));
+        using f62 = r62(*)(PlayLayer*, cocos2d::CCPoint);
+        return reinterpret_cast<f62>(base+0x7c980)(this, p0);
+    }
+
+    using r63 = decltype(std::declval<PlayLayer>().onEnterTransitionDidFinish());
+    using c63 = r63($PlayLayer::*)() ;
+    using d63 = r63(D::*)() ;
+    r63 onEnterTransitionDidFinish() {
+        using r63 = decltype(std::declval<PlayLayer>().onEnterTransitionDidFinish());
+        using f63 = r63(*)(PlayLayer*);
+        return reinterpret_cast<f63>(base+0x806e0)(this);
+    }
+
+    using r64 = decltype(std::declval<PlayLayer>().onExit());
+    using c64 = r64($PlayLayer::*)() ;
+    using d64 = r64(D::*)() ;
+    r64 onExit() {
+        using r64 = decltype(std::declval<PlayLayer>().onExit());
+        using f64 = r64(*)(PlayLayer*);
+        return reinterpret_cast<f64>(base+0x80710)(this);
+    }
+
+    using r65 = decltype(std::declval<PlayLayer>().onQuit());
+    using c65 = r65($PlayLayer::*)() ;
+    using d65 = r65(D::*)() ;
+    r65 onQuit() {
+        using r65 = decltype(std::declval<PlayLayer>().onQuit());
+        using f65 = r65(*)(PlayLayer*);
+        return reinterpret_cast<f65>(base+0x72710)(this);
+    }
+
+    using r66 = decltype(std::declval<PlayLayer>().optimizeColorGroups());
+    using c66 = r66($PlayLayer::*)() ;
+    using d66 = r66(D::*)() ;
+    r66 optimizeColorGroups() {
+        using r66 = decltype(std::declval<PlayLayer>().optimizeColorGroups());
+        using f66 = r66(*)(PlayLayer*);
+        return reinterpret_cast<f66>(base+0x6dad0)(this);
+    }
+
+    using r67 = decltype(std::declval<PlayLayer>().optimizeOpacityGroups());
+    using c67 = r67($PlayLayer::*)() ;
+    using d67 = r67(D::*)() ;
+    r67 optimizeOpacityGroups() {
+        using r67 = decltype(std::declval<PlayLayer>().optimizeOpacityGroups());
+        using f67 = r67(*)(PlayLayer*);
+        return reinterpret_cast<f67>(base+0x6dc20)(this);
+    }
+
+    using r68 = decltype(std::declval<PlayLayer>().optimizeSaveRequiredGroups());
+    using c68 = r68($PlayLayer::*)() ;
+    using d68 = r68(D::*)() ;
+    r68 optimizeSaveRequiredGroups() {
+        using r68 = decltype(std::declval<PlayLayer>().optimizeSaveRequiredGroups());
+        using f68 = r68(*)(PlayLayer*);
+        return reinterpret_cast<f68>(base+0x6dd70)(this);
+    }
+
+    using r69 = decltype(std::declval<PlayLayer>().pauseGame(std::declval<bool>()));
+    using c69 = r69($PlayLayer::*)(bool) ;
+    using d69 = r69(D::*)(bool) ;
+    r69 pauseGame(bool p0) {
+        using r69 = decltype(std::declval<PlayLayer>().pauseGame(std::declval<bool>()));
+        using f69 = r69(*)(PlayLayer*, bool);
+        return reinterpret_cast<f69>(base+0x802d0)(this, p0);
+    }
+
+    using r70 = decltype(std::declval<PlayLayer>().pickupItem(std::declval<GameObject*>()));
+    using c70 = r70($PlayLayer::*)(GameObject*) ;
+    using d70 = r70(D::*)(GameObject*) ;
+    r70 pickupItem(GameObject* p0) {
+        using r70 = decltype(std::declval<PlayLayer>().pickupItem(std::declval<GameObject*>()));
+        using f70 = r70(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f70>(base+0x7c1d0)(this, p0);
+    }
+
+    using r71 = decltype(std::declval<PlayLayer>().playAnimationCommand(std::declval<int>(), std::declval<int>()));
+    using c71 = r71($PlayLayer::*)(int, int) ;
+    using d71 = r71(D::*)(int, int) ;
+    r71 playAnimationCommand(int p0, int p1) {
+        using r71 = decltype(std::declval<PlayLayer>().playAnimationCommand(std::declval<int>(), std::declval<int>()));
+        using f71 = r71(*)(PlayLayer*, int, int);
+        return reinterpret_cast<f71>(base+0x75930)(this, p0, p1);
+    }
+
+    using r72 = decltype(std::declval<PlayLayer>().playEndAnimationToPos(std::declval<cocos2d::CCPoint>()));
+    using c72 = r72($PlayLayer::*)(cocos2d::CCPoint) ;
+    using d72 = r72(D::*)(cocos2d::CCPoint) ;
+    r72 playEndAnimationToPos(cocos2d::CCPoint p0) {
+        using r72 = decltype(std::declval<PlayLayer>().playEndAnimationToPos(std::declval<cocos2d::CCPoint>()));
+        using f72 = r72(*)(PlayLayer*, cocos2d::CCPoint);
+        return reinterpret_cast<f72>(base+0x759a0)(this, p0);
+    }
+
+    using r73 = decltype(std::declval<PlayLayer>().playExitDualEffect(std::declval<PlayerObject*>()));
+    using c73 = r73($PlayLayer::*)(PlayerObject*) ;
+    using d73 = r73(D::*)(PlayerObject*) ;
+    r73 playExitDualEffect(PlayerObject* p0) {
+        using r73 = decltype(std::declval<PlayLayer>().playExitDualEffect(std::declval<PlayerObject*>()));
+        using f73 = r73(*)(PlayLayer*, PlayerObject*);
+        return reinterpret_cast<f73>(base+0x7d1d0)(this, p0);
+    }
+
+    using r74 = decltype(std::declval<PlayLayer>().playFlashEffect(std::declval<float>(), std::declval<int>(), std::declval<float>()));
+    using c74 = r74($PlayLayer::*)(float, int, float) ;
+    using d74 = r74(D::*)(float, int, float) ;
+    r74 playFlashEffect(float p0, int p1, float p2) {
+        using r74 = decltype(std::declval<PlayLayer>().playFlashEffect(std::declval<float>(), std::declval<int>(), std::declval<float>()));
+        using f74 = r74(*)(PlayLayer*, float, int, float);
+        return reinterpret_cast<f74>(base+0x75e50)(this, p0, p1, p2);
+    }
+
+    using r75 = decltype(std::declval<PlayLayer>().playGravityEffect(std::declval<bool>()));
+    using c75 = r75($PlayLayer::*)(bool) ;
+    using d75 = r75(D::*)(bool) ;
+    r75 playGravityEffect(bool p0) {
+        using r75 = decltype(std::declval<PlayLayer>().playGravityEffect(std::declval<bool>()));
+        using f75 = r75(*)(PlayLayer*, bool);
+        return reinterpret_cast<f75>(base+0x7b5a0)(this, p0);
+    }
+
+    using r76 = decltype(std::declval<PlayLayer>().playSpeedParticle(std::declval<float>()));
+    using c76 = r76($PlayLayer::*)(float) ;
+    using d76 = r76(D::*)(float) ;
+    r76 playSpeedParticle(float p0) {
+        using r76 = decltype(std::declval<PlayLayer>().playSpeedParticle(std::declval<float>()));
+        using f76 = r76(*)(PlayLayer*, float);
+        return reinterpret_cast<f76>(base+0x77030)(this, p0);
+    }
+
+    using r77 = decltype(std::declval<PlayLayer>().playerWillSwitchMode(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+    using c77 = r77($PlayLayer::*)(PlayerObject*, GameObject*) ;
+    using d77 = r77(D::*)(PlayerObject*, GameObject*) ;
+    r77 playerWillSwitchMode(PlayerObject* p0, GameObject* p1) {
+        using r77 = decltype(std::declval<PlayLayer>().playerWillSwitchMode(std::declval<PlayerObject*>(), std::declval<GameObject*>()));
+        using f77 = r77(*)(PlayLayer*, PlayerObject*, GameObject*);
+        return reinterpret_cast<f77>(base+0x7b820)(this, p0, p1);
+    }
+
+    using r78 = decltype(std::declval<PlayLayer>().prepareSpawnObjects());
+    using c78 = r78($PlayLayer::*)() ;
+    using d78 = r78(D::*)() ;
+    r78 prepareSpawnObjects() {
+        using r78 = decltype(std::declval<PlayLayer>().prepareSpawnObjects());
+        using f78 = r78(*)(PlayLayer*);
+        return reinterpret_cast<f78>(base+0x7fc00)(this);
+    }
+
+    using r79 = decltype(std::declval<PlayLayer>().processItems());
+    using c79 = r79($PlayLayer::*)() ;
+    using d79 = r79(D::*)() ;
+    r79 processItems() {
+        using r79 = decltype(std::declval<PlayLayer>().processItems());
+        using f79 = r79(*)(PlayLayer*);
+        return reinterpret_cast<f79>(base+0x735c0)(this);
+    }
+
+    using r80 = decltype(std::declval<PlayLayer>().processLoadedMoveActions());
+    using c80 = r80($PlayLayer::*)() ;
+    using d80 = r80(D::*)() ;
+    r80 processLoadedMoveActions() {
+        using r80 = decltype(std::declval<PlayLayer>().processLoadedMoveActions());
+        using f80 = r80(*)(PlayLayer*);
+        return reinterpret_cast<f80>(base+0x7a7c0)(this);
+    }
+
+    using r81 = decltype(std::declval<PlayLayer>().recordAction(std::declval<bool>(), std::declval<PlayerObject*>()));
+    using c81 = r81($PlayLayer::*)(bool, PlayerObject*) ;
+    using d81 = r81(D::*)(bool, PlayerObject*) ;
+    r81 recordAction(bool p0, PlayerObject* p1) {
+        using r81 = decltype(std::declval<PlayLayer>().recordAction(std::declval<bool>(), std::declval<PlayerObject*>()));
+        using f81 = r81(*)(PlayLayer*, bool, PlayerObject*);
+        return reinterpret_cast<f81>(base+0x7e190)(this, p0, p1);
+    }
+
+    using r82 = decltype(std::declval<PlayLayer>().registerActiveObject(std::declval<GameObject*>()));
+    using c82 = r82($PlayLayer::*)(GameObject*) ;
+    using d82 = r82(D::*)(GameObject*) ;
+    r82 registerActiveObject(GameObject* p0) {
+        using r82 = decltype(std::declval<PlayLayer>().registerActiveObject(std::declval<GameObject*>()));
+        using f82 = r82(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f82>(base+0x77620)(this, p0);
+    }
+
+    using r83 = decltype(std::declval<PlayLayer>().registerStateObject(std::declval<GameObject*>()));
+    using c83 = r83($PlayLayer::*)(GameObject*) ;
+    using d83 = r83(D::*)(GameObject*) ;
+    r83 registerStateObject(GameObject* p0) {
+        using r83 = decltype(std::declval<PlayLayer>().registerStateObject(std::declval<GameObject*>()));
+        using f83 = r83(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f83>(base+0x777b0)(this, p0);
+    }
+
+    using r84 = decltype(std::declval<PlayLayer>().removeAllObjects());
+    using c84 = r84($PlayLayer::*)() ;
+    using d84 = r84(D::*)() ;
+    r84 removeAllObjects() {
+        using r84 = decltype(std::declval<PlayLayer>().removeAllObjects());
+        using f84 = r84(*)(PlayLayer*);
+        return reinterpret_cast<f84>(base+0x727b0)(this);
+    }
+
+    using r85 = decltype(std::declval<PlayLayer>().removeFromGroupOld(std::declval<GameObject*>()));
+    using c85 = r85($PlayLayer::*)(GameObject*) ;
+    using d85 = r85(D::*)(GameObject*) ;
+    r85 removeFromGroupOld(GameObject* p0) {
+        using r85 = decltype(std::declval<PlayLayer>().removeFromGroupOld(std::declval<GameObject*>()));
+        using f85 = r85(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f85>(base+0x77750)(this, p0);
+    }
+
+    using r86 = decltype(std::declval<PlayLayer>().removeLastCheckpoint());
+    using c86 = r86($PlayLayer::*)() ;
+    using d86 = r86(D::*)() ;
+    r86 removeLastCheckpoint() {
+        using r86 = decltype(std::declval<PlayLayer>().removeLastCheckpoint());
+        using f86 = r86(*)(PlayLayer*);
+        return reinterpret_cast<f86>(base+0x7f870)(this);
+    }
+
+    using r87 = decltype(std::declval<PlayLayer>().removePlayer2());
+    using c87 = r87($PlayLayer::*)() ;
+    using d87 = r87(D::*)() ;
+    r87 removePlayer2() {
+        using r87 = decltype(std::declval<PlayLayer>().removePlayer2());
+        using f87 = r87(*)(PlayLayer*);
+        return reinterpret_cast<f87>(base+0x7d630)(this);
+    }
+
+    using r88 = decltype(std::declval<PlayLayer>().resetLevel());
+    using c88 = r88($PlayLayer::*)() ;
+    using d88 = r88(D::*)() ;
+    r88 resetLevel() {
+        using r88 = decltype(std::declval<PlayLayer>().resetLevel());
+        using f88 = r88(*)(PlayLayer*);
+        return reinterpret_cast<f88>(base+0x71c50)(this);
+    }
+
+    using r89 = decltype(std::declval<PlayLayer>().resume());
+    using c89 = r89($PlayLayer::*)() ;
+    using d89 = r89(D::*)() ;
+    r89 resume() {
+        using r89 = decltype(std::declval<PlayLayer>().resume());
+        using f89 = r89(*)(PlayLayer*);
+        return reinterpret_cast<f89>(base+0x80480)(this);
+    }
+
+    using r90 = decltype(std::declval<PlayLayer>().resumeAndRestart());
+    using c90 = r90($PlayLayer::*)() ;
+    using d90 = r90(D::*)() ;
+    r90 resumeAndRestart() {
+        using r90 = decltype(std::declval<PlayLayer>().resumeAndRestart());
+        using f90 = r90(*)(PlayLayer*);
+        return reinterpret_cast<f90>(base+0x80400)(this);
+    }
+
+    using r91 = decltype(std::declval<PlayLayer>().saveRecordAction(std::declval<bool>(), std::declval<PlayerObject*>()));
+    using c91 = r91($PlayLayer::*)(bool, PlayerObject*) ;
+    using d91 = r91(D::*)(bool, PlayerObject*) ;
+    r91 saveRecordAction(bool p0, PlayerObject* p1) {
+        using r91 = decltype(std::declval<PlayLayer>().saveRecordAction(std::declval<bool>(), std::declval<PlayerObject*>()));
+        using f91 = r91(*)(PlayLayer*, bool, PlayerObject*);
+        return reinterpret_cast<f91>(base+0x78750)(this, p0, p1);
+    }
+
+    using r92 = decltype(std::declval<PlayLayer>().scene(std::declval<GJGameLevel*>()));
+    using c92 = r92($PlayLayer::*)(GJGameLevel*) ;
+    using d92 = r92(D::*)(GJGameLevel*) ;
+    r92 scene(GJGameLevel* p0) {
+        using r92 = decltype(std::declval<PlayLayer>().scene(std::declval<GJGameLevel*>()));
+        using f92 = r92(*)(PlayLayer*, GJGameLevel*);
+        return reinterpret_cast<f92>(base+0x6b500)(this, p0);
+    }
+
+    using r93 = decltype(std::declval<PlayLayer>().setupLevelStart(std::declval<LevelSettingsObject*>()));
+    using c93 = r93($PlayLayer::*)(LevelSettingsObject*) ;
+    using d93 = r93(D::*)(LevelSettingsObject*) ;
+    r93 setupLevelStart(LevelSettingsObject* p0) {
+        using r93 = decltype(std::declval<PlayLayer>().setupLevelStart(std::declval<LevelSettingsObject*>()));
+        using f93 = r93(*)(PlayLayer*, LevelSettingsObject*);
+        return reinterpret_cast<f93>(base+0x6f560)(this, p0);
+    }
+
+    using r94 = decltype(std::declval<PlayLayer>().setupReplay(std::declval<gd::string>()));
+    using c94 = r94($PlayLayer::*)(gd::string) ;
+    using d94 = r94(D::*)(gd::string) ;
+    r94 setupReplay(gd::string p0) {
+        using r94 = decltype(std::declval<PlayLayer>().setupReplay(std::declval<gd::string>()));
+        using f94 = r94(*)(PlayLayer*, gd::string);
+        return reinterpret_cast<f94>(base+0x7e1e0)(this, p0);
+    }
+
+    using r95 = decltype(std::declval<PlayLayer>().shakeCamera(std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c95 = r95($PlayLayer::*)(float, float, float) ;
+    using d95 = r95(D::*)(float, float, float) ;
+    r95 shakeCamera(float p0, float p1, float p2) {
+        using r95 = decltype(std::declval<PlayLayer>().shakeCamera(std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f95 = r95(*)(PlayLayer*, float, float, float);
+        return reinterpret_cast<f95>(base+0x744a0)(this, p0, p1, p2);
+    }
+
+    using r96 = decltype(std::declval<PlayLayer>().shouldBlend(std::declval<int>()));
+    using c96 = r96($PlayLayer::*)(int) ;
+    using d96 = r96(D::*)(int) ;
+    r96 shouldBlend(int p0) {
+        using r96 = decltype(std::declval<PlayLayer>().shouldBlend(std::declval<int>()));
+        using f96 = r96(*)(PlayLayer*, int);
+        return reinterpret_cast<f96>(base+0x771b0)(this, p0);
+    }
+
+    using r97 = decltype(std::declval<PlayLayer>().showCompleteEffect());
+    using c97 = r97($PlayLayer::*)() ;
+    using d97 = r97(D::*)() ;
+    r97 showCompleteEffect() {
+        using r97 = decltype(std::declval<PlayLayer>().showCompleteEffect());
+        using f97 = r97(*)(PlayLayer*);
+        return reinterpret_cast<f97>(base+0x738e0)(this);
+    }
+
+    using r98 = decltype(std::declval<PlayLayer>().showCompleteText());
+    using c98 = r98($PlayLayer::*)() ;
+    using d98 = r98(D::*)() ;
+    r98 showCompleteText() {
+        using r98 = decltype(std::declval<PlayLayer>().showCompleteText());
+        using f98 = r98(*)(PlayLayer*);
+        return reinterpret_cast<f98>(base+0x73be0)(this);
+    }
+
+    using r99 = decltype(std::declval<PlayLayer>().showEndLayer());
+    using c99 = r99($PlayLayer::*)() ;
+    using d99 = r99(D::*)() ;
+    r99 showEndLayer() {
+        using r99 = decltype(std::declval<PlayLayer>().showEndLayer());
+        using f99 = r99(*)(PlayLayer*);
+        return reinterpret_cast<f99>(base+0x74450)(this);
+    }
+
+    using r100 = decltype(std::declval<PlayLayer>().showHint());
+    using c100 = r100($PlayLayer::*)() ;
+    using d100 = r100(D::*)() ;
+    r100 showHint() {
+        using r100 = decltype(std::declval<PlayLayer>().showHint());
+        using f100 = r100(*)(PlayLayer*);
+        return reinterpret_cast<f100>(base+0x7deb0)(this);
+    }
+
+    using r101 = decltype(std::declval<PlayLayer>().showNewBest(std::declval<bool>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<bool>()));
+    using c101 = r101($PlayLayer::*)(bool, int, int, bool, bool, bool) ;
+    using d101 = r101(D::*)(bool, int, int, bool, bool, bool) ;
+    r101 showNewBest(bool p0, int p1, int p2, bool p3, bool p4, bool p5) {
+        using r101 = decltype(std::declval<PlayLayer>().showNewBest(std::declval<bool>(), std::declval<int>(), std::declval<int>(), std::declval<bool>(), std::declval<bool>(), std::declval<bool>()));
+        using f101 = r101(*)(PlayLayer*, bool, int, int, bool, bool, bool);
+        return reinterpret_cast<f101>(base+0x74580)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r102 = decltype(std::declval<PlayLayer>().showRetryLayer());
+    using c102 = r102($PlayLayer::*)() ;
+    using d102 = r102(D::*)() ;
+    r102 showRetryLayer() {
+        using r102 = decltype(std::declval<PlayLayer>().showRetryLayer());
+        using f102 = r102(*)(PlayLayer*);
+        return reinterpret_cast<f102>(base+0x75ba0)(this);
+    }
+
+    using r103 = decltype(std::declval<PlayLayer>().showTwoPlayerGuide());
+    using c103 = r103($PlayLayer::*)() ;
+    using d103 = r103(D::*)() ;
+    r103 showTwoPlayerGuide() {
+        using r103 = decltype(std::declval<PlayLayer>().showTwoPlayerGuide());
+        using f103 = r103(*)(PlayLayer*);
+        return reinterpret_cast<f103>(base+0x6df00)(this);
+    }
+
+    using r104 = decltype(std::declval<PlayLayer>().sortGroups());
+    using c104 = r104($PlayLayer::*)() ;
+    using d104 = r104(D::*)() ;
+    r104 sortGroups() {
+        using r104 = decltype(std::declval<PlayLayer>().sortGroups());
+        using f104 = r104(*)(PlayLayer*);
+        return reinterpret_cast<f104>(base+0x6d9e0)(this);
+    }
+
+    using r105 = decltype(std::declval<PlayLayer>().spawnCircle());
+    using c105 = r105($PlayLayer::*)() ;
+    using d105 = r105(D::*)() ;
+    r105 spawnCircle() {
+        using r105 = decltype(std::declval<PlayLayer>().spawnCircle());
+        using f105 = r105(*)(PlayLayer*);
+        return reinterpret_cast<f105>(base+0x73820)(this);
+    }
+
+    using r106 = decltype(std::declval<PlayLayer>().spawnFirework());
+    using c106 = r106($PlayLayer::*)() ;
+    using d106 = r106(D::*)() ;
+    r106 spawnFirework() {
+        using r106 = decltype(std::declval<PlayLayer>().spawnFirework());
+        using f106 = r106(*)(PlayLayer*);
+        return reinterpret_cast<f106>(base+0x74200)(this);
+    }
+
+    using r107 = decltype(std::declval<PlayLayer>().spawnParticle(std::declval<char const*>(), std::declval<int>(), std::declval<cocos2d::tCCPositionType>(), std::declval<cocos2d::CCPoint>()));
+    using c107 = r107($PlayLayer::*)(char const*, int, cocos2d::tCCPositionType, cocos2d::CCPoint) ;
+    using d107 = r107(D::*)(char const*, int, cocos2d::tCCPositionType, cocos2d::CCPoint) ;
+    r107 spawnParticle(char const* p0, int p1, cocos2d::tCCPositionType p2, cocos2d::CCPoint p3) {
+        using r107 = decltype(std::declval<PlayLayer>().spawnParticle(std::declval<char const*>(), std::declval<int>(), std::declval<cocos2d::tCCPositionType>(), std::declval<cocos2d::CCPoint>()));
+        using f107 = r107(*)(PlayLayer*, char const*, int, cocos2d::tCCPositionType, cocos2d::CCPoint);
+        return reinterpret_cast<f107>(base+0x76330)(this, p0, p1, p2, p3);
+    }
+
+    using r108 = decltype(std::declval<PlayLayer>().spawnPlayer2());
+    using c108 = r108($PlayLayer::*)() ;
+    using d108 = r108(D::*)() ;
+    r108 spawnPlayer2() {
+        using r108 = decltype(std::declval<PlayLayer>().spawnPlayer2());
+        using f108 = r108(*)(PlayLayer*);
+        return reinterpret_cast<f108>(base+0x7d170)(this);
+    }
+
+    using r109 = decltype(std::declval<PlayLayer>().startGame());
+    using c109 = r109($PlayLayer::*)() ;
+    using d109 = r109(D::*)() ;
+    r109 startGame() {
+        using r109 = decltype(std::declval<PlayLayer>().startGame());
+        using f109 = r109(*)(PlayLayer*);
+        return reinterpret_cast<f109>(base+0x726b0)(this);
+    }
+
+    using r110 = decltype(std::declval<PlayLayer>().startMusic());
+    using c110 = r110($PlayLayer::*)() ;
+    using d110 = r110(D::*)() ;
+    r110 startMusic() {
+        using r110 = decltype(std::declval<PlayLayer>().startMusic());
+        using f110 = r110(*)(PlayLayer*);
+        return reinterpret_cast<f110>(base+0x72910)(this);
+    }
+
+    using r111 = decltype(std::declval<PlayLayer>().startRecording());
+    using c111 = r111($PlayLayer::*)() ;
+    using d111 = r111(D::*)() ;
+    r111 startRecording() {
+        using r111 = decltype(std::declval<PlayLayer>().startRecording());
+        using f111 = r111(*)(PlayLayer*);
+        return reinterpret_cast<f111>(base+0x7fec0)(this);
+    }
+
+    using r112 = decltype(std::declval<PlayLayer>().startRecordingDelayed());
+    using c112 = r112($PlayLayer::*)() ;
+    using d112 = r112(D::*)() ;
+    r112 startRecordingDelayed() {
+        using r112 = decltype(std::declval<PlayLayer>().startRecordingDelayed());
+        using f112 = r112(*)(PlayLayer*);
+        return reinterpret_cast<f112>(base+0x7fed0)(this);
+    }
+
+    using r113 = decltype(std::declval<PlayLayer>().stopCameraShake());
+    using c113 = r113($PlayLayer::*)() ;
+    using d113 = r113(D::*)() ;
+    r113 stopCameraShake() {
+        using r113 = decltype(std::declval<PlayLayer>().stopCameraShake());
+        using f113 = r113(*)(PlayLayer*);
+        return reinterpret_cast<f113>(base+0x75900)(this);
+    }
+
+    using r114 = decltype(std::declval<PlayLayer>().stopRecording());
+    using c114 = r114($PlayLayer::*)() ;
+    using d114 = r114(D::*)() ;
+    r114 stopRecording() {
+        using r114 = decltype(std::declval<PlayLayer>().stopRecording());
+        using f114 = r114(*)(PlayLayer*);
+        return reinterpret_cast<f114>(base+0x6d090)(this);
+    }
+
+    using r115 = decltype(std::declval<PlayLayer>().storeCheckpoint(std::declval<CheckpointObject*>()));
+    using c115 = r115($PlayLayer::*)(CheckpointObject*) ;
+    using d115 = r115(D::*)(CheckpointObject*) ;
+    r115 storeCheckpoint(CheckpointObject* p0) {
+        using r115 = decltype(std::declval<PlayLayer>().storeCheckpoint(std::declval<CheckpointObject*>()));
+        using f115 = r115(*)(PlayLayer*, CheckpointObject*);
+        return reinterpret_cast<f115>(base+0x7ef10)(this, p0);
+    }
+
+    using r116 = decltype(std::declval<PlayLayer>().switchToFlyMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>(), std::declval<int>()));
+    using c116 = r116($PlayLayer::*)(PlayerObject*, GameObject*, bool, int) ;
+    using d116 = r116(D::*)(PlayerObject*, GameObject*, bool, int) ;
+    r116 switchToFlyMode(PlayerObject* p0, GameObject* p1, bool p2, int p3) {
+        using r116 = decltype(std::declval<PlayLayer>().switchToFlyMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>(), std::declval<int>()));
+        using f116 = r116(*)(PlayLayer*, PlayerObject*, GameObject*, bool, int);
+        return reinterpret_cast<f116>(base+0x7baf0)(this, p0, p1, p2, p3);
+    }
+
+    using r117 = decltype(std::declval<PlayLayer>().switchToRobotMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>()));
+    using c117 = r117($PlayLayer::*)(PlayerObject*, GameObject*, bool) ;
+    using d117 = r117(D::*)(PlayerObject*, GameObject*, bool) ;
+    r117 switchToRobotMode(PlayerObject* p0, GameObject* p1, bool p2) {
+        using r117 = decltype(std::declval<PlayLayer>().switchToRobotMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>()));
+        using f117 = r117(*)(PlayLayer*, PlayerObject*, GameObject*, bool);
+        return reinterpret_cast<f117>(base+0x7bc80)(this, p0, p1, p2);
+    }
+
+    using r118 = decltype(std::declval<PlayLayer>().switchToRollMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>()));
+    using c118 = r118($PlayLayer::*)(PlayerObject*, GameObject*, bool) ;
+    using d118 = r118(D::*)(PlayerObject*, GameObject*, bool) ;
+    r118 switchToRollMode(PlayerObject* p0, GameObject* p1, bool p2) {
+        using r118 = decltype(std::declval<PlayLayer>().switchToRollMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>()));
+        using f118 = r118(*)(PlayLayer*, PlayerObject*, GameObject*, bool);
+        return reinterpret_cast<f118>(base+0x7bbe0)(this, p0, p1, p2);
+    }
+
+    using r119 = decltype(std::declval<PlayLayer>().switchToSpiderMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>()));
+    using c119 = r119($PlayLayer::*)(PlayerObject*, GameObject*, bool) ;
+    using d119 = r119(D::*)(PlayerObject*, GameObject*, bool) ;
+    r119 switchToSpiderMode(PlayerObject* p0, GameObject* p1, bool p2) {
+        using r119 = decltype(std::declval<PlayLayer>().switchToSpiderMode(std::declval<PlayerObject*>(), std::declval<GameObject*>(), std::declval<bool>()));
+        using f119 = r119(*)(PlayLayer*, PlayerObject*, GameObject*, bool);
+        return reinterpret_cast<f119>(base+0x7bd20)(this, p0, p1, p2);
+    }
+
+    using r120 = decltype(std::declval<PlayLayer>().timeForXPos(std::declval<float>()));
+    using c120 = r120($PlayLayer::*)(float) ;
+    using d120 = r120(D::*)(float) ;
+    r120 timeForXPos(float p0) {
+        using r120 = decltype(std::declval<PlayLayer>().timeForXPos(std::declval<float>()));
+        using f120 = r120(*)(PlayLayer*, float);
+        return reinterpret_cast<f120>(base+0x7d120)(this, p0);
+    }
+
+    using r121 = decltype(std::declval<PlayLayer>().timeForXPos2(std::declval<float>(), std::declval<bool>()));
+    using c121 = r121($PlayLayer::*)(float, bool) ;
+    using d121 = r121(D::*)(float, bool) ;
+    r121 timeForXPos2(float p0, bool p1) {
+        using r121 = decltype(std::declval<PlayLayer>().timeForXPos2(std::declval<float>(), std::declval<bool>()));
+        using f121 = r121(*)(PlayLayer*, float, bool);
+        return reinterpret_cast<f121>(base+0x293eb0)(this, p0, p1);
+    }
+
+    using r122 = decltype(std::declval<PlayLayer>().toggleBGEffectVisibility(std::declval<bool>()));
+    using c122 = r122($PlayLayer::*)(bool) ;
+    using d122 = r122(D::*)(bool) ;
+    r122 toggleBGEffectVisibility(bool p0) {
+        using r122 = decltype(std::declval<PlayLayer>().toggleBGEffectVisibility(std::declval<bool>()));
+        using f122 = r122(*)(PlayLayer*, bool);
+        return reinterpret_cast<f122>(base+0x7fe80)(this, p0);
+    }
+
+    using r123 = decltype(std::declval<PlayLayer>().toggleDualMode(std::declval<GameObject*>(), std::declval<bool>(), std::declval<PlayerObject*>(), std::declval<bool>()));
+    using c123 = r123($PlayLayer::*)(GameObject*, bool, PlayerObject*, bool) ;
+    using d123 = r123(D::*)(GameObject*, bool, PlayerObject*, bool) ;
+    r123 toggleDualMode(GameObject* p0, bool p1, PlayerObject* p2, bool p3) {
+        using r123 = decltype(std::declval<PlayLayer>().toggleDualMode(std::declval<GameObject*>(), std::declval<bool>(), std::declval<PlayerObject*>(), std::declval<bool>()));
+        using f123 = r123(*)(PlayLayer*, GameObject*, bool, PlayerObject*, bool);
+        return reinterpret_cast<f123>(base+0x7bf90)(this, p0, p1, p2, p3);
+    }
+
+    using r124 = decltype(std::declval<PlayLayer>().toggleFlipped(std::declval<bool>(), std::declval<bool>()));
+    using c124 = r124($PlayLayer::*)(bool, bool) ;
+    using d124 = r124(D::*)(bool, bool) ;
+    r124 toggleFlipped(bool p0, bool p1) {
+        using r124 = decltype(std::declval<PlayLayer>().toggleFlipped(std::declval<bool>(), std::declval<bool>()));
+        using f124 = r124(*)(PlayLayer*, bool, bool);
+        return reinterpret_cast<f124>(base+0x7bdc0)(this, p0, p1);
+    }
+
+    using r125 = decltype(std::declval<PlayLayer>().toggleGhostEffect(std::declval<int>()));
+    using c125 = r125($PlayLayer::*)(int) ;
+    using d125 = r125(D::*)(int) ;
+    r125 toggleGhostEffect(int p0) {
+        using r125 = decltype(std::declval<PlayLayer>().toggleGhostEffect(std::declval<int>()));
+        using f125 = r125(*)(PlayLayer*, int);
+        return reinterpret_cast<f125>(base+0x7fe40)(this, p0);
+    }
+
+    using r126 = decltype(std::declval<PlayLayer>().toggleGlitter(std::declval<bool>()));
+    using c126 = r126($PlayLayer::*)(bool) ;
+    using d126 = r126(D::*)(bool) ;
+    r126 toggleGlitter(bool p0) {
+        using r126 = decltype(std::declval<PlayLayer>().toggleGlitter(std::declval<bool>()));
+        using f126 = r126(*)(PlayLayer*, bool);
+        return reinterpret_cast<f126>(base+0x70e00)(this, p0);
+    }
+
+    using r127 = decltype(std::declval<PlayLayer>().togglePracticeMode(std::declval<bool>()));
+    using c127 = r127($PlayLayer::*)(bool) ;
+    using d127 = r127(D::*)(bool) ;
+    r127 togglePracticeMode(bool p0) {
+        using r127 = decltype(std::declval<PlayLayer>().togglePracticeMode(std::declval<bool>()));
+        using f127 = r127(*)(PlayLayer*, bool);
+        return reinterpret_cast<f127>(base+0x7f9e0)(this, p0);
+    }
+
+    using r128 = decltype(std::declval<PlayLayer>().toggleProgressbar());
+    using c128 = r128($PlayLayer::*)() ;
+    using d128 = r128(D::*)() ;
+    r128 toggleProgressbar() {
+        using r128 = decltype(std::declval<PlayLayer>().toggleProgressbar());
+        using f128 = r128(*)(PlayLayer*);
+        return reinterpret_cast<f128>(base+0x6eeb0)(this);
+    }
+
+    using r129 = decltype(std::declval<PlayLayer>().tryStartRecord());
+    using c129 = r129($PlayLayer::*)() ;
+    using d129 = r129(D::*)() ;
+    r129 tryStartRecord() {
+        using r129 = decltype(std::declval<PlayLayer>().tryStartRecord());
+        using f129 = r129(*)(PlayLayer*);
+        return reinterpret_cast<f129>(base+0x7fe00)(this);
+    }
+
+    using r130 = decltype(std::declval<PlayLayer>().unclaimParticle(std::declval<char const*>(), std::declval<cocos2d::CCParticleSystemQuad*>()));
+    using c130 = r130($PlayLayer::*)(char const*, cocos2d::CCParticleSystemQuad*) ;
+    using d130 = r130(D::*)(char const*, cocos2d::CCParticleSystemQuad*) ;
+    r130 unclaimParticle(char const* p0, cocos2d::CCParticleSystemQuad* p1) {
+        using r130 = decltype(std::declval<PlayLayer>().unclaimParticle(std::declval<char const*>(), std::declval<cocos2d::CCParticleSystemQuad*>()));
+        using f130 = r130(*)(PlayLayer*, char const*, cocos2d::CCParticleSystemQuad*);
+        return reinterpret_cast<f130>(base+0x76e00)(this, p0, p1);
+    }
+
+    using r131 = decltype(std::declval<PlayLayer>().unregisterActiveObject(std::declval<GameObject*>()));
+    using c131 = r131($PlayLayer::*)(GameObject*) ;
+    using d131 = r131(D::*)(GameObject*) ;
+    r131 unregisterActiveObject(GameObject* p0) {
+        using r131 = decltype(std::declval<PlayLayer>().unregisterActiveObject(std::declval<GameObject*>()));
+        using f131 = r131(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f131>(base+0x77660)(this, p0);
+    }
+
+    using r132 = decltype(std::declval<PlayLayer>().unregisterStateObject(std::declval<GameObject*>()));
+    using c132 = r132($PlayLayer::*)(GameObject*) ;
+    using d132 = r132(D::*)(GameObject*) ;
+    r132 unregisterStateObject(GameObject* p0) {
+        using r132 = decltype(std::declval<PlayLayer>().unregisterStateObject(std::declval<GameObject*>()));
+        using f132 = r132(*)(PlayLayer*, GameObject*);
+        return reinterpret_cast<f132>(base+0x777f0)(this, p0);
+    }
+
+    using r133 = decltype(std::declval<PlayLayer>().update(std::declval<float>()));
+    using c133 = r133($PlayLayer::*)(float) ;
+    using d133 = r133(D::*)(float) ;
+    r133 update(float p0) {
+        using r133 = decltype(std::declval<PlayLayer>().update(std::declval<float>()));
+        using f133 = r133(*)(PlayLayer*, float);
+        return reinterpret_cast<f133>(base+0x77900)(this, p0);
+    }
+
+    using r134 = decltype(std::declval<PlayLayer>().updateAttempts());
+    using c134 = r134($PlayLayer::*)() ;
+    using d134 = r134(D::*)() ;
+    r134 updateAttempts() {
+        using r134 = decltype(std::declval<PlayLayer>().updateAttempts());
+        using f134 = r134(*)(PlayLayer*);
+        return reinterpret_cast<f134>(base+0x7fcd0)(this);
+    }
+
+    using r135 = decltype(std::declval<PlayLayer>().updateCamera(std::declval<float>()));
+    using c135 = r135($PlayLayer::*)(float) ;
+    using d135 = r135(D::*)(float) ;
+    r135 updateCamera(float p0) {
+        using r135 = decltype(std::declval<PlayLayer>().updateCamera(std::declval<float>()));
+        using f135 = r135(*)(PlayLayer*, float);
+        return reinterpret_cast<f135>(base+0x6e2b0)(this, p0);
+    }
+
+    using r136 = decltype(std::declval<PlayLayer>().updateColor(std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<EffectGameObject*>()));
+    using c136 = r136($PlayLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) ;
+    using d136 = r136(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) ;
+    r136 updateColor(cocos2d::_ccColor3B p0, float p1, int p2, bool p3, float p4, cocos2d::_ccHSVValue p5, int p6, bool p7, int p8, EffectGameObject* p9) {
+        using r136 = decltype(std::declval<PlayLayer>().updateColor(std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<EffectGameObject*>()));
+        using f136 = r136(*)(PlayLayer*, cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+        return reinterpret_cast<f136>(base+0x7c7f0)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+    }
+
+    using r137 = decltype(std::declval<PlayLayer>().updateDualGround(std::declval<PlayerObject*>(), std::declval<int>(), std::declval<bool>()));
+    using c137 = r137($PlayLayer::*)(PlayerObject*, int, bool) ;
+    using d137 = r137(D::*)(PlayerObject*, int, bool) ;
+    r137 updateDualGround(PlayerObject* p0, int p1, bool p2) {
+        using r137 = decltype(std::declval<PlayLayer>().updateDualGround(std::declval<PlayerObject*>(), std::declval<int>(), std::declval<bool>()));
+        using f137 = r137(*)(PlayLayer*, PlayerObject*, int, bool);
+        return reinterpret_cast<f137>(base+0x7caa0)(this, p0, p1, p2);
+    }
+
+    using r138 = decltype(std::declval<PlayLayer>().updateEffectPositions());
+    using c138 = r138($PlayLayer::*)() ;
+    using d138 = r138(D::*)() ;
+    r138 updateEffectPositions() {
+        using r138 = decltype(std::declval<PlayLayer>().updateEffectPositions());
+        using f138 = r138(*)(PlayLayer*);
+        return reinterpret_cast<f138>(base+0x7a6d0)(this);
+    }
+
+    using r139 = decltype(std::declval<PlayLayer>().updateLevelColors());
+    using c139 = r139($PlayLayer::*)() ;
+    using d139 = r139(D::*)() ;
+    r139 updateLevelColors() {
+        using r139 = decltype(std::declval<PlayLayer>().updateLevelColors());
+        using f139 = r139(*)(PlayLayer*);
+        return reinterpret_cast<f139>(base+0x6f1e0)(this);
+    }
+
+    using r140 = decltype(std::declval<PlayLayer>().updateMoveObjectsLastPosition());
+    using c140 = r140($PlayLayer::*)() ;
+    using d140 = r140(D::*)() ;
+    r140 updateMoveObjectsLastPosition() {
+        using r140 = decltype(std::declval<PlayLayer>().updateMoveObjectsLastPosition());
+        using f140 = r140(*)(PlayLayer*);
+        return reinterpret_cast<f140>(base+0x7a720)(this);
+    }
+
+    using r141 = decltype(std::declval<PlayLayer>().updateProgressbar());
+    using c141 = r141($PlayLayer::*)() ;
+    using d141 = r141(D::*)() ;
+    r141 updateProgressbar() {
+        using r141 = decltype(std::declval<PlayLayer>().updateProgressbar());
+        using f141 = r141(*)(PlayLayer*);
+        return reinterpret_cast<f141>(base+0x6ed70)(this);
+    }
+
+    using r142 = decltype(std::declval<PlayLayer>().updateReplay(std::declval<float>()));
+    using c142 = r142($PlayLayer::*)(float) ;
+    using d142 = r142(D::*)(float) ;
+    r142 updateReplay(float p0) {
+        using r142 = decltype(std::declval<PlayLayer>().updateReplay(std::declval<float>()));
+        using f142 = r142(*)(PlayLayer*, float);
+        return reinterpret_cast<f142>(base+0x78b60)(this, p0);
+    }
+
+    using r143 = decltype(std::declval<PlayLayer>().updateTimeMod(std::declval<float>(), std::declval<bool>()));
+    using c143 = r143($PlayLayer::*)(float, bool) ;
+    using d143 = r143(D::*)(float, bool) ;
+    r143 updateTimeMod(float p0, bool p1) {
+        using r143 = decltype(std::declval<PlayLayer>().updateTimeMod(std::declval<float>(), std::declval<bool>()));
+        using f143 = r143(*)(PlayLayer*, float, bool);
+        return reinterpret_cast<f143>(base+0x786f0)(this, p0, p1);
+    }
+
+    using r144 = decltype(std::declval<PlayLayer>().updateTweenAction(std::declval<float>(), std::declval<char const*>()));
+    using c144 = r144($PlayLayer::*)(float, char const*) ;
+    using d144 = r144(D::*)(float, char const*) ;
+    r144 updateTweenAction(float p0, char const* p1) {
+        using r144 = decltype(std::declval<PlayLayer>().updateTweenAction(std::declval<float>(), std::declval<char const*>()));
+        using f144 = r144(*)(PlayLayer*, float, char const*);
+        return reinterpret_cast<f144>(base+0x7ffb0)(this, p0, p1);
+    }
+
+    using r145 = decltype(std::declval<PlayLayer>().updateVisibility());
+    using c145 = r145($PlayLayer::*)() ;
+    using d145 = r145(D::*)() ;
+    r145 updateVisibility() {
+        using r145 = decltype(std::declval<PlayLayer>().updateVisibility());
+        using f145 = r145(*)(PlayLayer*);
+        return reinterpret_cast<f145>(base+0x6fb90)(this);
+    }
+
+    using r146 = decltype(std::declval<PlayLayer>().vfDChk());
+    using c146 = r146($PlayLayer::*)() ;
+    using d146 = r146(D::*)() ;
+    r146 vfDChk() {
+        using r146 = decltype(std::declval<PlayLayer>().vfDChk());
+        using f146 = r146(*)(PlayLayer*);
+        return reinterpret_cast<f146>(base+0x7fcb0)(this);
+    }
+
+    using r147 = decltype(std::declval<PlayLayer>().visit());
+    using c147 = r147($PlayLayer::*)() ;
+    using d147 = r147(D::*)() ;
+    r147 visit() {
+        using r147 = decltype(std::declval<PlayLayer>().visit());
+        using f147 = r147(*)(PlayLayer*);
+        return reinterpret_cast<f147>(base+0x75ef0)(this);
+    }
+
+    using r148 = decltype(std::declval<PlayLayer>().visitWithColorFlash());
+    using c148 = r148($PlayLayer::*)() ;
+    using d148 = r148(D::*)() ;
+    r148 visitWithColorFlash() {
+        using r148 = decltype(std::declval<PlayLayer>().visitWithColorFlash());
+        using f148 = r148(*)(PlayLayer*);
+        return reinterpret_cast<f148>(base+0x761f0)(this);
+    }
+
+    using r149 = decltype(std::declval<PlayLayer>().willSwitchToMode(std::declval<int>(), std::declval<PlayerObject*>()));
+    using c149 = r149($PlayLayer::*)(int, PlayerObject*) ;
+    using d149 = r149(D::*)(int, PlayerObject*) ;
+    r149 willSwitchToMode(int p0, PlayerObject* p1) {
+        using r149 = decltype(std::declval<PlayLayer>().willSwitchToMode(std::declval<int>(), std::declval<PlayerObject*>()));
+        using f149 = r149(*)(PlayLayer*, int, PlayerObject*);
+        return reinterpret_cast<f149>(base+0x7b9e0)(this, p0, p1);
+    }
+
+    using r150 = decltype(std::declval<PlayLayer>().xPosForTime(std::declval<float>()));
+    using c150 = r150($PlayLayer::*)(float) ;
+    using d150 = r150(D::*)(float) ;
+    r150 xPosForTime(float p0) {
+        using r150 = decltype(std::declval<PlayLayer>().xPosForTime(std::declval<float>()));
+        using f150 = r150(*)(PlayLayer*, float);
+        return reinterpret_cast<f150>(base+0x7d140)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$PlayLayer::addCircle} != (d0){&D::addCircle})
+            m->registerHook(base+0x7e0f0, FunctionScrapper::addressOfNonVirtual((d0){&D::addCircle}));
+
+        if ((c1){&$PlayLayer::addObject} != (d1){&D::addObject})
+            m->registerHook(base+0x70e50, FunctionScrapper::addressOfNonVirtual((d1){&D::addObject}));
+
+        if ((c2){&$PlayLayer::addToGroupOld} != (d2){&D::addToGroupOld})
+            m->registerHook(base+0x77680, FunctionScrapper::addressOfNonVirtual((d2){&D::addToGroupOld}));
+
+        if ((c3){&$PlayLayer::addToSpeedObjects} != (d3){&D::addToSpeedObjects})
+            m->registerHook(base+0x7cfc0, FunctionScrapper::addressOfNonVirtual((d3){&D::addToSpeedObjects}));
+
+        if ((c4){&$PlayLayer::animateInDualGround} != (d4){&D::animateInDualGround})
+            m->registerHook(base+0x7d710, FunctionScrapper::addressOfNonVirtual((d4){&D::animateInDualGround}));
+
+        if ((c5){&$PlayLayer::animateInGround} != (d5){&D::animateInGround})
+            m->registerHook(base+0x7d9d0, FunctionScrapper::addressOfNonVirtual((d5){&D::animateInGround}));
+
+        if ((c6){&$PlayLayer::animateOutGround} != (d6){&D::animateOutGround})
+            m->registerHook(base+0x6f350, FunctionScrapper::addressOfNonVirtual((d6){&D::animateOutGround}));
+
+        if ((c7){&$PlayLayer::animateOutGroundFinished} != (d7){&D::animateOutGroundFinished})
+            m->registerHook(base+0x7de80, FunctionScrapper::addressOfNonVirtual((d7){&D::animateOutGroundFinished}));
+
+        if ((c8){&$PlayLayer::applyEnterEffect} != (d8){&D::applyEnterEffect})
+            m->registerHook(base+0x7c310, FunctionScrapper::addressOfNonVirtual((d8){&D::applyEnterEffect}));
+
+        if ((c9){&$PlayLayer::calculateColorValues} != (d9){&D::calculateColorValues})
+            m->registerHook(base+0x7aa10, FunctionScrapper::addressOfVirtual(i, (d9){&D::calculateColorValues}));
+
+        if ((c10){&$PlayLayer::cameraMoveX} != (d10){&D::cameraMoveX})
+            m->registerHook(base+0x7cbe0, FunctionScrapper::addressOfNonVirtual((d10){&D::cameraMoveX}));
+
+        if ((c11){&$PlayLayer::cameraMoveY} != (d11){&D::cameraMoveY})
+            m->registerHook(base+0x7cc60, FunctionScrapper::addressOfNonVirtual((d11){&D::cameraMoveY}));
+
+        if ((c12){&$PlayLayer::checkCollisions} != (d12){&D::checkCollisions})
+            m->registerHook(base+0x78c90, FunctionScrapper::addressOfNonVirtual((d12){&D::checkCollisions}));
+
+        if ((c13){&$PlayLayer::circleWaveWillBeRemoved} != (d13){&D::circleWaveWillBeRemoved})
+            m->registerHook(base+0x7e110, FunctionScrapper::addressOfNonVirtual((d13){&D::circleWaveWillBeRemoved}));
+
+        if ((c14){&$PlayLayer::claimParticle} != (d14){&D::claimParticle})
+            m->registerHook(base+0x76ba0, FunctionScrapper::addressOfNonVirtual((d14){&D::claimParticle}));
+
+        if ((c15){&$PlayLayer::clearPickedUpItems} != (d15){&D::clearPickedUpItems})
+            m->registerHook(base+0x7cfa0, FunctionScrapper::addressOfNonVirtual((d15){&D::clearPickedUpItems}));
+
+        if ((c16){&$PlayLayer::colorObject} != (d16){&D::colorObject})
+            m->registerHook(base+0x77810, FunctionScrapper::addressOfNonVirtual((d16){&D::colorObject}));
+
+        if ((c17){&$PlayLayer::commitJumps} != (d17){&D::commitJumps})
+            m->registerHook(base+0x737e0, FunctionScrapper::addressOfNonVirtual((d17){&D::commitJumps}));
+
+        if ((c18){&$PlayLayer::create} != (d18){&D::create})
+            m->registerHook(base+0x6b590, FunctionScrapper::addressOfNonVirtual((d18){&D::create}));
+
+        if ((c19){&$PlayLayer::createCheckpoint} != (d19){&D::createCheckpoint})
+            m->registerHook(base+0x7e470, FunctionScrapper::addressOfNonVirtual((d19){&D::createCheckpoint}));
+
+        if ((c20){&$PlayLayer::createObjectsFromSetup} != (d20){&D::createObjectsFromSetup})
+            m->registerHook(base+0x6d130, FunctionScrapper::addressOfNonVirtual((d20){&D::createObjectsFromSetup}));
+
+        if ((c21){&$PlayLayer::createParticle} != (d21){&D::createParticle})
+            m->registerHook(base+0x76800, FunctionScrapper::addressOfNonVirtual((d21){&D::createParticle}));
+
+        if ((c22){&$PlayLayer::currencyWillExit} != (d22){&D::currencyWillExit})
+            m->registerHook(base+0x7e070, FunctionScrapper::addressOfNonVirtual((d22){&D::currencyWillExit}));
+
+        if ((c23){&$PlayLayer::delayedResetLevel} != (d23){&D::delayedResetLevel})
+            m->registerHook(base+0x7e050, FunctionScrapper::addressOfNonVirtual((d23){&D::delayedResetLevel}));
+
+        if ((c24){&$PlayLayer::destroyPlayer} != (d24){&D::destroyPlayer})
+            m->registerHook(base+0x7ab80, FunctionScrapper::addressOfNonVirtual((d24){&D::destroyPlayer}));
+
+        if ((c25){&$PlayLayer::dialogClosed} != (d25){&D::dialogClosed})
+            m->registerHook(base+0x7e0b0, FunctionScrapper::addressOfNonVirtual((d25){&D::dialogClosed}));
+
+        if ((c26){&$PlayLayer::draw} != (d26){&D::draw})
+            m->registerHook(base+0x7d160, FunctionScrapper::addressOfVirtual(i, (d26){&D::draw}));
+
+        if ((c27){&$PlayLayer::enterDualMode} != (d27){&D::enterDualMode})
+            m->registerHook(base+0x7d6a0, FunctionScrapper::addressOfNonVirtual((d27){&D::enterDualMode}));
+
+        if ((c28){&$PlayLayer::exitAirMode} != (d28){&D::exitAirMode})
+            m->registerHook(base+0x7dd40, FunctionScrapper::addressOfNonVirtual((d28){&D::exitAirMode}));
+
+        if ((c29){&$PlayLayer::exitBirdMode} != (d29){&D::exitBirdMode})
+            m->registerHook(base+0x7dd80, FunctionScrapper::addressOfNonVirtual((d29){&D::exitBirdMode}));
+
+        if ((c30){&$PlayLayer::exitDartMode} != (d30){&D::exitDartMode})
+            m->registerHook(base+0x7ddd0, FunctionScrapper::addressOfNonVirtual((d30){&D::exitDartMode}));
+
+        if ((c31){&$PlayLayer::exitFlyMode} != (d31){&D::exitFlyMode})
+            m->registerHook(base+0x7dcf0, FunctionScrapper::addressOfNonVirtual((d31){&D::exitFlyMode}));
+
+        if ((c32){&$PlayLayer::exitRobotMode} != (d32){&D::exitRobotMode})
+            m->registerHook(base+0x7de20, FunctionScrapper::addressOfNonVirtual((d32){&D::exitRobotMode}));
+
+        if ((c33){&$PlayLayer::exitRollMode} != (d33){&D::exitRollMode})
+            m->registerHook(base+0x7de60, FunctionScrapper::addressOfNonVirtual((d33){&D::exitRollMode}));
+
+        if ((c34){&$PlayLayer::exitSpiderMode} != (d34){&D::exitSpiderMode})
+            m->registerHook(base+0x7de40, FunctionScrapper::addressOfNonVirtual((d34){&D::exitSpiderMode}));
+
+        if ((c35){&$PlayLayer::flipFinished} != (d35){&D::flipFinished})
+            m->registerHook(base+0x7e150, FunctionScrapper::addressOfNonVirtual((d35){&D::flipFinished}));
+
+        if ((c36){&$PlayLayer::flipGravity} != (d36){&D::flipGravity})
+            m->registerHook(base+0x7cd10, FunctionScrapper::addressOfVirtual(i, (d36){&D::flipGravity}));
+
+        if ((c37){&$PlayLayer::flipObjects} != (d37){&D::flipObjects})
+            m->registerHook(base+0x76130, FunctionScrapper::addressOfNonVirtual((d37){&D::flipObjects}));
+
+        if ((c38){&$PlayLayer::fullReset} != (d38){&D::fullReset})
+            m->registerHook(base+0x7f8e0, FunctionScrapper::addressOfNonVirtual((d38){&D::fullReset}));
+
+        if ((c39){&$PlayLayer::getLastCheckpoint} != (d39){&D::getLastCheckpoint})
+            m->registerHook(base+0x7f840, FunctionScrapper::addressOfNonVirtual((d39){&D::getLastCheckpoint}));
+
+        if ((c40){&$PlayLayer::getMaxPortalY} != (d40){&D::getMaxPortalY})
+            m->registerHook(base+0x7b4e0, FunctionScrapper::addressOfNonVirtual((d40){&D::getMaxPortalY}));
+
+        if ((c41){&$PlayLayer::getMinPortalY} != (d41){&D::getMinPortalY})
+            m->registerHook(base+0x7b550, FunctionScrapper::addressOfNonVirtual((d41){&D::getMinPortalY}));
+
+        if ((c42){&$PlayLayer::getObjectsState} != (d42){&D::getObjectsState})
+            m->registerHook(base+0x7e9d0, FunctionScrapper::addressOfNonVirtual((d42){&D::getObjectsState}));
+
+        if ((c43){&$PlayLayer::getOtherPlayer} != (d43){&D::getOtherPlayer})
+            m->registerHook(base+0x7dcc0, FunctionScrapper::addressOfNonVirtual((d43){&D::getOtherPlayer}));
+
+        if ((c44){&$PlayLayer::getParticleKey} != (d44){&D::getParticleKey})
+            m->registerHook(base+0x764d0, FunctionScrapper::addressOfNonVirtual((d44){&D::getParticleKey}));
+
+        if ((c45){&$PlayLayer::getParticleKey2} != (d45){&D::getParticleKey2})
+            m->registerHook(base+0x767b0, FunctionScrapper::addressOfNonVirtual((d45){&D::getParticleKey2}));
+
+        if ((c46){&$PlayLayer::getRelativeMod} != (d46){&D::getRelativeMod})
+            m->registerHook(base+0x7c2a0, FunctionScrapper::addressOfNonVirtual((d46){&D::getRelativeMod}));
+
+        if ((c47){&$PlayLayer::getTempMilliTime} != (d47){&D::getTempMilliTime})
+            m->registerHook(base+0x778e0, FunctionScrapper::addressOfNonVirtual((d47){&D::getTempMilliTime}));
+
+        if ((c48){&$PlayLayer::gravityEffectFinished} != (d48){&D::gravityEffectFinished})
+            m->registerHook(base+0x7cec0, FunctionScrapper::addressOfNonVirtual((d48){&D::gravityEffectFinished}));
+
+        if ((c49){&$PlayLayer::hasItem} != (d49){&D::hasItem})
+            m->registerHook(base+0x7cee0, FunctionScrapper::addressOfNonVirtual((d49){&D::hasItem}));
+
+        if ((c50){&$PlayLayer::hasUniqueCoin} != (d50){&D::hasUniqueCoin})
+            m->registerHook(base+0x77510, FunctionScrapper::addressOfNonVirtual((d50){&D::hasUniqueCoin}));
+
+        if ((c51){&$PlayLayer::incrementJumps} != (d51){&D::incrementJumps})
+            m->registerHook(base+0x7ff40, FunctionScrapper::addressOfNonVirtual((d51){&D::incrementJumps}));
+
+        if ((c52){&$PlayLayer::init} != (d52){&D::init})
+            m->registerHook(base+0x6b5f0, FunctionScrapper::addressOfNonVirtual((d52){&D::init}));
+
+        if ((c53){&$PlayLayer::isFlipping} != (d53){&D::isFlipping})
+            m->registerHook(base+0x76100, FunctionScrapper::addressOfNonVirtual((d53){&D::isFlipping}));
+
+        if ((c54){&$PlayLayer::levelComplete} != (d54){&D::levelComplete})
+            m->registerHook(base+0x72b80, FunctionScrapper::addressOfNonVirtual((d54){&D::levelComplete}));
+
+        if ((c55){&$PlayLayer::lightningFlash} != (d55){&D::lightningFlash})
+            m->registerHook(base+0x75cc0, FunctionScrapper::addressOfNonVirtual((d55){&D::lightningFlash}));
+
+        if ((c56){&$PlayLayer::lightningFlash} != (d56){&D::lightningFlash})
+            m->registerHook(base+0x75bf0, FunctionScrapper::addressOfNonVirtual((d56){&D::lightningFlash}));
+
+        if ((c57){&$PlayLayer::loadDefaultColors} != (d57){&D::loadDefaultColors})
+            m->registerHook(base+0x6ef30, FunctionScrapper::addressOfNonVirtual((d57){&D::loadDefaultColors}));
+
+        if ((c58){&$PlayLayer::loadFromCheckpoint} != (d58){&D::loadFromCheckpoint})
+            m->registerHook(base+0x7f000, FunctionScrapper::addressOfNonVirtual((d58){&D::loadFromCheckpoint}));
+
+        if ((c59){&$PlayLayer::loadLastCheckpoint} != (d59){&D::loadLastCheckpoint})
+            m->registerHook(base+0x7efc0, FunctionScrapper::addressOfNonVirtual((d59){&D::loadLastCheckpoint}));
+
+        if ((c60){&$PlayLayer::loadSavedObjectsState} != (d60){&D::loadSavedObjectsState})
+            m->registerHook(base+0x7f3d0, FunctionScrapper::addressOfNonVirtual((d60){&D::loadSavedObjectsState}));
+
+        if ((c61){&$PlayLayer::markCheckpoint} != (d61){&D::markCheckpoint})
+            m->registerHook(base+0x7ef60, FunctionScrapper::addressOfNonVirtual((d61){&D::markCheckpoint}));
+
+        if ((c62){&$PlayLayer::moveCameraToPos} != (d62){&D::moveCameraToPos})
+            m->registerHook(base+0x7c980, FunctionScrapper::addressOfNonVirtual((d62){&D::moveCameraToPos}));
+
+        if ((c63){&$PlayLayer::onEnterTransitionDidFinish} != (d63){&D::onEnterTransitionDidFinish})
+            m->registerHook(base+0x806e0, FunctionScrapper::addressOfVirtual(i, (d63){&D::onEnterTransitionDidFinish}));
+
+        if ((c64){&$PlayLayer::onExit} != (d64){&D::onExit})
+            m->registerHook(base+0x80710, FunctionScrapper::addressOfVirtual(i, (d64){&D::onExit}));
+
+        if ((c65){&$PlayLayer::onQuit} != (d65){&D::onQuit})
+            m->registerHook(base+0x72710, FunctionScrapper::addressOfNonVirtual((d65){&D::onQuit}));
+
+        if ((c66){&$PlayLayer::optimizeColorGroups} != (d66){&D::optimizeColorGroups})
+            m->registerHook(base+0x6dad0, FunctionScrapper::addressOfNonVirtual((d66){&D::optimizeColorGroups}));
+
+        if ((c67){&$PlayLayer::optimizeOpacityGroups} != (d67){&D::optimizeOpacityGroups})
+            m->registerHook(base+0x6dc20, FunctionScrapper::addressOfNonVirtual((d67){&D::optimizeOpacityGroups}));
+
+        if ((c68){&$PlayLayer::optimizeSaveRequiredGroups} != (d68){&D::optimizeSaveRequiredGroups})
+            m->registerHook(base+0x6dd70, FunctionScrapper::addressOfNonVirtual((d68){&D::optimizeSaveRequiredGroups}));
+
+        if ((c69){&$PlayLayer::pauseGame} != (d69){&D::pauseGame})
+            m->registerHook(base+0x802d0, FunctionScrapper::addressOfNonVirtual((d69){&D::pauseGame}));
+
+        if ((c70){&$PlayLayer::pickupItem} != (d70){&D::pickupItem})
+            m->registerHook(base+0x7c1d0, FunctionScrapper::addressOfNonVirtual((d70){&D::pickupItem}));
+
+        if ((c71){&$PlayLayer::playAnimationCommand} != (d71){&D::playAnimationCommand})
+            m->registerHook(base+0x75930, FunctionScrapper::addressOfNonVirtual((d71){&D::playAnimationCommand}));
+
+        if ((c72){&$PlayLayer::playEndAnimationToPos} != (d72){&D::playEndAnimationToPos})
+            m->registerHook(base+0x759a0, FunctionScrapper::addressOfNonVirtual((d72){&D::playEndAnimationToPos}));
+
+        if ((c73){&$PlayLayer::playExitDualEffect} != (d73){&D::playExitDualEffect})
+            m->registerHook(base+0x7d1d0, FunctionScrapper::addressOfNonVirtual((d73){&D::playExitDualEffect}));
+
+        if ((c74){&$PlayLayer::playFlashEffect} != (d74){&D::playFlashEffect})
+            m->registerHook(base+0x75e50, FunctionScrapper::addressOfNonVirtual((d74){&D::playFlashEffect}));
+
+        if ((c75){&$PlayLayer::playGravityEffect} != (d75){&D::playGravityEffect})
+            m->registerHook(base+0x7b5a0, FunctionScrapper::addressOfNonVirtual((d75){&D::playGravityEffect}));
+
+        if ((c76){&$PlayLayer::playSpeedParticle} != (d76){&D::playSpeedParticle})
+            m->registerHook(base+0x77030, FunctionScrapper::addressOfNonVirtual((d76){&D::playSpeedParticle}));
+
+        if ((c77){&$PlayLayer::playerWillSwitchMode} != (d77){&D::playerWillSwitchMode})
+            m->registerHook(base+0x7b820, FunctionScrapper::addressOfNonVirtual((d77){&D::playerWillSwitchMode}));
+
+        if ((c78){&$PlayLayer::prepareSpawnObjects} != (d78){&D::prepareSpawnObjects})
+            m->registerHook(base+0x7fc00, FunctionScrapper::addressOfNonVirtual((d78){&D::prepareSpawnObjects}));
+
+        if ((c79){&$PlayLayer::processItems} != (d79){&D::processItems})
+            m->registerHook(base+0x735c0, FunctionScrapper::addressOfNonVirtual((d79){&D::processItems}));
+
+        if ((c80){&$PlayLayer::processLoadedMoveActions} != (d80){&D::processLoadedMoveActions})
+            m->registerHook(base+0x7a7c0, FunctionScrapper::addressOfNonVirtual((d80){&D::processLoadedMoveActions}));
+
+        if ((c81){&$PlayLayer::recordAction} != (d81){&D::recordAction})
+            m->registerHook(base+0x7e190, FunctionScrapper::addressOfNonVirtual((d81){&D::recordAction}));
+
+        if ((c82){&$PlayLayer::registerActiveObject} != (d82){&D::registerActiveObject})
+            m->registerHook(base+0x77620, FunctionScrapper::addressOfNonVirtual((d82){&D::registerActiveObject}));
+
+        if ((c83){&$PlayLayer::registerStateObject} != (d83){&D::registerStateObject})
+            m->registerHook(base+0x777b0, FunctionScrapper::addressOfNonVirtual((d83){&D::registerStateObject}));
+
+        if ((c84){&$PlayLayer::removeAllObjects} != (d84){&D::removeAllObjects})
+            m->registerHook(base+0x727b0, FunctionScrapper::addressOfNonVirtual((d84){&D::removeAllObjects}));
+
+        if ((c85){&$PlayLayer::removeFromGroupOld} != (d85){&D::removeFromGroupOld})
+            m->registerHook(base+0x77750, FunctionScrapper::addressOfNonVirtual((d85){&D::removeFromGroupOld}));
+
+        if ((c86){&$PlayLayer::removeLastCheckpoint} != (d86){&D::removeLastCheckpoint})
+            m->registerHook(base+0x7f870, FunctionScrapper::addressOfNonVirtual((d86){&D::removeLastCheckpoint}));
+
+        if ((c87){&$PlayLayer::removePlayer2} != (d87){&D::removePlayer2})
+            m->registerHook(base+0x7d630, FunctionScrapper::addressOfNonVirtual((d87){&D::removePlayer2}));
+
+        if ((c88){&$PlayLayer::resetLevel} != (d88){&D::resetLevel})
+            m->registerHook(base+0x71c50, FunctionScrapper::addressOfNonVirtual((d88){&D::resetLevel}));
+
+        if ((c89){&$PlayLayer::resume} != (d89){&D::resume})
+            m->registerHook(base+0x80480, FunctionScrapper::addressOfNonVirtual((d89){&D::resume}));
+
+        if ((c90){&$PlayLayer::resumeAndRestart} != (d90){&D::resumeAndRestart})
+            m->registerHook(base+0x80400, FunctionScrapper::addressOfNonVirtual((d90){&D::resumeAndRestart}));
+
+        if ((c91){&$PlayLayer::saveRecordAction} != (d91){&D::saveRecordAction})
+            m->registerHook(base+0x78750, FunctionScrapper::addressOfNonVirtual((d91){&D::saveRecordAction}));
+
+        if ((c92){&$PlayLayer::scene} != (d92){&D::scene})
+            m->registerHook(base+0x6b500, FunctionScrapper::addressOfNonVirtual((d92){&D::scene}));
+
+        if ((c93){&$PlayLayer::setupLevelStart} != (d93){&D::setupLevelStart})
+            m->registerHook(base+0x6f560, FunctionScrapper::addressOfNonVirtual((d93){&D::setupLevelStart}));
+
+        if ((c94){&$PlayLayer::setupReplay} != (d94){&D::setupReplay})
+            m->registerHook(base+0x7e1e0, FunctionScrapper::addressOfNonVirtual((d94){&D::setupReplay}));
+
+        if ((c95){&$PlayLayer::shakeCamera} != (d95){&D::shakeCamera})
+            m->registerHook(base+0x744a0, FunctionScrapper::addressOfNonVirtual((d95){&D::shakeCamera}));
+
+        if ((c96){&$PlayLayer::shouldBlend} != (d96){&D::shouldBlend})
+            m->registerHook(base+0x771b0, FunctionScrapper::addressOfNonVirtual((d96){&D::shouldBlend}));
+
+        if ((c97){&$PlayLayer::showCompleteEffect} != (d97){&D::showCompleteEffect})
+            m->registerHook(base+0x738e0, FunctionScrapper::addressOfNonVirtual((d97){&D::showCompleteEffect}));
+
+        if ((c98){&$PlayLayer::showCompleteText} != (d98){&D::showCompleteText})
+            m->registerHook(base+0x73be0, FunctionScrapper::addressOfNonVirtual((d98){&D::showCompleteText}));
+
+        if ((c99){&$PlayLayer::showEndLayer} != (d99){&D::showEndLayer})
+            m->registerHook(base+0x74450, FunctionScrapper::addressOfNonVirtual((d99){&D::showEndLayer}));
+
+        if ((c100){&$PlayLayer::showHint} != (d100){&D::showHint})
+            m->registerHook(base+0x7deb0, FunctionScrapper::addressOfNonVirtual((d100){&D::showHint}));
+
+        if ((c101){&$PlayLayer::showNewBest} != (d101){&D::showNewBest})
+            m->registerHook(base+0x74580, FunctionScrapper::addressOfNonVirtual((d101){&D::showNewBest}));
+
+        if ((c102){&$PlayLayer::showRetryLayer} != (d102){&D::showRetryLayer})
+            m->registerHook(base+0x75ba0, FunctionScrapper::addressOfNonVirtual((d102){&D::showRetryLayer}));
+
+        if ((c103){&$PlayLayer::showTwoPlayerGuide} != (d103){&D::showTwoPlayerGuide})
+            m->registerHook(base+0x6df00, FunctionScrapper::addressOfNonVirtual((d103){&D::showTwoPlayerGuide}));
+
+        if ((c104){&$PlayLayer::sortGroups} != (d104){&D::sortGroups})
+            m->registerHook(base+0x6d9e0, FunctionScrapper::addressOfNonVirtual((d104){&D::sortGroups}));
+
+        if ((c105){&$PlayLayer::spawnCircle} != (d105){&D::spawnCircle})
+            m->registerHook(base+0x73820, FunctionScrapper::addressOfNonVirtual((d105){&D::spawnCircle}));
+
+        if ((c106){&$PlayLayer::spawnFirework} != (d106){&D::spawnFirework})
+            m->registerHook(base+0x74200, FunctionScrapper::addressOfNonVirtual((d106){&D::spawnFirework}));
+
+        if ((c107){&$PlayLayer::spawnParticle} != (d107){&D::spawnParticle})
+            m->registerHook(base+0x76330, FunctionScrapper::addressOfNonVirtual((d107){&D::spawnParticle}));
+
+        if ((c108){&$PlayLayer::spawnPlayer2} != (d108){&D::spawnPlayer2})
+            m->registerHook(base+0x7d170, FunctionScrapper::addressOfNonVirtual((d108){&D::spawnPlayer2}));
+
+        if ((c109){&$PlayLayer::startGame} != (d109){&D::startGame})
+            m->registerHook(base+0x726b0, FunctionScrapper::addressOfNonVirtual((d109){&D::startGame}));
+
+        if ((c110){&$PlayLayer::startMusic} != (d110){&D::startMusic})
+            m->registerHook(base+0x72910, FunctionScrapper::addressOfNonVirtual((d110){&D::startMusic}));
+
+        if ((c111){&$PlayLayer::startRecording} != (d111){&D::startRecording})
+            m->registerHook(base+0x7fec0, FunctionScrapper::addressOfNonVirtual((d111){&D::startRecording}));
+
+        if ((c112){&$PlayLayer::startRecordingDelayed} != (d112){&D::startRecordingDelayed})
+            m->registerHook(base+0x7fed0, FunctionScrapper::addressOfNonVirtual((d112){&D::startRecordingDelayed}));
+
+        if ((c113){&$PlayLayer::stopCameraShake} != (d113){&D::stopCameraShake})
+            m->registerHook(base+0x75900, FunctionScrapper::addressOfNonVirtual((d113){&D::stopCameraShake}));
+
+        if ((c114){&$PlayLayer::stopRecording} != (d114){&D::stopRecording})
+            m->registerHook(base+0x6d090, FunctionScrapper::addressOfNonVirtual((d114){&D::stopRecording}));
+
+        if ((c115){&$PlayLayer::storeCheckpoint} != (d115){&D::storeCheckpoint})
+            m->registerHook(base+0x7ef10, FunctionScrapper::addressOfNonVirtual((d115){&D::storeCheckpoint}));
+
+        if ((c116){&$PlayLayer::switchToFlyMode} != (d116){&D::switchToFlyMode})
+            m->registerHook(base+0x7baf0, FunctionScrapper::addressOfNonVirtual((d116){&D::switchToFlyMode}));
+
+        if ((c117){&$PlayLayer::switchToRobotMode} != (d117){&D::switchToRobotMode})
+            m->registerHook(base+0x7bc80, FunctionScrapper::addressOfNonVirtual((d117){&D::switchToRobotMode}));
+
+        if ((c118){&$PlayLayer::switchToRollMode} != (d118){&D::switchToRollMode})
+            m->registerHook(base+0x7bbe0, FunctionScrapper::addressOfNonVirtual((d118){&D::switchToRollMode}));
+
+        if ((c119){&$PlayLayer::switchToSpiderMode} != (d119){&D::switchToSpiderMode})
+            m->registerHook(base+0x7bd20, FunctionScrapper::addressOfNonVirtual((d119){&D::switchToSpiderMode}));
+
+        if ((c120){&$PlayLayer::timeForXPos} != (d120){&D::timeForXPos})
+            m->registerHook(base+0x7d120, FunctionScrapper::addressOfNonVirtual((d120){&D::timeForXPos}));
+
+        if ((c121){&$PlayLayer::timeForXPos2} != (d121){&D::timeForXPos2})
+            m->registerHook(base+0x293eb0, FunctionScrapper::addressOfNonVirtual((d121){&D::timeForXPos2}));
+
+        if ((c122){&$PlayLayer::toggleBGEffectVisibility} != (d122){&D::toggleBGEffectVisibility})
+            m->registerHook(base+0x7fe80, FunctionScrapper::addressOfNonVirtual((d122){&D::toggleBGEffectVisibility}));
+
+        if ((c123){&$PlayLayer::toggleDualMode} != (d123){&D::toggleDualMode})
+            m->registerHook(base+0x7bf90, FunctionScrapper::addressOfNonVirtual((d123){&D::toggleDualMode}));
+
+        if ((c124){&$PlayLayer::toggleFlipped} != (d124){&D::toggleFlipped})
+            m->registerHook(base+0x7bdc0, FunctionScrapper::addressOfNonVirtual((d124){&D::toggleFlipped}));
+
+        if ((c125){&$PlayLayer::toggleGhostEffect} != (d125){&D::toggleGhostEffect})
+            m->registerHook(base+0x7fe40, FunctionScrapper::addressOfNonVirtual((d125){&D::toggleGhostEffect}));
+
+        if ((c126){&$PlayLayer::toggleGlitter} != (d126){&D::toggleGlitter})
+            m->registerHook(base+0x70e00, FunctionScrapper::addressOfNonVirtual((d126){&D::toggleGlitter}));
+
+        if ((c127){&$PlayLayer::togglePracticeMode} != (d127){&D::togglePracticeMode})
+            m->registerHook(base+0x7f9e0, FunctionScrapper::addressOfNonVirtual((d127){&D::togglePracticeMode}));
+
+        if ((c128){&$PlayLayer::toggleProgressbar} != (d128){&D::toggleProgressbar})
+            m->registerHook(base+0x6eeb0, FunctionScrapper::addressOfNonVirtual((d128){&D::toggleProgressbar}));
+
+        if ((c129){&$PlayLayer::tryStartRecord} != (d129){&D::tryStartRecord})
+            m->registerHook(base+0x7fe00, FunctionScrapper::addressOfNonVirtual((d129){&D::tryStartRecord}));
+
+        if ((c130){&$PlayLayer::unclaimParticle} != (d130){&D::unclaimParticle})
+            m->registerHook(base+0x76e00, FunctionScrapper::addressOfNonVirtual((d130){&D::unclaimParticle}));
+
+        if ((c131){&$PlayLayer::unregisterActiveObject} != (d131){&D::unregisterActiveObject})
+            m->registerHook(base+0x77660, FunctionScrapper::addressOfNonVirtual((d131){&D::unregisterActiveObject}));
+
+        if ((c132){&$PlayLayer::unregisterStateObject} != (d132){&D::unregisterStateObject})
+            m->registerHook(base+0x777f0, FunctionScrapper::addressOfNonVirtual((d132){&D::unregisterStateObject}));
+
+        if ((c133){&$PlayLayer::update} != (d133){&D::update})
+            m->registerHook(base+0x77900, FunctionScrapper::addressOfVirtual(i, (d133){&D::update}));
+
+        if ((c134){&$PlayLayer::updateAttempts} != (d134){&D::updateAttempts})
+            m->registerHook(base+0x7fcd0, FunctionScrapper::addressOfNonVirtual((d134){&D::updateAttempts}));
+
+        if ((c135){&$PlayLayer::updateCamera} != (d135){&D::updateCamera})
+            m->registerHook(base+0x6e2b0, FunctionScrapper::addressOfNonVirtual((d135){&D::updateCamera}));
+
+        if ((c136){&$PlayLayer::updateColor} != (d136){&D::updateColor})
+            m->registerHook(base+0x7c7f0, FunctionScrapper::addressOfVirtual(i, (d136){&D::updateColor}));
+
+        if ((c137){&$PlayLayer::updateDualGround} != (d137){&D::updateDualGround})
+            m->registerHook(base+0x7caa0, FunctionScrapper::addressOfNonVirtual((d137){&D::updateDualGround}));
+
+        if ((c138){&$PlayLayer::updateEffectPositions} != (d138){&D::updateEffectPositions})
+            m->registerHook(base+0x7a6d0, FunctionScrapper::addressOfNonVirtual((d138){&D::updateEffectPositions}));
+
+        if ((c139){&$PlayLayer::updateLevelColors} != (d139){&D::updateLevelColors})
+            m->registerHook(base+0x6f1e0, FunctionScrapper::addressOfNonVirtual((d139){&D::updateLevelColors}));
+
+        if ((c140){&$PlayLayer::updateMoveObjectsLastPosition} != (d140){&D::updateMoveObjectsLastPosition})
+            m->registerHook(base+0x7a720, FunctionScrapper::addressOfNonVirtual((d140){&D::updateMoveObjectsLastPosition}));
+
+        if ((c141){&$PlayLayer::updateProgressbar} != (d141){&D::updateProgressbar})
+            m->registerHook(base+0x6ed70, FunctionScrapper::addressOfNonVirtual((d141){&D::updateProgressbar}));
+
+        if ((c142){&$PlayLayer::updateReplay} != (d142){&D::updateReplay})
+            m->registerHook(base+0x78b60, FunctionScrapper::addressOfNonVirtual((d142){&D::updateReplay}));
+
+        if ((c143){&$PlayLayer::updateTimeMod} != (d143){&D::updateTimeMod})
+            m->registerHook(base+0x786f0, FunctionScrapper::addressOfNonVirtual((d143){&D::updateTimeMod}));
+
+        if ((c144){&$PlayLayer::updateTweenAction} != (d144){&D::updateTweenAction})
+            m->registerHook(base+0x7ffb0, FunctionScrapper::addressOfVirtual(i, (d144){&D::updateTweenAction}));
+
+        if ((c145){&$PlayLayer::updateVisibility} != (d145){&D::updateVisibility})
+            m->registerHook(base+0x6fb90, FunctionScrapper::addressOfNonVirtual((d145){&D::updateVisibility}));
+
+        if ((c146){&$PlayLayer::vfDChk} != (d146){&D::vfDChk})
+            m->registerHook(base+0x7fcb0, FunctionScrapper::addressOfNonVirtual((d146){&D::vfDChk}));
+
+        if ((c147){&$PlayLayer::visit} != (d147){&D::visit})
+            m->registerHook(base+0x75ef0, FunctionScrapper::addressOfVirtual(i, (d147){&D::visit}));
+
+        if ((c148){&$PlayLayer::visitWithColorFlash} != (d148){&D::visitWithColorFlash})
+            m->registerHook(base+0x761f0, FunctionScrapper::addressOfNonVirtual((d148){&D::visitWithColorFlash}));
+
+        if ((c149){&$PlayLayer::willSwitchToMode} != (d149){&D::willSwitchToMode})
+            m->registerHook(base+0x7b9e0, FunctionScrapper::addressOfNonVirtual((d149){&D::willSwitchToMode}));
+
+        if ((c150){&$PlayLayer::xPosForTime} != (d150){&D::xPosForTime})
+            m->registerHook(base+0x7d140, FunctionScrapper::addressOfNonVirtual((d150){&D::xPosForTime}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $LevelEditorLayer : public LevelEditorLayer, public $CacBase {
+public:
+    ~$LevelEditorLayer() {
+        endDestructor();
+    }
+    $LevelEditorLayer() {}
+
+    using r1 = decltype(std::declval<LevelEditorLayer>().update(std::declval<float>()));
+    using c1 = r1($LevelEditorLayer::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 update(float p0) {
+        using r1 = decltype(std::declval<LevelEditorLayer>().update(std::declval<float>()));
+        using f1 = r1(*)(LevelEditorLayer*, float);
+        return reinterpret_cast<f1>(base+0xa1b70)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<LevelEditorLayer>().draw());
+    using c2 = r2($LevelEditorLayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 draw() {
+        using r2 = decltype(std::declval<LevelEditorLayer>().draw());
+        using f2 = r2(*)(LevelEditorLayer*);
+        return reinterpret_cast<f2>(base+0xa2a70)(this);
+    }
+
+    using r3 = decltype(std::declval<LevelEditorLayer>().updateColor(std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<EffectGameObject*>()));
+    using c3 = r3($LevelEditorLayer::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) ;
+    using d3 = r3(D::*)(cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*) ;
+    r3 updateColor(cocos2d::_ccColor3B p0, float p1, int p2, bool p3, float p4, cocos2d::_ccHSVValue p5, int p6, bool p7, int p8, EffectGameObject* p9) {
+        using r3 = decltype(std::declval<LevelEditorLayer>().updateColor(std::declval<cocos2d::_ccColor3B>(), std::declval<float>(), std::declval<int>(), std::declval<bool>(), std::declval<float>(), std::declval<cocos2d::_ccHSVValue>(), std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<EffectGameObject*>()));
+        using f3 = r3(*)(LevelEditorLayer*, cocos2d::_ccColor3B, float, int, bool, float, cocos2d::_ccHSVValue, int, bool, int, EffectGameObject*);
+        return reinterpret_cast<f3>(base+0x9c200)(this, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+    }
+
+    using r4 = decltype(std::declval<LevelEditorLayer>().flipGravity(std::declval<PlayerObject*>(), std::declval<bool>(), std::declval<bool>()));
+    using c4 = r4($LevelEditorLayer::*)(PlayerObject*, bool, bool) ;
+    using d4 = r4(D::*)(PlayerObject*, bool, bool) ;
+    r4 flipGravity(PlayerObject* p0, bool p1, bool p2) {
+        using r4 = decltype(std::declval<LevelEditorLayer>().flipGravity(std::declval<PlayerObject*>(), std::declval<bool>(), std::declval<bool>()));
+        using f4 = r4(*)(LevelEditorLayer*, PlayerObject*, bool, bool);
+        return reinterpret_cast<f4>(base+0xa04e0)(this, p0, p1, p2);
+    }
+
+    using r5 = decltype(std::declval<LevelEditorLayer>().calculateColorValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<ColorActionSprite*>(), std::declval<GJEffectManager*>()));
+    using c5 = r5($LevelEditorLayer::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) ;
+    using d5 = r5(D::*)(EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*) ;
+    r5 calculateColorValues(EffectGameObject* p0, EffectGameObject* p1, int p2, float p3, ColorActionSprite* p4, GJEffectManager* p5) {
+        using r5 = decltype(std::declval<LevelEditorLayer>().calculateColorValues(std::declval<EffectGameObject*>(), std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<ColorActionSprite*>(), std::declval<GJEffectManager*>()));
+        using f5 = r5(*)(LevelEditorLayer*, EffectGameObject*, EffectGameObject*, int, float, ColorActionSprite*, GJEffectManager*);
+        return reinterpret_cast<f5>(base+0x9c590)(this, p0, p1, p2, p3, p4, p5);
+    }
+
+    using r6 = decltype(std::declval<LevelEditorLayer>().addToGroup(std::declval<GameObject*>(), std::declval<int>(), std::declval<bool>()));
+    using c6 = r6($LevelEditorLayer::*)(GameObject*, int, bool) ;
+    using d6 = r6(D::*)(GameObject*, int, bool) ;
+    r6 addToGroup(GameObject* p0, int p1, bool p2) {
+        using r6 = decltype(std::declval<LevelEditorLayer>().addToGroup(std::declval<GameObject*>(), std::declval<int>(), std::declval<bool>()));
+        using f6 = r6(*)(LevelEditorLayer*, GameObject*, int, bool);
+        return reinterpret_cast<f6>(base+0x9dab0)(this, p0, p1, p2);
+    }
+
+    using r7 = decltype(std::declval<LevelEditorLayer>().removeFromGroup(std::declval<GameObject*>(), std::declval<int>()));
+    using c7 = r7($LevelEditorLayer::*)(GameObject*, int) ;
+    using d7 = r7(D::*)(GameObject*, int) ;
+    r7 removeFromGroup(GameObject* p0, int p1) {
+        using r7 = decltype(std::declval<LevelEditorLayer>().removeFromGroup(std::declval<GameObject*>(), std::declval<int>()));
+        using f7 = r7(*)(LevelEditorLayer*, GameObject*, int);
+        return reinterpret_cast<f7>(base+0x9db60)(this, p0, p1);
+    }
+
+    using r8 = decltype(std::declval<LevelEditorLayer>().timeForXPos(std::declval<float>()));
+    using c8 = r8($LevelEditorLayer::*)(float) ;
+    using d8 = r8(D::*)(float) ;
+    r8 timeForXPos(float p0) {
+        using r8 = decltype(std::declval<LevelEditorLayer>().timeForXPos(std::declval<float>()));
+        using f8 = r8(*)(LevelEditorLayer*, float);
+        return reinterpret_cast<f8>(base+0x9c7d0)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<LevelEditorLayer>().xPosForTime(std::declval<float>()));
+    using c9 = r9($LevelEditorLayer::*)(float) ;
+    using d9 = r9(D::*)(float) ;
+    r9 xPosForTime(float p0) {
+        using r9 = decltype(std::declval<LevelEditorLayer>().xPosForTime(std::declval<float>()));
+        using f9 = r9(*)(LevelEditorLayer*, float);
+        return reinterpret_cast<f9>(base+0x9c800)(this, p0);
+    }
+
+    using r10 = decltype(std::declval<LevelEditorLayer>().levelSettingsUpdated());
+    using c10 = r10($LevelEditorLayer::*)() ;
+    using d10 = r10(D::*)() ;
+    r10 levelSettingsUpdated() {
+        using r10 = decltype(std::declval<LevelEditorLayer>().levelSettingsUpdated());
+        using f10 = r10(*)(LevelEditorLayer*);
+        return reinterpret_cast<f10>(base+0x93f30)(this);
+    }
+
+    using r11 = decltype(std::declval<LevelEditorLayer>().activateTriggerEffect(std::declval<EffectGameObject*>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c11 = r11($LevelEditorLayer::*)(EffectGameObject*, float, float, float) ;
+    using d11 = r11(D::*)(EffectGameObject*, float, float, float) ;
+    r11 activateTriggerEffect(EffectGameObject* p0, float p1, float p2, float p3) {
+        using r11 = decltype(std::declval<LevelEditorLayer>().activateTriggerEffect(std::declval<EffectGameObject*>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f11 = r11(*)(LevelEditorLayer*, EffectGameObject*, float, float, float);
+        return reinterpret_cast<f11>(base+0x9b520)(this, p0, p1, p2, p3);
+    }
+
+    using r12 = decltype(std::declval<LevelEditorLayer>().addObjectFromString(std::declval<gd::string>()));
+    using c12 = r12($LevelEditorLayer::*)(gd::string) ;
+    using d12 = r12(D::*)(gd::string) ;
+    r12 addObjectFromString(gd::string p0) {
+        using r12 = decltype(std::declval<LevelEditorLayer>().addObjectFromString(std::declval<gd::string>()));
+        using f12 = r12(*)(LevelEditorLayer*, gd::string);
+        return reinterpret_cast<f12>(base+0x94640)(this, p0);
+    }
+
+    using r13 = decltype(std::declval<LevelEditorLayer>().addSpecial(std::declval<GameObject*>()));
+    using c13 = r13($LevelEditorLayer::*)(GameObject*) ;
+    using d13 = r13(D::*)(GameObject*) ;
+    r13 addSpecial(GameObject* p0) {
+        using r13 = decltype(std::declval<LevelEditorLayer>().addSpecial(std::declval<GameObject*>()));
+        using f13 = r13(*)(LevelEditorLayer*, GameObject*);
+        return reinterpret_cast<f13>(base+0x94f30)(this, p0);
+    }
+
+    using r14 = decltype(std::declval<LevelEditorLayer>().addToRedoList(std::declval<UndoObject*>()));
+    using c14 = r14($LevelEditorLayer::*)(UndoObject*) ;
+    using d14 = r14(D::*)(UndoObject*) ;
+    r14 addToRedoList(UndoObject* p0) {
+        using r14 = decltype(std::declval<LevelEditorLayer>().addToRedoList(std::declval<UndoObject*>()));
+        using f14 = r14(*)(LevelEditorLayer*, UndoObject*);
+        return reinterpret_cast<f14>(base+0x96f80)(this, p0);
+    }
+
+    using r15 = decltype(std::declval<LevelEditorLayer>().addToUndoList(std::declval<UndoObject*>(), std::declval<bool>()));
+    using c15 = r15($LevelEditorLayer::*)(UndoObject*, bool) ;
+    using d15 = r15(D::*)(UndoObject*, bool) ;
+    r15 addToUndoList(UndoObject* p0, bool p1) {
+        using r15 = decltype(std::declval<LevelEditorLayer>().addToUndoList(std::declval<UndoObject*>(), std::declval<bool>()));
+        using f15 = r15(*)(LevelEditorLayer*, UndoObject*, bool);
+        return reinterpret_cast<f15>(base+0x94e20)(this, p0, p1);
+    }
+
+    using r16 = decltype(std::declval<LevelEditorLayer>().animateInDualGround(std::declval<GameObject*>(), std::declval<float>(), std::declval<bool>()));
+    using c16 = r16($LevelEditorLayer::*)(GameObject*, float, bool) ;
+    using d16 = r16(D::*)(GameObject*, float, bool) ;
+    r16 animateInDualGround(GameObject* p0, float p1, bool p2) {
+        using r16 = decltype(std::declval<LevelEditorLayer>().animateInDualGround(std::declval<GameObject*>(), std::declval<float>(), std::declval<bool>()));
+        using f16 = r16(*)(LevelEditorLayer*, GameObject*, float, bool);
+        return reinterpret_cast<f16>(base+0xa2780)(this, p0, p1, p2);
+    }
+
+    using r17 = decltype(std::declval<LevelEditorLayer>().checkCollisions(std::declval<PlayerObject*>(), std::declval<float>()));
+    using c17 = r17($LevelEditorLayer::*)(PlayerObject*, float) ;
+    using d17 = r17(D::*)(PlayerObject*, float) ;
+    r17 checkCollisions(PlayerObject* p0, float p1) {
+        using r17 = decltype(std::declval<LevelEditorLayer>().checkCollisions(std::declval<PlayerObject*>(), std::declval<float>()));
+        using f17 = r17(*)(LevelEditorLayer*, PlayerObject*, float);
+        return reinterpret_cast<f17>(base+0x9e620)(this, p0, p1);
+    }
+
+    using r18 = decltype(std::declval<LevelEditorLayer>().create(std::declval<GJGameLevel*>()));
+    using c18 = r18(*)(GJGameLevel*);
+    using d18 = r18(*)(GJGameLevel*);
+    static r18 create(GJGameLevel* p0) {
+        using r18 = decltype(std::declval<LevelEditorLayer>().create(std::declval<GJGameLevel*>()));
+        using f18 = r18(*)(GJGameLevel*);
+        return reinterpret_cast<f18>(base+0x90fb0)(p0);
+
+    }
+
+    using r19 = decltype(std::declval<LevelEditorLayer>().createBackground());
+    using c19 = r19($LevelEditorLayer::*)() ;
+    using d19 = r19(D::*)() ;
+    r19 createBackground() {
+        using r19 = decltype(std::declval<LevelEditorLayer>().createBackground());
+        using f19 = r19(*)(LevelEditorLayer*);
+        return reinterpret_cast<f19>(base+0x929f0)(this);
+    }
+
+    using r20 = decltype(std::declval<LevelEditorLayer>().createGroundLayer());
+    using c20 = r20($LevelEditorLayer::*)() ;
+    using d20 = r20(D::*)() ;
+    r20 createGroundLayer() {
+        using r20 = decltype(std::declval<LevelEditorLayer>().createGroundLayer());
+        using f20 = r20(*)(LevelEditorLayer*);
+        return reinterpret_cast<f20>(base+0x92840)(this);
+    }
+
+    using r21 = decltype(std::declval<LevelEditorLayer>().createObject(std::declval<int>(), std::declval<cocos2d::CCPoint>(), std::declval<bool>()));
+    using c21 = r21($LevelEditorLayer::*)(int, cocos2d::CCPoint, bool) ;
+    using d21 = r21(D::*)(int, cocos2d::CCPoint, bool) ;
+    r21 createObject(int p0, cocos2d::CCPoint p1, bool p2) {
+        using r21 = decltype(std::declval<LevelEditorLayer>().createObject(std::declval<int>(), std::declval<cocos2d::CCPoint>(), std::declval<bool>()));
+        using f21 = r21(*)(LevelEditorLayer*, int, cocos2d::CCPoint, bool);
+        return reinterpret_cast<f21>(base+0x957c0)(this, p0, p1, p2);
+    }
+
+    using r22 = decltype(std::declval<LevelEditorLayer>().createObjectsFromSetup(std::declval<gd::string>()));
+    using c22 = r22($LevelEditorLayer::*)(gd::string) ;
+    using d22 = r22(D::*)(gd::string) ;
+    r22 createObjectsFromSetup(gd::string p0) {
+        using r22 = decltype(std::declval<LevelEditorLayer>().createObjectsFromSetup(std::declval<gd::string>()));
+        using f22 = r22(*)(LevelEditorLayer*, gd::string);
+        return reinterpret_cast<f22>(base+0x92230)(this, p0);
+    }
+
+    using r23 = decltype(std::declval<LevelEditorLayer>().createObjectsFromString(std::declval<gd::string>(), std::declval<bool>()));
+    using c23 = r23($LevelEditorLayer::*)(gd::string, bool) ;
+    using d23 = r23(D::*)(gd::string, bool) ;
+    r23 createObjectsFromString(gd::string p0, bool p1) {
+        using r23 = decltype(std::declval<LevelEditorLayer>().createObjectsFromString(std::declval<gd::string>(), std::declval<bool>()));
+        using f23 = r23(*)(LevelEditorLayer*, gd::string, bool);
+        return reinterpret_cast<f23>(base+0x94730)(this, p0, p1);
+    }
+
+    using r24 = decltype(std::declval<LevelEditorLayer>().getLastObjectX());
+    using c24 = r24($LevelEditorLayer::*)() ;
+    using d24 = r24(D::*)() ;
+    r24 getLastObjectX() {
+        using r24 = decltype(std::declval<LevelEditorLayer>().getLastObjectX());
+        using f24 = r24(*)(LevelEditorLayer*);
+        return reinterpret_cast<f24>(base+0x9c860)(this);
+    }
+
+    using r25 = decltype(std::declval<LevelEditorLayer>().getLevelString());
+    using c25 = r25($LevelEditorLayer::*)() ;
+    using d25 = r25(D::*)() ;
+    r25 getLevelString() {
+        using r25 = decltype(std::declval<LevelEditorLayer>().getLevelString());
+        using f25 = r25(*)(LevelEditorLayer*);
+        return reinterpret_cast<f25>(base+0x97790)(this);
+    }
+
+    using r26 = decltype(std::declval<LevelEditorLayer>().getNextColorChannel());
+    using c26 = r26($LevelEditorLayer::*)() ;
+    using d26 = r26(D::*)() ;
+    r26 getNextColorChannel() {
+        using r26 = decltype(std::declval<LevelEditorLayer>().getNextColorChannel());
+        using f26 = r26(*)(LevelEditorLayer*);
+        return reinterpret_cast<f26>(base+0x9a610)(this);
+    }
+
+    using r27 = decltype(std::declval<LevelEditorLayer>().getNextFreeBlockID(std::declval<cocos2d::CCArray*>()));
+    using c27 = r27($LevelEditorLayer::*)(cocos2d::CCArray*) ;
+    using d27 = r27(D::*)(cocos2d::CCArray*) ;
+    r27 getNextFreeBlockID(cocos2d::CCArray* p0) {
+        using r27 = decltype(std::declval<LevelEditorLayer>().getNextFreeBlockID(std::declval<cocos2d::CCArray*>()));
+        using f27 = r27(*)(LevelEditorLayer*, cocos2d::CCArray*);
+        return reinterpret_cast<f27>(base+0x9a4e0)(this, p0);
+    }
+
+    using r28 = decltype(std::declval<LevelEditorLayer>().getNextFreeGroupID(std::declval<cocos2d::CCArray*>()));
+    using c28 = r28($LevelEditorLayer::*)(cocos2d::CCArray*) ;
+    using d28 = r28(D::*)(cocos2d::CCArray*) ;
+    r28 getNextFreeGroupID(cocos2d::CCArray* p0) {
+        using r28 = decltype(std::declval<LevelEditorLayer>().getNextFreeGroupID(std::declval<cocos2d::CCArray*>()));
+        using f28 = r28(*)(LevelEditorLayer*, cocos2d::CCArray*);
+        return reinterpret_cast<f28>(base+0x9a1b0)(this, p0);
+    }
+
+    using r29 = decltype(std::declval<LevelEditorLayer>().getNextFreeItemID(std::declval<cocos2d::CCArray*>()));
+    using c29 = r29($LevelEditorLayer::*)(cocos2d::CCArray*) ;
+    using d29 = r29(D::*)(cocos2d::CCArray*) ;
+    r29 getNextFreeItemID(cocos2d::CCArray* p0) {
+        using r29 = decltype(std::declval<LevelEditorLayer>().getNextFreeItemID(std::declval<cocos2d::CCArray*>()));
+        using f29 = r29(*)(LevelEditorLayer*, cocos2d::CCArray*);
+        return reinterpret_cast<f29>(base+0x9a390)(this, p0);
+    }
+
+    using r30 = decltype(std::declval<LevelEditorLayer>().getObjectRect(std::declval<GameObject*>(), std::declval<bool>()));
+    using c30 = r30($LevelEditorLayer::*)(GameObject*, bool) ;
+    using d30 = r30(D::*)(GameObject*, bool) ;
+    r30 getObjectRect(GameObject* p0, bool p1) {
+        using r30 = decltype(std::declval<LevelEditorLayer>().getObjectRect(std::declval<GameObject*>(), std::declval<bool>()));
+        using f30 = r30(*)(LevelEditorLayer*, GameObject*, bool);
+        return reinterpret_cast<f30>(base+0x96240)(this, p0, p1);
+    }
+
+    using r31 = decltype(std::declval<LevelEditorLayer>().getRelativeOffset(std::declval<GameObject*>()));
+    using c31 = r31($LevelEditorLayer::*)(GameObject*) ;
+    using d31 = r31(D::*)(GameObject*) ;
+    r31 getRelativeOffset(GameObject* p0) {
+        using r31 = decltype(std::declval<LevelEditorLayer>().getRelativeOffset(std::declval<GameObject*>()));
+        using f31 = r31(*)(LevelEditorLayer*, GameObject*);
+        return reinterpret_cast<f31>(base+0x96840)(this, p0);
+    }
+
+    using r32 = decltype(std::declval<LevelEditorLayer>().handleAction(std::declval<bool>(), std::declval<cocos2d::CCArray*>()));
+    using c32 = r32($LevelEditorLayer::*)(bool, cocos2d::CCArray*) ;
+    using d32 = r32(D::*)(bool, cocos2d::CCArray*) ;
+    r32 handleAction(bool p0, cocos2d::CCArray* p1) {
+        using r32 = decltype(std::declval<LevelEditorLayer>().handleAction(std::declval<bool>(), std::declval<cocos2d::CCArray*>()));
+        using f32 = r32(*)(LevelEditorLayer*, bool, cocos2d::CCArray*);
+        return reinterpret_cast<f32>(base+0x97020)(this, p0, p1);
+    }
+
+    using r33 = decltype(std::declval<LevelEditorLayer>().init(std::declval<GJGameLevel*>()));
+    using c33 = r33($LevelEditorLayer::*)(GJGameLevel*) ;
+    using d33 = r33(D::*)(GJGameLevel*) ;
+    r33 init(GJGameLevel* p0) {
+        using r33 = decltype(std::declval<LevelEditorLayer>().init(std::declval<GJGameLevel*>()));
+        using f33 = r33(*)(LevelEditorLayer*, GJGameLevel*);
+        return reinterpret_cast<f33>(base+0x91010)(this, p0);
+    }
+
+    using r34 = decltype(std::declval<LevelEditorLayer>().objectAtPosition(std::declval<cocos2d::CCPoint>()));
+    using c34 = r34($LevelEditorLayer::*)(cocos2d::CCPoint) ;
+    using d34 = r34(D::*)(cocos2d::CCPoint) ;
+    r34 objectAtPosition(cocos2d::CCPoint p0) {
+        using r34 = decltype(std::declval<LevelEditorLayer>().objectAtPosition(std::declval<cocos2d::CCPoint>()));
+        using f34 = r34(*)(LevelEditorLayer*, cocos2d::CCPoint);
+        return reinterpret_cast<f34>(base+0x960c0)(this, p0);
+    }
+
+    using r35 = decltype(std::declval<LevelEditorLayer>().objectMoved(std::declval<GameObject*>()));
+    using c35 = r35($LevelEditorLayer::*)(GameObject*) ;
+    using d35 = r35(D::*)(GameObject*) ;
+    r35 objectMoved(GameObject* p0) {
+        using r35 = decltype(std::declval<LevelEditorLayer>().objectMoved(std::declval<GameObject*>()));
+        using f35 = r35(*)(LevelEditorLayer*, GameObject*);
+        return reinterpret_cast<f35>(base+0x999f0)(this, p0);
+    }
+
+    using r36 = decltype(std::declval<LevelEditorLayer>().objectsInRect(std::declval<cocos2d::CCRect>(), std::declval<bool>()));
+    using c36 = r36($LevelEditorLayer::*)(cocos2d::CCRect, bool) ;
+    using d36 = r36(D::*)(cocos2d::CCRect, bool) ;
+    r36 objectsInRect(cocos2d::CCRect p0, bool p1) {
+        using r36 = decltype(std::declval<LevelEditorLayer>().objectsInRect(std::declval<cocos2d::CCRect>(), std::declval<bool>()));
+        using f36 = r36(*)(LevelEditorLayer*, cocos2d::CCRect, bool);
+        return reinterpret_cast<f36>(base+0x95e60)(this, p0, p1);
+    }
+
+    using r37 = decltype(std::declval<LevelEditorLayer>().onPlaytest());
+    using c37 = r37($LevelEditorLayer::*)() ;
+    using d37 = r37(D::*)() ;
+    r37 onPlaytest() {
+        using r37 = decltype(std::declval<LevelEditorLayer>().onPlaytest());
+        using f37 = r37(*)(LevelEditorLayer*);
+        return reinterpret_cast<f37>(base+0xa06b0)(this);
+    }
+
+    using r38 = decltype(std::declval<LevelEditorLayer>().onStopPlaytest());
+    using c38 = r38($LevelEditorLayer::*)() ;
+    using d38 = r38(D::*)() ;
+    r38 onStopPlaytest() {
+        using r38 = decltype(std::declval<LevelEditorLayer>().onStopPlaytest());
+        using f38 = r38(*)(LevelEditorLayer*);
+        return reinterpret_cast<f38>(base+0xa1780)(this);
+    }
+
+    using r39 = decltype(std::declval<LevelEditorLayer>().playMusic());
+    using c39 = r39($LevelEditorLayer::*)() ;
+    using d39 = r39(D::*)() ;
+    r39 playMusic() {
+        using r39 = decltype(std::declval<LevelEditorLayer>().playMusic());
+        using f39 = r39(*)(LevelEditorLayer*);
+        return reinterpret_cast<f39>(base+0xa13c0)(this);
+    }
+
+    using r40 = decltype(std::declval<LevelEditorLayer>().recreateGroups());
+    using c40 = r40($LevelEditorLayer::*)() ;
+    using d40 = r40(D::*)() ;
+    r40 recreateGroups() {
+        using r40 = decltype(std::declval<LevelEditorLayer>().recreateGroups());
+        using f40 = r40(*)(LevelEditorLayer*);
+        return reinterpret_cast<f40>(base+0x9dbf0)(this);
+    }
+
+    using r41 = decltype(std::declval<LevelEditorLayer>().redoLastAction());
+    using c41 = r41($LevelEditorLayer::*)() ;
+    using d41 = r41(D::*)() ;
+    r41 redoLastAction() {
+        using r41 = decltype(std::declval<LevelEditorLayer>().redoLastAction());
+        using f41 = r41(*)(LevelEditorLayer*);
+        return reinterpret_cast<f41>(base+0x97750)(this);
+    }
+
+    using r42 = decltype(std::declval<LevelEditorLayer>().removeAllObjects());
+    using c42 = r42($LevelEditorLayer::*)() ;
+    using d42 = r42(D::*)() ;
+    r42 removeAllObjects() {
+        using r42 = decltype(std::declval<LevelEditorLayer>().removeAllObjects());
+        using f42 = r42(*)(LevelEditorLayer*);
+        return reinterpret_cast<f42>(base+0x93d80)(this);
+    }
+
+    using r43 = decltype(std::declval<LevelEditorLayer>().removeAllObjectsOfType(std::declval<int>()));
+    using c43 = r43($LevelEditorLayer::*)(int) ;
+    using d43 = r43(D::*)(int) ;
+    r43 removeAllObjectsOfType(int p0) {
+        using r43 = decltype(std::declval<LevelEditorLayer>().removeAllObjectsOfType(std::declval<int>()));
+        using f43 = r43(*)(LevelEditorLayer*, int);
+        return reinterpret_cast<f43>(base+0x96d40)(this, p0);
+    }
+
+    using r44 = decltype(std::declval<LevelEditorLayer>().removeObject(std::declval<GameObject*>(), std::declval<bool>()));
+    using c44 = r44($LevelEditorLayer::*)(GameObject*, bool) ;
+    using d44 = r44(D::*)(GameObject*, bool) ;
+    r44 removeObject(GameObject* p0, bool p1) {
+        using r44 = decltype(std::declval<LevelEditorLayer>().removeObject(std::declval<GameObject*>(), std::declval<bool>()));
+        using f44 = r44(*)(LevelEditorLayer*, GameObject*, bool);
+        return reinterpret_cast<f44>(base+0x96890)(this, p0, p1);
+    }
+
+    using r45 = decltype(std::declval<LevelEditorLayer>().removeSpecial(std::declval<GameObject*>()));
+    using c45 = r45($LevelEditorLayer::*)(GameObject*) ;
+    using d45 = r45(D::*)(GameObject*) ;
+    r45 removeSpecial(GameObject* p0) {
+        using r45 = decltype(std::declval<LevelEditorLayer>().removeSpecial(std::declval<GameObject*>()));
+        using f45 = r45(*)(LevelEditorLayer*, GameObject*);
+        return reinterpret_cast<f45>(base+0x969c0)(this, p0);
+    }
+
+    using r46 = decltype(std::declval<LevelEditorLayer>().resetMovingObjects());
+    using c46 = r46($LevelEditorLayer::*)() ;
+    using d46 = r46(D::*)() ;
+    r46 resetMovingObjects() {
+        using r46 = decltype(std::declval<LevelEditorLayer>().resetMovingObjects());
+        using f46 = r46(*)(LevelEditorLayer*);
+        return reinterpret_cast<f46>(base+0x9ddc0)(this);
+    }
+
+    using r47 = decltype(std::declval<LevelEditorLayer>().resetObjectVector());
+    using c47 = r47($LevelEditorLayer::*)() ;
+    using d47 = r47(D::*)() ;
+    r47 resetObjectVector() {
+        using r47 = decltype(std::declval<LevelEditorLayer>().resetObjectVector());
+        using f47 = r47(*)(LevelEditorLayer*);
+        return reinterpret_cast<f47>(base+0x9c4b0)(this);
+    }
+
+    using r48 = decltype(std::declval<LevelEditorLayer>().resetToggledGroups());
+    using c48 = r48($LevelEditorLayer::*)() ;
+    using d48 = r48(D::*)() ;
+    r48 resetToggledGroups() {
+        using r48 = decltype(std::declval<LevelEditorLayer>().resetToggledGroups());
+        using f48 = r48(*)(LevelEditorLayer*);
+        return reinterpret_cast<f48>(base+0x9aa70)(this);
+    }
+
+    using r49 = decltype(std::declval<LevelEditorLayer>().resetToggledGroupsAndObjects());
+    using c49 = r49($LevelEditorLayer::*)() ;
+    using d49 = r49(D::*)() ;
+    r49 resetToggledGroupsAndObjects() {
+        using r49 = decltype(std::declval<LevelEditorLayer>().resetToggledGroupsAndObjects());
+        using f49 = r49(*)(LevelEditorLayer*);
+        return reinterpret_cast<f49>(base+0x9c3c0)(this);
+    }
+
+    using r50 = decltype(std::declval<LevelEditorLayer>().resetUnusedColorChannels());
+    using c50 = r50($LevelEditorLayer::*)() ;
+    using d50 = r50(D::*)() ;
+    r50 resetUnusedColorChannels() {
+        using r50 = decltype(std::declval<LevelEditorLayer>().resetUnusedColorChannels());
+        using f50 = r50(*)(LevelEditorLayer*);
+        return reinterpret_cast<f50>(base+0x9a870)(this);
+    }
+
+    using r51 = decltype(std::declval<LevelEditorLayer>().rotationForSlopeNearObject(std::declval<GameObject*>()));
+    using c51 = r51($LevelEditorLayer::*)(GameObject*) ;
+    using d51 = r51(D::*)(GameObject*) ;
+    r51 rotationForSlopeNearObject(GameObject* p0) {
+        using r51 = decltype(std::declval<LevelEditorLayer>().rotationForSlopeNearObject(std::declval<GameObject*>()));
+        using f51 = r51(*)(LevelEditorLayer*, GameObject*);
+        return reinterpret_cast<f51>(base+0x95cd0)(this, p0);
+    }
+
+    using r52 = decltype(std::declval<LevelEditorLayer>().runColorEffect(std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
+    using c52 = r52($LevelEditorLayer::*)(EffectGameObject*, int, float, float, bool) ;
+    using d52 = r52(D::*)(EffectGameObject*, int, float, float, bool) ;
+    r52 runColorEffect(EffectGameObject* p0, int p1, float p2, float p3, bool p4) {
+        using r52 = decltype(std::declval<LevelEditorLayer>().runColorEffect(std::declval<EffectGameObject*>(), std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<bool>()));
+        using f52 = r52(*)(LevelEditorLayer*, EffectGameObject*, int, float, float, bool);
+        return reinterpret_cast<f52>(base+0x9bd30)(this, p0, p1, p2, p3, p4);
+    }
+
+    using r53 = decltype(std::declval<LevelEditorLayer>().scene(std::declval<GJGameLevel*>()));
+    using c53 = r53($LevelEditorLayer::*)(GJGameLevel*) ;
+    using d53 = r53(D::*)(GJGameLevel*) ;
+    r53 scene(GJGameLevel* p0) {
+        using r53 = decltype(std::declval<LevelEditorLayer>().scene(std::declval<GJGameLevel*>()));
+        using f53 = r53(*)(LevelEditorLayer*, GJGameLevel*);
+        return reinterpret_cast<f53>(base+0x90f20)(this, p0);
+    }
+
+    using r54 = decltype(std::declval<LevelEditorLayer>().setupLevelStart(std::declval<LevelSettingsObject*>()));
+    using c54 = r54($LevelEditorLayer::*)(LevelSettingsObject*) ;
+    using d54 = r54(D::*)(LevelSettingsObject*) ;
+    r54 setupLevelStart(LevelSettingsObject* p0) {
+        using r54 = decltype(std::declval<LevelEditorLayer>().setupLevelStart(std::declval<LevelSettingsObject*>()));
+        using f54 = r54(*)(LevelEditorLayer*, LevelSettingsObject*);
+        return reinterpret_cast<f54>(base+0xa0ca0)(this, p0);
+    }
+
+    using r55 = decltype(std::declval<LevelEditorLayer>().sortStickyGroups());
+    using c55 = r55($LevelEditorLayer::*)() ;
+    using d55 = r55(D::*)() ;
+    r55 sortStickyGroups() {
+        using r55 = decltype(std::declval<LevelEditorLayer>().sortStickyGroups());
+        using f55 = r55(*)(LevelEditorLayer*);
+        return reinterpret_cast<f55>(base+0x92b10)(this);
+    }
+
+    using r56 = decltype(std::declval<LevelEditorLayer>().stopTriggersInGroup(std::declval<int>(), std::declval<float>()));
+    using c56 = r56($LevelEditorLayer::*)(int, float) ;
+    using d56 = r56(D::*)(int, float) ;
+    r56 stopTriggersInGroup(int p0, float p1) {
+        using r56 = decltype(std::declval<LevelEditorLayer>().stopTriggersInGroup(std::declval<int>(), std::declval<float>()));
+        using f56 = r56(*)(LevelEditorLayer*, int, float);
+        return reinterpret_cast<f56>(base+0x9c030)(this, p0, p1);
+    }
+
+    using r57 = decltype(std::declval<LevelEditorLayer>().toggleDualMode(std::declval<GameObject*>(), std::declval<bool>(), std::declval<PlayerObject*>(), std::declval<bool>()));
+    using c57 = r57($LevelEditorLayer::*)(GameObject*, bool, PlayerObject*, bool) ;
+    using d57 = r57(D::*)(GameObject*, bool, PlayerObject*, bool) ;
+    r57 toggleDualMode(GameObject* p0, bool p1, PlayerObject* p2, bool p3) {
+        using r57 = decltype(std::declval<LevelEditorLayer>().toggleDualMode(std::declval<GameObject*>(), std::declval<bool>(), std::declval<PlayerObject*>(), std::declval<bool>()));
+        using f57 = r57(*)(LevelEditorLayer*, GameObject*, bool, PlayerObject*, bool);
+        return reinterpret_cast<f57>(base+0xa0200)(this, p0, p1, p2, p3);
+    }
+
+    using r58 = decltype(std::declval<LevelEditorLayer>().toggleGroupPreview(std::declval<int>(), std::declval<bool>()));
+    using c58 = r58($LevelEditorLayer::*)(int, bool) ;
+    using d58 = r58(D::*)(int, bool) ;
+    r58 toggleGroupPreview(int p0, bool p1) {
+        using r58 = decltype(std::declval<LevelEditorLayer>().toggleGroupPreview(std::declval<int>(), std::declval<bool>()));
+        using f58 = r58(*)(LevelEditorLayer*, int, bool);
+        return reinterpret_cast<f58>(base+0x9bea0)(this, p0, p1);
+    }
+
+    using r59 = decltype(std::declval<LevelEditorLayer>().transferDefaultColors(std::declval<GJEffectManager*>(), std::declval<GJEffectManager*>()));
+    using c59 = r59($LevelEditorLayer::*)(GJEffectManager*, GJEffectManager*) ;
+    using d59 = r59(D::*)(GJEffectManager*, GJEffectManager*) ;
+    r59 transferDefaultColors(GJEffectManager* p0, GJEffectManager* p1) {
+        using r59 = decltype(std::declval<LevelEditorLayer>().transferDefaultColors(std::declval<GJEffectManager*>(), std::declval<GJEffectManager*>()));
+        using f59 = r59(*)(LevelEditorLayer*, GJEffectManager*, GJEffectManager*);
+        return reinterpret_cast<f59>(base+0x9ab50)(this, p0, p1);
+    }
+
+    using r60 = decltype(std::declval<LevelEditorLayer>().undoLastAction());
+    using c60 = r60($LevelEditorLayer::*)() ;
+    using d60 = r60(D::*)() ;
+    r60 undoLastAction() {
+        using r60 = decltype(std::declval<LevelEditorLayer>().undoLastAction());
+        using f60 = r60(*)(LevelEditorLayer*);
+        return reinterpret_cast<f60>(base+0x97770)(this);
+    }
+
+    using r61 = decltype(std::declval<LevelEditorLayer>().updateBGAndGColors());
+    using c61 = r61($LevelEditorLayer::*)() ;
+    using d61 = r61(D::*)() ;
+    r61 updateBGAndGColors() {
+        using r61 = decltype(std::declval<LevelEditorLayer>().updateBGAndGColors());
+        using f61 = r61(*)(LevelEditorLayer*);
+        return reinterpret_cast<f61>(base+0x9b9b0)(this);
+    }
+
+    using r62 = decltype(std::declval<LevelEditorLayer>().updateBlendValues());
+    using c62 = r62($LevelEditorLayer::*)() ;
+    using d62 = r62(D::*)() ;
+    r62 updateBlendValues() {
+        using r62 = decltype(std::declval<LevelEditorLayer>().updateBlendValues());
+        using f62 = r62(*)(LevelEditorLayer*);
+        return reinterpret_cast<f62>(base+0x9bc60)(this);
+    }
+
+    using r63 = decltype(std::declval<LevelEditorLayer>().updateDualGround(std::declval<PlayerObject*>(), std::declval<int>(), std::declval<bool>()));
+    using c63 = r63($LevelEditorLayer::*)(PlayerObject*, int, bool) ;
+    using d63 = r63(D::*)(PlayerObject*, int, bool) ;
+    r63 updateDualGround(PlayerObject* p0, int p1, bool p2) {
+        using r63 = decltype(std::declval<LevelEditorLayer>().updateDualGround(std::declval<PlayerObject*>(), std::declval<int>(), std::declval<bool>()));
+        using f63 = r63(*)(LevelEditorLayer*, PlayerObject*, int, bool);
+        return reinterpret_cast<f63>(base+0xa1a60)(this, p0, p1, p2);
+    }
+
+    using r64 = decltype(std::declval<LevelEditorLayer>().updateEditorMode());
+    using c64 = r64($LevelEditorLayer::*)() ;
+    using d64 = r64(D::*)() ;
+    r64 updateEditorMode() {
+        using r64 = decltype(std::declval<LevelEditorLayer>().updateEditorMode());
+        using f64 = r64(*)(LevelEditorLayer*);
+        return reinterpret_cast<f64>(base+0x93b50)(this);
+    }
+
+    using r65 = decltype(std::declval<LevelEditorLayer>().updateGameObjectsNew());
+    using c65 = r65($LevelEditorLayer::*)() ;
+    using d65 = r65(D::*)() ;
+    r65 updateGameObjectsNew() {
+        using r65 = decltype(std::declval<LevelEditorLayer>().updateGameObjectsNew());
+        using f65 = r65(*)(LevelEditorLayer*);
+        return reinterpret_cast<f65>(base+0x9adc0)(this);
+    }
+
+    using r66 = decltype(std::declval<LevelEditorLayer>().updateGround(std::declval<float>()));
+    using c66 = r66($LevelEditorLayer::*)(float) ;
+    using d66 = r66(D::*)(float) ;
+    r66 updateGround(float p0) {
+        using r66 = decltype(std::declval<LevelEditorLayer>().updateGround(std::declval<float>()));
+        using f66 = r66(*)(LevelEditorLayer*, float);
+        return reinterpret_cast<f66>(base+0x93a60)(this, p0);
+    }
+
+    using r67 = decltype(std::declval<LevelEditorLayer>().updateGroundWidth());
+    using c67 = r67($LevelEditorLayer::*)() ;
+    using d67 = r67(D::*)() ;
+    r67 updateGroundWidth() {
+        using r67 = decltype(std::declval<LevelEditorLayer>().updateGroundWidth());
+        using f67 = r67(*)(LevelEditorLayer*);
+        return reinterpret_cast<f67>(base+0x92af0)(this);
+    }
+
+    using r68 = decltype(std::declval<LevelEditorLayer>().updateOptions());
+    using c68 = r68($LevelEditorLayer::*)() ;
+    using d68 = r68(D::*)() ;
+    r68 updateOptions() {
+        using r68 = decltype(std::declval<LevelEditorLayer>().updateOptions());
+        using f68 = r68(*)(LevelEditorLayer*);
+        return reinterpret_cast<f68>(base+0x91ed0)(this);
+    }
+
+    using r69 = decltype(std::declval<LevelEditorLayer>().updateToggledGroups());
+    using c69 = r69($LevelEditorLayer::*)() ;
+    using d69 = r69(D::*)() ;
+    r69 updateToggledGroups() {
+        using r69 = decltype(std::declval<LevelEditorLayer>().updateToggledGroups());
+        using f69 = r69(*)(LevelEditorLayer*);
+        return reinterpret_cast<f69>(base+0x9bb10)(this);
+    }
+
+    using r70 = decltype(std::declval<LevelEditorLayer>().updateVisibility(std::declval<float>()));
+    using c70 = r70($LevelEditorLayer::*)(float) ;
+    using d70 = r70(D::*)(float) ;
+    r70 updateVisibility(float p0) {
+        using r70 = decltype(std::declval<LevelEditorLayer>().updateVisibility(std::declval<float>()));
+        using f70 = r70(*)(LevelEditorLayer*, float);
+        return reinterpret_cast<f70>(base+0x92c70)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$LevelEditorLayer::update} != (d1){&D::update})
+            m->registerHook(base+0xa1b70, FunctionScrapper::addressOfVirtual(i, (d1){&D::update}));
+
+        if ((c2){&$LevelEditorLayer::draw} != (d2){&D::draw})
+            m->registerHook(base+0xa2a70, FunctionScrapper::addressOfVirtual(i, (d2){&D::draw}));
+
+        if ((c3){&$LevelEditorLayer::updateColor} != (d3){&D::updateColor})
+            m->registerHook(base+0x9c200, FunctionScrapper::addressOfVirtual(i, (d3){&D::updateColor}));
+
+        if ((c4){&$LevelEditorLayer::flipGravity} != (d4){&D::flipGravity})
+            m->registerHook(base+0xa04e0, FunctionScrapper::addressOfVirtual(i, (d4){&D::flipGravity}));
+
+        if ((c5){&$LevelEditorLayer::calculateColorValues} != (d5){&D::calculateColorValues})
+            m->registerHook(base+0x9c590, FunctionScrapper::addressOfVirtual(i, (d5){&D::calculateColorValues}));
+
+        if ((c6){&$LevelEditorLayer::addToGroup} != (d6){&D::addToGroup})
+            m->registerHook(base+0x9dab0, FunctionScrapper::addressOfVirtual(i, (d6){&D::addToGroup}));
+
+        if ((c7){&$LevelEditorLayer::removeFromGroup} != (d7){&D::removeFromGroup})
+            m->registerHook(base+0x9db60, FunctionScrapper::addressOfVirtual(i, (d7){&D::removeFromGroup}));
+
+        if ((c8){&$LevelEditorLayer::timeForXPos} != (d8){&D::timeForXPos})
+            m->registerHook(base+0x9c7d0, FunctionScrapper::addressOfVirtual(i, (d8){&D::timeForXPos}));
+
+        if ((c9){&$LevelEditorLayer::xPosForTime} != (d9){&D::xPosForTime})
+            m->registerHook(base+0x9c800, FunctionScrapper::addressOfVirtual(i, (d9){&D::xPosForTime}));
+
+        if ((c10){&$LevelEditorLayer::levelSettingsUpdated} != (d10){&D::levelSettingsUpdated})
+            m->registerHook(base+0x93f30, FunctionScrapper::addressOfVirtual(i, (d10){&D::levelSettingsUpdated}));
+
+        if ((c11){&$LevelEditorLayer::activateTriggerEffect} != (d11){&D::activateTriggerEffect})
+            m->registerHook(base+0x9b520, FunctionScrapper::addressOfNonVirtual((d11){&D::activateTriggerEffect}));
+
+        if ((c12){&$LevelEditorLayer::addObjectFromString} != (d12){&D::addObjectFromString})
+            m->registerHook(base+0x94640, FunctionScrapper::addressOfNonVirtual((d12){&D::addObjectFromString}));
+
+        if ((c13){&$LevelEditorLayer::addSpecial} != (d13){&D::addSpecial})
+            m->registerHook(base+0x94f30, FunctionScrapper::addressOfNonVirtual((d13){&D::addSpecial}));
+
+        if ((c14){&$LevelEditorLayer::addToRedoList} != (d14){&D::addToRedoList})
+            m->registerHook(base+0x96f80, FunctionScrapper::addressOfNonVirtual((d14){&D::addToRedoList}));
+
+        if ((c15){&$LevelEditorLayer::addToUndoList} != (d15){&D::addToUndoList})
+            m->registerHook(base+0x94e20, FunctionScrapper::addressOfNonVirtual((d15){&D::addToUndoList}));
+
+        if ((c16){&$LevelEditorLayer::animateInDualGround} != (d16){&D::animateInDualGround})
+            m->registerHook(base+0xa2780, FunctionScrapper::addressOfNonVirtual((d16){&D::animateInDualGround}));
+
+        if ((c17){&$LevelEditorLayer::checkCollisions} != (d17){&D::checkCollisions})
+            m->registerHook(base+0x9e620, FunctionScrapper::addressOfNonVirtual((d17){&D::checkCollisions}));
+
+        if ((c18){&$LevelEditorLayer::create} != (d18){&D::create})
+            m->registerHook(base+0x90fb0, FunctionScrapper::addressOfNonVirtual((d18){&D::create}));
+
+        if ((c19){&$LevelEditorLayer::createBackground} != (d19){&D::createBackground})
+            m->registerHook(base+0x929f0, FunctionScrapper::addressOfNonVirtual((d19){&D::createBackground}));
+
+        if ((c20){&$LevelEditorLayer::createGroundLayer} != (d20){&D::createGroundLayer})
+            m->registerHook(base+0x92840, FunctionScrapper::addressOfNonVirtual((d20){&D::createGroundLayer}));
+
+        if ((c21){&$LevelEditorLayer::createObject} != (d21){&D::createObject})
+            m->registerHook(base+0x957c0, FunctionScrapper::addressOfNonVirtual((d21){&D::createObject}));
+
+        if ((c22){&$LevelEditorLayer::createObjectsFromSetup} != (d22){&D::createObjectsFromSetup})
+            m->registerHook(base+0x92230, FunctionScrapper::addressOfNonVirtual((d22){&D::createObjectsFromSetup}));
+
+        if ((c23){&$LevelEditorLayer::createObjectsFromString} != (d23){&D::createObjectsFromString})
+            m->registerHook(base+0x94730, FunctionScrapper::addressOfNonVirtual((d23){&D::createObjectsFromString}));
+
+        if ((c24){&$LevelEditorLayer::getLastObjectX} != (d24){&D::getLastObjectX})
+            m->registerHook(base+0x9c860, FunctionScrapper::addressOfNonVirtual((d24){&D::getLastObjectX}));
+
+        if ((c25){&$LevelEditorLayer::getLevelString} != (d25){&D::getLevelString})
+            m->registerHook(base+0x97790, FunctionScrapper::addressOfNonVirtual((d25){&D::getLevelString}));
+
+        if ((c26){&$LevelEditorLayer::getNextColorChannel} != (d26){&D::getNextColorChannel})
+            m->registerHook(base+0x9a610, FunctionScrapper::addressOfNonVirtual((d26){&D::getNextColorChannel}));
+
+        if ((c27){&$LevelEditorLayer::getNextFreeBlockID} != (d27){&D::getNextFreeBlockID})
+            m->registerHook(base+0x9a4e0, FunctionScrapper::addressOfNonVirtual((d27){&D::getNextFreeBlockID}));
+
+        if ((c28){&$LevelEditorLayer::getNextFreeGroupID} != (d28){&D::getNextFreeGroupID})
+            m->registerHook(base+0x9a1b0, FunctionScrapper::addressOfNonVirtual((d28){&D::getNextFreeGroupID}));
+
+        if ((c29){&$LevelEditorLayer::getNextFreeItemID} != (d29){&D::getNextFreeItemID})
+            m->registerHook(base+0x9a390, FunctionScrapper::addressOfNonVirtual((d29){&D::getNextFreeItemID}));
+
+        if ((c30){&$LevelEditorLayer::getObjectRect} != (d30){&D::getObjectRect})
+            m->registerHook(base+0x96240, FunctionScrapper::addressOfNonVirtual((d30){&D::getObjectRect}));
+
+        if ((c31){&$LevelEditorLayer::getRelativeOffset} != (d31){&D::getRelativeOffset})
+            m->registerHook(base+0x96840, FunctionScrapper::addressOfNonVirtual((d31){&D::getRelativeOffset}));
+
+        if ((c32){&$LevelEditorLayer::handleAction} != (d32){&D::handleAction})
+            m->registerHook(base+0x97020, FunctionScrapper::addressOfNonVirtual((d32){&D::handleAction}));
+
+        if ((c33){&$LevelEditorLayer::init} != (d33){&D::init})
+            m->registerHook(base+0x91010, FunctionScrapper::addressOfNonVirtual((d33){&D::init}));
+
+        if ((c34){&$LevelEditorLayer::objectAtPosition} != (d34){&D::objectAtPosition})
+            m->registerHook(base+0x960c0, FunctionScrapper::addressOfNonVirtual((d34){&D::objectAtPosition}));
+
+        if ((c35){&$LevelEditorLayer::objectMoved} != (d35){&D::objectMoved})
+            m->registerHook(base+0x999f0, FunctionScrapper::addressOfNonVirtual((d35){&D::objectMoved}));
+
+        if ((c36){&$LevelEditorLayer::objectsInRect} != (d36){&D::objectsInRect})
+            m->registerHook(base+0x95e60, FunctionScrapper::addressOfNonVirtual((d36){&D::objectsInRect}));
+
+        if ((c37){&$LevelEditorLayer::onPlaytest} != (d37){&D::onPlaytest})
+            m->registerHook(base+0xa06b0, FunctionScrapper::addressOfNonVirtual((d37){&D::onPlaytest}));
+
+        if ((c38){&$LevelEditorLayer::onStopPlaytest} != (d38){&D::onStopPlaytest})
+            m->registerHook(base+0xa1780, FunctionScrapper::addressOfNonVirtual((d38){&D::onStopPlaytest}));
+
+        if ((c39){&$LevelEditorLayer::playMusic} != (d39){&D::playMusic})
+            m->registerHook(base+0xa13c0, FunctionScrapper::addressOfNonVirtual((d39){&D::playMusic}));
+
+        if ((c40){&$LevelEditorLayer::recreateGroups} != (d40){&D::recreateGroups})
+            m->registerHook(base+0x9dbf0, FunctionScrapper::addressOfNonVirtual((d40){&D::recreateGroups}));
+
+        if ((c41){&$LevelEditorLayer::redoLastAction} != (d41){&D::redoLastAction})
+            m->registerHook(base+0x97750, FunctionScrapper::addressOfNonVirtual((d41){&D::redoLastAction}));
+
+        if ((c42){&$LevelEditorLayer::removeAllObjects} != (d42){&D::removeAllObjects})
+            m->registerHook(base+0x93d80, FunctionScrapper::addressOfNonVirtual((d42){&D::removeAllObjects}));
+
+        if ((c43){&$LevelEditorLayer::removeAllObjectsOfType} != (d43){&D::removeAllObjectsOfType})
+            m->registerHook(base+0x96d40, FunctionScrapper::addressOfNonVirtual((d43){&D::removeAllObjectsOfType}));
+
+        if ((c44){&$LevelEditorLayer::removeObject} != (d44){&D::removeObject})
+            m->registerHook(base+0x96890, FunctionScrapper::addressOfNonVirtual((d44){&D::removeObject}));
+
+        if ((c45){&$LevelEditorLayer::removeSpecial} != (d45){&D::removeSpecial})
+            m->registerHook(base+0x969c0, FunctionScrapper::addressOfNonVirtual((d45){&D::removeSpecial}));
+
+        if ((c46){&$LevelEditorLayer::resetMovingObjects} != (d46){&D::resetMovingObjects})
+            m->registerHook(base+0x9ddc0, FunctionScrapper::addressOfNonVirtual((d46){&D::resetMovingObjects}));
+
+        if ((c47){&$LevelEditorLayer::resetObjectVector} != (d47){&D::resetObjectVector})
+            m->registerHook(base+0x9c4b0, FunctionScrapper::addressOfNonVirtual((d47){&D::resetObjectVector}));
+
+        if ((c48){&$LevelEditorLayer::resetToggledGroups} != (d48){&D::resetToggledGroups})
+            m->registerHook(base+0x9aa70, FunctionScrapper::addressOfNonVirtual((d48){&D::resetToggledGroups}));
+
+        if ((c49){&$LevelEditorLayer::resetToggledGroupsAndObjects} != (d49){&D::resetToggledGroupsAndObjects})
+            m->registerHook(base+0x9c3c0, FunctionScrapper::addressOfNonVirtual((d49){&D::resetToggledGroupsAndObjects}));
+
+        if ((c50){&$LevelEditorLayer::resetUnusedColorChannels} != (d50){&D::resetUnusedColorChannels})
+            m->registerHook(base+0x9a870, FunctionScrapper::addressOfNonVirtual((d50){&D::resetUnusedColorChannels}));
+
+        if ((c51){&$LevelEditorLayer::rotationForSlopeNearObject} != (d51){&D::rotationForSlopeNearObject})
+            m->registerHook(base+0x95cd0, FunctionScrapper::addressOfNonVirtual((d51){&D::rotationForSlopeNearObject}));
+
+        if ((c52){&$LevelEditorLayer::runColorEffect} != (d52){&D::runColorEffect})
+            m->registerHook(base+0x9bd30, FunctionScrapper::addressOfNonVirtual((d52){&D::runColorEffect}));
+
+        if ((c53){&$LevelEditorLayer::scene} != (d53){&D::scene})
+            m->registerHook(base+0x90f20, FunctionScrapper::addressOfNonVirtual((d53){&D::scene}));
+
+        if ((c54){&$LevelEditorLayer::setupLevelStart} != (d54){&D::setupLevelStart})
+            m->registerHook(base+0xa0ca0, FunctionScrapper::addressOfNonVirtual((d54){&D::setupLevelStart}));
+
+        if ((c55){&$LevelEditorLayer::sortStickyGroups} != (d55){&D::sortStickyGroups})
+            m->registerHook(base+0x92b10, FunctionScrapper::addressOfNonVirtual((d55){&D::sortStickyGroups}));
+
+        if ((c56){&$LevelEditorLayer::stopTriggersInGroup} != (d56){&D::stopTriggersInGroup})
+            m->registerHook(base+0x9c030, FunctionScrapper::addressOfNonVirtual((d56){&D::stopTriggersInGroup}));
+
+        if ((c57){&$LevelEditorLayer::toggleDualMode} != (d57){&D::toggleDualMode})
+            m->registerHook(base+0xa0200, FunctionScrapper::addressOfNonVirtual((d57){&D::toggleDualMode}));
+
+        if ((c58){&$LevelEditorLayer::toggleGroupPreview} != (d58){&D::toggleGroupPreview})
+            m->registerHook(base+0x9bea0, FunctionScrapper::addressOfNonVirtual((d58){&D::toggleGroupPreview}));
+
+        if ((c59){&$LevelEditorLayer::transferDefaultColors} != (d59){&D::transferDefaultColors})
+            m->registerHook(base+0x9ab50, FunctionScrapper::addressOfNonVirtual((d59){&D::transferDefaultColors}));
+
+        if ((c60){&$LevelEditorLayer::undoLastAction} != (d60){&D::undoLastAction})
+            m->registerHook(base+0x97770, FunctionScrapper::addressOfNonVirtual((d60){&D::undoLastAction}));
+
+        if ((c61){&$LevelEditorLayer::updateBGAndGColors} != (d61){&D::updateBGAndGColors})
+            m->registerHook(base+0x9b9b0, FunctionScrapper::addressOfNonVirtual((d61){&D::updateBGAndGColors}));
+
+        if ((c62){&$LevelEditorLayer::updateBlendValues} != (d62){&D::updateBlendValues})
+            m->registerHook(base+0x9bc60, FunctionScrapper::addressOfNonVirtual((d62){&D::updateBlendValues}));
+
+        if ((c63){&$LevelEditorLayer::updateDualGround} != (d63){&D::updateDualGround})
+            m->registerHook(base+0xa1a60, FunctionScrapper::addressOfNonVirtual((d63){&D::updateDualGround}));
+
+        if ((c64){&$LevelEditorLayer::updateEditorMode} != (d64){&D::updateEditorMode})
+            m->registerHook(base+0x93b50, FunctionScrapper::addressOfNonVirtual((d64){&D::updateEditorMode}));
+
+        if ((c65){&$LevelEditorLayer::updateGameObjectsNew} != (d65){&D::updateGameObjectsNew})
+            m->registerHook(base+0x9adc0, FunctionScrapper::addressOfNonVirtual((d65){&D::updateGameObjectsNew}));
+
+        if ((c66){&$LevelEditorLayer::updateGround} != (d66){&D::updateGround})
+            m->registerHook(base+0x93a60, FunctionScrapper::addressOfNonVirtual((d66){&D::updateGround}));
+
+        if ((c67){&$LevelEditorLayer::updateGroundWidth} != (d67){&D::updateGroundWidth})
+            m->registerHook(base+0x92af0, FunctionScrapper::addressOfNonVirtual((d67){&D::updateGroundWidth}));
+
+        if ((c68){&$LevelEditorLayer::updateOptions} != (d68){&D::updateOptions})
+            m->registerHook(base+0x91ed0, FunctionScrapper::addressOfNonVirtual((d68){&D::updateOptions}));
+
+        if ((c69){&$LevelEditorLayer::updateToggledGroups} != (d69){&D::updateToggledGroups})
+            m->registerHook(base+0x9bb10, FunctionScrapper::addressOfNonVirtual((d69){&D::updateToggledGroups}));
+
+        if ((c70){&$LevelEditorLayer::updateVisibility} != (d70){&D::updateVisibility})
+            m->registerHook(base+0x92c70, FunctionScrapper::addressOfNonVirtual((d70){&D::updateVisibility}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $EditorUI : public EditorUI, public $CacBase {
+public:
+    ~$EditorUI() {
+        endDestructor();
+    }
+    $EditorUI() {}
+
+    using r0 = decltype(std::declval<EditorUI>().constrainGameLayerPosition());
+    using c0 = r0($EditorUI::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 constrainGameLayerPosition() {
+        using r0 = decltype(std::declval<EditorUI>().constrainGameLayerPosition());
+        using f0 = r0(*)(EditorUI*);
+        return reinterpret_cast<f0>(base+0x1c6d0)(this);
+    }
+
+    using r1 = decltype(std::declval<EditorUI>().create(std::declval<LevelEditorLayer*>()));
+    using c1 = r1($EditorUI::*)(LevelEditorLayer*) ;
+    using d1 = r1(D::*)(LevelEditorLayer*) ;
+    r1 create(LevelEditorLayer* p0) {
+        using r1 = decltype(std::declval<EditorUI>().create(std::declval<LevelEditorLayer*>()));
+        using f1 = r1(*)(EditorUI*, LevelEditorLayer*);
+        return reinterpret_cast<f1>(base+0x8a80)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<EditorUI>().deselectAll());
+    using c2 = r2($EditorUI::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 deselectAll() {
+        using r2 = decltype(std::declval<EditorUI>().deselectAll());
+        using f2 = r2(*)(EditorUI*);
+        return reinterpret_cast<f2>(base+0x1f300)(this);
+    }
+
+    using r3 = decltype(std::declval<EditorUI>().onDeselectAll(std::declval<cocos2d::CCObject*>()));
+    using c3 = r3($EditorUI::*)(cocos2d::CCObject*) ;
+    using d3 = r3(D::*)(cocos2d::CCObject*) ;
+    r3 onDeselectAll(cocos2d::CCObject* p0) {
+        using r3 = decltype(std::declval<EditorUI>().onDeselectAll(std::declval<cocos2d::CCObject*>()));
+        using f3 = r3(*)(EditorUI*, cocos2d::CCObject*);
+        return reinterpret_cast<f3>(base+0x19cd0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<EditorUI>().disableButton(std::declval<CreateMenuItem*>()));
+    using c4 = r4($EditorUI::*)(CreateMenuItem*) ;
+    using d4 = r4(D::*)(CreateMenuItem*) ;
+    r4 disableButton(CreateMenuItem* p0) {
+        using r4 = decltype(std::declval<EditorUI>().disableButton(std::declval<CreateMenuItem*>()));
+        using f4 = r4(*)(EditorUI*, CreateMenuItem*);
+        return reinterpret_cast<f4>(base+0x1c0f0)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<EditorUI>().editButtonUsable());
+    using c5 = r5($EditorUI::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 editButtonUsable() {
+        using r5 = decltype(std::declval<EditorUI>().editButtonUsable());
+        using f5 = r5(*)(EditorUI*);
+        return reinterpret_cast<f5>(base+0x28f30)(this);
+    }
+
+    using r6 = decltype(std::declval<EditorUI>().editObject(std::declval<cocos2d::CCObject*>()));
+    using c6 = r6($EditorUI::*)(cocos2d::CCObject*) ;
+    using d6 = r6(D::*)(cocos2d::CCObject*) ;
+    r6 editObject(cocos2d::CCObject* p0) {
+        using r6 = decltype(std::declval<EditorUI>().editObject(std::declval<cocos2d::CCObject*>()));
+        using f6 = r6(*)(EditorUI*, cocos2d::CCObject*);
+        return reinterpret_cast<f6>(base+0x195a0)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<EditorUI>().enableButton(std::declval<CreateMenuItem*>()));
+    using c7 = r7($EditorUI::*)(CreateMenuItem*) ;
+    using d7 = r7(D::*)(CreateMenuItem*) ;
+    r7 enableButton(CreateMenuItem* p0) {
+        using r7 = decltype(std::declval<EditorUI>().enableButton(std::declval<CreateMenuItem*>()));
+        using f7 = r7(*)(EditorUI*, CreateMenuItem*);
+        return reinterpret_cast<f7>(base+0x1bff0)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<EditorUI>().getCreateBtn(std::declval<int>(), std::declval<int>()));
+    using c8 = r8($EditorUI::*)(int, int) ;
+    using d8 = r8(D::*)(int, int) ;
+    r8 getCreateBtn(int p0, int p1) {
+        using r8 = decltype(std::declval<EditorUI>().getCreateBtn(std::declval<int>(), std::declval<int>()));
+        using f8 = r8(*)(EditorUI*, int, int);
+        return reinterpret_cast<f8>(base+0x1f6c0)(this, p0, p1);
+    }
+
+    using r9 = decltype(std::declval<EditorUI>().getGroupCenter(std::declval<cocos2d::CCArray*>(), std::declval<bool>()));
+    using c9 = r9($EditorUI::*)(cocos2d::CCArray*, bool) ;
+    using d9 = r9(D::*)(cocos2d::CCArray*, bool) ;
+    r9 getGroupCenter(cocos2d::CCArray* p0, bool p1) {
+        using r9 = decltype(std::declval<EditorUI>().getGroupCenter(std::declval<cocos2d::CCArray*>(), std::declval<bool>()));
+        using f9 = r9(*)(EditorUI*, cocos2d::CCArray*, bool);
+        return reinterpret_cast<f9>(base+0x23470)(this, p0, p1);
+    }
+
+    using r10 = decltype(std::declval<EditorUI>().getSelectedObjects());
+    using c10 = r10($EditorUI::*)() ;
+    using d10 = r10(D::*)() ;
+    r10 getSelectedObjects() {
+        using r10 = decltype(std::declval<EditorUI>().getSelectedObjects());
+        using f10 = r10(*)(EditorUI*);
+        return reinterpret_cast<f10>(base+0x23f30)(this);
+    }
+
+    using r11 = decltype(std::declval<EditorUI>().init(std::declval<LevelEditorLayer*>()));
+    using c11 = r11($EditorUI::*)(LevelEditorLayer*) ;
+    using d11 = r11(D::*)(LevelEditorLayer*) ;
+    r11 init(LevelEditorLayer* p0) {
+        using r11 = decltype(std::declval<EditorUI>().init(std::declval<LevelEditorLayer*>()));
+        using f11 = r11(*)(EditorUI*, LevelEditorLayer*);
+        return reinterpret_cast<f11>(base+0x8ae0)(this, p0);
+    }
+
+    using r12 = decltype(std::declval<EditorUI>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+    using c12 = r12($EditorUI::*)(cocos2d::enumKeyCodes) ;
+    using d12 = r12(D::*)(cocos2d::enumKeyCodes) ;
+    r12 keyDown(cocos2d::enumKeyCodes p0) {
+        using r12 = decltype(std::declval<EditorUI>().keyDown(std::declval<cocos2d::enumKeyCodes>()));
+        using f12 = r12(*)(EditorUI*, cocos2d::enumKeyCodes);
+        return reinterpret_cast<f12>(base+0x30790)(this, p0);
+    }
+
+    using r13 = decltype(std::declval<EditorUI>().moveObject(std::declval<GameObject*>(), std::declval<cocos2d::CCPoint>()));
+    using c13 = r13($EditorUI::*)(GameObject*, cocos2d::CCPoint) ;
+    using d13 = r13(D::*)(GameObject*, cocos2d::CCPoint) ;
+    r13 moveObject(GameObject* p0, cocos2d::CCPoint p1) {
+        using r13 = decltype(std::declval<EditorUI>().moveObject(std::declval<GameObject*>(), std::declval<cocos2d::CCPoint>()));
+        using f13 = r13(*)(EditorUI*, GameObject*, cocos2d::CCPoint);
+        return reinterpret_cast<f13>(base+0x24b10)(this, p0, p1);
+    }
+
+    using r14 = decltype(std::declval<EditorUI>().onDuplicate(std::declval<cocos2d::CCObject*>()));
+    using c14 = r14($EditorUI::*)(cocos2d::CCObject*) ;
+    using d14 = r14(D::*)(cocos2d::CCObject*) ;
+    r14 onDuplicate(cocos2d::CCObject* p0) {
+        using r14 = decltype(std::declval<EditorUI>().onDuplicate(std::declval<cocos2d::CCObject*>()));
+        using f14 = r14(*)(EditorUI*, cocos2d::CCObject*);
+        return reinterpret_cast<f14>(base+0x18ba0)(this, p0);
+    }
+
+    using r15 = decltype(std::declval<EditorUI>().pasteObjects(std::declval<gd::string>()));
+    using c15 = r15($EditorUI::*)(gd::string) ;
+    using d15 = r15(D::*)(gd::string) ;
+    r15 pasteObjects(gd::string p0) {
+        using r15 = decltype(std::declval<EditorUI>().pasteObjects(std::declval<gd::string>()));
+        using f15 = r15(*)(EditorUI*, gd::string);
+        return reinterpret_cast<f15>(base+0x232d0)(this, p0);
+    }
+
+    using r16 = decltype(std::declval<EditorUI>().playerTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c16 = r16($EditorUI::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d16 = r16(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r16 playerTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r16 = decltype(std::declval<EditorUI>().playerTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f16 = r16(*)(EditorUI*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f16>(base+0x2ebf0)(this, p0, p1);
+    }
+
+    using r17 = decltype(std::declval<EditorUI>().playtestStopped());
+    using c17 = r17($EditorUI::*)() ;
+    using d17 = r17(D::*)() ;
+    r17 playtestStopped() {
+        using r17 = decltype(std::declval<EditorUI>().playtestStopped());
+        using f17 = r17(*)(EditorUI*);
+        return reinterpret_cast<f17>(base+0x24790)(this);
+    }
+
+    using r18 = decltype(std::declval<EditorUI>().redoLastAction(std::declval<cocos2d::CCObject*>()));
+    using c18 = r18($EditorUI::*)(cocos2d::CCObject*) ;
+    using d18 = r18(D::*)(cocos2d::CCObject*) ;
+    r18 redoLastAction(cocos2d::CCObject* p0) {
+        using r18 = decltype(std::declval<EditorUI>().redoLastAction(std::declval<cocos2d::CCObject*>()));
+        using f18 = r18(*)(EditorUI*, cocos2d::CCObject*);
+        return reinterpret_cast<f18>(base+0xb8e0)(this, p0);
+    }
+
+    using r19 = decltype(std::declval<EditorUI>().replaceGroupID(std::declval<GameObject*>(), std::declval<int>(), std::declval<int>()));
+    using c19 = r19($EditorUI::*)(GameObject*, int, int) ;
+    using d19 = r19(D::*)(GameObject*, int, int) ;
+    r19 replaceGroupID(GameObject* p0, int p1, int p2) {
+        using r19 = decltype(std::declval<EditorUI>().replaceGroupID(std::declval<GameObject*>(), std::declval<int>(), std::declval<int>()));
+        using f19 = r19(*)(EditorUI*, GameObject*, int, int);
+        return reinterpret_cast<f19>(base+0x27470)(this, p0, p1, p2);
+    }
+
+    using r20 = decltype(std::declval<EditorUI>().scaleChanged(std::declval<float>()));
+    using c20 = r20($EditorUI::*)(float) ;
+    using d20 = r20(D::*)(float) ;
+    r20 scaleChanged(float p0) {
+        using r20 = decltype(std::declval<EditorUI>().scaleChanged(std::declval<float>()));
+        using f20 = r20(*)(EditorUI*, float);
+        return reinterpret_cast<f20>(base+0x25490)(this, p0);
+    }
+
+    using r21 = decltype(std::declval<EditorUI>().scaleObjects(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<cocos2d::CCPoint>()));
+    using c21 = r21($EditorUI::*)(cocos2d::CCArray*, float, cocos2d::CCPoint) ;
+    using d21 = r21(D::*)(cocos2d::CCArray*, float, cocos2d::CCPoint) ;
+    r21 scaleObjects(cocos2d::CCArray* p0, float p1, cocos2d::CCPoint p2) {
+        using r21 = decltype(std::declval<EditorUI>().scaleObjects(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<cocos2d::CCPoint>()));
+        using f21 = r21(*)(EditorUI*, cocos2d::CCArray*, float, cocos2d::CCPoint);
+        return reinterpret_cast<f21>(base+0x252e0)(this, p0, p1, p2);
+    }
+
+    using r22 = decltype(std::declval<EditorUI>().selectObjects(std::declval<cocos2d::CCArray*>(), std::declval<bool>()));
+    using c22 = r22($EditorUI::*)(cocos2d::CCArray*, bool) ;
+    using d22 = r22(D::*)(cocos2d::CCArray*, bool) ;
+    r22 selectObjects(cocos2d::CCArray* p0, bool p1) {
+        using r22 = decltype(std::declval<EditorUI>().selectObjects(std::declval<cocos2d::CCArray*>(), std::declval<bool>()));
+        using f22 = r22(*)(EditorUI*, cocos2d::CCArray*, bool);
+        return reinterpret_cast<f22>(base+0x23940)(this, p0, p1);
+    }
+
+    using r23 = decltype(std::declval<EditorUI>().setupCreateMenu());
+    using c23 = r23($EditorUI::*)() ;
+    using d23 = r23(D::*)() ;
+    r23 setupCreateMenu() {
+        using r23 = decltype(std::declval<EditorUI>().setupCreateMenu());
+        using f23 = r23(*)(EditorUI*);
+        return reinterpret_cast<f23>(base+0xcb50)(this);
+    }
+
+    using r24 = decltype(std::declval<EditorUI>().undoLastAction(std::declval<cocos2d::CCObject*>()));
+    using c24 = r24($EditorUI::*)(cocos2d::CCObject*) ;
+    using d24 = r24(D::*)(cocos2d::CCObject*) ;
+    r24 undoLastAction(cocos2d::CCObject* p0) {
+        using r24 = decltype(std::declval<EditorUI>().undoLastAction(std::declval<cocos2d::CCObject*>()));
+        using f24 = r24(*)(EditorUI*, cocos2d::CCObject*);
+        return reinterpret_cast<f24>(base+0xb830)(this, p0);
+    }
+
+    using r25 = decltype(std::declval<EditorUI>().updateButtons());
+    using c25 = r25($EditorUI::*)() ;
+    using d25 = r25(D::*)() ;
+    r25 updateButtons() {
+        using r25 = decltype(std::declval<EditorUI>().updateButtons());
+        using f25 = r25(*)(EditorUI*);
+        return reinterpret_cast<f25>(base+0x1a300)(this);
+    }
+
+    using r26 = decltype(std::declval<EditorUI>().updateObjectInfoLabel());
+    using c26 = r26($EditorUI::*)() ;
+    using d26 = r26(D::*)() ;
+    r26 updateObjectInfoLabel() {
+        using r26 = decltype(std::declval<EditorUI>().updateObjectInfoLabel());
+        using f26 = r26(*)(EditorUI*);
+        return reinterpret_cast<f26>(base+0x1cb10)(this);
+    }
+
+    using r27 = decltype(std::declval<EditorUI>().updateSlider());
+    using c27 = r27($EditorUI::*)() ;
+    using d27 = r27(D::*)() ;
+    r27 updateSlider() {
+        using r27 = decltype(std::declval<EditorUI>().updateSlider());
+        using f27 = r27(*)(EditorUI*);
+        return reinterpret_cast<f27>(base+0x18a90)(this);
+    }
+
+    using r28 = decltype(std::declval<EditorUI>().updateZoom(std::declval<float>()));
+    using c28 = r28($EditorUI::*)(float) ;
+    using d28 = r28(D::*)(float) ;
+    r28 updateZoom(float p0) {
+        using r28 = decltype(std::declval<EditorUI>().updateZoom(std::declval<float>()));
+        using f28 = r28(*)(EditorUI*, float);
+        return reinterpret_cast<f28>(base+0x248c0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$EditorUI::constrainGameLayerPosition} != (d0){&D::constrainGameLayerPosition})
+            m->registerHook(base+0x1c6d0, FunctionScrapper::addressOfNonVirtual((d0){&D::constrainGameLayerPosition}));
+
+        if ((c1){&$EditorUI::create} != (d1){&D::create})
+            m->registerHook(base+0x8a80, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        if ((c2){&$EditorUI::deselectAll} != (d2){&D::deselectAll})
+            m->registerHook(base+0x1f300, FunctionScrapper::addressOfNonVirtual((d2){&D::deselectAll}));
+
+        if ((c3){&$EditorUI::onDeselectAll} != (d3){&D::onDeselectAll})
+            m->registerHook(base+0x19cd0, FunctionScrapper::addressOfNonVirtual((d3){&D::onDeselectAll}));
+
+        if ((c4){&$EditorUI::disableButton} != (d4){&D::disableButton})
+            m->registerHook(base+0x1c0f0, FunctionScrapper::addressOfNonVirtual((d4){&D::disableButton}));
+
+        if ((c5){&$EditorUI::editButtonUsable} != (d5){&D::editButtonUsable})
+            m->registerHook(base+0x28f30, FunctionScrapper::addressOfNonVirtual((d5){&D::editButtonUsable}));
+
+        if ((c6){&$EditorUI::editObject} != (d6){&D::editObject})
+            m->registerHook(base+0x195a0, FunctionScrapper::addressOfNonVirtual((d6){&D::editObject}));
+
+        if ((c7){&$EditorUI::enableButton} != (d7){&D::enableButton})
+            m->registerHook(base+0x1bff0, FunctionScrapper::addressOfNonVirtual((d7){&D::enableButton}));
+
+        if ((c8){&$EditorUI::getCreateBtn} != (d8){&D::getCreateBtn})
+            m->registerHook(base+0x1f6c0, FunctionScrapper::addressOfNonVirtual((d8){&D::getCreateBtn}));
+
+        if ((c9){&$EditorUI::getGroupCenter} != (d9){&D::getGroupCenter})
+            m->registerHook(base+0x23470, FunctionScrapper::addressOfNonVirtual((d9){&D::getGroupCenter}));
+
+        if ((c10){&$EditorUI::getSelectedObjects} != (d10){&D::getSelectedObjects})
+            m->registerHook(base+0x23f30, FunctionScrapper::addressOfNonVirtual((d10){&D::getSelectedObjects}));
+
+        if ((c11){&$EditorUI::init} != (d11){&D::init})
+            m->registerHook(base+0x8ae0, FunctionScrapper::addressOfNonVirtual((d11){&D::init}));
+
+        if ((c12){&$EditorUI::keyDown} != (d12){&D::keyDown})
+            m->registerHook(base+0x30790, FunctionScrapper::addressOfVirtual(i, (d12){&D::keyDown}));
+
+        if ((c13){&$EditorUI::moveObject} != (d13){&D::moveObject})
+            m->registerHook(base+0x24b10, FunctionScrapper::addressOfNonVirtual((d13){&D::moveObject}));
+
+        if ((c14){&$EditorUI::onDuplicate} != (d14){&D::onDuplicate})
+            m->registerHook(base+0x18ba0, FunctionScrapper::addressOfNonVirtual((d14){&D::onDuplicate}));
+
+        if ((c15){&$EditorUI::pasteObjects} != (d15){&D::pasteObjects})
+            m->registerHook(base+0x232d0, FunctionScrapper::addressOfNonVirtual((d15){&D::pasteObjects}));
+
+        if ((c16){&$EditorUI::playerTouchBegan} != (d16){&D::playerTouchBegan})
+            m->registerHook(base+0x2ebf0, FunctionScrapper::addressOfNonVirtual((d16){&D::playerTouchBegan}));
+
+        if ((c17){&$EditorUI::playtestStopped} != (d17){&D::playtestStopped})
+            m->registerHook(base+0x24790, FunctionScrapper::addressOfNonVirtual((d17){&D::playtestStopped}));
+
+        if ((c18){&$EditorUI::redoLastAction} != (d18){&D::redoLastAction})
+            m->registerHook(base+0xb8e0, FunctionScrapper::addressOfNonVirtual((d18){&D::redoLastAction}));
+
+        if ((c19){&$EditorUI::replaceGroupID} != (d19){&D::replaceGroupID})
+            m->registerHook(base+0x27470, FunctionScrapper::addressOfNonVirtual((d19){&D::replaceGroupID}));
+
+        if ((c20){&$EditorUI::scaleChanged} != (d20){&D::scaleChanged})
+            m->registerHook(base+0x25490, FunctionScrapper::addressOfNonVirtual((d20){&D::scaleChanged}));
+
+        if ((c21){&$EditorUI::scaleObjects} != (d21){&D::scaleObjects})
+            m->registerHook(base+0x252e0, FunctionScrapper::addressOfNonVirtual((d21){&D::scaleObjects}));
+
+        if ((c22){&$EditorUI::selectObjects} != (d22){&D::selectObjects})
+            m->registerHook(base+0x23940, FunctionScrapper::addressOfNonVirtual((d22){&D::selectObjects}));
+
+        if ((c23){&$EditorUI::setupCreateMenu} != (d23){&D::setupCreateMenu})
+            m->registerHook(base+0xcb50, FunctionScrapper::addressOfNonVirtual((d23){&D::setupCreateMenu}));
+
+        if ((c24){&$EditorUI::undoLastAction} != (d24){&D::undoLastAction})
+            m->registerHook(base+0xb830, FunctionScrapper::addressOfNonVirtual((d24){&D::undoLastAction}));
+
+        if ((c25){&$EditorUI::updateButtons} != (d25){&D::updateButtons})
+            m->registerHook(base+0x1a300, FunctionScrapper::addressOfNonVirtual((d25){&D::updateButtons}));
+
+        if ((c26){&$EditorUI::updateObjectInfoLabel} != (d26){&D::updateObjectInfoLabel})
+            m->registerHook(base+0x1cb10, FunctionScrapper::addressOfNonVirtual((d26){&D::updateObjectInfoLabel}));
+
+        if ((c27){&$EditorUI::updateSlider} != (d27){&D::updateSlider})
+            m->registerHook(base+0x18a90, FunctionScrapper::addressOfNonVirtual((d27){&D::updateSlider}));
+
+        if ((c28){&$EditorUI::updateZoom} != (d28){&D::updateZoom})
+            m->registerHook(base+0x248c0, FunctionScrapper::addressOfNonVirtual((d28){&D::updateZoom}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ButtonSprite : public ButtonSprite, public $CacBase {
+public:
+    ~$ButtonSprite() {
+        endDestructor();
+    }
+    $ButtonSprite() {}
+
+    using r0 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>()));
+    using c0 = r0(*)(char const*);
+    using d0 = r0(*)(char const*);
+    static r0 create(char const* p0) {
+        using r0 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>()));
+        using f0 = r0(*)(char const*);
         return reinterpret_cast<f0>(base+0x4fa10)(p0);
+
     }
 
-    using c1 = ButtonSprite*(*)(char const*, int, int, float, bool);
-    using d1 = ButtonSprite*(*)(char const*, int, int, float, bool);
-    using f1 = ButtonSprite*(*)(char const*, int, int, float, bool);
-    inline static ButtonSprite* create(char const* p0, int p1, int p2, float p3, bool p4) {
+    using r1 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>(), std::declval<int>(), std::declval<int>(), std::declval<float>(), std::declval<bool>()));
+    using c1 = r1(*)(char const*, int, int, float, bool);
+    using d1 = r1(*)(char const*, int, int, float, bool);
+    static r1 create(char const* p0, int p1, int p2, float p3, bool p4) {
+        using r1 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>(), std::declval<int>(), std::declval<int>(), std::declval<float>(), std::declval<bool>()));
+        using f1 = r1(*)(char const*, int, int, float, bool);
         return reinterpret_cast<f1>(base+0x4fa40)(p0, p1, p2, p3, p4);
+
     }
 
-    using c2 = void($ButtonSprite::*)(char const*);
-    using d2 = void(D::*)(char const*);
-    using f2 = void(*)($ButtonSprite*, char const*);
-    inline void updateBGImage(char const* p0) {
+    using r2 = decltype(std::declval<ButtonSprite>().updateBGImage(std::declval<char const*>()));
+    using c2 = r2($ButtonSprite::*)(char const*) ;
+    using d2 = r2(D::*)(char const*) ;
+    r2 updateBGImage(char const* p0) {
+        using r2 = decltype(std::declval<ButtonSprite>().updateBGImage(std::declval<char const*>()));
+        using f2 = r2(*)(ButtonSprite*, char const*);
         return reinterpret_cast<f2>(base+0x502d0)(this, p0);
     }
 
-    using c3 = ButtonSprite*(*)(char const*, float);
-    using d3 = ButtonSprite*(*)(char const*, float);
-    using f3 = ButtonSprite*(*)(char const*, float);
-    inline static ButtonSprite* create(char const* p0, float p1) {
+    using r3 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>(), std::declval<float>()));
+    using c3 = r3(*)(char const*, float);
+    using d3 = r3(*)(char const*, float);
+    static r3 create(char const* p0, float p1) {
+        using r3 = decltype(std::declval<ButtonSprite>().create(std::declval<char const*>(), std::declval<float>()));
+        using f3 = r3(*)(char const*, float);
         return reinterpret_cast<f3>(base+0x4fa60)(p0, p1);
+
     }
 
-    using c4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
-    using d4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
-    using f4 = ButtonSprite*(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
-    inline static ButtonSprite* create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
+    using r4 = decltype(std::declval<ButtonSprite>().create(std::declval<cocos2d::CCSprite*>(), std::declval<int>(), std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<bool>(), std::declval<char const*>(), std::declval<bool>()));
+    using c4 = r4(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+    using d4 = r4(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
+    static r4 create(cocos2d::CCSprite* p0, int p1, int p2, float p3, float p4, bool p5, char const* p6, bool p7) {
+        using r4 = decltype(std::declval<ButtonSprite>().create(std::declval<cocos2d::CCSprite*>(), std::declval<int>(), std::declval<int>(), std::declval<float>(), std::declval<float>(), std::declval<bool>(), std::declval<char const*>(), std::declval<bool>()));
+        using f4 = r4(*)(cocos2d::CCSprite*, int, int, float, float, bool, char const*, bool);
         return reinterpret_cast<f4>(base+0x4fa90)(p0, p1, p2, p3, p4, p5, p6, p7);
+
     }
 
-    inline $ButtonSprite(bool) {}
-    inline $ButtonSprite() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$ButtonSprite::create} != (d0){&D::create})
-            m->registerHook(base+0x4fa10, extract((d0){&D::create}));
+            m->registerHook(base+0x4fa10, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$ButtonSprite::create} != (d1){&D::create})
-            m->registerHook(base+0x4fa40, extract((d1){&D::create}));
+            m->registerHook(base+0x4fa40, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
 
         if ((c2){&$ButtonSprite::updateBGImage} != (d2){&D::updateBGImage})
-            m->registerHook(base+0x502d0, extract(i, (d2){&D::updateBGImage}));
+            m->registerHook(base+0x502d0, FunctionScrapper::addressOfNonVirtual((d2){&D::updateBGImage}));
 
         if ((c3){&$ButtonSprite::create} != (d3){&D::create})
-            m->registerHook(base+0x4fa60, extract((d3){&D::create}));
+            m->registerHook(base+0x4fa60, FunctionScrapper::addressOfNonVirtual((d3){&D::create}));
 
         if ((c4){&$ButtonSprite::create} != (d4){&D::create})
-            m->registerHook(base+0x4fa90, extract((d4){&D::create}));
+            m->registerHook(base+0x4fa90, FunctionScrapper::addressOfNonVirtual((d4){&D::create}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CCTextInputNode : public NullCCTextInputNode, public $CacBase {
+class $CCTextInputNode : public CCTextInputNode, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CCTextInputNode() {}
+    ~$CCTextInputNode() {
+        endDestructor();
+    }
+    $CCTextInputNode() {}
 
-    using c0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
-    using d0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
-    using f0 = CCTextInputNode*(*)(float, float, char const*, char const*, int, char const*);
-    inline static CCTextInputNode* create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
+    using r0 = decltype(std::declval<CCTextInputNode>().create(std::declval<float>(), std::declval<float>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<int>(), std::declval<char const*>()));
+    using c0 = r0(*)(float, float, char const*, char const*, int, char const*);
+    using d0 = r0(*)(float, float, char const*, char const*, int, char const*);
+    static r0 create(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
+        using r0 = decltype(std::declval<CCTextInputNode>().create(std::declval<float>(), std::declval<float>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<int>(), std::declval<char const*>()));
+        using f0 = r0(*)(float, float, char const*, char const*, int, char const*);
         return reinterpret_cast<f0>(base+0x5cfb0)(p0, p1, p2, p3, p4, p5);
+
     }
 
-    using c1 = gd::string($CCTextInputNode::*)();
-    using d1 = gd::string(D::*)();
-    using f1 = gd::string(*)($CCTextInputNode*);
-    inline gd::string getString() {
+    using r1 = decltype(std::declval<CCTextInputNode>().getString());
+    using c1 = r1($CCTextInputNode::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 getString() {
+        using r1 = decltype(std::declval<CCTextInputNode>().getString());
+        using f1 = r1(*)(CCTextInputNode*);
         return reinterpret_cast<f1>(base+0x5d6f0)(this);
     }
 
-    using c2 = void($CCTextInputNode::*)();
-    using d2 = void(D::*)();
-    using f2 = void(*)($CCTextInputNode*);
-    inline void refreshLabel() {
+    using r2 = decltype(std::declval<CCTextInputNode>().refreshLabel());
+    using c2 = r2($CCTextInputNode::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 refreshLabel() {
+        using r2 = decltype(std::declval<CCTextInputNode>().refreshLabel());
+        using f2 = r2(*)(CCTextInputNode*);
         return reinterpret_cast<f2>(base+0x5d730)(this);
     }
 
-    using c3 = void($CCTextInputNode::*)(gd::string);
-    using d3 = void(D::*)(gd::string);
-    using f3 = void(*)($CCTextInputNode*, gd::string);
-    inline void setAllowedChars(gd::string p0) {
+    using r3 = decltype(std::declval<CCTextInputNode>().setAllowedChars(std::declval<gd::string>()));
+    using c3 = r3($CCTextInputNode::*)(gd::string) ;
+    using d3 = r3(D::*)(gd::string) ;
+    r3 setAllowedChars(gd::string p0) {
+        using r3 = decltype(std::declval<CCTextInputNode>().setAllowedChars(std::declval<gd::string>()));
+        using f3 = r3(*)(CCTextInputNode*, gd::string);
         return reinterpret_cast<f3>(base+0x5d360)(this, p0);
     }
 
-    using c4 = void($CCTextInputNode::*)(cocos2d::_ccColor3B);
-    using d4 = void(D::*)(cocos2d::_ccColor3B);
-    using f4 = void(*)($CCTextInputNode*, cocos2d::_ccColor3B);
-    inline void setLabelNormalColor(cocos2d::_ccColor3B p0) {
+    using r4 = decltype(std::declval<CCTextInputNode>().setLabelNormalColor(std::declval<cocos2d::_ccColor3B>()));
+    using c4 = r4($CCTextInputNode::*)(cocos2d::_ccColor3B) ;
+    using d4 = r4(D::*)(cocos2d::_ccColor3B) ;
+    r4 setLabelNormalColor(cocos2d::_ccColor3B p0) {
+        using r4 = decltype(std::declval<CCTextInputNode>().setLabelNormalColor(std::declval<cocos2d::_ccColor3B>()));
+        using f4 = r4(*)(CCTextInputNode*, cocos2d::_ccColor3B);
         return reinterpret_cast<f4>(base+0x5dab0)(this, p0);
     }
 
-    using c5 = void($CCTextInputNode::*)(cocos2d::_ccColor3B);
-    using d5 = void(D::*)(cocos2d::_ccColor3B);
-    using f5 = void(*)($CCTextInputNode*, cocos2d::_ccColor3B);
-    inline void setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
+    using r5 = decltype(std::declval<CCTextInputNode>().setLabelPlaceholderColor(std::declval<cocos2d::_ccColor3B>()));
+    using c5 = r5($CCTextInputNode::*)(cocos2d::_ccColor3B) ;
+    using d5 = r5(D::*)(cocos2d::_ccColor3B) ;
+    r5 setLabelPlaceholderColor(cocos2d::_ccColor3B p0) {
+        using r5 = decltype(std::declval<CCTextInputNode>().setLabelPlaceholderColor(std::declval<cocos2d::_ccColor3B>()));
+        using f5 = r5(*)(CCTextInputNode*, cocos2d::_ccColor3B);
         return reinterpret_cast<f5>(base+0x5da90)(this, p0);
     }
 
-    using c6 = void($CCTextInputNode::*)(float);
-    using d6 = void(D::*)(float);
-    using f6 = void(*)($CCTextInputNode*, float);
-    inline void setLabelPlaceholderScale(float p0) {
+    using r6 = decltype(std::declval<CCTextInputNode>().setLabelPlaceholderScale(std::declval<float>()));
+    using c6 = r6($CCTextInputNode::*)(float) ;
+    using d6 = r6(D::*)(float) ;
+    r6 setLabelPlaceholderScale(float p0) {
+        using r6 = decltype(std::declval<CCTextInputNode>().setLabelPlaceholderScale(std::declval<float>()));
+        using f6 = r6(*)(CCTextInputNode*, float);
         return reinterpret_cast<f6>(base+0x5da70)(this, p0);
     }
 
-    using c7 = void($CCTextInputNode::*)(float);
-    using d7 = void(D::*)(float);
-    using f7 = void(*)($CCTextInputNode*, float);
-    inline void setMaxLabelScale(float p0) {
+    using r7 = decltype(std::declval<CCTextInputNode>().setMaxLabelScale(std::declval<float>()));
+    using c7 = r7($CCTextInputNode::*)(float) ;
+    using d7 = r7(D::*)(float) ;
+    r7 setMaxLabelScale(float p0) {
+        using r7 = decltype(std::declval<CCTextInputNode>().setMaxLabelScale(std::declval<float>()));
+        using f7 = r7(*)(CCTextInputNode*, float);
         return reinterpret_cast<f7>(base+0x5da30)(this, p0);
     }
 
-    using c8 = void($CCTextInputNode::*)(float);
-    using d8 = void(D::*)(float);
-    using f8 = void(*)($CCTextInputNode*, float);
-    inline void setMaxLabelWidth(float p0) {
+    using r8 = decltype(std::declval<CCTextInputNode>().setMaxLabelWidth(std::declval<float>()));
+    using c8 = r8($CCTextInputNode::*)(float) ;
+    using d8 = r8(D::*)(float) ;
+    r8 setMaxLabelWidth(float p0) {
+        using r8 = decltype(std::declval<CCTextInputNode>().setMaxLabelWidth(std::declval<float>()));
+        using f8 = r8(*)(CCTextInputNode*, float);
         return reinterpret_cast<f8>(base+0x5da50)(this, p0);
     }
 
-    using c9 = void($CCTextInputNode::*)(gd::string);
-    using d9 = void(D::*)(gd::string);
-    using f9 = void(*)($CCTextInputNode*, gd::string);
-    inline void setString(gd::string p0) {
+    using r9 = decltype(std::declval<CCTextInputNode>().setString(std::declval<gd::string>()));
+    using c9 = r9($CCTextInputNode::*)(gd::string) ;
+    using d9 = r9(D::*)(gd::string) ;
+    r9 setString(gd::string p0) {
+        using r9 = decltype(std::declval<CCTextInputNode>().setString(std::declval<gd::string>()));
+        using f9 = r9(*)(CCTextInputNode*, gd::string);
         return reinterpret_cast<f9>(base+0x5d3e0)(this, p0);
     }
 
-    using c10 = void($CCTextInputNode::*)(gd::string);
-    using d10 = void(D::*)(gd::string);
-    using f10 = void(*)($CCTextInputNode*, gd::string);
-    inline void updateLabel(gd::string p0) {
+    using r10 = decltype(std::declval<CCTextInputNode>().updateLabel(std::declval<gd::string>()));
+    using c10 = r10($CCTextInputNode::*)(gd::string) ;
+    using d10 = r10(D::*)(gd::string) ;
+    r10 updateLabel(gd::string p0) {
+        using r10 = decltype(std::declval<CCTextInputNode>().updateLabel(std::declval<gd::string>()));
+        using f10 = r10(*)(CCTextInputNode*, gd::string);
         return reinterpret_cast<f10>(base+0x5d4a0)(this, p0);
     }
 
-    using c11 = void($CCTextInputNode::*)();
-    using d11 = void(D::*)();
-    using f11 = void(*)($CCTextInputNode*);
-    inline void forceOffset() {
+    using r11 = decltype(std::declval<CCTextInputNode>().forceOffset());
+    using c11 = r11($CCTextInputNode::*)() ;
+    using d11 = r11(D::*)() ;
+    r11 forceOffset() {
+        using r11 = decltype(std::declval<CCTextInputNode>().forceOffset());
+        using f11 = r11(*)(CCTextInputNode*);
         return reinterpret_cast<f11>(base+0x5ec70)(this);
     }
 
-    using c12 = void($CCTextInputNode::*)();
-    using d12 = void(D::*)();
-    using f12 = void(*)($CCTextInputNode*);
-    inline void registerWithTouchDispatcher() {
+    using r12 = decltype(std::declval<CCTextInputNode>().registerWithTouchDispatcher());
+    using c12 = r12($CCTextInputNode::*)() ;
+    using d12 = r12(D::*)() ;
+    r12 registerWithTouchDispatcher() {
+        using r12 = decltype(std::declval<CCTextInputNode>().registerWithTouchDispatcher());
+        using f12 = r12(*)(CCTextInputNode*);
         return reinterpret_cast<f12>(base+0x5eec0)(this);
     }
 
-    using c13 = bool($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*);
-    using d13 = bool(D::*)(float, float, char const*, char const*, int, char const*);
-    using f13 = bool(*)($CCTextInputNode*, float, float, char const*, char const*, int, char const*);
-    inline bool init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
+    using r13 = decltype(std::declval<CCTextInputNode>().init(std::declval<float>(), std::declval<float>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<int>(), std::declval<char const*>()));
+    using c13 = r13($CCTextInputNode::*)(float, float, char const*, char const*, int, char const*) ;
+    using d13 = r13(D::*)(float, float, char const*, char const*, int, char const*) ;
+    r13 init(float p0, float p1, char const* p2, char const* p3, int p4, char const* p5) {
+        using r13 = decltype(std::declval<CCTextInputNode>().init(std::declval<float>(), std::declval<float>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<int>(), std::declval<char const*>()));
+        using f13 = r13(*)(CCTextInputNode*, float, float, char const*, char const*, int, char const*);
         return reinterpret_cast<f13>(base+0x5d180)(this, p0, p1, p2, p3, p4, p5);
     }
 
-    using c14 = void($CCTextInputNode::*)();
-    using d14 = void(D::*)();
-    using f14 = void(*)($CCTextInputNode*);
-    inline void visit() {
-        return reinterpret_cast<f14>(base+0x5d380)(this);
+    using r15 = decltype(std::declval<CCTextInputNode>().visit());
+    using c15 = r15($CCTextInputNode::*)() ;
+    using d15 = r15(D::*)() ;
+    r15 visit() {
+        using r15 = decltype(std::declval<CCTextInputNode>().visit());
+        using f15 = r15(*)(CCTextInputNode*);
+        return reinterpret_cast<f15>(base+0x5d380)(this);
     }
 
-    using c15 = bool($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d15 = bool(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f15 = bool(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline bool ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return reinterpret_cast<f15>(base+0x5ec80)(this, p0, p1);
+    using r16 = decltype(std::declval<CCTextInputNode>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c16 = r16($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d16 = r16(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r16 ccTouchBegan(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r16 = decltype(std::declval<CCTextInputNode>().ccTouchBegan(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f16 = r16(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f16>(base+0x5ec80)(this, p0, p1);
     }
 
-    using c16 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d16 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f16 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return reinterpret_cast<f16>(base+0x5ee80)(this, p0, p1);
+    using r17 = decltype(std::declval<CCTextInputNode>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c17 = r17($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d17 = r17(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r17 ccTouchCancelled(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r17 = decltype(std::declval<CCTextInputNode>().ccTouchCancelled(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f17 = r17(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f17>(base+0x5ee80)(this, p0, p1);
     }
 
-    using c17 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d17 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f17 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return reinterpret_cast<f17>(base+0x5ee60)(this, p0, p1);
+    using r18 = decltype(std::declval<CCTextInputNode>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c18 = r18($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d18 = r18(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r18 ccTouchEnded(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r18 = decltype(std::declval<CCTextInputNode>().ccTouchEnded(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f18 = r18(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f18>(base+0x5ee60)(this, p0, p1);
     }
 
-    using c18 = void($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using d18 = void(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*);
-    using f18 = void(*)($CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
-    inline void ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
-        return reinterpret_cast<f18>(base+0x5eea0)(this, p0, p1);
+    using r19 = decltype(std::declval<CCTextInputNode>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+    using c19 = r19($CCTextInputNode::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    using d19 = r19(D::*)(cocos2d::CCTouch*, cocos2d::CCEvent*) ;
+    r19 ccTouchMoved(cocos2d::CCTouch* p0, cocos2d::CCEvent* p1) {
+        using r19 = decltype(std::declval<CCTextInputNode>().ccTouchMoved(std::declval<cocos2d::CCTouch*>(), std::declval<cocos2d::CCEvent*>()));
+        using f19 = r19(*)(CCTextInputNode*, cocos2d::CCTouch*, cocos2d::CCEvent*);
+        return reinterpret_cast<f19>(base+0x5eea0)(this, p0, p1);
     }
 
-    using c19 = void($CCTextInputNode::*)();
-    using d19 = void(D::*)();
-    using f19 = void(*)($CCTextInputNode*);
-    inline void textChanged() {
-        return reinterpret_cast<f19>(base+0x5dd70)(this);
+    using r20 = decltype(std::declval<CCTextInputNode>().textChanged());
+    using c20 = r20($CCTextInputNode::*)() ;
+    using d20 = r20(D::*)() ;
+    r20 textChanged() {
+        using r20 = decltype(std::declval<CCTextInputNode>().textChanged());
+        using f20 = r20(*)(CCTextInputNode*);
+        return reinterpret_cast<f20>(base+0x5dd70)(this);
     }
 
-    using c20 = void($CCTextInputNode::*)(bool);
-    using d20 = void(D::*)(bool);
-    using f20 = void(*)($CCTextInputNode*, bool);
-    inline void onClickTrackNode(bool p0) {
-        return reinterpret_cast<f20>(base+0x5dd40)(this, p0);
+    using r21 = decltype(std::declval<CCTextInputNode>().onClickTrackNode(std::declval<bool>()));
+    using c21 = r21($CCTextInputNode::*)(bool) ;
+    using d21 = r21(D::*)(bool) ;
+    r21 onClickTrackNode(bool p0) {
+        using r21 = decltype(std::declval<CCTextInputNode>().onClickTrackNode(std::declval<bool>()));
+        using f21 = r21(*)(CCTextInputNode*, bool);
+        return reinterpret_cast<f21>(base+0x5dd40)(this, p0);
     }
 
-    using c21 = void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
-    using d21 = void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
-    using f21 = void(*)($CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
-    inline void keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-        return reinterpret_cast<f21>(base+0x5dad0)(this, p0);
+    using r22 = decltype(std::declval<CCTextInputNode>().keyboardWillShow(std::declval<cocos2d::CCIMEKeyboardNotificationInfo&>()));
+    using c22 = r22($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&) ;
+    using d22 = r22(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&) ;
+    r22 keyboardWillShow(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
+        using r22 = decltype(std::declval<CCTextInputNode>().keyboardWillShow(std::declval<cocos2d::CCIMEKeyboardNotificationInfo&>()));
+        using f22 = r22(*)(CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
+        return reinterpret_cast<f22>(base+0x5dad0)(this, p0);
     }
 
-    using c22 = void($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
-    using d22 = void(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&);
-    using f22 = void(*)($CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
-    inline void keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
-        return reinterpret_cast<f22>(base+0x5dc20)(this, p0);
+    using r23 = decltype(std::declval<CCTextInputNode>().keyboardWillHide(std::declval<cocos2d::CCIMEKeyboardNotificationInfo&>()));
+    using c23 = r23($CCTextInputNode::*)(cocos2d::CCIMEKeyboardNotificationInfo&) ;
+    using d23 = r23(D::*)(cocos2d::CCIMEKeyboardNotificationInfo&) ;
+    r23 keyboardWillHide(cocos2d::CCIMEKeyboardNotificationInfo& p0) {
+        using r23 = decltype(std::declval<CCTextInputNode>().keyboardWillHide(std::declval<cocos2d::CCIMEKeyboardNotificationInfo&>()));
+        using f23 = r23(*)(CCTextInputNode*, cocos2d::CCIMEKeyboardNotificationInfo&);
+        return reinterpret_cast<f23>(base+0x5dc20)(this, p0);
     }
 
-    using c23 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int);
-    using d23 = bool(D::*)(cocos2d::CCTextFieldTTF*, char const*, int);
-    using f23 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*, char const*, int);
-    inline bool onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) {
-        return reinterpret_cast<f23>(base+0x5de50)(this, p0, p1, p2);
+    using r24 = decltype(std::declval<CCTextInputNode>().onTextFieldInsertText(std::declval<cocos2d::CCTextFieldTTF*>(), std::declval<char const*>(), std::declval<int>()));
+    using c24 = r24($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*, char const*, int) ;
+    using d24 = r24(D::*)(cocos2d::CCTextFieldTTF*, char const*, int) ;
+    r24 onTextFieldInsertText(cocos2d::CCTextFieldTTF* p0, char const* p1, int p2) {
+        using r24 = decltype(std::declval<CCTextInputNode>().onTextFieldInsertText(std::declval<cocos2d::CCTextFieldTTF*>(), std::declval<char const*>(), std::declval<int>()));
+        using f24 = r24(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*, char const*, int);
+        return reinterpret_cast<f24>(base+0x5de50)(this, p0, p1, p2);
     }
 
-    using c24 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*);
-    using d24 = bool(D::*)(cocos2d::CCTextFieldTTF*);
-    using f24 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*);
-    inline bool onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) {
-        return reinterpret_cast<f24>(base+0x5e2c0)(this, p0);
+    using r25 = decltype(std::declval<CCTextInputNode>().onTextFieldAttachWithIME(std::declval<cocos2d::CCTextFieldTTF*>()));
+    using c25 = r25($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*) ;
+    using d25 = r25(D::*)(cocos2d::CCTextFieldTTF*) ;
+    r25 onTextFieldAttachWithIME(cocos2d::CCTextFieldTTF* p0) {
+        using r25 = decltype(std::declval<CCTextInputNode>().onTextFieldAttachWithIME(std::declval<cocos2d::CCTextFieldTTF*>()));
+        using f25 = r25(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*);
+        return reinterpret_cast<f25>(base+0x5e2c0)(this, p0);
     }
 
-    using c25 = bool($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*);
-    using d25 = bool(D::*)(cocos2d::CCTextFieldTTF*);
-    using f25 = bool(*)($CCTextInputNode*, cocos2d::CCTextFieldTTF*);
-    inline bool onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) {
-        return reinterpret_cast<f25>(base+0x5e610)(this, p0);
+    using r26 = decltype(std::declval<CCTextInputNode>().onTextFieldDetachWithIME(std::declval<cocos2d::CCTextFieldTTF*>()));
+    using c26 = r26($CCTextInputNode::*)(cocos2d::CCTextFieldTTF*) ;
+    using d26 = r26(D::*)(cocos2d::CCTextFieldTTF*) ;
+    r26 onTextFieldDetachWithIME(cocos2d::CCTextFieldTTF* p0) {
+        using r26 = decltype(std::declval<CCTextInputNode>().onTextFieldDetachWithIME(std::declval<cocos2d::CCTextFieldTTF*>()));
+        using f26 = r26(*)(CCTextInputNode*, cocos2d::CCTextFieldTTF*);
+        return reinterpret_cast<f26>(base+0x5e610)(this, p0);
     }
 
-    inline $CCTextInputNode(bool) {}
-    inline $CCTextInputNode() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CCTextInputNode::create} != (d0){&D::create})
-            m->registerHook(base+0x5cfb0, extract((d0){&D::create}));
+            m->registerHook(base+0x5cfb0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CCTextInputNode::getString} != (d1){&D::getString})
-            m->registerHook(base+0x5d6f0, extract(i, (d1){&D::getString}));
+            m->registerHook(base+0x5d6f0, FunctionScrapper::addressOfNonVirtual((d1){&D::getString}));
 
         if ((c2){&$CCTextInputNode::refreshLabel} != (d2){&D::refreshLabel})
-            m->registerHook(base+0x5d730, extract(i, (d2){&D::refreshLabel}));
+            m->registerHook(base+0x5d730, FunctionScrapper::addressOfNonVirtual((d2){&D::refreshLabel}));
 
         if ((c3){&$CCTextInputNode::setAllowedChars} != (d3){&D::setAllowedChars})
-            m->registerHook(base+0x5d360, extract(i, (d3){&D::setAllowedChars}));
+            m->registerHook(base+0x5d360, FunctionScrapper::addressOfNonVirtual((d3){&D::setAllowedChars}));
 
         if ((c4){&$CCTextInputNode::setLabelNormalColor} != (d4){&D::setLabelNormalColor})
-            m->registerHook(base+0x5dab0, extract(i, (d4){&D::setLabelNormalColor}));
+            m->registerHook(base+0x5dab0, FunctionScrapper::addressOfNonVirtual((d4){&D::setLabelNormalColor}));
 
         if ((c5){&$CCTextInputNode::setLabelPlaceholderColor} != (d5){&D::setLabelPlaceholderColor})
-            m->registerHook(base+0x5da90, extract(i, (d5){&D::setLabelPlaceholderColor}));
+            m->registerHook(base+0x5da90, FunctionScrapper::addressOfNonVirtual((d5){&D::setLabelPlaceholderColor}));
 
         if ((c6){&$CCTextInputNode::setLabelPlaceholderScale} != (d6){&D::setLabelPlaceholderScale})
-            m->registerHook(base+0x5da70, extract(i, (d6){&D::setLabelPlaceholderScale}));
+            m->registerHook(base+0x5da70, FunctionScrapper::addressOfNonVirtual((d6){&D::setLabelPlaceholderScale}));
 
         if ((c7){&$CCTextInputNode::setMaxLabelScale} != (d7){&D::setMaxLabelScale})
-            m->registerHook(base+0x5da30, extract(i, (d7){&D::setMaxLabelScale}));
+            m->registerHook(base+0x5da30, FunctionScrapper::addressOfNonVirtual((d7){&D::setMaxLabelScale}));
 
         if ((c8){&$CCTextInputNode::setMaxLabelWidth} != (d8){&D::setMaxLabelWidth})
-            m->registerHook(base+0x5da50, extract(i, (d8){&D::setMaxLabelWidth}));
+            m->registerHook(base+0x5da50, FunctionScrapper::addressOfNonVirtual((d8){&D::setMaxLabelWidth}));
 
         if ((c9){&$CCTextInputNode::setString} != (d9){&D::setString})
-            m->registerHook(base+0x5d3e0, extract(i, (d9){&D::setString}));
+            m->registerHook(base+0x5d3e0, FunctionScrapper::addressOfNonVirtual((d9){&D::setString}));
 
         if ((c10){&$CCTextInputNode::updateLabel} != (d10){&D::updateLabel})
-            m->registerHook(base+0x5d4a0, extract(i, (d10){&D::updateLabel}));
+            m->registerHook(base+0x5d4a0, FunctionScrapper::addressOfNonVirtual((d10){&D::updateLabel}));
 
         if ((c11){&$CCTextInputNode::forceOffset} != (d11){&D::forceOffset})
-            m->registerHook(base+0x5ec70, extract(i, (d11){&D::forceOffset}));
+            m->registerHook(base+0x5ec70, FunctionScrapper::addressOfNonVirtual((d11){&D::forceOffset}));
 
         if ((c12){&$CCTextInputNode::registerWithTouchDispatcher} != (d12){&D::registerWithTouchDispatcher})
-            m->registerHook(base+0x5eec0, extract(i, (d12){&D::registerWithTouchDispatcher}));
+            m->registerHook(base+0x5eec0, FunctionScrapper::addressOfVirtual(i, (d12){&D::registerWithTouchDispatcher}));
 
         if ((c13){&$CCTextInputNode::init} != (d13){&D::init})
-            m->registerHook(base+0x5d180, extract(i, (d13){&D::init}));
+            m->registerHook(base+0x5d180, FunctionScrapper::addressOfNonVirtual((d13){&D::init}));
 
-        if ((c14){&$CCTextInputNode::visit} != (d14){&D::visit})
-            m->registerHook(base+0x5d380, extract(i, (d14){&D::visit}));
+        if ((c15){&$CCTextInputNode::visit} != (d15){&D::visit})
+            m->registerHook(base+0x5d380, FunctionScrapper::addressOfVirtual(i, (d15){&D::visit}));
 
-        if ((c15){&$CCTextInputNode::ccTouchBegan} != (d15){&D::ccTouchBegan})
-            m->registerHook(base+0x5ec80, extract(i, (d15){&D::ccTouchBegan}));
+        if ((c16){&$CCTextInputNode::ccTouchBegan} != (d16){&D::ccTouchBegan})
+            m->registerHook(base+0x5ec80, FunctionScrapper::addressOfVirtual(i, (d16){&D::ccTouchBegan}));
 
-        if ((c16){&$CCTextInputNode::ccTouchCancelled} != (d16){&D::ccTouchCancelled})
-            m->registerHook(base+0x5ee80, extract(i, (d16){&D::ccTouchCancelled}));
+        if ((c17){&$CCTextInputNode::ccTouchCancelled} != (d17){&D::ccTouchCancelled})
+            m->registerHook(base+0x5ee80, FunctionScrapper::addressOfVirtual(i, (d17){&D::ccTouchCancelled}));
 
-        if ((c17){&$CCTextInputNode::ccTouchEnded} != (d17){&D::ccTouchEnded})
-            m->registerHook(base+0x5ee60, extract(i, (d17){&D::ccTouchEnded}));
+        if ((c18){&$CCTextInputNode::ccTouchEnded} != (d18){&D::ccTouchEnded})
+            m->registerHook(base+0x5ee60, FunctionScrapper::addressOfVirtual(i, (d18){&D::ccTouchEnded}));
 
-        if ((c18){&$CCTextInputNode::ccTouchMoved} != (d18){&D::ccTouchMoved})
-            m->registerHook(base+0x5eea0, extract(i, (d18){&D::ccTouchMoved}));
+        if ((c19){&$CCTextInputNode::ccTouchMoved} != (d19){&D::ccTouchMoved})
+            m->registerHook(base+0x5eea0, FunctionScrapper::addressOfVirtual(i, (d19){&D::ccTouchMoved}));
 
-        if ((c19){&$CCTextInputNode::textChanged} != (d19){&D::textChanged})
-            m->registerHook(base+0x5dd70, extract(i, (d19){&D::textChanged}));
+        if ((c20){&$CCTextInputNode::textChanged} != (d20){&D::textChanged})
+            m->registerHook(base+0x5dd70, FunctionScrapper::addressOfVirtual(i, (d20){&D::textChanged}));
 
-        if ((c20){&$CCTextInputNode::onClickTrackNode} != (d20){&D::onClickTrackNode})
-            m->registerHook(base+0x5dd40, extract(i, (d20){&D::onClickTrackNode}));
+        if ((c21){&$CCTextInputNode::onClickTrackNode} != (d21){&D::onClickTrackNode})
+            m->registerHook(base+0x5dd40, FunctionScrapper::addressOfVirtual(i, (d21){&D::onClickTrackNode}));
 
-        if ((c21){&$CCTextInputNode::keyboardWillShow} != (d21){&D::keyboardWillShow})
-            m->registerHook(base+0x5dad0, extract(i, (d21){&D::keyboardWillShow}));
+        if ((c22){&$CCTextInputNode::keyboardWillShow} != (d22){&D::keyboardWillShow})
+            m->registerHook(base+0x5dad0, FunctionScrapper::addressOfVirtual(i, (d22){&D::keyboardWillShow}));
 
-        if ((c22){&$CCTextInputNode::keyboardWillHide} != (d22){&D::keyboardWillHide})
-            m->registerHook(base+0x5dc20, extract(i, (d22){&D::keyboardWillHide}));
+        if ((c23){&$CCTextInputNode::keyboardWillHide} != (d23){&D::keyboardWillHide})
+            m->registerHook(base+0x5dc20, FunctionScrapper::addressOfVirtual(i, (d23){&D::keyboardWillHide}));
 
-        if ((c23){&$CCTextInputNode::onTextFieldInsertText} != (d23){&D::onTextFieldInsertText})
-            m->registerHook(base+0x5de50, extract(i, (d23){&D::onTextFieldInsertText}));
+        if ((c24){&$CCTextInputNode::onTextFieldInsertText} != (d24){&D::onTextFieldInsertText})
+            m->registerHook(base+0x5de50, FunctionScrapper::addressOfVirtual(i, (d24){&D::onTextFieldInsertText}));
 
-        if ((c24){&$CCTextInputNode::onTextFieldAttachWithIME} != (d24){&D::onTextFieldAttachWithIME})
-            m->registerHook(base+0x5e2c0, extract(i, (d24){&D::onTextFieldAttachWithIME}));
+        if ((c25){&$CCTextInputNode::onTextFieldAttachWithIME} != (d25){&D::onTextFieldAttachWithIME})
+            m->registerHook(base+0x5e2c0, FunctionScrapper::addressOfVirtual(i, (d25){&D::onTextFieldAttachWithIME}));
 
-        if ((c25){&$CCTextInputNode::onTextFieldDetachWithIME} != (d25){&D::onTextFieldDetachWithIME})
-            m->registerHook(base+0x5e610, extract(i, (d25){&D::onTextFieldDetachWithIME}));
+        if ((c26){&$CCTextInputNode::onTextFieldDetachWithIME} != (d26){&D::onTextFieldDetachWithIME})
+            m->registerHook(base+0x5e610, FunctionScrapper::addressOfVirtual(i, (d26){&D::onTextFieldDetachWithIME}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $TableView : public NullTableView, public $CacBase {
+class $TextArea : public TextArea, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$TableView() {}
+    ~$TextArea() {
+        endDestructor();
+    }
+    $TextArea() {}
 
-    using c0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
-    using d0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
-    using f0 = TableView*(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
-    inline static TableView* create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
-        return reinterpret_cast<f0>(base+0x37eb30)(p0, p1, p2);
+    using r1 = decltype(std::declval<TextArea>().draw());
+    using c1 = r1($TextArea::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 draw() {
+        using r1 = decltype(std::declval<TextArea>().draw());
+        using f1 = r1(*)(TextArea*);
+        return reinterpret_cast<f1>(base+0x19f890)(this);
     }
 
-    using c1 = void($TableView::*)();
-    using d1 = void(D::*)();
-    using f1 = void(*)($TableView*);
-    inline void reloadData() {
+    using r2 = decltype(std::declval<TextArea>().setOpacity(std::declval<unsigned char>()));
+    using c2 = r2($TextArea::*)(unsigned char) ;
+    using d2 = r2(D::*)(unsigned char) ;
+    r2 setOpacity(unsigned char p0) {
+        using r2 = decltype(std::declval<TextArea>().setOpacity(std::declval<unsigned char>()));
+        using f2 = r2(*)(TextArea*, unsigned char);
+        return reinterpret_cast<f2>(base+0x19f760)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<TextArea>().create(std::declval<gd::string>(), std::declval<char const*>(), std::declval<float>(), std::declval<float>(), std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<bool>()));
+    using c3 = r3(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool);
+    using d3 = r3(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool);
+    static r3 create(gd::string p0, char const* p1, float p2, float p3, cocos2d::CCPoint p4, float p5, bool p6) {
+        using r3 = decltype(std::declval<TextArea>().create(std::declval<gd::string>(), std::declval<char const*>(), std::declval<float>(), std::declval<float>(), std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<bool>()));
+        using f3 = r3(*)(gd::string, char const*, float, float, cocos2d::CCPoint, float, bool);
+        return reinterpret_cast<f3>(base+0x19eb40)(p0, p1, p2, p3, p4, p5, p6);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$TextArea::draw} != (d1){&D::draw})
+            m->registerHook(base+0x19f890, FunctionScrapper::addressOfVirtual(i, (d1){&D::draw}));
+
+        if ((c2){&$TextArea::setOpacity} != (d2){&D::setOpacity})
+            m->registerHook(base+0x19f760, FunctionScrapper::addressOfVirtual(i, (d2){&D::setOpacity}));
+
+        if ((c3){&$TextArea::create} != (d3){&D::create})
+            m->registerHook(base+0x19eb40, FunctionScrapper::addressOfNonVirtual((d3){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $Slider : public Slider, public $CacBase {
+public:
+    ~$Slider() {
+        endDestructor();
+    }
+    $Slider() {}
+
+    using r0 = decltype(std::declval<Slider>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>()));
+    using c0 = r0(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, char const*, char const*, char const*, char const*, float);
+    using d0 = r0(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, char const*, char const*, char const*, char const*, float);
+    static r0 create(cocos2d::CCNode* p0, cocos2d::SEL_MenuHandler p1, char const* p2, char const* p3, char const* p4, char const* p5, float p6) {
+        using r0 = decltype(std::declval<Slider>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<char const*>(), std::declval<float>()));
+        using f0 = r0(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, char const*, char const*, char const*, char const*, float);
+        return reinterpret_cast<f0>(base+0x18dd80)(p0, p1, p2, p3, p4, p5, p6);
+
+    }
+
+    using r1 = decltype(std::declval<Slider>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<float>()));
+    using c1 = r1(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, float);
+    using d1 = r1(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, float);
+    static r1 create(cocos2d::CCNode* p0, cocos2d::SEL_MenuHandler p1, float p2) {
+        using r1 = decltype(std::declval<Slider>().create(std::declval<cocos2d::CCNode*>(), std::declval<cocos2d::SEL_MenuHandler>(), std::declval<float>()));
+        using f1 = r1(*)(cocos2d::CCNode*, cocos2d::SEL_MenuHandler, float);
+        return reinterpret_cast<f1>(base+0x18dc40)(p0, p1, p2);
+
+    }
+
+    using r2 = decltype(std::declval<Slider>().getValue());
+    using c2 = r2($Slider::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 getValue() {
+        using r2 = decltype(std::declval<Slider>().getValue());
+        using f2 = r2(*)(Slider*);
+        return reinterpret_cast<f2>(base+0x18e0c0)(this);
+    }
+
+    using r3 = decltype(std::declval<Slider>().setBarVisibility(std::declval<bool>()));
+    using c3 = r3($Slider::*)(bool) ;
+    using d3 = r3(D::*)(bool) ;
+    r3 setBarVisibility(bool p0) {
+        using r3 = decltype(std::declval<Slider>().setBarVisibility(std::declval<bool>()));
+        using f3 = r3(*)(Slider*, bool);
+        return reinterpret_cast<f3>(base+0x18e280)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<Slider>().setValue(std::declval<float>()));
+    using c4 = r4($Slider::*)(float) ;
+    using d4 = r4(D::*)(float) ;
+    r4 setValue(float p0) {
+        using r4 = decltype(std::declval<Slider>().setValue(std::declval<float>()));
+        using f4 = r4(*)(Slider*, float);
+        return reinterpret_cast<f4>(base+0x18e170)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$Slider::create} != (d0){&D::create})
+            m->registerHook(base+0x18dd80, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$Slider::create} != (d1){&D::create})
+            m->registerHook(base+0x18dc40, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        if ((c2){&$Slider::getValue} != (d2){&D::getValue})
+            m->registerHook(base+0x18e0c0, FunctionScrapper::addressOfNonVirtual((d2){&D::getValue}));
+
+        if ((c3){&$Slider::setBarVisibility} != (d3){&D::setBarVisibility})
+            m->registerHook(base+0x18e280, FunctionScrapper::addressOfNonVirtual((d3){&D::setBarVisibility}));
+
+        if ((c4){&$Slider::setValue} != (d4){&D::setValue})
+            m->registerHook(base+0x18e170, FunctionScrapper::addressOfNonVirtual((d4){&D::setValue}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SliderThumb : public SliderThumb, public $CacBase {
+public:
+    ~$SliderThumb() {
+        endDestructor();
+    }
+    $SliderThumb() {}
+
+    using r0 = decltype(std::declval<SliderThumb>().getValue());
+    using c0 = r0($SliderThumb::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 getValue() {
+        using r0 = decltype(std::declval<SliderThumb>().getValue());
+        using f0 = r0(*)(SliderThumb*);
+        return reinterpret_cast<f0>(base+0x18ce80)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SliderThumb::getValue} != (d0){&D::getValue})
+            m->registerHook(base+0x18ce80, FunctionScrapper::addressOfNonVirtual((d0){&D::getValue}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $BoomScrollLayer : public BoomScrollLayer, public $CacBase {
+public:
+    ~$BoomScrollLayer() {
+        endDestructor();
+    }
+    $BoomScrollLayer() {}
+
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $TableView : public TableView, public $CacBase {
+public:
+    ~$TableView() {
+        endDestructor();
+    }
+    $TableView() {}
+
+    using r0 = decltype(std::declval<TableView>().create(std::declval<TableViewDelegate*>(), std::declval<TableViewDataSource*>(), std::declval<cocos2d::CCRect>()));
+    using c0 = r0(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    using d0 = r0(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+    static r0 create(TableViewDelegate* p0, TableViewDataSource* p1, cocos2d::CCRect p2) {
+        using r0 = decltype(std::declval<TableView>().create(std::declval<TableViewDelegate*>(), std::declval<TableViewDataSource*>(), std::declval<cocos2d::CCRect>()));
+        using f0 = r0(*)(TableViewDelegate*, TableViewDataSource*, cocos2d::CCRect);
+        return reinterpret_cast<f0>(base+0x37eb30)(p0, p1, p2);
+
+    }
+
+    using r1 = decltype(std::declval<TableView>().reloadData());
+    using c1 = r1($TableView::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 reloadData() {
+        using r1 = decltype(std::declval<TableView>().reloadData());
+        using f1 = r1(*)(TableView*);
         return reinterpret_cast<f1>(base+0x37f970)(this);
     }
 
-    inline $TableView(bool) {}
-    inline $TableView() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$TableView::create} != (d0){&D::create})
-            m->registerHook(base+0x37eb30, extract((d0){&D::create}));
+            m->registerHook(base+0x37eb30, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$TableView::reloadData} != (d1){&D::reloadData})
-            m->registerHook(base+0x37f970, extract(i, (d1){&D::reloadData}));
+            m->registerHook(base+0x37f970, FunctionScrapper::addressOfNonVirtual((d1){&D::reloadData}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $BoomListView : public NullBoomListView, public $CacBase {
+class $BoomListView : public BoomListView, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$BoomListView() {}
+    ~$BoomListView() {
+        endDestructor();
+    }
+    $BoomListView() {}
 
-    using c0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    using d0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    using f0 = BoomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    inline static BoomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+    using r0 = decltype(std::declval<BoomListView>().create(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
+    using c0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using d0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    static r0 create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+        using r0 = decltype(std::declval<BoomListView>().create(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
+        using f0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
         return reinterpret_cast<f0>(base+0x18ecb0)(p0, p1, p2, p3, p4);
+
     }
 
-    using c1 = bool($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    using d1 = bool(D::*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    using f1 = bool(*)($BoomListView*, cocos2d::CCArray*, float, float, int, BoomListType);
-    inline bool init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+    using r1 = decltype(std::declval<BoomListView>().init(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
+    using c1 = r1($BoomListView::*)(cocos2d::CCArray*, float, float, int, BoomListType) ;
+    using d1 = r1(D::*)(cocos2d::CCArray*, float, float, int, BoomListType) ;
+    r1 init(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+        using r1 = decltype(std::declval<BoomListView>().init(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
+        using f1 = r1(*)(BoomListView*, cocos2d::CCArray*, float, float, int, BoomListType);
         return reinterpret_cast<f1>(base+0x18ee00)(this, p0, p1, p2, p3, p4);
     }
 
-    using c2 = void($BoomListView::*)();
-    using d2 = void(D::*)();
-    using f2 = void(*)($BoomListView*);
-    inline void draw() {
+    using r2 = decltype(std::declval<BoomListView>().draw());
+    using c2 = r2($BoomListView::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 draw() {
+        using r2 = decltype(std::declval<BoomListView>().draw());
+        using f2 = r2(*)(BoomListView*);
         return reinterpret_cast<f2>(base+0x18f790)(this);
     }
 
-    using c3 = void($BoomListView::*)();
-    using d3 = void(D::*)();
-    using f3 = void(*)($BoomListView*);
-    inline void setupList() {
+    using r3 = decltype(std::declval<BoomListView>().setupList());
+    using c3 = r3($BoomListView::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 setupList() {
+        using r3 = decltype(std::declval<BoomListView>().setupList());
+        using f3 = r3(*)(BoomListView*);
         return reinterpret_cast<f3>(base+0x18ef90)(this);
     }
 
-    using c4 = void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*);
-    using d4 = void(D::*)(CCIndexPath&, TableViewCell*, TableView*);
-    using f4 = void(*)($BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
-    inline void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
+    using r4 = decltype(std::declval<BoomListView>().TableViewWillDisplayCellForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableViewCell*>(), std::declval<TableView*>()));
+    using c4 = r4($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*) ;
+    using d4 = r4(D::*)(CCIndexPath&, TableViewCell*, TableView*) ;
+    r4 TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
+        using r4 = decltype(std::declval<BoomListView>().TableViewWillDisplayCellForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableViewCell*>(), std::declval<TableView*>()));
+        using f4 = r4(*)(BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
         return reinterpret_cast<f4>(base+0x18f030)(this, p0, p1, p2);
     }
 
-    using c5 = void($BoomListView::*)(CCIndexPath&, TableView*);
-    using d5 = void(D::*)(CCIndexPath&, TableView*);
-    using f5 = void(*)($BoomListView*, CCIndexPath&, TableView*);
-    inline void cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
+    using r5 = decltype(std::declval<BoomListView>().cellHeightForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableView*>()));
+    using c5 = r5($BoomListView::*)(CCIndexPath&, TableView*) ;
+    using d5 = r5(D::*)(CCIndexPath&, TableView*) ;
+    r5 cellHeightForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
+        using r5 = decltype(std::declval<BoomListView>().cellHeightForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableView*>()));
+        using f5 = r5(*)(BoomListView*, CCIndexPath&, TableView*);
         return reinterpret_cast<f5>(base+0x18f070)(this, p0, p1);
     }
 
-    using c6 = void($BoomListView::*)(CCIndexPath&, TableView*);
-    using d6 = void(D::*)(CCIndexPath&, TableView*);
-    using f6 = void(*)($BoomListView*, CCIndexPath&, TableView*);
-    inline void didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
+    using r6 = decltype(std::declval<BoomListView>().didSelectRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableView*>()));
+    using c6 = r6($BoomListView::*)(CCIndexPath&, TableView*) ;
+    using d6 = r6(D::*)(CCIndexPath&, TableView*) ;
+    r6 didSelectRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
+        using r6 = decltype(std::declval<BoomListView>().didSelectRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableView*>()));
+        using f6 = r6(*)(BoomListView*, CCIndexPath&, TableView*);
         return reinterpret_cast<f6>(base+0x18f090)(this, p0, p1);
     }
 
-    using c7 = int($BoomListView::*)(unsigned int, TableView*);
-    using d7 = int(D::*)(unsigned int, TableView*);
-    using f7 = int(*)($BoomListView*, unsigned int, TableView*);
-    inline int numberOfRowsInSection(unsigned int p0, TableView* p1) {
+    using r7 = decltype(std::declval<BoomListView>().numberOfRowsInSection(std::declval<unsigned int>(), std::declval<TableView*>()));
+    using c7 = r7($BoomListView::*)(unsigned int, TableView*) ;
+    using d7 = r7(D::*)(unsigned int, TableView*) ;
+    r7 numberOfRowsInSection(unsigned int p0, TableView* p1) {
+        using r7 = decltype(std::declval<BoomListView>().numberOfRowsInSection(std::declval<unsigned int>(), std::declval<TableView*>()));
+        using f7 = r7(*)(BoomListView*, unsigned int, TableView*);
         return reinterpret_cast<f7>(base+0x18f0b0)(this, p0, p1);
     }
 
-    using c8 = void($BoomListView::*)(TableView*);
-    using d8 = void(D::*)(TableView*);
-    using f8 = void(*)($BoomListView*, TableView*);
-    inline void numberOfSectionsInTableView(TableView* p0) {
+    using r8 = decltype(std::declval<BoomListView>().numberOfSectionsInTableView(std::declval<TableView*>()));
+    using c8 = r8($BoomListView::*)(TableView*) ;
+    using d8 = r8(D::*)(TableView*) ;
+    r8 numberOfSectionsInTableView(TableView* p0) {
+        using r8 = decltype(std::declval<BoomListView>().numberOfSectionsInTableView(std::declval<TableView*>()));
+        using f8 = r8(*)(BoomListView*, TableView*);
         return reinterpret_cast<f8>(base+0x18f0e0)(this, p0);
     }
 
-    using c9 = void($BoomListView::*)(CCIndexPath&, TableView*);
-    using d9 = void(D::*)(CCIndexPath&, TableView*);
-    using f9 = void(*)($BoomListView*, CCIndexPath&, TableView*);
-    inline void cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
+    using r9 = decltype(std::declval<BoomListView>().cellForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableView*>()));
+    using c9 = r9($BoomListView::*)(CCIndexPath&, TableView*) ;
+    using d9 = r9(D::*)(CCIndexPath&, TableView*) ;
+    r9 cellForRowAtIndexPath(CCIndexPath& p0, TableView* p1) {
+        using r9 = decltype(std::declval<BoomListView>().cellForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableView*>()));
+        using f9 = r9(*)(BoomListView*, CCIndexPath&, TableView*);
         return reinterpret_cast<f9>(base+0x18f100)(this, p0, p1);
     }
 
-    using c10 = void($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&);
-    using d10 = void(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&);
-    using f10 = void(*)($BoomListView*, TableView*, TableViewCellEditingStyle, CCIndexPath&);
-    inline void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) {
+    using r10 = decltype(std::declval<BoomListView>().TableViewCommitCellEditingStyleForRowAtIndexPath(std::declval<TableView*>(), std::declval<TableViewCellEditingStyle>(), std::declval<CCIndexPath&>()));
+    using c10 = r10($BoomListView::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&) ;
+    using d10 = r10(D::*)(TableView*, TableViewCellEditingStyle, CCIndexPath&) ;
+    r10 TableViewCommitCellEditingStyleForRowAtIndexPath(TableView* p0, TableViewCellEditingStyle p1, CCIndexPath& p2) {
+        using r10 = decltype(std::declval<BoomListView>().TableViewCommitCellEditingStyleForRowAtIndexPath(std::declval<TableView*>(), std::declval<TableViewCellEditingStyle>(), std::declval<CCIndexPath&>()));
+        using f10 = r10(*)(BoomListView*, TableView*, TableViewCellEditingStyle, CCIndexPath&);
         return reinterpret_cast<f10>(base+0x18f770)(this, p0, p1, p2);
     }
 
-    using c11 = void($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*);
-    using d11 = void(D::*)(CCIndexPath&, TableViewCell*, TableView*);
-    using f11 = void(*)($BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
-    inline void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
+    using r11 = decltype(std::declval<BoomListView>().TableViewWillReloadCellForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableViewCell*>(), std::declval<TableView*>()));
+    using c11 = r11($BoomListView::*)(CCIndexPath&, TableViewCell*, TableView*) ;
+    using d11 = r11(D::*)(CCIndexPath&, TableViewCell*, TableView*) ;
+    r11 TableViewWillReloadCellForRowAtIndexPath(CCIndexPath& p0, TableViewCell* p1, TableView* p2) {
+        using r11 = decltype(std::declval<BoomListView>().TableViewWillReloadCellForRowAtIndexPath(std::declval<CCIndexPath&>(), std::declval<TableViewCell*>(), std::declval<TableView*>()));
+        using f11 = r11(*)(BoomListView*, CCIndexPath&, TableViewCell*, TableView*);
         return reinterpret_cast<f11>(base+0x18f050)(this, p0, p1, p2);
     }
 
-    using c12 = TableViewCell*($BoomListView::*)(char const*);
-    using d12 = TableViewCell*(D::*)(char const*);
-    using f12 = TableViewCell*(*)($BoomListView*, char const*);
-    inline TableViewCell* getListCell(char const* p0) {
+    using r12 = decltype(std::declval<BoomListView>().getListCell(std::declval<char const*>()));
+    using c12 = r12($BoomListView::*)(char const*) ;
+    using d12 = r12(D::*)(char const*) ;
+    r12 getListCell(char const* p0) {
+        using r12 = decltype(std::declval<BoomListView>().getListCell(std::declval<char const*>()));
+        using f12 = r12(*)(BoomListView*, char const*);
         return reinterpret_cast<f12>(base+0x18f200)(this, p0);
     }
 
-    using c13 = void($BoomListView::*)(TableViewCell*, int);
-    using d13 = void(D::*)(TableViewCell*, int);
-    using f13 = void(*)($BoomListView*, TableViewCell*, int);
-    inline void loadCell(TableViewCell* p0, int p1) {
+    using r13 = decltype(std::declval<BoomListView>().loadCell(std::declval<TableViewCell*>(), std::declval<int>()));
+    using c13 = r13($BoomListView::*)(TableViewCell*, int) ;
+    using d13 = r13(D::*)(TableViewCell*, int) ;
+    r13 loadCell(TableViewCell* p0, int p1) {
+        using r13 = decltype(std::declval<BoomListView>().loadCell(std::declval<TableViewCell*>(), std::declval<int>()));
+        using f13 = r13(*)(BoomListView*, TableViewCell*, int);
         return reinterpret_cast<f13>(base+0x18f4a0)(this, p0, p1);
     }
 
-    inline $BoomListView(bool) {}
-    inline $BoomListView() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$BoomListView::create} != (d0){&D::create})
-            m->registerHook(base+0x18ecb0, extract((d0){&D::create}));
+            m->registerHook(base+0x18ecb0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$BoomListView::init} != (d1){&D::init})
-            m->registerHook(base+0x18ee00, extract(i, (d1){&D::init}));
+            m->registerHook(base+0x18ee00, FunctionScrapper::addressOfNonVirtual((d1){&D::init}));
 
         if ((c2){&$BoomListView::draw} != (d2){&D::draw})
-            m->registerHook(base+0x18f790, extract(i, (d2){&D::draw}));
+            m->registerHook(base+0x18f790, FunctionScrapper::addressOfNonVirtual((d2){&D::draw}));
 
         if ((c3){&$BoomListView::setupList} != (d3){&D::setupList})
-            m->registerHook(base+0x18ef90, extract(i, (d3){&D::setupList}));
+            m->registerHook(base+0x18ef90, FunctionScrapper::addressOfVirtual(i, (d3){&D::setupList}));
 
         if ((c4){&$BoomListView::TableViewWillDisplayCellForRowAtIndexPath} != (d4){&D::TableViewWillDisplayCellForRowAtIndexPath})
-            m->registerHook(base+0x18f030, extract(i, (d4){&D::TableViewWillDisplayCellForRowAtIndexPath}));
+            m->registerHook(base+0x18f030, FunctionScrapper::addressOfVirtual(i, (d4){&D::TableViewWillDisplayCellForRowAtIndexPath}));
 
         if ((c5){&$BoomListView::cellHeightForRowAtIndexPath} != (d5){&D::cellHeightForRowAtIndexPath})
-            m->registerHook(base+0x18f070, extract(i, (d5){&D::cellHeightForRowAtIndexPath}));
+            m->registerHook(base+0x18f070, FunctionScrapper::addressOfVirtual(i, (d5){&D::cellHeightForRowAtIndexPath}));
 
         if ((c6){&$BoomListView::didSelectRowAtIndexPath} != (d6){&D::didSelectRowAtIndexPath})
-            m->registerHook(base+0x18f090, extract(i, (d6){&D::didSelectRowAtIndexPath}));
+            m->registerHook(base+0x18f090, FunctionScrapper::addressOfVirtual(i, (d6){&D::didSelectRowAtIndexPath}));
 
         if ((c7){&$BoomListView::numberOfRowsInSection} != (d7){&D::numberOfRowsInSection})
-            m->registerHook(base+0x18f0b0, extract(i, (d7){&D::numberOfRowsInSection}));
+            m->registerHook(base+0x18f0b0, FunctionScrapper::addressOfVirtual(i, (d7){&D::numberOfRowsInSection}));
 
         if ((c8){&$BoomListView::numberOfSectionsInTableView} != (d8){&D::numberOfSectionsInTableView})
-            m->registerHook(base+0x18f0e0, extract(i, (d8){&D::numberOfSectionsInTableView}));
+            m->registerHook(base+0x18f0e0, FunctionScrapper::addressOfVirtual(i, (d8){&D::numberOfSectionsInTableView}));
 
         if ((c9){&$BoomListView::cellForRowAtIndexPath} != (d9){&D::cellForRowAtIndexPath})
-            m->registerHook(base+0x18f100, extract(i, (d9){&D::cellForRowAtIndexPath}));
+            m->registerHook(base+0x18f100, FunctionScrapper::addressOfVirtual(i, (d9){&D::cellForRowAtIndexPath}));
 
         if ((c10){&$BoomListView::TableViewCommitCellEditingStyleForRowAtIndexPath} != (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath})
-            m->registerHook(base+0x18f770, extract(i, (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
+            m->registerHook(base+0x18f770, FunctionScrapper::addressOfVirtual(i, (d10){&D::TableViewCommitCellEditingStyleForRowAtIndexPath}));
 
         if ((c11){&$BoomListView::TableViewWillReloadCellForRowAtIndexPath} != (d11){&D::TableViewWillReloadCellForRowAtIndexPath})
-            m->registerHook(base+0x18f050, extract(i, (d11){&D::TableViewWillReloadCellForRowAtIndexPath}));
+            m->registerHook(base+0x18f050, FunctionScrapper::addressOfVirtual(i, (d11){&D::TableViewWillReloadCellForRowAtIndexPath}));
 
         if ((c12){&$BoomListView::getListCell} != (d12){&D::getListCell})
-            m->registerHook(base+0x18f200, extract(i, (d12){&D::getListCell}));
+            m->registerHook(base+0x18f200, FunctionScrapper::addressOfVirtual(i, (d12){&D::getListCell}));
 
         if ((c13){&$BoomListView::loadCell} != (d13){&D::loadCell})
-            m->registerHook(base+0x18f4a0, extract(i, (d13){&D::loadCell}));
+            m->registerHook(base+0x18f4a0, FunctionScrapper::addressOfVirtual(i, (d13){&D::loadCell}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $CustomListView : public NullCustomListView, public $CacBase {
+class $CreateMenuItem : public CreateMenuItem, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$CustomListView() {}
+    ~$CreateMenuItem() {
+        endDestructor();
+    }
+    $CreateMenuItem() {}
 
-    using c0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    using d0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    using f0 = CustomListView*(*)(cocos2d::CCArray*, float, float, int, BoomListType);
-    inline static CustomListView* create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CustomListView : public CustomListView, public $CacBase {
+public:
+    ~$CustomListView() {
+        endDestructor();
+    }
+    $CustomListView() {}
+
+    using r0 = decltype(std::declval<CustomListView>().create(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
+    using c0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    using d0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
+    static r0 create(cocos2d::CCArray* p0, float p1, float p2, int p3, BoomListType p4) {
+        using r0 = decltype(std::declval<CustomListView>().create(std::declval<cocos2d::CCArray*>(), std::declval<float>(), std::declval<float>(), std::declval<int>(), std::declval<BoomListType>()));
+        using f0 = r0(*)(cocos2d::CCArray*, float, float, int, BoomListType);
         return reinterpret_cast<f0>(base+0x10d410)(p0, p1, p2, p3, p4);
+
     }
 
-    using c1 = void($CustomListView::*)(char const*);
-    using d1 = void(D::*)(char const*);
-    using f1 = void(*)($CustomListView*, char const*);
-    inline void getListCell(char const* p0) {
+    using r1 = decltype(std::declval<CustomListView>().getListCell(std::declval<char const*>()));
+    using c1 = r1($CustomListView::*)(char const*) ;
+    using d1 = r1(D::*)(char const*) ;
+    r1 getListCell(char const* p0) {
+        using r1 = decltype(std::declval<CustomListView>().getListCell(std::declval<char const*>()));
+        using f1 = r1(*)(CustomListView*, char const*);
         return reinterpret_cast<f1>(base+0x10d560)(this, p0);
     }
 
-    using c2 = void($CustomListView::*)(TableViewCell*, int);
-    using d2 = void(D::*)(TableViewCell*, int);
-    using f2 = void(*)($CustomListView*, TableViewCell*, int);
-    inline void loadCell(TableViewCell* p0, int p1) {
+    using r2 = decltype(std::declval<CustomListView>().loadCell(std::declval<TableViewCell*>(), std::declval<int>()));
+    using c2 = r2($CustomListView::*)(TableViewCell*, int) ;
+    using d2 = r2(D::*)(TableViewCell*, int) ;
+    r2 loadCell(TableViewCell* p0, int p1) {
+        using r2 = decltype(std::declval<CustomListView>().loadCell(std::declval<TableViewCell*>(), std::declval<int>()));
+        using f2 = r2(*)(CustomListView*, TableViewCell*, int);
         return reinterpret_cast<f2>(base+0x10e610)(this, p0, p1);
     }
 
-    using c3 = void($CustomListView::*)();
-    using d3 = void(D::*)();
-    using f3 = void(*)($CustomListView*);
-    inline void setupList() {
+    using r3 = decltype(std::declval<CustomListView>().setupList());
+    using c3 = r3($CustomListView::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 setupList() {
+        using r3 = decltype(std::declval<CustomListView>().setupList());
+        using f3 = r3(*)(CustomListView*);
         return reinterpret_cast<f3>(base+0x116e70)(this);
     }
 
-    inline $CustomListView(bool) {}
-    inline $CustomListView() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
 
         if ((c0){&$CustomListView::create} != (d0){&D::create})
-            m->registerHook(base+0x10d410, extract((d0){&D::create}));
+            m->registerHook(base+0x10d410, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
 
         if ((c1){&$CustomListView::getListCell} != (d1){&D::getListCell})
-            m->registerHook(base+0x10d560, extract(i, (d1){&D::getListCell}));
+            m->registerHook(base+0x10d560, FunctionScrapper::addressOfNonVirtual((d1){&D::getListCell}));
 
         if ((c2){&$CustomListView::loadCell} != (d2){&D::loadCell})
-            m->registerHook(base+0x10e610, extract(i, (d2){&D::loadCell}));
+            m->registerHook(base+0x10e610, FunctionScrapper::addressOfNonVirtual((d2){&D::loadCell}));
 
         if ((c3){&$CustomListView::setupList} != (d3){&D::setupList})
-            m->registerHook(base+0x116e70, extract(i, (d3){&D::setupList}));
+            m->registerHook(base+0x116e70, FunctionScrapper::addressOfNonVirtual((d3){&D::setupList}));
+
+        // delete i;
     }
 };
 
 template<class D>
-class $TableViewCell : public NullTableViewCell, public $CacBase {
+class $InheritanceNode : public InheritanceNode, public $CacBase {
 public:
-    static inline bool lock = false;
-    inline ~$TableViewCell() {}
+    ~$InheritanceNode() {
+        endDestructor();
+    }
+    $InheritanceNode() {}
 
-    inline $TableViewCell(bool) {}
-    inline $TableViewCell() {
-        if (lock) return;
-        lock = true;
-        // i wanted to delete i but sadly the destructor isn't hooked yet soooo
+    static void apply() {
         auto i = new D();
-        lock = false;
+
+        // delete i;
     }
 };
 
-#undef rcast
+template<class D>
+class $HardStreak : public HardStreak, public $CacBase {
+public:
+    ~$HardStreak() {
+        endDestructor();
+    }
+    $HardStreak() {}
+
+    using r1 = decltype(std::declval<HardStreak>().init());
+    using c1 = r1($HardStreak::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<HardStreak>().init());
+        using f1 = r1(*)(HardStreak*);
+        return reinterpret_cast<f1>(base+0x5c090)(this);
+    }
+
+    using r2 = decltype(std::declval<HardStreak>().addPoint(std::declval<cocos2d::CCPoint>()));
+    using c2 = r2($HardStreak::*)(cocos2d::CCPoint) ;
+    using d2 = r2(D::*)(cocos2d::CCPoint) ;
+    r2 addPoint(cocos2d::CCPoint p0) {
+        using r2 = decltype(std::declval<HardStreak>().addPoint(std::declval<cocos2d::CCPoint>()));
+        using f2 = r2(*)(HardStreak*, cocos2d::CCPoint);
+        return reinterpret_cast<f2>(base+0x5c950)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<HardStreak>().reset());
+    using c3 = r3($HardStreak::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 reset() {
+        using r3 = decltype(std::declval<HardStreak>().reset());
+        using f3 = r3(*)(HardStreak*);
+        return reinterpret_cast<f3>(base+0x5c930)(this);
+    }
+
+    using r4 = decltype(std::declval<HardStreak>().resumeStroke());
+    using c4 = r4($HardStreak::*)() ;
+    using d4 = r4(D::*)() ;
+    r4 resumeStroke() {
+        using r4 = decltype(std::declval<HardStreak>().resumeStroke());
+        using f4 = r4(*)(HardStreak*);
+        return reinterpret_cast<f4>(base+0x5c210)(this);
+    }
+
+    using r5 = decltype(std::declval<HardStreak>().stopStroke());
+    using c5 = r5($HardStreak::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 stopStroke() {
+        using r5 = decltype(std::declval<HardStreak>().stopStroke());
+        using f5 = r5(*)(HardStreak*);
+        return reinterpret_cast<f5>(base+0x5c8f0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$HardStreak::init} != (d1){&D::init})
+            m->registerHook(base+0x5c090, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
+
+        if ((c2){&$HardStreak::addPoint} != (d2){&D::addPoint})
+            m->registerHook(base+0x5c950, FunctionScrapper::addressOfNonVirtual((d2){&D::addPoint}));
+
+        if ((c3){&$HardStreak::reset} != (d3){&D::reset})
+            m->registerHook(base+0x5c930, FunctionScrapper::addressOfNonVirtual((d3){&D::reset}));
+
+        if ((c4){&$HardStreak::resumeStroke} != (d4){&D::resumeStroke})
+            m->registerHook(base+0x5c210, FunctionScrapper::addressOfNonVirtual((d4){&D::resumeStroke}));
+
+        if ((c5){&$HardStreak::stopStroke} != (d5){&D::stopStroke})
+            m->registerHook(base+0x5c8f0, FunctionScrapper::addressOfNonVirtual((d5){&D::stopStroke}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GameObject : public GameObject, public $CacBase {
+public:
+    ~$GameObject() {
+        endDestructor();
+    }
+    $GameObject() {}
+
+    using r1 = decltype(std::declval<GameObject>().update(std::declval<float>()));
+    using c1 = r1($GameObject::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 update(float p0) {
+        using r1 = decltype(std::declval<GameObject>().update(std::declval<float>()));
+        using f1 = r1(*)(GameObject*, float);
+        return reinterpret_cast<f1>(base+0x2fbb90)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<GameObject>().setScaleX(std::declval<float>()));
+    using c2 = r2($GameObject::*)(float) ;
+    using d2 = r2(D::*)(float) ;
+    r2 setScaleX(float p0) {
+        using r2 = decltype(std::declval<GameObject>().setScaleX(std::declval<float>()));
+        using f2 = r2(*)(GameObject*, float);
+        return reinterpret_cast<f2>(base+0x335b00)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<GameObject>().setScaleY(std::declval<float>()));
+    using c3 = r3($GameObject::*)(float) ;
+    using d3 = r3(D::*)(float) ;
+    r3 setScaleY(float p0) {
+        using r3 = decltype(std::declval<GameObject>().setScaleY(std::declval<float>()));
+        using f3 = r3(*)(GameObject*, float);
+        return reinterpret_cast<f3>(base+0x335b90)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<GameObject>().setScale(std::declval<float>()));
+    using c4 = r4($GameObject::*)(float) ;
+    using d4 = r4(D::*)(float) ;
+    r4 setScale(float p0) {
+        using r4 = decltype(std::declval<GameObject>().setScale(std::declval<float>()));
+        using f4 = r4(*)(GameObject*, float);
+        return reinterpret_cast<f4>(base+0x335c20)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<GameObject>().setPosition(std::declval<cocos2d::CCPoint const&>()));
+    using c5 = r5($GameObject::*)(cocos2d::CCPoint const&) ;
+    using d5 = r5(D::*)(cocos2d::CCPoint const&) ;
+    r5 setPosition(cocos2d::CCPoint const& p0) {
+        using r5 = decltype(std::declval<GameObject>().setPosition(std::declval<cocos2d::CCPoint const&>()));
+        using f5 = r5(*)(GameObject*, cocos2d::CCPoint const&);
+        return reinterpret_cast<f5>(base+0x335850)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<GameObject>().setVisible(std::declval<bool>()));
+    using c6 = r6($GameObject::*)(bool) ;
+    using d6 = r6(D::*)(bool) ;
+    r6 setVisible(bool p0) {
+        using r6 = decltype(std::declval<GameObject>().setVisible(std::declval<bool>()));
+        using f6 = r6(*)(GameObject*, bool);
+        return reinterpret_cast<f6>(base+0x336280)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<GameObject>().setRotation(std::declval<float>()));
+    using c7 = r7($GameObject::*)(float) ;
+    using d7 = r7(D::*)(float) ;
+    r7 setRotation(float p0) {
+        using r7 = decltype(std::declval<GameObject>().setRotation(std::declval<float>()));
+        using f7 = r7(*)(GameObject*, float);
+        return reinterpret_cast<f7>(base+0x335970)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<GameObject>().setOpacity(std::declval<unsigned char>()));
+    using c8 = r8($GameObject::*)(unsigned char) ;
+    using d8 = r8(D::*)(unsigned char) ;
+    r8 setOpacity(unsigned char p0) {
+        using r8 = decltype(std::declval<GameObject>().setOpacity(std::declval<unsigned char>()));
+        using f8 = r8(*)(GameObject*, unsigned char);
+        return reinterpret_cast<f8>(base+0x335f10)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<GameObject>().initWithTexture(std::declval<cocos2d::CCTexture2D*>()));
+    using c9 = r9($GameObject::*)(cocos2d::CCTexture2D*) ;
+    using d9 = r9(D::*)(cocos2d::CCTexture2D*) ;
+    r9 initWithTexture(cocos2d::CCTexture2D* p0) {
+        using r9 = decltype(std::declval<GameObject>().initWithTexture(std::declval<cocos2d::CCTexture2D*>()));
+        using f9 = r9(*)(GameObject*, cocos2d::CCTexture2D*);
+        return reinterpret_cast<f9>(base+0x2f56a0)(this, p0);
+    }
+
+    using r10 = decltype(std::declval<GameObject>().setChildColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c10 = r10($GameObject::*)(cocos2d::_ccColor3B const&) ;
+    using d10 = r10(D::*)(cocos2d::_ccColor3B const&) ;
+    r10 setChildColor(cocos2d::_ccColor3B const& p0) {
+        using r10 = decltype(std::declval<GameObject>().setChildColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f10 = r10(*)(GameObject*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f10>(base+0x341f20)(this, p0);
+    }
+
+    using r11 = decltype(std::declval<GameObject>().setFlipX(std::declval<bool>()));
+    using c11 = r11($GameObject::*)(bool) ;
+    using d11 = r11(D::*)(bool) ;
+    r11 setFlipX(bool p0) {
+        using r11 = decltype(std::declval<GameObject>().setFlipX(std::declval<bool>()));
+        using f11 = r11(*)(GameObject*, bool);
+        return reinterpret_cast<f11>(base+0x335a60)(this, p0);
+    }
+
+    using r12 = decltype(std::declval<GameObject>().setFlipY(std::declval<bool>()));
+    using c12 = r12($GameObject::*)(bool) ;
+    using d12 = r12(D::*)(bool) ;
+    r12 setFlipY(bool p0) {
+        using r12 = decltype(std::declval<GameObject>().setFlipY(std::declval<bool>()));
+        using f12 = r12(*)(GameObject*, bool);
+        return reinterpret_cast<f12>(base+0x335ab0)(this, p0);
+    }
+
+    using r13 = decltype(std::declval<GameObject>().customSetup());
+    using c13 = r13($GameObject::*)() ;
+    using d13 = r13(D::*)() ;
+    r13 customSetup() {
+        using r13 = decltype(std::declval<GameObject>().customSetup());
+        using f13 = r13(*)(GameObject*);
+        return reinterpret_cast<f13>(base+0x2fbba0)(this);
+    }
+
+    using r14 = decltype(std::declval<GameObject>().setupCustomSprites());
+    using c14 = r14($GameObject::*)() ;
+    using d14 = r14(D::*)() ;
+    r14 setupCustomSprites() {
+        using r14 = decltype(std::declval<GameObject>().setupCustomSprites());
+        using f14 = r14(*)(GameObject*);
+        return reinterpret_cast<f14>(base+0x307f60)(this);
+    }
+
+    using r15 = decltype(std::declval<GameObject>().addMainSpriteToParent(std::declval<bool>()));
+    using c15 = r15($GameObject::*)(bool) ;
+    using d15 = r15(D::*)(bool) ;
+    r15 addMainSpriteToParent(bool p0) {
+        using r15 = decltype(std::declval<GameObject>().addMainSpriteToParent(std::declval<bool>()));
+        using f15 = r15(*)(GameObject*, bool);
+        return reinterpret_cast<f15>(base+0x33a5b0)(this, p0);
+    }
+
+    using r16 = decltype(std::declval<GameObject>().resetObject());
+    using c16 = r16($GameObject::*)() ;
+    using d16 = r16(D::*)() ;
+    r16 resetObject() {
+        using r16 = decltype(std::declval<GameObject>().resetObject());
+        using f16 = r16(*)(GameObject*);
+        return reinterpret_cast<f16>(base+0x2fa620)(this);
+    }
+
+    using r17 = decltype(std::declval<GameObject>().triggerObject(std::declval<GJBaseGameLayer*>()));
+    using c17 = r17($GameObject::*)(GJBaseGameLayer*) ;
+    using d17 = r17(D::*)(GJBaseGameLayer*) ;
+    r17 triggerObject(GJBaseGameLayer* p0) {
+        using r17 = decltype(std::declval<GameObject>().triggerObject(std::declval<GJBaseGameLayer*>()));
+        using f17 = r17(*)(GameObject*, GJBaseGameLayer*);
+        return reinterpret_cast<f17>(base+0x2fa8f0)(this, p0);
+    }
+
+    using r18 = decltype(std::declval<GameObject>().activateObject());
+    using c18 = r18($GameObject::*)() ;
+    using d18 = r18(D::*)() ;
+    r18 activateObject() {
+        using r18 = decltype(std::declval<GameObject>().activateObject());
+        using f18 = r18(*)(GameObject*);
+        return reinterpret_cast<f18>(base+0x2faf60)(this);
+    }
+
+    using r19 = decltype(std::declval<GameObject>().deactivateObject(std::declval<bool>()));
+    using c19 = r19($GameObject::*)(bool) ;
+    using d19 = r19(D::*)(bool) ;
+    r19 deactivateObject(bool p0) {
+        using r19 = decltype(std::declval<GameObject>().deactivateObject(std::declval<bool>()));
+        using f19 = r19(*)(GameObject*, bool);
+        return reinterpret_cast<f19>(base+0x2fb8f0)(this, p0);
+    }
+
+    using r20 = decltype(std::declval<GameObject>().getObjectRect());
+    using c20 = r20($GameObject::*)() ;
+    using d20 = r20(D::*)() ;
+    r20 getObjectRect() {
+        using r20 = decltype(std::declval<GameObject>().getObjectRect());
+        using f20 = r20(*)(GameObject*);
+        return reinterpret_cast<f20>(base+0x3352b0)(this);
+    }
+
+    using r21 = decltype(std::declval<GameObject>().getObjectRect(std::declval<float>(), std::declval<float>()));
+    using c21 = r21($GameObject::*)(float, float) ;
+    using d21 = r21(D::*)(float, float) ;
+    r21 getObjectRect(float p0, float p1) {
+        using r21 = decltype(std::declval<GameObject>().getObjectRect(std::declval<float>(), std::declval<float>()));
+        using f21 = r21(*)(GameObject*, float, float);
+        return reinterpret_cast<f21>(base+0x3352d0)(this, p0, p1);
+    }
+
+    using r22 = decltype(std::declval<GameObject>().getObjectRect2(std::declval<float>(), std::declval<float>()));
+    using c22 = r22($GameObject::*)(float, float) ;
+    using d22 = r22(D::*)(float, float) ;
+    r22 getObjectRect2(float p0, float p1) {
+        using r22 = decltype(std::declval<GameObject>().getObjectRect2(std::declval<float>(), std::declval<float>()));
+        using f22 = r22(*)(GameObject*, float, float);
+        return reinterpret_cast<f22>(base+0x3354e0)(this, p0, p1);
+    }
+
+    using r23 = decltype(std::declval<GameObject>().getObjectTextureRect());
+    using c23 = r23($GameObject::*)() ;
+    using d23 = r23(D::*)() ;
+    r23 getObjectTextureRect() {
+        using r23 = decltype(std::declval<GameObject>().getObjectTextureRect());
+        using f23 = r23(*)(GameObject*);
+        return reinterpret_cast<f23>(base+0x3355b0)(this);
+    }
+
+    using r24 = decltype(std::declval<GameObject>().getRealPosition());
+    using c24 = r24($GameObject::*)() ;
+    using d24 = r24(D::*)() ;
+    r24 getRealPosition() {
+        using r24 = decltype(std::declval<GameObject>().getRealPosition());
+        using f24 = r24(*)(GameObject*);
+        return reinterpret_cast<f24>(base+0x335750)(this);
+    }
+
+    using r25 = decltype(std::declval<GameObject>().setStartPos(std::declval<cocos2d::CCPoint>()));
+    using c25 = r25($GameObject::*)(cocos2d::CCPoint) ;
+    using d25 = r25(D::*)(cocos2d::CCPoint) ;
+    r25 setStartPos(cocos2d::CCPoint p0) {
+        using r25 = decltype(std::declval<GameObject>().setStartPos(std::declval<cocos2d::CCPoint>()));
+        using f25 = r25(*)(GameObject*, cocos2d::CCPoint);
+        return reinterpret_cast<f25>(base+0x2fa520)(this, p0);
+    }
+
+    using r26 = decltype(std::declval<GameObject>().updateStartValues());
+    using c26 = r26($GameObject::*)() ;
+    using d26 = r26(D::*)() ;
+    r26 updateStartValues() {
+        using r26 = decltype(std::declval<GameObject>().updateStartValues());
+        using f26 = r26(*)(GameObject*);
+        return reinterpret_cast<f26>(base+0x2fa800)(this);
+    }
+
+    using r27 = decltype(std::declval<GameObject>().getSaveString());
+    using c27 = r27($GameObject::*)() ;
+    using d27 = r27(D::*)() ;
+    r27 getSaveString() {
+        using r27 = decltype(std::declval<GameObject>().getSaveString());
+        using f27 = r27(*)(GameObject*);
+        return reinterpret_cast<f27>(base+0x33d3d0)(this);
+    }
+
+    using r28 = decltype(std::declval<GameObject>().isFlipX());
+    using c28 = r28($GameObject::*)() ;
+    using d28 = r28(D::*)() ;
+    r28 isFlipX() {
+        using r28 = decltype(std::declval<GameObject>().isFlipX());
+        using f28 = r28(*)(GameObject*);
+        return reinterpret_cast<f28>(base+0x335a40)(this);
+    }
+
+    using r29 = decltype(std::declval<GameObject>().isFlipY());
+    using c29 = r29($GameObject::*)() ;
+    using d29 = r29(D::*)() ;
+    r29 isFlipY() {
+        using r29 = decltype(std::declval<GameObject>().isFlipY());
+        using f29 = r29(*)(GameObject*);
+        return reinterpret_cast<f29>(base+0x335a50)(this);
+    }
+
+    using r30 = decltype(std::declval<GameObject>().setRScaleX(std::declval<float>()));
+    using c30 = r30($GameObject::*)(float) ;
+    using d30 = r30(D::*)(float) ;
+    r30 setRScaleX(float p0) {
+        using r30 = decltype(std::declval<GameObject>().setRScaleX(std::declval<float>()));
+        using f30 = r30(*)(GameObject*, float);
+        return reinterpret_cast<f30>(base+0x335cb0)(this, p0);
+    }
+
+    using r31 = decltype(std::declval<GameObject>().setRScaleY(std::declval<float>()));
+    using c31 = r31($GameObject::*)(float) ;
+    using d31 = r31(D::*)(float) ;
+    r31 setRScaleY(float p0) {
+        using r31 = decltype(std::declval<GameObject>().setRScaleY(std::declval<float>()));
+        using f31 = r31(*)(GameObject*, float);
+        return reinterpret_cast<f31>(base+0x335d60)(this, p0);
+    }
+
+    using r32 = decltype(std::declval<GameObject>().setRScale(std::declval<float>()));
+    using c32 = r32($GameObject::*)(float) ;
+    using d32 = r32(D::*)(float) ;
+    r32 setRScale(float p0) {
+        using r32 = decltype(std::declval<GameObject>().setRScale(std::declval<float>()));
+        using f32 = r32(*)(GameObject*, float);
+        return reinterpret_cast<f32>(base+0x335e10)(this, p0);
+    }
+
+    using r33 = decltype(std::declval<GameObject>().getRScaleX());
+    using c33 = r33($GameObject::*)() ;
+    using d33 = r33(D::*)() ;
+    r33 getRScaleX() {
+        using r33 = decltype(std::declval<GameObject>().getRScaleX());
+        using f33 = r33(*)(GameObject*);
+        return reinterpret_cast<f33>(base+0x335e50)(this);
+    }
+
+    using r34 = decltype(std::declval<GameObject>().getRScaleY());
+    using c34 = r34($GameObject::*)() ;
+    using d34 = r34(D::*)() ;
+    r34 getRScaleY() {
+        using r34 = decltype(std::declval<GameObject>().getRScaleY());
+        using f34 = r34(*)(GameObject*);
+        return reinterpret_cast<f34>(base+0x335e80)(this);
+    }
+
+    using r35 = decltype(std::declval<GameObject>().calculateSpawnXPos());
+    using c35 = r35($GameObject::*)() ;
+    using d35 = r35(D::*)() ;
+    r35 calculateSpawnXPos() {
+        using r35 = decltype(std::declval<GameObject>().calculateSpawnXPos());
+        using f35 = r35(*)(GameObject*);
+        return reinterpret_cast<f35>(base+0x336970)(this);
+    }
+
+    using r36 = decltype(std::declval<GameObject>().triggerActivated(std::declval<float>()));
+    using c36 = r36($GameObject::*)(float) ;
+    using d36 = r36(D::*)(float) ;
+    r36 triggerActivated(float p0) {
+        using r36 = decltype(std::declval<GameObject>().triggerActivated(std::declval<float>()));
+        using f36 = r36(*)(GameObject*, float);
+        return reinterpret_cast<f36>(base+0x336990)(this, p0);
+    }
+
+    using r37 = decltype(std::declval<GameObject>().powerOnObject());
+    using c37 = r37($GameObject::*)() ;
+    using d37 = r37(D::*)() ;
+    r37 powerOnObject() {
+        using r37 = decltype(std::declval<GameObject>().powerOnObject());
+        using f37 = r37(*)(GameObject*);
+        return reinterpret_cast<f37>(base+0x3369a0)(this);
+    }
+
+    using r38 = decltype(std::declval<GameObject>().powerOffObject());
+    using c38 = r38($GameObject::*)() ;
+    using d38 = r38(D::*)() ;
+    r38 powerOffObject() {
+        using r38 = decltype(std::declval<GameObject>().powerOffObject());
+        using f38 = r38(*)(GameObject*);
+        return reinterpret_cast<f38>(base+0x3369c0)(this);
+    }
+
+    using r39 = decltype(std::declval<GameObject>().setObjectColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c39 = r39($GameObject::*)(cocos2d::_ccColor3B const&) ;
+    using d39 = r39(D::*)(cocos2d::_ccColor3B const&) ;
+    r39 setObjectColor(cocos2d::_ccColor3B const& p0) {
+        using r39 = decltype(std::declval<GameObject>().setObjectColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f39 = r39(*)(GameObject*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f39>(base+0x341c90)(this, p0);
+    }
+
+    using r40 = decltype(std::declval<GameObject>().setGlowColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c40 = r40($GameObject::*)(cocos2d::_ccColor3B const&) ;
+    using d40 = r40(D::*)(cocos2d::_ccColor3B const&) ;
+    r40 setGlowColor(cocos2d::_ccColor3B const& p0) {
+        using r40 = decltype(std::declval<GameObject>().setGlowColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f40 = r40(*)(GameObject*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f40>(base+0x341ed0)(this, p0);
+    }
+
+    using r41 = decltype(std::declval<GameObject>().getOrientedBox());
+    using c41 = r41($GameObject::*)() ;
+    using d41 = r41(D::*)() ;
+    r41 getOrientedBox() {
+        using r41 = decltype(std::declval<GameObject>().getOrientedBox());
+        using f41 = r41(*)(GameObject*);
+        return reinterpret_cast<f41>(base+0x342ad0)(this);
+    }
+
+    using r42 = decltype(std::declval<GameObject>().addToGroup(std::declval<int>()));
+    using c42 = r42($GameObject::*)(int) ;
+    using d42 = r42(D::*)(int) ;
+    r42 addToGroup(int p0) {
+        using r42 = decltype(std::declval<GameObject>().addToGroup(std::declval<int>()));
+        using f42 = r42(*)(GameObject*, int);
+        return reinterpret_cast<f42>(base+0x33ad00)(this, p0);
+    }
+
+    using r43 = decltype(std::declval<GameObject>().removeFromGroup(std::declval<int>()));
+    using c43 = r43($GameObject::*)(int) ;
+    using d43 = r43(D::*)(int) ;
+    r43 removeFromGroup(int p0) {
+        using r43 = decltype(std::declval<GameObject>().removeFromGroup(std::declval<int>()));
+        using f43 = r43(*)(GameObject*, int);
+        return reinterpret_cast<f43>(base+0x33ada0)(this, p0);
+    }
+
+    using r44 = decltype(std::declval<GameObject>().spawnXPosition());
+    using c44 = r44($GameObject::*)() ;
+    using d44 = r44(D::*)() ;
+    r44 spawnXPosition() {
+        using r44 = decltype(std::declval<GameObject>().spawnXPosition());
+        using f44 = r44(*)(GameObject*);
+        return reinterpret_cast<f44>(base+0xdc1b0)(this);
+    }
+
+    using r45 = decltype(std::declval<GameObject>().getObjectRectDirty());
+    using c45 = r45($GameObject::*)() const ;
+    using d45 = r45(D::*)() const ;
+    r45 getObjectRectDirty() const {
+        using r45 = decltype(std::declval<GameObject>().getObjectRectDirty());
+        using f45 = r45(*)(const GameObject*);
+        return reinterpret_cast<f45>(base+0xdc1d0)(this);
+    }
+
+    using r46 = decltype(std::declval<GameObject>().setObjectRectDirty(std::declval<bool>()));
+    using c46 = r46($GameObject::*)(bool) ;
+    using d46 = r46(D::*)(bool) ;
+    r46 setObjectRectDirty(bool p0) {
+        using r46 = decltype(std::declval<GameObject>().setObjectRectDirty(std::declval<bool>()));
+        using f46 = r46(*)(GameObject*, bool);
+        return reinterpret_cast<f46>(base+0xdc1e0)(this, p0);
+    }
+
+    using r47 = decltype(std::declval<GameObject>().getOrientedRectDirty());
+    using c47 = r47($GameObject::*)() const ;
+    using d47 = r47(D::*)() const ;
+    r47 getOrientedRectDirty() const {
+        using r47 = decltype(std::declval<GameObject>().getOrientedRectDirty());
+        using f47 = r47(*)(const GameObject*);
+        return reinterpret_cast<f47>(base+0xdc1f0)(this);
+    }
+
+    using r48 = decltype(std::declval<GameObject>().setOrientedRectDirty(std::declval<bool>()));
+    using c48 = r48($GameObject::*)(bool) ;
+    using d48 = r48(D::*)(bool) ;
+    r48 setOrientedRectDirty(bool p0) {
+        using r48 = decltype(std::declval<GameObject>().setOrientedRectDirty(std::declval<bool>()));
+        using f48 = r48(*)(GameObject*, bool);
+        return reinterpret_cast<f48>(base+0xdc200)(this, p0);
+    }
+
+    using r49 = decltype(std::declval<GameObject>().getType());
+    using c49 = r49($GameObject::*)() const ;
+    using d49 = r49(D::*)() const ;
+    r49 getType() const {
+        using r49 = decltype(std::declval<GameObject>().getType());
+        using f49 = r49(*)(const GameObject*);
+        return reinterpret_cast<f49>(base+0xdc210)(this);
+    }
+
+    using r50 = decltype(std::declval<GameObject>().setType(std::declval<GameObjectType>()));
+    using c50 = r50($GameObject::*)(GameObjectType) ;
+    using d50 = r50(D::*)(GameObjectType) ;
+    r50 setType(GameObjectType p0) {
+        using r50 = decltype(std::declval<GameObject>().setType(std::declval<GameObjectType>()));
+        using f50 = r50(*)(GameObject*, GameObjectType);
+        return reinterpret_cast<f50>(base+0xdc220)(this, p0);
+    }
+
+    using r51 = decltype(std::declval<GameObject>().getStartPos());
+    using c51 = r51($GameObject::*)() const ;
+    using d51 = r51(D::*)() const ;
+    r51 getStartPos() const {
+        using r51 = decltype(std::declval<GameObject>().getStartPos());
+        using f51 = r51(*)(const GameObject*);
+        return reinterpret_cast<f51>(base+0xdc230)(this);
+    }
+
+    using r52 = decltype(std::declval<GameObject>().activatedByPlayer(std::declval<GameObject*>()));
+    using c52 = r52($GameObject::*)(GameObject*) ;
+    using d52 = r52(D::*)(GameObject*) ;
+    r52 activatedByPlayer(GameObject* p0) {
+        using r52 = decltype(std::declval<GameObject>().activatedByPlayer(std::declval<GameObject*>()));
+        using f52 = r52(*)(GameObject*, GameObject*);
+        return reinterpret_cast<f52>(base+0x342a20)(this, p0);
+    }
+
+    using r53 = decltype(std::declval<GameObject>().addColorSprite());
+    using c53 = r53($GameObject::*)() ;
+    using d53 = r53(D::*)() ;
+    r53 addColorSprite() {
+        using r53 = decltype(std::declval<GameObject>().addColorSprite());
+        using f53 = r53(*)(GameObject*);
+        return reinterpret_cast<f53>(base+0x2f7fe0)(this);
+    }
+
+    using r54 = decltype(std::declval<GameObject>().addColorSpriteToParent(std::declval<bool>()));
+    using c54 = r54($GameObject::*)(bool) ;
+    using d54 = r54(D::*)(bool) ;
+    r54 addColorSpriteToParent(bool p0) {
+        using r54 = decltype(std::declval<GameObject>().addColorSpriteToParent(std::declval<bool>()));
+        using f54 = r54(*)(GameObject*, bool);
+        return reinterpret_cast<f54>(base+0x2fb470)(this, p0);
+    }
+
+    using r55 = decltype(std::declval<GameObject>().addToTempOffset(std::declval<float>(), std::declval<float>()));
+    using c55 = r55($GameObject::*)(float, float) ;
+    using d55 = r55(D::*)(float, float) ;
+    r55 addToTempOffset(float p0, float p1) {
+        using r55 = decltype(std::declval<GameObject>().addToTempOffset(std::declval<float>(), std::declval<float>()));
+        using f55 = r55(*)(GameObject*, float, float);
+        return reinterpret_cast<f55>(base+0x335700)(this, p0, p1);
+    }
+
+    using r56 = decltype(std::declval<GameObject>().calculateOrientedBox());
+    using c56 = r56($GameObject::*)() ;
+    using d56 = r56(D::*)() ;
+    r56 calculateOrientedBox() {
+        using r56 = decltype(std::declval<GameObject>().calculateOrientedBox());
+        using f56 = r56(*)(GameObject*);
+        return reinterpret_cast<f56>(base+0x342b20)(this);
+    }
+
+    using r57 = decltype(std::declval<GameObject>().canChangeCustomColor());
+    using c57 = r57($GameObject::*)() ;
+    using d57 = r57(D::*)() ;
+    r57 canChangeCustomColor() {
+        using r57 = decltype(std::declval<GameObject>().canChangeCustomColor());
+        using f57 = r57(*)(GameObject*);
+        return reinterpret_cast<f57>(base+0x342db0)(this);
+    }
+
+    using r58 = decltype(std::declval<GameObject>().colorForMode(std::declval<int>(), std::declval<bool>()));
+    using c58 = r58($GameObject::*)(int, bool) ;
+    using d58 = r58(D::*)(int, bool) ;
+    r58 colorForMode(int p0, bool p1) {
+        using r58 = decltype(std::declval<GameObject>().colorForMode(std::declval<int>(), std::declval<bool>()));
+        using f58 = r58(*)(GameObject*, int, bool);
+        return reinterpret_cast<f58>(base+0x343460)(this, p0, p1);
+    }
+
+    using r59 = decltype(std::declval<GameObject>().commonSetup());
+    using c59 = r59($GameObject::*)() ;
+    using d59 = r59(D::*)() ;
+    r59 commonSetup() {
+        using r59 = decltype(std::declval<GameObject>().commonSetup());
+        using f59 = r59(*)(GameObject*);
+        return reinterpret_cast<f59>(base+0x2f5570)(this);
+    }
+
+    using r60 = decltype(std::declval<GameObject>().copyGroups(std::declval<GameObject*>()));
+    using c60 = r60($GameObject::*)(GameObject*) ;
+    using d60 = r60(D::*)(GameObject*) ;
+    r60 copyGroups(GameObject* p0) {
+        using r60 = decltype(std::declval<GameObject>().copyGroups(std::declval<GameObject*>()));
+        using f60 = r60(*)(GameObject*, GameObject*);
+        return reinterpret_cast<f60>(base+0x33ae30)(this, p0);
+    }
+
+    using r61 = decltype(std::declval<GameObject>().createWithFrame(std::declval<char const*>()));
+    using c61 = r61(*)(char const*);
+    using d61 = r61(*)(char const*);
+    static r61 createWithFrame(char const* p0) {
+        using r61 = decltype(std::declval<GameObject>().createWithFrame(std::declval<char const*>()));
+        using f61 = r61(*)(char const*);
+        return reinterpret_cast<f61>(base+0x2f5490)(p0);
+
+    }
+
+    using r62 = decltype(std::declval<GameObject>().createWithKey(std::declval<int>()));
+    using c62 = r62(*)(int);
+    using d62 = r62(*)(int);
+    static r62 createWithKey(int p0) {
+        using r62 = decltype(std::declval<GameObject>().createWithKey(std::declval<int>()));
+        using f62 = r62(*)(int);
+        return reinterpret_cast<f62>(base+0x2f4ce0)(p0);
+
+    }
+
+    using r63 = decltype(std::declval<GameObject>().destroyObject());
+    using c63 = r63($GameObject::*)() ;
+    using d63 = r63(D::*)() ;
+    r63 destroyObject() {
+        using r63 = decltype(std::declval<GameObject>().destroyObject());
+        using f63 = r63(*)(GameObject*);
+        return reinterpret_cast<f63>(base+0x336a00)(this);
+    }
+
+    using r64 = decltype(std::declval<GameObject>().determineSlopeDirection());
+    using c64 = r64($GameObject::*)() ;
+    using d64 = r64(D::*)() ;
+    r64 determineSlopeDirection() {
+        using r64 = decltype(std::declval<GameObject>().determineSlopeDirection());
+        using f64 = r64(*)(GameObject*);
+        return reinterpret_cast<f64>(base+0x33a9e0)(this);
+    }
+
+    using r65 = decltype(std::declval<GameObject>().getActiveColorForMode(std::declval<int>(), std::declval<bool>()));
+    using c65 = r65($GameObject::*)(int, bool) ;
+    using d65 = r65(D::*)(int, bool) ;
+    r65 getActiveColorForMode(int p0, bool p1) {
+        using r65 = decltype(std::declval<GameObject>().getActiveColorForMode(std::declval<int>(), std::declval<bool>()));
+        using f65 = r65(*)(GameObject*, int, bool);
+        return reinterpret_cast<f65>(base+0x343860)(this, p0, p1);
+    }
+
+    using r66 = decltype(std::declval<GameObject>().getBallFrame(std::declval<int>()));
+    using c66 = r66($GameObject::*)(int) ;
+    using d66 = r66(D::*)(int) ;
+    r66 getBallFrame(int p0) {
+        using r66 = decltype(std::declval<GameObject>().getBallFrame(std::declval<int>()));
+        using f66 = r66(*)(GameObject*, int);
+        return reinterpret_cast<f66>(base+0x341bf0)(this, p0);
+    }
+
+    using r67 = decltype(std::declval<GameObject>().getBoxOffset());
+    using c67 = r67($GameObject::*)() ;
+    using d67 = r67(D::*)() ;
+    r67 getBoxOffset() {
+        using r67 = decltype(std::declval<GameObject>().getBoxOffset());
+        using f67 = r67(*)(GameObject*);
+        return reinterpret_cast<f67>(base+0x3353d0)(this);
+    }
+
+    using r68 = decltype(std::declval<GameObject>().getColorIndex());
+    using c68 = r68($GameObject::*)() ;
+    using d68 = r68(D::*)() ;
+    r68 getColorIndex() {
+        using r68 = decltype(std::declval<GameObject>().getColorIndex());
+        using f68 = r68(*)(GameObject*);
+        return reinterpret_cast<f68>(base+0x343b90)(this);
+    }
+
+    using r69 = decltype(std::declval<GameObject>().getDidUpdateLastPosition());
+    using c69 = r69($GameObject::*)() ;
+    using d69 = r69(D::*)() ;
+    r69 getDidUpdateLastPosition() {
+        using r69 = decltype(std::declval<GameObject>().getDidUpdateLastPosition());
+        using f69 = r69(*)(GameObject*);
+        return reinterpret_cast<f69>(base+0x343a20)(this);
+    }
+
+    using r70 = decltype(std::declval<GameObject>().getGroupID(std::declval<int>()));
+    using c70 = r70($GameObject::*)(int) ;
+    using d70 = r70(D::*)(int) ;
+    r70 getGroupID(int p0) {
+        using r70 = decltype(std::declval<GameObject>().getGroupID(std::declval<int>()));
+        using f70 = r70(*)(GameObject*, int);
+        return reinterpret_cast<f70>(base+0x33ae10)(this, p0);
+    }
+
+    using r71 = decltype(std::declval<GameObject>().getLastPosition());
+    using c71 = r71($GameObject::*)() ;
+    using d71 = r71(D::*)() ;
+    r71 getLastPosition() {
+        using r71 = decltype(std::declval<GameObject>().getLastPosition());
+        using f71 = r71(*)(GameObject*);
+        return reinterpret_cast<f71>(base+0x3439d0)(this);
+    }
+
+    using r72 = decltype(std::declval<GameObject>().getMainColorMode());
+    using c72 = r72($GameObject::*)() ;
+    using d72 = r72(D::*)() ;
+    r72 getMainColorMode() {
+        using r72 = decltype(std::declval<GameObject>().getMainColorMode());
+        using f72 = r72(*)(GameObject*);
+        return reinterpret_cast<f72>(base+0x334c30)(this);
+    }
+
+    using r73 = decltype(std::declval<GameObject>().getObjectZOrder());
+    using c73 = r73($GameObject::*)() ;
+    using d73 = r73(D::*)() ;
+    r73 getObjectZOrder() {
+        using r73 = decltype(std::declval<GameObject>().getObjectZOrder());
+        using f73 = r73(*)(GameObject*);
+        return reinterpret_cast<f73>(base+0x337d70)(this);
+    }
+
+    using r74 = decltype(std::declval<GameObject>().getSecondaryColorMode());
+    using c74 = r74($GameObject::*)() ;
+    using d74 = r74(D::*)() ;
+    r74 getSecondaryColorMode() {
+        using r74 = decltype(std::declval<GameObject>().getSecondaryColorMode());
+        using f74 = r74(*)(GameObject*);
+        return reinterpret_cast<f74>(base+0x341c20)(this);
+    }
+
+    using r75 = decltype(std::declval<GameObject>().getSectionIdx());
+    using c75 = r75($GameObject::*)() ;
+    using d75 = r75(D::*)() ;
+    r75 getSectionIdx() {
+        using r75 = decltype(std::declval<GameObject>().getSectionIdx());
+        using f75 = r75(*)(GameObject*);
+        return reinterpret_cast<f75>(base+0x343a00)(this);
+    }
+
+    using r76 = decltype(std::declval<GameObject>().groupWasDisabled());
+    using c76 = r76($GameObject::*)() ;
+    using d76 = r76(D::*)() ;
+    r76 groupWasDisabled() {
+        using r76 = decltype(std::declval<GameObject>().groupWasDisabled());
+        using f76 = r76(*)(GameObject*);
+        return reinterpret_cast<f76>(base+0x33b110)(this);
+    }
+
+    using r77 = decltype(std::declval<GameObject>().groupWasEnabled());
+    using c77 = r77($GameObject::*)() ;
+    using d77 = r77(D::*)() ;
+    r77 groupWasEnabled() {
+        using r77 = decltype(std::declval<GameObject>().groupWasEnabled());
+        using f77 = r77(*)(GameObject*);
+        return reinterpret_cast<f77>(base+0x33b0f0)(this);
+    }
+
+    using r78 = decltype(std::declval<GameObject>().hasBeenActivated());
+    using c78 = r78($GameObject::*)() ;
+    using d78 = r78(D::*)() ;
+    r78 hasBeenActivated() {
+        using r78 = decltype(std::declval<GameObject>().hasBeenActivated());
+        using f78 = r78(*)(GameObject*);
+        return reinterpret_cast<f78>(base+0x342a80)(this);
+    }
+
+    using r79 = decltype(std::declval<GameObject>().hasBeenActivatedByPlayer(std::declval<GameObject*>()));
+    using c79 = r79($GameObject::*)(GameObject*) ;
+    using d79 = r79(D::*)(GameObject*) ;
+    r79 hasBeenActivatedByPlayer(GameObject* p0) {
+        using r79 = decltype(std::declval<GameObject>().hasBeenActivatedByPlayer(std::declval<GameObject*>()));
+        using f79 = r79(*)(GameObject*, GameObject*);
+        return reinterpret_cast<f79>(base+0x342a50)(this, p0);
+    }
+
+    using r80 = decltype(std::declval<GameObject>().hasSecondaryColor());
+    using c80 = r80($GameObject::*)() ;
+    using d80 = r80(D::*)() ;
+    r80 hasSecondaryColor() {
+        using r80 = decltype(std::declval<GameObject>().hasSecondaryColor());
+        using f80 = r80(*)(GameObject*);
+        return reinterpret_cast<f80>(base+0x342f80)(this);
+    }
+
+    using r81 = decltype(std::declval<GameObject>().ignoreEnter());
+    using c81 = r81($GameObject::*)() ;
+    using d81 = r81(D::*)() ;
+    r81 ignoreEnter() {
+        using r81 = decltype(std::declval<GameObject>().ignoreEnter());
+        using f81 = r81(*)(GameObject*);
+        return reinterpret_cast<f81>(base+0x3352a0)(this);
+    }
+
+    using r82 = decltype(std::declval<GameObject>().ignoreFade());
+    using c82 = r82($GameObject::*)() ;
+    using d82 = r82(D::*)() ;
+    r82 ignoreFade() {
+        using r82 = decltype(std::declval<GameObject>().ignoreFade());
+        using f82 = r82(*)(GameObject*);
+        return reinterpret_cast<f82>(base+0x335290)(this);
+    }
+
+    using r83 = decltype(std::declval<GameObject>().isBasicTrigger());
+    using c83 = r83($GameObject::*)() ;
+    using d83 = r83(D::*)() ;
+    r83 isBasicTrigger() {
+        using r83 = decltype(std::declval<GameObject>().isBasicTrigger());
+        using f83 = r83(*)(GameObject*);
+        return reinterpret_cast<f83>(base+0x343d10)(this);
+    }
+
+    using r84 = decltype(std::declval<GameObject>().isColorTrigger());
+    using c84 = r84($GameObject::*)() ;
+    using d84 = r84(D::*)() ;
+    r84 isColorTrigger() {
+        using r84 = decltype(std::declval<GameObject>().isColorTrigger());
+        using f84 = r84(*)(GameObject*);
+        return reinterpret_cast<f84>(base+0x343b40)(this);
+    }
+
+    using r85 = decltype(std::declval<GameObject>().isSpawnableTrigger());
+    using c85 = r85($GameObject::*)() ;
+    using d85 = r85(D::*)() ;
+    r85 isSpawnableTrigger() {
+        using r85 = decltype(std::declval<GameObject>().isSpawnableTrigger());
+        using f85 = r85(*)(GameObject*);
+        return reinterpret_cast<f85>(base+0x343a60)(this);
+    }
+
+    using r86 = decltype(std::declval<GameObject>().isSpecialObject());
+    using c86 = r86($GameObject::*)() ;
+    using d86 = r86(D::*)() ;
+    r86 isSpecialObject() {
+        using r86 = decltype(std::declval<GameObject>().isSpecialObject());
+        using f86 = r86(*)(GameObject*);
+        return reinterpret_cast<f86>(base+0x343c40)(this);
+    }
+
+    using r87 = decltype(std::declval<GameObject>().objectFromString(std::declval<gd::string>(), std::declval<bool>()));
+    using c87 = r87(*)(gd::string, bool);
+    using d87 = r87(*)(gd::string, bool);
+    static r87 objectFromString(gd::string p0, bool p1) {
+        using r87 = decltype(std::declval<GameObject>().objectFromString(std::declval<gd::string>(), std::declval<bool>()));
+        using f87 = r87(*)(gd::string, bool);
+        return reinterpret_cast<f87>(base+0x33b720)(p0, p1);
+
+    }
+
+    using r88 = decltype(std::declval<GameObject>().playShineEffect());
+    using c88 = r88($GameObject::*)() ;
+    using d88 = r88(D::*)() ;
+    r88 playShineEffect() {
+        using r88 = decltype(std::declval<GameObject>().playShineEffect());
+        using f88 = r88(*)(GameObject*);
+        return reinterpret_cast<f88>(base+0x2fa9d0)(this);
+    }
+
+    using r89 = decltype(std::declval<GameObject>().quickUpdatePosition());
+    using c89 = r89($GameObject::*)() ;
+    using d89 = r89(D::*)() ;
+    r89 quickUpdatePosition() {
+        using r89 = decltype(std::declval<GameObject>().quickUpdatePosition());
+        using f89 = r89(*)(GameObject*);
+        return reinterpret_cast<f89>(base+0x335790)(this);
+    }
+
+    using r90 = decltype(std::declval<GameObject>().removeGlow());
+    using c90 = r90($GameObject::*)() ;
+    using d90 = r90(D::*)() ;
+    r90 removeGlow() {
+        using r90 = decltype(std::declval<GameObject>().removeGlow());
+        using f90 = r90(*)(GameObject*);
+        return reinterpret_cast<f90>(base+0x2f7f70)(this);
+    }
+
+    using r91 = decltype(std::declval<GameObject>().resetGroupDisabled());
+    using c91 = r91($GameObject::*)() ;
+    using d91 = r91(D::*)() ;
+    r91 resetGroupDisabled() {
+        using r91 = decltype(std::declval<GameObject>().resetGroupDisabled());
+        using f91 = r91(*)(GameObject*);
+        return reinterpret_cast<f91>(base+0x2fa7e0)(this);
+    }
+
+    using r92 = decltype(std::declval<GameObject>().saveActiveColors());
+    using c92 = r92($GameObject::*)() ;
+    using d92 = r92(D::*)() ;
+    r92 saveActiveColors() {
+        using r92 = decltype(std::declval<GameObject>().saveActiveColors());
+        using f92 = r92(*)(GameObject*);
+        return reinterpret_cast<f92>(base+0x33d250)(this);
+    }
+
+    using r93 = decltype(std::declval<GameObject>().selectObject(std::declval<cocos2d::_ccColor3B>()));
+    using c93 = r93($GameObject::*)(cocos2d::_ccColor3B) ;
+    using d93 = r93(D::*)(cocos2d::_ccColor3B) ;
+    r93 selectObject(cocos2d::_ccColor3B p0) {
+        using r93 = decltype(std::declval<GameObject>().selectObject(std::declval<cocos2d::_ccColor3B>()));
+        using f93 = r93(*)(GameObject*, cocos2d::_ccColor3B);
+        return reinterpret_cast<f93>(base+0x341f90)(this, p0);
+    }
+
+    using r94 = decltype(std::declval<GameObject>().setDefaultMainColorMode(std::declval<int>()));
+    using c94 = r94($GameObject::*)(int) ;
+    using d94 = r94(D::*)(int) ;
+    r94 setDefaultMainColorMode(int p0) {
+        using r94 = decltype(std::declval<GameObject>().setDefaultMainColorMode(std::declval<int>()));
+        using f94 = r94(*)(GameObject*, int);
+        return reinterpret_cast<f94>(base+0x304fc0)(this, p0);
+    }
+
+    using r95 = decltype(std::declval<GameObject>().setDidUpdateLastPosition(std::declval<bool const&>()));
+    using c95 = r95($GameObject::*)(bool const&) ;
+    using d95 = r95(D::*)(bool const&) ;
+    r95 setDidUpdateLastPosition(bool const& p0) {
+        using r95 = decltype(std::declval<GameObject>().setDidUpdateLastPosition(std::declval<bool const&>()));
+        using f95 = r95(*)(GameObject*, bool const&);
+        return reinterpret_cast<f95>(base+0x343a30)(this, p0);
+    }
+
+    using r96 = decltype(std::declval<GameObject>().setGlowOpacity(std::declval<unsigned char>()));
+    using c96 = r96($GameObject::*)(unsigned char) ;
+    using d96 = r96(D::*)(unsigned char) ;
+    r96 setGlowOpacity(unsigned char p0) {
+        using r96 = decltype(std::declval<GameObject>().setGlowOpacity(std::declval<unsigned char>()));
+        using f96 = r96(*)(GameObject*, unsigned char);
+        return reinterpret_cast<f96>(base+0x336200)(this, p0);
+    }
+
+    using r97 = decltype(std::declval<GameObject>().setLastPosition(std::declval<cocos2d::CCPoint const&>()));
+    using c97 = r97($GameObject::*)(cocos2d::CCPoint const&) ;
+    using d97 = r97(D::*)(cocos2d::CCPoint const&) ;
+    r97 setLastPosition(cocos2d::CCPoint const& p0) {
+        using r97 = decltype(std::declval<GameObject>().setLastPosition(std::declval<cocos2d::CCPoint const&>()));
+        using f97 = r97(*)(GameObject*, cocos2d::CCPoint const&);
+        return reinterpret_cast<f97>(base+0x3439e0)(this, p0);
+    }
+
+    using r98 = decltype(std::declval<GameObject>().setMainColorMode(std::declval<int>()));
+    using c98 = r98($GameObject::*)(int) ;
+    using d98 = r98(D::*)(int) ;
+    r98 setMainColorMode(int p0) {
+        using r98 = decltype(std::declval<GameObject>().setMainColorMode(std::declval<int>()));
+        using f98 = r98(*)(GameObject*, int);
+        return reinterpret_cast<f98>(base+0x342e70)(this, p0);
+    }
+
+    using r99 = decltype(std::declval<GameObject>().setSectionIdx(std::declval<int const&>()));
+    using c99 = r99($GameObject::*)(int const&) ;
+    using d99 = r99(D::*)(int const&) ;
+    r99 setSectionIdx(int const& p0) {
+        using r99 = decltype(std::declval<GameObject>().setSectionIdx(std::declval<int const&>()));
+        using f99 = r99(*)(GameObject*, int const&);
+        return reinterpret_cast<f99>(base+0x343a10)(this, p0);
+    }
+
+    using r100 = decltype(std::declval<GameObject>().setupCoinArt());
+    using c100 = r100($GameObject::*)() ;
+    using d100 = r100(D::*)() ;
+    r100 setupCoinArt() {
+        using r100 = decltype(std::declval<GameObject>().setupCoinArt());
+        using f100 = r100(*)(GameObject*);
+        return reinterpret_cast<f100>(base+0x337dd0)(this);
+    }
+
+    using r101 = decltype(std::declval<GameObject>().slopeFloorTop());
+    using c101 = r101($GameObject::*)() ;
+    using d101 = r101(D::*)() ;
+    r101 slopeFloorTop() {
+        using r101 = decltype(std::declval<GameObject>().slopeFloorTop());
+        using f101 = r101(*)(GameObject*);
+        return reinterpret_cast<f101>(base+0x342800)(this);
+    }
+
+    using r102 = decltype(std::declval<GameObject>().slopeWallLeft());
+    using c102 = r102($GameObject::*)() ;
+    using d102 = r102(D::*)() ;
+    r102 slopeWallLeft() {
+        using r102 = decltype(std::declval<GameObject>().slopeWallLeft());
+        using f102 = r102(*)(GameObject*);
+        return reinterpret_cast<f102>(base+0x3427e0)(this);
+    }
+
+    using r103 = decltype(std::declval<GameObject>().updateCustomScale(std::declval<float>()));
+    using c103 = r103($GameObject::*)(float) ;
+    using d103 = r103(D::*)(float) ;
+    r103 updateCustomScale(float p0) {
+        using r103 = decltype(std::declval<GameObject>().updateCustomScale(std::declval<float>()));
+        using f103 = r103(*)(GameObject*, float);
+        return reinterpret_cast<f103>(base+0x335eb0)(this, p0);
+    }
+
+    using r104 = decltype(std::declval<GameObject>().updateMainColor());
+    using c104 = r104($GameObject::*)() ;
+    using d104 = r104(D::*)() ;
+    r104 updateMainColor() {
+        using r104 = decltype(std::declval<GameObject>().updateMainColor());
+        using f104 = r104(*)(GameObject*);
+        return reinterpret_cast<f104>(base+0x343340)(this);
+    }
+
+    using r105 = decltype(std::declval<GameObject>().updateOrientedBox());
+    using c105 = r105($GameObject::*)() ;
+    using d105 = r105(D::*)() ;
+    r105 updateOrientedBox() {
+        using r105 = decltype(std::declval<GameObject>().updateOrientedBox());
+        using f105 = r105(*)(GameObject*);
+        return reinterpret_cast<f105>(base+0x342b50)(this);
+    }
+
+    using r106 = decltype(std::declval<GameObject>().updateSecondaryColor());
+    using c106 = r106($GameObject::*)() ;
+    using d106 = r106(D::*)() ;
+    r106 updateSecondaryColor() {
+        using r106 = decltype(std::declval<GameObject>().updateSecondaryColor());
+        using f106 = r106(*)(GameObject*);
+        return reinterpret_cast<f106>(base+0x343740)(this);
+    }
+
+    using r107 = decltype(std::declval<GameObject>().updateStartPos());
+    using c107 = r107($GameObject::*)() ;
+    using d107 = r107(D::*)() ;
+    r107 updateStartPos() {
+        using r107 = decltype(std::declval<GameObject>().updateStartPos());
+        using f107 = r107(*)(GameObject*);
+        return reinterpret_cast<f107>(base+0x2fa590)(this);
+    }
+
+    using r108 = decltype(std::declval<GameObject>().updateState());
+    using c108 = r108($GameObject::*)() ;
+    using d108 = r108(D::*)() ;
+    r108 updateState() {
+        using r108 = decltype(std::declval<GameObject>().updateState());
+        using f108 = r108(*)(GameObject*);
+        return reinterpret_cast<f108>(base+0x3369e0)(this);
+    }
+
+    using r109 = decltype(std::declval<GameObject>().updateSyncedAnimation(std::declval<float>()));
+    using c109 = r109($GameObject::*)(float) ;
+    using d109 = r109(D::*)(float) ;
+    r109 updateSyncedAnimation(float p0) {
+        using r109 = decltype(std::declval<GameObject>().updateSyncedAnimation(std::declval<float>()));
+        using f109 = r109(*)(GameObject*, float);
+        return reinterpret_cast<f109>(base+0x337f00)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GameObject::update} != (d1){&D::update})
+            m->registerHook(base+0x2fbb90, FunctionScrapper::addressOfVirtual(i, (d1){&D::update}));
+
+        if ((c2){&$GameObject::setScaleX} != (d2){&D::setScaleX})
+            m->registerHook(base+0x335b00, FunctionScrapper::addressOfVirtual(i, (d2){&D::setScaleX}));
+
+        if ((c3){&$GameObject::setScaleY} != (d3){&D::setScaleY})
+            m->registerHook(base+0x335b90, FunctionScrapper::addressOfVirtual(i, (d3){&D::setScaleY}));
+
+        if ((c4){&$GameObject::setScale} != (d4){&D::setScale})
+            m->registerHook(base+0x335c20, FunctionScrapper::addressOfVirtual(i, (d4){&D::setScale}));
+
+        if ((c5){&$GameObject::setPosition} != (d5){&D::setPosition})
+            m->registerHook(base+0x335850, FunctionScrapper::addressOfVirtual(i, (d5){&D::setPosition}));
+
+        if ((c6){&$GameObject::setVisible} != (d6){&D::setVisible})
+            m->registerHook(base+0x336280, FunctionScrapper::addressOfVirtual(i, (d6){&D::setVisible}));
+
+        if ((c7){&$GameObject::setRotation} != (d7){&D::setRotation})
+            m->registerHook(base+0x335970, FunctionScrapper::addressOfVirtual(i, (d7){&D::setRotation}));
+
+        if ((c8){&$GameObject::setOpacity} != (d8){&D::setOpacity})
+            m->registerHook(base+0x335f10, FunctionScrapper::addressOfVirtual(i, (d8){&D::setOpacity}));
+
+        if ((c9){&$GameObject::initWithTexture} != (d9){&D::initWithTexture})
+            m->registerHook(base+0x2f56a0, FunctionScrapper::addressOfVirtual(i, (d9){&D::initWithTexture}));
+
+        if ((c10){&$GameObject::setChildColor} != (d10){&D::setChildColor})
+            m->registerHook(base+0x341f20, FunctionScrapper::addressOfVirtual(i, (d10){&D::setChildColor}));
+
+        if ((c11){&$GameObject::setFlipX} != (d11){&D::setFlipX})
+            m->registerHook(base+0x335a60, FunctionScrapper::addressOfVirtual(i, (d11){&D::setFlipX}));
+
+        if ((c12){&$GameObject::setFlipY} != (d12){&D::setFlipY})
+            m->registerHook(base+0x335ab0, FunctionScrapper::addressOfVirtual(i, (d12){&D::setFlipY}));
+
+        if ((c13){&$GameObject::customSetup} != (d13){&D::customSetup})
+            m->registerHook(base+0x2fbba0, FunctionScrapper::addressOfVirtual(i, (d13){&D::customSetup}));
+
+        if ((c14){&$GameObject::setupCustomSprites} != (d14){&D::setupCustomSprites})
+            m->registerHook(base+0x307f60, FunctionScrapper::addressOfVirtual(i, (d14){&D::setupCustomSprites}));
+
+        if ((c15){&$GameObject::addMainSpriteToParent} != (d15){&D::addMainSpriteToParent})
+            m->registerHook(base+0x33a5b0, FunctionScrapper::addressOfVirtual(i, (d15){&D::addMainSpriteToParent}));
+
+        if ((c16){&$GameObject::resetObject} != (d16){&D::resetObject})
+            m->registerHook(base+0x2fa620, FunctionScrapper::addressOfVirtual(i, (d16){&D::resetObject}));
+
+        if ((c17){&$GameObject::triggerObject} != (d17){&D::triggerObject})
+            m->registerHook(base+0x2fa8f0, FunctionScrapper::addressOfVirtual(i, (d17){&D::triggerObject}));
+
+        if ((c18){&$GameObject::activateObject} != (d18){&D::activateObject})
+            m->registerHook(base+0x2faf60, FunctionScrapper::addressOfVirtual(i, (d18){&D::activateObject}));
+
+        if ((c19){&$GameObject::deactivateObject} != (d19){&D::deactivateObject})
+            m->registerHook(base+0x2fb8f0, FunctionScrapper::addressOfVirtual(i, (d19){&D::deactivateObject}));
+
+        if ((c20){&$GameObject::getObjectRect} != (d20){&D::getObjectRect})
+            m->registerHook(base+0x3352b0, FunctionScrapper::addressOfVirtual(i, (d20){&D::getObjectRect}));
+
+        if ((c21){&$GameObject::getObjectRect} != (d21){&D::getObjectRect})
+            m->registerHook(base+0x3352d0, FunctionScrapper::addressOfVirtual(i, (d21){&D::getObjectRect}));
+
+        if ((c22){&$GameObject::getObjectRect2} != (d22){&D::getObjectRect2})
+            m->registerHook(base+0x3354e0, FunctionScrapper::addressOfVirtual(i, (d22){&D::getObjectRect2}));
+
+        if ((c23){&$GameObject::getObjectTextureRect} != (d23){&D::getObjectTextureRect})
+            m->registerHook(base+0x3355b0, FunctionScrapper::addressOfVirtual(i, (d23){&D::getObjectTextureRect}));
+
+        if ((c24){&$GameObject::getRealPosition} != (d24){&D::getRealPosition})
+            m->registerHook(base+0x335750, FunctionScrapper::addressOfVirtual(i, (d24){&D::getRealPosition}));
+
+        if ((c25){&$GameObject::setStartPos} != (d25){&D::setStartPos})
+            m->registerHook(base+0x2fa520, FunctionScrapper::addressOfVirtual(i, (d25){&D::setStartPos}));
+
+        if ((c26){&$GameObject::updateStartValues} != (d26){&D::updateStartValues})
+            m->registerHook(base+0x2fa800, FunctionScrapper::addressOfVirtual(i, (d26){&D::updateStartValues}));
+
+        if ((c27){&$GameObject::getSaveString} != (d27){&D::getSaveString})
+            m->registerHook(base+0x33d3d0, FunctionScrapper::addressOfVirtual(i, (d27){&D::getSaveString}));
+
+        if ((c28){&$GameObject::isFlipX} != (d28){&D::isFlipX})
+            m->registerHook(base+0x335a40, FunctionScrapper::addressOfVirtual(i, (d28){&D::isFlipX}));
+
+        if ((c29){&$GameObject::isFlipY} != (d29){&D::isFlipY})
+            m->registerHook(base+0x335a50, FunctionScrapper::addressOfVirtual(i, (d29){&D::isFlipY}));
+
+        if ((c30){&$GameObject::setRScaleX} != (d30){&D::setRScaleX})
+            m->registerHook(base+0x335cb0, FunctionScrapper::addressOfVirtual(i, (d30){&D::setRScaleX}));
+
+        if ((c31){&$GameObject::setRScaleY} != (d31){&D::setRScaleY})
+            m->registerHook(base+0x335d60, FunctionScrapper::addressOfVirtual(i, (d31){&D::setRScaleY}));
+
+        if ((c32){&$GameObject::setRScale} != (d32){&D::setRScale})
+            m->registerHook(base+0x335e10, FunctionScrapper::addressOfVirtual(i, (d32){&D::setRScale}));
+
+        if ((c33){&$GameObject::getRScaleX} != (d33){&D::getRScaleX})
+            m->registerHook(base+0x335e50, FunctionScrapper::addressOfVirtual(i, (d33){&D::getRScaleX}));
+
+        if ((c34){&$GameObject::getRScaleY} != (d34){&D::getRScaleY})
+            m->registerHook(base+0x335e80, FunctionScrapper::addressOfVirtual(i, (d34){&D::getRScaleY}));
+
+        if ((c35){&$GameObject::calculateSpawnXPos} != (d35){&D::calculateSpawnXPos})
+            m->registerHook(base+0x336970, FunctionScrapper::addressOfVirtual(i, (d35){&D::calculateSpawnXPos}));
+
+        if ((c36){&$GameObject::triggerActivated} != (d36){&D::triggerActivated})
+            m->registerHook(base+0x336990, FunctionScrapper::addressOfVirtual(i, (d36){&D::triggerActivated}));
+
+        if ((c37){&$GameObject::powerOnObject} != (d37){&D::powerOnObject})
+            m->registerHook(base+0x3369a0, FunctionScrapper::addressOfVirtual(i, (d37){&D::powerOnObject}));
+
+        if ((c38){&$GameObject::powerOffObject} != (d38){&D::powerOffObject})
+            m->registerHook(base+0x3369c0, FunctionScrapper::addressOfVirtual(i, (d38){&D::powerOffObject}));
+
+        if ((c39){&$GameObject::setObjectColor} != (d39){&D::setObjectColor})
+            m->registerHook(base+0x341c90, FunctionScrapper::addressOfVirtual(i, (d39){&D::setObjectColor}));
+
+        if ((c40){&$GameObject::setGlowColor} != (d40){&D::setGlowColor})
+            m->registerHook(base+0x341ed0, FunctionScrapper::addressOfVirtual(i, (d40){&D::setGlowColor}));
+
+        if ((c41){&$GameObject::getOrientedBox} != (d41){&D::getOrientedBox})
+            m->registerHook(base+0x342ad0, FunctionScrapper::addressOfVirtual(i, (d41){&D::getOrientedBox}));
+
+        if ((c42){&$GameObject::addToGroup} != (d42){&D::addToGroup})
+            m->registerHook(base+0x33ad00, FunctionScrapper::addressOfVirtual(i, (d42){&D::addToGroup}));
+
+        if ((c43){&$GameObject::removeFromGroup} != (d43){&D::removeFromGroup})
+            m->registerHook(base+0x33ada0, FunctionScrapper::addressOfVirtual(i, (d43){&D::removeFromGroup}));
+
+        if ((c44){&$GameObject::spawnXPosition} != (d44){&D::spawnXPosition})
+            m->registerHook(base+0xdc1b0, FunctionScrapper::addressOfVirtual(i, (d44){&D::spawnXPosition}));
+
+        if ((c45){&$GameObject::getObjectRectDirty} != (d45){&D::getObjectRectDirty})
+            m->registerHook(base+0xdc1d0, FunctionScrapper::addressOfVirtual(i, (d45){&D::getObjectRectDirty}));
+
+        if ((c46){&$GameObject::setObjectRectDirty} != (d46){&D::setObjectRectDirty})
+            m->registerHook(base+0xdc1e0, FunctionScrapper::addressOfVirtual(i, (d46){&D::setObjectRectDirty}));
+
+        if ((c47){&$GameObject::getOrientedRectDirty} != (d47){&D::getOrientedRectDirty})
+            m->registerHook(base+0xdc1f0, FunctionScrapper::addressOfVirtual(i, (d47){&D::getOrientedRectDirty}));
+
+        if ((c48){&$GameObject::setOrientedRectDirty} != (d48){&D::setOrientedRectDirty})
+            m->registerHook(base+0xdc200, FunctionScrapper::addressOfVirtual(i, (d48){&D::setOrientedRectDirty}));
+
+        if ((c49){&$GameObject::getType} != (d49){&D::getType})
+            m->registerHook(base+0xdc210, FunctionScrapper::addressOfVirtual(i, (d49){&D::getType}));
+
+        if ((c50){&$GameObject::setType} != (d50){&D::setType})
+            m->registerHook(base+0xdc220, FunctionScrapper::addressOfVirtual(i, (d50){&D::setType}));
+
+        if ((c51){&$GameObject::getStartPos} != (d51){&D::getStartPos})
+            m->registerHook(base+0xdc230, FunctionScrapper::addressOfVirtual(i, (d51){&D::getStartPos}));
+
+        if ((c52){&$GameObject::activatedByPlayer} != (d52){&D::activatedByPlayer})
+            m->registerHook(base+0x342a20, FunctionScrapper::addressOfNonVirtual((d52){&D::activatedByPlayer}));
+
+        if ((c53){&$GameObject::addColorSprite} != (d53){&D::addColorSprite})
+            m->registerHook(base+0x2f7fe0, FunctionScrapper::addressOfNonVirtual((d53){&D::addColorSprite}));
+
+        if ((c54){&$GameObject::addColorSpriteToParent} != (d54){&D::addColorSpriteToParent})
+            m->registerHook(base+0x2fb470, FunctionScrapper::addressOfNonVirtual((d54){&D::addColorSpriteToParent}));
+
+        if ((c55){&$GameObject::addToTempOffset} != (d55){&D::addToTempOffset})
+            m->registerHook(base+0x335700, FunctionScrapper::addressOfNonVirtual((d55){&D::addToTempOffset}));
+
+        if ((c56){&$GameObject::calculateOrientedBox} != (d56){&D::calculateOrientedBox})
+            m->registerHook(base+0x342b20, FunctionScrapper::addressOfNonVirtual((d56){&D::calculateOrientedBox}));
+
+        if ((c57){&$GameObject::canChangeCustomColor} != (d57){&D::canChangeCustomColor})
+            m->registerHook(base+0x342db0, FunctionScrapper::addressOfNonVirtual((d57){&D::canChangeCustomColor}));
+
+        if ((c58){&$GameObject::colorForMode} != (d58){&D::colorForMode})
+            m->registerHook(base+0x343460, FunctionScrapper::addressOfNonVirtual((d58){&D::colorForMode}));
+
+        if ((c59){&$GameObject::commonSetup} != (d59){&D::commonSetup})
+            m->registerHook(base+0x2f5570, FunctionScrapper::addressOfNonVirtual((d59){&D::commonSetup}));
+
+        if ((c60){&$GameObject::copyGroups} != (d60){&D::copyGroups})
+            m->registerHook(base+0x33ae30, FunctionScrapper::addressOfNonVirtual((d60){&D::copyGroups}));
+
+        if ((c61){&$GameObject::createWithFrame} != (d61){&D::createWithFrame})
+            m->registerHook(base+0x2f5490, FunctionScrapper::addressOfNonVirtual((d61){&D::createWithFrame}));
+
+        if ((c62){&$GameObject::createWithKey} != (d62){&D::createWithKey})
+            m->registerHook(base+0x2f4ce0, FunctionScrapper::addressOfNonVirtual((d62){&D::createWithKey}));
+
+        if ((c63){&$GameObject::destroyObject} != (d63){&D::destroyObject})
+            m->registerHook(base+0x336a00, FunctionScrapper::addressOfNonVirtual((d63){&D::destroyObject}));
+
+        if ((c64){&$GameObject::determineSlopeDirection} != (d64){&D::determineSlopeDirection})
+            m->registerHook(base+0x33a9e0, FunctionScrapper::addressOfNonVirtual((d64){&D::determineSlopeDirection}));
+
+        if ((c65){&$GameObject::getActiveColorForMode} != (d65){&D::getActiveColorForMode})
+            m->registerHook(base+0x343860, FunctionScrapper::addressOfNonVirtual((d65){&D::getActiveColorForMode}));
+
+        if ((c66){&$GameObject::getBallFrame} != (d66){&D::getBallFrame})
+            m->registerHook(base+0x341bf0, FunctionScrapper::addressOfNonVirtual((d66){&D::getBallFrame}));
+
+        if ((c67){&$GameObject::getBoxOffset} != (d67){&D::getBoxOffset})
+            m->registerHook(base+0x3353d0, FunctionScrapper::addressOfNonVirtual((d67){&D::getBoxOffset}));
+
+        if ((c68){&$GameObject::getColorIndex} != (d68){&D::getColorIndex})
+            m->registerHook(base+0x343b90, FunctionScrapper::addressOfNonVirtual((d68){&D::getColorIndex}));
+
+        if ((c69){&$GameObject::getDidUpdateLastPosition} != (d69){&D::getDidUpdateLastPosition})
+            m->registerHook(base+0x343a20, FunctionScrapper::addressOfNonVirtual((d69){&D::getDidUpdateLastPosition}));
+
+        if ((c70){&$GameObject::getGroupID} != (d70){&D::getGroupID})
+            m->registerHook(base+0x33ae10, FunctionScrapper::addressOfNonVirtual((d70){&D::getGroupID}));
+
+        if ((c71){&$GameObject::getLastPosition} != (d71){&D::getLastPosition})
+            m->registerHook(base+0x3439d0, FunctionScrapper::addressOfNonVirtual((d71){&D::getLastPosition}));
+
+        if ((c72){&$GameObject::getMainColorMode} != (d72){&D::getMainColorMode})
+            m->registerHook(base+0x334c30, FunctionScrapper::addressOfNonVirtual((d72){&D::getMainColorMode}));
+
+        if ((c73){&$GameObject::getObjectZOrder} != (d73){&D::getObjectZOrder})
+            m->registerHook(base+0x337d70, FunctionScrapper::addressOfNonVirtual((d73){&D::getObjectZOrder}));
+
+        if ((c74){&$GameObject::getSecondaryColorMode} != (d74){&D::getSecondaryColorMode})
+            m->registerHook(base+0x341c20, FunctionScrapper::addressOfNonVirtual((d74){&D::getSecondaryColorMode}));
+
+        if ((c75){&$GameObject::getSectionIdx} != (d75){&D::getSectionIdx})
+            m->registerHook(base+0x343a00, FunctionScrapper::addressOfNonVirtual((d75){&D::getSectionIdx}));
+
+        if ((c76){&$GameObject::groupWasDisabled} != (d76){&D::groupWasDisabled})
+            m->registerHook(base+0x33b110, FunctionScrapper::addressOfNonVirtual((d76){&D::groupWasDisabled}));
+
+        if ((c77){&$GameObject::groupWasEnabled} != (d77){&D::groupWasEnabled})
+            m->registerHook(base+0x33b0f0, FunctionScrapper::addressOfNonVirtual((d77){&D::groupWasEnabled}));
+
+        if ((c78){&$GameObject::hasBeenActivated} != (d78){&D::hasBeenActivated})
+            m->registerHook(base+0x342a80, FunctionScrapper::addressOfNonVirtual((d78){&D::hasBeenActivated}));
+
+        if ((c79){&$GameObject::hasBeenActivatedByPlayer} != (d79){&D::hasBeenActivatedByPlayer})
+            m->registerHook(base+0x342a50, FunctionScrapper::addressOfNonVirtual((d79){&D::hasBeenActivatedByPlayer}));
+
+        if ((c80){&$GameObject::hasSecondaryColor} != (d80){&D::hasSecondaryColor})
+            m->registerHook(base+0x342f80, FunctionScrapper::addressOfNonVirtual((d80){&D::hasSecondaryColor}));
+
+        if ((c81){&$GameObject::ignoreEnter} != (d81){&D::ignoreEnter})
+            m->registerHook(base+0x3352a0, FunctionScrapper::addressOfNonVirtual((d81){&D::ignoreEnter}));
+
+        if ((c82){&$GameObject::ignoreFade} != (d82){&D::ignoreFade})
+            m->registerHook(base+0x335290, FunctionScrapper::addressOfNonVirtual((d82){&D::ignoreFade}));
+
+        if ((c83){&$GameObject::isBasicTrigger} != (d83){&D::isBasicTrigger})
+            m->registerHook(base+0x343d10, FunctionScrapper::addressOfNonVirtual((d83){&D::isBasicTrigger}));
+
+        if ((c84){&$GameObject::isColorTrigger} != (d84){&D::isColorTrigger})
+            m->registerHook(base+0x343b40, FunctionScrapper::addressOfNonVirtual((d84){&D::isColorTrigger}));
+
+        if ((c85){&$GameObject::isSpawnableTrigger} != (d85){&D::isSpawnableTrigger})
+            m->registerHook(base+0x343a60, FunctionScrapper::addressOfNonVirtual((d85){&D::isSpawnableTrigger}));
+
+        if ((c86){&$GameObject::isSpecialObject} != (d86){&D::isSpecialObject})
+            m->registerHook(base+0x343c40, FunctionScrapper::addressOfNonVirtual((d86){&D::isSpecialObject}));
+
+        if ((c87){&$GameObject::objectFromString} != (d87){&D::objectFromString})
+            m->registerHook(base+0x33b720, FunctionScrapper::addressOfNonVirtual((d87){&D::objectFromString}));
+
+        if ((c88){&$GameObject::playShineEffect} != (d88){&D::playShineEffect})
+            m->registerHook(base+0x2fa9d0, FunctionScrapper::addressOfNonVirtual((d88){&D::playShineEffect}));
+
+        if ((c89){&$GameObject::quickUpdatePosition} != (d89){&D::quickUpdatePosition})
+            m->registerHook(base+0x335790, FunctionScrapper::addressOfNonVirtual((d89){&D::quickUpdatePosition}));
+
+        if ((c90){&$GameObject::removeGlow} != (d90){&D::removeGlow})
+            m->registerHook(base+0x2f7f70, FunctionScrapper::addressOfNonVirtual((d90){&D::removeGlow}));
+
+        if ((c91){&$GameObject::resetGroupDisabled} != (d91){&D::resetGroupDisabled})
+            m->registerHook(base+0x2fa7e0, FunctionScrapper::addressOfNonVirtual((d91){&D::resetGroupDisabled}));
+
+        if ((c92){&$GameObject::saveActiveColors} != (d92){&D::saveActiveColors})
+            m->registerHook(base+0x33d250, FunctionScrapper::addressOfNonVirtual((d92){&D::saveActiveColors}));
+
+        if ((c93){&$GameObject::selectObject} != (d93){&D::selectObject})
+            m->registerHook(base+0x341f90, FunctionScrapper::addressOfNonVirtual((d93){&D::selectObject}));
+
+        if ((c94){&$GameObject::setDefaultMainColorMode} != (d94){&D::setDefaultMainColorMode})
+            m->registerHook(base+0x304fc0, FunctionScrapper::addressOfNonVirtual((d94){&D::setDefaultMainColorMode}));
+
+        if ((c95){&$GameObject::setDidUpdateLastPosition} != (d95){&D::setDidUpdateLastPosition})
+            m->registerHook(base+0x343a30, FunctionScrapper::addressOfNonVirtual((d95){&D::setDidUpdateLastPosition}));
+
+        if ((c96){&$GameObject::setGlowOpacity} != (d96){&D::setGlowOpacity})
+            m->registerHook(base+0x336200, FunctionScrapper::addressOfNonVirtual((d96){&D::setGlowOpacity}));
+
+        if ((c97){&$GameObject::setLastPosition} != (d97){&D::setLastPosition})
+            m->registerHook(base+0x3439e0, FunctionScrapper::addressOfNonVirtual((d97){&D::setLastPosition}));
+
+        if ((c98){&$GameObject::setMainColorMode} != (d98){&D::setMainColorMode})
+            m->registerHook(base+0x342e70, FunctionScrapper::addressOfNonVirtual((d98){&D::setMainColorMode}));
+
+        if ((c99){&$GameObject::setSectionIdx} != (d99){&D::setSectionIdx})
+            m->registerHook(base+0x343a10, FunctionScrapper::addressOfNonVirtual((d99){&D::setSectionIdx}));
+
+        if ((c100){&$GameObject::setupCoinArt} != (d100){&D::setupCoinArt})
+            m->registerHook(base+0x337dd0, FunctionScrapper::addressOfNonVirtual((d100){&D::setupCoinArt}));
+
+        if ((c101){&$GameObject::slopeFloorTop} != (d101){&D::slopeFloorTop})
+            m->registerHook(base+0x342800, FunctionScrapper::addressOfNonVirtual((d101){&D::slopeFloorTop}));
+
+        if ((c102){&$GameObject::slopeWallLeft} != (d102){&D::slopeWallLeft})
+            m->registerHook(base+0x3427e0, FunctionScrapper::addressOfNonVirtual((d102){&D::slopeWallLeft}));
+
+        if ((c103){&$GameObject::updateCustomScale} != (d103){&D::updateCustomScale})
+            m->registerHook(base+0x335eb0, FunctionScrapper::addressOfNonVirtual((d103){&D::updateCustomScale}));
+
+        if ((c104){&$GameObject::updateMainColor} != (d104){&D::updateMainColor})
+            m->registerHook(base+0x343340, FunctionScrapper::addressOfNonVirtual((d104){&D::updateMainColor}));
+
+        if ((c105){&$GameObject::updateOrientedBox} != (d105){&D::updateOrientedBox})
+            m->registerHook(base+0x342b50, FunctionScrapper::addressOfNonVirtual((d105){&D::updateOrientedBox}));
+
+        if ((c106){&$GameObject::updateSecondaryColor} != (d106){&D::updateSecondaryColor})
+            m->registerHook(base+0x343740, FunctionScrapper::addressOfNonVirtual((d106){&D::updateSecondaryColor}));
+
+        if ((c107){&$GameObject::updateStartPos} != (d107){&D::updateStartPos})
+            m->registerHook(base+0x2fa590, FunctionScrapper::addressOfNonVirtual((d107){&D::updateStartPos}));
+
+        if ((c108){&$GameObject::updateState} != (d108){&D::updateState})
+            m->registerHook(base+0x3369e0, FunctionScrapper::addressOfNonVirtual((d108){&D::updateState}));
+
+        if ((c109){&$GameObject::updateSyncedAnimation} != (d109){&D::updateSyncedAnimation})
+            m->registerHook(base+0x337f00, FunctionScrapper::addressOfNonVirtual((d109){&D::updateSyncedAnimation}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GameObjectCopy : public GameObjectCopy, public $CacBase {
+public:
+    ~$GameObjectCopy() {
+        endDestructor();
+    }
+    $GameObjectCopy() {}
+
+    using r1 = decltype(std::declval<GameObjectCopy>().create(std::declval<GameObject*>()));
+    using c1 = r1(*)(GameObject*);
+    using d1 = r1(*)(GameObject*);
+    static r1 create(GameObject* p0) {
+        using r1 = decltype(std::declval<GameObjectCopy>().create(std::declval<GameObject*>()));
+        using f1 = r1(*)(GameObject*);
+        return reinterpret_cast<f1>(base+0x975a0)(p0);
+
+    }
+
+    using r2 = decltype(std::declval<GameObjectCopy>().resetObject());
+    using c2 = r2($GameObjectCopy::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 resetObject() {
+        using r2 = decltype(std::declval<GameObjectCopy>().resetObject());
+        using f2 = r2(*)(GameObjectCopy*);
+        return reinterpret_cast<f2>(base+0x976a0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GameObjectCopy::create} != (d1){&D::create})
+            m->registerHook(base+0x975a0, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        if ((c2){&$GameObjectCopy::resetObject} != (d2){&D::resetObject})
+            m->registerHook(base+0x976a0, FunctionScrapper::addressOfNonVirtual((d2){&D::resetObject}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $PlayerObject : public PlayerObject, public $CacBase {
+public:
+    ~$PlayerObject() {
+        endDestructor();
+    }
+    $PlayerObject() {}
+
+    using r1 = decltype(std::declval<PlayerObject>().update(std::declval<float>()));
+    using c1 = r1($PlayerObject::*)(float) ;
+    using d1 = r1(D::*)(float) ;
+    r1 update(float p0) {
+        using r1 = decltype(std::declval<PlayerObject>().update(std::declval<float>()));
+        using f1 = r1(*)(PlayerObject*, float);
+        return reinterpret_cast<f1>(base+0x218bf0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<PlayerObject>().setScaleX(std::declval<float>()));
+    using c2 = r2($PlayerObject::*)(float) ;
+    using d2 = r2(D::*)(float) ;
+    r2 setScaleX(float p0) {
+        using r2 = decltype(std::declval<PlayerObject>().setScaleX(std::declval<float>()));
+        using f2 = r2(*)(PlayerObject*, float);
+        return reinterpret_cast<f2>(base+0x22e7f0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<PlayerObject>().setScaleY(std::declval<float>()));
+    using c3 = r3($PlayerObject::*)(float) ;
+    using d3 = r3(D::*)(float) ;
+    r3 setScaleY(float p0) {
+        using r3 = decltype(std::declval<PlayerObject>().setScaleY(std::declval<float>()));
+        using f3 = r3(*)(PlayerObject*, float);
+        return reinterpret_cast<f3>(base+0x22e830)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<PlayerObject>().setScale(std::declval<float>()));
+    using c4 = r4($PlayerObject::*)(float) ;
+    using d4 = r4(D::*)(float) ;
+    r4 setScale(float p0) {
+        using r4 = decltype(std::declval<PlayerObject>().setScale(std::declval<float>()));
+        using f4 = r4(*)(PlayerObject*, float);
+        return reinterpret_cast<f4>(base+0x22e870)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<PlayerObject>().setPosition(std::declval<cocos2d::CCPoint const&>()));
+    using c5 = r5($PlayerObject::*)(cocos2d::CCPoint const&) ;
+    using d5 = r5(D::*)(cocos2d::CCPoint const&) ;
+    r5 setPosition(cocos2d::CCPoint const& p0) {
+        using r5 = decltype(std::declval<PlayerObject>().setPosition(std::declval<cocos2d::CCPoint const&>()));
+        using f5 = r5(*)(PlayerObject*, cocos2d::CCPoint const&);
+        return reinterpret_cast<f5>(base+0x22c8b0)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<PlayerObject>().setVisible(std::declval<bool>()));
+    using c6 = r6($PlayerObject::*)(bool) ;
+    using d6 = r6(D::*)(bool) ;
+    r6 setVisible(bool p0) {
+        using r6 = decltype(std::declval<PlayerObject>().setVisible(std::declval<bool>()));
+        using f6 = r6(*)(PlayerObject*, bool);
+        return reinterpret_cast<f6>(base+0x22e8b0)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<PlayerObject>().setRotation(std::declval<float>()));
+    using c7 = r7($PlayerObject::*)(float) ;
+    using d7 = r7(D::*)(float) ;
+    r7 setRotation(float p0) {
+        using r7 = decltype(std::declval<PlayerObject>().setRotation(std::declval<float>()));
+        using f7 = r7(*)(PlayerObject*, float);
+        return reinterpret_cast<f7>(base+0x22e6e0)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<PlayerObject>().setOpacity(std::declval<unsigned char>()));
+    using c8 = r8($PlayerObject::*)(unsigned char) ;
+    using d8 = r8(D::*)(unsigned char) ;
+    r8 setOpacity(unsigned char p0) {
+        using r8 = decltype(std::declval<PlayerObject>().setOpacity(std::declval<unsigned char>()));
+        using f8 = r8(*)(PlayerObject*, unsigned char);
+        return reinterpret_cast<f8>(base+0x22d400)(this, p0);
+    }
+
+    using r9 = decltype(std::declval<PlayerObject>().setColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c9 = r9($PlayerObject::*)(cocos2d::_ccColor3B const&) ;
+    using d9 = r9(D::*)(cocos2d::_ccColor3B const&) ;
+    r9 setColor(cocos2d::_ccColor3B const& p0) {
+        using r9 = decltype(std::declval<PlayerObject>().setColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f9 = r9(*)(PlayerObject*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f9>(base+0x22cdf0)(this, p0);
+    }
+
+    using r10 = decltype(std::declval<PlayerObject>().setFlipX(std::declval<bool>()));
+    using c10 = r10($PlayerObject::*)(bool) ;
+    using d10 = r10(D::*)(bool) ;
+    r10 setFlipX(bool p0) {
+        using r10 = decltype(std::declval<PlayerObject>().setFlipX(std::declval<bool>()));
+        using f10 = r10(*)(PlayerObject*, bool);
+        return reinterpret_cast<f10>(base+0x22e720)(this, p0);
+    }
+
+    using r11 = decltype(std::declval<PlayerObject>().setFlipY(std::declval<bool>()));
+    using c11 = r11($PlayerObject::*)(bool) ;
+    using d11 = r11(D::*)(bool) ;
+    r11 setFlipY(bool p0) {
+        using r11 = decltype(std::declval<PlayerObject>().setFlipY(std::declval<bool>()));
+        using f11 = r11(*)(PlayerObject*, bool);
+        return reinterpret_cast<f11>(base+0x22e7b0)(this, p0);
+    }
+
+    using r12 = decltype(std::declval<PlayerObject>().resetObject());
+    using c12 = r12($PlayerObject::*)() ;
+    using d12 = r12(D::*)() ;
+    r12 resetObject() {
+        using r12 = decltype(std::declval<PlayerObject>().resetObject());
+        using f12 = r12(*)(PlayerObject*);
+        return reinterpret_cast<f12>(base+0x223170)(this);
+    }
+
+    using r13 = decltype(std::declval<PlayerObject>().getRealPosition());
+    using c13 = r13($PlayerObject::*)() ;
+    using d13 = r13(D::*)() ;
+    r13 getRealPosition() {
+        using r13 = decltype(std::declval<PlayerObject>().getRealPosition());
+        using f13 = r13(*)(PlayerObject*);
+        return reinterpret_cast<f13>(base+0x22d5f0)(this);
+    }
+
+    using r14 = decltype(std::declval<PlayerObject>().getOrientedBox());
+    using c14 = r14($PlayerObject::*)() ;
+    using d14 = r14(D::*)() ;
+    r14 getOrientedBox() {
+        using r14 = decltype(std::declval<PlayerObject>().getOrientedBox());
+        using f14 = r14(*)(PlayerObject*);
+        return reinterpret_cast<f14>(base+0x22dee0)(this);
+    }
+
+    using r15 = decltype(std::declval<PlayerObject>().animationFinished(std::declval<char const*>()));
+    using c15 = r15($PlayerObject::*)(char const*) ;
+    using d15 = r15(D::*)(char const*) ;
+    r15 animationFinished(char const* p0) {
+        using r15 = decltype(std::declval<PlayerObject>().animationFinished(std::declval<char const*>()));
+        using f15 = r15(*)(PlayerObject*, char const*);
+        return reinterpret_cast<f15>(base+0x22e9d0)(this, p0);
+    }
+
+    using r16 = decltype(std::declval<PlayerObject>().activateStreak());
+    using c16 = r16($PlayerObject::*)() ;
+    using d16 = r16(D::*)() ;
+    r16 activateStreak() {
+        using r16 = decltype(std::declval<PlayerObject>().activateStreak());
+        using f16 = r16(*)(PlayerObject*);
+        return reinterpret_cast<f16>(base+0x21aef0)(this);
+    }
+
+    using r17 = decltype(std::declval<PlayerObject>().addAllParticles());
+    using c17 = r17($PlayerObject::*)() ;
+    using d17 = r17(D::*)() ;
+    r17 addAllParticles() {
+        using r17 = decltype(std::declval<PlayerObject>().addAllParticles());
+        using f17 = r17(*)(PlayerObject*);
+        return reinterpret_cast<f17>(base+0x2189b0)(this);
+    }
+
+    using r18 = decltype(std::declval<PlayerObject>().addToTouchedRings(std::declval<GameObject*>()));
+    using c18 = r18($PlayerObject::*)(GameObject*) ;
+    using d18 = r18(D::*)(GameObject*) ;
+    r18 addToTouchedRings(GameObject* p0) {
+        using r18 = decltype(std::declval<PlayerObject>().addToTouchedRings(std::declval<GameObject*>()));
+        using f18 = r18(*)(PlayerObject*, GameObject*);
+        return reinterpret_cast<f18>(base+0x22b800)(this, p0);
+    }
+
+    using r19 = decltype(std::declval<PlayerObject>().boostPlayer(std::declval<float>()));
+    using c19 = r19($PlayerObject::*)(float) ;
+    using d19 = r19(D::*)(float) ;
+    r19 boostPlayer(float p0) {
+        using r19 = decltype(std::declval<PlayerObject>().boostPlayer(std::declval<float>()));
+        using f19 = r19(*)(PlayerObject*, float);
+        return reinterpret_cast<f19>(base+0x21d6b0)(this, p0);
+    }
+
+    using r20 = decltype(std::declval<PlayerObject>().bumpPlayer(std::declval<float>(), std::declval<int>()));
+    using c20 = r20($PlayerObject::*)(float, int) ;
+    using d20 = r20(D::*)(float, int) ;
+    r20 bumpPlayer(float p0, int p1) {
+        using r20 = decltype(std::declval<PlayerObject>().bumpPlayer(std::declval<float>(), std::declval<int>()));
+        using f20 = r20(*)(PlayerObject*, float, int);
+        return reinterpret_cast<f20>(base+0x22d890)(this, p0, p1);
+    }
+
+    using r21 = decltype(std::declval<PlayerObject>().buttonDown(std::declval<PlayerButton>()));
+    using c21 = r21($PlayerObject::*)(PlayerButton) ;
+    using d21 = r21(D::*)(PlayerButton) ;
+    r21 buttonDown(PlayerButton p0) {
+        using r21 = decltype(std::declval<PlayerObject>().buttonDown(std::declval<PlayerButton>()));
+        using f21 = r21(*)(PlayerObject*, PlayerButton);
+        return reinterpret_cast<f21>(base+0x22b7e0)(this, p0);
+    }
+
+    using r22 = decltype(std::declval<PlayerObject>().checkSnapJumpToObject(std::declval<GameObject*>()));
+    using c22 = r22($PlayerObject::*)(GameObject*) ;
+    using d22 = r22(D::*)(GameObject*) ;
+    r22 checkSnapJumpToObject(GameObject* p0) {
+        using r22 = decltype(std::declval<PlayerObject>().checkSnapJumpToObject(std::declval<GameObject*>()));
+        using f22 = r22(*)(PlayerObject*, GameObject*);
+        return reinterpret_cast<f22>(base+0x2217f0)(this, p0);
+    }
+
+    using r23 = decltype(std::declval<PlayerObject>().collidedWithObject(std::declval<float>(), std::declval<GameObject*>()));
+    using c23 = r23($PlayerObject::*)(float, GameObject*) ;
+    using d23 = r23(D::*)(float, GameObject*) ;
+    r23 collidedWithObject(float p0, GameObject* p1) {
+        using r23 = decltype(std::declval<PlayerObject>().collidedWithObject(std::declval<float>(), std::declval<GameObject*>()));
+        using f23 = r23(*)(PlayerObject*, float, GameObject*);
+        return reinterpret_cast<f23>(base+0x21d880)(this, p0, p1);
+    }
+
+    using r24 = decltype(std::declval<PlayerObject>().collidedWithObject(std::declval<float>(), std::declval<GameObject*>(), std::declval<cocos2d::CCRect>()));
+    using c24 = r24($PlayerObject::*)(float, GameObject*, cocos2d::CCRect) ;
+    using d24 = r24(D::*)(float, GameObject*, cocos2d::CCRect) ;
+    r24 collidedWithObject(float p0, GameObject* p1, cocos2d::CCRect p2) {
+        using r24 = decltype(std::declval<PlayerObject>().collidedWithObject(std::declval<float>(), std::declval<GameObject*>(), std::declval<cocos2d::CCRect>()));
+        using f24 = r24(*)(PlayerObject*, float, GameObject*, cocos2d::CCRect);
+        return reinterpret_cast<f24>(base+0x21f0b0)(this, p0, p1, p2);
+    }
+
+    using r25 = decltype(std::declval<PlayerObject>().collidedWithSlope(std::declval<float>(), std::declval<GameObject*>(), std::declval<bool>()));
+    using c25 = r25($PlayerObject::*)(float, GameObject*, bool) ;
+    using d25 = r25(D::*)(float, GameObject*, bool) ;
+    r25 collidedWithSlope(float p0, GameObject* p1, bool p2) {
+        using r25 = decltype(std::declval<PlayerObject>().collidedWithSlope(std::declval<float>(), std::declval<GameObject*>(), std::declval<bool>()));
+        using f25 = r25(*)(PlayerObject*, float, GameObject*, bool);
+        return reinterpret_cast<f25>(base+0x21d8d0)(this, p0, p1, p2);
+    }
+
+    using r26 = decltype(std::declval<PlayerObject>().convertToClosestRotation(std::declval<float>()));
+    using c26 = r26($PlayerObject::*)(float) ;
+    using d26 = r26(D::*)(float) ;
+    r26 convertToClosestRotation(float p0) {
+        using r26 = decltype(std::declval<PlayerObject>().convertToClosestRotation(std::declval<float>()));
+        using f26 = r26(*)(PlayerObject*, float);
+        return reinterpret_cast<f26>(base+0x21c860)(this, p0);
+    }
+
+    using r27 = decltype(std::declval<PlayerObject>().copyAttributes(std::declval<PlayerObject*>()));
+    using c27 = r27($PlayerObject::*)(PlayerObject*) ;
+    using d27 = r27(D::*)(PlayerObject*) ;
+    r27 copyAttributes(PlayerObject* p0) {
+        using r27 = decltype(std::declval<PlayerObject>().copyAttributes(std::declval<PlayerObject*>()));
+        using f27 = r27(*)(PlayerObject*, PlayerObject*);
+        return reinterpret_cast<f27>(base+0x22dc70)(this, p0);
+    }
+
+    using r28 = decltype(std::declval<PlayerObject>().create(std::declval<int>(), std::declval<int>(), std::declval<cocos2d::CCLayer*>()));
+    using c28 = r28(*)(int, int, cocos2d::CCLayer*);
+    using d28 = r28(*)(int, int, cocos2d::CCLayer*);
+    static r28 create(int p0, int p1, cocos2d::CCLayer* p2) {
+        using r28 = decltype(std::declval<PlayerObject>().create(std::declval<int>(), std::declval<int>(), std::declval<cocos2d::CCLayer*>()));
+        using f28 = r28(*)(int, int, cocos2d::CCLayer*);
+        return reinterpret_cast<f28>(base+0x217260)(p0, p1, p2);
+
+    }
+
+    using r29 = decltype(std::declval<PlayerObject>().deactivateParticle());
+    using c29 = r29($PlayerObject::*)() ;
+    using d29 = r29(D::*)() ;
+    r29 deactivateParticle() {
+        using r29 = decltype(std::declval<PlayerObject>().deactivateParticle());
+        using f29 = r29(*)(PlayerObject*);
+        return reinterpret_cast<f29>(base+0x21a540)(this);
+    }
+
+    using r30 = decltype(std::declval<PlayerObject>().deactivateStreak(std::declval<bool>()));
+    using c30 = r30($PlayerObject::*)(bool) ;
+    using d30 = r30(D::*)(bool) ;
+    r30 deactivateStreak(bool p0) {
+        using r30 = decltype(std::declval<PlayerObject>().deactivateStreak(std::declval<bool>()));
+        using f30 = r30(*)(PlayerObject*, bool);
+        return reinterpret_cast<f30>(base+0x218b30)(this, p0);
+    }
+
+    using r31 = decltype(std::declval<PlayerObject>().fadeOutStreak2(std::declval<float>()));
+    using c31 = r31($PlayerObject::*)(float) ;
+    using d31 = r31(D::*)(float) ;
+    r31 fadeOutStreak2(float p0) {
+        using r31 = decltype(std::declval<PlayerObject>().fadeOutStreak2(std::declval<float>()));
+        using f31 = r31(*)(PlayerObject*, float);
+        return reinterpret_cast<f31>(base+0x225890)(this, p0);
+    }
+
+    using r32 = decltype(std::declval<PlayerObject>().flashPlayer(std::declval<float>(), std::declval<float>(), std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccColor3B>()));
+    using c32 = r32($PlayerObject::*)(float, float, cocos2d::_ccColor3B, cocos2d::_ccColor3B) ;
+    using d32 = r32(D::*)(float, float, cocos2d::_ccColor3B, cocos2d::_ccColor3B) ;
+    r32 flashPlayer(float p0, float p1, cocos2d::_ccColor3B p2, cocos2d::_ccColor3B p3) {
+        using r32 = decltype(std::declval<PlayerObject>().flashPlayer(std::declval<float>(), std::declval<float>(), std::declval<cocos2d::_ccColor3B>(), std::declval<cocos2d::_ccColor3B>()));
+        using f32 = r32(*)(PlayerObject*, float, float, cocos2d::_ccColor3B, cocos2d::_ccColor3B);
+        return reinterpret_cast<f32>(base+0x221c80)(this, p0, p1, p2, p3);
+    }
+
+    using r33 = decltype(std::declval<PlayerObject>().flipGravity(std::declval<bool>(), std::declval<bool>()));
+    using c33 = r33($PlayerObject::*)(bool, bool) ;
+    using d33 = r33(D::*)(bool, bool) ;
+    r33 flipGravity(bool p0, bool p1) {
+        using r33 = decltype(std::declval<PlayerObject>().flipGravity(std::declval<bool>(), std::declval<bool>()));
+        using f33 = r33(*)(PlayerObject*, bool, bool);
+        return reinterpret_cast<f33>(base+0x21c090)(this, p0, p1);
+    }
+
+    using r34 = decltype(std::declval<PlayerObject>().flipMod());
+    using c34 = r34($PlayerObject::*)() ;
+    using d34 = r34(D::*)() ;
+    r34 flipMod() {
+        using r34 = decltype(std::declval<PlayerObject>().flipMod());
+        using f34 = r34(*)(PlayerObject*);
+        return reinterpret_cast<f34>(base+0x21a4c0)(this);
+    }
+
+    using r35 = decltype(std::declval<PlayerObject>().getActiveMode());
+    using c35 = r35($PlayerObject::*)() ;
+    using d35 = r35(D::*)() ;
+    r35 getActiveMode() {
+        using r35 = decltype(std::declval<PlayerObject>().getActiveMode());
+        using f35 = r35(*)(PlayerObject*);
+        return reinterpret_cast<f35>(base+0x22b950)(this);
+    }
+
+    using r36 = decltype(std::declval<PlayerObject>().getModifiedSlopeYVel());
+    using c36 = r36($PlayerObject::*)() ;
+    using d36 = r36(D::*)() ;
+    r36 getModifiedSlopeYVel() {
+        using r36 = decltype(std::declval<PlayerObject>().getModifiedSlopeYVel());
+        using f36 = r36(*)(PlayerObject*);
+        return reinterpret_cast<f36>(base+0x21bff0)(this);
+    }
+
+    using r37 = decltype(std::declval<PlayerObject>().getOldPosition(std::declval<float>()));
+    using c37 = r37($PlayerObject::*)(float) ;
+    using d37 = r37(D::*)(float) ;
+    r37 getOldPosition(float p0) {
+        using r37 = decltype(std::declval<PlayerObject>().getOldPosition(std::declval<float>()));
+        using f37 = r37(*)(PlayerObject*, float);
+        return reinterpret_cast<f37>(base+0x21a830)(this, p0);
+    }
+
+    using r38 = decltype(std::declval<PlayerObject>().getSecondColor());
+    using c38 = r38($PlayerObject::*)() ;
+    using d38 = r38(D::*)() ;
+    r38 getSecondColor() {
+        using r38 = decltype(std::declval<PlayerObject>().getSecondColor());
+        using f38 = r38(*)(PlayerObject*);
+        return reinterpret_cast<f38>(base+0x22cee0)(this);
+    }
+
+    using r39 = decltype(std::declval<PlayerObject>().gravityDown());
+    using c39 = r39($PlayerObject::*)() ;
+    using d39 = r39(D::*)() ;
+    r39 gravityDown() {
+        using r39 = decltype(std::declval<PlayerObject>().gravityDown());
+        using f39 = r39(*)(PlayerObject*);
+        return reinterpret_cast<f39>(base+0x22e930)(this);
+    }
+
+    using r40 = decltype(std::declval<PlayerObject>().gravityUp());
+    using c40 = r40($PlayerObject::*)() ;
+    using d40 = r40(D::*)() ;
+    r40 gravityUp() {
+        using r40 = decltype(std::declval<PlayerObject>().gravityUp());
+        using f40 = r40(*)(PlayerObject*);
+        return reinterpret_cast<f40>(base+0x22e900)(this);
+    }
+
+    using r41 = decltype(std::declval<PlayerObject>().hardFlipGravity());
+    using c41 = r41($PlayerObject::*)() ;
+    using d41 = r41(D::*)() ;
+    r41 hardFlipGravity() {
+        using r41 = decltype(std::declval<PlayerObject>().hardFlipGravity());
+        using f41 = r41(*)(PlayerObject*);
+        return reinterpret_cast<f41>(base+0x22b860)(this);
+    }
+
+    using r42 = decltype(std::declval<PlayerObject>().hitGround(std::declval<bool>()));
+    using c42 = r42($PlayerObject::*)(bool) ;
+    using d42 = r42(D::*)(bool) ;
+    r42 hitGround(bool p0) {
+        using r42 = decltype(std::declval<PlayerObject>().hitGround(std::declval<bool>()));
+        using f42 = r42(*)(PlayerObject*, bool);
+        return reinterpret_cast<f42>(base+0x220a30)(this, p0);
+    }
+
+    using r43 = decltype(std::declval<PlayerObject>().incrementJumps());
+    using c43 = r43($PlayerObject::*)() ;
+    using d43 = r43(D::*)() ;
+    r43 incrementJumps() {
+        using r43 = decltype(std::declval<PlayerObject>().incrementJumps());
+        using f43 = r43(*)(PlayerObject*);
+        return reinterpret_cast<f43>(base+0x21c050)(this);
+    }
+
+    using r44 = decltype(std::declval<PlayerObject>().init(std::declval<int>(), std::declval<int>(), std::declval<cocos2d::CCLayer*>()));
+    using c44 = r44($PlayerObject::*)(int, int, cocos2d::CCLayer*) ;
+    using d44 = r44(D::*)(int, int, cocos2d::CCLayer*) ;
+    r44 init(int p0, int p1, cocos2d::CCLayer* p2) {
+        using r44 = decltype(std::declval<PlayerObject>().init(std::declval<int>(), std::declval<int>(), std::declval<cocos2d::CCLayer*>()));
+        using f44 = r44(*)(PlayerObject*, int, int, cocos2d::CCLayer*);
+        return reinterpret_cast<f44>(base+0x2172e0)(this, p0, p1, p2);
+    }
+
+    using r45 = decltype(std::declval<PlayerObject>().isBoostValid(std::declval<float>()));
+    using c45 = r45($PlayerObject::*)(float) ;
+    using d45 = r45(D::*)(float) ;
+    r45 isBoostValid(float p0) {
+        using r45 = decltype(std::declval<PlayerObject>().isBoostValid(std::declval<float>()));
+        using f45 = r45(*)(PlayerObject*, float);
+        return reinterpret_cast<f45>(base+0x21d650)(this, p0);
+    }
+
+    using r46 = decltype(std::declval<PlayerObject>().isFlying());
+    using c46 = r46($PlayerObject::*)() ;
+    using d46 = r46(D::*)() ;
+    r46 isFlying() {
+        using r46 = decltype(std::declval<PlayerObject>().isFlying());
+        using f46 = r46(*)(PlayerObject*);
+        return reinterpret_cast<f46>(base+0x21a4e0)(this);
+    }
+
+    using r47 = decltype(std::declval<PlayerObject>().isSafeFlip(std::declval<float>()));
+    using c47 = r47($PlayerObject::*)(float) ;
+    using d47 = r47(D::*)(float) ;
+    r47 isSafeFlip(float p0) {
+        using r47 = decltype(std::declval<PlayerObject>().isSafeFlip(std::declval<float>()));
+        using f47 = r47(*)(PlayerObject*, float);
+        return reinterpret_cast<f47>(base+0x2209f0)(this, p0);
+    }
+
+    using r48 = decltype(std::declval<PlayerObject>().isSafeMode(std::declval<float>()));
+    using c48 = r48($PlayerObject::*)(float) ;
+    using d48 = r48(D::*)(float) ;
+    r48 isSafeMode(float p0) {
+        using r48 = decltype(std::declval<PlayerObject>().isSafeMode(std::declval<float>()));
+        using f48 = r48(*)(PlayerObject*, float);
+        return reinterpret_cast<f48>(base+0x2209b0)(this, p0);
+    }
+
+    using r49 = decltype(std::declval<PlayerObject>().isSafeSpiderFlip(std::declval<float>()));
+    using c49 = r49($PlayerObject::*)(float) ;
+    using d49 = r49(D::*)(float) ;
+    r49 isSafeSpiderFlip(float p0) {
+        using r49 = decltype(std::declval<PlayerObject>().isSafeSpiderFlip(std::declval<float>()));
+        using f49 = r49(*)(PlayerObject*, float);
+        return reinterpret_cast<f49>(base+0x221be0)(this, p0);
+    }
+
+    using r50 = decltype(std::declval<PlayerObject>().levelFlipFinished());
+    using c50 = r50($PlayerObject::*)() ;
+    using d50 = r50(D::*)() ;
+    r50 levelFlipFinished() {
+        using r50 = decltype(std::declval<PlayerObject>().levelFlipFinished());
+        using f50 = r50(*)(PlayerObject*);
+        return reinterpret_cast<f50>(base+0x21b060)(this);
+    }
+
+    using r51 = decltype(std::declval<PlayerObject>().levelFlipping());
+    using c51 = r51($PlayerObject::*)() ;
+    using d51 = r51(D::*)() ;
+    r51 levelFlipping() {
+        using r51 = decltype(std::declval<PlayerObject>().levelFlipping());
+        using f51 = r51(*)(PlayerObject*);
+        return reinterpret_cast<f51>(base+0x21a510)(this);
+    }
+
+    using r52 = decltype(std::declval<PlayerObject>().levelWillFlip());
+    using c52 = r52($PlayerObject::*)() ;
+    using d52 = r52(D::*)() ;
+    r52 levelWillFlip() {
+        using r52 = decltype(std::declval<PlayerObject>().levelWillFlip());
+        using f52 = r52(*)(PlayerObject*);
+        return reinterpret_cast<f52>(base+0x21b020)(this);
+    }
+
+    using r53 = decltype(std::declval<PlayerObject>().loadFromCheckpoint(std::declval<PlayerCheckpoint*>()));
+    using c53 = r53($PlayerObject::*)(PlayerCheckpoint*) ;
+    using d53 = r53(D::*)(PlayerCheckpoint*) ;
+    r53 loadFromCheckpoint(PlayerCheckpoint* p0) {
+        using r53 = decltype(std::declval<PlayerObject>().loadFromCheckpoint(std::declval<PlayerCheckpoint*>()));
+        using f53 = r53(*)(PlayerObject*, PlayerCheckpoint*);
+        return reinterpret_cast<f53>(base+0x22e420)(this, p0);
+    }
+
+    using r54 = decltype(std::declval<PlayerObject>().lockPlayer());
+    using c54 = r54($PlayerObject::*)() ;
+    using d54 = r54(D::*)() ;
+    r54 lockPlayer() {
+        using r54 = decltype(std::declval<PlayerObject>().lockPlayer());
+        using f54 = r54(*)(PlayerObject*);
+        return reinterpret_cast<f54>(base+0x22d680)(this);
+    }
+
+    using r55 = decltype(std::declval<PlayerObject>().logValues());
+    using c55 = r55($PlayerObject::*)() ;
+    using d55 = r55(D::*)() ;
+    r55 logValues() {
+        using r55 = decltype(std::declval<PlayerObject>().logValues());
+        using f55 = r55(*)(PlayerObject*);
+        return reinterpret_cast<f55>(base+0x221220)(this);
+    }
+
+    using r56 = decltype(std::declval<PlayerObject>().modeDidChange());
+    using c56 = r56($PlayerObject::*)() ;
+    using d56 = r56(D::*)() ;
+    r56 modeDidChange() {
+        using r56 = decltype(std::declval<PlayerObject>().modeDidChange());
+        using f56 = r56(*)(PlayerObject*);
+        return reinterpret_cast<f56>(base+0x22bfd0)(this);
+    }
+
+    using r57 = decltype(std::declval<PlayerObject>().placeStreakPoint());
+    using c57 = r57($PlayerObject::*)() ;
+    using d57 = r57(D::*)() ;
+    r57 placeStreakPoint() {
+        using r57 = decltype(std::declval<PlayerObject>().placeStreakPoint());
+        using f57 = r57(*)(PlayerObject*);
+        return reinterpret_cast<f57>(base+0x21af90)(this);
+    }
+
+    using r58 = decltype(std::declval<PlayerObject>().playBurstEffect());
+    using c58 = r58($PlayerObject::*)() ;
+    using d58 = r58(D::*)() ;
+    r58 playBurstEffect() {
+        using r58 = decltype(std::declval<PlayerObject>().playBurstEffect());
+        using f58 = r58(*)(PlayerObject*);
+        return reinterpret_cast<f58>(base+0x21c780)(this);
+    }
+
+    using r59 = decltype(std::declval<PlayerObject>().playDeathEffect());
+    using c59 = r59($PlayerObject::*)() ;
+    using d59 = r59(D::*)() ;
+    r59 playDeathEffect() {
+        using r59 = decltype(std::declval<PlayerObject>().playDeathEffect());
+        using f59 = r59(*)(PlayerObject*);
+        return reinterpret_cast<f59>(base+0x225930)(this);
+    }
+
+    using r60 = decltype(std::declval<PlayerObject>().playDynamicSpiderRun());
+    using c60 = r60($PlayerObject::*)() ;
+    using d60 = r60(D::*)() ;
+    r60 playDynamicSpiderRun() {
+        using r60 = decltype(std::declval<PlayerObject>().playDynamicSpiderRun());
+        using f60 = r60(*)(PlayerObject*);
+        return reinterpret_cast<f60>(base+0x222ec0)(this);
+    }
+
+    using r61 = decltype(std::declval<PlayerObject>().playerDestroyed(std::declval<bool>()));
+    using c61 = r61($PlayerObject::*)(bool) ;
+    using d61 = r61(D::*)(bool) ;
+    r61 playerDestroyed(bool p0) {
+        using r61 = decltype(std::declval<PlayerObject>().playerDestroyed(std::declval<bool>()));
+        using f61 = r61(*)(PlayerObject*, bool);
+        return reinterpret_cast<f61>(base+0x2256d0)(this, p0);
+    }
+
+    using r62 = decltype(std::declval<PlayerObject>().playerIsFalling());
+    using c62 = r62($PlayerObject::*)() ;
+    using d62 = r62(D::*)() ;
+    r62 playerIsFalling() {
+        using r62 = decltype(std::declval<PlayerObject>().playerIsFalling());
+        using f62 = r62(*)(PlayerObject*);
+        return reinterpret_cast<f62>(base+0x21c730)(this);
+    }
+
+    using r63 = decltype(std::declval<PlayerObject>().playerTeleported());
+    using c63 = r63($PlayerObject::*)() ;
+    using d63 = r63(D::*)() ;
+    r63 playerTeleported() {
+        using r63 = decltype(std::declval<PlayerObject>().playerTeleported());
+        using f63 = r63(*)(PlayerObject*);
+        return reinterpret_cast<f63>(base+0x22b840)(this);
+    }
+
+    using r64 = decltype(std::declval<PlayerObject>().playingEndEffect());
+    using c64 = r64($PlayerObject::*)() ;
+    using d64 = r64(D::*)() ;
+    r64 playingEndEffect() {
+        using r64 = decltype(std::declval<PlayerObject>().playingEndEffect());
+        using f64 = r64(*)(PlayerObject*);
+        return reinterpret_cast<f64>(base+0x22d7e0)(this);
+    }
+
+    using r65 = decltype(std::declval<PlayerObject>().postCollision(std::declval<float>()));
+    using c65 = r65($PlayerObject::*)(float) ;
+    using d65 = r65(D::*)(float) ;
+    r65 postCollision(float p0) {
+        using r65 = decltype(std::declval<PlayerObject>().postCollision(std::declval<float>()));
+        using f65 = r65(*)(PlayerObject*, float);
+        return reinterpret_cast<f65>(base+0x21cd10)(this, p0);
+    }
+
+    using r66 = decltype(std::declval<PlayerObject>().preCollision());
+    using c66 = r66($PlayerObject::*)() ;
+    using d66 = r66(D::*)() ;
+    r66 preCollision() {
+        using r66 = decltype(std::declval<PlayerObject>().preCollision());
+        using f66 = r66(*)(PlayerObject*);
+        return reinterpret_cast<f66>(base+0x21ccc0)(this);
+    }
+
+    using r67 = decltype(std::declval<PlayerObject>().preSlopeCollision(std::declval<float>(), std::declval<GameObject*>()));
+    using c67 = r67($PlayerObject::*)(float, GameObject*) ;
+    using d67 = r67(D::*)(float, GameObject*) ;
+    r67 preSlopeCollision(float p0, GameObject* p1) {
+        using r67 = decltype(std::declval<PlayerObject>().preSlopeCollision(std::declval<float>(), std::declval<GameObject*>()));
+        using f67 = r67(*)(PlayerObject*, float, GameObject*);
+        return reinterpret_cast<f67>(base+0x21ec80)(this, p0, p1);
+    }
+
+    using r68 = decltype(std::declval<PlayerObject>().propellPlayer(std::declval<float>()));
+    using c68 = r68($PlayerObject::*)(float) ;
+    using d68 = r68(D::*)(float) ;
+    r68 propellPlayer(float p0) {
+        using r68 = decltype(std::declval<PlayerObject>().propellPlayer(std::declval<float>()));
+        using f68 = r68(*)(PlayerObject*, float);
+        return reinterpret_cast<f68>(base+0x22d8e0)(this, p0);
+    }
+
+    using r69 = decltype(std::declval<PlayerObject>().pushButton(std::declval<PlayerButton>()));
+    using c69 = r69($PlayerObject::*)(PlayerButton) ;
+    using d69 = r69(D::*)(PlayerButton) ;
+    r69 pushButton(PlayerButton p0) {
+        using r69 = decltype(std::declval<PlayerObject>().pushButton(std::declval<PlayerButton>()));
+        using f69 = r69(*)(PlayerObject*, PlayerButton);
+        return reinterpret_cast<f69>(base+0x22aa00)(this, p0);
+    }
+
+    using r70 = decltype(std::declval<PlayerObject>().pushDown());
+    using c70 = r70($PlayerObject::*)() ;
+    using d70 = r70(D::*)() ;
+    r70 pushDown() {
+        using r70 = decltype(std::declval<PlayerObject>().pushDown());
+        using f70 = r70(*)(PlayerObject*);
+        return reinterpret_cast<f70>(base+0x22dbd0)(this);
+    }
+
+    using r71 = decltype(std::declval<PlayerObject>().pushPlayer(std::declval<float>()));
+    using c71 = r71($PlayerObject::*)(float) ;
+    using d71 = r71(D::*)(float) ;
+    r71 pushPlayer(float p0) {
+        using r71 = decltype(std::declval<PlayerObject>().pushPlayer(std::declval<float>()));
+        using f71 = r71(*)(PlayerObject*, float);
+        return reinterpret_cast<f71>(base+0x22dbb0)(this, p0);
+    }
+
+    using r72 = decltype(std::declval<PlayerObject>().releaseButton(std::declval<PlayerButton>()));
+    using c72 = r72($PlayerObject::*)(PlayerButton) ;
+    using d72 = r72(D::*)(PlayerButton) ;
+    r72 releaseButton(PlayerButton p0) {
+        using r72 = decltype(std::declval<PlayerObject>().releaseButton(std::declval<PlayerButton>()));
+        using f72 = r72(*)(PlayerObject*, PlayerButton);
+        return reinterpret_cast<f72>(base+0x22b6f0)(this, p0);
+    }
+
+    using r73 = decltype(std::declval<PlayerObject>().removeAllParticles());
+    using c73 = r73($PlayerObject::*)() ;
+    using d73 = r73(D::*)() ;
+    r73 removeAllParticles() {
+        using r73 = decltype(std::declval<PlayerObject>().removeAllParticles());
+        using f73 = r73(*)(PlayerObject*);
+        return reinterpret_cast<f73>(base+0x218ac0)(this);
+    }
+
+    using r74 = decltype(std::declval<PlayerObject>().removePendingCheckpoint());
+    using c74 = r74($PlayerObject::*)() ;
+    using d74 = r74(D::*)() ;
+    r74 removePendingCheckpoint() {
+        using r74 = decltype(std::declval<PlayerObject>().removePendingCheckpoint());
+        using f74 = r74(*)(PlayerObject*);
+        return reinterpret_cast<f74>(base+0x2237b0)(this);
+    }
+
+    using r75 = decltype(std::declval<PlayerObject>().resetAllParticles());
+    using c75 = r75($PlayerObject::*)() ;
+    using d75 = r75(D::*)() ;
+    r75 resetAllParticles() {
+        using r75 = decltype(std::declval<PlayerObject>().resetAllParticles());
+        using f75 = r75(*)(PlayerObject*);
+        return reinterpret_cast<f75>(base+0x21adb0)(this);
+    }
+
+    using r76 = decltype(std::declval<PlayerObject>().resetCollisionLog());
+    using c76 = r76($PlayerObject::*)() ;
+    using d76 = r76(D::*)() ;
+    r76 resetCollisionLog() {
+        using r76 = decltype(std::declval<PlayerObject>().resetCollisionLog());
+        using f76 = r76(*)(PlayerObject*);
+        return reinterpret_cast<f76>(base+0x21cc20)(this);
+    }
+
+    using r77 = decltype(std::declval<PlayerObject>().resetPlayerIcon());
+    using c77 = r77($PlayerObject::*)() ;
+    using d77 = r77(D::*)() ;
+    r77 resetPlayerIcon() {
+        using r77 = decltype(std::declval<PlayerObject>().resetPlayerIcon());
+        using f77 = r77(*)(PlayerObject*);
+        return reinterpret_cast<f77>(base+0x22be00)(this);
+    }
+
+    using r78 = decltype(std::declval<PlayerObject>().resetStateVariables());
+    using c78 = r78($PlayerObject::*)() ;
+    using d78 = r78(D::*)() ;
+    r78 resetStateVariables() {
+        using r78 = decltype(std::declval<PlayerObject>().resetStateVariables());
+        using f78 = r78(*)(PlayerObject*);
+        return reinterpret_cast<f78>(base+0x223760)(this);
+    }
+
+    using r79 = decltype(std::declval<PlayerObject>().resetStreak());
+    using c79 = r79($PlayerObject::*)() ;
+    using d79 = r79(D::*)() ;
+    r79 resetStreak() {
+        using r79 = decltype(std::declval<PlayerObject>().resetStreak());
+        using f79 = r79(*)(PlayerObject*);
+        return reinterpret_cast<f79>(base+0x21ae10)(this);
+    }
+
+    using r80 = decltype(std::declval<PlayerObject>().ringJump(std::declval<GameObject*>()));
+    using c80 = r80($PlayerObject::*)(GameObject*) ;
+    using d80 = r80(D::*)(GameObject*) ;
+    r80 ringJump(GameObject* p0) {
+        using r80 = decltype(std::declval<PlayerObject>().ringJump(std::declval<GameObject*>()));
+        using f80 = r80(*)(PlayerObject*, GameObject*);
+        return reinterpret_cast<f80>(base+0x22abf0)(this, p0);
+    }
+
+    using r81 = decltype(std::declval<PlayerObject>().runBallRotation(std::declval<float>()));
+    using c81 = r81($PlayerObject::*)(float) ;
+    using d81 = r81(D::*)(float) ;
+    r81 runBallRotation(float p0) {
+        using r81 = decltype(std::declval<PlayerObject>().runBallRotation(std::declval<float>()));
+        using f81 = r81(*)(PlayerObject*, float);
+        return reinterpret_cast<f81>(base+0x21ca10)(this, p0);
+    }
+
+    using r82 = decltype(std::declval<PlayerObject>().runBallRotation2());
+    using c82 = r82($PlayerObject::*)() ;
+    using d82 = r82(D::*)() ;
+    r82 runBallRotation2() {
+        using r82 = decltype(std::declval<PlayerObject>().runBallRotation2());
+        using f82 = r82(*)(PlayerObject*);
+        return reinterpret_cast<f82>(base+0x21cb10)(this);
+    }
+
+    using r83 = decltype(std::declval<PlayerObject>().runNormalRotation());
+    using c83 = r83($PlayerObject::*)() ;
+    using d83 = r83(D::*)() ;
+    r83 runNormalRotation() {
+        using r83 = decltype(std::declval<PlayerObject>().runNormalRotation());
+        using f83 = r83(*)(PlayerObject*);
+        return reinterpret_cast<f83>(base+0x21c960)(this);
+    }
+
+    using r84 = decltype(std::declval<PlayerObject>().runRotateAction(std::declval<bool>()));
+    using c84 = r84($PlayerObject::*)(bool) ;
+    using d84 = r84(D::*)(bool) ;
+    r84 runRotateAction(bool p0) {
+        using r84 = decltype(std::declval<PlayerObject>().runRotateAction(std::declval<bool>()));
+        using f84 = r84(*)(PlayerObject*, bool);
+        return reinterpret_cast<f84>(base+0x21c570)(this, p0);
+    }
+
+    using r85 = decltype(std::declval<PlayerObject>().saveToCheckpoint(std::declval<PlayerCheckpoint*>()));
+    using c85 = r85($PlayerObject::*)(PlayerCheckpoint*) ;
+    using d85 = r85(D::*)(PlayerCheckpoint*) ;
+    r85 saveToCheckpoint(PlayerCheckpoint* p0) {
+        using r85 = decltype(std::declval<PlayerObject>().saveToCheckpoint(std::declval<PlayerCheckpoint*>()));
+        using f85 = r85(*)(PlayerObject*, PlayerCheckpoint*);
+        return reinterpret_cast<f85>(base+0x22e2f0)(this, p0);
+    }
+
+    using r86 = decltype(std::declval<PlayerObject>().setSecondColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c86 = r86($PlayerObject::*)(cocos2d::_ccColor3B const&) ;
+    using d86 = r86(D::*)(cocos2d::_ccColor3B const&) ;
+    r86 setSecondColor(cocos2d::_ccColor3B const& p0) {
+        using r86 = decltype(std::declval<PlayerObject>().setSecondColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f86 = r86(*)(PlayerObject*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f86>(base+0x219610)(this, p0);
+    }
+
+    using r87 = decltype(std::declval<PlayerObject>().setupStreak());
+    using c87 = r87($PlayerObject::*)() ;
+    using d87 = r87(D::*)() ;
+    r87 setupStreak() {
+        using r87 = decltype(std::declval<PlayerObject>().setupStreak());
+        using f87 = r87(*)(PlayerObject*);
+        return reinterpret_cast<f87>(base+0x218720)(this);
+    }
+
+    using r88 = decltype(std::declval<PlayerObject>().spawnCircle());
+    using c88 = r88($PlayerObject::*)() ;
+    using d88 = r88(D::*)() ;
+    r88 spawnCircle() {
+        using r88 = decltype(std::declval<PlayerObject>().spawnCircle());
+        using f88 = r88(*)(PlayerObject*);
+        return reinterpret_cast<f88>(base+0x225480)(this);
+    }
+
+    using r89 = decltype(std::declval<PlayerObject>().spawnCircle2());
+    using c89 = r89($PlayerObject::*)() ;
+    using d89 = r89(D::*)() ;
+    r89 spawnCircle2() {
+        using r89 = decltype(std::declval<PlayerObject>().spawnCircle2());
+        using f89 = r89(*)(PlayerObject*);
+        return reinterpret_cast<f89>(base+0x2252a0)(this);
+    }
+
+    using r90 = decltype(std::declval<PlayerObject>().spawnDualCircle());
+    using c90 = r90($PlayerObject::*)() ;
+    using d90 = r90(D::*)() ;
+    r90 spawnDualCircle() {
+        using r90 = decltype(std::declval<PlayerObject>().spawnDualCircle());
+        using f90 = r90(*)(PlayerObject*);
+        return reinterpret_cast<f90>(base+0x2255c0)(this);
+    }
+
+    using r91 = decltype(std::declval<PlayerObject>().spawnFromPlayer(std::declval<PlayerObject*>()));
+    using c91 = r91($PlayerObject::*)(PlayerObject*) ;
+    using d91 = r91(D::*)(PlayerObject*) ;
+    r91 spawnFromPlayer(PlayerObject* p0) {
+        using r91 = decltype(std::declval<PlayerObject>().spawnFromPlayer(std::declval<PlayerObject*>()));
+        using f91 = r91(*)(PlayerObject*, PlayerObject*);
+        return reinterpret_cast<f91>(base+0x22dde0)(this, p0);
+    }
+
+    using r92 = decltype(std::declval<PlayerObject>().spawnPortalCircle(std::declval<cocos2d::_ccColor3B>(), std::declval<float>()));
+    using c92 = r92($PlayerObject::*)(cocos2d::_ccColor3B, float) ;
+    using d92 = r92(D::*)(cocos2d::_ccColor3B, float) ;
+    r92 spawnPortalCircle(cocos2d::_ccColor3B p0, float p1) {
+        using r92 = decltype(std::declval<PlayerObject>().spawnPortalCircle(std::declval<cocos2d::_ccColor3B>(), std::declval<float>()));
+        using f92 = r92(*)(PlayerObject*, cocos2d::_ccColor3B, float);
+        return reinterpret_cast<f92>(base+0x225350)(this, p0, p1);
+    }
+
+    using r93 = decltype(std::declval<PlayerObject>().spawnScaleCircle());
+    using c93 = r93($PlayerObject::*)() ;
+    using d93 = r93(D::*)() ;
+    r93 spawnScaleCircle() {
+        using r93 = decltype(std::declval<PlayerObject>().spawnScaleCircle());
+        using f93 = r93(*)(PlayerObject*);
+        return reinterpret_cast<f93>(base+0x2251b0)(this);
+    }
+
+    using r94 = decltype(std::declval<PlayerObject>().specialGroundHit());
+    using c94 = r94($PlayerObject::*)() ;
+    using d94 = r94(D::*)() ;
+    r94 specialGroundHit() {
+        using r94 = decltype(std::declval<PlayerObject>().specialGroundHit());
+        using f94 = r94(*)(PlayerObject*);
+        return reinterpret_cast<f94>(base+0x22dbf0)(this);
+    }
+
+    using r95 = decltype(std::declval<PlayerObject>().speedDown());
+    using c95 = r95($PlayerObject::*)() ;
+    using d95 = r95(D::*)() ;
+    r95 speedDown() {
+        using r95 = decltype(std::declval<PlayerObject>().speedDown());
+        using f95 = r95(*)(PlayerObject*);
+        return reinterpret_cast<f95>(base+0x22e970)(this);
+    }
+
+    using r96 = decltype(std::declval<PlayerObject>().speedUp());
+    using c96 = r96($PlayerObject::*)() ;
+    using d96 = r96(D::*)() ;
+    r96 speedUp() {
+        using r96 = decltype(std::declval<PlayerObject>().speedUp());
+        using f96 = r96(*)(PlayerObject*);
+        return reinterpret_cast<f96>(base+0x22e950)(this);
+    }
+
+    using r97 = decltype(std::declval<PlayerObject>().spiderTestJump(std::declval<bool>()));
+    using c97 = r97($PlayerObject::*)(bool) ;
+    using d97 = r97(D::*)(bool) ;
+    r97 spiderTestJump(bool p0) {
+        using r97 = decltype(std::declval<PlayerObject>().spiderTestJump(std::declval<bool>()));
+        using f97 = r97(*)(PlayerObject*, bool);
+        return reinterpret_cast<f97>(base+0x21b160)(this, p0);
+    }
+
+    using r98 = decltype(std::declval<PlayerObject>().startDashing(std::declval<GameObject*>()));
+    using c98 = r98($PlayerObject::*)(GameObject*) ;
+    using d98 = r98(D::*)(GameObject*) ;
+    r98 startDashing(GameObject* p0) {
+        using r98 = decltype(std::declval<PlayerObject>().startDashing(std::declval<GameObject*>()));
+        using f98 = r98(*)(PlayerObject*, GameObject*);
+        return reinterpret_cast<f98>(base+0x221d70)(this, p0);
+    }
+
+    using r99 = decltype(std::declval<PlayerObject>().stopBurstEffect());
+    using c99 = r99($PlayerObject::*)() ;
+    using d99 = r99(D::*)() ;
+    r99 stopBurstEffect() {
+        using r99 = decltype(std::declval<PlayerObject>().stopBurstEffect());
+        using f99 = r99(*)(PlayerObject*);
+        return reinterpret_cast<f99>(base+0x22c680)(this);
+    }
+
+    using r100 = decltype(std::declval<PlayerObject>().stopDashing());
+    using c100 = r100($PlayerObject::*)() ;
+    using d100 = r100(D::*)() ;
+    r100 stopDashing() {
+        using r100 = decltype(std::declval<PlayerObject>().stopDashing());
+        using f100 = r100(*)(PlayerObject*);
+        return reinterpret_cast<f100>(base+0x222990)(this);
+    }
+
+    using r101 = decltype(std::declval<PlayerObject>().stopRotation(std::declval<bool>()));
+    using c101 = r101($PlayerObject::*)(bool) ;
+    using d101 = r101(D::*)(bool) ;
+    r101 stopRotation(bool p0) {
+        using r101 = decltype(std::declval<PlayerObject>().stopRotation(std::declval<bool>()));
+        using f101 = r101(*)(PlayerObject*, bool);
+        return reinterpret_cast<f101>(base+0x21c830)(this, p0);
+    }
+
+    using r102 = decltype(std::declval<PlayerObject>().storeCollision(std::declval<bool>(), std::declval<int>()));
+    using c102 = r102($PlayerObject::*)(bool, int) ;
+    using d102 = r102(D::*)(bool, int) ;
+    r102 storeCollision(bool p0, int p1) {
+        using r102 = decltype(std::declval<PlayerObject>().storeCollision(std::declval<bool>(), std::declval<int>()));
+        using f102 = r102(*)(PlayerObject*, bool, int);
+        return reinterpret_cast<f102>(base+0x21cc60)(this, p0, p1);
+    }
+
+    using r103 = decltype(std::declval<PlayerObject>().switchedToMode(std::declval<GameObjectType>()));
+    using c103 = r103($PlayerObject::*)(GameObjectType) ;
+    using d103 = r103(D::*)(GameObjectType) ;
+    r103 switchedToMode(GameObjectType p0) {
+        using r103 = decltype(std::declval<PlayerObject>().switchedToMode(std::declval<GameObjectType>()));
+        using f103 = r103(*)(PlayerObject*, GameObjectType);
+        return reinterpret_cast<f103>(base+0x22b9a0)(this, p0);
+    }
+
+    using r104 = decltype(std::declval<PlayerObject>().testForMoving(std::declval<float>(), std::declval<GameObject*>()));
+    using c104 = r104($PlayerObject::*)(float, GameObject*) ;
+    using d104 = r104(D::*)(float, GameObject*) ;
+    r104 testForMoving(float p0, GameObject* p1) {
+        using r104 = decltype(std::declval<PlayerObject>().testForMoving(std::declval<float>(), std::declval<GameObject*>()));
+        using f104 = r104(*)(PlayerObject*, float, GameObject*);
+        return reinterpret_cast<f104>(base+0x21eb70)(this, p0, p1);
+    }
+
+    using r105 = decltype(std::declval<PlayerObject>().toggleBirdMode(std::declval<bool>()));
+    using c105 = r105($PlayerObject::*)(bool) ;
+    using d105 = r105(D::*)(bool) ;
+    r105 toggleBirdMode(bool p0) {
+        using r105 = decltype(std::declval<PlayerObject>().toggleBirdMode(std::declval<bool>()));
+        using f105 = r105(*)(PlayerObject*, bool);
+        return reinterpret_cast<f105>(base+0x224070)(this, p0);
+    }
+
+    using r106 = decltype(std::declval<PlayerObject>().toggleDartMode(std::declval<bool>()));
+    using c106 = r106($PlayerObject::*)(bool) ;
+    using d106 = r106(D::*)(bool) ;
+    r106 toggleDartMode(bool p0) {
+        using r106 = decltype(std::declval<PlayerObject>().toggleDartMode(std::declval<bool>()));
+        using f106 = r106(*)(PlayerObject*, bool);
+        return reinterpret_cast<f106>(base+0x2243f0)(this, p0);
+    }
+
+    using r107 = decltype(std::declval<PlayerObject>().toggleFlyMode(std::declval<bool>()));
+    using c107 = r107($PlayerObject::*)(bool) ;
+    using d107 = r107(D::*)(bool) ;
+    r107 toggleFlyMode(bool p0) {
+        using r107 = decltype(std::declval<PlayerObject>().toggleFlyMode(std::declval<bool>()));
+        using f107 = r107(*)(PlayerObject*, bool);
+        return reinterpret_cast<f107>(base+0x223820)(this, p0);
+    }
+
+    using r108 = decltype(std::declval<PlayerObject>().toggleGhostEffect(std::declval<GhostType>()));
+    using c108 = r108($PlayerObject::*)(GhostType) ;
+    using d108 = r108(D::*)(GhostType) ;
+    r108 toggleGhostEffect(GhostType p0) {
+        using r108 = decltype(std::declval<PlayerObject>().toggleGhostEffect(std::declval<GhostType>()));
+        using f108 = r108(*)(PlayerObject*, GhostType);
+        return reinterpret_cast<f108>(base+0x225000)(this, p0);
+    }
+
+    using r109 = decltype(std::declval<PlayerObject>().togglePlayerScale(std::declval<bool>()));
+    using c109 = r109($PlayerObject::*)(bool) ;
+    using d109 = r109(D::*)(bool) ;
+    r109 togglePlayerScale(bool p0) {
+        using r109 = decltype(std::declval<PlayerObject>().togglePlayerScale(std::declval<bool>()));
+        using f109 = r109(*)(PlayerObject*, bool);
+        return reinterpret_cast<f109>(base+0x224bd0)(this, p0);
+    }
+
+    using r110 = decltype(std::declval<PlayerObject>().toggleRobotMode(std::declval<bool>()));
+    using c110 = r110($PlayerObject::*)(bool) ;
+    using d110 = r110(D::*)(bool) ;
+    r110 toggleRobotMode(bool p0) {
+        using r110 = decltype(std::declval<PlayerObject>().toggleRobotMode(std::declval<bool>()));
+        using f110 = r110(*)(PlayerObject*, bool);
+        return reinterpret_cast<f110>(base+0x223c70)(this, p0);
+    }
+
+    using r111 = decltype(std::declval<PlayerObject>().toggleRollMode(std::declval<bool>()));
+    using c111 = r111($PlayerObject::*)(bool) ;
+    using d111 = r111(D::*)(bool) ;
+    r111 toggleRollMode(bool p0) {
+        using r111 = decltype(std::declval<PlayerObject>().toggleRollMode(std::declval<bool>()));
+        using f111 = r111(*)(PlayerObject*, bool);
+        return reinterpret_cast<f111>(base+0x223b20)(this, p0);
+    }
+
+    using r112 = decltype(std::declval<PlayerObject>().toggleSpiderMode(std::declval<bool>()));
+    using c112 = r112($PlayerObject::*)(bool) ;
+    using d112 = r112(D::*)(bool) ;
+    r112 toggleSpiderMode(bool p0) {
+        using r112 = decltype(std::declval<PlayerObject>().toggleSpiderMode(std::declval<bool>()));
+        using f112 = r112(*)(PlayerObject*, bool);
+        return reinterpret_cast<f112>(base+0x224830)(this, p0);
+    }
+
+    using r113 = decltype(std::declval<PlayerObject>().toggleVisibility(std::declval<bool>()));
+    using c113 = r113($PlayerObject::*)(bool) ;
+    using d113 = r113(D::*)(bool) ;
+    r113 toggleVisibility(bool p0) {
+        using r113 = decltype(std::declval<PlayerObject>().toggleVisibility(std::declval<bool>()));
+        using f113 = r113(*)(PlayerObject*, bool);
+        return reinterpret_cast<f113>(base+0x21abf0)(this, p0);
+    }
+
+    using r114 = decltype(std::declval<PlayerObject>().touchedObject(std::declval<GameObject*>()));
+    using c114 = r114($PlayerObject::*)(GameObject*) ;
+    using d114 = r114(D::*)(GameObject*) ;
+    r114 touchedObject(GameObject* p0) {
+        using r114 = decltype(std::declval<PlayerObject>().touchedObject(std::declval<GameObject*>()));
+        using f114 = r114(*)(PlayerObject*, GameObject*);
+        return reinterpret_cast<f114>(base+0x22e660)(this, p0);
+    }
+
+    using r115 = decltype(std::declval<PlayerObject>().tryPlaceCheckpoint());
+    using c115 = r115($PlayerObject::*)() ;
+    using d115 = r115(D::*)() ;
+    r115 tryPlaceCheckpoint() {
+        using r115 = decltype(std::declval<PlayerObject>().tryPlaceCheckpoint());
+        using f115 = r115(*)(PlayerObject*);
+        return reinterpret_cast<f115>(base+0x21a950)(this);
+    }
+
+    using r116 = decltype(std::declval<PlayerObject>().updateCheckpointMode(std::declval<bool>()));
+    using c116 = r116($PlayerObject::*)(bool) ;
+    using d116 = r116(D::*)(bool) ;
+    r116 updateCheckpointMode(bool p0) {
+        using r116 = decltype(std::declval<PlayerObject>().updateCheckpointMode(std::declval<bool>()));
+        using f116 = r116(*)(PlayerObject*, bool);
+        return reinterpret_cast<f116>(base+0x218980)(this, p0);
+    }
+
+    using r117 = decltype(std::declval<PlayerObject>().updateCheckpointTest());
+    using c117 = r117($PlayerObject::*)() ;
+    using d117 = r117(D::*)() ;
+    r117 updateCheckpointTest() {
+        using r117 = decltype(std::declval<PlayerObject>().updateCheckpointTest());
+        using f117 = r117(*)(PlayerObject*);
+        return reinterpret_cast<f117>(base+0x21a890)(this);
+    }
+
+    using r118 = decltype(std::declval<PlayerObject>().updateCollide(std::declval<bool>(), std::declval<int>()));
+    using c118 = r118($PlayerObject::*)(bool, int) ;
+    using d118 = r118(D::*)(bool, int) ;
+    r118 updateCollide(bool p0, int p1) {
+        using r118 = decltype(std::declval<PlayerObject>().updateCollide(std::declval<bool>(), std::declval<int>()));
+        using f118 = r118(*)(PlayerObject*, bool, int);
+        return reinterpret_cast<f118>(base+0x220f10)(this, p0, p1);
+    }
+
+    using r119 = decltype(std::declval<PlayerObject>().updateCollideBottom(std::declval<float>(), std::declval<int>()));
+    using c119 = r119($PlayerObject::*)(float, int) ;
+    using d119 = r119(D::*)(float, int) ;
+    r119 updateCollideBottom(float p0, int p1) {
+        using r119 = decltype(std::declval<PlayerObject>().updateCollideBottom(std::declval<float>(), std::declval<int>()));
+        using f119 = r119(*)(PlayerObject*, float, int);
+        return reinterpret_cast<f119>(base+0x221790)(this, p0, p1);
+    }
+
+    using r120 = decltype(std::declval<PlayerObject>().updateCollideTop(std::declval<float>(), std::declval<int>()));
+    using c120 = r120($PlayerObject::*)(float, int) ;
+    using d120 = r120(D::*)(float, int) ;
+    r120 updateCollideTop(float p0, int p1) {
+        using r120 = decltype(std::declval<PlayerObject>().updateCollideTop(std::declval<float>(), std::declval<int>()));
+        using f120 = r120(*)(PlayerObject*, float, int);
+        return reinterpret_cast<f120>(base+0x221c20)(this, p0, p1);
+    }
+
+    using r121 = decltype(std::declval<PlayerObject>().updateDashAnimation());
+    using c121 = r121($PlayerObject::*)() ;
+    using d121 = r121(D::*)() ;
+    r121 updateDashAnimation() {
+        using r121 = decltype(std::declval<PlayerObject>().updateDashAnimation());
+        using f121 = r121(*)(PlayerObject*);
+        return reinterpret_cast<f121>(base+0x21a570)(this);
+    }
+
+    using r122 = decltype(std::declval<PlayerObject>().updateDashArt());
+    using c122 = r122($PlayerObject::*)() ;
+    using d122 = r122(D::*)() ;
+    r122 updateDashArt() {
+        using r122 = decltype(std::declval<PlayerObject>().updateDashArt());
+        using f122 = r122(*)(PlayerObject*);
+        return reinterpret_cast<f122>(base+0x222520)(this);
+    }
+
+    using r123 = decltype(std::declval<PlayerObject>().updateGlowColor());
+    using c123 = r123($PlayerObject::*)() ;
+    using d123 = r123(D::*)() ;
+    r123 updateGlowColor() {
+        using r123 = decltype(std::declval<PlayerObject>().updateGlowColor());
+        using f123 = r123(*)(PlayerObject*);
+        return reinterpret_cast<f123>(base+0x22cf10)(this);
+    }
+
+    using r124 = decltype(std::declval<PlayerObject>().updateJump(std::declval<float>()));
+    using c124 = r124($PlayerObject::*)(float) ;
+    using d124 = r124(D::*)(float) ;
+    r124 updateJump(float p0) {
+        using r124 = decltype(std::declval<PlayerObject>().updateJump(std::declval<float>()));
+        using f124 = r124(*)(PlayerObject*, float);
+        return reinterpret_cast<f124>(base+0x219680)(this, p0);
+    }
+
+    using r125 = decltype(std::declval<PlayerObject>().updateJumpVariables());
+    using c125 = r125($PlayerObject::*)() ;
+    using d125 = r125(D::*)() ;
+    r125 updateJumpVariables() {
+        using r125 = decltype(std::declval<PlayerObject>().updateJumpVariables());
+        using f125 = r125(*)(PlayerObject*);
+        return reinterpret_cast<f125>(base+0x21a740)(this);
+    }
+
+    using r126 = decltype(std::declval<PlayerObject>().updatePlayerBirdFrame(std::declval<int>()));
+    using c126 = r126($PlayerObject::*)(int) ;
+    using d126 = r126(D::*)(int) ;
+    r126 updatePlayerBirdFrame(int p0) {
+        using r126 = decltype(std::declval<PlayerObject>().updatePlayerBirdFrame(std::declval<int>()));
+        using f126 = r126(*)(PlayerObject*, int);
+        return reinterpret_cast<f126>(base+0x22bfe0)(this, p0);
+    }
+
+    using r127 = decltype(std::declval<PlayerObject>().updatePlayerDartFrame(std::declval<int>()));
+    using c127 = r127($PlayerObject::*)(int) ;
+    using d127 = r127(D::*)(int) ;
+    r127 updatePlayerDartFrame(int p0) {
+        using r127 = decltype(std::declval<PlayerObject>().updatePlayerDartFrame(std::declval<int>()));
+        using f127 = r127(*)(PlayerObject*, int);
+        return reinterpret_cast<f127>(base+0x22c260)(this, p0);
+    }
+
+    using r128 = decltype(std::declval<PlayerObject>().updatePlayerFrame(std::declval<int>()));
+    using c128 = r128($PlayerObject::*)(int) ;
+    using d128 = r128(D::*)(int) ;
+    r128 updatePlayerFrame(int p0) {
+        using r128 = decltype(std::declval<PlayerObject>().updatePlayerFrame(std::declval<int>()));
+        using f128 = r128(*)(PlayerObject*, int);
+        return reinterpret_cast<f128>(base+0x22c470)(this, p0);
+    }
+
+    using r129 = decltype(std::declval<PlayerObject>().updatePlayerGlow());
+    using c129 = r129($PlayerObject::*)() ;
+    using d129 = r129(D::*)() ;
+    r129 updatePlayerGlow() {
+        using r129 = decltype(std::declval<PlayerObject>().updatePlayerGlow());
+        using f129 = r129(*)(PlayerObject*);
+        return reinterpret_cast<f129>(base+0x22bc50)(this);
+    }
+
+    using r130 = decltype(std::declval<PlayerObject>().updatePlayerRobotFrame(std::declval<int>()));
+    using c130 = r130($PlayerObject::*)(int) ;
+    using d130 = r130(D::*)(int) ;
+    r130 updatePlayerRobotFrame(int p0) {
+        using r130 = decltype(std::declval<PlayerObject>().updatePlayerRobotFrame(std::declval<int>()));
+        using f130 = r130(*)(PlayerObject*, int);
+        return reinterpret_cast<f130>(base+0x22d620)(this, p0);
+    }
+
+    using r131 = decltype(std::declval<PlayerObject>().updatePlayerRollFrame(std::declval<int>()));
+    using c131 = r131($PlayerObject::*)(int) ;
+    using d131 = r131(D::*)(int) ;
+    r131 updatePlayerRollFrame(int p0) {
+        using r131 = decltype(std::declval<PlayerObject>().updatePlayerRollFrame(std::declval<int>()));
+        using f131 = r131(*)(PlayerObject*, int);
+        return reinterpret_cast<f131>(base+0x22c6a0)(this, p0);
+    }
+
+    using r132 = decltype(std::declval<PlayerObject>().updatePlayerScale());
+    using c132 = r132($PlayerObject::*)() ;
+    using d132 = r132(D::*)() ;
+    r132 updatePlayerScale() {
+        using r132 = decltype(std::declval<PlayerObject>().updatePlayerScale());
+        using f132 = r132(*)(PlayerObject*);
+        return reinterpret_cast<f132>(base+0x22b8b0)(this);
+    }
+
+    using r133 = decltype(std::declval<PlayerObject>().updatePlayerShipFrame(std::declval<int>()));
+    using c133 = r133($PlayerObject::*)(int) ;
+    using d133 = r133(D::*)(int) ;
+    r133 updatePlayerShipFrame(int p0) {
+        using r133 = decltype(std::declval<PlayerObject>().updatePlayerShipFrame(std::declval<int>()));
+        using f133 = r133(*)(PlayerObject*, int);
+        return reinterpret_cast<f133>(base+0x22ba40)(this, p0);
+    }
+
+    using r134 = decltype(std::declval<PlayerObject>().updatePlayerSpiderFrame(std::declval<int>()));
+    using c134 = r134($PlayerObject::*)(int) ;
+    using d134 = r134(D::*)(int) ;
+    r134 updatePlayerSpiderFrame(int p0) {
+        using r134 = decltype(std::declval<PlayerObject>().updatePlayerSpiderFrame(std::declval<int>()));
+        using f134 = r134(*)(PlayerObject*, int);
+        return reinterpret_cast<f134>(base+0x22d650)(this, p0);
+    }
+
+    using r135 = decltype(std::declval<PlayerObject>().updatePlayerSpriteExtra(std::declval<gd::string>()));
+    using c135 = r135($PlayerObject::*)(gd::string) ;
+    using d135 = r135(D::*)(gd::string) ;
+    r135 updatePlayerSpriteExtra(gd::string p0) {
+        using r135 = decltype(std::declval<PlayerObject>().updatePlayerSpriteExtra(std::declval<gd::string>()));
+        using f135 = r135(*)(PlayerObject*, gd::string);
+        return reinterpret_cast<f135>(base+0x218440)(this, p0);
+    }
+
+    using r136 = decltype(std::declval<PlayerObject>().updateRobotAnimationSpeed());
+    using c136 = r136($PlayerObject::*)() ;
+    using d136 = r136(D::*)() ;
+    r136 updateRobotAnimationSpeed() {
+        using r136 = decltype(std::declval<PlayerObject>().updateRobotAnimationSpeed());
+        using f136 = r136(*)(PlayerObject*);
+        return reinterpret_cast<f136>(base+0x22df40)(this);
+    }
+
+    using r137 = decltype(std::declval<PlayerObject>().updateRotation(std::declval<float>()));
+    using c137 = r137($PlayerObject::*)(float) ;
+    using d137 = r137(D::*)(float) ;
+    r137 updateRotation(float p0) {
+        using r137 = decltype(std::declval<PlayerObject>().updateRotation(std::declval<float>()));
+        using f137 = r137(*)(PlayerObject*, float);
+        return reinterpret_cast<f137>(base+0x2214b0)(this, p0);
+    }
+
+    using r138 = decltype(std::declval<PlayerObject>().updateRotation(std::declval<float>(), std::declval<float>()));
+    using c138 = r138($PlayerObject::*)(float, float) ;
+    using d138 = r138(D::*)(float, float) ;
+    r138 updateRotation(float p0, float p1) {
+        using r138 = decltype(std::declval<PlayerObject>().updateRotation(std::declval<float>(), std::declval<float>()));
+        using f138 = r138(*)(PlayerObject*, float, float);
+        return reinterpret_cast<f138>(base+0x221230)(this, p0, p1);
+    }
+
+    using r139 = decltype(std::declval<PlayerObject>().updateShipRotation(std::declval<float>()));
+    using c139 = r139($PlayerObject::*)(float) ;
+    using d139 = r139(D::*)(float) ;
+    r139 updateShipRotation(float p0) {
+        using r139 = decltype(std::declval<PlayerObject>().updateShipRotation(std::declval<float>()));
+        using f139 = r139(*)(PlayerObject*, float);
+        return reinterpret_cast<f139>(base+0x221310)(this, p0);
+    }
+
+    using r140 = decltype(std::declval<PlayerObject>().updateShipSpriteExtra(std::declval<gd::string>()));
+    using c140 = r140($PlayerObject::*)(gd::string) ;
+    using d140 = r140(D::*)(gd::string) ;
+    r140 updateShipSpriteExtra(gd::string p0) {
+        using r140 = decltype(std::declval<PlayerObject>().updateShipSpriteExtra(std::declval<gd::string>()));
+        using f140 = r140(*)(PlayerObject*, gd::string);
+        return reinterpret_cast<f140>(base+0x218510)(this, p0);
+    }
+
+    using r141 = decltype(std::declval<PlayerObject>().updateSlopeRotation(std::declval<float>()));
+    using c141 = r141($PlayerObject::*)(float) ;
+    using d141 = r141(D::*)(float) ;
+    r141 updateSlopeRotation(float p0) {
+        using r141 = decltype(std::declval<PlayerObject>().updateSlopeRotation(std::declval<float>()));
+        using f141 = r141(*)(PlayerObject*, float);
+        return reinterpret_cast<f141>(base+0x221030)(this, p0);
+    }
+
+    using r142 = decltype(std::declval<PlayerObject>().updateSlopeYVelocity(std::declval<float>()));
+    using c142 = r142($PlayerObject::*)(float) ;
+    using d142 = r142(D::*)(float) ;
+    r142 updateSlopeYVelocity(float p0) {
+        using r142 = decltype(std::declval<PlayerObject>().updateSlopeYVelocity(std::declval<float>()));
+        using f142 = r142(*)(PlayerObject*, float);
+        return reinterpret_cast<f142>(base+0x22e920)(this, p0);
+    }
+
+    using r143 = decltype(std::declval<PlayerObject>().updateSpecial(std::declval<float>()));
+    using c143 = r143($PlayerObject::*)(float) ;
+    using d143 = r143(D::*)(float) ;
+    r143 updateSpecial(float p0) {
+        using r143 = decltype(std::declval<PlayerObject>().updateSpecial(std::declval<float>()));
+        using f143 = r143(*)(PlayerObject*, float);
+        return reinterpret_cast<f143>(base+0x21a790)(this, p0);
+    }
+
+    using r144 = decltype(std::declval<PlayerObject>().updateStateVariables());
+    using c144 = r144($PlayerObject::*)() ;
+    using d144 = r144(D::*)() ;
+    r144 updateStateVariables() {
+        using r144 = decltype(std::declval<PlayerObject>().updateStateVariables());
+        using f144 = r144(*)(PlayerObject*);
+        return reinterpret_cast<f144>(base+0x21a770)(this);
+    }
+
+    using r145 = decltype(std::declval<PlayerObject>().updateTimeMod(std::declval<float>()));
+    using c145 = r145($PlayerObject::*)(float) ;
+    using d145 = r145(D::*)(float) ;
+    r145 updateTimeMod(float p0) {
+        using r145 = decltype(std::declval<PlayerObject>().updateTimeMod(std::declval<float>()));
+        using f145 = r145(*)(PlayerObject*, float);
+        return reinterpret_cast<f145>(base+0x2185e0)(this, p0);
+    }
+
+    using r146 = decltype(std::declval<PlayerObject>().usingWallLimitedMode());
+    using c146 = r146($PlayerObject::*)() ;
+    using d146 = r146(D::*)() ;
+    r146 usingWallLimitedMode() {
+        using r146 = decltype(std::declval<PlayerObject>().usingWallLimitedMode());
+        using f146 = r146(*)(PlayerObject*);
+        return reinterpret_cast<f146>(base+0x22df00)(this);
+    }
+
+    using r147 = decltype(std::declval<PlayerObject>().yStartDown());
+    using c147 = r147($PlayerObject::*)() ;
+    using d147 = r147(D::*)() ;
+    r147 yStartDown() {
+        using r147 = decltype(std::declval<PlayerObject>().yStartDown());
+        using f147 = r147(*)(PlayerObject*);
+        return reinterpret_cast<f147>(base+0x22e9b0)(this);
+    }
+
+    using r148 = decltype(std::declval<PlayerObject>().yStartUp());
+    using c148 = r148($PlayerObject::*)() ;
+    using d148 = r148(D::*)() ;
+    r148 yStartUp() {
+        using r148 = decltype(std::declval<PlayerObject>().yStartUp());
+        using f148 = r148(*)(PlayerObject*);
+        return reinterpret_cast<f148>(base+0x22e990)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$PlayerObject::update} != (d1){&D::update})
+            m->registerHook(base+0x218bf0, FunctionScrapper::addressOfVirtual(i, (d1){&D::update}));
+
+        if ((c2){&$PlayerObject::setScaleX} != (d2){&D::setScaleX})
+            m->registerHook(base+0x22e7f0, FunctionScrapper::addressOfVirtual(i, (d2){&D::setScaleX}));
+
+        if ((c3){&$PlayerObject::setScaleY} != (d3){&D::setScaleY})
+            m->registerHook(base+0x22e830, FunctionScrapper::addressOfVirtual(i, (d3){&D::setScaleY}));
+
+        if ((c4){&$PlayerObject::setScale} != (d4){&D::setScale})
+            m->registerHook(base+0x22e870, FunctionScrapper::addressOfVirtual(i, (d4){&D::setScale}));
+
+        if ((c5){&$PlayerObject::setPosition} != (d5){&D::setPosition})
+            m->registerHook(base+0x22c8b0, FunctionScrapper::addressOfVirtual(i, (d5){&D::setPosition}));
+
+        if ((c6){&$PlayerObject::setVisible} != (d6){&D::setVisible})
+            m->registerHook(base+0x22e8b0, FunctionScrapper::addressOfVirtual(i, (d6){&D::setVisible}));
+
+        if ((c7){&$PlayerObject::setRotation} != (d7){&D::setRotation})
+            m->registerHook(base+0x22e6e0, FunctionScrapper::addressOfVirtual(i, (d7){&D::setRotation}));
+
+        if ((c8){&$PlayerObject::setOpacity} != (d8){&D::setOpacity})
+            m->registerHook(base+0x22d400, FunctionScrapper::addressOfVirtual(i, (d8){&D::setOpacity}));
+
+        if ((c9){&$PlayerObject::setColor} != (d9){&D::setColor})
+            m->registerHook(base+0x22cdf0, FunctionScrapper::addressOfVirtual(i, (d9){&D::setColor}));
+
+        if ((c10){&$PlayerObject::setFlipX} != (d10){&D::setFlipX})
+            m->registerHook(base+0x22e720, FunctionScrapper::addressOfVirtual(i, (d10){&D::setFlipX}));
+
+        if ((c11){&$PlayerObject::setFlipY} != (d11){&D::setFlipY})
+            m->registerHook(base+0x22e7b0, FunctionScrapper::addressOfVirtual(i, (d11){&D::setFlipY}));
+
+        if ((c12){&$PlayerObject::resetObject} != (d12){&D::resetObject})
+            m->registerHook(base+0x223170, FunctionScrapper::addressOfVirtual(i, (d12){&D::resetObject}));
+
+        if ((c13){&$PlayerObject::getRealPosition} != (d13){&D::getRealPosition})
+            m->registerHook(base+0x22d5f0, FunctionScrapper::addressOfVirtual(i, (d13){&D::getRealPosition}));
+
+        if ((c14){&$PlayerObject::getOrientedBox} != (d14){&D::getOrientedBox})
+            m->registerHook(base+0x22dee0, FunctionScrapper::addressOfVirtual(i, (d14){&D::getOrientedBox}));
+
+        if ((c15){&$PlayerObject::animationFinished} != (d15){&D::animationFinished})
+            m->registerHook(base+0x22e9d0, FunctionScrapper::addressOfVirtual(i, (d15){&D::animationFinished}));
+
+        if ((c16){&$PlayerObject::activateStreak} != (d16){&D::activateStreak})
+            m->registerHook(base+0x21aef0, FunctionScrapper::addressOfNonVirtual((d16){&D::activateStreak}));
+
+        if ((c17){&$PlayerObject::addAllParticles} != (d17){&D::addAllParticles})
+            m->registerHook(base+0x2189b0, FunctionScrapper::addressOfNonVirtual((d17){&D::addAllParticles}));
+
+        if ((c18){&$PlayerObject::addToTouchedRings} != (d18){&D::addToTouchedRings})
+            m->registerHook(base+0x22b800, FunctionScrapper::addressOfNonVirtual((d18){&D::addToTouchedRings}));
+
+        if ((c19){&$PlayerObject::boostPlayer} != (d19){&D::boostPlayer})
+            m->registerHook(base+0x21d6b0, FunctionScrapper::addressOfNonVirtual((d19){&D::boostPlayer}));
+
+        if ((c20){&$PlayerObject::bumpPlayer} != (d20){&D::bumpPlayer})
+            m->registerHook(base+0x22d890, FunctionScrapper::addressOfNonVirtual((d20){&D::bumpPlayer}));
+
+        if ((c21){&$PlayerObject::buttonDown} != (d21){&D::buttonDown})
+            m->registerHook(base+0x22b7e0, FunctionScrapper::addressOfNonVirtual((d21){&D::buttonDown}));
+
+        if ((c22){&$PlayerObject::checkSnapJumpToObject} != (d22){&D::checkSnapJumpToObject})
+            m->registerHook(base+0x2217f0, FunctionScrapper::addressOfNonVirtual((d22){&D::checkSnapJumpToObject}));
+
+        if ((c23){&$PlayerObject::collidedWithObject} != (d23){&D::collidedWithObject})
+            m->registerHook(base+0x21d880, FunctionScrapper::addressOfNonVirtual((d23){&D::collidedWithObject}));
+
+        if ((c24){&$PlayerObject::collidedWithObject} != (d24){&D::collidedWithObject})
+            m->registerHook(base+0x21f0b0, FunctionScrapper::addressOfNonVirtual((d24){&D::collidedWithObject}));
+
+        if ((c25){&$PlayerObject::collidedWithSlope} != (d25){&D::collidedWithSlope})
+            m->registerHook(base+0x21d8d0, FunctionScrapper::addressOfNonVirtual((d25){&D::collidedWithSlope}));
+
+        if ((c26){&$PlayerObject::convertToClosestRotation} != (d26){&D::convertToClosestRotation})
+            m->registerHook(base+0x21c860, FunctionScrapper::addressOfNonVirtual((d26){&D::convertToClosestRotation}));
+
+        if ((c27){&$PlayerObject::copyAttributes} != (d27){&D::copyAttributes})
+            m->registerHook(base+0x22dc70, FunctionScrapper::addressOfNonVirtual((d27){&D::copyAttributes}));
+
+        if ((c28){&$PlayerObject::create} != (d28){&D::create})
+            m->registerHook(base+0x217260, FunctionScrapper::addressOfNonVirtual((d28){&D::create}));
+
+        if ((c29){&$PlayerObject::deactivateParticle} != (d29){&D::deactivateParticle})
+            m->registerHook(base+0x21a540, FunctionScrapper::addressOfNonVirtual((d29){&D::deactivateParticle}));
+
+        if ((c30){&$PlayerObject::deactivateStreak} != (d30){&D::deactivateStreak})
+            m->registerHook(base+0x218b30, FunctionScrapper::addressOfNonVirtual((d30){&D::deactivateStreak}));
+
+        if ((c31){&$PlayerObject::fadeOutStreak2} != (d31){&D::fadeOutStreak2})
+            m->registerHook(base+0x225890, FunctionScrapper::addressOfNonVirtual((d31){&D::fadeOutStreak2}));
+
+        if ((c32){&$PlayerObject::flashPlayer} != (d32){&D::flashPlayer})
+            m->registerHook(base+0x221c80, FunctionScrapper::addressOfNonVirtual((d32){&D::flashPlayer}));
+
+        if ((c33){&$PlayerObject::flipGravity} != (d33){&D::flipGravity})
+            m->registerHook(base+0x21c090, FunctionScrapper::addressOfNonVirtual((d33){&D::flipGravity}));
+
+        if ((c34){&$PlayerObject::flipMod} != (d34){&D::flipMod})
+            m->registerHook(base+0x21a4c0, FunctionScrapper::addressOfNonVirtual((d34){&D::flipMod}));
+
+        if ((c35){&$PlayerObject::getActiveMode} != (d35){&D::getActiveMode})
+            m->registerHook(base+0x22b950, FunctionScrapper::addressOfNonVirtual((d35){&D::getActiveMode}));
+
+        if ((c36){&$PlayerObject::getModifiedSlopeYVel} != (d36){&D::getModifiedSlopeYVel})
+            m->registerHook(base+0x21bff0, FunctionScrapper::addressOfNonVirtual((d36){&D::getModifiedSlopeYVel}));
+
+        if ((c37){&$PlayerObject::getOldPosition} != (d37){&D::getOldPosition})
+            m->registerHook(base+0x21a830, FunctionScrapper::addressOfNonVirtual((d37){&D::getOldPosition}));
+
+        if ((c38){&$PlayerObject::getSecondColor} != (d38){&D::getSecondColor})
+            m->registerHook(base+0x22cee0, FunctionScrapper::addressOfNonVirtual((d38){&D::getSecondColor}));
+
+        if ((c39){&$PlayerObject::gravityDown} != (d39){&D::gravityDown})
+            m->registerHook(base+0x22e930, FunctionScrapper::addressOfNonVirtual((d39){&D::gravityDown}));
+
+        if ((c40){&$PlayerObject::gravityUp} != (d40){&D::gravityUp})
+            m->registerHook(base+0x22e900, FunctionScrapper::addressOfNonVirtual((d40){&D::gravityUp}));
+
+        if ((c41){&$PlayerObject::hardFlipGravity} != (d41){&D::hardFlipGravity})
+            m->registerHook(base+0x22b860, FunctionScrapper::addressOfNonVirtual((d41){&D::hardFlipGravity}));
+
+        if ((c42){&$PlayerObject::hitGround} != (d42){&D::hitGround})
+            m->registerHook(base+0x220a30, FunctionScrapper::addressOfNonVirtual((d42){&D::hitGround}));
+
+        if ((c43){&$PlayerObject::incrementJumps} != (d43){&D::incrementJumps})
+            m->registerHook(base+0x21c050, FunctionScrapper::addressOfNonVirtual((d43){&D::incrementJumps}));
+
+        if ((c44){&$PlayerObject::init} != (d44){&D::init})
+            m->registerHook(base+0x2172e0, FunctionScrapper::addressOfNonVirtual((d44){&D::init}));
+
+        if ((c45){&$PlayerObject::isBoostValid} != (d45){&D::isBoostValid})
+            m->registerHook(base+0x21d650, FunctionScrapper::addressOfNonVirtual((d45){&D::isBoostValid}));
+
+        if ((c46){&$PlayerObject::isFlying} != (d46){&D::isFlying})
+            m->registerHook(base+0x21a4e0, FunctionScrapper::addressOfNonVirtual((d46){&D::isFlying}));
+
+        if ((c47){&$PlayerObject::isSafeFlip} != (d47){&D::isSafeFlip})
+            m->registerHook(base+0x2209f0, FunctionScrapper::addressOfNonVirtual((d47){&D::isSafeFlip}));
+
+        if ((c48){&$PlayerObject::isSafeMode} != (d48){&D::isSafeMode})
+            m->registerHook(base+0x2209b0, FunctionScrapper::addressOfNonVirtual((d48){&D::isSafeMode}));
+
+        if ((c49){&$PlayerObject::isSafeSpiderFlip} != (d49){&D::isSafeSpiderFlip})
+            m->registerHook(base+0x221be0, FunctionScrapper::addressOfNonVirtual((d49){&D::isSafeSpiderFlip}));
+
+        if ((c50){&$PlayerObject::levelFlipFinished} != (d50){&D::levelFlipFinished})
+            m->registerHook(base+0x21b060, FunctionScrapper::addressOfNonVirtual((d50){&D::levelFlipFinished}));
+
+        if ((c51){&$PlayerObject::levelFlipping} != (d51){&D::levelFlipping})
+            m->registerHook(base+0x21a510, FunctionScrapper::addressOfNonVirtual((d51){&D::levelFlipping}));
+
+        if ((c52){&$PlayerObject::levelWillFlip} != (d52){&D::levelWillFlip})
+            m->registerHook(base+0x21b020, FunctionScrapper::addressOfNonVirtual((d52){&D::levelWillFlip}));
+
+        if ((c53){&$PlayerObject::loadFromCheckpoint} != (d53){&D::loadFromCheckpoint})
+            m->registerHook(base+0x22e420, FunctionScrapper::addressOfNonVirtual((d53){&D::loadFromCheckpoint}));
+
+        if ((c54){&$PlayerObject::lockPlayer} != (d54){&D::lockPlayer})
+            m->registerHook(base+0x22d680, FunctionScrapper::addressOfNonVirtual((d54){&D::lockPlayer}));
+
+        if ((c55){&$PlayerObject::logValues} != (d55){&D::logValues})
+            m->registerHook(base+0x221220, FunctionScrapper::addressOfNonVirtual((d55){&D::logValues}));
+
+        if ((c56){&$PlayerObject::modeDidChange} != (d56){&D::modeDidChange})
+            m->registerHook(base+0x22bfd0, FunctionScrapper::addressOfNonVirtual((d56){&D::modeDidChange}));
+
+        if ((c57){&$PlayerObject::placeStreakPoint} != (d57){&D::placeStreakPoint})
+            m->registerHook(base+0x21af90, FunctionScrapper::addressOfNonVirtual((d57){&D::placeStreakPoint}));
+
+        if ((c58){&$PlayerObject::playBurstEffect} != (d58){&D::playBurstEffect})
+            m->registerHook(base+0x21c780, FunctionScrapper::addressOfNonVirtual((d58){&D::playBurstEffect}));
+
+        if ((c59){&$PlayerObject::playDeathEffect} != (d59){&D::playDeathEffect})
+            m->registerHook(base+0x225930, FunctionScrapper::addressOfNonVirtual((d59){&D::playDeathEffect}));
+
+        if ((c60){&$PlayerObject::playDynamicSpiderRun} != (d60){&D::playDynamicSpiderRun})
+            m->registerHook(base+0x222ec0, FunctionScrapper::addressOfNonVirtual((d60){&D::playDynamicSpiderRun}));
+
+        if ((c61){&$PlayerObject::playerDestroyed} != (d61){&D::playerDestroyed})
+            m->registerHook(base+0x2256d0, FunctionScrapper::addressOfNonVirtual((d61){&D::playerDestroyed}));
+
+        if ((c62){&$PlayerObject::playerIsFalling} != (d62){&D::playerIsFalling})
+            m->registerHook(base+0x21c730, FunctionScrapper::addressOfNonVirtual((d62){&D::playerIsFalling}));
+
+        if ((c63){&$PlayerObject::playerTeleported} != (d63){&D::playerTeleported})
+            m->registerHook(base+0x22b840, FunctionScrapper::addressOfNonVirtual((d63){&D::playerTeleported}));
+
+        if ((c64){&$PlayerObject::playingEndEffect} != (d64){&D::playingEndEffect})
+            m->registerHook(base+0x22d7e0, FunctionScrapper::addressOfNonVirtual((d64){&D::playingEndEffect}));
+
+        if ((c65){&$PlayerObject::postCollision} != (d65){&D::postCollision})
+            m->registerHook(base+0x21cd10, FunctionScrapper::addressOfNonVirtual((d65){&D::postCollision}));
+
+        if ((c66){&$PlayerObject::preCollision} != (d66){&D::preCollision})
+            m->registerHook(base+0x21ccc0, FunctionScrapper::addressOfNonVirtual((d66){&D::preCollision}));
+
+        if ((c67){&$PlayerObject::preSlopeCollision} != (d67){&D::preSlopeCollision})
+            m->registerHook(base+0x21ec80, FunctionScrapper::addressOfNonVirtual((d67){&D::preSlopeCollision}));
+
+        if ((c68){&$PlayerObject::propellPlayer} != (d68){&D::propellPlayer})
+            m->registerHook(base+0x22d8e0, FunctionScrapper::addressOfNonVirtual((d68){&D::propellPlayer}));
+
+        if ((c69){&$PlayerObject::pushButton} != (d69){&D::pushButton})
+            m->registerHook(base+0x22aa00, FunctionScrapper::addressOfNonVirtual((d69){&D::pushButton}));
+
+        if ((c70){&$PlayerObject::pushDown} != (d70){&D::pushDown})
+            m->registerHook(base+0x22dbd0, FunctionScrapper::addressOfNonVirtual((d70){&D::pushDown}));
+
+        if ((c71){&$PlayerObject::pushPlayer} != (d71){&D::pushPlayer})
+            m->registerHook(base+0x22dbb0, FunctionScrapper::addressOfNonVirtual((d71){&D::pushPlayer}));
+
+        if ((c72){&$PlayerObject::releaseButton} != (d72){&D::releaseButton})
+            m->registerHook(base+0x22b6f0, FunctionScrapper::addressOfNonVirtual((d72){&D::releaseButton}));
+
+        if ((c73){&$PlayerObject::removeAllParticles} != (d73){&D::removeAllParticles})
+            m->registerHook(base+0x218ac0, FunctionScrapper::addressOfNonVirtual((d73){&D::removeAllParticles}));
+
+        if ((c74){&$PlayerObject::removePendingCheckpoint} != (d74){&D::removePendingCheckpoint})
+            m->registerHook(base+0x2237b0, FunctionScrapper::addressOfNonVirtual((d74){&D::removePendingCheckpoint}));
+
+        if ((c75){&$PlayerObject::resetAllParticles} != (d75){&D::resetAllParticles})
+            m->registerHook(base+0x21adb0, FunctionScrapper::addressOfNonVirtual((d75){&D::resetAllParticles}));
+
+        if ((c76){&$PlayerObject::resetCollisionLog} != (d76){&D::resetCollisionLog})
+            m->registerHook(base+0x21cc20, FunctionScrapper::addressOfNonVirtual((d76){&D::resetCollisionLog}));
+
+        if ((c77){&$PlayerObject::resetPlayerIcon} != (d77){&D::resetPlayerIcon})
+            m->registerHook(base+0x22be00, FunctionScrapper::addressOfNonVirtual((d77){&D::resetPlayerIcon}));
+
+        if ((c78){&$PlayerObject::resetStateVariables} != (d78){&D::resetStateVariables})
+            m->registerHook(base+0x223760, FunctionScrapper::addressOfNonVirtual((d78){&D::resetStateVariables}));
+
+        if ((c79){&$PlayerObject::resetStreak} != (d79){&D::resetStreak})
+            m->registerHook(base+0x21ae10, FunctionScrapper::addressOfNonVirtual((d79){&D::resetStreak}));
+
+        if ((c80){&$PlayerObject::ringJump} != (d80){&D::ringJump})
+            m->registerHook(base+0x22abf0, FunctionScrapper::addressOfNonVirtual((d80){&D::ringJump}));
+
+        if ((c81){&$PlayerObject::runBallRotation} != (d81){&D::runBallRotation})
+            m->registerHook(base+0x21ca10, FunctionScrapper::addressOfNonVirtual((d81){&D::runBallRotation}));
+
+        if ((c82){&$PlayerObject::runBallRotation2} != (d82){&D::runBallRotation2})
+            m->registerHook(base+0x21cb10, FunctionScrapper::addressOfNonVirtual((d82){&D::runBallRotation2}));
+
+        if ((c83){&$PlayerObject::runNormalRotation} != (d83){&D::runNormalRotation})
+            m->registerHook(base+0x21c960, FunctionScrapper::addressOfNonVirtual((d83){&D::runNormalRotation}));
+
+        if ((c84){&$PlayerObject::runRotateAction} != (d84){&D::runRotateAction})
+            m->registerHook(base+0x21c570, FunctionScrapper::addressOfNonVirtual((d84){&D::runRotateAction}));
+
+        if ((c85){&$PlayerObject::saveToCheckpoint} != (d85){&D::saveToCheckpoint})
+            m->registerHook(base+0x22e2f0, FunctionScrapper::addressOfNonVirtual((d85){&D::saveToCheckpoint}));
+
+        if ((c86){&$PlayerObject::setSecondColor} != (d86){&D::setSecondColor})
+            m->registerHook(base+0x219610, FunctionScrapper::addressOfNonVirtual((d86){&D::setSecondColor}));
+
+        if ((c87){&$PlayerObject::setupStreak} != (d87){&D::setupStreak})
+            m->registerHook(base+0x218720, FunctionScrapper::addressOfNonVirtual((d87){&D::setupStreak}));
+
+        if ((c88){&$PlayerObject::spawnCircle} != (d88){&D::spawnCircle})
+            m->registerHook(base+0x225480, FunctionScrapper::addressOfNonVirtual((d88){&D::spawnCircle}));
+
+        if ((c89){&$PlayerObject::spawnCircle2} != (d89){&D::spawnCircle2})
+            m->registerHook(base+0x2252a0, FunctionScrapper::addressOfNonVirtual((d89){&D::spawnCircle2}));
+
+        if ((c90){&$PlayerObject::spawnDualCircle} != (d90){&D::spawnDualCircle})
+            m->registerHook(base+0x2255c0, FunctionScrapper::addressOfNonVirtual((d90){&D::spawnDualCircle}));
+
+        if ((c91){&$PlayerObject::spawnFromPlayer} != (d91){&D::spawnFromPlayer})
+            m->registerHook(base+0x22dde0, FunctionScrapper::addressOfNonVirtual((d91){&D::spawnFromPlayer}));
+
+        if ((c92){&$PlayerObject::spawnPortalCircle} != (d92){&D::spawnPortalCircle})
+            m->registerHook(base+0x225350, FunctionScrapper::addressOfNonVirtual((d92){&D::spawnPortalCircle}));
+
+        if ((c93){&$PlayerObject::spawnScaleCircle} != (d93){&D::spawnScaleCircle})
+            m->registerHook(base+0x2251b0, FunctionScrapper::addressOfNonVirtual((d93){&D::spawnScaleCircle}));
+
+        if ((c94){&$PlayerObject::specialGroundHit} != (d94){&D::specialGroundHit})
+            m->registerHook(base+0x22dbf0, FunctionScrapper::addressOfNonVirtual((d94){&D::specialGroundHit}));
+
+        if ((c95){&$PlayerObject::speedDown} != (d95){&D::speedDown})
+            m->registerHook(base+0x22e970, FunctionScrapper::addressOfNonVirtual((d95){&D::speedDown}));
+
+        if ((c96){&$PlayerObject::speedUp} != (d96){&D::speedUp})
+            m->registerHook(base+0x22e950, FunctionScrapper::addressOfNonVirtual((d96){&D::speedUp}));
+
+        if ((c97){&$PlayerObject::spiderTestJump} != (d97){&D::spiderTestJump})
+            m->registerHook(base+0x21b160, FunctionScrapper::addressOfNonVirtual((d97){&D::spiderTestJump}));
+
+        if ((c98){&$PlayerObject::startDashing} != (d98){&D::startDashing})
+            m->registerHook(base+0x221d70, FunctionScrapper::addressOfNonVirtual((d98){&D::startDashing}));
+
+        if ((c99){&$PlayerObject::stopBurstEffect} != (d99){&D::stopBurstEffect})
+            m->registerHook(base+0x22c680, FunctionScrapper::addressOfNonVirtual((d99){&D::stopBurstEffect}));
+
+        if ((c100){&$PlayerObject::stopDashing} != (d100){&D::stopDashing})
+            m->registerHook(base+0x222990, FunctionScrapper::addressOfNonVirtual((d100){&D::stopDashing}));
+
+        if ((c101){&$PlayerObject::stopRotation} != (d101){&D::stopRotation})
+            m->registerHook(base+0x21c830, FunctionScrapper::addressOfNonVirtual((d101){&D::stopRotation}));
+
+        if ((c102){&$PlayerObject::storeCollision} != (d102){&D::storeCollision})
+            m->registerHook(base+0x21cc60, FunctionScrapper::addressOfNonVirtual((d102){&D::storeCollision}));
+
+        if ((c103){&$PlayerObject::switchedToMode} != (d103){&D::switchedToMode})
+            m->registerHook(base+0x22b9a0, FunctionScrapper::addressOfNonVirtual((d103){&D::switchedToMode}));
+
+        if ((c104){&$PlayerObject::testForMoving} != (d104){&D::testForMoving})
+            m->registerHook(base+0x21eb70, FunctionScrapper::addressOfNonVirtual((d104){&D::testForMoving}));
+
+        if ((c105){&$PlayerObject::toggleBirdMode} != (d105){&D::toggleBirdMode})
+            m->registerHook(base+0x224070, FunctionScrapper::addressOfNonVirtual((d105){&D::toggleBirdMode}));
+
+        if ((c106){&$PlayerObject::toggleDartMode} != (d106){&D::toggleDartMode})
+            m->registerHook(base+0x2243f0, FunctionScrapper::addressOfNonVirtual((d106){&D::toggleDartMode}));
+
+        if ((c107){&$PlayerObject::toggleFlyMode} != (d107){&D::toggleFlyMode})
+            m->registerHook(base+0x223820, FunctionScrapper::addressOfNonVirtual((d107){&D::toggleFlyMode}));
+
+        if ((c108){&$PlayerObject::toggleGhostEffect} != (d108){&D::toggleGhostEffect})
+            m->registerHook(base+0x225000, FunctionScrapper::addressOfNonVirtual((d108){&D::toggleGhostEffect}));
+
+        if ((c109){&$PlayerObject::togglePlayerScale} != (d109){&D::togglePlayerScale})
+            m->registerHook(base+0x224bd0, FunctionScrapper::addressOfNonVirtual((d109){&D::togglePlayerScale}));
+
+        if ((c110){&$PlayerObject::toggleRobotMode} != (d110){&D::toggleRobotMode})
+            m->registerHook(base+0x223c70, FunctionScrapper::addressOfNonVirtual((d110){&D::toggleRobotMode}));
+
+        if ((c111){&$PlayerObject::toggleRollMode} != (d111){&D::toggleRollMode})
+            m->registerHook(base+0x223b20, FunctionScrapper::addressOfNonVirtual((d111){&D::toggleRollMode}));
+
+        if ((c112){&$PlayerObject::toggleSpiderMode} != (d112){&D::toggleSpiderMode})
+            m->registerHook(base+0x224830, FunctionScrapper::addressOfNonVirtual((d112){&D::toggleSpiderMode}));
+
+        if ((c113){&$PlayerObject::toggleVisibility} != (d113){&D::toggleVisibility})
+            m->registerHook(base+0x21abf0, FunctionScrapper::addressOfNonVirtual((d113){&D::toggleVisibility}));
+
+        if ((c114){&$PlayerObject::touchedObject} != (d114){&D::touchedObject})
+            m->registerHook(base+0x22e660, FunctionScrapper::addressOfNonVirtual((d114){&D::touchedObject}));
+
+        if ((c115){&$PlayerObject::tryPlaceCheckpoint} != (d115){&D::tryPlaceCheckpoint})
+            m->registerHook(base+0x21a950, FunctionScrapper::addressOfNonVirtual((d115){&D::tryPlaceCheckpoint}));
+
+        if ((c116){&$PlayerObject::updateCheckpointMode} != (d116){&D::updateCheckpointMode})
+            m->registerHook(base+0x218980, FunctionScrapper::addressOfNonVirtual((d116){&D::updateCheckpointMode}));
+
+        if ((c117){&$PlayerObject::updateCheckpointTest} != (d117){&D::updateCheckpointTest})
+            m->registerHook(base+0x21a890, FunctionScrapper::addressOfNonVirtual((d117){&D::updateCheckpointTest}));
+
+        if ((c118){&$PlayerObject::updateCollide} != (d118){&D::updateCollide})
+            m->registerHook(base+0x220f10, FunctionScrapper::addressOfNonVirtual((d118){&D::updateCollide}));
+
+        if ((c119){&$PlayerObject::updateCollideBottom} != (d119){&D::updateCollideBottom})
+            m->registerHook(base+0x221790, FunctionScrapper::addressOfNonVirtual((d119){&D::updateCollideBottom}));
+
+        if ((c120){&$PlayerObject::updateCollideTop} != (d120){&D::updateCollideTop})
+            m->registerHook(base+0x221c20, FunctionScrapper::addressOfNonVirtual((d120){&D::updateCollideTop}));
+
+        if ((c121){&$PlayerObject::updateDashAnimation} != (d121){&D::updateDashAnimation})
+            m->registerHook(base+0x21a570, FunctionScrapper::addressOfNonVirtual((d121){&D::updateDashAnimation}));
+
+        if ((c122){&$PlayerObject::updateDashArt} != (d122){&D::updateDashArt})
+            m->registerHook(base+0x222520, FunctionScrapper::addressOfNonVirtual((d122){&D::updateDashArt}));
+
+        if ((c123){&$PlayerObject::updateGlowColor} != (d123){&D::updateGlowColor})
+            m->registerHook(base+0x22cf10, FunctionScrapper::addressOfNonVirtual((d123){&D::updateGlowColor}));
+
+        if ((c124){&$PlayerObject::updateJump} != (d124){&D::updateJump})
+            m->registerHook(base+0x219680, FunctionScrapper::addressOfNonVirtual((d124){&D::updateJump}));
+
+        if ((c125){&$PlayerObject::updateJumpVariables} != (d125){&D::updateJumpVariables})
+            m->registerHook(base+0x21a740, FunctionScrapper::addressOfNonVirtual((d125){&D::updateJumpVariables}));
+
+        if ((c126){&$PlayerObject::updatePlayerBirdFrame} != (d126){&D::updatePlayerBirdFrame})
+            m->registerHook(base+0x22bfe0, FunctionScrapper::addressOfNonVirtual((d126){&D::updatePlayerBirdFrame}));
+
+        if ((c127){&$PlayerObject::updatePlayerDartFrame} != (d127){&D::updatePlayerDartFrame})
+            m->registerHook(base+0x22c260, FunctionScrapper::addressOfNonVirtual((d127){&D::updatePlayerDartFrame}));
+
+        if ((c128){&$PlayerObject::updatePlayerFrame} != (d128){&D::updatePlayerFrame})
+            m->registerHook(base+0x22c470, FunctionScrapper::addressOfNonVirtual((d128){&D::updatePlayerFrame}));
+
+        if ((c129){&$PlayerObject::updatePlayerGlow} != (d129){&D::updatePlayerGlow})
+            m->registerHook(base+0x22bc50, FunctionScrapper::addressOfNonVirtual((d129){&D::updatePlayerGlow}));
+
+        if ((c130){&$PlayerObject::updatePlayerRobotFrame} != (d130){&D::updatePlayerRobotFrame})
+            m->registerHook(base+0x22d620, FunctionScrapper::addressOfNonVirtual((d130){&D::updatePlayerRobotFrame}));
+
+        if ((c131){&$PlayerObject::updatePlayerRollFrame} != (d131){&D::updatePlayerRollFrame})
+            m->registerHook(base+0x22c6a0, FunctionScrapper::addressOfNonVirtual((d131){&D::updatePlayerRollFrame}));
+
+        if ((c132){&$PlayerObject::updatePlayerScale} != (d132){&D::updatePlayerScale})
+            m->registerHook(base+0x22b8b0, FunctionScrapper::addressOfNonVirtual((d132){&D::updatePlayerScale}));
+
+        if ((c133){&$PlayerObject::updatePlayerShipFrame} != (d133){&D::updatePlayerShipFrame})
+            m->registerHook(base+0x22ba40, FunctionScrapper::addressOfNonVirtual((d133){&D::updatePlayerShipFrame}));
+
+        if ((c134){&$PlayerObject::updatePlayerSpiderFrame} != (d134){&D::updatePlayerSpiderFrame})
+            m->registerHook(base+0x22d650, FunctionScrapper::addressOfNonVirtual((d134){&D::updatePlayerSpiderFrame}));
+
+        if ((c135){&$PlayerObject::updatePlayerSpriteExtra} != (d135){&D::updatePlayerSpriteExtra})
+            m->registerHook(base+0x218440, FunctionScrapper::addressOfNonVirtual((d135){&D::updatePlayerSpriteExtra}));
+
+        if ((c136){&$PlayerObject::updateRobotAnimationSpeed} != (d136){&D::updateRobotAnimationSpeed})
+            m->registerHook(base+0x22df40, FunctionScrapper::addressOfNonVirtual((d136){&D::updateRobotAnimationSpeed}));
+
+        if ((c137){&$PlayerObject::updateRotation} != (d137){&D::updateRotation})
+            m->registerHook(base+0x2214b0, FunctionScrapper::addressOfNonVirtual((d137){&D::updateRotation}));
+
+        if ((c138){&$PlayerObject::updateRotation} != (d138){&D::updateRotation})
+            m->registerHook(base+0x221230, FunctionScrapper::addressOfNonVirtual((d138){&D::updateRotation}));
+
+        if ((c139){&$PlayerObject::updateShipRotation} != (d139){&D::updateShipRotation})
+            m->registerHook(base+0x221310, FunctionScrapper::addressOfNonVirtual((d139){&D::updateShipRotation}));
+
+        if ((c140){&$PlayerObject::updateShipSpriteExtra} != (d140){&D::updateShipSpriteExtra})
+            m->registerHook(base+0x218510, FunctionScrapper::addressOfNonVirtual((d140){&D::updateShipSpriteExtra}));
+
+        if ((c141){&$PlayerObject::updateSlopeRotation} != (d141){&D::updateSlopeRotation})
+            m->registerHook(base+0x221030, FunctionScrapper::addressOfNonVirtual((d141){&D::updateSlopeRotation}));
+
+        if ((c142){&$PlayerObject::updateSlopeYVelocity} != (d142){&D::updateSlopeYVelocity})
+            m->registerHook(base+0x22e920, FunctionScrapper::addressOfNonVirtual((d142){&D::updateSlopeYVelocity}));
+
+        if ((c143){&$PlayerObject::updateSpecial} != (d143){&D::updateSpecial})
+            m->registerHook(base+0x21a790, FunctionScrapper::addressOfNonVirtual((d143){&D::updateSpecial}));
+
+        if ((c144){&$PlayerObject::updateStateVariables} != (d144){&D::updateStateVariables})
+            m->registerHook(base+0x21a770, FunctionScrapper::addressOfNonVirtual((d144){&D::updateStateVariables}));
+
+        if ((c145){&$PlayerObject::updateTimeMod} != (d145){&D::updateTimeMod})
+            m->registerHook(base+0x2185e0, FunctionScrapper::addressOfNonVirtual((d145){&D::updateTimeMod}));
+
+        if ((c146){&$PlayerObject::usingWallLimitedMode} != (d146){&D::usingWallLimitedMode})
+            m->registerHook(base+0x22df00, FunctionScrapper::addressOfNonVirtual((d146){&D::usingWallLimitedMode}));
+
+        if ((c147){&$PlayerObject::yStartDown} != (d147){&D::yStartDown})
+            m->registerHook(base+0x22e9b0, FunctionScrapper::addressOfNonVirtual((d147){&D::yStartDown}));
+
+        if ((c148){&$PlayerObject::yStartUp} != (d148){&D::yStartUp})
+            m->registerHook(base+0x22e990, FunctionScrapper::addressOfNonVirtual((d148){&D::yStartUp}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SimplePlayer : public SimplePlayer, public $CacBase {
+public:
+    ~$SimplePlayer() {
+        endDestructor();
+    }
+    $SimplePlayer() {}
+
+    using r0 = decltype(std::declval<SimplePlayer>().create(std::declval<int>()));
+    using c0 = r0(*)(int);
+    using d0 = r0(*)(int);
+    static r0 create(int p0) {
+        using r0 = decltype(std::declval<SimplePlayer>().create(std::declval<int>()));
+        using f0 = r0(*)(int);
+        return reinterpret_cast<f0>(base+0x1b6140)(p0);
+
+    }
+
+    using r1 = decltype(std::declval<SimplePlayer>().setSecondColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c1 = r1($SimplePlayer::*)(cocos2d::_ccColor3B const&) ;
+    using d1 = r1(D::*)(cocos2d::_ccColor3B const&) ;
+    r1 setSecondColor(cocos2d::_ccColor3B const& p0) {
+        using r1 = decltype(std::declval<SimplePlayer>().setSecondColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f1 = r1(*)(SimplePlayer*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f1>(base+0x1bace0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SimplePlayer>().updateColors());
+    using c2 = r2($SimplePlayer::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 updateColors() {
+        using r2 = decltype(std::declval<SimplePlayer>().updateColors());
+        using f2 = r2(*)(SimplePlayer*);
+        return reinterpret_cast<f2>(base+0x1ba1f0)(this);
+    }
+
+    using r3 = decltype(std::declval<SimplePlayer>().updatePlayerFrame(std::declval<int>(), std::declval<IconType>()));
+    using c3 = r3($SimplePlayer::*)(int, IconType) ;
+    using d3 = r3(D::*)(int, IconType) ;
+    r3 updatePlayerFrame(int p0, IconType p1) {
+        using r3 = decltype(std::declval<SimplePlayer>().updatePlayerFrame(std::declval<int>(), std::declval<IconType>()));
+        using f3 = r3(*)(SimplePlayer*, int, IconType);
+        return reinterpret_cast<f3>(base+0x1b62f0)(this, p0, p1);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SimplePlayer::create} != (d0){&D::create})
+            m->registerHook(base+0x1b6140, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$SimplePlayer::setSecondColor} != (d1){&D::setSecondColor})
+            m->registerHook(base+0x1bace0, FunctionScrapper::addressOfNonVirtual((d1){&D::setSecondColor}));
+
+        if ((c2){&$SimplePlayer::updateColors} != (d2){&D::updateColors})
+            m->registerHook(base+0x1ba1f0, FunctionScrapper::addressOfNonVirtual((d2){&D::updateColors}));
+
+        if ((c3){&$SimplePlayer::updatePlayerFrame} != (d3){&D::updatePlayerFrame})
+            m->registerHook(base+0x1b62f0, FunctionScrapper::addressOfNonVirtual((d3){&D::updatePlayerFrame}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $AnimatedGameObject : public AnimatedGameObject, public $CacBase {
+public:
+    ~$AnimatedGameObject() {
+        endDestructor();
+    }
+    $AnimatedGameObject() {}
+
+    using r0 = decltype(std::declval<AnimatedGameObject>().playAnimation(std::declval<int>()));
+    using c0 = r0($AnimatedGameObject::*)(int) ;
+    using d0 = r0(D::*)(int) ;
+    r0 playAnimation(int p0) {
+        using r0 = decltype(std::declval<AnimatedGameObject>().playAnimation(std::declval<int>()));
+        using f0 = r0(*)(AnimatedGameObject*, int);
+        return reinterpret_cast<f0>(base+0xc93d0)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<AnimatedGameObject>().updateChildSpriteColor(std::declval<cocos2d::_ccColor3B>()));
+    using c1 = r1($AnimatedGameObject::*)(cocos2d::_ccColor3B) ;
+    using d1 = r1(D::*)(cocos2d::_ccColor3B) ;
+    r1 updateChildSpriteColor(cocos2d::_ccColor3B p0) {
+        using r1 = decltype(std::declval<AnimatedGameObject>().updateChildSpriteColor(std::declval<cocos2d::_ccColor3B>()));
+        using f1 = r1(*)(AnimatedGameObject*, cocos2d::_ccColor3B);
+        return reinterpret_cast<f1>(base+0xc8450)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$AnimatedGameObject::playAnimation} != (d0){&D::playAnimation})
+            m->registerHook(base+0xc93d0, FunctionScrapper::addressOfNonVirtual((d0){&D::playAnimation}));
+
+        if ((c1){&$AnimatedGameObject::updateChildSpriteColor} != (d1){&D::updateChildSpriteColor})
+            m->registerHook(base+0xc8450, FunctionScrapper::addressOfNonVirtual((d1){&D::updateChildSpriteColor}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CheckpointObject : public CheckpointObject, public $CacBase {
+public:
+    ~$CheckpointObject() {
+        endDestructor();
+    }
+    $CheckpointObject() {}
+
+    using r0 = decltype(std::declval<CheckpointObject>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<CheckpointObject>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x7e7d0)();
+
+    }
+
+    using r1 = decltype(std::declval<CheckpointObject>().getObject());
+    using c1 = r1($CheckpointObject::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 getObject() {
+        using r1 = decltype(std::declval<CheckpointObject>().getObject());
+        using f1 = r1(*)(CheckpointObject*);
+        return reinterpret_cast<f1>(base+0x7ef50)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CheckpointObject::create} != (d0){&D::create})
+            m->registerHook(base+0x7e7d0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$CheckpointObject::getObject} != (d1){&D::getObject})
+            m->registerHook(base+0x7ef50, FunctionScrapper::addressOfNonVirtual((d1){&D::getObject}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $EffectGameObject : public EffectGameObject, public $CacBase {
+public:
+    ~$EffectGameObject() {
+        endDestructor();
+    }
+    $EffectGameObject() {}
+
+    using r0 = decltype(std::declval<EffectGameObject>().create(std::declval<char const*>()));
+    using c0 = r0(*)(char const*);
+    using d0 = r0(*)(char const*);
+    static r0 create(char const* p0) {
+        using r0 = decltype(std::declval<EffectGameObject>().create(std::declval<char const*>()));
+        using f0 = r0(*)(char const*);
+        return reinterpret_cast<f0>(base+0xc9790)(p0);
+
+    }
+
+    using r1 = decltype(std::declval<EffectGameObject>().getTargetColorIndex());
+    using c1 = r1($EffectGameObject::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 getTargetColorIndex() {
+        using r1 = decltype(std::declval<EffectGameObject>().getTargetColorIndex());
+        using f1 = r1(*)(EffectGameObject*);
+        return reinterpret_cast<f1>(base+0xca1f0)(this);
+    }
+
+    using r2 = decltype(std::declval<EffectGameObject>().triggerObject(std::declval<GJBaseGameLayer*>()));
+    using c2 = r2($EffectGameObject::*)(GJBaseGameLayer*) ;
+    using d2 = r2(D::*)(GJBaseGameLayer*) ;
+    r2 triggerObject(GJBaseGameLayer* p0) {
+        using r2 = decltype(std::declval<EffectGameObject>().triggerObject(std::declval<GJBaseGameLayer*>()));
+        using f2 = r2(*)(EffectGameObject*, GJBaseGameLayer*);
+        return reinterpret_cast<f2>(base+0xc9870)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$EffectGameObject::create} != (d0){&D::create})
+            m->registerHook(base+0xc9790, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$EffectGameObject::getTargetColorIndex} != (d1){&D::getTargetColorIndex})
+            m->registerHook(base+0xca1f0, FunctionScrapper::addressOfNonVirtual((d1){&D::getTargetColorIndex}));
+
+        if ((c2){&$EffectGameObject::triggerObject} != (d2){&D::triggerObject})
+            m->registerHook(base+0xc9870, FunctionScrapper::addressOfNonVirtual((d2){&D::triggerObject}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $EndPortalObject : public EndPortalObject, public $CacBase {
+public:
+    ~$EndPortalObject() {
+        endDestructor();
+    }
+    $EndPortalObject() {}
+
+    using r0 = decltype(std::declval<EndPortalObject>().create());
+    using c0 = r0(*)();
+    using d0 = r0(*)();
+    static r0 create() {
+        using r0 = decltype(std::declval<EndPortalObject>().create());
+        using f0 = r0(*)();
+        return reinterpret_cast<f0>(base+0x1da8f0)();
+
+    }
+
+    using r1 = decltype(std::declval<EndPortalObject>().updateColors(std::declval<cocos2d::_ccColor3B>()));
+    using c1 = r1($EndPortalObject::*)(cocos2d::_ccColor3B) ;
+    using d1 = r1(D::*)(cocos2d::_ccColor3B) ;
+    r1 updateColors(cocos2d::_ccColor3B p0) {
+        using r1 = decltype(std::declval<EndPortalObject>().updateColors(std::declval<cocos2d::_ccColor3B>()));
+        using f1 = r1(*)(EndPortalObject*, cocos2d::_ccColor3B);
+        return reinterpret_cast<f1>(base+0x1dacb0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$EndPortalObject::create} != (d0){&D::create})
+            m->registerHook(base+0x1da8f0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$EndPortalObject::updateColors} != (d1){&D::updateColors})
+            m->registerHook(base+0x1dacb0, FunctionScrapper::addressOfNonVirtual((d1){&D::updateColors}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $LabelGameObject : public LabelGameObject, public $CacBase {
+public:
+    ~$LabelGameObject() {
+        endDestructor();
+    }
+    $LabelGameObject() {}
+
+    using r0 = decltype(std::declval<LabelGameObject>().init());
+    using c0 = r0($LabelGameObject::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 init() {
+        using r0 = decltype(std::declval<LabelGameObject>().init());
+        using f0 = r0(*)(LabelGameObject*);
+        return reinterpret_cast<f0>(base+0x2f5520)(this);
+    }
+
+    using r1 = decltype(std::declval<LabelGameObject>().setObjectColor(std::declval<cocos2d::_ccColor3B const&>()));
+    using c1 = r1($LabelGameObject::*)(cocos2d::_ccColor3B const&) ;
+    using d1 = r1(D::*)(cocos2d::_ccColor3B const&) ;
+    r1 setObjectColor(cocos2d::_ccColor3B const& p0) {
+        using r1 = decltype(std::declval<LabelGameObject>().setObjectColor(std::declval<cocos2d::_ccColor3B const&>()));
+        using f1 = r1(*)(LabelGameObject*, cocos2d::_ccColor3B const&);
+        return reinterpret_cast<f1>(base+0xdbca0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$LabelGameObject::init} != (d0){&D::init})
+            m->registerHook(base+0x2f5520, FunctionScrapper::addressOfNonVirtual((d0){&D::init}));
+
+        if ((c1){&$LabelGameObject::setObjectColor} != (d1){&D::setObjectColor})
+            m->registerHook(base+0xdbca0, FunctionScrapper::addressOfNonVirtual((d1){&D::setObjectColor}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $UndoObject : public UndoObject, public $CacBase {
+public:
+    ~$UndoObject() {
+        endDestructor();
+    }
+    $UndoObject() {}
+
+    using r1 = decltype(std::declval<UndoObject>().create(std::declval<GameObject*>(), std::declval<UndoCommand>()));
+    using c1 = r1(*)(GameObject*, UndoCommand);
+    using d1 = r1(*)(GameObject*, UndoCommand);
+    static r1 create(GameObject* p0, UndoCommand p1) {
+        using r1 = decltype(std::declval<UndoObject>().create(std::declval<GameObject*>(), std::declval<UndoCommand>()));
+        using f1 = r1(*)(GameObject*, UndoCommand);
+        return reinterpret_cast<f1>(base+0x94ea0)(p0, p1);
+
+    }
+
+    using r2 = decltype(std::declval<UndoObject>().createWithArray(std::declval<cocos2d::CCArray*>(), std::declval<UndoCommand>()));
+    using c2 = r2(*)(cocos2d::CCArray*, UndoCommand);
+    using d2 = r2(*)(cocos2d::CCArray*, UndoCommand);
+    static r2 createWithArray(cocos2d::CCArray* p0, UndoCommand p1) {
+        using r2 = decltype(std::declval<UndoObject>().createWithArray(std::declval<cocos2d::CCArray*>(), std::declval<UndoCommand>()));
+        using f2 = r2(*)(cocos2d::CCArray*, UndoCommand);
+        return reinterpret_cast<f2>(base+0x96ee0)(p0, p1);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$UndoObject::create} != (d1){&D::create})
+            m->registerHook(base+0x94ea0, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        if ((c2){&$UndoObject::createWithArray} != (d2){&D::createWithArray})
+            m->registerHook(base+0x96ee0, FunctionScrapper::addressOfNonVirtual((d2){&D::createWithArray}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $PlayerCheckpoint : public PlayerCheckpoint, public $CacBase {
+public:
+    ~$PlayerCheckpoint() {
+        endDestructor();
+    }
+    $PlayerCheckpoint() {}
+
+    using r1 = decltype(std::declval<PlayerCheckpoint>().init());
+    using c1 = r1($PlayerCheckpoint::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<PlayerCheckpoint>().init());
+        using f1 = r1(*)(PlayerCheckpoint*);
+        return reinterpret_cast<f1>(base+0x807a0)(this);
+    }
+
+    using r2 = decltype(std::declval<PlayerCheckpoint>().create());
+    using c2 = r2(*)();
+    using d2 = r2(*)();
+    static r2 create() {
+        using r2 = decltype(std::declval<PlayerCheckpoint>().create());
+        using f2 = r2(*)();
+        return reinterpret_cast<f2>(base+0x7e8c0)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$PlayerCheckpoint::init} != (d1){&D::init})
+            m->registerHook(base+0x807a0, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
+
+        if ((c2){&$PlayerCheckpoint::create} != (d2){&D::create})
+            m->registerHook(base+0x7e8c0, FunctionScrapper::addressOfNonVirtual((d2){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SongInfoObject : public SongInfoObject, public $CacBase {
+public:
+    ~$SongInfoObject() {
+        endDestructor();
+    }
+    $SongInfoObject() {}
+
+    using r1 = decltype(std::declval<SongInfoObject>().encodeWithCoder(std::declval<DS_Dictionary*>()));
+    using c1 = r1($SongInfoObject::*)(DS_Dictionary*) ;
+    using d1 = r1(D::*)(DS_Dictionary*) ;
+    r1 encodeWithCoder(DS_Dictionary* p0) {
+        using r1 = decltype(std::declval<SongInfoObject>().encodeWithCoder(std::declval<DS_Dictionary*>()));
+        using f1 = r1(*)(SongInfoObject*, DS_Dictionary*);
+        return reinterpret_cast<f1>(base+0x2f2c70)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<SongInfoObject>().canEncode());
+    using c2 = r2($SongInfoObject::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 canEncode() {
+        using r2 = decltype(std::declval<SongInfoObject>().canEncode());
+        using f2 = r2(*)(SongInfoObject*);
+        return reinterpret_cast<f2>(base+0x2f2da0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$SongInfoObject::encodeWithCoder} != (d1){&D::encodeWithCoder})
+            m->registerHook(base+0x2f2c70, FunctionScrapper::addressOfVirtual(i, (d1){&D::encodeWithCoder}));
+
+        if ((c2){&$SongInfoObject::canEncode} != (d2){&D::canEncode})
+            m->registerHook(base+0x2f2da0, FunctionScrapper::addressOfVirtual(i, (d2){&D::canEncode}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJGameLevel : public GJGameLevel, public $CacBase {
+public:
+    ~$GJGameLevel() {
+        endDestructor();
+    }
+    $GJGameLevel() {}
+
+    using r1 = decltype(std::declval<GJGameLevel>().encodeWithCoder(std::declval<DS_Dictionary*>()));
+    using c1 = r1($GJGameLevel::*)(DS_Dictionary*) ;
+    using d1 = r1(D::*)(DS_Dictionary*) ;
+    r1 encodeWithCoder(DS_Dictionary* p0) {
+        using r1 = decltype(std::declval<GJGameLevel>().encodeWithCoder(std::declval<DS_Dictionary*>()));
+        using f1 = r1(*)(GJGameLevel*, DS_Dictionary*);
+        return reinterpret_cast<f1>(base+0x2dd1c0)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<GJGameLevel>().canEncode());
+    using c2 = r2($GJGameLevel::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 canEncode() {
+        using r2 = decltype(std::declval<GJGameLevel>().canEncode());
+        using f2 = r2(*)(GJGameLevel*);
+        return reinterpret_cast<f2>(base+0x2ddae0)(this);
+    }
+
+    using r3 = decltype(std::declval<GJGameLevel>().init());
+    using c3 = r3($GJGameLevel::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 init() {
+        using r3 = decltype(std::declval<GJGameLevel>().init());
+        using f3 = r3(*)(GJGameLevel*);
+        return reinterpret_cast<f3>(base+0x2db310)(this);
+    }
+
+    using r4 = decltype(std::declval<GJGameLevel>().create());
+    using c4 = r4(*)();
+    using d4 = r4(*)();
+    static r4 create() {
+        using r4 = decltype(std::declval<GJGameLevel>().create());
+        using f4 = r4(*)();
+        return reinterpret_cast<f4>(base+0x2b83e0)();
+
+    }
+
+    using r5 = decltype(std::declval<GJGameLevel>().getAudioFileName());
+    using c5 = r5($GJGameLevel::*)() ;
+    using d5 = r5(D::*)() ;
+    r5 getAudioFileName() {
+        using r5 = decltype(std::declval<GJGameLevel>().getAudioFileName());
+        using f5 = r5(*)(GJGameLevel*);
+        return reinterpret_cast<f5>(base+0x2dbe70)(this);
+    }
+
+    using r6 = decltype(std::declval<GJGameLevel>().getCoinKey(std::declval<int>()));
+    using c6 = r6($GJGameLevel::*)(int) ;
+    using d6 = r6(D::*)(int) ;
+    r6 getCoinKey(int p0) {
+        using r6 = decltype(std::declval<GJGameLevel>().getCoinKey(std::declval<int>()));
+        using f6 = r6(*)(GJGameLevel*, int);
+        return reinterpret_cast<f6>(base+0x2ce360)(this, p0);
+    }
+
+    using r7 = decltype(std::declval<GJGameLevel>().getLengthKey(std::declval<int>()));
+    using c7 = r7($GJGameLevel::*)(int) ;
+    using d7 = r7(D::*)(int) ;
+    r7 getLengthKey(int p0) {
+        using r7 = decltype(std::declval<GJGameLevel>().getLengthKey(std::declval<int>()));
+        using f7 = r7(*)(GJGameLevel*, int);
+        return reinterpret_cast<f7>(base+0x2dbba0)(this, p0);
+    }
+
+    using r8 = decltype(std::declval<GJGameLevel>().getNormalPercent());
+    using c8 = r8($GJGameLevel::*)() ;
+    using d8 = r8(D::*)() ;
+    r8 getNormalPercent() {
+        using r8 = decltype(std::declval<GJGameLevel>().getNormalPercent());
+        using f8 = r8(*)(GJGameLevel*);
+        return reinterpret_cast<f8>(base+0x2b8b20)(this);
+    }
+
+    using r9 = decltype(std::declval<GJGameLevel>().levelWasAltered());
+    using c9 = r9($GJGameLevel::*)() ;
+    using d9 = r9(D::*)() ;
+    r9 levelWasAltered() {
+        using r9 = decltype(std::declval<GJGameLevel>().levelWasAltered());
+        using f9 = r9(*)(GJGameLevel*);
+        return reinterpret_cast<f9>(base+0x2db530)(this);
+    }
+
+    using r10 = decltype(std::declval<GJGameLevel>().savePercentage(std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<int>(), std::declval<bool>()));
+    using c10 = r10($GJGameLevel::*)(int, bool, int, int, bool) ;
+    using d10 = r10(D::*)(int, bool, int, int, bool) ;
+    r10 savePercentage(int p0, bool p1, int p2, int p3, bool p4) {
+        using r10 = decltype(std::declval<GJGameLevel>().savePercentage(std::declval<int>(), std::declval<bool>(), std::declval<int>(), std::declval<int>(), std::declval<bool>()));
+        using f10 = r10(*)(GJGameLevel*, int, bool, int, int, bool);
+        return reinterpret_cast<f10>(base+0x2db700)(this, p0, p1, p2, p3, p4);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GJGameLevel::encodeWithCoder} != (d1){&D::encodeWithCoder})
+            m->registerHook(base+0x2dd1c0, FunctionScrapper::addressOfVirtual(i, (d1){&D::encodeWithCoder}));
+
+        if ((c2){&$GJGameLevel::canEncode} != (d2){&D::canEncode})
+            m->registerHook(base+0x2ddae0, FunctionScrapper::addressOfVirtual(i, (d2){&D::canEncode}));
+
+        if ((c3){&$GJGameLevel::init} != (d3){&D::init})
+            m->registerHook(base+0x2db310, FunctionScrapper::addressOfVirtual(i, (d3){&D::init}));
+
+        if ((c4){&$GJGameLevel::create} != (d4){&D::create})
+            m->registerHook(base+0x2b83e0, FunctionScrapper::addressOfNonVirtual((d4){&D::create}));
+
+        if ((c5){&$GJGameLevel::getAudioFileName} != (d5){&D::getAudioFileName})
+            m->registerHook(base+0x2dbe70, FunctionScrapper::addressOfNonVirtual((d5){&D::getAudioFileName}));
+
+        if ((c6){&$GJGameLevel::getCoinKey} != (d6){&D::getCoinKey})
+            m->registerHook(base+0x2ce360, FunctionScrapper::addressOfNonVirtual((d6){&D::getCoinKey}));
+
+        if ((c7){&$GJGameLevel::getLengthKey} != (d7){&D::getLengthKey})
+            m->registerHook(base+0x2dbba0, FunctionScrapper::addressOfNonVirtual((d7){&D::getLengthKey}));
+
+        if ((c8){&$GJGameLevel::getNormalPercent} != (d8){&D::getNormalPercent})
+            m->registerHook(base+0x2b8b20, FunctionScrapper::addressOfNonVirtual((d8){&D::getNormalPercent}));
+
+        if ((c9){&$GJGameLevel::levelWasAltered} != (d9){&D::levelWasAltered})
+            m->registerHook(base+0x2db530, FunctionScrapper::addressOfNonVirtual((d9){&D::levelWasAltered}));
+
+        if ((c10){&$GJGameLevel::savePercentage} != (d10){&D::savePercentage})
+            m->registerHook(base+0x2db700, FunctionScrapper::addressOfNonVirtual((d10){&D::savePercentage}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $LevelSettingsObject : public LevelSettingsObject, public $CacBase {
+public:
+    ~$LevelSettingsObject() {
+        endDestructor();
+    }
+    $LevelSettingsObject() {}
+
+    using r1 = decltype(std::declval<LevelSettingsObject>().init());
+    using c1 = r1($LevelSettingsObject::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<LevelSettingsObject>().init());
+        using f1 = r1(*)(LevelSettingsObject*);
+        return reinterpret_cast<f1>(base+0xa5690)(this);
+    }
+
+    using r2 = decltype(std::declval<LevelSettingsObject>().create());
+    using c2 = r2(*)();
+    using d2 = r2(*)();
+    static r2 create() {
+        using r2 = decltype(std::declval<LevelSettingsObject>().create());
+        using f2 = r2(*)();
+        return reinterpret_cast<f2>(base+0x92760)();
+
+    }
+
+    using r3 = decltype(std::declval<LevelSettingsObject>().objectFromDict(std::declval<cocos2d::CCDictionary*>()));
+    using c3 = r3($LevelSettingsObject::*)(cocos2d::CCDictionary*) ;
+    using d3 = r3(D::*)(cocos2d::CCDictionary*) ;
+    r3 objectFromDict(cocos2d::CCDictionary* p0) {
+        using r3 = decltype(std::declval<LevelSettingsObject>().objectFromDict(std::declval<cocos2d::CCDictionary*>()));
+        using f3 = r3(*)(LevelSettingsObject*, cocos2d::CCDictionary*);
+        return reinterpret_cast<f3>(base+0xa5810)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<LevelSettingsObject>().objectFromString(std::declval<gd::string>()));
+    using c4 = r4(*)(gd::string);
+    using d4 = r4(*)(gd::string);
+    static r4 objectFromString(gd::string p0) {
+        using r4 = decltype(std::declval<LevelSettingsObject>().objectFromString(std::declval<gd::string>()));
+        using f4 = r4(*)(gd::string);
+        return reinterpret_cast<f4>(base+0x945a0)(p0);
+
+    }
+
+    using r5 = decltype(std::declval<LevelSettingsObject>().setupColorsFromLegacyMode(std::declval<cocos2d::CCDictionary*>()));
+    using c5 = r5($LevelSettingsObject::*)(cocos2d::CCDictionary*) ;
+    using d5 = r5(D::*)(cocos2d::CCDictionary*) ;
+    r5 setupColorsFromLegacyMode(cocos2d::CCDictionary* p0) {
+        using r5 = decltype(std::declval<LevelSettingsObject>().setupColorsFromLegacyMode(std::declval<cocos2d::CCDictionary*>()));
+        using f5 = r5(*)(LevelSettingsObject*, cocos2d::CCDictionary*);
+        return reinterpret_cast<f5>(base+0xa6a30)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$LevelSettingsObject::init} != (d1){&D::init})
+            m->registerHook(base+0xa5690, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
+
+        if ((c2){&$LevelSettingsObject::create} != (d2){&D::create})
+            m->registerHook(base+0x92760, FunctionScrapper::addressOfNonVirtual((d2){&D::create}));
+
+        if ((c3){&$LevelSettingsObject::objectFromDict} != (d3){&D::objectFromDict})
+            m->registerHook(base+0xa5810, FunctionScrapper::addressOfNonVirtual((d3){&D::objectFromDict}));
+
+        if ((c4){&$LevelSettingsObject::objectFromString} != (d4){&D::objectFromString})
+            m->registerHook(base+0x945a0, FunctionScrapper::addressOfNonVirtual((d4){&D::objectFromString}));
+
+        if ((c5){&$LevelSettingsObject::setupColorsFromLegacyMode} != (d5){&D::setupColorsFromLegacyMode})
+            m->registerHook(base+0xa6a30, FunctionScrapper::addressOfNonVirtual((d5){&D::setupColorsFromLegacyMode}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $UndoCommand : public UndoCommand, public $CacBase {
+public:
+    ~$UndoCommand() {
+        endDestructor();
+    }
+    $UndoCommand() {}
+
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $OBB2D : public OBB2D, public $CacBase {
+public:
+    ~$OBB2D() {
+        endDestructor();
+    }
+    $OBB2D() {}
+
+    using r0 = decltype(std::declval<OBB2D>().calculateWithCenter(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c0 = r0($OBB2D::*)(cocos2d::CCPoint, float, float, float) ;
+    using d0 = r0(D::*)(cocos2d::CCPoint, float, float, float) ;
+    r0 calculateWithCenter(cocos2d::CCPoint p0, float p1, float p2, float p3) {
+        using r0 = decltype(std::declval<OBB2D>().calculateWithCenter(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f0 = r0(*)(OBB2D*, cocos2d::CCPoint, float, float, float);
+        return reinterpret_cast<f0>(base+0x35a9c0)(this, p0, p1, p2, p3);
+    }
+
+    using r1 = decltype(std::declval<OBB2D>().create(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+    using c1 = r1(*)(cocos2d::CCPoint, float, float, float);
+    using d1 = r1(*)(cocos2d::CCPoint, float, float, float);
+    static r1 create(cocos2d::CCPoint p0, float p1, float p2, float p3) {
+        using r1 = decltype(std::declval<OBB2D>().create(std::declval<cocos2d::CCPoint>(), std::declval<float>(), std::declval<float>(), std::declval<float>()));
+        using f1 = r1(*)(cocos2d::CCPoint, float, float, float);
+        return reinterpret_cast<f1>(base+0x35a890)(p0, p1, p2, p3);
+
+    }
+
+    using r2 = decltype(std::declval<OBB2D>().getBoundingRect());
+    using c2 = r2($OBB2D::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 getBoundingRect() {
+        using r2 = decltype(std::declval<OBB2D>().getBoundingRect());
+        using f2 = r2(*)(OBB2D*);
+        return reinterpret_cast<f2>(base+0x35b2b0)(this);
+    }
+
+    using r3 = decltype(std::declval<OBB2D>().overlaps(std::declval<OBB2D*>()));
+    using c3 = r3($OBB2D::*)(OBB2D*) ;
+    using d3 = r3(D::*)(OBB2D*) ;
+    r3 overlaps(OBB2D* p0) {
+        using r3 = decltype(std::declval<OBB2D>().overlaps(std::declval<OBB2D*>()));
+        using f3 = r3(*)(OBB2D*, OBB2D*);
+        return reinterpret_cast<f3>(base+0x35b0a0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<OBB2D>().overlaps1Way(std::declval<OBB2D*>()));
+    using c4 = r4($OBB2D::*)(OBB2D*) ;
+    using d4 = r4(D::*)(OBB2D*) ;
+    r4 overlaps1Way(OBB2D* p0) {
+        using r4 = decltype(std::declval<OBB2D>().overlaps1Way(std::declval<OBB2D*>()));
+        using f4 = r4(*)(OBB2D*, OBB2D*);
+        return reinterpret_cast<f4>(base+0x35b0d0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$OBB2D::calculateWithCenter} != (d0){&D::calculateWithCenter})
+            m->registerHook(base+0x35a9c0, FunctionScrapper::addressOfNonVirtual((d0){&D::calculateWithCenter}));
+
+        if ((c1){&$OBB2D::create} != (d1){&D::create})
+            m->registerHook(base+0x35a890, FunctionScrapper::addressOfNonVirtual((d1){&D::create}));
+
+        if ((c2){&$OBB2D::getBoundingRect} != (d2){&D::getBoundingRect})
+            m->registerHook(base+0x35b2b0, FunctionScrapper::addressOfNonVirtual((d2){&D::getBoundingRect}));
+
+        if ((c3){&$OBB2D::overlaps} != (d3){&D::overlaps})
+            m->registerHook(base+0x35b0a0, FunctionScrapper::addressOfNonVirtual((d3){&D::overlaps}));
+
+        if ((c4){&$OBB2D::overlaps1Way} != (d4){&D::overlaps1Way})
+            m->registerHook(base+0x35b0d0, FunctionScrapper::addressOfNonVirtual((d4){&D::overlaps1Way}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJComment : public GJComment, public $CacBase {
+public:
+    ~$GJComment() {
+        endDestructor();
+    }
+    $GJComment() {}
+
+    using r1 = decltype(std::declval<GJComment>().init());
+    using c1 = r1($GJComment::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<GJComment>().init());
+        using f1 = r1(*)(GJComment*);
+        return reinterpret_cast<f1>(base+0x2dfec0)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GJComment::init} != (d1){&D::init})
+            m->registerHook(base+0x2dfec0, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $TableViewCell : public TableViewCell, public $CacBase {
+public:
+    ~$TableViewCell() {
+        endDestructor();
+    }
+    $TableViewCell() {}
+
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ArtistCell : public ArtistCell, public $CacBase {
+public:
+    ~$ArtistCell() {
+        endDestructor();
+    }
+    $ArtistCell() {}
+
+    using r1 = decltype(std::declval<ArtistCell>().draw());
+    using c1 = r1($ArtistCell::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 draw() {
+        using r1 = decltype(std::declval<ArtistCell>().draw());
+        using f1 = r1(*)(ArtistCell*);
+        return reinterpret_cast<f1>(base+0x11c980)(this);
+    }
+
+    using r2 = decltype(std::declval<ArtistCell>().init());
+    using c2 = r2($ArtistCell::*)() ;
+    using d2 = r2(D::*)() ;
+    r2 init() {
+        using r2 = decltype(std::declval<ArtistCell>().init());
+        using f2 = r2(*)(ArtistCell*);
+        return reinterpret_cast<f2>(base+0x11c7c0)(this);
+    }
+
+    using r3 = decltype(std::declval<ArtistCell>().loadFromObject(std::declval<SongInfoObject*>()));
+    using c3 = r3($ArtistCell::*)(SongInfoObject*) ;
+    using d3 = r3(D::*)(SongInfoObject*) ;
+    r3 loadFromObject(SongInfoObject* p0) {
+        using r3 = decltype(std::declval<ArtistCell>().loadFromObject(std::declval<SongInfoObject*>()));
+        using f3 = r3(*)(ArtistCell*, SongInfoObject*);
+        return reinterpret_cast<f3>(base+0x1118b0)(this, p0);
+    }
+
+    using r4 = decltype(std::declval<ArtistCell>().onNewgrounds(std::declval<cocos2d::CCObject*>()));
+    using c4 = r4($ArtistCell::*)(cocos2d::CCObject*) ;
+    using d4 = r4(D::*)(cocos2d::CCObject*) ;
+    r4 onNewgrounds(cocos2d::CCObject* p0) {
+        using r4 = decltype(std::declval<ArtistCell>().onNewgrounds(std::declval<cocos2d::CCObject*>()));
+        using f4 = r4(*)(ArtistCell*, cocos2d::CCObject*);
+        return reinterpret_cast<f4>(base+0x11c7e0)(this, p0);
+    }
+
+    using r5 = decltype(std::declval<ArtistCell>().updateBGColor(std::declval<int>()));
+    using c5 = r5($ArtistCell::*)(int) ;
+    using d5 = r5(D::*)(int) ;
+    r5 updateBGColor(int p0) {
+        using r5 = decltype(std::declval<ArtistCell>().updateBGColor(std::declval<int>()));
+        using f5 = r5(*)(ArtistCell*, int);
+        return reinterpret_cast<f5>(base+0x110460)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$ArtistCell::draw} != (d1){&D::draw})
+            m->registerHook(base+0x11c980, FunctionScrapper::addressOfNonVirtual((d1){&D::draw}));
+
+        if ((c2){&$ArtistCell::init} != (d2){&D::init})
+            m->registerHook(base+0x11c7c0, FunctionScrapper::addressOfNonVirtual((d2){&D::init}));
+
+        if ((c3){&$ArtistCell::loadFromObject} != (d3){&D::loadFromObject})
+            m->registerHook(base+0x1118b0, FunctionScrapper::addressOfNonVirtual((d3){&D::loadFromObject}));
+
+        if ((c4){&$ArtistCell::onNewgrounds} != (d4){&D::onNewgrounds})
+            m->registerHook(base+0x11c7e0, FunctionScrapper::addressOfNonVirtual((d4){&D::onNewgrounds}));
+
+        if ((c5){&$ArtistCell::updateBGColor} != (d5){&D::updateBGColor})
+            m->registerHook(base+0x110460, FunctionScrapper::addressOfNonVirtual((d5){&D::updateBGColor}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CommentCell : public CommentCell, public $CacBase {
+public:
+    ~$CommentCell() {
+        endDestructor();
+    }
+    $CommentCell() {}
+
+    using r0 = decltype(std::declval<CommentCell>().loadFromComment(std::declval<GJComment*>()));
+    using c0 = r0($CommentCell::*)(GJComment*) ;
+    using d0 = r0(D::*)(GJComment*) ;
+    r0 loadFromComment(GJComment* p0) {
+        using r0 = decltype(std::declval<CommentCell>().loadFromComment(std::declval<GJComment*>()));
+        using f0 = r0(*)(CommentCell*, GJComment*);
+        return reinterpret_cast<f0>(base+0x111c70)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CommentCell::loadFromComment} != (d0){&D::loadFromComment})
+            m->registerHook(base+0x111c70, FunctionScrapper::addressOfNonVirtual((d0){&D::loadFromComment}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CustomSongCell : public CustomSongCell, public $CacBase {
+public:
+    ~$CustomSongCell() {
+        endDestructor();
+    }
+    $CustomSongCell() {}
+
+    using r0 = decltype(std::declval<CustomSongCell>().loadFromObject(std::declval<SongInfoObject*>()));
+    using c0 = r0($CustomSongCell::*)(SongInfoObject*) ;
+    using d0 = r0(D::*)(SongInfoObject*) ;
+    r0 loadFromObject(SongInfoObject* p0) {
+        using r0 = decltype(std::declval<CustomSongCell>().loadFromObject(std::declval<SongInfoObject*>()));
+        using f0 = r0(*)(CustomSongCell*, SongInfoObject*);
+        return reinterpret_cast<f0>(base+0x110220)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CustomSongCell::loadFromObject} != (d0){&D::loadFromObject})
+            m->registerHook(base+0x110220, FunctionScrapper::addressOfNonVirtual((d0){&D::loadFromObject}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $SpawnTriggerAction : public SpawnTriggerAction, public $CacBase {
+public:
+    ~$SpawnTriggerAction() {
+        endDestructor();
+    }
+    $SpawnTriggerAction() {}
+
+    using r0 = decltype(std::declval<SpawnTriggerAction>().createFromString(std::declval<gd::string>()));
+    using c0 = r0(*)(gd::string);
+    using d0 = r0(*)(gd::string);
+    static r0 createFromString(gd::string p0) {
+        using r0 = decltype(std::declval<SpawnTriggerAction>().createFromString(std::declval<gd::string>()));
+        using f0 = r0(*)(gd::string);
+        return reinterpret_cast<f0>(base+0x17bf50)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$SpawnTriggerAction::createFromString} != (d0){&D::createFromString})
+            m->registerHook(base+0x17bf50, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $PulseEffectAction : public PulseEffectAction, public $CacBase {
+public:
+    ~$PulseEffectAction() {
+        endDestructor();
+    }
+    $PulseEffectAction() {}
+
+    using r0 = decltype(std::declval<PulseEffectAction>().createFromString(std::declval<gd::string>()));
+    using c0 = r0(*)(gd::string);
+    using d0 = r0(*)(gd::string);
+    static r0 createFromString(gd::string p0) {
+        using r0 = decltype(std::declval<PulseEffectAction>().createFromString(std::declval<gd::string>()));
+        using f0 = r0(*)(gd::string);
+        return reinterpret_cast<f0>(base+0x179e90)(p0);
+
+    }
+
+    using r1 = decltype(std::declval<PulseEffectAction>().getSaveString());
+    using c1 = r1($PulseEffectAction::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 getSaveString() {
+        using r1 = decltype(std::declval<PulseEffectAction>().getSaveString());
+        using f1 = r1(*)(PulseEffectAction*);
+        return reinterpret_cast<f1>(base+0x17a850)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$PulseEffectAction::createFromString} != (d0){&D::createFromString})
+            m->registerHook(base+0x179e90, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
+
+        if ((c1){&$PulseEffectAction::getSaveString} != (d1){&D::getSaveString})
+            m->registerHook(base+0x17a850, FunctionScrapper::addressOfNonVirtual((d1){&D::getSaveString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ToggleTriggerAction : public ToggleTriggerAction, public $CacBase {
+public:
+    ~$ToggleTriggerAction() {
+        endDestructor();
+    }
+    $ToggleTriggerAction() {}
+
+    using r0 = decltype(std::declval<ToggleTriggerAction>().createFromString(std::declval<gd::string>()));
+    using c0 = r0(*)(gd::string);
+    using d0 = r0(*)(gd::string);
+    static r0 createFromString(gd::string p0) {
+        using r0 = decltype(std::declval<ToggleTriggerAction>().createFromString(std::declval<gd::string>()));
+        using f0 = r0(*)(gd::string);
+        return reinterpret_cast<f0>(base+0x1765e0)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$ToggleTriggerAction::createFromString} != (d0){&D::createFromString})
+            m->registerHook(base+0x1765e0, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $OpacityEffectAction : public OpacityEffectAction, public $CacBase {
+public:
+    ~$OpacityEffectAction() {
+        endDestructor();
+    }
+    $OpacityEffectAction() {}
+
+    using r0 = decltype(std::declval<OpacityEffectAction>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
+    using c0 = r0(*)(float, float, float, int);
+    using d0 = r0(*)(float, float, float, int);
+    static r0 create(float p0, float p1, float p2, int p3) {
+        using r0 = decltype(std::declval<OpacityEffectAction>().create(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
+        using f0 = r0(*)(float, float, float, int);
+        return reinterpret_cast<f0>(base+0x1789f0)(p0, p1, p2, p3);
+
+    }
+
+    using r1 = decltype(std::declval<OpacityEffectAction>().createFromString(std::declval<gd::string>()));
+    using c1 = r1(*)(gd::string);
+    using d1 = r1(*)(gd::string);
+    static r1 createFromString(gd::string p0) {
+        using r1 = decltype(std::declval<OpacityEffectAction>().createFromString(std::declval<gd::string>()));
+        using f1 = r1(*)(gd::string);
+        return reinterpret_cast<f1>(base+0x178c10)(p0);
+
+    }
+
+    using r2 = decltype(std::declval<OpacityEffectAction>().init(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
+    using c2 = r2($OpacityEffectAction::*)(float, float, float, int) ;
+    using d2 = r2(D::*)(float, float, float, int) ;
+    r2 init(float p0, float p1, float p2, int p3) {
+        using r2 = decltype(std::declval<OpacityEffectAction>().init(std::declval<float>(), std::declval<float>(), std::declval<float>(), std::declval<int>()));
+        using f2 = r2(*)(OpacityEffectAction*, float, float, float, int);
+        return reinterpret_cast<f2>(base+0x178b00)(this, p0, p1, p2, p3);
+    }
+
+    using r3 = decltype(std::declval<OpacityEffectAction>().step(std::declval<float>()));
+    using c3 = r3($OpacityEffectAction::*)(float) ;
+    using d3 = r3(D::*)(float) ;
+    r3 step(float p0) {
+        using r3 = decltype(std::declval<OpacityEffectAction>().step(std::declval<float>()));
+        using f3 = r3(*)(OpacityEffectAction*, float);
+        return reinterpret_cast<f3>(base+0x178b90)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$OpacityEffectAction::create} != (d0){&D::create})
+            m->registerHook(base+0x1789f0, FunctionScrapper::addressOfNonVirtual((d0){&D::create}));
+
+        if ((c1){&$OpacityEffectAction::createFromString} != (d1){&D::createFromString})
+            m->registerHook(base+0x178c10, FunctionScrapper::addressOfNonVirtual((d1){&D::createFromString}));
+
+        if ((c2){&$OpacityEffectAction::init} != (d2){&D::init})
+            m->registerHook(base+0x178b00, FunctionScrapper::addressOfNonVirtual((d2){&D::init}));
+
+        if ((c3){&$OpacityEffectAction::step} != (d3){&D::step})
+            m->registerHook(base+0x178b90, FunctionScrapper::addressOfNonVirtual((d3){&D::step}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $TouchToggleAction : public TouchToggleAction, public $CacBase {
+public:
+    ~$TouchToggleAction() {
+        endDestructor();
+    }
+    $TouchToggleAction() {}
+
+    using r0 = decltype(std::declval<TouchToggleAction>().createFromString(std::declval<gd::string>()));
+    using c0 = r0(*)(gd::string);
+    using d0 = r0(*)(gd::string);
+    static r0 createFromString(gd::string p0) {
+        using r0 = decltype(std::declval<TouchToggleAction>().createFromString(std::declval<gd::string>()));
+        using f0 = r0(*)(gd::string);
+        return reinterpret_cast<f0>(base+0x177e10)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$TouchToggleAction::createFromString} != (d0){&D::createFromString})
+            m->registerHook(base+0x177e10, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CollisionTriggerAction : public CollisionTriggerAction, public $CacBase {
+public:
+    ~$CollisionTriggerAction() {
+        endDestructor();
+    }
+    $CollisionTriggerAction() {}
+
+    using r0 = decltype(std::declval<CollisionTriggerAction>().createFromString(std::declval<gd::string>()));
+    using c0 = r0(*)(gd::string);
+    using d0 = r0(*)(gd::string);
+    static r0 createFromString(gd::string p0) {
+        using r0 = decltype(std::declval<CollisionTriggerAction>().createFromString(std::declval<gd::string>()));
+        using f0 = r0(*)(gd::string);
+        return reinterpret_cast<f0>(base+0x176ee0)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CollisionTriggerAction::createFromString} != (d0){&D::createFromString})
+            m->registerHook(base+0x176ee0, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ColorAction : public ColorAction, public $CacBase {
+public:
+    ~$ColorAction() {
+        endDestructor();
+    }
+    $ColorAction() {}
+
+    using r0 = decltype(std::declval<ColorAction>().getSaveString());
+    using c0 = r0($ColorAction::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 getSaveString() {
+        using r0 = decltype(std::declval<ColorAction>().getSaveString());
+        using f0 = r0(*)(ColorAction*);
+        return reinterpret_cast<f0>(base+0x17d080)(this);
+    }
+
+    using r1 = decltype(std::declval<ColorAction>().setupFromDict(std::declval<cocos2d::CCDictionary*>()));
+    using c1 = r1($ColorAction::*)(cocos2d::CCDictionary*) ;
+    using d1 = r1(D::*)(cocos2d::CCDictionary*) ;
+    r1 setupFromDict(cocos2d::CCDictionary* p0) {
+        using r1 = decltype(std::declval<ColorAction>().setupFromDict(std::declval<cocos2d::CCDictionary*>()));
+        using f1 = r1(*)(ColorAction*, cocos2d::CCDictionary*);
+        return reinterpret_cast<f1>(base+0x17f310)(this, p0);
+    }
+
+    using r2 = decltype(std::declval<ColorAction>().setupFromString(std::declval<gd::string>()));
+    using c2 = r2($ColorAction::*)(gd::string) ;
+    using d2 = r2(D::*)(gd::string) ;
+    r2 setupFromString(gd::string p0) {
+        using r2 = decltype(std::declval<ColorAction>().setupFromString(std::declval<gd::string>()));
+        using f2 = r2(*)(ColorAction*, gd::string);
+        return reinterpret_cast<f2>(base+0x17f270)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$ColorAction::getSaveString} != (d0){&D::getSaveString})
+            m->registerHook(base+0x17d080, FunctionScrapper::addressOfNonVirtual((d0){&D::getSaveString}));
+
+        if ((c1){&$ColorAction::setupFromDict} != (d1){&D::setupFromDict})
+            m->registerHook(base+0x17f310, FunctionScrapper::addressOfNonVirtual((d1){&D::setupFromDict}));
+
+        if ((c2){&$ColorAction::setupFromString} != (d2){&D::setupFromString})
+            m->registerHook(base+0x17f270, FunctionScrapper::addressOfNonVirtual((d2){&D::setupFromString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ColorActionSprite : public ColorActionSprite, public $CacBase {
+public:
+    ~$ColorActionSprite() {
+        endDestructor();
+    }
+    $ColorActionSprite() {}
+
+    static void apply() {
+        auto i = new D();
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $ColorChannelSprite : public ColorChannelSprite, public $CacBase {
+public:
+    ~$ColorChannelSprite() {
+        endDestructor();
+    }
+    $ColorChannelSprite() {}
+
+    using r0 = decltype(std::declval<ColorChannelSprite>().updateBlending(std::declval<bool>()));
+    using c0 = r0($ColorChannelSprite::*)(bool) ;
+    using d0 = r0(D::*)(bool) ;
+    r0 updateBlending(bool p0) {
+        using r0 = decltype(std::declval<ColorChannelSprite>().updateBlending(std::declval<bool>()));
+        using f0 = r0(*)(ColorChannelSprite*, bool);
+        return reinterpret_cast<f0>(base+0x16e1d0)(this, p0);
+    }
+
+    using r1 = decltype(std::declval<ColorChannelSprite>().updateCopyLabel(std::declval<int>(), std::declval<bool>()));
+    using c1 = r1($ColorChannelSprite::*)(int, bool) ;
+    using d1 = r1(D::*)(int, bool) ;
+    r1 updateCopyLabel(int p0, bool p1) {
+        using r1 = decltype(std::declval<ColorChannelSprite>().updateCopyLabel(std::declval<int>(), std::declval<bool>()));
+        using f1 = r1(*)(ColorChannelSprite*, int, bool);
+        return reinterpret_cast<f1>(base+0x16ded0)(this, p0, p1);
+    }
+
+    using r2 = decltype(std::declval<ColorChannelSprite>().updateOpacity(std::declval<float>()));
+    using c2 = r2($ColorChannelSprite::*)(float) ;
+    using d2 = r2(D::*)(float) ;
+    r2 updateOpacity(float p0) {
+        using r2 = decltype(std::declval<ColorChannelSprite>().updateOpacity(std::declval<float>()));
+        using f2 = r2(*)(ColorChannelSprite*, float);
+        return reinterpret_cast<f2>(base+0x16e080)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<ColorChannelSprite>().updateValues(std::declval<ColorAction*>()));
+    using c3 = r3($ColorChannelSprite::*)(ColorAction*) ;
+    using d3 = r3(D::*)(ColorAction*) ;
+    r3 updateValues(ColorAction* p0) {
+        using r3 = decltype(std::declval<ColorChannelSprite>().updateValues(std::declval<ColorAction*>()));
+        using f3 = r3(*)(ColorChannelSprite*, ColorAction*);
+        return reinterpret_cast<f3>(base+0x16e2e0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$ColorChannelSprite::updateBlending} != (d0){&D::updateBlending})
+            m->registerHook(base+0x16e1d0, FunctionScrapper::addressOfNonVirtual((d0){&D::updateBlending}));
+
+        if ((c1){&$ColorChannelSprite::updateCopyLabel} != (d1){&D::updateCopyLabel})
+            m->registerHook(base+0x16ded0, FunctionScrapper::addressOfNonVirtual((d1){&D::updateCopyLabel}));
+
+        if ((c2){&$ColorChannelSprite::updateOpacity} != (d2){&D::updateOpacity})
+            m->registerHook(base+0x16e080, FunctionScrapper::addressOfNonVirtual((d2){&D::updateOpacity}));
+
+        if ((c3){&$ColorChannelSprite::updateValues} != (d3){&D::updateValues})
+            m->registerHook(base+0x16e2e0, FunctionScrapper::addressOfNonVirtual((d3){&D::updateValues}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $CountTriggerAction : public CountTriggerAction, public $CacBase {
+public:
+    ~$CountTriggerAction() {
+        endDestructor();
+    }
+    $CountTriggerAction() {}
+
+    using r0 = decltype(std::declval<CountTriggerAction>().createFromString(std::declval<gd::string>()));
+    using c0 = r0(*)(gd::string);
+    using d0 = r0(*)(gd::string);
+    static r0 createFromString(gd::string p0) {
+        using r0 = decltype(std::declval<CountTriggerAction>().createFromString(std::declval<gd::string>()));
+        using f0 = r0(*)(gd::string);
+        return reinterpret_cast<f0>(base+0x1754f0)(p0);
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$CountTriggerAction::createFromString} != (d0){&D::createFromString})
+            m->registerHook(base+0x1754f0, FunctionScrapper::addressOfNonVirtual((d0){&D::createFromString}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJRobotSprite : public GJRobotSprite, public $CacBase {
+public:
+    ~$GJRobotSprite() {
+        endDestructor();
+    }
+    $GJRobotSprite() {}
+
+    using r1 = decltype(std::declval<GJRobotSprite>().init());
+    using c1 = r1($GJRobotSprite::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<GJRobotSprite>().init());
+        using f1 = r1(*)(GJRobotSprite*);
+        return reinterpret_cast<f1>(base+0x34ad50)(this);
+    }
+
+    using r2 = decltype(std::declval<GJRobotSprite>().setOpacity(std::declval<unsigned char>()));
+    using c2 = r2($GJRobotSprite::*)(unsigned char) ;
+    using d2 = r2(D::*)(unsigned char) ;
+    r2 setOpacity(unsigned char p0) {
+        using r2 = decltype(std::declval<GJRobotSprite>().setOpacity(std::declval<unsigned char>()));
+        using f2 = r2(*)(GJRobotSprite*, unsigned char);
+        return reinterpret_cast<f2>(base+0x34bcc0)(this, p0);
+    }
+
+    using r3 = decltype(std::declval<GJRobotSprite>().hideSecondary());
+    using c3 = r3($GJRobotSprite::*)() ;
+    using d3 = r3(D::*)() ;
+    r3 hideSecondary() {
+        using r3 = decltype(std::declval<GJRobotSprite>().hideSecondary());
+        using f3 = r3(*)(GJRobotSprite*);
+        return reinterpret_cast<f3>(base+0x34c3b0)(this);
+    }
+
+    using r4 = decltype(std::declval<GJRobotSprite>().create());
+    using c4 = r4(*)();
+    using d4 = r4(*)();
+    static r4 create() {
+        using r4 = decltype(std::declval<GJRobotSprite>().create());
+        using f4 = r4(*)();
+        return reinterpret_cast<f4>(base+0x34ac00)();
+
+    }
+
+    using r5 = decltype(std::declval<GJRobotSprite>().updateColor02(std::declval<cocos2d::_ccColor3B>()));
+    using c5 = r5($GJRobotSprite::*)(cocos2d::_ccColor3B) ;
+    using d5 = r5(D::*)(cocos2d::_ccColor3B) ;
+    r5 updateColor02(cocos2d::_ccColor3B p0) {
+        using r5 = decltype(std::declval<GJRobotSprite>().updateColor02(std::declval<cocos2d::_ccColor3B>()));
+        using f5 = r5(*)(GJRobotSprite*, cocos2d::_ccColor3B);
+        return reinterpret_cast<f5>(base+0x34bbd0)(this, p0);
+    }
+
+    using r6 = decltype(std::declval<GJRobotSprite>().updateFrame(std::declval<int>()));
+    using c6 = r6($GJRobotSprite::*)(int) ;
+    using d6 = r6(D::*)(int) ;
+    r6 updateFrame(int p0) {
+        using r6 = decltype(std::declval<GJRobotSprite>().updateFrame(std::declval<int>()));
+        using f6 = r6(*)(GJRobotSprite*, int);
+        return reinterpret_cast<f6>(base+0x34bdd0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GJRobotSprite::init} != (d1){&D::init})
+            m->registerHook(base+0x34ad50, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
+
+        if ((c2){&$GJRobotSprite::setOpacity} != (d2){&D::setOpacity})
+            m->registerHook(base+0x34bcc0, FunctionScrapper::addressOfVirtual(i, (d2){&D::setOpacity}));
+
+        if ((c3){&$GJRobotSprite::hideSecondary} != (d3){&D::hideSecondary})
+            m->registerHook(base+0x34c3b0, FunctionScrapper::addressOfVirtual(i, (d3){&D::hideSecondary}));
+
+        if ((c4){&$GJRobotSprite::create} != (d4){&D::create})
+            m->registerHook(base+0x34ac00, FunctionScrapper::addressOfNonVirtual((d4){&D::create}));
+
+        if ((c5){&$GJRobotSprite::updateColor02} != (d5){&D::updateColor02})
+            m->registerHook(base+0x34bbd0, FunctionScrapper::addressOfNonVirtual((d5){&D::updateColor02}));
+
+        if ((c6){&$GJRobotSprite::updateFrame} != (d6){&D::updateFrame})
+            m->registerHook(base+0x34bdd0, FunctionScrapper::addressOfNonVirtual((d6){&D::updateFrame}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $GJSpiderSprite : public GJSpiderSprite, public $CacBase {
+public:
+    ~$GJSpiderSprite() {
+        endDestructor();
+    }
+    $GJSpiderSprite() {}
+
+    using r1 = decltype(std::declval<GJSpiderSprite>().init());
+    using c1 = r1($GJSpiderSprite::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 init() {
+        using r1 = decltype(std::declval<GJSpiderSprite>().init());
+        using f1 = r1(*)(GJSpiderSprite*);
+        return reinterpret_cast<f1>(base+0x34c700)(this);
+    }
+
+    using r2 = decltype(std::declval<GJSpiderSprite>().create());
+    using c2 = r2(*)();
+    using d2 = r2(*)();
+    static r2 create() {
+        using r2 = decltype(std::declval<GJSpiderSprite>().create());
+        using f2 = r2(*)();
+        return reinterpret_cast<f2>(base+0x34c5b0)();
+
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c1){&$GJSpiderSprite::init} != (d1){&D::init})
+            m->registerHook(base+0x34c700, FunctionScrapper::addressOfVirtual(i, (d1){&D::init}));
+
+        if ((c2){&$GJSpiderSprite::create} != (d2){&D::create})
+            m->registerHook(base+0x34c5b0, FunctionScrapper::addressOfNonVirtual((d2){&D::create}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $AchievementCell : public AchievementCell, public $CacBase {
+public:
+    ~$AchievementCell() {
+        endDestructor();
+    }
+    $AchievementCell() {}
+
+    using r0 = decltype(std::declval<AchievementCell>().loadFromDict(std::declval<cocos2d::CCDictionary*>()));
+    using c0 = r0($AchievementCell::*)(cocos2d::CCDictionary*) ;
+    using d0 = r0(D::*)(cocos2d::CCDictionary*) ;
+    r0 loadFromDict(cocos2d::CCDictionary* p0) {
+        using r0 = decltype(std::declval<AchievementCell>().loadFromDict(std::declval<cocos2d::CCDictionary*>()));
+        using f0 = r0(*)(AchievementCell*, cocos2d::CCDictionary*);
+        return reinterpret_cast<f0>(base+0x10eaa0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$AchievementCell::loadFromDict} != (d0){&D::loadFromDict})
+            m->registerHook(base+0x10eaa0, FunctionScrapper::addressOfNonVirtual((d0){&D::loadFromDict}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $AchievementsLayer : public AchievementsLayer, public $CacBase {
+public:
+    ~$AchievementsLayer() {
+        endDestructor();
+    }
+    $AchievementsLayer() {}
+
+    using r0 = decltype(std::declval<AchievementsLayer>().customSetup());
+    using c0 = r0($AchievementsLayer::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 customSetup() {
+        using r0 = decltype(std::declval<AchievementsLayer>().customSetup());
+        using f0 = r0(*)(AchievementsLayer*);
+        return reinterpret_cast<f0>(base+0x1bdea0)(this);
+    }
+
+    using r1 = decltype(std::declval<AchievementsLayer>().loadPage(std::declval<int>()));
+    using c1 = r1($AchievementsLayer::*)(int) ;
+    using d1 = r1(D::*)(int) ;
+    r1 loadPage(int p0) {
+        using r1 = decltype(std::declval<AchievementsLayer>().loadPage(std::declval<int>()));
+        using f1 = r1(*)(AchievementsLayer*, int);
+        return reinterpret_cast<f1>(base+0x1be190)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$AchievementsLayer::customSetup} != (d0){&D::customSetup})
+            m->registerHook(base+0x1bdea0, FunctionScrapper::addressOfNonVirtual((d0){&D::customSetup}));
+
+        if ((c1){&$AchievementsLayer::loadPage} != (d1){&D::loadPage})
+            m->registerHook(base+0x1be190, FunctionScrapper::addressOfNonVirtual((d1){&D::loadPage}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $AchievementManager : public AchievementManager, public $CacBase {
+public:
+    ~$AchievementManager() {
+        endDestructor();
+    }
+    $AchievementManager() {}
+
+    using r0 = decltype(std::declval<AchievementManager>().getAllAchievements());
+    using c0 = r0($AchievementManager::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 getAllAchievements() {
+        using r0 = decltype(std::declval<AchievementManager>().getAllAchievements());
+        using f0 = r0(*)(AchievementManager*);
+        return reinterpret_cast<f0>(base+0x434d60)(this);
+    }
+
+    using r1 = decltype(std::declval<AchievementManager>().sharedState());
+    using c1 = r1($AchievementManager::*)() ;
+    using d1 = r1(D::*)() ;
+    r1 sharedState() {
+        using r1 = decltype(std::declval<AchievementManager>().sharedState());
+        using f1 = r1(*)(AchievementManager*);
+        return reinterpret_cast<f1>(base+0x424420)(this);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$AchievementManager::getAllAchievements} != (d0){&D::getAllAchievements})
+            m->registerHook(base+0x434d60, FunctionScrapper::addressOfNonVirtual((d0){&D::getAllAchievements}));
+
+        if ((c1){&$AchievementManager::sharedState} != (d1){&D::sharedState})
+            m->registerHook(base+0x424420, FunctionScrapper::addressOfNonVirtual((d1){&D::sharedState}));
+
+        // delete i;
+    }
+};
+
+template<class D>
+class $AchievementNotifier : public AchievementNotifier, public $CacBase {
+public:
+    ~$AchievementNotifier() {
+        endDestructor();
+    }
+    $AchievementNotifier() {}
+
+    using r0 = decltype(std::declval<AchievementNotifier>().sharedState());
+    using c0 = r0($AchievementNotifier::*)() ;
+    using d0 = r0(D::*)() ;
+    r0 sharedState() {
+        using r0 = decltype(std::declval<AchievementNotifier>().sharedState());
+        using f0 = r0(*)(AchievementNotifier*);
+        return reinterpret_cast<f0>(base+0x464e00)(this);
+    }
+
+    using r1 = decltype(std::declval<AchievementNotifier>().willSwitchToScene(std::declval<cocos2d::CCScene*>()));
+    using c1 = r1($AchievementNotifier::*)(cocos2d::CCScene*) ;
+    using d1 = r1(D::*)(cocos2d::CCScene*) ;
+    r1 willSwitchToScene(cocos2d::CCScene* p0) {
+        using r1 = decltype(std::declval<AchievementNotifier>().willSwitchToScene(std::declval<cocos2d::CCScene*>()));
+        using f1 = r1(*)(AchievementNotifier*, cocos2d::CCScene*);
+        return reinterpret_cast<f1>(base+0x4650b0)(this, p0);
+    }
+
+    static void apply() {
+        auto i = new D();
+
+        if ((c0){&$AchievementNotifier::sharedState} != (d0){&D::sharedState})
+            m->registerHook(base+0x464e00, FunctionScrapper::addressOfNonVirtual((d0){&D::sharedState}));
+
+        if ((c1){&$AchievementNotifier::willSwitchToScene} != (d1){&D::willSwitchToScene})
+            m->registerHook(base+0x4650b0, FunctionScrapper::addressOfNonVirtual((d1){&D::willSwitchToScene}));
+
+        // delete i;
+    }
+};

@@ -2,18 +2,36 @@ from Shared import *
 
 classes = pickle.load(open(picklepath, "rb"))
 
+# functionBody = """
+#     getReturnOf({cl}, {name}, {defaults}) {cl}::{name}({params}) {const}{{
+# {function}
+#     }}
+# """
+
+# staticBody = """
+#     getReturnOf({cl}, {name}, {defaults}) {cl}::{name}({params}) {const}{{
+# {function}
+#     }}
+# """
+
 functionBody = """
-using f{id} = {type2}(*)({const}{cl}*{params2});
-{type}{cl}::{name}({params}) {const}{{
-    {function}
-}}
+    decltype(std::declval<{cl}>().{name}({defaults})) {cl}::{name}({params}) {const}{{
+{function}
+    }}
 """
 
 staticBody = """
-using f{id} = {type2}(*)({params2});
-{type}{cl}::{name}({params}) {{
-    {function}
-}}
+    decltype(std::declval<{cl}>().{name}({defaults})) {cl}::{name}({params}) {const}{{
+{function}
+    }}
+"""
+
+
+
+returnlessBody = """
+    {cl}::{name}({params}) {const}{{
+{function}
+    }}
 """
 
 out = """// 
@@ -34,14 +52,16 @@ for cl in classes:
         body = functionBody
         if info.static:
             body = staticBody
+        if not info.declare.type: # ctor or dtor
+            body = returnlessBody
+
         out += body.format(
             name = info.declare.name,
-            type = f"{info.declare.type} " if info.declare.type else "",
-            type2 = info.declare.type if info.declare.type else f"{cl.name}*",
             cl = cl.name,
             offset = info.offset, 
             params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
             params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+            defaults = ', '.join(f"std::declval<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
             id = i,
             function = getFunctionImplementation(cl, info, i),
