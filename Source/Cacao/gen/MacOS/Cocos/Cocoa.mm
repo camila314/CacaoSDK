@@ -9,7 +9,6 @@ class cocos2d::CCObject {
     void release() = 0x250ea0;
     void retain() = 0x250ec0;
     void setTag(int) = 0x250f60;
-    void update(float) = 0x32660;
     ~CCObject() = 0x250d90;
 }
 

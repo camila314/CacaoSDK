@@ -13,6 +13,11 @@ class cocos2d::CCKeyboardDelegate {
     volatile cocos2d::CCKeyboardDelegate::CCKeyboardDelegate() {};
 }
 
+class cocos2d::CCMouseDelegate {
+
+    volatile cocos2d::CCMouseDelegate::CCMouseDelegate() {};
+}
+
 class cocos2d::CCIMEDelegate {
     virtual ~CCIMEDelegate() = 0x277670;
     virtual bool attachWithIME() = 0x2776a0;

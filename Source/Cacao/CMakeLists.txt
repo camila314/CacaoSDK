@@ -7,9 +7,14 @@ add_library(Cacao STATIC Source.cpp api/Cacao.cpp)
 
 target_link_libraries(Cacao Core)
 
+file(GLOB_RECURSE "${CACAO_TARGET_PLATFORM}_Sources"
+    ${CMAKE_CURRENT_SOURCE_DIR}/gen/${CACAO_TARGET_PLATFORM}/*.mm
+)
+
+
 add_custom_command(
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Lexer.py ${CACAO_TARGET_PLATFORM} && python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Parser.py ${CACAO_TARGET_PLATFORM}
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/${CACAO_TARGET_PLATFORM}/Entry.mm
+    DEPENDS "${${CACAO_TARGET_PLATFORM}_Sources}"
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/gen/gen.pickle
     COMMENT "Parsing ${CACAO_TARGET_PLATFORM}"
 )

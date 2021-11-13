@@ -11,8 +11,8 @@
 
 #include <Core.hpp>
 // #include <CCMenuItemSpriteExtra.h>
-#include <cocos2dx/cocos2d.h>
-#include <cocos2dext/cocos-ext.h>
+#include <cocos2d.h>
+#include <cocos-ext.h>
 
 
 #define GM (GameManager::sharedState())

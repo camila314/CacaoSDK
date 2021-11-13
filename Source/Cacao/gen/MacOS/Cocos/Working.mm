@@ -101,12 +101,6 @@ class cocos2d::CCDictionary {
 }
 
 class cocos2d::CCDirector {
-    void getScreenBottom() = 0x24b210;
-    void getScreenLeft() = 0x24b220;
-    void getScreenRight() = 0x24b230;
-    void getScreenScaleFactorH() = 0x24b1e0;
-    void getScreenScaleFactorW() = 0x24b1f0;
-    void getScreenTop() = 0x24b200;
     void getTouchDispatcher() = 0x24afa0;
     void getWinSize() = 0x24a0f0;
     void pushScene(cocos2d::CCScene*) = 0x24a620;
