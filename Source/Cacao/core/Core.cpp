@@ -3,13 +3,6 @@
 //
 #include "Core.hpp"
 
-#if defined(__APPLE__)
-    #include <mach-o/dyld.h>    // _dyld_*
-#else
-    #error Not supported, sowwy uwu :(
-#endif
-
-
 namespace Cacao::core {
 
     // Base container implementation

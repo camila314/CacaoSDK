@@ -10,7 +10,7 @@
 #include <iostream>
 
 #include <Core.hpp>
-// #include <CCMenuItemSpriteExtra.h>
+#include <gdstdlib.hpp>
 #include <cocos2d.h>
 #include <cocos-ext.h>
 
