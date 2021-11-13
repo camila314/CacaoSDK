@@ -18,6 +18,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(
     Cacao/
     Cacao/base
+    Cacao/compat
     Cacao/core
     Cacao/include/cocos-headers
     Cacao/include/cocos-headers/cocos2dx

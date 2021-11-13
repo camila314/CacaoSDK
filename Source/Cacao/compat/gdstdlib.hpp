@@ -6,6 +6,7 @@
 
 // my girl recreating the entirety of 10.7 stl
 
+#if defined(__APPLE__)
 namespace gd {
     struct _internal_string {
         unsigned long      m_len;
@@ -426,3 +427,7 @@ namespace gd {
         }
     };
 };
+
+#else 
+namespace gd = std;
+#endif 

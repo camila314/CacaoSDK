@@ -53,3 +53,6 @@ Projects/
 Source/Cacao/gen/parser.out
 Source/Cacao/gen/parsetab.py
 Source/Cacao/gen/gen.pickle
+Source/Cacao/Header.hpp
+Source/Cacao/Interface.hpp
+Source/Cacao/Source.cpp

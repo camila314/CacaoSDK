@@ -3,12 +3,11 @@
 //
 #pragma once 
 
+#include <gdstdlib.hpp>
+
 #if defined(__APPLE__) 
 
-    /**
-     * Need to use the compatibility library for macos
-     */
-    #include <compat/gdstdlib.hpp>
+    
 
     /**
      * Inline asm to directly jump to the appropriate destructor
