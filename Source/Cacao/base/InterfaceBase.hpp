@@ -6,11 +6,12 @@
 #include <Base.hpp>
 #include <MacroBase.hpp>
 #include <PlatformBase.hpp>
-#include <FunctionBase.hpp>
 
 #include <Header.hpp>
 #include <Cacao.hpp>
 #include <Core.hpp>
+
+#include <FunctionBase.hpp>
 
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
@@ -24,16 +25,6 @@ public:
     virtual ~$CacBase() {}
 };
 
-/**
- * Enabling sounds idk really
- */
-#define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
-
-/**
- * Basic way to make a main function without it being a main
- * function, inject is purposed for that
- */
-#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
 /**
  * Get type of a function

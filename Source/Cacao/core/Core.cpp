@@ -108,10 +108,19 @@ namespace Cacao::core {
 
 }
 
+#if defined(__APPLE__)
+    #include <mach-o/dyld.h>
+#elif defined(_MSC_VER) && defined(__WIN32)
+    #include <windows.h>
+#else
+
+#endif
 uintptr_t getBase() {
     #if defined(__APPLE__)
         return _dyld_get_image_vmaddr_slide(0)+0x100000000;
+    #elif defined(_MSC_VER) && defined(__WIN32)
+        return reinterpret_cast<uintptr_t>(GetModuleHandle(0));
     #else
-        #error Not supported, sowwy uwu :(
+
     #endif
 }
