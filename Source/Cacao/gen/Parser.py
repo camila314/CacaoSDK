@@ -187,10 +187,10 @@ def p_member_offsetless(p):
 
 
 # convention implementation
-def p_convention_empty(p):
-    'convention : empty'
-    p[0] = p[1]
-    debugout(p[0:10], "p_convention_empty")
+# def p_convention_empty(p):
+#     'convention : empty'
+#     p[0] = p[1]
+#     debugout(p[0:10], "p_convention_empty")
 
 def p_convention_stdcall(p):
     'convention : STDCALL'
@@ -217,29 +217,53 @@ def p_convention_membercall(p):
 # function implementation
 def p_function_virtual(p):
     'function : VIRTUAL purefunction offset SEMI'
-    f = p[2]
-    #f.convention = p[1]
+    f = p[3-1]
     f.virtual = True
-    f.offset = p[3]
+    f.offset = p[4-1]
     p[0] = f
     debugout(p[0:10], "p_function_virtual")
 
 def p_function_static(p):
     'function : STATIC purefunction offset SEMI'
-    f = p[2]
-    #f.convention = p[1]
+    f = p[3-1]
     f.static = True
-    f.offset = p[3]
+    f.offset = p[4-1]
     p[0] = f
     debugout(p[0:10], "p_function_static")
 
 def p_function_normal(p):
     'function : purefunction offset SEMI'
-    f = p[1]
-    #f.convention = p[1]
-    f.offset = p[2]
+    f = p[2-1]
+    f.offset = p[3-1]
     p[0] = f
     debugout(p[0:10], "p_function_normal")
+
+def p_function_virtualconvention(p):
+    'function : convention VIRTUAL purefunction offset SEMI'
+    f = p[3]
+    f.convention = p[1]
+    f.virtual = True
+    f.offset = p[4]
+    p[0] = f
+    debugout(p[0:10], "p_function_virtualconvention")
+
+def p_function_staticconvention(p):
+    'function : convention STATIC purefunction offset SEMI'
+    f = p[3]
+    f.convention = p[1]
+    f.static = True
+    f.offset = p[4]
+    p[0] = f
+    debugout(p[0:10], "p_function_staticconvention")
+
+def p_function_normalconvention(p):
+    'function : convention purefunction offset SEMI'
+    f = p[2]
+    f.convention = p[1]
+    f.offset = p[3]
+    p[0] = f
+    debugout(p[0:10], "p_function_normalconvention")
+
 
 def p_purefunction_pure(p):
     'purefunction : declaration parameter'

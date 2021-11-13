@@ -49,6 +49,9 @@ for cl in classes:
             continue
         if not isinstance(info, GenFunction):
             continue
+        if sys.argv[1] == "Win32" and "cocos2d" in cl.name:
+            continue
+
         body = functionBody
         if info.static:
             body = staticBody

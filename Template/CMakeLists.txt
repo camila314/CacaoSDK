@@ -17,7 +17,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(
     Cacao/
-    Cacao/api
     Cacao/base
     Cacao/core
     Cacao/include/cocos-headers
@@ -29,6 +28,7 @@ include_directories(
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS")
     include_directories(
+        Cacao/api
         Cacao/include/cocos-headers/cocos2dx/platform/mac
         Cacao/include/cocos-headers/cocos2dx/platform/third_party/mac
         Cacao/include/cocos-headers/cocos2dx/platform/third_party/mac/OGLES

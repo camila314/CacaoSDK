@@ -1,4 +1,3 @@
-
 class cocos2d::CCLayer {
     CCLayer() = 0x2725b0;
     void ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2734d0;
