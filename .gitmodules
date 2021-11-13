@@ -1,3 +1,7 @@
-[submodule "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Source/Cacao/Core/lilac-core"]
-	path = /Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Source/Cacao/Core/lilac-core
+[submodule "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Source/Cacao/core/lilac-core"]
+	path = /Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Source/Cacao/core/lilac-core
 	url = https://github.com/altalk23/core
+
+[submodule "/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Source/Cacao/include/cocos-headers"]
+    path = /Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Source/Cacao/include/cocos-headers
+    url = https://github.com/altalk23/cocos-headers

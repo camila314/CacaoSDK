@@ -25,6 +25,7 @@ class GenFunction:
         self.parameters = []
         self.offset = None
         self.parent = None
+        self.convention = None
     def __repr__(self):
         return f"{self.declare}({self.parameters}) = {self.offset}"
     # def getParameterTypes(self):

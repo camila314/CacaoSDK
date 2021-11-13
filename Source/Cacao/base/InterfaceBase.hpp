@@ -4,20 +4,19 @@
 #pragma once
 
 #include <Base.hpp>
-#include <Core.hpp>
 #include <MacroBase.hpp>
+#include <PlatformBase.hpp>
 #include <FunctionBase.hpp>
 
 #include <Header.hpp>
 #include <Cacao.hpp>
+#include <Core.hpp>
 
 #ifndef CAC_PROJ_NAME
 #define CAC_PROJ_NAME "Default Cacao Project"
 #endif
 
 inline ModContainer* const m = new ModContainer(CAC_PROJ_NAME);
-
-
 
 // Just in case if we ever need to add shared implementations
 class $CacBase {
@@ -31,13 +30,6 @@ public:
 #define $apply(...) void $enable() {m->enable();} static int const _enable = ($enable(), 0)
 
 /**
- * We need a hidden attribute for the hook classes because
- * since they have the same name in different executables their
- * global offset tables can override
- */
-#define hidden __attribute__((visibility("hidden")))
-
-/**
  * Basic way to make a main function without it being a main
  * function, inject is purposed for that
  */
@@ -47,42 +39,6 @@ public:
  * Get type of a function
  */
 #define getReturnOf(Class, Function, ...) decltype(std::declval<Class>().Function(__VA_ARGS__))
-
-/**
- * 
- */
-// template <class F>
-// struct GetReturn {
-//     typedef typename F::something_made_up type;
-
-// };
-
-// template<typename R, typename T, typename ...Ps>
-// struct GetReturn<R(T::*)(Ps...) const> {
-//     using type = R;
-// };
-
-// template<typename R, typename T, typename ...Ps>
-// struct GetReturn<R(T::*)(Ps...)> {
-//     using type = R;
-// };
-
-// template<typename R, typename ...Ps>
-// struct GetReturn<R(*)(Ps...)> {
-//     using type = R;
-// };
-
-
-// template<typename C, typename R, typename T, typename ...Ps>
-// struct GetDerived {
-//     using type = R(D::*)(Ps...);
-// };
-
-// template<typename C, typename R, typename T, typename ...Ps>
-// struct GetStatic {
-//     using type = R(*)(Ps...);
-// };
-
 
 /**
  * Main class implementation, it has the structure

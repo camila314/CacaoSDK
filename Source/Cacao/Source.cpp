@@ -81,20 +81,6 @@ cocos2d::CCObject* cocos2d::CCCopying::copyWithZone(cocos2d::CCZone*) {
     return 0;
 };
 
-cocos2d::CCSize::CCSize(const cocos2d::CCPoint& point) : width(point.x), height(point.y) {};
-
-cocos2d::CCSize& cocos2d::CCSize::operator=(const cocos2d::CCPoint& point) {
-    setSize(point.x, point.y);
-    return *this;
-};
-
-cocos2d::CCPoint::CCPoint(const cocos2d::CCSize& size) : x(size.width), y(size.height) {};
-
-cocos2d::CCPoint& cocos2d::CCPoint::operator=(const cocos2d::CCSize& size) {
-    setPoint(size.width, size.height);
-    return *this;
-};
-
     cocos2d::CCNode::CCNode() {
         using r12 = cocos2d::CCNode*;
         using f12 = r12(*)(cocos2d::CCNode*);

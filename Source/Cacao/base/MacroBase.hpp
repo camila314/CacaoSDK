@@ -1,4 +1,7 @@
-#pragma once
+// 
+// Copyright camila314 & alk1m123 2021. 
+//
+#pragma once 
 
 /**
  * 2 levels of indirection for common operations

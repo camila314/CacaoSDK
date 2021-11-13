@@ -304,7 +304,7 @@ public:
     /**
      * @lua NA
      */
-    inline CCSize(const CCPoint& point);
+    inline CCSize(const CCPoint& point) : width(point.x), height(point.y) {}
     /**
      * @lua NA
      */
@@ -315,7 +315,10 @@ public:
     /**
      * @lua NA
      */
-    inline CCSize& operator= (const CCPoint& point);
+    inline CCSize& operator= (const CCPoint& point) {
+        setSize(point.x, point.y);
+        return *this;
+    }
     /**
      * @lua NA
      */
@@ -354,6 +357,16 @@ public:
         return (fabs(this->width  - target.width)  < FLT_EPSILON) && (fabs(this->height - target.height) < FLT_EPSILON);
     }
 };
+
+// alk cont
+
+CCPoint::CCPoint(const CCSize& size) : x(size.width), y(size.height) {}
+
+CCPoint& CCPoint::operator= (const CCSize& size) {
+    setPoint(size.width, size.height);
+    return *this;
+}
+
 
 /**
  * @js NA

@@ -42,6 +42,7 @@ class CCTextInputNode : cocos2d::CCLayer, cocos2d::CCIMEDelegate, cocos2d::CCTex
     gd::string m_caption; // 0x188
     int m_unknown1;
     bool m_selected; // 0x194
+    bool m_unknown2;
     gd::string m_allowedChars; // 0x198
     float m_maxLabelWidth;
     float m_maxLabelScale;
@@ -53,8 +54,8 @@ class CCTextInputNode : cocos2d::CCLayer, cocos2d::CCIMEDelegate, cocos2d::CCTex
     TextInputDelegate* m_delegate; // TextInputDelegate vtable
     int m_maxLabelLength;
     cocos2d::CCLabelBMFont* m_placeholderLabel;
-    bool m_unknown2;
     bool m_unknown3;
+    bool m_usePasswordChar;
     bool m_forceOffset;
 }
 

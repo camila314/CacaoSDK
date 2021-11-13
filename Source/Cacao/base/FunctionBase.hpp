@@ -1,4 +1,7 @@
-#pragma once
+// 
+// Copyright camila314 & alk1m123 2021. 
+//
+#pragma once 
 
 /**
  * Adapted from https://gist.github.com/altalk23/29b97969e9f0624f783b673f6c1cd279
@@ -6,6 +9,7 @@
 
 #include <cstdlib>
 #include <stddef.h>
+
 #include <MacroBase.hpp>
 
 #if ((ULONG_MAX) == (UINT_MAX))     // 32 bit
@@ -170,3 +174,18 @@ protected:
         &FunctionScrapper::vfunction
     };
 };
+
+/**
+ * Cleanup
+ */
+#undef NEST1
+#undef NEST2
+#undef NEST3
+#undef METHOD_DEFINE
+#undef TABLE_DEFINE
+#undef VMETHOD_DEFINE
+#undef VTABLE_DEFINE
+#undef METHOD_SET
+#undef TABLE_SET
+#undef VMETHOD_SET
+#undef VTABLE_SET

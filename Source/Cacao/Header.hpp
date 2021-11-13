@@ -1258,6 +1258,7 @@ public:
     gd::string m_caption;
     int m_unknown1;
     bool m_selected;
+    bool m_unknown2;
     gd::string m_allowedChars;
     float m_maxLabelWidth;
     float m_maxLabelScale;
@@ -1269,8 +1270,8 @@ public:
     TextInputDelegate* m_delegate;
     int m_maxLabelLength;
     cocos2d::CCLabelBMFont* m_placeholderLabel;
-    bool m_unknown2;
     bool m_unknown3;
+    bool m_usePasswordChar;
     bool m_forceOffset;
 };
 
