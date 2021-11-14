@@ -11,7 +11,7 @@ add_library(Cacao STATIC
 target_link_libraries(Cacao Core)
 
 file(GLOB_RECURSE "${CACAO_TARGET_PLATFORM}_Sources"
-    ${CMAKE_CURRENT_SOURCE_DIR}/gen/${CACAO_TARGET_PLATFORM}/*.mm
+    ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/*.mm
 )
 
 add_custom_command(

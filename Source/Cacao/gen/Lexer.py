@@ -228,7 +228,7 @@ def setEntry(f):
 #         # raise ValueError("EOF when parsing")
 #     return tt
 
-setEntry(os.path.join(os.path.dirname(__file__), f"{sys.argv[1]}/Entry.mm"))
+setEntry(os.path.join(os.path.dirname(__file__), f"data/Entry.mm"))
 lexer.input(open(currentfile,"r").read())
 while True:
     t = lexer.token()
