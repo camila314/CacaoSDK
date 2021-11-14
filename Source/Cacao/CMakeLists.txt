@@ -3,9 +3,10 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(core)
 
-add_library(Cacao STATIC Source.cpp 
-    # api/Cacao.cpp
-    )
+add_library(Cacao STATIC 
+    Source.cpp 
+    api/Cacao.cpp
+)
 
 target_link_libraries(Cacao Core)
 

@@ -5,3 +5,10 @@
 [submodule "Source/Cacao/include/cocos-headers"]
 	path = Source/Cacao/include/cocos-headers
 	url = https://github.com/altalk23/cocos-headers
+
+[submodule "Source/Cacao/gen/data"]
+    path = Source/Cacao/gen/data
+    url = https://github.com/altalk23/CacaoData
+[submodule "Source/Source/Cacao/gen/data"]
+	path = Source/Source/Cacao/gen/data
+	url = https://github.com/altalk23/CacaoData

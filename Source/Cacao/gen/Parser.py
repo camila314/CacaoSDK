@@ -293,10 +293,32 @@ def p_purefunction_returnless(p):
 
 
 # offset implementation
-def p_offset_offset(p):
-    'offset : ASSIGN ADDRESS'
-    p[0] = p[2]
-    debugout(p[0:10], "p_offset_offset")
+def p_offset_1(p):
+    'offset : ASSIGN number'
+    p[0] = (p[2], 0, 0)
+    debugout(p[0:10], "p_offset_1")
+
+def p_offset_2(p):
+    'offset : ASSIGN number COMMA number'
+    p[0] = (p[2], p[4], 0)
+    debugout(p[0:10], "p_offset_2")
+
+def p_offset_3(p):
+    'offset : ASSIGN number COMMA number COMMA number'
+    p[0] = (p[2], p[4], p[5])
+    debugout(p[0:10], "p_offset_3")
+
+
+# number implementation
+def p_number_number(p):
+    'number : ADDRESS'
+    p[0] = p[1]
+    debugout(p[0:10], "p_number_number")
+
+def p_number_empty(p):
+    'number : empty'
+    p[0] = 0
+    debugout(p[0:10], "p_number_empty")
 
 
 

@@ -19,28 +19,22 @@ public:
 """
 
 build_body1 = """
-    using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
-    using c{id} = r{id}(${cl}::*)({params3}) {const};
-    using d{id} = r{id}(D::*)({params3}) {const};
-    r{id} {name}({params}) {const}{{
+    getReturnOf({cl}, {name}, {defaults})
+    {name}({params}) {const}{{
 {function}
     }}
 """
 
 build_body1_virtual = """
-    using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
-    using c{id} = r{id}(${cl}::*)({params3}) {const};
-    using d{id} = r{id}(D::*)({params3}) {const};
-    r{id} {name}({params}) {const}{{
+    getReturnOf({cl}, {name}, {defaults})
+    {name}({params}) {const}{{
 {function}
     }}
 """
 
 build_body1_static = """
-    using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
-    using c{id} = r{id}(*)({params3});
-    using d{id} = r{id}(*)({params3});
-    static r{id} {name}({params}) {const}{{
+    getReturnOf({cl}, {name}, {defaults})
+    static {name}({params}) {const}{{
 {function}
     }}
 """
@@ -79,16 +73,25 @@ build_body2_start = """
     
 
 build_body2_body = """
+        using r{id} = getReturnOf({cl}, {name}, {defaults});
+        using c{id} = r{id}(${cl}::*)({params}) {const};
+        using d{id} = r{id}(D::*)({params}) {const};
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
             m->registerHook(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_static = """
+        using r{id} = getReturnOf({cl}, {name}, {defaults});
+        using c{id} = r{id}(*)({params});
+        using d{id} = r{id}(*)({params});
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
             m->registerHook(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_virtual = """
+        using r{id} = getReturnOf({cl}, {name}, {defaults});
+        using c{id} = r{id}(${cl}::*)({params}) {const};
+        using d{id} = r{id}(D::*)({params}) {const};
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
             m->registerHook(base+{offset}, FunctionScrapper::addressOfVirtual(i, (d{id}){{&D::{name}}}));
 """
@@ -104,6 +107,8 @@ out = """//
 //
 #pragma once
 #include <InterfaceBase.hpp>
+#define dl decltype
+#define dv std::declval
 """
 for cl in classes:
     if "cocos2d" in cl.name:
@@ -126,14 +131,13 @@ for cl in classes:
             name = info.declare.name,
             type = info.declare.type,
             cl = cl.name,
-            offset = info.offset, 
+            offset = info.getOffset(platform), 
             params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
             params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-            params3 = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-            const = "const " if info.const else "",
             id = i,
             function = getFunctionImplementation(cl, info, i),
-            defaults = ', '.join(f"std::declval<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
+            defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
+            const = "const " if info.const else "",
         )
 
     out += build_body2_start.format(cl=cl.name)
@@ -150,15 +154,20 @@ for cl in classes:
             name = info.declare.name,
             type = info.declare.type,
             cl = cl.name,
-            offset = info.offset, 
+            offset = info.getOffset(platform), 
             params = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
             id = i,
+            defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
         )
 
     out += build_body2_end
     out += build_end
 
+out += """
+#undef dl
+#undef dv
+"""
 
 with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "w") as f:
     f.write(out)

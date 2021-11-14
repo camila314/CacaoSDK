@@ -27,11 +27,6 @@ public:
 
 
 /**
- * Get type of a function
- */
-#define getReturnOf(Class, Function, ...) decltype(std::declval<Class>().Function(__VA_ARGS__))
-
-/**
  * Main class implementation, it has the structure
  * 
  * class __attribute__(("hidden")) $hook0: public $MenuLayer<$hook0> {

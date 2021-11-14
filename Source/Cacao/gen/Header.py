@@ -48,12 +48,12 @@ for cl in classes:
             )
         elif isinstance(info, str):
             body += "    " + info + "\n"
-        elif info.offset:
+        elif info.getOffset(platform):
             body += offsetBody.format(
                 func = "STRUCTPARAM" if info.declare.type in ["GameModes", "LevelDifficulty"] else "CLASSPARAM",
                 type = info.declare.type,
                 name = info.declare.name.replace('m_', ''),
-                offset = info.offset,
+                offset = info.getOffset(platform),
             )
         else:
             body += memberBody.format(

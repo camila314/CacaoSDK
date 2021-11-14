@@ -11,3 +11,8 @@
 
 #define STR_(...) #__VA_ARGS__
 #define STR(...) STR_(__VA_ARGS__)
+
+/**
+ * Get type of a function
+ */
+#define getReturnOf(Class, Function, ...) decltype(std::declval<Class>().Function(__VA_ARGS__))

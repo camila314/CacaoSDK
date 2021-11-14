@@ -2,6 +2,8 @@ import pickle
 import os
 import sys
 
+
+
 class GenDeclaration:
     def __init__(self):
         self.type = None
@@ -29,6 +31,15 @@ class GenFunction:
         self.convention = None
     def __repr__(self):
         return f"{self.declare}({self.parameters}) = {self.offset}"
+    def getOffset(self, t):
+        if self.offset is None:
+            return None
+        if t == "MacOS":
+            return self.offset[0]
+        if t == "Win32":
+            return self.offset[1]
+        if t == "iOS":
+            return self.offset[2]
     # def getParameterTypes(self):
     #     ', '.join(p.getType(i) for i, p in enumerate(self.parameters))
     # def getParameterNames(self):
@@ -43,6 +54,15 @@ class GenMember:
         self.offset = None
     def __repr__(self):
         return f"{self.declare} = {self.offset}"
+    def getOffset(self, t):
+        if self.offset is None:
+            return None
+        if t == "MacOS":
+            return self.offset[0]
+        if t == "Win32":
+            return self.offset[1]
+        if t == "iOS":
+            return self.offset[2]
 
 class GenClass:
     def __init__(self):
@@ -53,12 +73,13 @@ class GenClass:
         return self.name + ": " + ', '.join(self.base) + "\n" + '\n'.join(repr(r) for r in self.info)
 
 picklepath = os.path.join(os.path.dirname(__file__), "gen.pickle")
+platform = sys.argv[1]
 
-functionBody = """        using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
+functionBody = """        using r{id} = getReturnOf({cl}, {name}, {defaults});
         using f{id} = r{id}(*)({const}{cl}*{params2});
         return reinterpret_cast<f{id}>(base+{offset})(this{params});"""
 
-staticBody = """        using r{id} = decltype(std::declval<{cl}>().{name}({defaults}));
+staticBody = """        using r{id} = getReturnOf({cl}, {name}, {defaults});
         using f{id} = r{id}(*)({params2});
         return reinterpret_cast<f{id}>(base+{offset})({params});
 """
@@ -71,7 +92,7 @@ def getFunctionImplementation(cl, info, i):
     if not isinstance(info, GenFunction):
         return ""
     if "~" in info.declare.name:
-        return f"        jumpDestructor({info.offset})";
+        return f"        jumpDestructor({info.getOffset(platform)})";
     body = functionBody
     if info.static:
         body = staticBody
@@ -79,11 +100,11 @@ def getFunctionImplementation(cl, info, i):
         body = returnlessBody
     return body.format(
         id = i,
-        offset = info.offset, 
+        offset = info.getOffset(platform), 
         params = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
         name = info.declare.name,
         cl = cl.name,
         params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-        defaults = ', '.join(f"std::declval<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
+        defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
         const = "const " if info.const else "",
     )
