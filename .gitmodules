@@ -9,6 +9,3 @@
 [submodule "Source/Cacao/gen/data"]
     path = Source/Cacao/gen/data
     url = https://github.com/altalk23/CacaoData
-[submodule "Source/Source/Cacao/gen/data"]
-	path = Source/Source/Cacao/gen/data
-	url = https://github.com/altalk23/CacaoData
