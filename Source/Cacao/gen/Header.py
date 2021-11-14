@@ -31,7 +31,30 @@ for cl in classes:
         continue
     out += f"class {cl.name};\n"
 
-for cl in classes:
+
+# i hate that this works
+def queued(classes):
+    seen = set()
+    que = []
+    for cl in classes:
+        for b in cl.base:
+            if "cocos2d" not in b and b not in seen:
+                que.append(cl)
+                break
+        else:
+            seen.add(cl)
+            yield cl
+            for q in que.copy():
+                if cl.name in q.base:
+                    yield q
+                    que.remove(q)
+    for cl in que:
+        yield cl
+            
+
+
+
+for cl in queued(classes):
     if "cocos2d" in cl.name:
         continue
     body = ""
