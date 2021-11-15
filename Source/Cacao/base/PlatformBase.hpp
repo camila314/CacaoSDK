@@ -42,7 +42,7 @@
     #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
                                                            
 
-#elif defined(_MSC_VER) && defined(__WIN32) 
+#elif defined(_MSC_VER) && defined(_WIN32) 
     #pragma warning( disable : 4731 ) // pop ebp warning
 
     /**

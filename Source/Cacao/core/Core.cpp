@@ -29,7 +29,7 @@ namespace Cacao::core {
         m_byteCount = bytec;
 
         // read the original to the buffer
-        char buf[m_byteCount];
+        char* buf = new char[m_byteCount];
         // readPM(address, byteCount, reinterpret_cast<char*>(&buf));
 
         // set bytes
@@ -47,6 +47,7 @@ namespace Cacao::core {
 
     MemoryContainer::~MemoryContainer() {
         CoreLog("Bye from memory, %p", address)
+        free(m_originalBytes);
     }
 
     HookContainer::HookContainer(uintptr_t address, func_t function) {
@@ -110,7 +111,7 @@ namespace Cacao::core {
 
 #if defined(__APPLE__)
     #include <mach-o/dyld.h>
-#elif defined(_MSC_VER) && defined(__WIN32)
+#elif defined(_MSC_VER) && defined(_WIN32)
     #include <windows.h>
 #else
 
@@ -118,7 +119,7 @@ namespace Cacao::core {
 uintptr_t getBase() {
     #if defined(__APPLE__)
         return _dyld_get_image_vmaddr_slide(0)+0x100000000;
-    #elif defined(_MSC_VER) && defined(__WIN32)
+    #elif defined(_MSC_VER) && defined(_WIN32)
         return reinterpret_cast<uintptr_t>(GetModuleHandle(0));
     #else
 
