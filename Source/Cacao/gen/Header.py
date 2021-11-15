@@ -32,26 +32,28 @@ for cl in classes:
     out += f"class {cl.name};\n"
 
 
+def definable(cl, seen):
+    for b in cl.base:
+        if "cocos2d" not in b and b not in seen:
+            return False
+    return True
+
 # i hate that this works
 def queued(classes):
     seen = set()
     que = []
     for cl in classes:
-        for b in cl.base:
-            if "cocos2d" not in b and b not in seen:
-                que.append(cl)
-                break
-        else:
-            seen.add(cl)
+        if definable(cl, seen):
+            seen.add(cl.name)
             yield cl
-            for q in que.copy():
-                if cl.name in q.base:
-                    yield q
-                    que.remove(q)
-    for cl in que:
-        yield cl
-            
+        else:
+            que.append(cl)
 
+        for q in que.copy():
+            if definable(q, seen):
+                que.remove(q)
+                seen.add(q.name)
+                yield q
 
 
 for cl in queued(classes):
