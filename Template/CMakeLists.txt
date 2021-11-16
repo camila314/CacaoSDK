@@ -20,6 +20,7 @@ include_directories(
     Cacao/base
     Cacao/compat
     Cacao/core
+    Cacao/core/lilac-core/include
     Cacao/include/cocos-headers
     Cacao/include/cocos-headers/cocos2dx
     Cacao/include/cocos-headers/cocos2dx/include
