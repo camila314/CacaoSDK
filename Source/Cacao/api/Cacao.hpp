@@ -85,10 +85,10 @@ namespace Cacao {
         return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
     }
 
-    // cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay);
-    // cocos2d::CCPoint relativePosition(double x, double y);
-    // cocos2d::CCPoint addedPosition(double x, double y);
-    // cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
+    cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay);
+    cocos2d::CCPoint relativePosition(double x, double y);
+    cocos2d::CCPoint addedPosition(double x, double y);
+    cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
     // CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, SEL_MenuHandler callback);
     // void addGDObject(char const* name, int id);

@@ -6,6 +6,7 @@ add_subdirectory(core)
 add_library(Cacao SHARED 
     Source.cpp 
     api/Cacao.cpp
+    api/HandlerFixes.cpp
 )
 
 target_link_libraries(Cacao Core)
