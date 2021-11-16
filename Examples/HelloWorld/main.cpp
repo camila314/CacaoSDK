@@ -1,4 +1,4 @@
-#define CAC_PROJ_NAME "HelloWorld"
+#define PROJECT_NAME "HelloWorld"
 #include <Cacao>
 #include "custom-layer.hpp"
 

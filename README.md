@@ -53,9 +53,9 @@ public:
 } MyEditorUIHook;
 ```
 
-If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The function needs to be declared before the `$apply` however. The variable "m" is reserved for the mod container that is automatically created by Cacao. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `CAC_PROJ_NAME` with the name. \*\*Make sure you do this before you include Cacao.
+If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The function needs to be declared before the `$apply` however. The variable "m" is reserved for the mod container that is automatically created by Cacao. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `PROJECT_NAME` with the name. \*\*Make sure you do this before you include Cacao.
 ```cpp
-#define CAC_PROJ_NAME "My first mod"
+#define PROJECT_NAME "My first mod"
 #include <Cacao>
 #include <iostream>
 
@@ -72,83 +72,7 @@ void inject() {
 }
 ```
 
-If theres a function/class you want to be added to the Cacao catalog just create an issue or tell me on discord.
-
-### GDML
-
-Cacao comes with a memory management and hooking library, GDML. GDML comes with one main class, `ModContainer`. Usually there is one container per program, but multiple mod containers are useful if you need to enable/disable multiple different mods at once, for example a mod menu. A `ModContainer` instance can be created like this:
-
-```cpp
-auto m = new ModContainer("My mod container");
-```
-
-`ModContainer` has one static method, which is `containerByName`. This will simply iterate through all created containers until it finds one with a matching name. If none are found, it will throw a `ModNotFoundException` exception. `containerByName` accepts any parameter than can be converted into a string. An example:
-
-```cpp
-ModContainer::containerByName("My mod container").disable();
-
-std::string name("My mod container");
-ModContainer::containerByName(name).enable();
-```
-
-In order to create memory patches and hooks, there are 2 methods for you. `ModContainer::registerWrite` and `ModContainer::registerHook`. Here is how to use `registerWrite`:
-
-```cpp
-    int64_t base = getBase(); // GDML base address function
-    m->registerWrite(base+0x123456, 4, "\x90\x90\x90\x90")
-```
-
-With the above example, once enabled, the program will write the 4 bytes `90909090` into the address `base+0x123456`.
-
-For `registerHook`, it is also easy to use:
-
-```cpp
-    int64_t base = getBase(); // GDML base address function
-    m->registerHook(base+0x543210, myHook);
-```
-
-You'll notice that in this snippet, we don't save the original function into a seperate variable. This is mainly for ease and to avoid having to define a bunch of function pointers to put them in. If you do, however, want to save the original function, you can use this:
-
-```cpp
-func_t orig = m->getOriginal(base+0x543210);
-```
-
-The `getOriginal` function by default returns a type `func_t` (aka `void (*)()`). If you want to quickly cast it into the same type as the hook, you can use the `FCAST` macro provided. Full code example:
-
-```cpp
-#include <Cacao.hpp>
-ModContainer* m;
-
-void hook(int param1, char param2) {
-    // do stuff here
-    func_t orig = m->getOriginal(getBase()+0x314159);
-    return FCAST(hook, orig)(param1, param2);
-}
-
-void inject() {
-    m = new ModContainer("test");
-    m->registerHookEnable(getBase()+0x314159, hook);
-}
-```
-
-There is actually a more visually pleasing way of calling the original function using the macro `ORIG`. This macro only works if the ModContainer instance is named `m`. Here is an example:
-
-```cpp
-#include <Cacao.hpp>
-ModContainer* m;
-
-int cool(void* param1, char* param2) {
-    int ret_value = ORIG(cool, 0x314159)(param1, param2);
-    return ret_value * 2;
-}
-
-void inject() {
-    m = new ModContainer("test");
-    m->registerHookEnable(getBase()+0x314159, hook);
-}
-```
-
-Instead of using `int main`, we are using `void inject`. The inject function is what is called when you inject the dylib file into gd. `$apply` macro calls the `enable` method for us so we don't need to. There exists a `disable` function as well, which undoes all of the hooks and patches.
+If there's a function, class, or member you want to be added to the Cacao catalog consider creating a pull request on [CacaoData](https://github.com/altalk23/CacaoData/).
 
 ### Cacao
 

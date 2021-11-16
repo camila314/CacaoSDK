@@ -82,7 +82,7 @@ if (( $# + $OPTIND > 1 )); then
 		echo "Copying files"
 
 		touch "$copypath/main.cpp"
-		echo "#define CAC_PROJ_NAME \"$projname\"" >> "$copypath/main.cpp"
+		echo "#define PROJECT_NAME \"$projname\"" >> "$copypath/main.cpp"
 		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
         fix_link

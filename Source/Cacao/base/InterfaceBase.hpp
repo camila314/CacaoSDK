@@ -13,11 +13,15 @@
 
 #include <FunctionBase.hpp>
 
-#ifndef CAC_PROJ_NAME
-#define CAC_PROJ_NAME "Default Cacao Project"
+#ifdef CAC_PROJ_NAME
+#define PROJECT_NAME CAC_PROJ_NAME
 #endif
 
-inline ModContainer* const m = new ModContainer(CAC_PROJ_NAME);
+#ifndef PROJECT_NAME
+#define PROJECT_NAME "Default Cacao Project"
+#endif
+
+inline ModContainer* const m = new ModContainer(PROJECT_NAME);
 
 // Just in case if we ever need to add shared implementations
 class $CacBase {
