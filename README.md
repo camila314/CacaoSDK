@@ -1,7 +1,7 @@
 # CacaoSDK
 Cacao is a revolutionary Geometry Dash modding framework for MacOS users. Cacao requires CMake so make sure you have that. To start, run the `create` file and specify a location
 
-Cacao uses [a modified version of Lilac Core](https://github.com/altalk23/core/) for function hooking.
+Cacao uses [a modified version of Lilac Core](https://github.com/altalk23/lilac-core/) for function hooking.
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ public:
 } MyEditorUIHook;
 ```
 
-If you want, you can also use a function with the name `inject` to run code before the mod is loaded. The function needs to be declared before the `$apply` however. The variable "m" is reserved for the mod container that is automatically created by Cacao. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `PROJECT_NAME` with the name. \*\*Make sure you do this before you include Cacao.
+If you want, you can also use a function with the name `inject` to run code after the mod is loaded. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `PROJECT_NAME` with the name. \*\*Make sure you do this before you include Cacao.
 ```cpp
 #define PROJECT_NAME "My first mod"
 #include <Cacao>
@@ -74,8 +74,6 @@ void inject() {
 
 If there's a function, class, or member you want to be added to the Cacao catalog consider creating a pull request on [CacaoData](https://github.com/altalk23/CacaoData/).
 
-### Cacao
+For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()->_playLayer()`. You can find a full list of these inside the Header.hpp header file.
 
-For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()->_playLayer()`. You can find a full list of these inside the cc_defs.hpp header file
-
-For a full list of helper functions, look at the Cacao.hpp header file.
+For a full list of helper functions, look at the api/Cacao.hpp header file.

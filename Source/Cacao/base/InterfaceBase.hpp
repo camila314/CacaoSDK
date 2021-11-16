@@ -21,7 +21,7 @@
 #define PROJECT_NAME "Default Cacao Project"
 #endif
 
-inline ModContainer* const m = new ModContainer(PROJECT_NAME);
+inline hidden ModContainer* const m = new ModContainer(PROJECT_NAME);
 
 // Just in case if we ever need to add shared implementations
 class $CacBase {
