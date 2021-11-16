@@ -6,5 +6,3 @@ public:
 		FLAlertLayer::create("Cacao", "Hello from custom mod!", "OK")->show();
 	} 
 } MyMenuLayerHook;
-
-$apply();

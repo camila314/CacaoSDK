@@ -81,8 +81,7 @@ functionBody = """        using r{id} = getReturnOf({cl}, {name}, {defaults});
 
 staticBody = """        using r{id} = getReturnOf({cl}, {name}, {defaults});
         using f{id} = r{id}(*)({params2});
-        return reinterpret_cast<f{id}>(base+{offset})({params});
-"""
+        return reinterpret_cast<f{id}>(base+{offset})({params});"""
 
 returnlessBody = """        using r{id} = {cl}*;
         using f{id} = r{id}(*)({const}{cl}*{params2});

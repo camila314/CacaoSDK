@@ -3,17 +3,17 @@ from Shared import *
 classes = pickle.load(open(picklepath, "rb"))
 
 functionBody = """
-    getReturnOf({cl}, {name}, {defaults}) 
-    {cl}::{name}({params}) {const}{{
+getReturnOf({cl}, {name}, {defaults}) 
+{cl}::{name}({params}) {const}{{
 {function}
-    }}
+}}
 """
 
 staticBody = """
-    getReturnOf({cl}, {name}, {defaults}) 
-    {cl}::{name}({params}) {const}{{
+getReturnOf({cl}, {name}, {defaults}) 
+{cl}::{name}({params}) {const}{{
 {function}
-    }}
+}}
 """
 
 # functionBody = """
@@ -31,9 +31,9 @@ staticBody = """
 
 
 returnlessBody = """
-    {cl}::{name}({params}) {const}{{
+{cl}::{name}({params}) {const}{{
 {function}
-    }}
+}}
 """
 
 out = """// 
@@ -73,7 +73,7 @@ for cl in classes:
             defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
             const = "const " if info.const else "",
             id = i,
-            function = getFunctionImplementation(cl, info, i),
+            function = getFunctionImplementation(cl, info, i).replace("        ", "    "),
         )
         i += 1
 

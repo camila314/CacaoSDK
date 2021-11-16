@@ -31,9 +31,9 @@
     #define hidden __attribute__((visibility("hidden")))
 
     /**
-     * Enabling sounds idk really
+     * deprecated
      */
-    #define $apply() void $enable() {m->enable();} static int const _enable = ($enable(), 0)
+    #define $apply() 
 
     /**
      * Basic way to make a main function without it being a main
@@ -71,24 +71,6 @@
      * MSVC exports with hidden by default so there is no need for hidden
      */
     #define hidden 
-
-    /**
-     * Dllmain implement
-     * also executes the inject function
-     */
-    #define $apply()                                                                        \
-    DWORD WINAPI _thread__func_(void* hModule) {                                            \
-        __if_exists(inject) {                                                               \
-            inject();                                                                       \
-        }                                                                                   \
-        return true;                                                                        \
-    }                                                                                       \
-    BOOL APIENTRY DllMain(HMODULE handle, DWORD reason, LPVOID reserved) {                  \
-        if (reason == DLL_PROCESS_ATTACH) {                                                 \
-            CreateThread(0, 0x100, _thread__func_, handle, 0, 0);                           \
-        }                                                                                   \
-        return TRUE;                                                                        \
-    } 
 
 #else // ???
     #error Not implemented. 
