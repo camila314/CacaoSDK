@@ -108,6 +108,10 @@ namespace Cacao::core {
         void registerHook(uintptr_t address, func_t function); 
         void registerHook(uintptr_t address, uintptr_t function); 
 
+        // Registers a function hook to the address, and enables it
+        void registerHookEnable(uintptr_t address, func_t function); 
+        void registerHookEnable(uintptr_t address, uintptr_t function); 
+
         // The getter for the base containers
         std::vector<BaseContainer*> getMods();
 

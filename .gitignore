@@ -56,3 +56,6 @@ Source/Cacao/gen/gen.pickle
 Source/Cacao/Header.hpp
 Source/Cacao/Interface.hpp
 Source/Cacao/Source.cpp
+
+# Ignore example build folders
+Examples/*/build

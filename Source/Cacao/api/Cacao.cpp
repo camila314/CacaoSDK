@@ -3,9 +3,8 @@
 #include <stdexcept>
 #include <set>
 
-using namespace cocos2d;
-
 namespace Cacao {
+    using namespace cocos2d;
 
     cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay) {
         auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
@@ -35,25 +34,68 @@ namespace Cacao {
         ccp.y = yp;
         return ccp;
     }
-    // cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
-    //     auto image = new cocos2d::CCImage();
-    //     image->initWithImageData((void*)img, img_len, cocos2d::CCImage::kFmtPng,1,1,1);
 
-    //     auto text = new cocos2d::CCTexture2D();
-    //     text->initWithImage(image);
+    /* Removing the need for cac_typeinfo */
+    class $implement(CCKeypadHandler, CCKeypadHandlerTypeinfoFix) {
+    public:
+        void destructor() {
+            if (m_pDelegate) {
+                cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(m_pDelegate);
+                if (pObject) {
+                    pObject->release();
+                }
+                else {
+                    $CCKeypadHandler::destructor();
+                }
+            }
+        }
 
-    //     cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
+        bool initWithDelegate(cocos2d::CCKeypadDelegate *pDelegate) {
+            cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(pDelegate);
+            if (pObject) {
+                m_pDelegate = pDelegate;
+                pObject->retain();
+                return true;
+            }
+            return false;
+        }
 
-    //     std::cout << image->getWidth() << "\n";
-    //     std::cout << image->getHeight() << "\n";
+        static cocos2d::CCKeypadHandler* handlerWithDelegate(cocos2d::CCKeypadDelegate *pDelegate) {
+            cocos2d::CCKeypadHandler* pHandler = new cocos2d::CCKeypadHandler();
 
-    //     auto sprite = cocos2d::CCSprite::create();
-    //     sprite->initWithTexture(text, r);
+            if (pHandler) {
+                if (pHandler->initWithDelegate(pDelegate)) {
+                    pHandler->autorelease();
+                }
+                else {
+                    CC_SAFE_RELEASE_NULL(pHandler);
+                    pHandler = $CCKeypadHandler::handlerWithDelegate(pDelegate);
+                }
+            }
 
-    //     sprite->setTexture(text);
+            return pHandler;
+        }
+    } iCCKeypadHandlerTypeinfoFix;
 
-    //     return sprite;
-    // }
+    cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
+        auto image = new cocos2d::CCImage();
+        image->initWithImageData((void*)img, img_len, cocos2d::CCImage::kFmtPng,1,1,1);
+
+        auto text = new cocos2d::CCTexture2D();
+        text->initWithImage(image);
+
+        cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
+
+        std::cout << image->getWidth() << "\n";
+        std::cout << image->getHeight() << "\n";
+
+        auto sprite = cocos2d::CCSprite::create();
+        sprite->initWithTexture(text, r);
+
+        sprite->setTexture(text);
+
+        return sprite;
+    }
 
     // void addGDObject(char const* name, int id) {
     //     auto toolbox = ObjectToolbox::sharedState();

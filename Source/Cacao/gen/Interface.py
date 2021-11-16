@@ -77,7 +77,7 @@ build_body2_body = """
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
+            m->registerHookEnable(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_static = """
@@ -85,7 +85,7 @@ build_body2_body_static = """
         using c{id} = r{id}(*)({params});
         using d{id} = r{id}(*)({params});
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
+            m->registerHookEnable(base+{offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
 """
 
 build_body2_body_virtual = """
@@ -93,7 +93,7 @@ build_body2_body_virtual = """
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
         if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHook(base+{offset}, FunctionScrapper::addressOfVirtual(i, (d{id}){{&D::{name}}}));
+            m->registerHookEnable(base+{offset}, FunctionScrapper::addressOfVirtual(i, (d{id}){{&D::{name}}}));
 """
 
 build_body2_end = """

@@ -1030,8 +1030,8 @@ class cocos2d::CCSprite {
     void addChild(cocos2d::CCNode*, int, int) = 0x1341b0;
     static cocos2d::CCSprite* create() = 0x132df0;
     static cocos2d::CCSprite* create(char const*) = 0x132a80;
-    void createWithSpriteFrame(cocos2d::CCSpriteFrame*) = 0x132cb0;
-    void createWithSpriteFrameName(char const*) = 0x132dc0;
+    static void createWithSpriteFrame(cocos2d::CCSpriteFrame*) = 0x132cb0;
+    static void createWithSpriteFrameName(char const*) = 0x132dc0;
     void displayFrame() = 0x135760;
     void setChildColor(cocos2d::_ccColor3B const&) = 0x135160;
     bool init() = 0x132ef0;

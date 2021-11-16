@@ -107,6 +107,16 @@ namespace Cacao::core {
         registerHook(address, (func_t)function);
     }
 
+    void ModContainer::registerHookEnable(uintptr_t address, func_t function) {
+        registerHook(address, function);
+        m_mods.back()->enable();
+    }
+
+    void ModContainer::registerHookEnable(uintptr_t address, uintptr_t function) {
+        registerHook(address, (func_t)function);
+        m_mods.back()->enable();
+    }
+
 }
 
 #if defined(__APPLE__)

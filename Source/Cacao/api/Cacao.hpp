@@ -3,12 +3,10 @@
 //
 #pragma once
 
-#include <Header.hpp>
+#include <Cacao>
 #include <map>
 #include <vector>
 #include <type_traits>
-
-#define ORIG(name, addr) FCAST(name, m->getOriginal(getBase()+addr))
 
 #define CAC_CREATE(cls, ...) static cls* create() {\
     auto pRet = new cls(); \
@@ -24,46 +22,39 @@
     public: \
         inline auto name(type t) {m_##name = t;return this;}
 
-#define CAC_TYPEINFO(addr) {                                                            \
-        uint64_t ok1 = *((uint64_t*)this);                                              \
-        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+16;                                      \
-        uint64_t n_typinfo = getBase()+addr;                                            \
-        if (*(uint64_t*)ok2 != n_typinfo)                                               \
-            Cacao::core::MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();      \
-    }
+#define CAC_TYPEINFO(addr)
+// #define CAC_TYPEINFO(addr) {                                                            \
+//         uint64_t ok1 = *((uint64_t*)this);                                              \
+//         uint64_t ok2 = (*((uint64_t*)(ok1-8)))+16;                                      \
+//         uint64_t n_typinfo = getBase()+addr;                                            \
+//         if (*(uint64_t*)ok2 != n_typinfo)                                               \
+//             Cacao::core::MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();      \
+//     } 
 
-#define CAC_TYPEINFO_NUM(addr, num) {                                                   \
-        uint64_t ok1 = *((uint64_t*)this);                                              \
-        uint64_t ok2 = (*((uint64_t*)(ok1-8)))+24+num*16;                               \
-        uint64_t n_typinfo = getBase()+addr;                                            \
-        if (*(uint64_t*)ok2 != n_typinfo)                                               \
-            Cacao::core::MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();      \
-    }
 namespace Cacao {
-    typedef void (cocos2d::CCObject::* CC_SEL)(cocos2d::CCObject*);
-    typedef void (cocos2d::CCObject::* CC_SCHED)(float);
+    using namespace cocos2d;
 
     inline void printGeometry(cocos2d::CCPoint p) {std::cout << "X: " << p.x << " Y: " << p.y << "\n";}
     inline void printGeometry(cocos2d::CCSize p) {std::cout << "Width: " << p.width << " Height: " << p.height << "\n";}
     inline void printGeometry(cocos2d::CCRect p) {std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";}
-    // template <typename K>
-    // void scheduleFunction(K func) {
-    //     GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, 0, 0.0, false);
-    // }
-    // template <typename K>
-    // void scheduleFunction(K func, float delay) {
-    //     GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, 0, delay, false);
-    // }
+    template <typename K>
+    void scheduleFunction(K func) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<SEL_SCHEDULE&>(func), GameManager::sharedState(), 0.0, 0, 0.0, false);
+    }
+    template <typename K>
+    void scheduleFunction(K func, float delay) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<SEL_SCHEDULE&>(func), GameManager::sharedState(), 0.0, 0, delay, false);
+    }
 
-    // template <typename K>
-    // void repeatFunction(K func, int times) {
-    //     GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), 0.0, times, 0.0, false);
-    // }
+    template <typename K>
+    void repeatFunction(K func, int times) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<SEL_SCHEDULE&>(func), GameManager::sharedState(), 0.0, times, 0.0, false);
+    }
     
-    // template <typename K>
-    // void repeatFunction(K func, int times, float delay) {
-    //     GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<CC_SCHED&>(func), GameManager::sharedState(), delay, times, 0.0, false);
-    // }
+    template <typename K>
+    void repeatFunction(K func, int times, float delay) {
+        GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<SEL_SCHEDULE&>(func), GameManager::sharedState(), delay, times, 0.0, false);
+    }
 
     template <typename T>
     char const* typeinfo_name_for(T ptr) {
@@ -99,7 +90,7 @@ namespace Cacao {
     // cocos2d::CCPoint addedPosition(double x, double y);
     // cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
-    // CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, CC_SEL callback);
+    // CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, SEL_MenuHandler callback);
     // void addGDObject(char const* name, int id);
 
     // class FLDialogHelper;
