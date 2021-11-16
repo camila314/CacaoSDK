@@ -5,7 +5,7 @@ add_subdirectory("lilac-core")
 
 add_library(Core STATIC Core.cpp)
 
-target_link_libraries(Core lilac_hook)
+target_link_libraries(Core LilacHook)
 target_include_directories(Core PUBLIC 
     . 
     lilac-core/include/

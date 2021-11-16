@@ -10,13 +10,9 @@ add_library(Cacao STATIC
 
 target_link_libraries(Cacao Core)
 
-file(GLOB_RECURSE "${CACAO_TARGET_PLATFORM}_Sources"
-    ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/*.mm
-)
-
 add_custom_command(
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Lexer.py ${CACAO_TARGET_PLATFORM} && python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Parser.py ${CACAO_TARGET_PLATFORM}
-    DEPENDS "${${CACAO_TARGET_PLATFORM}_Sources}"
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/GeometryDash.mm ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/Cocos2d.mm
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/gen/gen.pickle
     COMMENT "Parsing ${CACAO_TARGET_PLATFORM}"
 )

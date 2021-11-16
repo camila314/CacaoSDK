@@ -46,7 +46,6 @@ public:
  * 
  * $redirect is for when you don't need the name of the class
  * class $redirect(MenuLayer) {};
- * (cant be used because using end implement now)
  * 
  * $implement is for when you need the name of the class
  * class $implement(MenuLayer, MyMenuLayerInterface) {};
