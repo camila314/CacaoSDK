@@ -3,7 +3,7 @@
     [
         {
 			"file_regex": "(.+[^:]):(\\d+):(\\d+): (?:fatal )?((?:error|warning): .+)$",
-			"name": "MatExample (OSX)",
+			"name": "HelloWorld (OSX)",
 			"shell_cmd": "make -j4",
 			"syntax": "Packages/CMakeBuilder/Syntax/Make.sublime-syntax",
 			"variants":
@@ -33,12 +33,12 @@
 					"shell_cmd": "make -j4 Core",
 				},
 				{
-					"name": "LilacHook",
-					"shell_cmd": "make -j4 LilacHook",
+					"name": "HelloWorld",
+					"shell_cmd": "make -j4 HelloWorld",
 				},
 				{
-					"name": "MatExample",
-					"shell_cmd": "make -j4 MatExample",
+					"name": "LilacHook",
+					"shell_cmd": "make -j4 LilacHook",
 				},
 				{
 					"name": "custom-layer.o",

@@ -9,7 +9,7 @@ elseif (WIN32)
     set(CACAO_TARGET_PLATFORM "Win32")
 endif ()
 
-project(MatExample VERSION 0.1.0 LANGUAGES C CXX)
+project(HelloWorld VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle")
 set(CMAKE_BUILD_TYPE RelWithDebugInfo)
 set(CMAKE_CXX_STANDARD 17)

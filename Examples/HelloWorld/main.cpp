@@ -1,4 +1,4 @@
-#define CAC_PROJ_NAME "MatExample"
+#define CAC_PROJ_NAME "HelloWorld"
 #include <Cacao>
 #include "custom-layer.hpp"
 
