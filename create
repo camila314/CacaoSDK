@@ -5,21 +5,40 @@ relink=''
 update=''
 
 print_usage() {
-  printf "
-	Usage: projectName [-d destinationPath] [-l] [-u]
+    printf "
+    Usage: projectName [-d destinationPath] [-l] [-u]
 
-	projectName               Name of the project
-	-d destinationPath        The destination path of the project, Projects/projectName if omitted
-	-l                        To relink the Cacao directory if it is broken
-	-u                        To update the old Cacao project to new
-	
-	For Example: 
-	./create
-	./create MyProject
-	./create -l -d ./cloned_path/cloned_project
+    projectName               Name of the project
+    -d destinationPath        The destination path of the project, Projects/projectName if omitted
+    -l                        To relink the Cacao directory if it is broken
+    -u                        To update the old Cacao project to new
 
-	-h                        Show the help text
-  "
+    For Example: 
+    ./create
+    ./create MyProject
+    ./create -l -d ./cloned_path/cloned_project
+
+    -h                        Show the help text
+    "
+}
+
+fix_link() {
+    if [ -L "$copypath/Cacao" ]; then
+        rm "$copypath/Cacao"
+    fi
+    relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
+    cd $copypath
+    ln -s $relpath Cacao
+}
+
+copy_files() {
+    cp "$srcpath/Template/.gitignore" "$copypath"
+    cp "$srcpath/Template/CMakeLists.txt" "$copypath"
+    cp "$srcpath/Template/README.md" "$copypath"
+    cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
+    sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
+    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md.txt"
+    sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
 while getopts 'd:lhu' flag; do
@@ -49,23 +68,12 @@ if (( $# + $OPTIND > 1 )); then
 	echo $projname
 	if [ "$relink" = 'true' ]; then
 		echo "Fixing link"
-		if [ -L "$copypath/Cacao" ]; then
-			rm "$copypath/Cacao"
-		fi
-		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
+		fix_link
 	elif [ "$update" = 'true' ]; then
 		echo "Updating project"
 
-		if [ -L "$copypath/Cacao" ]; then
-			rm "$copypath/Cacao"
-		fi
-		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
-		
-		cp "$srcpath/template/.gitignore" "$copypath"
-		cp "$srcpath/template/CMakeLists.txt" "$copypath"
-		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
-		sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
-		sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
+		fix_link
+		copy_files
 	else
 		if [ ! -d "$copypath" ]; then
 			echo "Creating folder"
@@ -74,16 +82,12 @@ if (( $# + $OPTIND > 1 )); then
 		echo "Copying files"
 
 		touch "$copypath/main.cpp"
-		echo "#define CAC_PROJ_NAME \"$projname\"" >> "$copypath/main.cpp"
-		cat "$srcpath/template/main.cpp" >> "$copypath/main.cpp"
+		echo "#define PROJECT_NAME \"$projname\"" >> "$copypath/main.cpp"
+		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
-		cp "$srcpath/template/.gitignore" "$copypath"
-
-		cp "$srcpath/template/CMakeLists.txt" "$copypath"
-		cp "$srcpath/template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
-		sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
-		sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
-		ln -s "$srcpath/template/Cacao" "$copypath/Cacao"
+        fix_link
+		copy_files
+		
 	fi
 	echo "Done."
 else 

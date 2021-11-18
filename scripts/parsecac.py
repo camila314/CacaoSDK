@@ -1,5 +1,6 @@
 import os
 import sys
+import platform
 
 reserved = {
     'static': 'STATIC',
@@ -42,6 +43,9 @@ class FunkyInfo:
             # print(syms2[self.parent.name])
             # print("errored", repr(self))
             return None
+
+    def findReturn(self):
+        pass
     def __repr__(self):
         return f"<{f'method with mangle {self.mang}' if self.func else 'member'} {'static ' if self.static else ''}{'virtual ' if self.static else ''}{self.ret} {self.name}{'(' + ', '.join(self.args) + ')' if self.func else ''} at address {self.addr}{f' with thunk offset {self.thunk}' if self.thunk is not None else ''}>"
 
@@ -99,22 +103,28 @@ lexer = lex.lex()
 syms = {}
 syms2 = {}
 syms3 = {}
-# with open(os.path.dirname(__file__) + "/functions.txt", "r") as f:
-#     s = f.readlines()
-#     for k, m in zip(s[0::2], s[1::2]):
-#         k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "")
 
-#         t = k.split("::")
-#         ke = t[0]
-#         if ke == "cocos2d":
-#             ke += "::" + t[1]
+if platform.system() == "Darwin":
+    functionsFile = os.path.dirname(__file__) + "/../template/Cacao/platform/macos/functions.txt"
+else:
+    raise UnimplementedError
 
-#         if ke == "cocos2d::extension":
-#             ke += "::" + t[2]
+with open(functionsFile, "r") as f:
+    s = f.readlines()
+    for k, m in zip(s[0::2], s[1::2]):
+        k = k.replace(" ", "").replace("void(cocos2d::CCObject::*)(cocos2d::CCObject*)", "").replace("void(cocos2d::CCObject::*)(float)", "").replace("const", "").replace("std::map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<std::string const, std::string> > >", "std::map<std::string, std::string>")
 
-#         if ke not in syms:
-#             syms[ke] = []
-#         syms[ke].append((k[:-1], m[:-1]))
+        t = k.split("::")
+        ke = t[0]
+        if ke == "cocos2d":
+            ke += "::" + t[1]
+
+        if ke == "cocos2d::extension":
+            ke += "::" + t[2]
+
+        if ke not in syms:
+            syms[ke] = []
+        syms[ke].append((k[:-1], m[:-1]))
 
 def ensure_next():
     tt = lexer.token()
