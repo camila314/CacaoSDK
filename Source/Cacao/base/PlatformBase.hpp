@@ -3,7 +3,7 @@
 //
 #pragma once 
 
-#if defined(__APPLE__) 
+#if defined(CC_TARGET_OS_MAC) 
     /**
      * Inline asm to directly jump to the appropriate destructor
      */
@@ -72,6 +72,9 @@
      */
     #define hidden 
 
+#elif defined(CC_TARGET_OS_IPHONE)
+    #define jumpDestructor(address) //
+    #define endDestructor() //
 #else // ???
     #error Not implemented. 
 

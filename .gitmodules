@@ -1,9 +1,9 @@
-[submodule "Source/Cacao/core/lilac-core"]
-	path = Source/Cacao/core/lilac-core
+[submodule "Source/Cacao/hook/lilac-core"]
+	path = Source/Cacao/hook/lilac-core
 	url = https://github.com/altalk23/lilac-core
 
-[submodule "Source/Cacao/include/cocos-headers"]
-	path = Source/Cacao/include/cocos-headers
+[submodule "Source/Cacao/cocos/cocos-headers"]
+	path = Source/Cacao/cocos/cocos-headers
 	url = https://github.com/altalk23/cocos-headers
 
 [submodule "Source/Cacao/gen/data"]
