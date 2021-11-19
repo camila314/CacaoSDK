@@ -13,7 +13,7 @@ target_link_libraries(Cacao Core)
 
 add_custom_command(
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Lexer.py ${CACAO_TARGET_PLATFORM} && python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Parser.py ${CACAO_TARGET_PLATFORM}
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/GeometryDash.mm ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/Cocos2d.mm ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/CocosHooks.mm
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/GeometryDash.mm ${CMAKE_CURRENT_SOURCE_DIR}/gen/data/Cocos2d.mm 
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/gen/gen.pickle
     COMMENT "Parsing ${CACAO_TARGET_PLATFORM}"
 )
@@ -21,28 +21,28 @@ add_custom_command(
 add_custom_command(
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Header.py ${CACAO_TARGET_PLATFORM}
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/gen.pickle
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Header.hpp 
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Header_.hpp 
     COMMENT "Generating Header"
 )
 
 add_custom_command(
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Interface.py ${CACAO_TARGET_PLATFORM}
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/gen.pickle
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Interface.hpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Interface_.hpp
     COMMENT "Generating Interface"
 )
 
 add_custom_command(
     COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/gen/Source.py ${CACAO_TARGET_PLATFORM}
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gen/gen.pickle
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Source.cpp
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/Source_.cpp
     COMMENT "Generating Source"
 )
 
 add_custom_target(Gen ALL
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Source.cpp
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Header.hpp
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Interface.hpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Source_.cpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Header_.hpp
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Interface_.hpp
 )
 
 add_dependencies(Cacao Gen)
