@@ -3,14 +3,7 @@
 //
 #pragma once 
 
-#define CACAO_TARGET_MACOS 1
-#define CACAO_TARGET_WIN32 2
-#define CACAO_TARGET_IOS 4
-#define CACAO_TARGET_ANDROID 8
-
-#include <TargetPlatform.hpp>
-
-#if CACAO_TARGET_PLATFORM == CACAO_TARGET_MACOS
+#if defined(CC_TARGET_OS_MAC)
     /**
      * Inline asm to directly jump to the appropriate destructor
      */
@@ -42,7 +35,7 @@
      */
     #define $apply()                                       
 
-#elif CACAO_TARGET_PLATFORM == CACAO_TARGET_WIN32
+#elif defined(CC_TARGET_OS_WIN32)
     #pragma warning( disable : 4731 ) // pop ebp warning
 
     /**
@@ -72,10 +65,10 @@
      */
     #define hidden 
 
-#elif CACAO_TARGET_PLATFORM == CACAO_TARGET_IOS
+#elif defined(CC_TARGET_OS_IOS)
     #error yo camila have a look at this
 
-#elif CACAO_TARGET_PLATFORM == CACAO_TARGET_ANDROID
+#elif defined(CC_TARGET_OS_ANDROID)
     #error i dont understand
 
 #else

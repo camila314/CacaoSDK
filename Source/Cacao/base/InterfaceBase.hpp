@@ -24,9 +24,9 @@
 inline ModContainer* const m = new ModContainer(PROJECT_NAME);
 
 // Just in case if we ever need to add shared implementations
-class $CacBase {
+class InterfaceBase {
 public:
-    // virtual ~$CacBase() {}
+    void _apply() {}
 };
 
 /**

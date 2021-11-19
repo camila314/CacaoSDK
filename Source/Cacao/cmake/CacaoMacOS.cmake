@@ -1,5 +1,7 @@
 set(CACAO_TARGET_PLATFORM "MacOS")
 
+add_definitions(-DCC_TARGET_OS_MAC)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -Wno-deprecated")
 
 include_directories(
@@ -9,8 +11,6 @@ include_directories(
     Cacao/cocos/cocos2dx/platform/third_party/mac
     Cacao/cocos/cocos2dx/platform/third_party/mac/OGLES
 )
-
-add_definitions(-DCC_TARGET_OS_MAC)
 
 add_custom_command(
     COMMAND sudo osxinj \"Geometry Dash\" *.dylib || true
