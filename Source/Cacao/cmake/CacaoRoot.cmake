@@ -15,8 +15,7 @@ include_directories(
     Cacao/cocos/extensions
 )
 
-if (DEFINED CACAO_TARGET_PLATFORM)
-else()
+if (NOT DEFINED CACAO_TARGET_PLATFORM)
 	if(APPLE)
 	    set(CACAO_TARGET_PLATFORM "MacOS")
 	elseif(WIN32)
