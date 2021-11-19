@@ -37,7 +37,7 @@ copy_files() {
     cp "$srcpath/Template/README.md" "$copypath"
     cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
     sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md.txt"
+    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md"
     sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
