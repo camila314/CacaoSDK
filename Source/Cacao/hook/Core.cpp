@@ -124,7 +124,7 @@ namespace Cacao::core {
 #elif defined(CC_TARGET_OS_WIN32)
     #include <windows.h>
 #elif defined(CC_TARGET_OS_IPHONE)
-    #error Core.cpp
+    #include <mach-o/dyld.h>
 #elif defined(CC_TARGET_OS_ANDROID)
     #error Core.cpp
 #else
@@ -136,7 +136,7 @@ uintptr_t getBase() {
     #elif defined(CC_TARGET_OS_WIN32)
         return reinterpret_cast<uintptr_t>(GetModuleHandle(0));
     #elif defined(CC_TARGET_OS_IPHONE)
-        #error Core.cpp
+        return _dyld_get_image_vmaddr_slide(0)+0x100000000;
     #elif defined(CC_TARGET_OS_ANDROID)
         #error Core.cpp
     #else
