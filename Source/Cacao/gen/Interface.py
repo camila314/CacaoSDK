@@ -184,5 +184,8 @@ out += """
 } // namespace Cacao::interface
 """
 
-with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "w") as f:
-    f.write(out)
+
+with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "r") as f:
+    if f.read() != out:
+        with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "w") as f:
+            f.write(out)
