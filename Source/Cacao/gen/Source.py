@@ -82,8 +82,9 @@ out += """
 #undef dv
 """
 
-with open(os.path.join(os.path.dirname(__file__), "..", "Source.hpp"), "r") as f:
+with open(os.path.join(os.path.dirname(__file__), "..", "Source.cpp"), "r") as f:
     if f.read() != out:
-        with open(os.path.join(os.path.dirname(__file__), "..", "Source.hpp"), "w") as f:
+        with open(os.path.join(os.path.dirname(__file__), "..", "Source.cpp"), "w") as f:
             f.write(out)
 
+ 
