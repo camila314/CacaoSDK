@@ -1,5 +1,8 @@
 #include <Cacao>
 
+// I don't know what any of this is but its erroring so i comment it out
+
+/*
 #define HandlerFixFor(CCUtility)                                                                        \
 class $implement(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                   \
 public:                                                                                                 \
@@ -143,4 +146,4 @@ public:
 
         return pHandler;
     }
-} iCCStandardTouchHandlerTypeinfoFix;
+} iCCStandardTouchHandlerTypeinfoFix;*/
