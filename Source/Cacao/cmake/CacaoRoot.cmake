@@ -29,32 +29,9 @@ endif()
 
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS")
-    include_directories(
-        Cacao/api
-        Cacao/cocos/cocos-headers/cocos2dx/platform/mac
-        Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/mac
-        Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/mac/OGLES
-    )
-    
-    add_definitions(-DCC_TARGET_OS_MAC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated ")
-
-    add_custom_command(
-        COMMAND sudo osxinj \"Geometry Dash\" *.dylib || true
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Inject target ${PROJECT_NAME}"
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/run0
-    )
-
-    add_custom_target(
-        Inject ALL
-        DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/run0
-    )
-
-    add_dependencies(Inject ${PROJECT_NAME})
-
+    include(${CMAKE_CURRENT_LIST_DIR}/CacaoMac.cmake)
 elseif("${CACAO_TARGET_PLATFORM}" STREQUAL "Win32")
-
+    include(${CMAKE_CURRENT_LIST_DIR}/CacaoWin32.cmake)
 else()
 endif()
 
