@@ -119,19 +119,27 @@ namespace Cacao::core {
 
 }
 
-#if defined(__APPLE__)
+#if defined(CC_TARGET_OS_MAC)
     #include <mach-o/dyld.h>
-#elif defined(_MSC_VER) && defined(_WIN32)
+#elif defined(CC_TARGET_OS_WIN32)
     #include <windows.h>
+#elif defined(CC_TARGET_OS_IPHONE)
+    #error Core.cpp
+#elif defined(CC_TARGET_OS_ANDROID)
+    #error Core.cpp
 #else
-
+   #error Not supported. 
 #endif
 uintptr_t getBase() {
-    #if defined(__APPLE__)
+    #if defined(CC_TARGET_OS_MAC)
         return _dyld_get_image_vmaddr_slide(0)+0x100000000;
-    #elif defined(_MSC_VER) && defined(_WIN32)
+    #elif defined(CC_TARGET_OS_WIN32)
         return reinterpret_cast<uintptr_t>(GetModuleHandle(0));
+    #elif defined(CC_TARGET_OS_IPHONE)
+        #error Core.cpp
+    #elif defined(CC_TARGET_OS_ANDROID)
+        #error Core.cpp
     #else
-
+        #error Not supported.
     #endif
 }
