@@ -1,5 +1,8 @@
 #include <Cacao>
 
+// this is the fix for the dynamic_cast problems
+
+
 #define HandlerFixFor(CCUtility)                                                                        \
 class $implement(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                   \
 public:                                                                                                 \

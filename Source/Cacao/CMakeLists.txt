@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
-add_subdirectory(core)
+add_subdirectory(hook)
 
 add_library(Cacao SHARED 
     Source.cpp 
-    api/Cacao.cpp
-    api/HandlerFixes.cpp
+    helpers/Cacao.cpp
+    helpers/HandlerFixes.cpp
 )
 
 target_link_libraries(Cacao Core)

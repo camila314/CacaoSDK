@@ -5,40 +5,40 @@ relink=''
 update=''
 
 print_usage() {
-    printf "
-    Usage: projectName [-d destinationPath] [-l] [-u]
+	printf "
+	Usage: projectName [-d destinationPath] [-l] [-u]
 
-    projectName               Name of the project
-    -d destinationPath        The destination path of the project, Projects/projectName if omitted
-    -l                        To relink the Cacao directory if it is broken
-    -u                        To update the old Cacao project to new
+	projectName               Name of the project
+	-d destinationPath        The destination path of the project, Projects/projectName if omitted
+	-l                        To relink the Cacao directory if it is broken
+	-u                        To update the old Cacao project to new
 
-    For Example: 
-    ./create
-    ./create MyProject
-    ./create -l -d ./cloned_path/cloned_project
+	For Example: 
+	./create
+	./create MyProject
+	./create -l -d ./cloned_path/cloned_project
 
-    -h                        Show the help text
-    "
+	-h                        Show the help text
+	"
 }
 
 fix_link() {
-    if [ -L "$copypath/Cacao" ]; then
-        rm "$copypath/Cacao"
-    fi
-    relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
-    cd "$copypath"
-    ln -s $relpath Cacao
+	if [ -L "$copypath/Cacao" ]; then
+		rm "$copypath/Cacao"
+	fi
+	relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
+	cd "$copypath"
+	ln -s $relpath Cacao
 }
 
 copy_files() {
-    cp "$srcpath/Template/.gitignore" "$copypath"
-    cp "$srcpath/Template/CMakeLists.txt" "$copypath"
-    cp "$srcpath/Template/README.md" "$copypath"
-    cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
+	cp "$srcpath/Template/.gitignore" "$copypath"
+	cp "$srcpath/Template/CMakeLists.txt" "$copypath"
+	cp "$srcpath/Template/README.md" "$copypath"
+	cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
+	sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
+	sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md"
+	sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
 while getopts 'd:lhu' flag; do
@@ -73,7 +73,7 @@ if (( $# + $OPTIND > 1 )); then
 		echo "Updating project"
 
 		copy_files
-        fix_link
+		fix_link
 
 	else
 		if [ ! -d "$copypath" ]; then
@@ -86,8 +86,8 @@ if (( $# + $OPTIND > 1 )); then
 		echo "#define PROJECT_NAME \"$projname\"" >> "$copypath/main.cpp"
 		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
-        copy_files
-        fix_link
+		copy_files
+		fix_link
 		
 	fi
 	echo "Done."

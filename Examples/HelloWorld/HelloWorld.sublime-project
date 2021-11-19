@@ -25,6 +25,10 @@
 					"shell_cmd": "make -j4 Inject",
 				},
 				{
+					"name": "CacTemplate",
+					"shell_cmd": "make -j4 CacTemplate",
+				},
+				{
 					"name": "Cacao",
 					"shell_cmd": "make -j4 Cacao",
 				},
@@ -33,24 +37,20 @@
 					"shell_cmd": "make -j4 Core",
 				},
 				{
-					"name": "HelloWorld",
-					"shell_cmd": "make -j4 HelloWorld",
-				},
-				{
 					"name": "LilacHook",
 					"shell_cmd": "make -j4 LilacHook",
 				},
 				{
 					"name": "custom-layer.o",
-					"shell_cmd": "make -j4 custom-layer.o"
+					"shell_cmd": "make -j4 custom-layer.o",
 				},
 				{
 					"name": "custom-layer.i",
-					"shell_cmd": "make -j4 custom-layer.i"
+					"shell_cmd": "make -j4 custom-layer.i",
 				},
 				{
 					"name": "custom-layer.s",
-					"shell_cmd": "make -j4 custom-layer.s"
+					"shell_cmd": "make -j4 custom-layer.s",
 				},
 				{
 					"name": "main.o",
