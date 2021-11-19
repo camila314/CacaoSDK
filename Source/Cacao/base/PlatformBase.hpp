@@ -3,7 +3,14 @@
 //
 #pragma once 
 
-#if defined(__APPLE__) 
+#define CACAO_TARGET_MACOS 1
+#define CACAO_TARGET_WIN32 2
+#define CACAO_TARGET_IOS 4
+#define CACAO_TARGET_ANDROID 8
+
+#include <TargetPlatform.hpp>
+
+#if CACAO_TARGET_PLATFORM == CACAO_TARGET_MACOS
     /**
      * Inline asm to directly jump to the appropriate destructor
      */
@@ -33,16 +40,9 @@
     /**
      * deprecated
      */
-    #define $apply() 
+    #define $apply()                                       
 
-    /**
-     * Basic way to make a main function without it being a main
-     * function, inject is purposed for that
-     */
-    #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
-                                                           
-
-#elif defined(_MSC_VER) && defined(_WIN32) 
+#elif CACAO_TARGET_PLATFORM == CACAO_TARGET_WIN32
     #pragma warning( disable : 4731 ) // pop ebp warning
 
     /**
@@ -72,7 +72,12 @@
      */
     #define hidden 
 
-#else // ???
-    #error Not implemented. 
+#elif CACAO_TARGET_PLATFORM == CACAO_TARGET_IOS
+    #error yo camila have a look at this
 
+#elif CACAO_TARGET_PLATFORM == CACAO_TARGET_ANDROID
+    #error i dont understand
+
+#else
+    #error Not supported. :(
 #endif

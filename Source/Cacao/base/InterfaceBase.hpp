@@ -29,6 +29,12 @@ public:
     // virtual ~$CacBase() {}
 };
 
+/**
+ * Basic way to make a main function without it being a main
+ * function, inject is purposed for that
+ */
+#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
+
 
 /**
  * Main class implementation, it has the structure

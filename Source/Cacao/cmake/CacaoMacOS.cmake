@@ -4,6 +4,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -
 
 include_directories(
     Cacao/api
+    Cacao/base/target/macos
     Cacao/cocos/cocos2dx/platform/mac
     Cacao/cocos/cocos2dx/platform/third_party/mac
     Cacao/cocos/cocos2dx/platform/third_party/mac/OGLES
