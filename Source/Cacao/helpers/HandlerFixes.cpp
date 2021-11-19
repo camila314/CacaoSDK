@@ -133,7 +133,6 @@ public:
 
     static cocos2d::CCStandardTouchHandler* handlerWithDelegate(cocos2d::CCTouchDelegate *pDelegate, int nPriority) {
         cocos2d::CCStandardTouchHandler* pHandler = new cocos2d::CCStandardTouchHandler();
-
         if (pHandler) {
             if (pHandler->initWithDelegate(pDelegate, nPriority)) {
                 pHandler->autorelease();

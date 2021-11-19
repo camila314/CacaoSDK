@@ -1,7 +1,7 @@
 import pickle
 import os
 import sys
-
+import re
 
 
 class GenDeclaration:
@@ -75,11 +75,17 @@ class GenClass:
 picklepath = os.path.join(os.path.dirname(__file__), "gen.pickle")
 platform = sys.argv[1]
 
-functionBody = """        using r{id} = getReturnOf({cl}, {name}, {defaults});
+def inheritReturn(info):
+    if info.declare.type != "auto":
+        return info.declare.type
+    defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters))
+    return f"getReturnOf({info.parent.name}, {info.declare.name}, {defaults})"
+
+functionBody = """        using r{id} = {type};
         using f{id} = r{id}(*)({const}{cl}*{params2});
         return reinterpret_cast<f{id}>(base+{offset})(this{params});"""
 
-staticBody = """        using r{id} = getReturnOf({cl}, {name}, {defaults});
+staticBody = """        using r{id} = {type};
         using f{id} = r{id}(*)({params2});
         return reinterpret_cast<f{id}>(base+{offset})({params});"""
 
@@ -99,11 +105,11 @@ def getFunctionImplementation(cl, info, i):
         body = returnlessBody
     return body.format(
         id = i,
+        type = inheritReturn(info),
         offset = info.getOffset(platform), 
         params = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
         name = info.declare.name,
         cl = cl.name,
         params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-        defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
         const = "const " if info.const else "",
     )
