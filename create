@@ -27,7 +27,7 @@ fix_link() {
         rm "$copypath/Cacao"
     fi
     relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
-    cd $copypath
+    cd "$copypath"
     ln -s $relpath Cacao
 }
 
@@ -37,7 +37,7 @@ copy_files() {
     cp "$srcpath/Template/README.md" "$copypath"
     cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
     sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md.txt"
+    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md"
     sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
@@ -72,8 +72,9 @@ if (( $# + $OPTIND > 1 )); then
 	elif [ "$update" = 'true' ]; then
 		echo "Updating project"
 
-		fix_link
 		copy_files
+        fix_link
+
 	else
 		if [ ! -d "$copypath" ]; then
 			echo "Creating folder"
@@ -85,8 +86,8 @@ if (( $# + $OPTIND > 1 )); then
 		echo "#define PROJECT_NAME \"$projname\"" >> "$copypath/main.cpp"
 		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
+        copy_files
         fix_link
-		copy_files
 		
 	fi
 	echo "Done."
