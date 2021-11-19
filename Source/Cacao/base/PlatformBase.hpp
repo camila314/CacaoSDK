@@ -3,6 +3,15 @@
 //
 #pragma once 
 
+#if defined(_MSC_VER)
+    /**
+     * MSVC exports with hidden by default so there is no need for hidden
+     */
+    #define hidden
+#else
+    #define hidden __attribute__((visibility("hidden")))
+#endif
+
 #if defined(CC_TARGET_OS_MAC)
     /**
      * Inline asm to directly jump to the appropriate destructor
@@ -28,7 +37,6 @@
      * since they have the same name in different executables their
      * global offset tables can override
      */
-    #define hidden __attribute__((visibility("hidden")))
 
     /**
      * deprecated
@@ -59,11 +67,6 @@
         __asm ret                                                                           \
     };                                                                                      \
     __assume(0);
-
-    /**
-     * MSVC exports with hidden by default so there is no need for hidden
-     */
-    #define hidden 
 
 #elif defined(CC_TARGET_OS_IPHONE)
     #define jumpDestructor(address) //

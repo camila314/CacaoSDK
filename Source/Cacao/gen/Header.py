@@ -99,6 +99,7 @@ for cl in queued(classes):
 
 with open(os.path.join(os.path.dirname(__file__), "..", "Header.hpp"), "r") as f:
     if f.read() != out:
+        print("the")
         with open(os.path.join(os.path.dirname(__file__), "..", "Header.hpp"), "w") as f:
             f.write(out)
 
