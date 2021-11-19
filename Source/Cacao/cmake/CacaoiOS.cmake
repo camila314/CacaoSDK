@@ -3,9 +3,9 @@ set(CMAKE_SYSTEM_NAME iOS)
 
 include_directories(
     Cacao/api
-    Cacao/cocos/cocos-headers/cocos2dx/platform/ios
-    Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/ios
-    Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/ios/OGLES
+    Cacao/cocos/cocos2dx/platform/ios
+    Cacao/cocos/cocos2dx/platform/third_party/ios
+    Cacao/cocos/cocos2dx/platform/third_party/ios/OGLES
 )
 
 add_definitions(-DCC_TARGET_OS_IPHONE)
