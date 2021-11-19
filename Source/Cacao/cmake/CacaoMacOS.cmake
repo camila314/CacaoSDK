@@ -8,8 +8,6 @@ include_directories(
     Cacao/cocos/cocos2dx/platform/third_party/mac/OGLES
 )
 
-add_definitions(-DCC_TARGET_OS_MAC)
-
 add_custom_command(
     COMMAND sudo osxinj \"Geometry Dash\" *.dylib || true
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}

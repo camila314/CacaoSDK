@@ -4,7 +4,7 @@ classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
-class ${cl} : public {cl}, public $CacBase {{
+class ${cl} : public {cl}, public InterfaceBase {{
 public:
     static inline bool _init = false;
     ~${cl}() {{

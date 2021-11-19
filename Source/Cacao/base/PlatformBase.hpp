@@ -3,7 +3,7 @@
 //
 #pragma once 
 
-#if defined(CC_TARGET_OS_MAC) 
+#if defined(CC_TARGET_OS_MAC)
     /**
      * Inline asm to directly jump to the appropriate destructor
      */
@@ -33,16 +33,9 @@
     /**
      * deprecated
      */
-    #define $apply() 
+    #define $apply()                                       
 
-    /**
-     * Basic way to make a main function without it being a main
-     * function, inject is purposed for that
-     */
-    #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
-                                                           
-
-#elif defined(_MSC_VER) && defined(_WIN32) 
+#elif defined(CC_TARGET_OS_WIN32)
     #pragma warning( disable : 4731 ) // pop ebp warning
 
     /**
@@ -72,10 +65,20 @@
      */
     #define hidden 
 
+<<<<<<< HEAD
 #elif defined(CC_TARGET_OS_IPHONE)
     #define jumpDestructor(address) //
     #define endDestructor() //
 #else // ???
     #error Not implemented. 
+=======
+#elif defined(CC_TARGET_OS_IOS)
+    #error yo camila have a look at this
 
+#elif defined(CC_TARGET_OS_ANDROID)
+    #error i dont understand
+>>>>>>> de4abc69e43ad02cbc88983c9e3de90c23123da7
+
+#else
+    #error Not supported. :(
 #endif

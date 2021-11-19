@@ -6,40 +6,40 @@ update=''
 ios=''
 
 print_usage() {
-    printf "
-    Usage: projectName [-d destinationPath] [-l] [-u]
+	printf "
+	Usage: projectName [-d destinationPath] [-l] [-u]
 
-    projectName               Name of the project
-    -d destinationPath        The destination path of the project, Projects/projectName if omitted
-    -l                        To relink the Cacao directory if it is broken
-    -u                        To update the old Cacao project to new
+	projectName               Name of the project
+	-d destinationPath        The destination path of the project, Projects/projectName if omitted
+	-l                        To relink the Cacao directory if it is broken
+	-u                        To update the old Cacao project to new
 
-    For Example: 
-    ./create
-    ./create MyProject
-    ./create -l -d ./cloned_path/cloned_project
+	For Example: 
+	./create
+	./create MyProject
+	./create -l -d ./cloned_path/cloned_project
 
-    -h                        Show the help text
-    "
+	-h                        Show the help text
+	"
 }
 
 fix_link() {
-    if [ -L "$copypath/Cacao" ]; then
-        rm "$copypath/Cacao"
-    fi
-    relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
-    cd $copypath
-    ln -s $relpath Cacao
+	if [ -L "$copypath/Cacao" ]; then
+		rm "$copypath/Cacao"
+	fi
+	relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
+	cd "$copypath"
+	ln -s $relpath Cacao
 }
 
 copy_files() {
-    cp "$srcpath/Template/.gitignore" "$copypath"
-    cp "$srcpath/Template/CMakeLists.txt" "$copypath"
-    cp "$srcpath/Template/README.md" "$copypath"
-    cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md"
-    sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
+	cp "$srcpath/Template/.gitignore" "$copypath"
+	cp "$srcpath/Template/CMakeLists.txt" "$copypath"
+	cp "$srcpath/Template/README.md" "$copypath"
+	cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
+	sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
+	sed -i '' "s/CacTemplate/$projname/g" "$copypath/README.md"
+	sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
 copy_not_ios() {
@@ -106,8 +106,9 @@ if (( $# + $OPTIND > 1 )); then
 	elif [ "$update" = 'true' ]; then
 		echo "Updating project"
 
-		fix_link
 		copy_files
+		fix_link
+
 	else
 		if [ ! -d "$copypath" ]; then
 			echo "Creating folder"
@@ -120,6 +121,7 @@ if (( $# + $OPTIND > 1 )); then
 		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
 		copy_files
+<<<<<<< HEAD
 
         if [ "$ios" = 'true' ]; then
         	echo 'ios mode'
@@ -129,6 +131,9 @@ if (( $# + $OPTIND > 1 )); then
         fi
 
         fix_link
+=======
+		fix_link
+>>>>>>> de4abc69e43ad02cbc88983c9e3de90c23123da7
 		
 	fi
 	echo "Done."

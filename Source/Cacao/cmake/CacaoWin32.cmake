@@ -1,3 +1,5 @@
+add_definitions(-DCC_TARGET_OS_WIN32)
+
 include_directories(
     Cacao/base/target/win32
     Cacao/cocos/cocos2dx/platform/win32
