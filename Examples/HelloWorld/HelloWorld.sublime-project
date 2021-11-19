@@ -25,16 +25,16 @@
 					"shell_cmd": "make -j4 Inject",
 				},
 				{
-					"name": "CacTemplate",
-					"shell_cmd": "make -j4 CacTemplate",
-				},
-				{
 					"name": "Cacao",
 					"shell_cmd": "make -j4 Cacao",
 				},
 				{
 					"name": "Core",
 					"shell_cmd": "make -j4 Core",
+				},
+				{
+					"name": "HelloWorld",
+					"shell_cmd": "make -j4 HelloWorld",
 				},
 				{
 					"name": "LilacHook",
@@ -54,15 +54,15 @@
 				},
 				{
 					"name": "main.o",
-					"shell_cmd": "make -j4 main.o"
+					"shell_cmd": "make -j4 main.o",
 				},
 				{
 					"name": "main.i",
-					"shell_cmd": "make -j4 main.i"
+					"shell_cmd": "make -j4 main.i",
 				},
 				{
 					"name": "main.s",
-					"shell_cmd": "make -j4 main.s"
+					"shell_cmd": "make -j4 main.s",
 				},
 			],
 			"working_dir": "${project_path}/build",
