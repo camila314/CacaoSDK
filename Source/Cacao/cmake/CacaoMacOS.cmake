@@ -2,9 +2,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -
 
 include_directories(
     Cacao/api
-    Cacao/cocos/cocos-headers/cocos2dx/platform/mac
-    Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/mac
-    Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/mac/OGLES
+    Cacao/base/target/macos
+    Cacao/cocos/cocos2dx/platform/mac
+    Cacao/cocos/cocos2dx/platform/third_party/mac
+    Cacao/cocos/cocos2dx/platform/third_party/mac/OGLES
 )
 
 add_definitions(-DCC_TARGET_OS_MAC)

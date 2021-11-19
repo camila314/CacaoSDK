@@ -1,11 +1,12 @@
 include_directories(
-    Cacao/cocos/cocos-headers/cocos2dx/platform/win32
-    Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/win32
-    Cacao/cocos/cocos-headers/cocos2dx/platform/third_party/win32/OGLES
+    Cacao/base/target/win32
+    Cacao/cocos/cocos2dx/platform/win32
+    Cacao/cocos/cocos2dx/platform/third_party/win32
+    Cacao/cocos/cocos2dx/platform/third_party/win32/OGLES
 )
 target_link_libraries(${PROJECT_NAME} 
-    Cacao/cocos/cocos-headers/cocos2dx/libcocos2d.lib
-    Cacao/cocos/cocos-headers/extensions/libExtensions.lib
+    Cacao/cocos/cocos2dx/libcocos2d.lib
+    Cacao/cocos/extensions/libExtensions.lib
 )
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/out)
 set(CMAKE_SIZEOF_VOID_P 4)

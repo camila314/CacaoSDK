@@ -95,6 +95,9 @@ def p_bodypure_body(p):
     'bodypure : class LCURLY info RCURLY'
     c = p[1]
     c.info = p[3]
+    for a in c.info:
+        if isinstance(a, GenFunction):
+            a.parent = c
     p[0] = [c]
     debugout(p[0:10], "p_bodypure_body")
 
@@ -129,9 +132,6 @@ def p_class_based(p):
     c = GenClass()
     c.name = p[2]
     c.base = p[4]
-    for a in p[4]:
-        if isinstance(a, GenFunction):
-            a.parent = c
     p[0] = c
     debugout(p[0:10], "p_class_based")
 

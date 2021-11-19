@@ -1,8 +1,8 @@
 #include <Cacao>
 
-// I don't know what any of this is but its erroring so i comment it out
+// this is the fix for the dynamic_cast problems
 
-/*
+
 #define HandlerFixFor(CCUtility)                                                                        \
 class $implement(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                   \
 public:                                                                                                 \
@@ -133,7 +133,6 @@ public:
 
     static cocos2d::CCStandardTouchHandler* handlerWithDelegate(cocos2d::CCTouchDelegate *pDelegate, int nPriority) {
         cocos2d::CCStandardTouchHandler* pHandler = new cocos2d::CCStandardTouchHandler();
-
         if (pHandler) {
             if (pHandler->initWithDelegate(pDelegate, nPriority)) {
                 pHandler->autorelease();
@@ -146,4 +145,4 @@ public:
 
         return pHandler;
     }
-} iCCStandardTouchHandlerTypeinfoFix;*/
+} iCCStandardTouchHandlerTypeinfoFix;

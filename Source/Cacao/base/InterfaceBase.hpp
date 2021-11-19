@@ -29,6 +29,12 @@ public:
     // virtual ~$CacBase() {}
 };
 
+/**
+ * Basic way to make a main function without it being a main
+ * function, inject is purposed for that
+ */
+#define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
+
 
 /**
  * Main class implementation, it has the structure
@@ -41,9 +47,10 @@ public:
  * I tried to make the macro as verbose as it can be but
  * I am bad at this stuff
  */
-#define REDIRECT__(base, derived) hidden derived: public base<derived>
+#define REDIRECT___(base, derived) hidden derived: public base<derived>
+#define REDIRECT__(base, derived) REDIRECT___(Cacao::interface::$##base, derived)
 #define REDIRECT_(base, counter) REDIRECT__(base, CONCAT($hook, counter))
-#define REDIRECT(base) REDIRECT_($##base, __COUNTER__)
+#define REDIRECT(base) REDIRECT_(base, __COUNTER__)
 
 /**
  * Interfaces for the class implementation
@@ -54,5 +61,5 @@ public:
  * $implement is for when you need the name of the class
  * class $implement(MenuLayer, MyMenuLayerInterface) {};
  */
-#define $redirect(base) REDIRECT_($##base, __COUNTER__)
-#define $implement(base, derived) REDIRECT__($##base, derived)
+#define $redirect(base) REDIRECT(base)
+#define $implement(base, derived) REDIRECT__(base, derived)

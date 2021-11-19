@@ -42,27 +42,27 @@
 				},
 				{
 					"name": "custom-layer.o",
-					"shell_cmd": "make -j4 custom-layer.o"
+					"shell_cmd": "make -j4 custom-layer.o",
 				},
 				{
 					"name": "custom-layer.i",
-					"shell_cmd": "make -j4 custom-layer.i"
+					"shell_cmd": "make -j4 custom-layer.i",
 				},
 				{
 					"name": "custom-layer.s",
-					"shell_cmd": "make -j4 custom-layer.s"
+					"shell_cmd": "make -j4 custom-layer.s",
 				},
 				{
 					"name": "main.o",
-					"shell_cmd": "make -j4 main.o"
+					"shell_cmd": "make -j4 main.o",
 				},
 				{
 					"name": "main.i",
-					"shell_cmd": "make -j4 main.i"
+					"shell_cmd": "make -j4 main.i",
 				},
 				{
 					"name": "main.s",
-					"shell_cmd": "make -j4 main.s"
+					"shell_cmd": "make -j4 main.s",
 				},
 			],
 			"working_dir": "${project_path}/build",
