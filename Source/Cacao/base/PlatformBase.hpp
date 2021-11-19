@@ -65,20 +65,11 @@
      */
     #define hidden 
 
-<<<<<<< HEAD
 #elif defined(CC_TARGET_OS_IPHONE)
     #define jumpDestructor(address) //
     #define endDestructor() //
-#else // ???
-    #error Not implemented. 
-=======
-#elif defined(CC_TARGET_OS_IOS)
-    #error yo camila have a look at this
-
 #elif defined(CC_TARGET_OS_ANDROID)
-    #error i dont understand
->>>>>>> de4abc69e43ad02cbc88983c9e3de90c23123da7
-
+    #error Android unimplemented
 #else
     #error Not supported. :(
 #endif

@@ -121,7 +121,6 @@ if (( $# + $OPTIND > 1 )); then
 		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
 		copy_files
-<<<<<<< HEAD
 
         if [ "$ios" = 'true' ]; then
         	echo 'ios mode'
@@ -131,9 +130,6 @@ if (( $# + $OPTIND > 1 )); then
         fi
 
         fix_link
-=======
-		fix_link
->>>>>>> de4abc69e43ad02cbc88983c9e3de90c23123da7
 		
 	fi
 	echo "Done."
