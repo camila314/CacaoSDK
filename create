@@ -85,8 +85,8 @@ if (( $# + $OPTIND > 1 )); then
 		echo "#define PROJECT_NAME \"$projname\"" >> "$copypath/main.cpp"
 		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
 
-        fix_link
 		copy_files
+        fix_link
 		
 	fi
 	echo "Done."
