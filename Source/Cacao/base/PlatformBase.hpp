@@ -84,7 +84,7 @@
      * Inline asm to not recurse through the destructor
      */
     #define endDestructor() asm volatile(                                                   \
-        "ret\n" : :                                                                         \
+        "RET\n" : :                                                                         \
     );                                                                                      \
     __builtin_unreachable(); 
 
