@@ -16,20 +16,8 @@
     } \
     CC_SAFE_DELETE(pRet); \
     return NULL;}
-#define CAC_PROPERTY(type, name) \
-    protected: \
-        type m_##name; \
-    public: \
-        inline auto name(type t) {m_##name = t;return this;}
 
 #define CAC_TYPEINFO(addr)
-// #define CAC_TYPEINFO(addr) {                                                            \
-//         uint64_t ok1 = *((uint64_t*)this);                                              \
-//         uint64_t ok2 = (*((uint64_t*)(ok1-8)))+16;                                      \
-//         uint64_t n_typinfo = getBase()+addr;                                            \
-//         if (*(uint64_t*)ok2 != n_typinfo)                                               \
-//             Cacao::core::MemoryContainer(ok2, 8, reinterpret_cast<char*>(&n_typinfo)).enable();      \
-//     } 
 
 namespace Cacao {
     using namespace cocos2d;
@@ -72,14 +60,6 @@ namespace Cacao {
         return infoname;
     }
 
-    // std::vector<int> collapseGroups(GameObject* object);
-    // int uniqueGroupToObjects(cocos2d::CCArray* objects, LevelEditorLayer* lel);
-    // inline int uniqueGroupToObject(GameObject* obj, LevelEditorLayer* lel) {
-    //     auto arr = cocos2d::CCArray::create();
-    //     arr->addObject(obj);
-    //     return uniqueGroupToObjects(arr, lel);
-    // }
-
     template <typename T>
     std::vector<T> ccToVec(cocos2d::CCArray* arr) {
         return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
@@ -90,8 +70,7 @@ namespace Cacao {
     cocos2d::CCPoint addedPosition(double x, double y);
     cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
-    // CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, SEL_MenuHandler callback);
-    // void addGDObject(char const* name, int id);
+    CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, SEL_MenuHandler callback);
 
     // class FLDialogHelper;
 
@@ -126,74 +105,6 @@ namespace Cacao {
     //     void onCancel(cocos2d::CCObject*);
     // };
 
-    // class EditorUIEditor : public cocos2d::CCNode {
-    //  public:
-    //     static EditorUIEditor* create(ModContainer* mc);
-
-    //     EditorUIEditor* bar(int b);
-    //     EditorUIEditor* addIndex(int index, int id);
-
-    //     template<typename... Args>
-    //     EditorUIEditor* addObjectsToGameSheet02(Args... obs) {
-    //         // stolen from the stack overflow https://stackoverflow.com/questions/43195778/push-back-variadic-function-parameters-into-a-vector
-    //         int a[] = {0, (this->gameSheet2Objects.push_back(obs), 0)...};
-    //         static_cast<void>(a);  // unused
-    //         return this;
-    //     }
-
-    //     template<typename... Args>
-    //     EditorUIEditor* addEffectObjects(Args... obs) {
-    //         // stolen from the stack overflow https://stackoverflow.com/questions/43195778/push-back-variadic-function-parameters-into-a-vector
-    //         int a[] = {0, (this->effectObjects.push_back(obs), 0)...};
-    //         static_cast<void>(a);  // unused
-    //         return this;
-    //     }
-
-    //     EditorUIEditor* addTriggerCallback(int ob, void(*callback)(GameObject*, GJBaseGameLayer*));
-    //     EditorUIEditor* addEditPopup(int ob, void(*callback)(EditorUI*));
-    //     EditorUIEditor* addSaveString(int ob, GameObject*(*fromString)(GameObject*, std::string), std::string(*toString)(GameObject*, std::string));
-
-    //     void applyBars();
-    //     void applyObjects();
-    //     void applyCallbacks();
-    //     void applyPopups();
-    //     void applySaveStrings();
-
-    //     inline void applyAll() {
-    //         this->applyBars();
-    //         this->applyObjects();
-    //         this->applyCallbacks();
-    //         this->applyPopups();
-    //         this->applySaveStrings();
-    //     }
-
-    //  protected:
-    //     bool initWithMC(ModContainer* mc);
-    //     ModContainer* mc;
-
-    //     int currentEditBar;
-    //     std::map<int, std::vector<std::pair<int, int>>> editBars;
-    //     static bool appliedBars;
-    //     static EditorUIEditor* barInstance;
-
-    //     std::vector<int> effectObjects;
-    //     std::vector<int> gameSheet2Objects;
-    //     static bool appliedObjects;
-    //     static EditorUIEditor* objectInstance;
-
-    //     std::map<int, void(*)(GameObject*, GJBaseGameLayer*)> triggerCallbacks;
-    //     static bool appliedCallbacks;
-    //     static EditorUIEditor* callbackInstance;
-
-    //     std::map<int, void(*)(EditorUI*)> editPopups;
-    //     static bool appliedPopups;
-    //     static EditorUIEditor* popupInstance;
-
-    //     std::map<int, GameObject*(*)(GameObject*, std::string)> saveFromStrings;
-    //     std::map<int, std::string(*)(GameObject*, std::string)> saveToStrings;
-    //     static bool appliedSaveStrings;
-    //     static EditorUIEditor* saveStringInstance;
-    // };
 
     // class CacAlertLayer : public FLAlertLayer {
     //  public:

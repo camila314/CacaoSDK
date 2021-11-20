@@ -2,6 +2,7 @@
 
 // this is the fix for the dynamic_cast problems
 
+namespace Cacao::fixes {
 
 #define HandlerFixFor(CCUtility)                                                                        \
 class $implement(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                   \
@@ -146,3 +147,5 @@ public:
         return pHandler;
     }
 } iCCStandardTouchHandlerTypeinfoFix;
+
+} // Cacao::fixes
