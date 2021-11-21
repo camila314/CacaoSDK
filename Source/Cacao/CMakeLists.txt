@@ -6,8 +6,21 @@ add_subdirectory(hook)
 add_library(Cacao SHARED 
     Source.cpp 
     helpers/Cacao.cpp
+)
+
+if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS" OR "${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
+add_library(Cacao SHARED 
     helpers/HandlerFixes.cpp
 )
+endif()
+
+if("${CACAO_TARGET_PLATFORM}" STREQUAL "Android")
+target_link_libraries(Cacao 
+    ${CMAKE_CURRENT_SOURCE_DIR}/cocos/cocos2dx/libcocos2dcpp.so
+)
+endif()
+
+
 
 target_link_libraries(Cacao Core)
 

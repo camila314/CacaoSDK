@@ -126,7 +126,7 @@ namespace Cacao::core {
 #elif defined(CC_TARGET_OS_IPHONE)
     #include <mach-o/dyld.h>
 #elif defined(CC_TARGET_OS_ANDROID)
-    #error Core.cpp
+    #include <dlfcn.h>
 #else
    #error Not supported. 
 #endif
@@ -138,7 +138,7 @@ uintptr_t getBase() {
     #elif defined(CC_TARGET_OS_IPHONE)
         return _dyld_get_image_vmaddr_slide(0)+0x100000000;
     #elif defined(CC_TARGET_OS_ANDROID)
-        #error Core.cpp
+        return reinterpret_cast<uintptr_t>(dlopen("libcocos2dcpp.so", RTLD_LAZY));
     #else
         #error Not supported.
     #endif

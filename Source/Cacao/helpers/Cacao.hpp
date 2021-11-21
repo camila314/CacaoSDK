@@ -22,9 +22,9 @@
 namespace Cacao {
     using namespace cocos2d;
 
-    inline void printGeometry(cocos2d::CCPoint p) {std::cout << "X: " << p.x << " Y: " << p.y << "\n";}
-    inline void printGeometry(cocos2d::CCSize p) {std::cout << "Width: " << p.width << " Height: " << p.height << "\n";}
-    inline void printGeometry(cocos2d::CCRect p) {std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";}
+    // inline void printGeometry(cocos2d::CCPoint p) {std::cout << "X: " << p.x << " Y: " << p.y << "\n";}
+    // inline void printGeometry(cocos2d::CCSize p) {std::cout << "Width: " << p.width << " Height: " << p.height << "\n";}
+    // inline void printGeometry(cocos2d::CCRect p) {std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";}
     template <typename K>
     void scheduleFunction(K func) {
         GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<SEL_SCHEDULE&>(func), GameManager::sharedState(), 0.0, 0, 0.0, false);
@@ -70,7 +70,7 @@ namespace Cacao {
     cocos2d::CCPoint addedPosition(double x, double y);
     cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
-    CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, SEL_MenuHandler callback);
+    CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHandler callback);
 
     // class FLDialogHelper;
 

@@ -67,7 +67,7 @@ for cl in classes:
         out += body.format(
             name = info.declare.name,
             cl = cl.name,
-            offset = info.getOffset(platform), 
+            offset = info.getOffset(platform, i), 
             params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
             params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
             defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),

@@ -4,15 +4,18 @@ srcpath="$( cd "$( dirname "$0" )" && pwd )"
 relink=''
 update=''
 ios=''
+android=''
 
 print_usage() {
 	printf "
-	Usage: projectName [-d destinationPath] [-l] [-u]
+	Usage: [-d destinationPath] [-l] [-u] [-i] [-a] projectName
 
 	projectName               Name of the project
 	-d destinationPath        The destination path of the project, Projects/projectName if omitted
 	-l                        To relink the Cacao directory if it is broken
 	-u                        To update the old Cacao project to new
+    -i                        To add support for ios project
+    -a                        To add support for android project
 
 	For Example: 
 	./create
@@ -42,11 +45,33 @@ copy_files() {
 	sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
-copy_not_ios() {
+copy_not_mobile() {
 	sed -i '' "s/# substrate//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# sdk//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# bundle//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# author//g" "$copypath/CMakeLists.txt"
+}
+
+copy_android() {
+    if [ -z ${CACAO_ANDROID_NDK+x} ]; then
+        echo "Note: set the \$CACAO_ANDROID_NDK environment variable to remove this prompt"
+        read -p "Android NDK Location (required) " CACAO_ANDROID_NDK
+    fi
+
+    # bundleid=""
+    # read -p "Bundle Identifier [com.example.gdmod] " bundleid
+    # bundleid=${bundleid:-"com.example.gdmod"}
+
+    # author=""
+    # read -p "Author [Someone] " author
+    # author=${author:-Someone}
+
+    sed -i '' "s/# substrate//g" "$copypath/CMakeLists.txt"
+    sed -i '' "s/# sdk/set(CACAO_ANDROID_NDK)/g" "$copypath/CMakeLists.txt"
+    sed -i '' "s/# bundle//g" "$copypath/CMakeLists.txt"
+    sed -i '' "s/# author//g" "$copypath/CMakeLists.txt"
+    # sed -i '' "s/# bundle/set(CACAO_IOS_BUNDLE $bundleid)/g" "$copypath/CMakeLists.txt"
+    # sed -i '' "s/# author/set(CACAO_IOS_AUTHOR $author)/g" "$copypath/CMakeLists.txt"
 }
 
 copy_ios() {
@@ -74,12 +99,13 @@ copy_ios() {
 	sed -i '' "s/# author/set(CACAO_IOS_AUTHOR $author)/g" "$copypath/CMakeLists.txt"
 }
 
-while getopts 'd:lhui' flag; do
+while getopts 'd:lhuia' flag; do
 	case "${flag}" in
 		d) copypath="${OPTARG}" ;;
 		l) relink='true' ;;
 		u) update='true' ;;
 		i) ios='true'    ;;
+        a) android='true'    ;;
 		h) print_usage
 			exit 0 ;;
 		*) print_usage
@@ -125,8 +151,11 @@ if (( $# + $OPTIND > 1 )); then
         if [ "$ios" = 'true' ]; then
         	echo 'ios mode'
         	copy_ios
+        elif [ "$android" = 'true' ]; then
+            echo 'android mode'
+            copy_android
         else
-        	copy_not_ios
+            copy_not_mobile
         fi
 
         fix_link

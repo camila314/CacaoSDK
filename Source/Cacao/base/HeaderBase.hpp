@@ -7,8 +7,6 @@
 #include <MacroBase.hpp>
 #include <PlatformBase.hpp>
 
-#include <iostream>
-
 #include <Core.hpp>
 #include <gdstdlib.hpp>
 #include <cocos2d.h>

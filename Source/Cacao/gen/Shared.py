@@ -31,15 +31,20 @@ class GenFunction:
         self.convention = None
     def __repr__(self):
         return f"{self.declare}({self.parameters}) = {self.offset}"
-    def getOffset(self, t):
+    def getOffset(self, t, i):
         if self.offset is None:
             return None
         if t == "MacOS":
-            return self.offset[0]
+            return "base+" + self.offset[0]
         if t == "Win32":
-            return self.offset[1]
+            if "cocos2d" in self.parent.name:
+                return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
+            return "base+" + self.offset[1]
         if t == "iOS":
-            return self.offset[2]
+            return "base+" + self.offset[2]
+        if t == "Android":
+            return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
+
     # def getParameterTypes(self):
     #     ', '.join(p.getType(i) for i, p in enumerate(self.parameters))
     # def getParameterNames(self):
@@ -93,11 +98,30 @@ returnlessBody = """        using r{id} = {cl}*;
         using f{id} = r{id}(*)({const}{cl}*{params2});
         reinterpret_cast<f{id}>(base+{offset})(this{params});"""
 
+implementedFunctionBody = """        return this->{cl}::{name}({params});"""
+
+implementedStaticBody = """        return {cl}::{name}({params});"""
+
+
+
 def getFunctionImplementation(cl, info, i):
     if not isinstance(info, GenFunction):
         return ""
     if "~" in info.declare.name:
-        return f"        jumpDestructor({info.getOffset(platform)})";
+        return f"        jumpDestructor({info.getOffset(platform, i)})";
+
+    if platform == "Android":
+        body = implementedFunctionBody
+        if info.static:
+            body = implementedStaticBody
+
+        return body.format(
+            id = i,
+            params = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
+            name = info.declare.name,
+            cl = cl.name,
+        )
+
     body = functionBody
     if info.static:
         body = staticBody
@@ -106,7 +130,7 @@ def getFunctionImplementation(cl, info, i):
     return body.format(
         id = i,
         type = inheritReturn(info),
-        offset = info.getOffset(platform), 
+        offset = info.getOffset(platform, i), 
         params = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
         name = info.declare.name,
         cl = cl.name,

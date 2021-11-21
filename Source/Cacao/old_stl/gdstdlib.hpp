@@ -1,16 +1,14 @@
 #pragma once
 
-#include <string>
-#include <map>
-#include <vector>
+
 
 // my girl recreating the entirety of 10.7 stl
 
-#if defined(__APPLE__)
+#if defined(CC_TARGET_OS_MAC) || defined(CC_TARGET_OS_ANDROID)
 namespace gd {
     struct _internal_string {
-        unsigned long      m_len;
-        unsigned long      m_capacity;
+        uintptr_t      m_len;
+        uintptr_t      m_capacity;
         int                m_refcount;
     };
 
@@ -362,10 +360,10 @@ namespace gd {
      };
 
     struct _bit_iterator {
-        unsigned long* m_bitptr;
+        uintptr_t* m_bitptr;
         unsigned int m_offset;
-        _bit_iterator(unsigned long* x) : m_offset(0), m_bitptr(x) {}
-        _bit_iterator(unsigned long* x, unsigned o) : m_offset(o), m_bitptr(x) {}
+        _bit_iterator(uintptr_t* x) : m_offset(0), m_bitptr(x) {}
+        _bit_iterator(uintptr_t* x, unsigned o) : m_offset(o), m_bitptr(x) {}
         _bit_reference operator*() const { 
             return _bit_reference(m_bitptr, 1UL << m_offset); 
         }
@@ -387,14 +385,14 @@ namespace gd {
      protected:
         _bit_iterator m_start;
         _bit_iterator m_end;
-        unsigned long* m_capacity_end;
+        uintptr_t* m_capacity_end;
      public:
         vector(std::vector<bool> input) : m_start(0), m_end(0) {
-            auto realsize = input.size()/int(sizeof(unsigned long));
-            auto tmp = new unsigned long[realsize];
+            auto realsize = input.size()/int(sizeof(uintptr_t));
+            auto tmp = new uintptr_t[realsize];
 
             m_start = _bit_iterator(tmp);
-            m_end = _bit_iterator(tmp + realsize, input.size()%sizeof(unsigned long));
+            m_end = _bit_iterator(tmp + realsize, input.size()%sizeof(uintptr_t));
             m_capacity_end = tmp + realsize;
 
             auto itmp = m_start;
@@ -429,5 +427,8 @@ namespace gd {
 };
 
 #else 
+#include <string>
+#include <map>
+#include <vector>
 namespace gd = std;
 #endif 

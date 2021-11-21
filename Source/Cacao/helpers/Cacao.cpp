@@ -44,9 +44,6 @@ cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
 
     cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
 
-    std::cout << image->getWidth() << "\n";
-    std::cout << image->getHeight() << "\n";
-
     auto sprite = cocos2d::CCSprite::create();
     sprite->initWithTexture(text, r);
 
@@ -55,7 +52,7 @@ cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
     return sprite;
 }
 
-CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, CC_SEL callback) {
+CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHandler callback) {
     auto on = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
     auto off = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
     return CCMenuItemToggler::create(off, on, parent, callback);

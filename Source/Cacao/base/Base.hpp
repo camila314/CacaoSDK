@@ -3,6 +3,7 @@
 //
 #pragma once 
 
+#include <cstddef>
 #include <stdint.h>
 
 uintptr_t getBase();
