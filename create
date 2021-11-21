@@ -42,10 +42,9 @@ copy_files() {
 	sed -i '' "s/CacTemplate/$projname/g" "$copypath/$projname.sublime-project"
 }
 
-copy_not_ios() {
+copy_not_custom() {
 	sed -i '' "s/# sdk//g" "$copypath/CMakeLists.txt"
-	sed -i '' "s/# bundle//g" "$copypath/CMakeLists.txt"
-	sed -i '' "s/# author//g" "$copypath/CMakeLists.txt"
+	sed -i '' "s/# platform//g" "$copypath/CMakeLists.txt"
 }
 
 copy_ios() {
@@ -54,17 +53,25 @@ copy_ios() {
 		read -p "iPhoneOS SDK Location (required) " CACAO_IOS_SDK
 	fi
 
-	bundleid=""
-	read -p "Bundle Identifier [com.example.gdmod] " bundleid
-	bundleid=${bundleid:-"com.example.gdmod"}
+	bundle=""
+	read -p "Bundle Identifier [com.example.gdmod] " bundle
+	bundle=${bundle:-"com.example.gdmod"}
 
 	author=""
 	read -p "Author [Someone] " author
 	author=${author:-Someone}
 
-	sed -i '' "s/# sdk/set(CACAO_IOS_SDK $CACAO_IOS_SDK)/g" "$copypath/CMakeLists.txt"
-	sed -i '' "s/# bundle/set(CACAO_IOS_BUNDLE $bundleid)/g" "$copypath/CMakeLists.txt"
-	sed -i '' "s/# author/set(CACAO_IOS_AUTHOR $author)/g" "$copypath/CMakeLists.txt"
+	desc=""
+	read -p "Description [My cool gd mod] " desc
+	desc=${desc:-"My cool gd mod"}
+	sed -i '' "s/# platform/set(CACAO_TARGET_PLATFORM iOS)/g" "$copypath/CMakeLists.txt"
+	sed -i '' "s&# sdk&set(CACAO_IOS_SDK $CACAO_IOS_SDK)&g" "$copypath/CMakeLists.txt"
+
+	cp "$srcpath/Template/control"  "$copypath"
+	sed -i '' "s/%name/$projname/g" "$copypath/control"
+	sed -i '' "s/%author/$author/g" "$copypath/control"
+	sed -i '' "s/%bundle/$bundle/g" "$copypath/control"
+	sed -i '' "s/%desc/$desc/g"     "$copypath/control"
 }
 
 while getopts 'd:lhui' flag; do
@@ -119,7 +126,7 @@ if (( $# + $OPTIND > 1 )); then
         	echo 'ios mode'
         	copy_ios
         else
-        	copy_not_ios
+        	copy_not_custom
         fi
 
         fix_link

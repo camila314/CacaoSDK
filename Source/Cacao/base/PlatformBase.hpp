@@ -69,14 +69,15 @@
     __assume(0);
 
 #elif defined(CC_TARGET_OS_IPHONE)
+    #pragma clang diagnostic ignored "-Wasm-operand-widths" // width warning
 
     /**
      * Inline asm to directly jump to the appropriate destructor
      */
     #define jumpDestructor(address) asm volatile(                                           \
         "ADD x0, %[input_base], %[input_address] \n"                                        \
-        "B x0"                                                                              \
-        [input_base] "r" (base), [input_address] "r" (address)                              \
+        "BR x0"                                                                              \
+        :: [input_base] "r" (base), [input_address] "r" (address)                           \
     );                                                                                      \
     __builtin_unreachable();      
 

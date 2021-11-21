@@ -55,7 +55,7 @@ cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
     return sprite;
 }
 
-CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, CC_SEL callback) {
+CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, SEL_MenuHandler callback) {
     auto on = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
     auto off = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
     return CCMenuItemToggler::create(off, on, parent, callback);
