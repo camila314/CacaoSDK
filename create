@@ -43,18 +43,12 @@ copy_files() {
 }
 
 copy_not_ios() {
-	sed -i '' "s/# substrate//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# sdk//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# bundle//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# author//g" "$copypath/CMakeLists.txt"
 }
 
 copy_ios() {
-	if [ -z ${CACAO_SUBSTRATE+x} ]; then
-		echo "Note: set the \$CACAO_SUBSTRATE environment variable to remove this prompt"
-		read -p "MobileSubstrate Location (required) " CACAO_SUBSTRATE
-	fi
-
 	if [ -z ${CACAO_IOS_SDK+x} ]; then
 		echo "Note: set the \$CACAO_IOS_SDK environment variable to remove this prompt"
 		read -p "iPhoneOS SDK Location (required) " CACAO_IOS_SDK
@@ -68,7 +62,6 @@ copy_ios() {
 	read -p "Author [Someone] " author
 	author=${author:-Someone}
 
-	sed -i '' "s/# substrate/set(CACAO_IOS_SUBSTRATE $CACAO_SUBSTRATE)/g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# sdk/set(CACAO_IOS_SDK $CACAO_IOS_SDK)/g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# bundle/set(CACAO_IOS_BUNDLE $bundleid)/g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# author/set(CACAO_IOS_AUTHOR $author)/g" "$copypath/CMakeLists.txt"
