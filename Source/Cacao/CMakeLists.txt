@@ -3,11 +3,19 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
-add_library(Cacao SHARED 
-    Source.cpp 
-    helpers/Cacao.cpp
-    helpers/HandlerFixes.cpp
-)
+if (DEFINED CACAO_COMPILE_STATIC)
+    add_library(Cacao STATIC 
+        Source.cpp 
+        helpers/Cacao.cpp
+        helpers/HandlerFixes.cpp
+    )
+else()
+    add_library(Cacao SHARED 
+        Source.cpp 
+        helpers/Cacao.cpp
+        helpers/HandlerFixes.cpp
+    )
+endif()
 
 target_link_libraries(Cacao Core)
 
