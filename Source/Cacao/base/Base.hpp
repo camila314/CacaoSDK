@@ -9,3 +9,5 @@
 
 uintptr_t getBase();
 inline uintptr_t const base = getBase();
+
+#define CACAO_VERSION "3.0.0"

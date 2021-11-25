@@ -40,6 +40,7 @@ namespace gd {
                 free(&m_data[-1]);
             }
         }
+        char const* c_str() {return (char const*)m_data; }
      protected: 
         _internal_string*       m_data;
     };
@@ -277,6 +278,7 @@ namespace gd {
             }
         }
         map(map const& lol) : map(std::map(lol)) {}
+        map() : map(std::map<K, V>()) {}
         ~map() {
             erase(static_cast<_tree_node>(m_header.m_parent));
         }
@@ -314,7 +316,13 @@ namespace gd {
             }
         }
 
-        vector(vector const& lol) : vector(std::vector(lol)) {}
+        T& front() {
+            return *m_start;
+        }
+        
+        vector(vector const& lol) : vector(std::vector<T>(lol)) {}
+
+        vector() : vector(std::vector<T>()) {}
 
         ~vector() {
             delete[] m_start;
@@ -421,6 +429,8 @@ namespace gd {
         }
 
         vector(vector<bool> const& lol) : vector(std::vector<bool>(lol)) {}
+
+        vector() : vector(std::vector<bool>()) {}
 
         ~vector() {
             delete[] m_start.m_bitptr;
