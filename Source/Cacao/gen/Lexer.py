@@ -37,6 +37,7 @@ tokens = [
     'SEMI', 
     'COMMA', 
     'COLON', 
+    'APOSTROPHE',
     
     'VOLATILE', 
     'VOLATILEDATA',
@@ -58,6 +59,7 @@ t_info_RPAREN = r"\)"
 t_info_SEMI = r";"
 t_INITIAL_info_COMMA = r","
 t_COLON = r":"
+t_APOSTROPHE = r"'"
 
 t_INITIAL_include_ignore_WHITESPACE = r"[\s\t]"
 t_ignore_COMMENT = r'//.*'

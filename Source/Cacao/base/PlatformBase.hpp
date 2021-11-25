@@ -33,9 +33,9 @@
      */
     #define jumpDestructor(address) asm volatile(                                           \
         "mov %[input_base], %%rax \n"                                                       \
-        "addl %[input_address], %%eax\n"                                                    \
+        "addq %[input_address], %%rax\n"                                                    \
         "callq *%%rax" : :                                                                  \
-        [input_base] "r" (base), [input_address] "r" (address)                              \
+        [input_base] "r" (base), [input_address] "r" (address##l)                           \
     );                                                                                      \
     endDestructor();      
                                    
@@ -85,15 +85,18 @@
     endDestructor();      
 
 #elif defined(CC_TARGET_OS_ANDROID)
-    
+
+    // dlsym
+    #include <dlfcn.h>
+
     /**
      * Inline asm to not recurse through the destructor
      */
-    // #define endDestructor()
     #define endDestructor() asm volatile(                                                   \
-        "POP {r7, pc} \n" : :                                                               \
+        "ADD sp, #0xc \n"                                                                   \
+        "BX lr \n" : :                                                                      \
     );                                                                                      \
-    // __builtin_unreachable(); 
+    __builtin_unreachable(); 
     
     /**
      * Inline asm to directly jump to the appropriate destructor

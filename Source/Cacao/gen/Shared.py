@@ -26,31 +26,49 @@ class GenFunction:
         self.const = False
         self.declare = None
         self.parameters = []
-        self.offset = None
+        self.offset = 0
         self.parent = None
         self.convention = None
+        self.mangle = ""
     def __repr__(self):
         return f"{self.declare}({self.parameters}) = {self.offset}"
     def getOffset(self, t, i):
         if self.offset is None:
             return None
         if t == "MacOS":
-            return "base+" + self.offset[0]
+            return "base+" + str(self.offset[0])
+
         if t == "Win32":
             if "cocos2d" in self.parent.name:
-                return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
-            return "base+" + self.offset[1]
-        if t == "iOS":
-            return "base+" + self.offset[2]
-        if t == "Android":
-            return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
+                if linkable(self):
+                    return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
+                # return f"dlsym((void*)base, {self.mangle})"
+            return "base+" + str(self.offset[1])
 
-    # def getParameterTypes(self):
-    #     ', '.join(p.getType(i) for i, p in enumerate(self.parameters))
-    # def getParameterNames(self):
-    #     ', '.join(p.getName(i) for i, p in enumerate(self.parameters))
-    # def getParameterExpr(self):
-    #     ', '.join(p.getExpr(i) for i, p in enumerate(self.parameters))
+        if t == "iOS":
+            return "base+" + str(self.offset[2])
+
+        if t == "Android":
+            if linkable(self):
+                return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
+            return f'(uintptr_t)dlsym((void*)base, "{self.getMangle()}")'
+    def getAddress(self, t):
+        if self.offset is None:
+            return None
+        if t == "MacOS":
+            return str(self.offset[0])
+
+        if t == "Win32":
+            return str(self.offset[1])
+
+        if t == "iOS":
+            return str(self.offset[2])
+
+        if t == "Android":
+            return ""
+
+    def getMangle(self):
+        return self.mangle
 
 
 class GenMember:
@@ -88,29 +106,41 @@ def inheritReturn(info):
 
 functionBody = """        using r{id} = {type};
         using f{id} = r{id}(*)({const}{cl}*{params2});
-        return reinterpret_cast<f{id}>(base+{offset})(this{params});"""
+        return reinterpret_cast<f{id}>({offset})(this{params});"""
 
 staticBody = """        using r{id} = {type};
         using f{id} = r{id}(*)({params2});
-        return reinterpret_cast<f{id}>(base+{offset})({params});"""
+        return reinterpret_cast<f{id}>({offset})({params});"""
 
 returnlessBody = """        using r{id} = {cl}*;
         using f{id} = r{id}(*)({const}{cl}*{params2});
-        reinterpret_cast<f{id}>(base+{offset})(this{params});"""
+        reinterpret_cast<f{id}>({offset})(this{params});"""
 
 implementedFunctionBody = """        return this->{cl}::{name}({params});"""
 
 implementedStaticBody = """        return {cl}::{name}({params});"""
 
+def hasstl(info):
+    for arg in info.parameters:
+        if "gd::" in arg.type:
+            return True
+    return False
 
+def linkable(info):
+    if platform == "Android":
+        return not hasstl(info)
+    if platform == "Windows":
+        if "cocos2d::" in info.parent.name:
+            return not hasstl(info)
+        return False
 
 def getFunctionImplementation(cl, info, i):
     if not isinstance(info, GenFunction):
         return ""
     if "~" in info.declare.name:
-        return f"        jumpDestructor({info.getOffset(platform, i)})";
+        return f"        jumpDestructor({info.getAddress(platform)})";
 
-    if platform == "Android":
+    if linkable(info):
         body = implementedFunctionBody
         if info.static:
             body = implementedStaticBody

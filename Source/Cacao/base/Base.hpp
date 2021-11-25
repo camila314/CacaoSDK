@@ -5,6 +5,7 @@
 
 #include <cstddef>
 #include <stdint.h>
+#include <gdstdlib.hpp>
 
 uintptr_t getBase();
 inline uintptr_t const base = getBase();

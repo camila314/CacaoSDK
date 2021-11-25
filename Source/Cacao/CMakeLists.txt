@@ -3,15 +3,19 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
-add_library(Cacao SHARED 
-    Source.cpp 
-    helpers/Cacao.cpp
-)
+
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS" OR "${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
-add_library(Cacao SHARED 
-    helpers/HandlerFixes.cpp
-)
+    add_library(Cacao SHARED 
+        Source.cpp 
+        helpers/Cacao.cpp
+        helpers/HandlerFixes.cpp
+    )
+else()
+    add_library(Cacao SHARED 
+        Source.cpp 
+        helpers/Cacao.cpp
+    )
 endif()
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "Android")

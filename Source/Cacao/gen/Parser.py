@@ -32,6 +32,7 @@ class GenFunction:
         self.offset = None
         self.parent = None
         self.convention = None
+        self.mangle = ""
     def __repr__(self):
         return f"{self.declare}({self.parameters}) = {self.offset}"
     # def getParameterTypes(self):
@@ -186,32 +187,58 @@ def p_member_offsetless(p):
 
 
 
-# convention implementation
-# def p_convention_empty(p):
-#     'convention : empty'
-#     p[0] = p[1]
-#     debugout(p[0:10], "p_convention_empty")
+# mangle implementation
+def p_mangle_itanium(p):
+    'mangle : APOSTROPHE IDENT APOSTROPHE'
+    p[0] = p[2]
+    debugout(p[0:10], "p_mangle_itanium")
 
+
+# convention implementation
 def p_convention_stdcall(p):
     'convention : STDCALL'
-    p[0] = p[1]
+    p[0] = (p[1], "")
     debugout(p[0:10], "p_convention_stdcall")
 
 def p_convention_thiscall(p):
     'convention : THISCALL'
-    p[0] = p[1]
+    p[0] = (p[1], "")
     debugout(p[0:10], "p_convention_thiscall")
 
 def p_convention_optcall(p):
     'convention : OPTCALL'
-    p[0] = p[1]
+    p[0] = (p[1], "")
     debugout(p[0:10], "p_convention_optcall")
 
 def p_convention_membercall(p):
     'convention : MEMBERCALL'
-    p[0] = p[1]
+    p[0] = (p[1], "")
     debugout(p[0:10], "p_convention_membercall")
 
+def p_convention_manglestdcall(p):
+    'convention : mangle STDCALL'
+    p[0] = (p[2], p[1])
+    debugout(p[0:10], "p_convention_manglestdcall")
+
+def p_convention_manglethiscall(p):
+    'convention : mangle THISCALL'
+    p[0] = (p[2], p[1])
+    debugout(p[0:10], "p_convention_manglethiscall")
+
+def p_convention_mangleoptcall(p):
+    'convention : mangle OPTCALL'
+    p[0] = (p[2], p[1])
+    debugout(p[0:10], "p_convention_mangleoptcall")
+
+def p_convention_manglemembercall(p):
+    'convention : mangle MEMBERCALL'
+    p[0] = (p[2], p[1])
+    debugout(p[0:10], "p_convention_manglemembercall")
+
+def p_convention_mangle(p):
+    'convention : mangle'
+    p[0] = ("", p[1])
+    debugout(p[0:10], "p_convention_mangle")
 
 
 # function implementation
@@ -241,7 +268,8 @@ def p_function_normal(p):
 def p_function_virtualconvention(p):
     'function : convention VIRTUAL purefunction offset SEMI'
     f = p[3]
-    f.convention = p[1]
+    f.convention = p[1][0]
+    f.mangle = p[1][1]
     f.virtual = True
     f.offset = p[4]
     p[0] = f
@@ -250,7 +278,8 @@ def p_function_virtualconvention(p):
 def p_function_staticconvention(p):
     'function : convention STATIC purefunction offset SEMI'
     f = p[3]
-    f.convention = p[1]
+    f.convention = p[1][0]
+    f.mangle = p[1][1]
     f.static = True
     f.offset = p[4]
     p[0] = f
@@ -259,7 +288,8 @@ def p_function_staticconvention(p):
 def p_function_normalconvention(p):
     'function : convention purefunction offset SEMI'
     f = p[2]
-    f.convention = p[1]
+    f.convention = p[1][0]
+    f.mangle = p[1][1]
     f.offset = p[3]
     p[0] = f
     debugout(p[0:10], "p_function_normalconvention")

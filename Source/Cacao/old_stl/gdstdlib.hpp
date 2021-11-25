@@ -1,6 +1,8 @@
 #pragma once
 
-
+#include <string>
+#include <map>
+#include <vector>
 
 // my girl recreating the entirety of 10.7 stl
 
@@ -427,8 +429,5 @@ namespace gd {
 };
 
 #else 
-#include <string>
-#include <map>
-#include <vector>
 namespace gd = std;
 #endif 

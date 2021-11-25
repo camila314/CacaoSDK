@@ -30,6 +30,11 @@ public:
 };
 
 /**
+ * Thank you pie for teaching me asm aliasing
+ */
+__attribute__((used)) inline void cacaoEmptyFunction() {}
+
+/**
  * Basic way to make a main function without it being a main
  * function, inject is purposed for that
  */

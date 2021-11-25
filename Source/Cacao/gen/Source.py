@@ -31,7 +31,7 @@ getReturnOf({cl}, {name}, {defaults})
 
 
 returnlessBody = """
-{cl}::{name}({params}) {const}{{
+{cl}::{name}({params}) {{
 {function}
 }}
 """
@@ -47,15 +47,13 @@ out = """//
 
 i = 0
 for cl in classes:
-    if platform == "Android":
-        continue
     for info in cl.info:
         if isinstance(info, str) and "cocos2d" in cl.name:
             out += "\n" + info.replace("\n    ", "\n") + "\n"
             continue
         if not isinstance(info, GenFunction):
             continue
-        if platform == "Win32" and "cocos2d" in cl.name:
+        if linkable(info):
             continue
 
         body = functionBody
