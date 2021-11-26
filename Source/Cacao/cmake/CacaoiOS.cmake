@@ -10,3 +10,19 @@ include_directories(
     Cacao/cocos/cocos2dx/platform/third_party/ios/OGLES
 )
 
+set(PACKAGE_DIR ${CMAKE_CURRENT_BINARY_DIR}/ios_package)
+set(OUT_FILE "${PROJECT_NAME}_${CMAKE_PROJECT_VERSION}-3+release_iphoneos-arm64.deb")
+
+add_custom_command(
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Cacao/pkg/iOS.py "${PACKAGE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dylib" "${PROJECT_NAME}" "${CMAKE_CURRENT_SOURCE_DIR}/control" "${OUT_FILE}"
+    DEPENDS ${CACAO_IOS_CONTROL}
+    OUTPUT  ${PACKAGE_DIR}/_
+    COMMENT "Packaging ${PROJECT_NAME}"
+)
+
+add_custom_target(
+    iOSPackage ALL
+    DEPENDS ${PACKAGE_DIR}/_
+)
+
+add_dependencies(iOSPackage ${PROJECT_NAME})

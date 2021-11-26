@@ -3,18 +3,27 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
-
-
+set(CACAO_SOURCES
+    Source.cpp 
+    helpers/Cacao.cpp
+)
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS" OR "${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
-    add_library(Cacao SHARED 
-        Source.cpp 
-        helpers/Cacao.cpp
+    set(CACAO_FIX_SOURCES
         helpers/HandlerFixes.cpp
     )
 else()
+    set(CACAO_FIX_SOURCES )
+endif()
+
+if (DEFINED CACAO_COMPILE_STATIC)
+    add_library(Cacao STATIC 
+        CACAO_SOURCES
+        CACAO_FIX_SOURCES
+    )
+else()
     add_library(Cacao SHARED 
-        Source.cpp 
-        helpers/Cacao.cpp
+        CACAO_SOURCES
+        CACAO_FIX_SOURCES
     )
 endif()
 
@@ -23,8 +32,6 @@ target_link_libraries(Cacao
     ${CMAKE_CURRENT_SOURCE_DIR}/cocos/cocos2dx/libcocos2dcpp.so
 )
 endif()
-
-
 
 target_link_libraries(Cacao Core)
 

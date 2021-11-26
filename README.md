@@ -76,4 +76,4 @@ If there's a function, class, or member you want to be added to the Cacao catalo
 
 For Cacao, (almost) all class variables are accessed via functions and prefixed with an underscore, e.g `GameManager::sharedState()->_playLayer()`. You can find a full list of these inside the Header.hpp header file.
 
-For a full list of helper functions, look at the api/Cacao.hpp header file.
+For a full list of helper functions, look at the helpers/Cacao.hpp header file.
