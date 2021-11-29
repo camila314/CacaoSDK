@@ -48,12 +48,18 @@ out = """//
 i = 0
 for cl in classes:
     for info in cl.info:
+        if "cocos2d" in cl.name and platform == "Win32":
+            continue
+            
         if isinstance(info, str) and "cocos2d" in cl.name:
             out += "\n" + info.replace("\n    ", "\n") + "\n"
             continue
         if not isinstance(info, GenFunction):
             continue
         if linkable(info):
+            continue
+
+        if info.getAddress(platform) == "None":
             continue
 
         body = functionBody

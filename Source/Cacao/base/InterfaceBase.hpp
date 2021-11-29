@@ -32,7 +32,9 @@ public:
 /**
  * Thank you pie for teaching me asm aliasing
  */
-__attribute__((used)) inline void cacaoEmptyFunction() {}
+#if !defined(_MSC_VER) 
+    __attribute__((used)) 
+#endif inline void cacaoEmptyFunction() {}
 
 /**
  * Basic way to make a main function without it being a main

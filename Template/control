@@ -1,5 +1,5 @@
 Name: %name
-Architecture: iphoneos-arm64
+Architecture: iphoneos-arm
 Description: %desc
 Maintainer: %author
 Package: %bundle

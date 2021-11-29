@@ -47,8 +47,8 @@ build_body2_body = """
         using a{id} = r{id}({cl}::*)({params}) {const};
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
-        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
+        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
+            m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
 
 build_body2_body_static = """
@@ -56,8 +56,8 @@ build_body2_body_static = """
         using a{id} = r{id}(*)({params});
         using c{id} = r{id}(*)({params});
         using d{id} = r{id}(*)({params});
-        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id}){{&D::{name}}}));
+        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
+            m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
 
 build_body2_body_virtual = """
@@ -65,8 +65,8 @@ build_body2_body_virtual = """
         using a{id} = r{id}({cl}::*)({params}) {const};
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
-        if ((c{id}){{&${cl}::{name}}} != (d{id}){{&D::{name}}})
-            m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual(i, (d{id}){{&D::{name}}}));
+        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
+            m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual(i, (d{id})(&D::{name})));
 """
 
 build_body2_end = """
@@ -97,7 +97,7 @@ out = """//
 #include <InterfaceBase.hpp>
 #define dl decltype
 #define dv std::declval
-namespace Cacao::interface {
+namespace Cacao::cacinterface {
 using namespace cocos2d;
 using namespace cocos2d::extension;
 """
@@ -121,6 +121,8 @@ for cl in classes:
         if not isinstance(info, GenFunction):
             continue
 
+        if info.getAddress(platform) == "None":
+            continue
         
         if info.declare.name in cl.name:
             info.declare.name = "constructor"
@@ -159,6 +161,10 @@ for cl in classes:
         if not isinstance(info, GenFunction):
             continue
 
+        if info.getAddress(platform) == "None":
+            continue
+
+
         if "constructor" == info.declare.name or "destructor" == info.declare.name:
             info.virtual = False
             info.static = False
@@ -191,7 +197,7 @@ for cl in classes:
 out += """
 #undef dl
 #undef dv
-} // namespace Cacao::interface
+} // namespace Cacao::cacinterface
 """
 
 

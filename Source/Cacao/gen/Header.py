@@ -61,8 +61,10 @@ for cl in queued(classes):
         continue
     body = ""
     for info in cl.info:
-
         if isinstance(info, GenFunction):
+            if info.getAddress(platform) == "None":
+                continue
+
             body += functionBody.format(
                 static = "static " if info.static else "",
                 virtual = "virtual " if info.virtual else "",

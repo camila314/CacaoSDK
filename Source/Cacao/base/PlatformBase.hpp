@@ -14,6 +14,7 @@
      * since they have the same name in different executables their
      * global offset tables can override
      */
+
     #define hidden __attribute__((visibility("hidden")))
 #endif
 

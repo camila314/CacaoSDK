@@ -1,6 +1,6 @@
 add_definitions(-DCC_TARGET_OS_IPHONE)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -Wno-deprecated -arch arm64 -isysroot ${CACAO_IOS_SDK}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -Wno-deprecated -arch arm64e -isysroot ${CACAO_IOS_SDK}")
 set(CMAKE_SYSTEM_NAME iOS)
 
 include_directories(
@@ -26,3 +26,8 @@ add_custom_target(
 )
 
 add_dependencies(iOSPackage ${PROJECT_NAME})
+
+if (DEFINED CACAO_IOS_REMOTE_HOST)
+    install(CODE "execute_process(COMMAND scp \"${PACKAGE_DIR}/${OUT_FILE}\" root@${CACAO_IOS_REMOTE_HOST}:/var/mobile/Documents)")
+    install(CODE "execute_process(COMMAND ssh root@${CACAO_IOS_REMOTE_HOST} dpkg -i \"/var/mobile/Documents/${OUT_FILE}\")")
+endif()
