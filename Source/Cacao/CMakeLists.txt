@@ -3,10 +3,23 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
+if (NOT EXISTS Header.hpp) 
+    FILE(WRITE Header.hpp "")
+endif()
+
+if (NOT EXISTS Interface.hpp) 
+    FILE(WRITE Interface.hpp "")
+endif()
+
+if (NOT EXISTS Source.cpp) 
+    FILE(WRITE Source.cpp "")
+endif()
+
 set(CACAO_SOURCES
     Source.cpp 
     helpers/Cacao.cpp
 )
+
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS" OR "${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
     set(CACAO_FIX_SOURCES
         helpers/HandlerFixes.cpp

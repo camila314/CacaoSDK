@@ -167,3 +167,15 @@ def getFunctionImplementation(cl, info, i):
         params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
         const = "const " if info.const else "",
     )
+
+
+def writeIfDifferent(name, out):
+    filePath = os.path.join(os.path.dirname(__file__), "..", name)
+
+    def isDifferent():
+        with open(filePath, "r") as f:
+            return f.read() != out
+
+    if not os.path.isfile(filePath) or isDifferent():
+        with open(filePath, "w") as f:
+            f.write(out)

@@ -97,7 +97,7 @@ out = """//
 #include <InterfaceBase.hpp>
 #define dl decltype
 #define dv std::declval
-namespace Cacao::cacinterface {
+namespace Cacao::interface {
 using namespace cocos2d;
 using namespace cocos2d::extension;
 """
@@ -197,11 +197,7 @@ for cl in classes:
 out += """
 #undef dl
 #undef dv
-} // namespace Cacao::cacinterface
+} // namespace Cacao::interface
 """
 
-
-with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "r") as f:
-    if f.read() != out:
-        with open(os.path.join(os.path.dirname(__file__), "..", "Interface.hpp"), "w") as f:
-            f.write(out)
+writeIfDifferent("Interface.hpp", out)

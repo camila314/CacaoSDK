@@ -99,8 +99,5 @@ for cl in queued(classes):
             body = body,
         )
 
-with open(os.path.join(os.path.dirname(__file__), "..", "Header.hpp"), "r") as f:
-    if f.read() != out:
-        with open(os.path.join(os.path.dirname(__file__), "..", "Header.hpp"), "w") as f:
-            f.write(out)
+writeIfDifferent("Header.hpp", out)
 

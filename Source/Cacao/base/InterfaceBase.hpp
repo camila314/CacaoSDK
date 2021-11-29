@@ -30,13 +30,6 @@ public:
 };
 
 /**
- * Thank you pie for teaching me asm aliasing
- */
-#if !defined(_MSC_VER) 
-    __attribute__((used)) 
-#endif inline void cacaoEmptyFunction() {}
-
-/**
  * Basic way to make a main function without it being a main
  * function, inject is purposed for that
  */
