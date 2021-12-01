@@ -14,7 +14,7 @@ set(PACKAGE_DIR ${CMAKE_CURRENT_BINARY_DIR}/ios_package)
 set(OUT_FILE "${PROJECT_NAME}_${CMAKE_PROJECT_VERSION}-3+release_iphoneos-arm64.deb")
 
 add_custom_command(
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Cacao/pkg/iOS.py "${PACKAGE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dylib" "${PROJECT_NAME}" "${CMAKE_CURRENT_SOURCE_DIR}/control" "${OUT_FILE}"
+    COMMAND python3 ${Cacao_SOURCE_DIR}/pkg/iOS.py "${PACKAGE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dylib" "${PROJECT_NAME}" "${CMAKE_CURRENT_SOURCE_DIR}/control" "${OUT_FILE}"
     DEPENDS ${CACAO_IOS_CONTROL}
     OUTPUT  ${PACKAGE_DIR}/_
     COMMENT "Packaging ${PROJECT_NAME}"
@@ -31,3 +31,6 @@ if (DEFINED CACAO_IOS_REMOTE_HOST)
     install(CODE "execute_process(COMMAND scp \"${PACKAGE_DIR}/${OUT_FILE}\" root@${CACAO_IOS_REMOTE_HOST}:/var/mobile/Documents)")
     install(CODE "execute_process(COMMAND ssh root@${CACAO_IOS_REMOTE_HOST} dpkg -i \"/var/mobile/Documents/${OUT_FILE}\")")
 endif()
+
+macro(link_prebuilts project)
+endmacro()

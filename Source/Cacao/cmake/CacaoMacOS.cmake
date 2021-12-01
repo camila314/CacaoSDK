@@ -22,3 +22,6 @@ add_custom_target(
 )
 
 add_dependencies(Inject ${PROJECT_NAME})
+
+macro(link_prebuilts project)
+endmacro()

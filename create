@@ -37,7 +37,6 @@ fix_link() {
 
 copy_files() {
 	cp "$srcpath/Template/.gitignore" "$copypath"
-	cp "$srcpath/Template/CMakeLists.txt" "$copypath"
 	cp "$srcpath/Template/README.md" "$copypath"
 	cp "$srcpath/Template/CacTemplate.sublime-project" "$copypath/$projname.sublime-project"
 	sed -i '' "s/CacTemplate/$projname/g" "$copypath/CMakeLists.txt"
@@ -46,30 +45,30 @@ copy_files() {
 }
 
 copy_not_custom() {
+    cp "$srcpath/Template/CMakeLists.txt" "$copypath"
 	sed -i '' "s/# sdk//g" "$copypath/CMakeLists.txt"
 	sed -i '' "s/# platform//g" "$copypath/CMakeLists.txt"
 }
 
 copy_android() {
+    cp "$srcpath/Template/Android/CMakeLists.txt" "$copypath"
     if [ -z ${CACAO_ANDROID_NDK+x} ]; then
         echo "Note: set the \$CACAO_ANDROID_NDK environment variable to remove this prompt"
         read -p "Android NDK Location (required) " CACAO_ANDROID_NDK
     fi
 
-    # bundleid=""
-    # read -p "Bundle Identifier [com.example.gdmod] " bundleid
-    # bundleid=${bundleid:-"com.example.gdmod"}
+    if [ -z ${CACAO_GD_APK_FILE+x} ]; then
+        echo "Note: set the \$CACAO_GD_APK_FILE environment variable to remove this prompt"
+        read -p "Geometry Dash APK Location (required) " CACAO_GD_APK_FILE
+    fi
 
-    # author=""
-    # read -p "Author [Someone] " author
-    # author=${author:-Someone}
-
-    sed -i '' "s/# sdk/set(CACAO_ANDROID_NDK)/g" "$copypath/CMakeLists.txt"
-    sed -i '' "s/# bundle//g" "$copypath/CMakeLists.txt"
-    sed -i '' "s/# author//g" "$copypath/CMakeLists.txt"
+    sed -i '' "s/_ndk/$CACAO_ANDROID_NDK/g" "$copypath/CMakeLists.txt"
+    sed -i '' "s/_apk/$CACAO_GD_APK_FILE/g" "$copypath/CMakeLists.txt"
 }
 
 copy_ios() {
+    cp "$srcpath/Template/iOS/CMakeLists.txt" "$copypath"
+    cp "$srcpath/Template/iOS/control"  "$copypath"
 	if [ -z ${CACAO_IOS_SDK+x} ]; then
 		echo "Note: set the \$CACAO_IOS_SDK environment variable to remove this prompt"
 		read -p "iPhoneOS SDK Location (required) " CACAO_IOS_SDK
@@ -86,10 +85,8 @@ copy_ios() {
 	desc=""
 	read -p "Description [My cool gd mod] " desc
 	desc=${desc:-"My cool gd mod"}
-	sed -i '' "s/# platform/set(CACAO_TARGET_PLATFORM iOS)/g" "$copypath/CMakeLists.txt"
-	sed -i '' "s&# sdk&set(CACAO_IOS_SDK $CACAO_IOS_SDK)&g" "$copypath/CMakeLists.txt"
+	sed -i '' "s/_sdk/$CACAO_IOS_SDK/g" "$copypath/CMakeLists.txt"
 
-	cp "$srcpath/Template/control"  "$copypath"
 	sed -i '' "s/%name/$projname/g" "$copypath/control"
 	sed -i '' "s/%author/$author/g" "$copypath/control"
 	sed -i '' "s/%bundle/$bundle/g" "$copypath/control"

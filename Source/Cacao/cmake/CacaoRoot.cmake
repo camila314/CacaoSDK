@@ -14,6 +14,12 @@ if (NOT DEFINED CACAO_TARGET_PLATFORM)
 	endif()
 endif()
 
+if (WIN32)
+    set(CACAO_PYTHON py)
+else()
+    set(CACAO_PYTHON python3)
+endif()
+
 if (DEFINED SOURCE_FILES)
     add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 else()
@@ -32,18 +38,31 @@ else()
     message(FATAL_ERROR "Not supported platform, please specify from the following: MacOS, Win32, iOS, Android.")
 endif()
 
+set(CACAO_SOURCES
+    ${Cacao_SOURCE_DIR}/Source.cpp 
+    ${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
+)
+
+if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS" OR "${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
+    set(CACAO_FIX_SOURCES
+        ${Cacao_SOURCE_DIR}/helpers/HandlerFixes.cpp
+    )
+else()
+    set(CACAO_FIX_SOURCES )
+endif()
+
 include_directories(
-    Cacao/
-    Cacao/helpers
-    Cacao/base
-    Cacao/old_stl
-    Cacao/hook
-    Cacao/hook/lilac-core/include
-    Cacao/cocos/
-    Cacao/cocos/cocos2dx
-    Cacao/cocos/cocos2dx/include
-    Cacao/cocos/cocos2dx/kazmath/include
-    Cacao/cocos/extensions
+    ${Cacao_SOURCE_DIR}/
+    ${Cacao_SOURCE_DIR}/helpers
+    ${Cacao_SOURCE_DIR}/base
+    ${Cacao_SOURCE_DIR}/old_stl
+    ${Cacao_SOURCE_DIR}/hook
+    ${Cacao_SOURCE_DIR}/hook/lilac-core/include
+    ${Cacao_SOURCE_DIR}/cocos/
+    ${Cacao_SOURCE_DIR}/cocos/cocos2dx
+    ${Cacao_SOURCE_DIR}/cocos/cocos2dx/include
+    ${Cacao_SOURCE_DIR}/cocos/cocos2dx/kazmath/include
+    ${Cacao_SOURCE_DIR}/cocos/extensions
 )
 
 add_subdirectory(Cacao)

@@ -51,7 +51,7 @@ class GenFunction:
         if t == "Android":
             if linkable(self):
                 return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
-            return f'(uintptr_t)dlsym((void*)base, "{self.getMangle()}")'
+            return f'address{i}'
     def getAddress(self, t):
         if self.offset is None:
             return None
@@ -66,6 +66,10 @@ class GenFunction:
 
         if t == "Android":
             return ""
+
+    def setAddress(self, t, i):
+        if t == "Android":
+            return f'static auto address{i} = (uintptr_t)dlsym((void*)base, "{self.getMangle()}");'
 
     def getMangle(self):
         return self.mangle
@@ -106,14 +110,17 @@ def inheritReturn(info):
 
 functionBody = """        using r{id} = {type};
         using f{id} = r{id}(*)({const}{cl}*{params2});
+        {setAddress}
         return reinterpret_cast<f{id}>({offset})(this{params});"""
 
 staticBody = """        using r{id} = {type};
         using f{id} = r{id}(*)({params2});
+        {setAddress}
         return reinterpret_cast<f{id}>({offset})({params});"""
 
 returnlessBody = """        using r{id} = {cl}*;
         using f{id} = r{id}(*)({const}{cl}*{params2});
+        {setAddress}
         reinterpret_cast<f{id}>({offset})(this{params});"""
 
 implementedFunctionBody = """        return this->{cl}::{name}({params});"""
@@ -166,6 +173,7 @@ def getFunctionImplementation(cl, info, i):
         cl = cl.name,
         params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
         const = "const " if info.const else "",
+        setAddress = info.setAddress(platform, i),
     )
 
 

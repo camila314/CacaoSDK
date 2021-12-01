@@ -47,6 +47,7 @@ build_body2_body = """
         using a{id} = r{id}({cl}::*)({params}) {const};
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
+        {setAddress}
         if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
             m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
@@ -56,6 +57,7 @@ build_body2_body_static = """
         using a{id} = r{id}(*)({params});
         using c{id} = r{id}(*)({params});
         using d{id} = r{id}(*)({params});
+        {setAddress}
         if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
             m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
@@ -65,6 +67,7 @@ build_body2_body_virtual = """
         using a{id} = r{id}({cl}::*)({params}) {const};
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
+        {setAddress}
         if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
             m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual(i, (d{id})(&D::{name})));
 """
@@ -188,6 +191,7 @@ for cl in classes:
             const = "const " if info.const else "",
             id = i,
             defaults = ', '.join(f"dv<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)),
+            setAddress = info.setAddress(platform, i),
         )
 
     out += build_body2_end
