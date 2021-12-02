@@ -45,7 +45,7 @@ public:                                                                         
                                                                                                         \
         return pHandler;                                                                                \
     }                                                                                                   \
-} i##CCUtility##HandlerTypeinfoFix   
+} 
 
 HandlerFixFor(CCKeypad);
 HandlerFixFor(CCKeyboard);
@@ -100,7 +100,7 @@ public:
 
         return pHandler;
     }
-} iCCTargetedTouchHandlerTypeinfoFix;
+};
 
 class $implement(CCStandardTouchHandler, CCStandardTouchHandlerTypeinfoFix) {
 public:
@@ -146,6 +146,6 @@ public:
 
         return pHandler;
     }
-} iCCStandardTouchHandlerTypeinfoFix;
+};
 
 } // Cacao::fixes

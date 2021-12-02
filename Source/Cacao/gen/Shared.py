@@ -68,8 +68,9 @@ class GenFunction:
             return ""
 
     def setAddress(self, t, i):
-        if t == "Android":
+        if t == "Android" and not linkable(self):
             return f'static auto address{i} = (uintptr_t)dlsym((void*)base, "{self.getMangle()}");'
+        return "";
 
     def getMangle(self):
         return self.mangle

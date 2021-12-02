@@ -58,6 +58,8 @@ CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHan
     return CCMenuItemToggler::create(off, on, parent, callback);
 }
 
+
+
 // void FLDialogDelegate::onSubmit(FLDialogHelper* dl, const std::string& text) {dl->close();}
 // void FLDialogDelegate::onCancel(FLDialogHelper* dl) {dl->close();}
 // void FLDialogDelegate::onShow(FLDialogHelper* dl) {}

@@ -12,16 +12,16 @@
 
 #include <MacroBase.hpp>
 
-#if ((ULONG_MAX) == (UINT_MAX))     // 32 bit
+#if defined(_WIN64) || defined(__x86_64__)
+    #define NEST1(macro, begin)     \
+    macro(CONCAT(begin, 0))         \
+    macro(CONCAT(begin, 8))         
+#else
     #define NEST1(macro, begin)     \
     macro(CONCAT(begin, 0))         \
     macro(CONCAT(begin, 4))         \
     macro(CONCAT(begin, 8))         \
     macro(CONCAT(begin, c))         
-#else                               // 64 bit
-    #define NEST1(macro, begin)     \
-    macro(CONCAT(begin, 0))         \
-    macro(CONCAT(begin, 8))         
 #endif
 
 #define NEST2(macro, begin)     \
@@ -133,10 +133,15 @@ public:
      * Specialized functions
      */
     template <typename R, typename T, typename ...Ps>
-    static uintptr_t addressOfVirtual(R(T::*func)(Ps...)) {
-        auto ins = new T;
-        auto address = *(uintptr_t*)(*(uintptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
-        delete ins;
+    static intptr_t addressOfVirtual(R(T::*func)(Ps...)) {
+        static_assert(std::is_copy_constructible<T>::value, "must be copy constructable");
+        auto ptr = reinterpret_cast<T*>(operator new(sizeof(T)));
+        auto ins = new T(*ptr);
+
+        auto address = *(intptr_t*)(*(intptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
+
+        operator delete(ins);
+        operator delete(ptr);
         return address;
     }
 

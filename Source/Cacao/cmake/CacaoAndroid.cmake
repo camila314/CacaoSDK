@@ -24,7 +24,7 @@ include_directories(
 )
 
 set(PACKAGE_DIR ${CMAKE_CURRENT_BINARY_DIR}/AndroidBuild)
-set(OUT_FILE "${PROJECT_NAME}_${CMAKE_PROJECT_VERSION}-3+release.apk")
+set(OUT_FILE "${PROJECT_NAME}_${CMAKE_PROJECT_VERSION}-3.apk")
 
 add_custom_command(
     COMMAND python3 ${Cacao_SOURCE_DIR}/pkg/Android.py "${PACKAGE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}"  "${PROJECT_NAME}" "${CACAO_APK_FILE}" "${OUT_FILE}"
@@ -39,3 +39,17 @@ add_custom_target(
 )
 
 add_dependencies(AndroidPackage ${PROJECT_NAME})
+
+add_custom_command(
+    COMMAND adb install "${PACKAGE_DIR}/${PROJECT_NAME}_${CMAKE_PROJECT_VERSION}-3-aligned-debugSigned.apk"
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Install target ${PROJECT_NAME}"
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/run0
+)
+
+add_custom_target(
+    Install ALL
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/run0
+)
+
+add_dependencies(Install AndroidPackage)

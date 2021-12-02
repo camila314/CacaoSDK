@@ -39,7 +39,9 @@ public:
 /**
  * Main class implementation, it has the structure
  * 
- * class __attribute__(("hidden")) $hook0: public $MenuLayer<$hook0> {
+ * class $hook0;
+ * bool $hook0Apply = Cacao::interface::$MenuLayer<$hook0>::_apply();
+ * class __attribute__(("hidden")) $hook0: public Cacao::interface::$MenuLayer<$hook0> {
  * public:
  *     // code stuff idk
  * };
@@ -47,7 +49,11 @@ public:
  * I tried to make the macro as verbose as it can be but
  * I am bad at this stuff
  */
-#define REDIRECT___(base, derived) hidden derived: public base<derived>
+#define PREDECLARE(derived) derived;
+#define APPLY(base, derived) bool derived##Apply = base<derived>::_apply();
+#define DECLARE(base, derived) class hidden derived: public base<derived>
+
+#define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
 #define REDIRECT__(base, derived) REDIRECT___(Cacao::interface::$##base, derived)
 #define REDIRECT_(base, counter) REDIRECT__(base, CONCAT($hook, counter))
 #define REDIRECT(base) REDIRECT_(base, __COUNTER__)

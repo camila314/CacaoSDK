@@ -6,16 +6,8 @@ build_start = """
 template<class D>
 class ${cl} : public {cl}, public InterfaceBase {{
 public:
-    static inline bool _init = false;
-    ~${cl}() {{
-        endDestructor();
-    }}
-    ${cl}() {{
-        if (!_init) {{
-            _init = true;
-            _apply();
-        }}
-    }}
+    ${cl}(const ${cl}& c) : {cl}(c) {{}}
+    ${cl}() = delete;
 """
 
 build_body1 = """
@@ -37,8 +29,7 @@ build_body1_static = """
 """
 
 build_body2_start = """
-    static void _apply() {{
-        auto i = new D;
+    static bool _apply() {{
 """
     
 
@@ -48,7 +39,7 @@ build_body2_body = """
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
         {setAddress}
-        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
+        if constexpr((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
             m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
 
@@ -58,7 +49,7 @@ build_body2_body_static = """
         using c{id} = r{id}(*)({params});
         using d{id} = r{id}(*)({params});
         {setAddress}
-        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
+        if constexpr((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
             m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
 
@@ -67,13 +58,14 @@ build_body2_body_virtual = """
         using a{id} = r{id}({cl}::*)({params}) {const};
         using c{id} = r{id}(${cl}::*)({params}) {const};
         using d{id} = r{id}(D::*)({params}) {const};
-        {setAddress}
-        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
-            m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual(i, (d{id})(&D::{name})));
+        if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name})) {{
+            {setAddress}
+            m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual((d{id})(&D::{name})));
+        }}
 """
 
 build_body2_end = """
-        delete i;
+        return true;
     }\n"""
 build_end = "};\n"
 

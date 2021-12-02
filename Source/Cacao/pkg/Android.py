@@ -19,7 +19,12 @@ with open("GeometryDash/smali/com/robtopx/geometryjump/GeometryJump.smali", "w")
 
 binary_dir = "GeometryDash/lib/armeabi-v7a"
 
-shutil.copy(os.path.join(build_dir, f"lib{name}.so"), os.path.join(binary_dir, f"lib{name}.so"))
+if os.path.isfile(os.path.join(binary_dir, f"libCacao.so")):
+    os.remove(os.path.join(binary_dir, f"libCacao.so"))
+if os.path.isfile(os.path.join(binary_dir, f"lib{name}.so")):
+    os.remove(os.path.join(binary_dir, f"lib{name}.so"))
+
+# shutil.copy(os.path.join(build_dir, f"lib{name}.so"), os.path.join(binary_dir, f"lib{name}.so"))
 shutil.copy(os.path.join(build_dir, f"Cacao/libCacao.so"), os.path.join(binary_dir, f"libCacao.so"))
 
 os.system(f'apktool b GeometryDash -o "{os.path.join(out_dir, out_file)}"')
