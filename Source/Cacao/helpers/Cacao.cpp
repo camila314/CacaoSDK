@@ -3,59 +3,63 @@
 #include <stdexcept>
 #include <set>
 
+cocos2d::CCDestructor::~CCDestructor() {
+	destructorLock = false;
+};
+
 namespace Cacao {
 using namespace cocos2d;
 
 cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay) {
-    auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
-    float axp = cocos2d::CCDirector::sharedDirector()->getScreenLeft() + winSize.width * ax;
-    float ayp = cocos2d::CCDirector::sharedDirector()->getScreenBottom() + winSize.height * ay;
-    CCPoint ccp;
-    ccp.x = axp + x;
-    ccp.y = ayp + y;
-    return ccp;
+	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+	float axp = cocos2d::CCDirector::sharedDirector()->getScreenLeft() + winSize.width * ax;
+	float ayp = cocos2d::CCDirector::sharedDirector()->getScreenBottom() + winSize.height * ay;
+	CCPoint ccp;
+	ccp.x = axp + x;
+	ccp.y = ayp + y;
+	return ccp;
 }
 
 cocos2d::CCPoint relativePosition(double x, double y) {
-    auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
-    float xp = winSize.width * (x/100.);
-    float yp = winSize.height * (y/100.);
-    CCPoint ccp;
-    ccp.x = xp;
-    ccp.y = yp;
-    return ccp;
+	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+	float xp = winSize.width * (x/100.);
+	float yp = winSize.height * (y/100.);
+	CCPoint ccp;
+	ccp.x = xp;
+	ccp.y = yp;
+	return ccp;
 }
 cocos2d::CCPoint addedPosition(double x, double y) {
-    auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
-    float xp = winSize.width/2 + x;
-    float yp = winSize.height/2 + y;
-    CCPoint ccp;
-    ccp.x = xp;
-    ccp.y = yp;
-    return ccp;
+	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+	float xp = winSize.width/2 + x;
+	float yp = winSize.height/2 + y;
+	CCPoint ccp;
+	ccp.x = xp;
+	ccp.y = yp;
+	return ccp;
 }
 
 cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
-    auto image = new cocos2d::CCImage();
-    image->initWithImageData((void*)img, img_len, cocos2d::CCImage::kFmtPng,1,1,1);
+	auto image = new cocos2d::CCImage();
+	image->initWithImageData((void*)img, img_len, cocos2d::CCImage::kFmtPng,1,1,1);
 
-    auto text = new cocos2d::CCTexture2D();
-    text->initWithImage(image);
+	auto text = new cocos2d::CCTexture2D();
+	text->initWithImage(image);
 
-    cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
+	cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
 
-    auto sprite = cocos2d::CCSprite::create();
-    sprite->initWithTexture(text, r);
+	auto sprite = cocos2d::CCSprite::create();
+	sprite->initWithTexture(text, r);
 
-    sprite->setTexture(text);
+	sprite->setTexture(text);
 
-    return sprite;
+	return sprite;
 }
 
 CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHandler callback) {
-    auto on = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
-    auto off = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
-    return CCMenuItemToggler::create(off, on, parent, callback);
+	auto on = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
+	auto off = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
+	return CCMenuItemToggler::create(off, on, parent, callback);
 }
 
 

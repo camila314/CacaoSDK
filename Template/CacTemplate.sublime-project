@@ -1,7 +1,7 @@
 {
-    "build_systems":
-    [
-        {
+	"build_systems":
+	[
+		{
 			"file_regex": "(.+[^:]):(\\d+):(\\d+): (?:fatal )?((?:error|warning): .+)$",
 			"name": "CacTemplate (OSX)",
 			"shell_cmd": "make -j4",
@@ -44,17 +44,17 @@
 			"working_dir": "${project_path}/build",
 		},
 	],
-    "folders":
-    [
-        {
-            "path": ".",
-        }
+	"folders":
+	[
+		{
+			"path": ".",
+		}
 	],
-    "settings":
-    {
-        "cmake":
-        {
-            "build_folder": "${project_path}/build",
-        },
-    },
+	"settings":
+	{
+		"cmake":
+		{
+			"build_folder": "${project_path}/build",
+		},
+	},
 }

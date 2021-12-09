@@ -4,64 +4,64 @@ import os
 import pickle
 
 def debugout(*args):
-    # print(*args)
-    pass
+	# print(*args)
+	pass
 
 class GenDeclaration:
-    def __init__(self):
-        self.type = None
-        self.name = None
-    def __repr__(self):
-        return f"{self.type}" + (f" {self.name}" if self.name else "")
-    # def getType(self, default=None):
-    #     return self.type
-    # def getName(self, default=None):
-    #     return f"p{default}" if self.name is None else self.name
-    # def getExpr(self, default=None):
-    #     if self.type is None:
-    #         return getName(default)
-    #     return f"{getType(default)} {getName(default)}"
+	def __init__(self):
+		self.type = None
+		self.name = None
+	def __repr__(self):
+		return f"{self.type}" + (f" {self.name}" if self.name else "")
+	# def getType(self, default=None):
+	#     return self.type
+	# def getName(self, default=None):
+	#     return f"p{default}" if self.name is None else self.name
+	# def getExpr(self, default=None):
+	#     if self.type is None:
+	#         return getName(default)
+	#     return f"{getType(default)} {getName(default)}"
 
 class GenFunction:
-    def __init__(self):
-        self.static = False
-        self.virtual = False
-        self.const = False
-        self.declare = None
-        self.parameters = []
-        self.offset = None
-        self.parent = None
-        self.convention = None
-        self.mangle = ""
-    def __repr__(self):
-        return f"{self.declare}({self.parameters}) = {self.offset}"
-    # def getParameterTypes(self):
-    #     ', '.join(p.getType(i) for i, p in enumerate(self.parameters))
-    # def getParameterNames(self):
-    #     ', '.join(p.getName(i) for i, p in enumerate(self.parameters))
-    # def getParameterExpr(self):
-    #     ', '.join(p.getExpr(i) for i, p in enumerate(self.parameters))
+	def __init__(self):
+		self.static = False
+		self.virtual = False
+		self.const = False
+		self.declare = None
+		self.parameters = []
+		self.offset = None
+		self.parent = None
+		self.convention = None
+		self.mangle = ""
+	def __repr__(self):
+		return f"{self.declare}({self.parameters}) = {self.offset}"
+	# def getParameterTypes(self):
+	#     ', '.join(p.getType(i) for i, p in enumerate(self.parameters))
+	# def getParameterNames(self):
+	#     ', '.join(p.getName(i) for i, p in enumerate(self.parameters))
+	# def getParameterExpr(self):
+	#     ', '.join(p.getExpr(i) for i, p in enumerate(self.parameters))
 
 
 class GenMember:
-    def __init__(self):
-        self.declare = None
-        self.offset = None
-    def __repr__(self):
-        return f"{self.declare} = {self.offset}"
+	def __init__(self):
+		self.declare = None
+		self.offset = None
+	def __repr__(self):
+		return f"{self.declare} = {self.offset}"
 
 class GenClass:
-    def __init__(self):
-        self.info = []
-        self.name = ""
-        self.base = []
-    def __repr__(self):
-        return self.name + ": " + ', '.join(self.base) + "\n" + '\n'.join(repr(r) for r in self.info)
+	def __init__(self):
+		self.info = []
+		self.name = ""
+		self.base = []
+	def __repr__(self):
+		return self.name + ": " + ', '.join(self.base) + "\n" + '\n'.join(repr(r) for r in self.info)
 
 # empty implementation
 def p_empty(p):
-    'empty :'
-    pass
+	'empty :'
+	pass
 
 
 # include implementation
@@ -78,41 +78,41 @@ def p_empty(p):
 
 # body implementation
 def p_body_body(p):
-    'body : bodypure'
-    p[0] = p[1]
-    debugout(p[0:10], "p_body_body")
+	'body : bodypure'
+	p[0] = p[1]
+	debugout(p[0:10], "p_body_body")
 
 def p_body_empty(p):
-    'body : empty'
-    p[0] = []
-    debugout(p[0:10], "p_body_empty")
+	'body : empty'
+	p[0] = []
+	debugout(p[0:10], "p_body_empty")
 
 def p_bodypure_bodypure(p):
-    'bodypure : bodypure bodypure'
-    p[0] = p[1] + p[2]
-    debugout(p[0:10], "p_body_body")
+	'bodypure : bodypure bodypure'
+	p[0] = p[1] + p[2]
+	debugout(p[0:10], "p_body_body")
 
 def p_bodypure_body(p):
-    'bodypure : class LCURLY info RCURLY'
-    c = p[1]
-    c.info = p[3]
-    for a in c.info:
-        if isinstance(a, GenFunction):
-            a.parent = c
-    p[0] = [c]
-    debugout(p[0:10], "p_bodypure_body")
+	'bodypure : class LCURLY info RCURLY'
+	c = p[1]
+	c.info = p[3]
+	for a in c.info:
+		if isinstance(a, GenFunction):
+			a.parent = c
+	p[0] = [c]
+	debugout(p[0:10], "p_bodypure_body")
 
 def p_bodypure_empty(p):
-    'bodypure : class LCURLY empty RCURLY'
-    c = p[1]
-    c.info = []
-    p[0] = [c]
-    debugout(p[0:10], "p_bodypure_empty")
+	'bodypure : class LCURLY empty RCURLY'
+	c = p[1]
+	c.info = []
+	p[0] = [c]
+	debugout(p[0:10], "p_bodypure_empty")
 
 def p_bodypure_include(p):
-    'bodypure : INCLUDE LTRI RTRI'
-    p[0] = []
-    debugout(p[0:10], "p_bodypure_include")
+	'bodypure : INCLUDE LTRI RTRI'
+	p[0] = []
+	debugout(p[0:10], "p_bodypure_include")
 
 # precedence = (
 #     ('left', 'bodypure_empty'),
@@ -122,379 +122,379 @@ def p_bodypure_include(p):
 
 # class implementation
 def p_class_class(p):
-    'class : CLASS IDENT'
-    c = GenClass()
-    c.name = p[2]
-    p[0] = c
-    debugout(p[0:10], "p_class_class")
+	'class : CLASS IDENT'
+	c = GenClass()
+	c.name = p[2]
+	p[0] = c
+	debugout(p[0:10], "p_class_class")
 
 def p_class_based(p):
-    'class : CLASS IDENT COLON classbase'
-    c = GenClass()
-    c.name = p[2]
-    c.base = p[4]
-    p[0] = c
-    debugout(p[0:10], "p_class_based")
+	'class : CLASS IDENT COLON classbase'
+	c = GenClass()
+	c.name = p[2]
+	c.base = p[4]
+	p[0] = c
+	debugout(p[0:10], "p_class_based")
 
 def p_classbase_bases(p):
-    'classbase : classbase COMMA classbase'
-    p[0] = p[1] + p[3]
-    debugout(p[0:10], "p_classbase_bases")
+	'classbase : classbase COMMA classbase'
+	p[0] = p[1] + p[3]
+	debugout(p[0:10], "p_classbase_bases")
 
 def p_classbase_base(p):
-    'classbase : IDENT'
-    p[0] = [p[1]]
-    debugout(p[0:10], "p_classbase_base")
+	'classbase : IDENT'
+	p[0] = [p[1]]
+	debugout(p[0:10], "p_classbase_base")
 
 
 
 # info implementation
 def p_info_infos(p):
-    'info : info info'
-    p[0] = p[1] + p[2]
-    debugout(p[0:10], "p_info_infos")
+	'info : info info'
+	p[0] = p[1] + p[2]
+	debugout(p[0:10], "p_info_infos")
 
 def p_info_function(p):
-    'info : function'
-    p[0] = [p[1]]
-    debugout(p[0:10], "p_info_function")
+	'info : function'
+	p[0] = [p[1]]
+	debugout(p[0:10], "p_info_function")
 
 def p_info_volatile(p):
-    'info : volatile'
-    p[0] = [p[1][1:]]
-    debugout(p[0:10], "p_info_volatile")
+	'info : volatile'
+	p[0] = [p[1][1:]]
+	debugout(p[0:10], "p_info_volatile")
 
 def p_info_member(p):
-    'info : member'
-    p[0] = [p[1]]
-    debugout(p[0:10], "p_info_member")
+	'info : member'
+	p[0] = [p[1]]
+	debugout(p[0:10], "p_info_member")
 
 
 
 # member implementation
 def p_member_normal(p):
-    'member : declaration offset SEMI'
-    m = GenMember()
-    m.declare = p[1]
-    m.offset = p[2]
-    p[0] = m
+	'member : declaration offset SEMI'
+	m = GenMember()
+	m.declare = p[1]
+	m.offset = p[2]
+	p[0] = m
 
 def p_member_offsetless(p):
-    'member : declaration SEMI'
-    m = GenMember()
-    m.declare = p[1]
-    p[0] = m
+	'member : declaration SEMI'
+	m = GenMember()
+	m.declare = p[1]
+	p[0] = m
 
 
 
 # mangle implementation
 def p_mangle_itanium(p):
-    'mangle : APOSTROPHE IDENT APOSTROPHE'
-    p[0] = p[2]
-    debugout(p[0:10], "p_mangle_itanium")
+	'mangle : APOSTROPHE IDENT APOSTROPHE'
+	p[0] = p[2]
+	debugout(p[0:10], "p_mangle_itanium")
 
 
 # convention implementation
 def p_convention_stdcall(p):
-    'convention : STDCALL'
-    p[0] = (p[1], "")
-    debugout(p[0:10], "p_convention_stdcall")
+	'convention : STDCALL'
+	p[0] = (p[1], "")
+	debugout(p[0:10], "p_convention_stdcall")
 
 def p_convention_thiscall(p):
-    'convention : THISCALL'
-    p[0] = (p[1], "")
-    debugout(p[0:10], "p_convention_thiscall")
+	'convention : THISCALL'
+	p[0] = (p[1], "")
+	debugout(p[0:10], "p_convention_thiscall")
 
 def p_convention_optcall(p):
-    'convention : OPTCALL'
-    p[0] = (p[1], "")
-    debugout(p[0:10], "p_convention_optcall")
+	'convention : OPTCALL'
+	p[0] = (p[1], "")
+	debugout(p[0:10], "p_convention_optcall")
 
 def p_convention_membercall(p):
-    'convention : MEMBERCALL'
-    p[0] = (p[1], "")
-    debugout(p[0:10], "p_convention_membercall")
+	'convention : MEMBERCALL'
+	p[0] = (p[1], "")
+	debugout(p[0:10], "p_convention_membercall")
 
 def p_convention_manglestdcall(p):
-    'convention : mangle STDCALL'
-    p[0] = (p[2], p[1])
-    debugout(p[0:10], "p_convention_manglestdcall")
+	'convention : mangle STDCALL'
+	p[0] = (p[2], p[1])
+	debugout(p[0:10], "p_convention_manglestdcall")
 
 def p_convention_manglethiscall(p):
-    'convention : mangle THISCALL'
-    p[0] = (p[2], p[1])
-    debugout(p[0:10], "p_convention_manglethiscall")
+	'convention : mangle THISCALL'
+	p[0] = (p[2], p[1])
+	debugout(p[0:10], "p_convention_manglethiscall")
 
 def p_convention_mangleoptcall(p):
-    'convention : mangle OPTCALL'
-    p[0] = (p[2], p[1])
-    debugout(p[0:10], "p_convention_mangleoptcall")
+	'convention : mangle OPTCALL'
+	p[0] = (p[2], p[1])
+	debugout(p[0:10], "p_convention_mangleoptcall")
 
 def p_convention_manglemembercall(p):
-    'convention : mangle MEMBERCALL'
-    p[0] = (p[2], p[1])
-    debugout(p[0:10], "p_convention_manglemembercall")
+	'convention : mangle MEMBERCALL'
+	p[0] = (p[2], p[1])
+	debugout(p[0:10], "p_convention_manglemembercall")
 
 def p_convention_mangle(p):
-    'convention : mangle'
-    p[0] = ("", p[1])
-    debugout(p[0:10], "p_convention_mangle")
+	'convention : mangle'
+	p[0] = ("", p[1])
+	debugout(p[0:10], "p_convention_mangle")
 
 
 # function implementation
 def p_function_virtual(p):
-    'function : VIRTUAL purefunction offset SEMI'
-    f = p[3-1]
-    f.virtual = True
-    f.offset = p[4-1]
-    p[0] = f
-    debugout(p[0:10], "p_function_virtual")
+	'function : VIRTUAL purefunction offset SEMI'
+	f = p[3-1]
+	f.virtual = True
+	f.offset = p[4-1]
+	p[0] = f
+	debugout(p[0:10], "p_function_virtual")
 
 def p_function_static(p):
-    'function : STATIC purefunction offset SEMI'
-    f = p[3-1]
-    f.static = True
-    f.offset = p[4-1]
-    p[0] = f
-    debugout(p[0:10], "p_function_static")
+	'function : STATIC purefunction offset SEMI'
+	f = p[3-1]
+	f.static = True
+	f.offset = p[4-1]
+	p[0] = f
+	debugout(p[0:10], "p_function_static")
 
 def p_function_normal(p):
-    'function : purefunction offset SEMI'
-    f = p[2-1]
-    f.offset = p[3-1]
-    p[0] = f
-    debugout(p[0:10], "p_function_normal")
+	'function : purefunction offset SEMI'
+	f = p[2-1]
+	f.offset = p[3-1]
+	p[0] = f
+	debugout(p[0:10], "p_function_normal")
 
 def p_function_virtualconvention(p):
-    'function : convention VIRTUAL purefunction offset SEMI'
-    f = p[3]
-    f.convention = p[1][0]
-    f.mangle = p[1][1]
-    f.virtual = True
-    f.offset = p[4]
-    p[0] = f
-    debugout(p[0:10], "p_function_virtualconvention")
+	'function : convention VIRTUAL purefunction offset SEMI'
+	f = p[3]
+	f.convention = p[1][0]
+	f.mangle = p[1][1]
+	f.virtual = True
+	f.offset = p[4]
+	p[0] = f
+	debugout(p[0:10], "p_function_virtualconvention")
 
 def p_function_staticconvention(p):
-    'function : convention STATIC purefunction offset SEMI'
-    f = p[3]
-    f.convention = p[1][0]
-    f.mangle = p[1][1]
-    f.static = True
-    f.offset = p[4]
-    p[0] = f
-    debugout(p[0:10], "p_function_staticconvention")
+	'function : convention STATIC purefunction offset SEMI'
+	f = p[3]
+	f.convention = p[1][0]
+	f.mangle = p[1][1]
+	f.static = True
+	f.offset = p[4]
+	p[0] = f
+	debugout(p[0:10], "p_function_staticconvention")
 
 def p_function_normalconvention(p):
-    'function : convention purefunction offset SEMI'
-    f = p[2]
-    f.convention = p[1][0]
-    f.mangle = p[1][1]
-    f.offset = p[3]
-    p[0] = f
-    debugout(p[0:10], "p_function_normalconvention")
+	'function : convention purefunction offset SEMI'
+	f = p[2]
+	f.convention = p[1][0]
+	f.mangle = p[1][1]
+	f.offset = p[3]
+	p[0] = f
+	debugout(p[0:10], "p_function_normalconvention")
 
 
 def p_purefunction_pure(p):
-    'purefunction : declaration parameter'
-    f = GenFunction()
-    f.declare = p[1]
-    f.parameters = p[2]
-    p[0] = f
-    debugout(p[0:10], "p_purefunction_pure")
+	'purefunction : declaration parameter'
+	f = GenFunction()
+	f.declare = p[1]
+	f.parameters = p[2]
+	p[0] = f
+	debugout(p[0:10], "p_purefunction_pure")
 
 def p_purefunction_const(p):
-    'purefunction : declaration parameter CONST'
-    f = GenFunction()
-    f.declare = p[1]
-    f.parameters = p[2]
-    f.const = True
-    p[0] = f
-    debugout(p[0:10], "p_purefunction_const")
+	'purefunction : declaration parameter CONST'
+	f = GenFunction()
+	f.declare = p[1]
+	f.parameters = p[2]
+	f.const = True
+	p[0] = f
+	debugout(p[0:10], "p_purefunction_const")
 
 def p_purefunction_returnless(p):
-    'purefunction : name parameter'
-    f = GenFunction()
-    f.declare = p[1]
-    f.parameters = p[2]
-    p[0] = f
-    debugout(p[0:10], "p_purefunction_returnless")
+	'purefunction : name parameter'
+	f = GenFunction()
+	f.declare = p[1]
+	f.parameters = p[2]
+	p[0] = f
+	debugout(p[0:10], "p_purefunction_returnless")
 
 
 
 # offset implementation
 def p_offset_11(p):
-    'offset : ASSIGN number'
-    p[0] = (p[2], None, None)
-    debugout(p[0:10], "p_offset_1")
+	'offset : ASSIGN number'
+	p[0] = (p[2], None, None)
+	debugout(p[0:10], "p_offset_1")
 
 def p_offset_12(p):
-    'offset : ASSIGN number COMMA number'
-    p[0] = (p[2], p[4], None)
-    debugout(p[0:10], "p_offset_2")
+	'offset : ASSIGN number COMMA number'
+	p[0] = (p[2], p[4], None)
+	debugout(p[0:10], "p_offset_2")
 
 def p_offset_13(p):
-    'offset : ASSIGN number COMMA number COMMA number'
-    p[0] = (p[2], p[4], p[5])
-    debugout(p[0:10], "p_offset_3")
+	'offset : ASSIGN number COMMA number COMMA number'
+	p[0] = (p[2], p[4], p[5])
+	debugout(p[0:10], "p_offset_3")
 
 
 # number implementation
 def p_number_number(p):
-    'number : ADDRESS'
-    p[0] = p[1]
-    debugout(p[0:10], "p_number_number")
+	'number : ADDRESS'
+	p[0] = p[1]
+	debugout(p[0:10], "p_number_number")
 
 def p_number_empty(p):
-    'number : empty'
-    p[0] = None
-    debugout(p[0:10], "p_number_empty")
+	'number : empty'
+	p[0] = None
+	debugout(p[0:10], "p_number_empty")
 
 
 
 # parameter implementation
 def p_parameter_parameter(p):
-    'parameter : LPAREN pureparameter RPAREN'
-    p[0] = p[2]
-    debugout(p[0:10], "p_parameter_parameter")
+	'parameter : LPAREN pureparameter RPAREN'
+	p[0] = p[2]
+	debugout(p[0:10], "p_parameter_parameter")
 
 def p_pureparameter_types(p):
-    'pureparameter : pureparameter COMMA pureparameter'
-    p[0] = p[1] + p[3]
-    debugout(p[0:10], "p_pureparameter_types")
+	'pureparameter : pureparameter COMMA pureparameter'
+	p[0] = p[1] + p[3]
+	debugout(p[0:10], "p_pureparameter_types")
 
 def p_pureparameter_type(p):
-    'pureparameter : type'
-    p[0] = [p[1]]
-    debugout(p[0:10], "p_pureparameter_type")
+	'pureparameter : type'
+	p[0] = [p[1]]
+	debugout(p[0:10], "p_pureparameter_type")
 
 def p_pureparameter_declaration(p):
-    'pureparameter : declaration'
-    p[0] = [p[1]]
-    debugout(p[0:10], "p_pureparameter_type")
+	'pureparameter : declaration'
+	p[0] = [p[1]]
+	debugout(p[0:10], "p_pureparameter_type")
 
 def p_pureparameter_empty(p):
-    'pureparameter : empty'
-    p[0] = []
-    debugout(p[0:10], "p_pureparameter_empty")
+	'pureparameter : empty'
+	p[0] = []
+	debugout(p[0:10], "p_pureparameter_empty")
 
 
 
 # declaration implementation
 def p_declaration_declaration(p):
-    'declaration : type name'
-    d = p[1]
-    d.name = p[2].name
-    p[0] = d
-    debugout(p[0:10], "p_declaration_declaration")
+	'declaration : type name'
+	d = p[1]
+	d.name = p[2].name
+	p[0] = d
+	debugout(p[0:10], "p_declaration_declaration")
 
 def p_name_name(p):
-    'name : IDENT'
-    d = GenDeclaration()
-    d.name = p[1]
-    p[0] = d
-    debugout(p[0:10], "p_name_name")
+	'name : IDENT'
+	d = GenDeclaration()
+	d.name = p[1]
+	p[0] = d
+	debugout(p[0:10], "p_name_name")
 
 
 
 # type implementation
 def p_type_type(p):
-    'type : puretype'
-    d = GenDeclaration()
-    d.type = p[1]
-    p[0] = d
-    debugout(p[0:10], "p_type_type")
+	'type : puretype'
+	d = GenDeclaration()
+	d.type = p[1]
+	p[0] = d
+	debugout(p[0:10], "p_type_type")
 
 def p_puretype_templated(p):
-    'puretype : puretype template'
-    p[0] = p[1] + p[2]
-    debugout(p[0:10], "p_puretype_templated")
+	'puretype : puretype template'
+	p[0] = p[1] + p[2]
+	debugout(p[0:10], "p_puretype_templated")
 
 def p_puretype_unsigned(p):
-    'puretype : UNSIGNED puretype'
-    p[0] = p[1] + " " + p[2]
-    debugout(p[0:10], "p_puretype_unsigned")
+	'puretype : UNSIGNED puretype'
+	p[0] = p[1] + " " + p[2]
+	debugout(p[0:10], "p_puretype_unsigned")
 
 def p_puretype_constl(p):
-    'puretype : CONST puretype'
-    p[0] = p[1] + " " + p[2]
-    debugout(p[0:10], "p_puretype_constl")
+	'puretype : CONST puretype'
+	p[0] = p[1] + " " + p[2]
+	debugout(p[0:10], "p_puretype_constl")
 
 def p_puretype_constp(p):
-    'puretype : puretype CONSTP'
-    p[0] = p[1] + " " + p[2]
-    debugout(p[0:10], "p_puretype_constp")
+	'puretype : puretype CONSTP'
+	p[0] = p[1] + " " + p[2]
+	debugout(p[0:10], "p_puretype_constp")
 
 def p_puretype_puretype(p):
-    'puretype : IDENT'
-    p[0] = p[1]
-    debugout(p[0:10], "p_puretype_puretype")
+	'puretype : IDENT'
+	p[0] = p[1]
+	debugout(p[0:10], "p_puretype_puretype")
 
 
 
 # template implementation
 def p_template_template(p):
-    'template : LTRI puretemplate RTRI'
-    p[0] = "<" + p[2] + ">"
-    debugout(p[0:10], "p_template_template")
+	'template : LTRI puretemplate RTRI'
+	p[0] = "<" + p[2] + ">"
+	debugout(p[0:10], "p_template_template")
 
 def p_puretemplate_data(p):
-    'puretemplate : TEMPLATEDATA'
-    p[0] = p[1]
-    debugout(p[0:10], "p_puretemplate_data")
+	'puretemplate : TEMPLATEDATA'
+	p[0] = p[1]
+	debugout(p[0:10], "p_puretemplate_data")
 
 def p_puretemplate_datas(p):
-    'puretemplate : TEMPLATEDATA puretemplate'
-    p[0] = p[1] + p[2]
-    debugout(p[0:10], "p_puretemplate_datas")
+	'puretemplate : TEMPLATEDATA puretemplate'
+	p[0] = p[1] + p[2]
+	debugout(p[0:10], "p_puretemplate_datas")
 
 def p_puretemplate_recurse(p):
-    'puretemplate : template puretemplate'
-    p[0] = p[1] + p[2]
-    debugout(p[0:10], "p_puretemplate_recurse")
+	'puretemplate : template puretemplate'
+	p[0] = p[1] + p[2]
+	debugout(p[0:10], "p_puretemplate_recurse")
 
 
 
 # volatile implementation
 def p_volatile_start(p):
-    'volatile : VOLATILE purevolatile'
-    p[0] = p[2]
-    debugout(p[0:10], "p_volatile_start")
+	'volatile : VOLATILE purevolatile'
+	p[0] = p[2]
+	debugout(p[0:10], "p_volatile_start")
 
 def p_purevolatile_recurse(p):
-    'purevolatile : LCURLY purevolatile RCURLY'
-    p[0] = '{' + p[2] + '}'
-    debugout(p[0:10], "p_purevolatile_recurse")
+	'purevolatile : LCURLY purevolatile RCURLY'
+	p[0] = '{' + p[2] + '}'
+	debugout(p[0:10], "p_purevolatile_recurse")
 
 def p_purevolatile_datas(p):
-    'purevolatile : purevolatile purevolatile'
-    p[0] = p[1] + p[2]
-    debugout(p[0:10], "p_purevolatile_datas")
+	'purevolatile : purevolatile purevolatile'
+	p[0] = p[1] + p[2]
+	debugout(p[0:10], "p_purevolatile_datas")
 
 def p_purevolatile_data(p):
-    'purevolatile : VOLATILEDATA'
-    p[0] = p[1]
-    debugout(p[0:10], "p_purevolatile_data")
+	'purevolatile : VOLATILEDATA'
+	p[0] = p[1]
+	debugout(p[0:10], "p_purevolatile_data")
 
 def p_purevolatile_empty(p):
-    'purevolatile : LCURLY RCURLY'
-    p[0] = '{}'
-    debugout(p[0:10], "p_purevolatile_empty")
+	'purevolatile : LCURLY RCURLY'
+	p[0] = '{}'
+	debugout(p[0:10], "p_purevolatile_empty")
 
 
 def p_purevolatile_semi(p):
-    'purevolatile : SEMI'
-    p[0] = ';'
-    debugout(p[0:10], "p_purevolatile_semi")
+	'purevolatile : SEMI'
+	p[0] = ';'
+	debugout(p[0:10], "p_purevolatile_semi")
 
 
 
 # Error rule for syntax errors
 def p_error(p):
-    print(p)
-    print("Error at:")
-    print('\n'.join(p.lexer.lexdata.split('\n')[p.lexer.lineno-3:p.lexer.lineno+3]))
-    print("Syntax error in input!")
+	print(p)
+	print("Error at:")
+	print('\n'.join(p.lexer.lexdata.split('\n')[p.lexer.lineno-3:p.lexer.lineno+3]))
+	print("Syntax error in input!")
 
 start = 'body'
 

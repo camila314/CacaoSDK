@@ -13,15 +13,15 @@
 #include <MacroBase.hpp>
 
 #if defined(_WIN64) || defined(__x86_64__)
-    #define NEST1(macro, begin)     \
-    macro(CONCAT(begin, 0))         \
-    macro(CONCAT(begin, 8))         
+	#define NEST1(macro, begin)     \
+	macro(CONCAT(begin, 0))         \
+	macro(CONCAT(begin, 8))         
 #else
-    #define NEST1(macro, begin)     \
-    macro(CONCAT(begin, 0))         \
-    macro(CONCAT(begin, 4))         \
-    macro(CONCAT(begin, 8))         \
-    macro(CONCAT(begin, c))         
+	#define NEST1(macro, begin)     \
+	macro(CONCAT(begin, 0))         \
+	macro(CONCAT(begin, 4))         \
+	macro(CONCAT(begin, 8))         \
+	macro(CONCAT(begin, c))         
 #endif
 
 #define NEST2(macro, begin)     \
@@ -100,84 +100,84 @@ NEST2(macro, CONCAT(begin, f))  \
 
 class FunctionScrapper {
 protected:
-    static constexpr ptrdiff_t table_size = 0x1000 / sizeof(uintptr_t);
+	static constexpr ptrdiff_t table_size = 0x1000 / sizeof(uintptr_t);
 
-    using tablemethodptr_t = ptrdiff_t(FunctionScrapper::*)();
-    using methodptr_t = void(FunctionScrapper::*)();
-    using table_t = uintptr_t[table_size + 0x1]; 
-    using tableptr_t = table_t*; 
-    using vtable_t = methodptr_t[table_size + 0x1]; 
-    using vtableptr_t = vtable_t*; 
-
-public:
-    template<typename T>
-    static uintptr_t pointerOf(T func) {
-        return reinterpret_cast<uintptr_t&>(func);
-    }
-
-    template<typename T>
-    static ptrdiff_t indexOf(T ptr) { 
-        auto func = reinterpret_cast<tablemethodptr_t&>(ptr);
-        return (instance->*func)(); 
-    }
-
-    template<typename T>
-    static ptrdiff_t thunkOf(T ptr) {
-        if (sizeof(T) == sizeof(ptrdiff_t)) return 0;
-        return *(reinterpret_cast<ptrdiff_t*>(&ptr)+1);
-    }
+	using tablemethodptr_t = ptrdiff_t(FunctionScrapper::*)();
+	using methodptr_t = void(FunctionScrapper::*)();
+	using table_t = uintptr_t[table_size + 0x1]; 
+	using tableptr_t = table_t*; 
+	using vtable_t = methodptr_t[table_size + 0x1]; 
+	using vtableptr_t = vtable_t*; 
 
 public:
+	template<typename T>
+	static uintptr_t pointerOf(T func) {
+		return reinterpret_cast<uintptr_t&>(func);
+	}
 
-    /**
-     * Specialized functions
-     */
-    template <typename R, typename T, typename ...Ps>
-    static intptr_t addressOfVirtual(R(T::*func)(Ps...)) {
-        static_assert(std::is_copy_constructible<T>::value, "must be copy constructable");
-        auto ptr = reinterpret_cast<T*>(operator new(sizeof(T)));
-        auto ins = new T(*ptr);
+	template<typename T>
+	static ptrdiff_t indexOf(T ptr) { 
+		auto func = reinterpret_cast<tablemethodptr_t&>(ptr);
+		return (instance->*func)(); 
+	}
 
-        auto address = *(intptr_t*)(*(intptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
+	template<typename T>
+	static ptrdiff_t thunkOf(T ptr) {
+		if (sizeof(T) == sizeof(ptrdiff_t)) return 0;
+		return *(reinterpret_cast<ptrdiff_t*>(&ptr)+1);
+	}
 
-        operator delete(ins);
-        operator delete(ptr);
-        return address;
-    }
+public:
 
-    template <typename R, typename T, typename ...Ps>
-    static uintptr_t addressOfVirtual(T* ins, R(T::*func)(Ps...)) {
-        auto address = *(uintptr_t*)(*(uintptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
-        return address;
-    }
+	/**
+	 * Specialized functions
+	 */
+	template <typename R, typename T, typename ...Ps>
+	static intptr_t addressOfVirtual(R(T::*func)(Ps...)) {
+		static_assert(std::is_copy_constructible<T>::value, "must be copy constructable");
+		auto ptr = reinterpret_cast<T*>(operator new(sizeof(T)));
+		auto ins = new T(*ptr);
 
-    template <typename R, typename T, typename ...Ps>
-    static uintptr_t addressOfNonVirtual(R(T::*func)(Ps...)) {
-        return pointerOf(func);
-    }
+		auto address = *(intptr_t*)(*(intptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
 
-    template <typename R, typename ...Ps>
-    static uintptr_t addressOfNonVirtual(R(*func)(Ps...)) {
-        return pointerOf(func);
-    }
+		operator delete(ins);
+		operator delete(ptr);
+		return address;
+	}
+
+	template <typename R, typename T, typename ...Ps>
+	static uintptr_t addressOfVirtual(T* ins, R(T::*func)(Ps...)) {
+		auto address = *(uintptr_t*)(*(uintptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
+		return address;
+	}
+
+	template <typename R, typename T, typename ...Ps>
+	static uintptr_t addressOfNonVirtual(R(T::*func)(Ps...)) {
+		return pointerOf(func);
+	}
+
+	template <typename R, typename ...Ps>
+	static uintptr_t addressOfNonVirtual(R(*func)(Ps...)) {
+		return pointerOf(func);
+	}
 
 protected:
-    VMETHOD_SET()
-    METHOD_SET()
-    static ptrdiff_t function() {return -1;}//because c++ cries when there is a trailing comma 
-    virtual void vfunction() {}
+	VMETHOD_SET()
+	METHOD_SET()
+	static ptrdiff_t function() {return -1;}//because c++ cries when there is a trailing comma 
+	virtual void vfunction() {}
 
-    inline static table_t table = {
-        TABLE_SET()
-        (uintptr_t)FunctionScrapper::function
-    };
-    inline static tableptr_t tableptr = &table;
-    inline static FunctionScrapper* instance = reinterpret_cast<FunctionScrapper*>(&tableptr);
+	inline static table_t table = {
+		TABLE_SET()
+		(uintptr_t)FunctionScrapper::function
+	};
+	inline static tableptr_t tableptr = &table;
+	inline static FunctionScrapper* instance = reinterpret_cast<FunctionScrapper*>(&tableptr);
 
-    inline static vtable_t vtable = {
-        VTABLE_SET()
-        &FunctionScrapper::vfunction
-    };
+	inline static vtable_t vtable = {
+		VTABLE_SET()
+		&FunctionScrapper::vfunction
+	};
 };
 
 /**

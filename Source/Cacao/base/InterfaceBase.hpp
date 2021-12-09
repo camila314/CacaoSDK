@@ -26,7 +26,7 @@ inline ModContainer* const m = new ModContainer(PROJECT_NAME);
 // Just in case if we ever need to add shared implementations
 class InterfaceBase {
 public:
-    void _apply() {}
+	void _apply() {}
 };
 
 /**

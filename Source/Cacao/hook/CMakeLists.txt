@@ -7,8 +7,8 @@ add_library(Core STATIC Core.cpp)
 
 target_link_libraries(Core LilacHook)
 target_include_directories(Core PUBLIC 
-    . 
-    lilac-core/include/
+	. 
+	lilac-core/include/
 )
 
 set_property(TARGET Core PROPERTY CXX_STANDARD 17)

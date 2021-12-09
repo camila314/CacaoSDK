@@ -1,8 +1,8 @@
 if (DEFINED CACAO_ANDROID_NDK)
 elseif(NOT $ENV{CACAO_ANDROID_NDK} STREQUAL "")
-    set(CACAO_ANDROID_NDK $ENV{CACAO_ANDROID_NDK})
+	set(CACAO_ANDROID_NDK $ENV{CACAO_ANDROID_NDK})
 else()
-    message(FATAL_ERROR "Please set CACAO_ANDROID_NDK in the root CMake file.")
+	message(FATAL_ERROR "Please set CACAO_ANDROID_NDK in the root CMake file.")
 endif()
 
 # Set android
