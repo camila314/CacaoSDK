@@ -1,7 +1,8 @@
 add_definitions(-DCC_TARGET_OS_IPHONE)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -Wno-deprecated -arch arm64e -isysroot ${CACAO_IOS_SDK}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -Wno-deprecated -arch arm64 -isysroot ${CACAO_IOS_SDK}")
 set(CMAKE_SYSTEM_NAME iOS)
+set(CMAKE_OSX_SYSROOT ${CACAO_IOS_SDK})
 
 include_directories(
 	Cacao/api
