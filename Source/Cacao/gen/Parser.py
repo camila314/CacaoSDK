@@ -335,8 +335,13 @@ def p_offset_12(p):
 
 def p_offset_13(p):
 	'offset : ASSIGN number COMMA number COMMA number'
-	p[0] = (p[2], p[4], p[5])
+	p[0] = (p[2], p[4], p[6])
 	debugout(p[0:10], "p_offset_3")
+
+def p_offset_14(p):
+	'offset : ASSIGN number COMMA COMMA number'
+	p[0] = (p[2], None, p[5])
+	debugout(p[0:10], "p_offset_4")
 
 
 # number implementation

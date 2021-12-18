@@ -12,5 +12,3 @@ inline uintptr_t const base = getBase();
 
 #define CACAO_VERSION "3.0.0"
 
-// i love you cacao
-// you are like the girlfriend i never had

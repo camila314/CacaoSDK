@@ -38,12 +38,20 @@ else()
 	message(FATAL_ERROR "Not supported platform, please specify from the following: MacOS, Win32, iOS, Android.")
 endif()
 
+
+if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
+set(CACAO_SOURCES
+	${Cacao_SOURCE_DIR}/Source.cpp 
+)
+message(WARNING "fix asap")
+else()
 set(CACAO_SOURCES
 	${Cacao_SOURCE_DIR}/Source.cpp 
 	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
 )
+endif()
 
-if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS" OR "${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
+if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS")
 	set(CACAO_FIX_SOURCES
 		${Cacao_SOURCE_DIR}/helpers/HandlerFixes.cpp
 	)
