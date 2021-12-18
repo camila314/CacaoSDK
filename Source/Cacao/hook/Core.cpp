@@ -85,6 +85,12 @@ namespace Cacao::core {
 		disable();
 	}
 
+	static ModContainer s_instance = ModContainer("");
+
+	ModContainer* ModContainer::instance() {
+		return &s_instance;
+	}
+
 	std::vector<BaseContainer*> ModContainer::getMods() {
 		return m_mods;
 	}
@@ -93,9 +99,18 @@ namespace Cacao::core {
 		return m_name;
 	}
 
+	void ModContainer::setName(std::string name) {
+		m_name = name;
+	}
+
 	void ModContainer::registerWrite(uintptr_t address, size_t byteCount, char* bytes) {
 		MemoryContainer* write = new MemoryContainer(address, byteCount, bytes);
 		m_mods.push_back(write);
+	}
+
+	void ModContainer::registerWriteEnable(uintptr_t address, size_t byteCount, char* bytes) {
+		registerWrite(address, byteCount, bytes);
+		m_mods.back()->enable();
 	}
 
 	void ModContainer::registerHook(uintptr_t address, func_t function) {

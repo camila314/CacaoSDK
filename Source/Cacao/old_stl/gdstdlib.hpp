@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <iostream>
 
 // my girl recreating the entirety of 10.7 stl
 
@@ -18,13 +19,15 @@ namespace gd {
 	 public:
 		string() : string("") {}
 		string(char const* ok) {
+			if (!ok) return; // lol
 			std::string stub = std::string(ok);
 
-			m_data = reinterpret_cast<_internal_string*>((long)malloc(sizeof(_internal_string) + stub.size()) + sizeof(_internal_string));
+			// +1 is because our camila friend forgot the null terminator
+			m_data = reinterpret_cast<_internal_string*>((long)::operator new(sizeof(_internal_string) + stub.capacity()) + sizeof(_internal_string));
 			m_data[-1].m_len = stub.size();
 			m_data[-1].m_capacity = stub.capacity();
 			m_data[-1].m_refcount = 0;
-			strncpy((char*)m_data, ok, stub.size());
+			strncpy((char*)m_data, ok, stub.capacity());
 		}
 		string(std::string ok) : string(ok.c_str()) {}
 		operator std::string() {
@@ -33,11 +36,11 @@ namespace gd {
 		operator std::string() const {
 			return std::string((char*)m_data, m_data[-1].m_len);
 		}
-		string(string const& lol) : string(std::string(lol)) {}
+		string(string const& lol) : string(const_cast<string&>(lol).c_str()) {}
 		__attribute__((noinline)) ~string() {
 			--m_data[-1].m_refcount;
-			if (m_data[-1].m_refcount <= 0) {
-				free(&m_data[-1]);
+			if (m_data[-1].m_refcount <= 0 && m_data[-1].m_capacity > 0) {
+				::operator delete(&m_data[-1]);
 			}
 		}
 		char const* c_str() {return (char const*)m_data; }

@@ -10,9 +10,10 @@
 #include <Core.hpp>
 #include <cocos2d.h>
 #include <cocos-ext.h>
+#include <unordered_map>
 // #include <Cacao.hpp>
 
-inline bool destructorLock = false;
+inline std::unordered_map<void*, bool> destructorLock;
 
 #define GM (GameManager::sharedState())
 #define LEL (GM->_editorLayer())

@@ -1,5 +1,4 @@
 #include <Cacao>
-
 // this is the fix for the dynamic_cast problems
 
 namespace Cacao::fixes {
@@ -12,7 +11,6 @@ public:                                                                         
 			cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(m_pDelegate);                 \
 			if (pObject) {                                                                              \
 				pObject->release();                                                                     \
-				this->cocos2d::CCObject::~CCObject();                                                   \
 			}                                                                                           \
 			else {                                                                                      \
 				$##CCUtility##Handler::destructor();                                                    \
@@ -60,7 +58,6 @@ public:
 				// the entire destructor
 				pObject->release();
 				CC_SAFE_RELEASE(m_pClaimedTouches);
-				this->cocos2d::CCObject::~CCObject();
 			}
 			else {
 				// we are not gonna handle it
@@ -110,7 +107,6 @@ public:
 			if (pObject) {
 				// the entire destructor
 				pObject->release();
-				this->cocos2d::CCObject::~CCObject();
 			}
 			else {
 				// we are not gonna handle it

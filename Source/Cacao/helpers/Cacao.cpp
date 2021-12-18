@@ -1,27 +1,30 @@
 // Copyright camila314 2021
+#define PROJECT_NAME "Cacao Base"
 #include <Cacao.hpp>
 #include <stdexcept>
 #include <set>
+#include <iostream>
 
 cocos2d::CCDestructor::~CCDestructor() {
-	destructorLock = false;
+	destructorLock.erase(this);
 };
 
 namespace Cacao {
 using namespace cocos2d;
 
-cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay) {
-	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
-	float axp = cocos2d::CCDirector::sharedDirector()->getScreenLeft() + winSize.width * ax;
-	float ayp = cocos2d::CCDirector::sharedDirector()->getScreenBottom() + winSize.height * ay;
+CCPoint anchorPosition(double x, double y, double ax, double ay) {
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	float axp = CCDirector::sharedDirector()->getScreenLeft() + winSize.width * ax;
+	float ayp = CCDirector::sharedDirector()->getScreenBottom() + winSize.height * ay;
+	
 	CCPoint ccp;
 	ccp.x = axp + x;
 	ccp.y = ayp + y;
 	return ccp;
 }
 
-cocos2d::CCPoint relativePosition(double x, double y) {
-	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+CCPoint relativePosition(double x, double y) {
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	float xp = winSize.width * (x/100.);
 	float yp = winSize.height * (y/100.);
 	CCPoint ccp;
@@ -29,8 +32,8 @@ cocos2d::CCPoint relativePosition(double x, double y) {
 	ccp.y = yp;
 	return ccp;
 }
-cocos2d::CCPoint addedPosition(double x, double y) {
-	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
+CCPoint addedPosition(double x, double y) {
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	float xp = winSize.width/2 + x;
 	float yp = winSize.height/2 + y;
 	CCPoint ccp;
@@ -39,16 +42,16 @@ cocos2d::CCPoint addedPosition(double x, double y) {
 	return ccp;
 }
 
-cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
-	auto image = new cocos2d::CCImage();
-	image->initWithImageData((void*)img, img_len, cocos2d::CCImage::kFmtPng,1,1,1);
+CCSprite* spriteFromPng(unsigned char* img, int img_len) {
+	auto image = new CCImage();
+	image->initWithImageData((void*)img, img_len, CCImage::kFmtPng,1,1,1);
 
-	auto text = new cocos2d::CCTexture2D();
+	auto text = new CCTexture2D();
 	text->initWithImage(image);
 
-	cocos2d::CCRect r(0, 0, image->getWidth(), image->getHeight());
+	CCRect r(0, 0, image->getWidth(), image->getHeight());
 
-	auto sprite = cocos2d::CCSprite::create();
+	auto sprite = CCSprite::create();
 	sprite->initWithTexture(text, r);
 
 	sprite->setTexture(text);
@@ -56,9 +59,9 @@ cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len) {
 	return sprite;
 }
 
-CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHandler callback) {
-	auto on = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
-	auto off = cocos2d::CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
+CCMenuItemToggler* createToggler(CCObject* parent, SEL_MenuHandler callback) {
+	auto on = CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png");
+	auto off = CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png");
 	return CCMenuItemToggler::create(off, on, parent, callback);
 }
 
@@ -249,7 +252,7 @@ CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHan
 //     FLAlertLayer::show();
 // }
 
-// CacTextContainer* CacTextContainer::create(cocos2d::CCSize const& size, TextInputDelegate* delegate, char const* font) {
+// CacTextContainer* CacTextContainer::create(CCSize const& size, TextInputDelegate* delegate, char const* font) {
 //     auto pRet = new CacTextContainer();
 //     if (pRet && pRet->init(size, 24, delegate, font)) {
 //         pRet->autorelease();
@@ -259,14 +262,14 @@ CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHan
 //     return NULL;
 // }
 
-// bool CacTextContainer::init(cocos2d::CCSize size, float fontSize, TextInputDelegate* delegate, char const* font) {
+// bool CacTextContainer::init(CCSize size, float fontSize, TextInputDelegate* delegate, char const* font) {
 //     float clampMult = fmin(1, size.height/40.0);
 //     if ((m_textInputNode = CCTextInputNode::create(size.width, size.height, "", "Thonburi", fontSize, font))) {
 //         m_textInputNode->m_delegate = delegate;
 //         m_textInputNode->setLabelPlaceholderColor(ccc3(120, 170, 240));
 //         addChild(m_textInputNode,2);
 //         m_textInputNode->setMaxLabelScale(size.height/50.);
-//         m_box = cocos2d::extension::CCScale9Sprite::create("square02b_small.png");
+//         m_box = extension::CCScale9Sprite::create("square02b_small.png");
 //         m_box->setOpacity(100);
 //         m_box->setColor(ccc3(0,0,0));
 //         m_box->setContentSize(CCSizeMake((size.width+10)/clampMult, fmax(size.height-10,40)));

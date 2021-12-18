@@ -22,9 +22,16 @@
 namespace Cacao {
 	using namespace cocos2d;
 
-	// inline void printGeometry(cocos2d::CCPoint p) {std::cout << "X: " << p.x << " Y: " << p.y << "\n";}
-	// inline void printGeometry(cocos2d::CCSize p) {std::cout << "Width: " << p.width << " Height: " << p.height << "\n";}
-	// inline void printGeometry(cocos2d::CCRect p) {std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";}
+	inline void printGeometry(CCPoint p) {
+		std::cout << "X: " << p.x << " Y: " << p.y << "\n";
+	}
+	inline void printGeometry(CCSize p) {
+		std::cout << "Width: " << p.width << " Height: " << p.height << "\n";
+	}
+	inline void printGeometry(CCRect p) {
+		std::cout << "X: " << p.origin.x << " Y: " << p.origin.y << " Width: " << p.size.width << " Height: " << p.size.height << "\n";
+	}
+
 	template <typename K>
 	void scheduleFunction(K func) {
 		GameManager::sharedState()->getScheduler()->scheduleSelector(reinterpret_cast<SEL_SCHEDULE&>(func), GameManager::sharedState(), 0.0, 0, 0.0, false);
@@ -61,16 +68,16 @@ namespace Cacao {
 	}
 
 	template <typename T>
-	std::vector<T> ccToVec(cocos2d::CCArray* arr) {
+	std::vector<T> ccToVec(CCArray* arr) {
 		return std::vector<T>(reinterpret_cast<T*>(arr->data->arr), reinterpret_cast<T*>(arr->data->arr) + arr->data->num);
 	}
 
-	cocos2d::CCPoint anchorPosition(double x, double y, double ax, double ay);
-	cocos2d::CCPoint relativePosition(double x, double y);
-	cocos2d::CCPoint addedPosition(double x, double y);
-	cocos2d::CCSprite* spriteFromPng(unsigned char* img, int img_len);
+	CCPoint anchorPosition(double x, double y, double ax, double ay);
+	CCPoint relativePosition(double x, double y);
+	CCPoint addedPosition(double x, double y);
+	CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
-	CCMenuItemToggler* createToggler(cocos2d::CCObject* parent, cocos2d::SEL_MenuHandler callback);
+	CCMenuItemToggler* createToggler(CCObject* parent, SEL_MenuHandler callback);
 
 	// class FLDialogHelper;
 
@@ -82,7 +89,7 @@ namespace Cacao {
 	//     friend class FLDialogHelper;
 	// };
 
-	// class FLDialogHelper : public cocos2d::CCNode {
+	// class FLDialogHelper : public CCNode {
 	//  public:
 	//     static FLDialogHelper* create(FLDialogDelegate* del, char const* title, char const* submit, char const* cancel, char const* placeholder);
 	//     // convenience functions
@@ -97,12 +104,12 @@ namespace Cacao {
 	//     bool initWithStuff(FLDialogDelegate* delegate, char const* title, char const* submit, char const* cancel, char const* placeholder);
 	//  protected:
 	//     FLAlertLayer* alertLayer;
-	//     cocos2d::CCLayer* mainLayer;
+	//     CCLayer* mainLayer;
 	//     CCTextInputNode* textNode;
 	//     FLDialogDelegate* del;
 	//  private:
-	//     void onSubmit(cocos2d::CCObject*);
-	//     void onCancel(cocos2d::CCObject*);
+	//     void onSubmit(CCObject*);
+	//     void onCancel(CCObject*);
 	// };
 
 
@@ -110,7 +117,7 @@ namespace Cacao {
 	//  public:
 	//     CacAlertLayer() : 
 	//         FLAlertLayer() {
-	//             m_title = cocos2d::CCLabelBMFont::create("", "goldFont.fnt");
+	//             m_title = CCLabelBMFont::create("", "goldFont.fnt");
 	//         }
 
 	//     virtual void onClose() {}
@@ -119,18 +126,18 @@ namespace Cacao {
 	//     virtual void show();
 	//     inline void l_onClose(CCObject* sender) {keyBackClicked();}
 
-	//     bool init(cocos2d::CCSize size);
-	//     inline bool init() {return init(cocos2d::CCSize(300.0,200.0));}
+	//     bool init(CCSize size);
+	//     inline bool init() {return init(CCSize(300.0,200.0));}
 	//     inline CacAlertLayer* title(char const* t) {m_title->setString(t, true);return this;}
 	//  protected:
 	//     CCMenuItemSpriteExtra* m_closeButton;
-	//     cocos2d::CCLabelBMFont* m_title;
+	//     CCLabelBMFont* m_title;
 	// };
 
-	// class CacTextContainer : public cocos2d::CCNode {
+	// class CacTextContainer : public CCNode {
 	//  public:
-	//     static CacTextContainer* create(cocos2d::CCSize const& size, TextInputDelegate* delegate, char const* font);
-	//     bool init(cocos2d::CCSize size, float fontSize, TextInputDelegate* delegate, char const* font);
+	//     static CacTextContainer* create(CCSize const& size, TextInputDelegate* delegate, char const* font);
+	//     bool init(CCSize size, float fontSize, TextInputDelegate* delegate, char const* font);
 	//     inline CCTextInputNode* textInputNode() {return m_textInputNode;}
 	//     inline CacTextContainer* placeholder(char const* pholder) {m_textInputNode->m_placeholderLabel->setString(pholder);return this;}
 	//     inline CacTextContainer* allowedChars(char const* filter) {m_textInputNode->setAllowedChars(std::string(filter));return this;}
@@ -138,7 +145,7 @@ namespace Cacao {
 	//     inline CacTextContainer* text(char const* text) {m_textInputNode->setString(text);return this;}
 	//     inline std::string text() {return m_textInputNode->getString();}
 	//  protected:
-	//     cocos2d::extension::CCScale9Sprite* m_box;
+	//     extension::CCScale9Sprite* m_box;
 	//     CCTextInputNode* m_textInputNode;
 
 	// };

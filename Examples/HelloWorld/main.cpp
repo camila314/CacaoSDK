@@ -83,4 +83,4 @@ public:
 
         return true;
 	} 
-} MyMenuLayerHook;
+};

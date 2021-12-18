@@ -10,14 +10,14 @@ functionOf{Pless}({defaults}) {const}{{
 
 destructorBody = """
 {cl}::{name}({params}) {{
-	if (destructorLock) return;
-	destructorLock = true;
+	if (destructorLock[this]) return;
+	destructorLock[this] = true;
 {function}
 }}
 """
 
 constructorBody = """
-{cl}::{name}({params}) : {cl}(std::move(*this)) {{
+{cl}::{name}({params}) : {cl}(*this) {{
 {function}
 }}
 """

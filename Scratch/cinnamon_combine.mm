@@ -2610,7 +2610,6 @@ class UILayer {
 
 class EditorUI : cocos2d::CCLayer {
     virtual ~EditorUI() = 0x89e0;
-    virtual ~EditorUI() = 0x8a10;
     virtual void draw() = 0x2e170;
     virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ed60;
     virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2f3d0;

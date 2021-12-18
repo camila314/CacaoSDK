@@ -13,15 +13,18 @@
 
 #include <FunctionBase.hpp>
 
-#ifdef CAC_PROJ_NAME
-#define PROJECT_NAME CAC_PROJ_NAME
+#if defined(CAC_PROJ_NAME)
+	#define PROJECT_NAME CAC_PROJ_NAME
 #endif
 
-#ifndef PROJECT_NAME
-#define PROJECT_NAME "Default Cacao Project"
+#if defined(PROJECT_NAME)
+	void $projectName() {
+		ModContainer::instance()->setName(PROJECT_NAME);
+	}
+	static int const _projectName = ($projectName(), 0);
 #endif
 
-inline ModContainer* const m = new ModContainer(PROJECT_NAME);
+inline ModContainer* const m = ModContainer::instance();
 
 // Just in case if we ever need to add shared implementations
 class InterfaceBase {

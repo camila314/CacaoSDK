@@ -89,8 +89,12 @@ namespace Cacao::core {
 		std::string m_name;
 
 	public:
-		// Constructs the container with a given name
+		// Constructs a container with a given name
+		// Deprecated, using the singleton is encouraged
 		ModContainer(std::string name);
+
+		// Gets the shared instance
+		static ModContainer* instance();
 
 		// Destructs the container
 		virtual ~ModContainer();
@@ -103,6 +107,7 @@ namespace Cacao::core {
 
 		// Registers a write of bytes to the address that is byteCount long
 		void registerWrite(uintptr_t address, size_t byteCount, char* bytes);
+		void registerWriteEnable(uintptr_t address, size_t byteCount, char* bytes);
 
 		// Registers a function hook to the address
 		void registerHook(uintptr_t address, func_t function); 
@@ -115,8 +120,9 @@ namespace Cacao::core {
 		// The getter for the base containers
 		std::vector<BaseContainer*> getMods();
 
-		// The getter for the name of the container
+		// The getter and the setter for the name of the container
 		std::string getName();
+		void setName(std::string name);
 	};
 
 }

@@ -136,6 +136,9 @@ public:
 	static intptr_t addressOfVirtual(R(T::*func)(Ps...)) {
 		static_assert(std::is_copy_constructible<T>::value, "must be copy constructable");
 		auto ptr = reinterpret_cast<T*>(operator new(sizeof(T)));
+		memset((void*)ptr, 0, sizeof(T)); 
+		// i guess i need this
+		// we can also memset it because we havent wrote the vtables yet
 		auto ins = new T(*ptr);
 
 		auto address = *(intptr_t*)(*(intptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));

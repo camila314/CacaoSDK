@@ -63,10 +63,17 @@ include_directories(
 	${Cacao_SOURCE_DIR}/cocos/cocos2dx/include
 	${Cacao_SOURCE_DIR}/cocos/cocos2dx/kazmath/include
 	${Cacao_SOURCE_DIR}/cocos/extensions
+	${INCLUDE_DIRECTORIES}
 )
 
 add_subdirectory(Cacao)
 
-target_link_directories(${PROJECT_NAME} PRIVATE Cacao)
-target_link_libraries(${PROJECT_NAME} Cacao)
+target_link_directories(${PROJECT_NAME} 
+	PRIVATE Cacao
+	${LINK_DIRECTORIES}
+)
+target_link_libraries(${PROJECT_NAME} 
+	Cacao
+	${LINK_LIBRARIES}
+)
 
