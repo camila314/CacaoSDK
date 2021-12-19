@@ -19,11 +19,10 @@ Cacao comes with a neat little way to hook very quickly. This let's you automati
 #include <iostream>
 
 class $redirect(EditorUI) {
-public:
     void undoLastAction(CCObject* p0) {
         std::cout << "Undo!" << std::endl;
     }
-} MyEditorUIHook;
+};
 ```
 
 If you want to call the original function, there is also an easy way to do that as well:
@@ -32,12 +31,11 @@ If you want to call the original function, there is also an easy way to do that 
 #include <iostream>
 
 class $redirect(EditorUI) {
-public:
     void undoLastAction(CCObject* p0) {
         std::cout << "Undo!" << std::endl;
         $EditorUI::undoLastAction(p0);
     }
-} MyEditorUIHook;
+};
 ```
 Since the Cacao classes subclass the GD classes, we can use the members and functions like we would in a normal class.
 ```cpp
@@ -45,12 +43,11 @@ Since the Cacao classes subclass the GD classes, we can use the members and func
 #include <iostream>
 
 class $redirect(EditorUI) {
-public:
     void undoLastAction(CCObject* p0) {
         std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
         $EditorUI::undoLastAction(p0);
     }
-} MyEditorUIHook;
+};
 ```
 
 If you want, you can also use a function with the name `inject` to run code after the mod is loaded. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `PROJECT_NAME` with the name. \*\*Make sure you do this before you include Cacao.
@@ -60,12 +57,11 @@ If you want, you can also use a function with the name `inject` to run code afte
 #include <iostream>
 
 class $redirect(EditorUI) {
-public:
     void undoLastAction(CCObject* p0) {
         std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
         $EditorUI::undoLastAction(p0);
     }
-} MyEditorUIHook;
+};
 
 void inject() {
     std::cout << "Hello!" << std::endl;

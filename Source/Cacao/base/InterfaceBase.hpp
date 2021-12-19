@@ -54,7 +54,7 @@ public:
  */
 #define PREDECLARE(derived) derived;
 #define APPLY(base, derived) bool derived##Apply = base<derived>::_apply();
-#define DECLARE(base, derived) class hidden derived: public base<derived>
+#define DECLARE(base, derived) struct hidden derived: public base<derived>
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
 #define REDIRECT__(base, derived) REDIRECT___(Cacao::interface::$##base, derived)

@@ -3,7 +3,6 @@
 #include "custom-layer.hpp"
 
 class $redirect(MenuLayer) {
-public:
 	bool init() {
         /*
           In cocos2d-x, init functions return a boolean, which is false if
