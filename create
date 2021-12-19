@@ -85,7 +85,7 @@ copy_ios() {
 	desc=""
 	read -p "Description [My cool gd mod] " desc
 	desc=${desc:-"My cool gd mod"}
-	sed -i '' "s/_sdk/$CACAO_IOS_SDK/g" "$copypath/CMakeLists.txt"
+	sed -i '' "s&_sdk&$CACAO_IOS_SDK&g" "$copypath/CMakeLists.txt"
 
 	sed -i '' "s/%name/$projname/g" "$copypath/control"
 	sed -i '' "s/%author/$author/g" "$copypath/control"
