@@ -1,7 +1,3 @@
-[submodule "Source/Cacao/gen/data"]
-    path = Source/Cacao/gen/data
-    url = https://github.com/altalk23/CacaoData
-
 [submodule "Source/Cacao/hook/lilac-core"]
 	path = Source/Cacao/hook/lilac-core
 	url = https://github.com/altalk23/lilac-core
