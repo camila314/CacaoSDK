@@ -137,7 +137,7 @@ class CCMenuItemSpriteExtra : cocos2d::CCMenuItemSprite {
 }
 
 class CCMenuItemToggler : cocos2d::CCMenuItem {
-    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x38400;
+    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x38400, 0x19600, 0xf5594;
     void setSizeMult(float) = 0x38a40;
     void toggle(bool) = 0x38950;
 
@@ -429,12 +429,12 @@ class FLAlertLayer : cocos2d::CCLayerColor {
     virtual void registerWithTouchDispatcher() =                            0x25f2e0;
     virtual void keyBackClicked() =                                         0x25ed90;
     virtual void keyDown(cocos2d::enumKeyCodes) =                           0x25ece0;
-    virtual void show() =                                                   0x25f120, 0x23560;
+    virtual void show() =                                                   0x25f120, 0x23560, 0x1feff4;
 
     bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) =                   0x25e1b0;
 
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*) =                             , 0x22680;
-    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) =              0x25e0e0, 0x22730;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) =              0x25e0e0, 0x22730, 0x1fe374;
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
     
     volatile static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {
@@ -461,6 +461,13 @@ class FLAlertLayer : cocos2d::CCLayerColor {
 
 class FLAlertLayerProtocol {
     volatile virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
+}
+
+class GameToolbox {
+    '_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_PNS0_7CCArrayE'
+    static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCArray*) = 0x0;
+    '_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE'
+    static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x0;
 }
 
 class GJBaseGameLayer : cocos2d::CCLayer {
@@ -817,7 +824,7 @@ class GameManager : cocos2d::CCNode {
     void setGameVariable(char const*, bool) = 0x1cca80;
     void setIntGameVariable(char const*, int) = 0x1cd0e0;
     void setUGV(char const*, bool) = 0x1cce50;
-    static GameManager* sharedState() = 0x1c2b30;
+    static GameManager* sharedState() = 0x1c2b30, , 0x2321b8;
     ~GameManager() = 0x1d0e00;
     void getGTexture(int) = 0x1cca40;
     bool init() = 0x1c2ec0;
@@ -1130,7 +1137,7 @@ class MenuLayer : cocos2d::CCLayer, FLAlertLayerProtocol {
     virtual void googlePlaySignedIn() =                     0x1d2f30;
     virtual void FLAlert_Clicked(FLAlertLayer*, bool) =     0x1d3190;
 
-    void onMoreGames(cocos2d::CCObject*) =                  0x1d2ad0, 0x1919c0;
+    void onMoreGames(cocos2d::CCObject*) =                  0x1d2ad0, 0x1919c0, 0x19fbb4;
     void onQuit(cocos2d::CCObject*) =                       0x1d2b40;
     static MenuLayer* create() =                                    , 0x190550;
     static cocos2d::CCScene* scene(bool) =                  0x1d12d0, 0x190720;
