@@ -12,7 +12,7 @@
 
 #include <MacroBase.hpp>
 
-#if defined(_WIN64) || defined(__x86_64__)
+#if INT64_MAX == INTPTR_MAX
 	#define NEST1(macro, begin)     \
 	macro(CONCAT(begin, 0))         \
 	macro(CONCAT(begin, 8))         

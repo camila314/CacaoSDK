@@ -504,6 +504,7 @@ class cocos2d::CCDictionary {
     void count() = 0x190430;
     static cocos2d::CCDictionary* create() = 0x192650;
     void objectForKey(long) = 0x190bb0;
+<<<<<<< HEAD
     void objectForKey(gd::string const&) = 0x190870;
     void removeAllObjects() = 0x190220;
     void removeObjectForKey(long) = 0x1921d0;
@@ -511,6 +512,15 @@ class cocos2d::CCDictionary {
     void setObject(cocos2d::CCObject*, gd::string const&) = 0x190dc0;
     void valueForKey(long) = 0x190cf0;
     void valueForKey(gd::string const&) = 0x1907a0;
+=======
+    void objectForKey(std::string const&) = 0x190870;
+    void removeAllObjects() = 0x190220;
+    void removeObjectForKey(long) = 0x1921d0;
+    void setObject(cocos2d::CCObject*, long) = 0x191790;
+    void setObject(cocos2d::CCObject*, std::string const&) = 0x190dc0;
+    void valueForKey(long) = 0x190cf0;
+    void valueForKey(std::string const&) = 0x1907a0;
+>>>>>>> 92a4394a2eaaf820894c9dd32d878543e8d6f5de
 }
 
 class cocos2d::CCDirector {
@@ -649,7 +659,11 @@ class cocos2d::CCString {
     virtual void isEqual(cocos2d::CCObject const*) = 0x44c8f0;
     virtual void acceptVisitor(cocos2d::CCDataVisitor&) = 0x44ccb0;
     virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*) = 0x44c870;
+<<<<<<< HEAD
     CCString(gd::string const&) = 0x44c310;
+=======
+    CCString(std::string const&) = 0x44c310;
+>>>>>>> 92a4394a2eaaf820894c9dd32d878543e8d6f5de
     void boolValue() const = 0x44c810;
     void doubleValue() const = 0x44c7f0;
     void floatValue() const = 0x44c7d0;
@@ -703,8 +717,13 @@ class cocos2d::CCTransitionFade {
 }
 
 class cocos2d::ZipUtils {
+<<<<<<< HEAD
     void compressString(gd::string, bool, int) = 0xe9a50;
     void decompressString(gd::string, bool, int) = 0xea380;
+=======
+    void compressString(std::string, bool, int) = 0xe9a50;
+    void decompressString(std::string, bool, int) = 0xea380;
+>>>>>>> 92a4394a2eaaf820894c9dd32d878543e8d6f5de
 }
 
 class cocos2d::extension::CCControlColourPicker {
