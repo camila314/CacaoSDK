@@ -109,6 +109,13 @@ namespace Cacao::core {
 		void registerWrite(uintptr_t address, size_t byteCount, char* bytes);
 		void registerWriteEnable(uintptr_t address, size_t byteCount, char* bytes);
 
+		inline void registerWrite(uintptr_t address, size_t byteCount, const char* bytes) {
+			registerWrite(address, byteCount, const_cast<char*>(bytes));
+		}
+		inline void registerWriteEnable(uintptr_t address, size_t byteCount, const char* bytes) {
+			registerWriteEnable(address, byteCount, const_cast<char*>(bytes));
+		}
+
 		// Registers a function hook to the address
 		void registerHook(uintptr_t address, func_t function); 
 		void registerHook(uintptr_t address, uintptr_t function); 

@@ -92,7 +92,7 @@ out = """//
 #include <InterfaceBase.hpp>
 #define dl decltype
 #define dv std::declval
-namespace Cacao::interface {
+namespace Cacao::kinterface {
 using namespace cocos2d;
 using namespace cocos2d::extension;
 """
@@ -192,7 +192,7 @@ for cl in classes:
 out += """
 #undef dl
 #undef dv
-} // namespace Cacao::interface
+} // namespace Cacao::kinterface
 """
 
 writeIfDifferent("Interface.hpp", out)
