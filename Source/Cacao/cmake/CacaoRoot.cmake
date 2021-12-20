@@ -39,7 +39,7 @@ else()
 endif()
 
 
-if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOS")
+if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOSo")
 set(CACAO_SOURCES
 	${Cacao_SOURCE_DIR}/Source.cpp 
 )

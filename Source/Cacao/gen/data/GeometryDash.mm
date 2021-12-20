@@ -137,9 +137,9 @@ class CCMenuItemSpriteExtra : cocos2d::CCMenuItemSprite {
 }
 
 class CCMenuItemToggler : cocos2d::CCMenuItem {
-	static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x38400;
-	void setSizeMult(float) = 0x38a40;
-	void toggle(bool) = 0x38950;
+    static CCMenuItemToggler* create(cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCObject*, cocos2d::SEL_MenuHandler) = 0x38400, 0x19600, 0xf5594;
+    void setSizeMult(float) = 0x38a40;
+    void toggle(bool) = 0x38950;
 
 	CCMenuItemSpriteExtra* m_onButton;
 	CCMenuItemSpriteExtra* m_offButton;
@@ -356,54 +356,35 @@ class EditorPauseLayer : FLAlertLayer {
 }
 
 class EditorUI : cocos2d::CCLayer {
-	virtual ~EditorUI() = 0x89e0;
-    virtual void draw() = 0x2e170;
-    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ed60;
-    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2f3d0;
-    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2fb00;
-    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x30710;
-    virtual void registerWithTouchDispatcher() = 0x30750;
-    virtual void keyBackClicked() = 0x24c50;
-    virtual void keyDown(cocos2d::enumKeyCodes) = 0x30790;
-    virtual void FLAlert_Clicked(FLAlertLayer*, bool) = 0x1f590;
-    virtual void songStateChanged() = 0x24760;
-    virtual void colorSelectClosed(cocos2d::CCNode*) = 0x29940;
-    virtual void keyUp(cocos2d::enumKeyCodes) = 0x312b0;
-    virtual void scrollWheel(float, float) = 0x31370;
-    virtual void angleChangeBegin() = 0x2e260;
-    virtual void angleChangeEnded() = 0x2e320;
-    virtual void angleChanged(float) = 0x2e3a0;
-    virtual void scaleChangeBegin() = 0x25120;
-    virtual void scaleChangeEnded() = 0x251e0;
-    virtual void scaleChanged(float) = 0x25260;
-
-    void constrainGameLayerPosition() = 0x1c6d0;
-    void create(LevelEditorLayer*) = 0x8a80;
-    void deselectAll() = 0x1f300;
-    void onDeselectAll(cocos2d::CCObject*) = 0x19cd0;
-    void disableButton(CreateMenuItem*) = 0x1c0f0;
-    void editButtonUsable() = 0x28f30;
-    void editObject(cocos2d::CCObject*) = 0x195a0;
-    void enableButton(CreateMenuItem*) = 0x1bff0;
-    CCMenuItemSpriteExtra* getCreateBtn(int, int) = 0x1f6c0;
-    void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
-    cocos2d::CCArray* getSelectedObjects() = 0x23f30;
-    void init(LevelEditorLayer*) = 0x8ae0;
-    void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
-    void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
-    void pasteObjects(gd::string) = 0x232d0;
-    void playerTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ebf0;
-    void playtestStopped() = 0x24790;
-    void redoLastAction(cocos2d::CCObject*) = 0xb8e0;
-    void replaceGroupID(GameObject*, int, int) = 0x27470;
-    void scaleObjects(cocos2d::CCArray*, float, cocos2d::CCPoint) = 0x252e0;
-    void selectObjects(cocos2d::CCArray*, bool) = 0x23940;
-    void setupCreateMenu() = 0xcb50;
-    void undoLastAction(cocos2d::CCObject*) = 0xb830;
-    void updateButtons() = 0x1a300;
-    void updateObjectInfoLabel() = 0x1cb10;
-    void updateSlider() = 0x18a90;
-    void updateZoom(float) = 0x248c0;
+	void constrainGameLayerPosition() = 0x1c6d0;
+	void create(LevelEditorLayer*) = 0x8a80;
+	void deselectAll() = 0x1f300;
+	void onDeselectAll(cocos2d::CCObject*) = 0x19cd0;
+	void disableButton(CreateMenuItem*) = 0x1c0f0;
+	void editButtonUsable() = 0x28f30;
+	void editObject(cocos2d::CCObject*) = 0x195a0;
+	void enableButton(CreateMenuItem*) = 0x1bff0;
+	CCMenuItemSpriteExtra* getCreateBtn(int, int) = 0x1f6c0;
+	void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
+	cocos2d::CCArray* getSelectedObjects() = 0x23f30;
+	void init(LevelEditorLayer*) = 0x8ae0;
+	virtual void keyDown(cocos2d::enumKeyCodes) = 0x30790;
+	void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
+	void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
+	void pasteObjects(gd::string) = 0x232d0;
+	void playerTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ebf0;
+	void playtestStopped() = 0x24790;
+	void redoLastAction(cocos2d::CCObject*) = 0xb8e0;
+	void replaceGroupID(GameObject*, int, int) = 0x27470;
+	void scaleChanged(float) = 0x25490;
+	void scaleObjects(cocos2d::CCArray*, float, cocos2d::CCPoint) = 0x252e0;
+	void selectObjects(cocos2d::CCArray*, bool) = 0x23940;
+	void setupCreateMenu() = 0xcb50;
+	void undoLastAction(cocos2d::CCObject*) = 0xb830;
+	void updateButtons() = 0x1a300;
+	void updateObjectInfoLabel() = 0x1cb10;
+	void updateSlider() = 0x18a90;
+	void updateZoom(float) = 0x248c0;
 
 	LevelEditorLayer* m_editorLayer = 0x408;
 	cocos2d::CCArray* m_editBars = 0x358;
@@ -415,7 +396,7 @@ class EditorUI : cocos2d::CCLayer {
 class EffectGameObject : GameObject {
 	static EffectGameObject* create(char const*) = 0xc9790;
 	void getTargetColorIndex() = 0xca1f0;
-	virtual void triggerObject(GJBaseGameLayer*) = 0xc9870;
+	void triggerObject(GJBaseGameLayer*) = 0xc9870;
 
 	int m_targetGroup = 0x4F8;
 	bool m_activateGroup = 0x578;
@@ -439,46 +420,43 @@ class EndPortalObject : GameObject {
 }
 
 class FLAlertLayer : cocos2d::CCLayerColor {
-	virtual ~FLAlertLayer() =                                               0x25db60;
-	virtual void onEnter() =                                                0x25f350;
-	virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ee40;
-	virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25f0a0;
-	virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ef60;
-	virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) =   0x25f020;
-	virtual void registerWithTouchDispatcher() =                            0x25f2e0;
-	virtual void keyBackClicked() =                                         0x25ed90;
-	virtual void keyDown(cocos2d::enumKeyCodes) =                           0x25ece0;
-	virtual void show() =                                                   0x25f120, 0x23560;
+    virtual ~FLAlertLayer() =                                               0x25db60;
+    virtual void onEnter() =                                                0x25f350;
+    virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ee40;
+    virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25f0a0;
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ef60;
+    virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) =   0x25f020;
+    virtual void registerWithTouchDispatcher() =                            0x25f2e0;
+    virtual void keyBackClicked() =                                         0x25ed90;
+    virtual void keyDown(cocos2d::enumKeyCodes) =                           0x25ece0;
+    virtual void show() =                                                   0x25f120, 0x23560, 0x1feff4;
 
-	bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) =                   0x25e1b0;
+    bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) =                   0x25e1b0;
 
-	'_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_'
-	static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*) =                             , 0x22680;
-	'_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_f'
-	static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) =              0x25e0e0, 0x22730;
-	'_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_fbf'
-	static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
-	
-	volatile static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {
-		return FLAlertLayer::create(nullptr, title, desc, btn, nullptr, 300.0);
-	};
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*) =                             , 0x22680;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) =              0x25e0e0, 0x22730, 0x1fe374;
+    static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
+    
+    volatile static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {
+        return FLAlertLayer::create(nullptr, title, desc, btn, nullptr, 300.0);
+    };
 
-	cocos2d::CCMenu* m_buttonMenu;                      // 0x1f8
-	int m_controlConnected;                             // 0x200
-	FLAlertLayerProtocol* m_alertProtocol;              // 0x208
-	cocos2d::CCNode* m_scene;                           // 0x210
-	bool m_reverseKeyBack;                              // 0x211
-	cocos2d::ccColor3B m_color;                         // 0x212
-	cocos2d::CCLayer* m_mainLayer;                      // 0x220
-	int m_ZOrder;                                       // 0x228
-	bool m_noElasticity;                                // 0x22c
-	cocos2d::ccColor3B m_color2;                        // 0x230
-	ButtonSprite* m_button1;                            // 0x238
-	ButtonSprite* m_button2;                            // 0x240
-	cocos2d::CCLayerColor* m_scrollingLayer;            // 0x248
-	int m_joystickConnected;                            // 0x250
-	bool m_containsBorder;                              // 0x251
-	bool m_noAction;                                    // 0x252
+    cocos2d::CCMenu* m_buttonMenu;                      // 0x1f8
+    int m_controlConnected;                             // 0x200
+    FLAlertLayerProtocol* m_alertProtocol;              // 0x208
+    cocos2d::CCNode* m_scene;                           // 0x210
+    bool m_reverseKeyBack;                              // 0x211
+    cocos2d::ccColor3B m_color;                         // 0x212
+    cocos2d::CCLayer* m_mainLayer;                      // 0x220
+    int m_ZOrder;                                       // 0x228
+    bool m_noElasticity;                                // 0x22c
+    cocos2d::ccColor3B m_color2;                        // 0x230
+    ButtonSprite* m_button1;                            // 0x238
+    ButtonSprite* m_button2;                            // 0x240
+    cocos2d::CCLayerColor* m_scrollingLayer;            // 0x248
+    int m_joystickConnected;                            // 0x250
+    bool m_containsBorder;                              // 0x251
+    bool m_noAction;                                    // 0x252
 }
 
 class FLAlertLayerProtocol {
@@ -828,36 +806,36 @@ class GameLevelManager {
 }
 
 class GameManager : cocos2d::CCNode {
-	void accountStatusChanged() = 0x1cdad0;
-	const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80;
-	void didExitPlayscene() = 0x1d0230;
-	void doQuickSave() = 0x1d0200;
-	void fadeInMusic(char const*) = 0x1c2ff0;
-	void getBGTexture(int) = 0x1cca00;
-	void getFontFile(int) = 0x1cc5f0;
-	bool getGameVariable(char const*) = 0x1cccd0;
-	int getIntGameVariable(char const*) = 0x1cd1d0;
-	void getUGV(char const*) = 0x1ccfa0;
-	void loadDeathEffect(int) = 0x1cc690;
-	void loadFont(int) = 0x1cc550;
-	void reloadAll(bool, bool, bool) = 0x1d08a0;
-	void reloadAllStep5() = 0x1d0b00;
-	void reportPercentageForLevel(int, int, bool) = 0x1c5b00;
-	void setGameVariable(char const*, bool) = 0x1cca80;
-	void setIntGameVariable(char const*, int) = 0x1cd0e0;
-	void setUGV(char const*, bool) = 0x1cce50;
-	static GameManager* sharedState() = 0x1c2b30;
-	~GameManager() = 0x1d0e00;
-	void getGTexture(int) = 0x1cca40;
-	bool init() = 0x1c2ec0;
-	void reportAchievementWithID(char const*, int, bool) = 0x1c6460;
-	void resolutionForKey(int) = 0x1d0b40;
-	void update(float) = 0x1d0270;
+    void accountStatusChanged() = 0x1cdad0;
+    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80;
+    void didExitPlayscene() = 0x1d0230;
+    void doQuickSave() = 0x1d0200;
+    void fadeInMusic(char const*) = 0x1c2ff0;
+    void getBGTexture(int) = 0x1cca00;
+    void getFontFile(int) = 0x1cc5f0;
+    bool getGameVariable(char const*) = 0x1cccd0;
+    int getIntGameVariable(char const*) = 0x1cd1d0;
+    void getUGV(char const*) = 0x1ccfa0;
+    void loadDeathEffect(int) = 0x1cc690;
+    void loadFont(int) = 0x1cc550;
+    void reloadAll(bool, bool, bool) = 0x1d08a0;
+    void reloadAllStep5() = 0x1d0b00;
+    void reportPercentageForLevel(int, int, bool) = 0x1c5b00;
+    void setGameVariable(char const*, bool) = 0x1cca80;
+    void setIntGameVariable(char const*, int) = 0x1cd0e0;
+    void setUGV(char const*, bool) = 0x1cce50;
+    static GameManager* sharedState() = 0x1c2b30, , 0x2321b8;
+    ~GameManager() = 0x1d0e00;
+    void getGTexture(int) = 0x1cca40;
+    bool init() = 0x1c2ec0;
+    void reportAchievementWithID(char const*, int, bool) = 0x1c6460;
+    void resolutionForKey(int) = 0x1d0b40;
+    void update(float) = 0x1d0270;
 
-	PlayLayer* m_playLayer = 0x180;
-	LevelEditorLayer* m_editorLayer = 0x188;
-	int m_scene = 0x1f4;
-	bool m_ldm = 0x2a1;
+    PlayLayer* m_playLayer = 0x180;
+    LevelEditorLayer* m_editorLayer = 0x188;
+    int m_scene = 0x1f4;
+    bool m_ldm = 0x2a1;
 }
 
 class GameObject : CCSpritePlus {
@@ -1159,10 +1137,10 @@ class MenuLayer : cocos2d::CCLayer, FLAlertLayerProtocol {
 	virtual void googlePlaySignedIn() =                     0x1d2f30;
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) =     0x1d3190;
 
-	void onMoreGames(cocos2d::CCObject*) =                  0x1d2ad0, 0x1919c0;
-	void onQuit(cocos2d::CCObject*) =                       0x1d2b40;
-	static MenuLayer* create() =                                    , 0x190550;
-	static cocos2d::CCScene* scene(bool) =                  0x1d12d0, 0x190720;
+    void onMoreGames(cocos2d::CCObject*) =                  0x1d2ad0, 0x1919c0, 0x19fbb4;
+    void onQuit(cocos2d::CCObject*) =                       0x1d2b40;
+    static MenuLayer* create() =                                    , 0x190550;
+    static cocos2d::CCScene* scene(bool) =                  0x1d12d0, 0x190720;
 }
 
 class MoreVideoOptionsLayer : FLAlertLayer {
