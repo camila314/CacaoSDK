@@ -108,7 +108,7 @@ def inheritReturn(info):
 		return info.declare.type
 	if len(info.parameters) == 0:
 		return f"getPReturnOf({info.parent.name}, {info.declare.name})"
-	defaults = ', '.join([info.parent.name, info.declare.name] + [arg.getType(i) for i, arg in enumerate(info.parameters)])
+	defaults = ', '.join([info.parent.name, info.declare.name] + [f"std::declval<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)])
 	return f"getReturnOf({defaults})"
 
 functionBody = """		using r{id} = {type};

@@ -15,9 +15,8 @@
 /**
  * Get type of a function
  */
-#define getPReturnOf(Class, Function, ...) getReturnOf_(REPEAT0, Class, Function, __VA_ARGS__)
-#define getReturnOf(Class, Function, ...) getReturnOf_( GETREPEAT(__VA_ARGS__), Class, Function, __VA_ARGS__ )
-#define getReturnOf_(Macro, Class, Function, ...) decltype(std::declval<Class>().Function( Macro(DECLVAL, 0, __VA_ARGS__) ))
+#define getPReturnOf(Class, Function) decltype(std::declval<Class>().Function())
+#define getReturnOf(Class, Function, ...) decltype(std::declval<Class>().Function( __VA_ARGS__ ))
 
 #define functionOfP(Class, Function, ...) getPReturnOf(Class, Function, __VA_ARGS__) functionOf_(REPEAT0, Class, Function, __VA_ARGS__)
 #define functionOf(Class, Function, ...) getReturnOf(Class, Function, __VA_ARGS__) functionOf_( GETREPEAT(__VA_ARGS__), Class, Function, __VA_ARGS__ )
