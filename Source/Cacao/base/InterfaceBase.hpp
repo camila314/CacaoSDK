@@ -18,7 +18,7 @@
 #endif
 
 #if defined(PROJECT_NAME)
-	void $projectName() {
+	inline void $projectName() {
 		ModContainer::instance()->setName(PROJECT_NAME);
 	}
 	static int const _projectName = ($projectName(), 0);
@@ -52,6 +52,8 @@ public:
  * I tried to make the macro as verbose as it can be but
  * I am bad at this stuff
  */
+
+
 #define PREDECLARE(derived) derived;
 #define APPLY(base, derived) bool derived##Apply = base<derived>::_apply();
 #define DECLARE(base, derived) struct hidden derived: public base<derived>

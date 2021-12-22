@@ -470,6 +470,11 @@ class GameToolbox {
 	static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x0;
 }
 
+class GJRotationControl : cocos2d::CCLayer {
+	virtual bool init() = 0x31510, 0x93f10;
+	void updateSliderPosition(cocos2d::CCPoint) = 0x316a0, 0x94020;
+}
+
 class GJBaseGameLayer : cocos2d::CCLayer {
 	virtual void objectsCollided(int, int) = 0xb6d90;
 	virtual void createMoveCommand(cocos2d::CCPoint, int, float, int, float, bool, bool, int) = 0xb73a0;

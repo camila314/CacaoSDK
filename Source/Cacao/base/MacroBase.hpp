@@ -12,6 +12,15 @@
 #define STR_(...) #__VA_ARGS__
 #define STR(...) STR_(__VA_ARGS__)
 
+#if _WIN32
+    #define CallConv(x) x
+#else
+    #define CallConv(x)
+#endif
+
+#define STACKFIX(a) \
+    constexpr int _sf = a; \
+    __asm add esp, _sf
 /**
  * Get type of a function
  */

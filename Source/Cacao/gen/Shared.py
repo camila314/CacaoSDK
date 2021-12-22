@@ -112,17 +112,17 @@ def inheritReturn(info):
 	return f"getReturnOf({defaults})"
 
 functionBody = """		using r{id} = {type};
-		using f{id} = r{id}(*)({const}{cl}*{params2});
+		using f{id} = r{id}(CallConv(__thiscall)*)({const}{cl}*{params2});
 		{setAddress}
 		return reinterpret_cast<f{id}>({offset})(this{params});"""
 
 staticBody = """		using r{id} = {type};
-		using f{id} = r{id}(*)({params2});
+		using f{id} = r{id}(CallConv(__fastcall)*)({params2});
 		{setAddress}
 		return reinterpret_cast<f{id}>({offset})({params});"""
 
 returnlessBody = """		using r{id} = {cl}*;
-		using f{id} = r{id}(*)({const}{cl}*{params2});
+		using f{id} = r{id}(CallConv(__thiscall)*)({const}{cl}*{params2});
 		{setAddress}
 		reinterpret_cast<f{id}>({offset})(this{params});"""
 

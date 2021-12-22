@@ -10,20 +10,25 @@ public:
 	${cl}() = delete;
 """
 
+if platform == "Win32":
+	build_stack = "        STACKFIX({stackfix});\n"
+else:
+	build_stack = ""
+
 build_body1 = """
-	{type} {name}({params}) {const}{{
+	__declspec(dllexport) {type} {name}({params}) {const}{{
 {function}
 	}}
 """
 
 build_body1_virtual = """
-	{type} {name}({params}) {const}{{
+	__declspec(dllexport) {type} {name}({params}) {const}{{
 {function}
 	}}
 """
 
 build_body1_static = """
-	static {type} {name}({params}) {const}{{
+	__declspec(dllexport) static {type} {name}({params}) {const}{{
 {function}
 	}}
 """
@@ -138,6 +143,21 @@ for cl in classes:
 		elif info.virtual:
 			body1 = build_body1_virtual
 
+		if len(info.parameters) > 0 and info.static:
+			stack = build_stack.format(
+				stackfix = "+".join([f"sizeof({arg.getType(i)})" for i, arg in enumerate(info.parameters)])
+			)
+		else:
+			stack = ""
+
+		if info.declare.type != "auto":
+			if info.declare.type == "void":
+				fnimpl = getFunctionImplementation(cl, info, i).replace("return ", "") + "\n" + stack
+			else:
+				fnimpl = getFunctionImplementation(cl, info, i).replace("return ", "auto _rv = ") + "\n" + stack + "\n" + "        return _rv;"
+		else:
+			fnimpl = getFunctionImplementation(cl, info, i)
+
 		out += body1.format(
 			name = info.declare.name,
 			type = inheritReturn(info),
@@ -146,7 +166,7 @@ for cl in classes:
 			params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
 			params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
 			id = i,
-			function = getFunctionImplementation(cl, info, i),
+			function = fnimpl,
 			const = "const " if info.const else "",
 		)
 
