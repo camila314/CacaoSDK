@@ -396,7 +396,7 @@ class EditorUI : cocos2d::CCLayer {
 class EffectGameObject : GameObject {
 	static EffectGameObject* create(char const*) = 0xc9790;
 	void getTargetColorIndex() = 0xca1f0;
-	void triggerObject(GJBaseGameLayer*) = 0xc9870;
+	virtual void triggerObject(GJBaseGameLayer*) = 0xc9870;
 
 	int m_targetGroup = 0x4F8;
 	bool m_activateGroup = 0x578;
@@ -434,6 +434,7 @@ class FLAlertLayer : cocos2d::CCLayerColor {
     bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) =                   0x25e1b0;
 
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*) =                             , 0x22680;
+    '_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_f'
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) =              0x25e0e0, 0x22730, 0x1fe374;
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
     
@@ -492,7 +493,7 @@ class GJBaseGameLayer : cocos2d::CCLayer {
 	void collectItem(int, int) = 0xb9e20;
 	void collectedObject(EffectGameObject*) = 0xb9b60;
 	void createTextLayers() = 0xb5260;
-	void damagingObjectsInRect(cocos2d::CCRect) = 0xb6140;
+	cocos2d::CCArray* damagingObjectsInRect(cocos2d::CCRect) = 0xb6140;
 	void enableHighCapacityMode() = 0xb11e0;
 	void getCapacityString() = 0xb2210;
 	void getGroundHeightForMode(int) = 0xb6630;
@@ -524,11 +525,11 @@ class GJBaseGameLayer : cocos2d::CCLayer {
 	void reorderObjectSection(GameObject*) = 0xb7cb0;
 	void resetGroupCounters(bool) = 0xba300;
 	void resetMoveOptimizedValue() = 0xb9670;
-	void sectionForPos(float) = 0xb6120;
+	int sectionForPos(float) = 0xb6120;
 	void setupLayers() = 0xaffe0;
 	void shouldExitHackedLevel() = 0xb1100;
 	void spawnGroupTriggered(int, float, int) = 0xb7020;
-	void staticObjectsInRect(cocos2d::CCRect) = 0xb5f90;
+	cocos2d::CCArray* staticObjectsInRect(cocos2d::CCRect) = 0xb5f90;
 	void testInstantCountTrigger(int, int, int, bool, int) = 0xb9ae0;
 	void toggleGroup(int, bool) = 0xb75f0;
 	void togglePlayerVisibility(bool) = 0xba910;
@@ -545,6 +546,7 @@ class GJBaseGameLayer : cocos2d::CCLayer {
 	GJEffectManager* m_effectManager = 0x180;
 	cocos2d::CCLayer* m_objectLayer = 0x188;
 	cocos2d::CCArray* m_objects = 0x3a0;
+	cocos2d::CCArray* m_sections = 0x3a8;
 	PlayerObject* m_player1 = 0x380;
 	PlayerObject* m_player2 = 0x388;
 	LevelSettingsObject* m_levelSettings = 0x390;
@@ -866,6 +868,7 @@ class GameObject : CCSpritePlus {
 	virtual void getRealPosition() = 0x335750;
 	virtual void setStartPos(cocos2d::CCPoint) = 0x2fa520;
 	virtual void updateStartValues() = 0x2fa800;
+	virtual void customObjectSetup() = 0xdc1a0;
 	virtual gd::string getSaveString() = 0x33d3d0;
 	virtual void isFlipX() = 0x335a40;
 	virtual void isFlipY() = 0x335a50;
@@ -888,7 +891,7 @@ class GameObject : CCSpritePlus {
 	virtual void setObjectRectDirty(bool) = 0xdc1e0;
 	virtual void getOrientedRectDirty() const = 0xdc1f0;
 	virtual void setOrientedRectDirty(bool) = 0xdc200;
-	virtual void getType() const = 0xdc210;
+	virtual GameObjectType getType() const = 0xdc210;
 	virtual void setType(GameObjectType) = 0xdc220;
 	virtual void getStartPos() const = 0xdc230;
 
@@ -914,6 +917,7 @@ class GameObject : CCSpritePlus {
 	void getLastPosition() = 0x3439d0;
 	void getMainColorMode() = 0x334c30;
 	void getObjectZOrder() = 0x337d70;
+	float getObjectRadius() = 0x343c10;
 	void getSecondaryColorMode() = 0x341c20;
 	void getSectionIdx() = 0x343a00;
 	void groupWasDisabled() = 0x33b110;
@@ -951,10 +955,153 @@ class GameObject : CCSpritePlus {
 	void updateState() = 0x3369e0;
 	void updateSyncedAnimation(float) = 0x337f00;
 
+	// float m_float250;
+ //    float m_float254;
+ //    float m_float258;
+ //    float m_float25c;
+ //    bool m_bool260;
+ //    float m_animationSpeed;
+ //    bool m_isAnimatedCircle;
+ //    bool m_randomizeAnimationStart;
+ //    float m_animationSpeed2; //what
+ //    bool m_black;
+ //    bool m_showSelection;
+ //    bool m_blackOpacity;
+ //    bool m_bool278;
+ //    bool m_inEditorMode;
+ //    bool m_toggledOff;
+ //    bool m_colorOnTop;
+ //    int m_int280;
+ //    float m_float284;
+ //    float m_relativeMovePos;
+ //    float m_relativeRotation;
+ //    bool m_isTrigger;
+ //    bool m_flippedX;
+ //    bool m_flippedY;
+ //    cocos2d::CCSize m_origHitboxOffset;
+ //    char m_unused0;
+ //    cocos2d::CCSize m_adjustedHitboxOffset;
+ //    OBB2D* m_orientedBox;
+ //    bool m_useOrientedBox;
+ //    cocos2d::CCSprite* m_glowSprite;
+ //    bool m_inPlaylayer;
+ //    cocos2d::CCAction* m_myAction; // rob named it not me
+ //    bool m_dontRunAction;
+ //    bool m_runActionOnObject;
+ //    bool m_poweredOn;
+ //    cocos2d::CCSize m_objectSize;
+ //    bool m_modifierBlock;
+ //    bool m_active;
+ //    bool m_animationFinished;
+ //    cocos2d::CCParticleSystemQuad* m_particleSystem;
+ //    gd::string m_effectPlist;
+ //    bool m_particleAdded;
+ //    bool m_hasParticles;
+ //    bool m_customRing;
+ //    bool m_portalPosition;
+ //    bool m_pulseWithMusic;
+ //    cocos2d::CCRect m_textureRect;
+ //    bool m_textureRectDirty;
+ //    float m_textureRectCenterX;
+ //    cocos2d::CCRect m_objectRect;
+ //    bool m_objectRectDirty;
+ //    bool m_orientdBoxDirty;
+ //    bool m_activated;
+ //    bool m_activatedByP2;
+ //    bool m_hasAnimatedPart;
+ //    int m_linkedGroup;
+ //    bool m_isSpinning;
+ //    float m_rotationSpeed;
+ //    bool m_disableRotation;
+ //    cocos2d::CCSprite* m_animatedPart;
+ //    bool m_unknown358;
+ //    float m_hitboxScale;
+ //    bool m_onSide;
+ //    cocos2d::CCSize m_unknown364;
+ //    int m_uuid;
+ //    GameObjectType m_objectType;
+ //    int m_section;
+ //    bool m_touchTriggered;
+ //    bool m_spawnTriggered;
+ //    cocos2d::CCPoint m_startPosition;
+ //    gd::string m_textureName; //0x388
+
+
+	// 0x250
+	bool m_unk3;
+	bool m_isBlueMaybe;
+	float m_unk2;
+	float m_unk;
+	float m_unk5;
+	// 0x260
+	float m_unk4;
+	bool m_unk6;
+	float m_animSpeed2;
+	bool m_isEffectObject;
+	bool m_randomisedAnimStart;
+	float m_animSpeed;
+	// 0x270
+	bool m_blackChild;
+	bool m_unkOutlineMaybe;
+	float m_blackChildOpacity;
+	bool m_unk8;
+	bool m_inEditLayer;
+	bool m_groupDisabled;
+	bool m_colourOnTop;
+	// 0x27c
+	int m_mainColorID;
+	int m_secondaryColorID;
+
+	// 0x284
+	bool m_col1;
+	bool m_col2;
+
+	float m_tempXOffset;
+	float m_tempYOffset;
+	// 0x290
+	float m_unkRotationField;
+	bool m_changeXOffset;
+	bool m_isFlippedX;
+	bool m_isFlippedY;
+	// 0x298
+	cocos2d::CCPoint m_boxOffset; 
+	bool m_isOriented;
+	cocos2d::CCPoint m_boxOffset2;
+	// 0x2b0
+	OBB2D* m_hitbox;
+	bool m_oriented;
+	// 0x2c0
+	cocos2d::CCSprite* m_glowSprite;
+	bool m_notEditor;
+	// 0x2d0
+	cocos2d::CCAction* m_myAction;
+	bool m_unk7;
+	bool m_runActionWithTag;
+	bool m_objectPoweredOn;
+	// 0x2e0
+	cocos2d::CCSize m_objectSize;
+	// 0x2f0
+	bool m_trigger;	// 0x270
+	bool m_active; 	// 0x271
+	bool m_animationFinished;	// 0x272
+	cocos2d::CCParticleSystemQuad* m_particleSystem;	// 0x274
+	std::string m_effectPlistName; // 0x278
+	bool m_particleAdded;	// 0x290
+	bool m_hasParticles;	// 0x291
+	bool m_unkCustomRing;	// 0x292
+	cocos2d::CCPoint m_portalPosition;	// 0x294
+	bool m_unkParticleSystem;	// 0x29c
+	cocos2d::CCRect m_objectTextureRect;	// 0x2a0
+	bool m_textureRectDirty;	// 0x2b0
+	float m_rectXCenterMaybe;	// 0x2b4
+	cocos2d::CCRect m_objectRect2; //0x2B8
+	bool m_isObjectRectDirty; //0x2C8
+	bool m_isOrientedRectDirty; //0x2C9
+	bool m_hasBeenActivated; //0x2CA
+	bool m_hasBeenActivatedP2; //0x2CB
+
 	int m_type = 0x370;
 	int m_id = 0x3c4;
-	OBB2D* m_hitbox = 0x2b0;
-	bool m_inEditLayer = 0x279;
 	cocos2d::CCPoint m_startPos = 0x37c;
 	bool m_touchTriggered = 0x378;
 	bool m_spawnTriggered = 0x379;
@@ -1156,9 +1303,25 @@ class MusicDownloadManager {
 class OBB2D : cocos2d::CCNode  {
 	void calculateWithCenter(cocos2d::CCPoint, float, float, float) = 0x35a9c0;
 	static OBB2D* create(cocos2d::CCPoint, float, float, float) = 0x35a890;
-	void getBoundingRect() = 0x35b2b0;
+	cocos2d::CCRect getBoundingRect() = 0x35b2b0;
 	void overlaps(OBB2D*) = 0x35b0a0;
 	void overlaps1Way(OBB2D*) = 0x35b0d0;
+
+	cocos2d::CCPoint m_p1_1;
+	cocos2d::CCPoint m_p1_2;
+	cocos2d::CCPoint m_p1_3;
+	cocos2d::CCPoint m_p1_4;
+	cocos2d::CCPoint m_p2_1;
+	cocos2d::CCPoint m_p2_2;
+	cocos2d::CCPoint m_p2_3;
+	cocos2d::CCPoint m_p2_4;
+	cocos2d::CCPoint m_p3_1;
+	cocos2d::CCPoint m_p3_2;
+	cocos2d::CCPoint m_p3_3;
+	cocos2d::CCPoint m_p3_4;
+	double m_rot1;
+	double m_rot2;
+	cocos2d::CCPoint m_center;
 }
 
 class ObjectToolbox {
@@ -1355,6 +1518,7 @@ class PlayLayer : GJBaseGameLayer, CCCircleWaveDelegate {
 	EndPortalObject* m_endPortal = 0x530;
 	float m_length = 0x5f8;
 	float m_trueLength = 0x5fc;
+	UILayer* m_uiLayer = 0x720;
 	GJGameLevel* m_level = 0x728;
 	int m_attempt = 0x754;
 	bool m_testMode = 0x738;

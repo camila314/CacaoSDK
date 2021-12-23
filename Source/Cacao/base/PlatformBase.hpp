@@ -18,3 +18,10 @@
 	#define hidden __attribute__((visibility("hidden")))
 #endif
 
+
+#if defined(CC_TARGET_OS_ANDROID)
+	// dlsym
+	#include <dlfcn.h>
+
+	#include <android/log.h>
+#endif

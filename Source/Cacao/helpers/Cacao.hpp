@@ -19,6 +19,8 @@
 
 #define CAC_TYPEINFO(addr)
 
+#define offsetOf(member) (uintptr_t)&member - (uintptr_t)this
+
 namespace Cacao {
 	using namespace cocos2d;
 
