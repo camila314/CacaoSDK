@@ -18,7 +18,7 @@
 #endif
 
 #if defined(PROJECT_NAME)
-	void $projectName() {
+	inline void $projectName() {
 		ModContainer::instance()->setName(PROJECT_NAME);
 	}
 	static int const _projectName = ($projectName(), 0);
@@ -43,8 +43,8 @@ public:
  * Main class implementation, it has the structure
  * 
  * class $hook0;
- * bool $hook0Apply = Cacao::interface::$MenuLayer<$hook0>::_apply();
- * class __attribute__(("hidden")) $hook0: public Cacao::interface::$MenuLayer<$hook0> {
+ * bool $hook0Apply = Cacao::kinterface::$MenuLayer<$hook0>::_apply();
+ * class __attribute__(("hidden")) $hook0: public Cacao::kinterface::$MenuLayer<$hook0> {
  * public:
  *     // code stuff idk
  * };
@@ -52,12 +52,14 @@ public:
  * I tried to make the macro as verbose as it can be but
  * I am bad at this stuff
  */
+
+
 #define PREDECLARE(derived) derived;
 #define APPLY(base, derived) bool derived##Apply = base<derived>::_apply();
 #define DECLARE(base, derived) struct hidden derived: public base<derived>
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
-#define REDIRECT__(base, derived) REDIRECT___(Cacao::interface::$##base, derived)
+#define REDIRECT__(base, derived) REDIRECT___(Cacao::kinterface::$##base, derived)
 #define REDIRECT_(base, counter) REDIRECT__(base, CONCAT($hook, counter))
 #define REDIRECT(base) REDIRECT_(base, __COUNTER__)
 

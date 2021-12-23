@@ -3,7 +3,7 @@ from Shared import *
 classes = pickle.load(open(picklepath, "rb"))
 
 functionBody = """
-functionOf{Pless}({defaults}) {const}{{
+get{Pless}ReturnOf({defaults}) {cl}::{name}({params}) {const}{{
 {function}
 }}
 """
@@ -60,7 +60,7 @@ for cl in classes:
 			offset = info.getOffset(platform, i), 
 			params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
 			params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-			defaults = ', '.join([cl.name, info.declare.name] + [arg.getType(i) for i, arg in enumerate(info.parameters)]),
+			defaults = ', '.join([cl.name, info.declare.name] + [f"std::declval<{arg.getType(i)}>()" for i, arg in enumerate(info.parameters)]),
 			Pless = 'P' if len(info.parameters) == 0 else '',
 			const = "const " if info.const else "",
 			id = i,
