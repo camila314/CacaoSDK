@@ -62,3 +62,6 @@ Source/Cacao/pkg/uber-apk-signer.jar
 
 # Ignore example build folders
 Examples/*/build
+
+# Ignore old files
+scripts/
