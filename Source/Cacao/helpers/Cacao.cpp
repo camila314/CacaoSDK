@@ -1,5 +1,4 @@
 // Copyright camila314 2021
-#define PROJECT_NAME "Cacao Base"
 #include <Cacao.hpp>
 #include <stdexcept>
 #include <set>

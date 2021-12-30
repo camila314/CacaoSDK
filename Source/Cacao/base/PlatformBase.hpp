@@ -8,14 +8,15 @@
 	 * MSVC exports with hidden by default so there is no need for hidden
 	 */
 	#define hidden
+	#define export __declspec(dllexport)
 #else
 	/**
 	 * We need a hidden attribute for the hook classes because
 	 * since they have the same name in different executables their
 	 * global offset tables can override
 	 */
-
 	#define hidden __attribute__((visibility("hidden")))
+	#define export 
 #endif
 
 

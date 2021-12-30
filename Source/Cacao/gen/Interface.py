@@ -4,7 +4,7 @@ classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
-class ${cl} : public {cl}, public InterfaceBase {{
+export class ${cl} : public {cl}, public InterfaceBase {{
 public:
 	${cl}(const ${cl}& c) : {cl}(c) {{}}
 	${cl}() = delete;
@@ -16,19 +16,19 @@ else:
 	build_stack = ""
 
 build_body1 = """
-	__declspec(dllexport) {type} {name}({params}) {const}{{
+	{type} {name}({params}) {const}{{
 {function}
 	}}
 """
 
 build_body1_virtual = """
-	__declspec(dllexport) {type} {name}({params}) {const}{{
+	{type} {name}({params}) {const}{{
 {function}
 	}}
 """
 
 build_body1_static = """
-	__declspec(dllexport) static {type} {name}({params}) {const}{{
+	static {type} {name}({params}) {const}{{
 {function}
 	}}
 """
@@ -45,7 +45,7 @@ build_body2_body = """
 		using d{id} = r{id}(D::*)({params}) {const};
 		{setAddress}
 		if constexpr((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
-			m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
+			modContainer.registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
 
 build_body2_body_static = """
@@ -55,7 +55,7 @@ build_body2_body_static = """
 		using d{id} = r{id}(*)({params});
 		{setAddress}
 		if constexpr((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
-			m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
+			modContainer.registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
 """
 
 build_body2_body_virtual = """
@@ -65,7 +65,7 @@ build_body2_body_virtual = """
 		using d{id} = r{id}(D::*)({params}) {const};
 		if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name})) {{
 			{setAddress}
-			m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual((d{id})(&D::{name})));
+			modContainer.registerHookEnable({offset}, FunctionScrapper::addressOfVirtual((d{id})(&D::{name})));
 		}}
 """
 

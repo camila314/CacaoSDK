@@ -38,6 +38,9 @@ else()
 	message(FATAL_ERROR "Not supported platform, please specify from the following: MacOS, Win32, iOS, Android.")
 endif()
 
+target_compile_definitions(${PROJECT_NAME}
+	PRIVATE -DPROJECT_NAME=${PROJECT_NAME}
+)
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOSo")
 set(CACAO_SOURCES

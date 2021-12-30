@@ -60,3 +60,6 @@ add_custom_target(Gen ALL
 
 add_dependencies(Cacao Gen)
 
+target_compile_definitions(Cacao
+	PRIVATE -DPROJECT_NAME=CacaoBase
+)

@@ -13,18 +13,7 @@
 
 #include <FunctionBase.hpp>
 
-#if defined(CAC_PROJ_NAME)
-	#define PROJECT_NAME CAC_PROJ_NAME
-#endif
-
-#if defined(PROJECT_NAME)
-	inline void $projectName() {
-		ModContainer::instance()->setName(PROJECT_NAME);
-	}
-	static int const _projectName = ($projectName(), 0);
-#endif
-
-inline ModContainer* const m = ModContainer::instance();
+#define modContainer ModInterface::container(STR(PROJECT_NAME))
 
 // Just in case if we ever need to add shared implementations
 class InterfaceBase {
@@ -44,8 +33,7 @@ public:
  * 
  * class $hook0;
  * bool $hook0Apply = Cacao::kinterface::$MenuLayer<$hook0>::_apply();
- * class __attribute__(("hidden")) $hook0: public Cacao::kinterface::$MenuLayer<$hook0> {
- * public:
+ * struct __attribute__(("hidden")) $hook0: public Cacao::kinterface::$MenuLayer<$hook0> {
  *     // code stuff idk
  * };
  * 
