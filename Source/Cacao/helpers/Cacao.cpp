@@ -1,4 +1,6 @@
-// Copyright camila314 2021
+// 
+// Copyright camila314 & alk1m123 2022. 
+//
 #include <Cacao.hpp>
 #include <stdexcept>
 #include <set>

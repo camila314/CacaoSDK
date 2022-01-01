@@ -1,5 +1,5 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #pragma once 
 
@@ -36,14 +36,14 @@ struct LevelDifficulty {
 	int32_t numerator;  
 };
 
-#define CLASSPARAM(__TYPE__, __GETTER__, __OFFSET__)        \
-	inline __TYPE__& _##__GETTER__() {                      \
-		return *((__TYPE__*)((long)this + __OFFSET__));     \
+#define CLASSPARAM(type, getter, offset)        		\
+	inline type& _##getter() {                      	\
+		return *((type*)((uintptr_t)this + offset));	\
 	}
 
-#define STRUCTPARAM(__TYPE__, __GETTER__, __OFFSET__)       \
-	inline __TYPE__ _##__GETTER__() {                       \
-		return *(__TYPE__*)((long)this+__OFFSET__);         \
+#define STRUCTPARAM(type, getter, offset)       		\
+	inline type _##getter() {                       	\
+		return *(type*)((uintptr_t)this+offset);		\
 	}
 
 //thanks pie
@@ -88,6 +88,7 @@ enum GameObjectType {
 	kGameObjectTypeMiniSizePortal = 18,
 	kGameObjectTypeUfoPortal = 19,
 	kGameObjectTypeModifier = 20,
+	// kGameObjectTypeTest = 21,
 	kGameObjectTypeSecretCoin = 22,
 	kGameObjectTypeDualPortal = 23,
 	kGameObjectTypeSoloPortal = 24,

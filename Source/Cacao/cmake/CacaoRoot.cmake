@@ -40,6 +40,7 @@ endif()
 
 target_compile_definitions(${PROJECT_NAME}
 	PRIVATE -DPROJECT_NAME=${PROJECT_NAME}
+	# PRIVATE "-D__FILENAME__='\"$(subst${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'"
 )
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOSo")
@@ -87,4 +88,12 @@ target_link_libraries(${PROJECT_NAME}
 	Cacao
 	${LINK_LIBRARIES}
 )
+
+# basically
+# https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean
+# get the naame of first prereq
+# then replace non identifier chars with empty
+# todo: replace space too
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILE_IDENTIFIER__='$(subst .,,$(subst /,,$(subst \\,,$<)))' ")
+
 

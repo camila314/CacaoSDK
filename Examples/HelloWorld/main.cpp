@@ -1,8 +1,7 @@
-#define PROJECT_NAME "HelloWorld"
 #include <Cacao>
 #include "custom-layer.hpp"
 
-class $redirect(MenuLayer) {
+class $(MenuLayer) {
 	bool init() {
         /*
           In cocos2d-x, init functions return a boolean, which is false if

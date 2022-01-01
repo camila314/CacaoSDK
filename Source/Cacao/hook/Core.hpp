@@ -1,5 +1,5 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #pragma once
 #pragma GCC visibility push(default)
@@ -100,7 +100,6 @@ namespace Cacao::core {
 		void registerHookEnable(uintptr_t address, uintptr_t function);
 
 		friend class ModInterface;
-		friend void destructContainers();
 	};
 
 	class ModInterface {

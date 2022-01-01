@@ -1,5 +1,5 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #pragma once 
 
@@ -10,5 +10,5 @@
 uintptr_t getBase();
 inline uintptr_t const base = getBase();
 
-#define CACAO_VERSION "3.0.0"
+#define CACAO_VERSION "3.4.0"
 

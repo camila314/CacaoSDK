@@ -1,8 +1,7 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #include "Core.hpp"
-#include <iostream>
 
 namespace Cacao::core {
 
@@ -72,7 +71,6 @@ namespace Cacao::core {
 	}
 
 	ModContainer::~ModContainer() {
-		std::cout << "~mod: " << m_mods.size() << std::endl;
 		disable();
 		for (BaseContainer* i : m_mods) delete i;
 		if (m_object) delete m_object;
@@ -106,7 +104,6 @@ namespace Cacao::core {
 	}
 
 	ModContainer& ModInterface::container(const std::string& name) {
-		std::cout << "container: " << name << std::endl;
 		if (!exists(name)) {
 			allContainers()[name] = new ModContainer(name);
 		}

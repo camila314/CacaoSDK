@@ -13,7 +13,7 @@ class GenDeclaration:
 	def getType(self, default=None):
 		return self.type
 	def getName(self, default=None):
-		return f"p{default}" if self.name is None else self.name
+		return f"p{default}"
 	def getExpr(self, default=None):
 		if self.type is None:
 			return getName(default)
@@ -32,7 +32,7 @@ class GenFunction:
 		self.mangle = ""
 	def __repr__(self):
 		return f"{self.declare}({self.parameters}) = {self.offset}"
-	def getOffset(self, t, i):
+	def getAddress(self, t, i):
 		if self.offset is None:
 			return None
 		if t == "MacOS":
@@ -41,7 +41,7 @@ class GenFunction:
 		if t == "Win32":
 			if "cocos2d" in self.parent.name:
 				if linkable(self):
-					return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
+					return f"FunctionScrapper::pointerOf((mem{i})(&{self.parent.name}::{self.declare.name}))"
 				# return f"dlsym((void*)base, {self.mangle})"
 			return "base+" + str(self.offset[1])
 
@@ -49,10 +49,11 @@ class GenFunction:
 			return "base+" + str(self.offset[2])
 
 		if t == "Android":
-			if linkable(self):
-				return f"FunctionScrapper::pointerOf((a{i})(&{self.parent.name}::{self.declare.name}))"
-			return f'address{i}'
-	def getAddress(self, t):
+			if linkable(self) and self.declare.name not in ['constructor', 'destructor']:
+				return f"FunctionScrapper::pointerOf((mem{i})(&{self.parent.name}::{self.declare.name}))"
+			return f'(uintptr_t)dlsym((void*)base, "{self.getMangle()}")'
+	
+	def getOffset(self, t):
 		if self.offset is None:
 			return None
 		if t == "MacOS":
@@ -66,11 +67,6 @@ class GenFunction:
 
 		if t == "Android":
 			return ""
-
-	def setAddress(self, t, i):
-		if t == "Android" and not linkable(self):
-			return f'static auto address{i} = (uintptr_t)dlsym((void*)base, "{self.getMangle()}");'
-		return "";
 
 	def getMangle(self):
 		return self.mangle
@@ -188,3 +184,22 @@ def writeIfDifferent(name, out):
 	if not os.path.isfile(filePath) or isDifferent():
 		with open(filePath, "w") as f:
 			f.write(out)
+
+def getNamespace(name):
+	return '::'.join(name.split('::')[:-1])
+
+def stripNamespace(name):
+	return name.split('::')[-1]
+
+with open(os.path.join(os.path.dirname(__file__), "scrap", "libcocos2d.demangled.txt"), "r") as f2:
+	accessSpecifier = {}
+	for line in f2.readlines():
+		match = re.search(r"(.+?):.+(cocos2d::.+?)\(", line)
+		if match is not None:
+			accessSpecifier[match.group(2)] = match.group(1)
+	# im sorry
+
+	def getAccessSpecifierOf(func):
+		if func not in accessSpecifier:
+			return "private"
+		return accessSpecifier[func]

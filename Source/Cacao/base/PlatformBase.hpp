@@ -1,5 +1,5 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #pragma once 
 
@@ -8,7 +8,9 @@
 	 * MSVC exports with hidden by default so there is no need for hidden
 	 */
 	#define hidden
-	#define export __declspec(dllexport)
+	#define dllexport __declspec(dllexport)
+	#define dupable __forceinline
+
 #else
 	/**
 	 * We need a hidden attribute for the hook classes because
@@ -16,7 +18,8 @@
 	 * global offset tables can override
 	 */
 	#define hidden __attribute__((visibility("hidden")))
-	#define export 
+	#define dllexport 
+	#define dupable __attribute__((always_inline))
 #endif
 
 

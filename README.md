@@ -37,6 +37,24 @@ class $redirect(EditorUI) {
     }
 };
 ```
+
+If you need the name of the hook class you can use the `$implement` macro:
+```cpp
+#include <Cacao>
+#include <iostream>
+
+class $implement(EditorUI, EditorUIHook) {
+	void callback(CCObject*) {
+		std::cout << "Called from EditorUIHook!" << std::endl;
+	}
+    void undoLastAction(CCObject* p0) {
+    	auto func = &EditorUIHook::callback;
+        (this->*func)(p0); // c++ syntax moment
+        $EditorUI::undoLastAction(p0);
+    }
+};
+```
+
 Since the Cacao classes subclass the GD classes, we can use the members and functions like we would in a normal class.
 ```cpp
 #include <Cacao>
@@ -50,9 +68,8 @@ class $redirect(EditorUI) {
 };
 ```
 
-If you want, you can also use a function with the name `inject` to run code after the mod is loaded. If you want your mod to be used by other things (like any future Megahack thing I do), it's important to give the mod a proper name. This can be easily done by defining `PROJECT_NAME` with the name. \*\*Make sure you do this before you include Cacao.
+If you want, you can also use a function with the name `inject` to run code after the mod is loaded.
 ```cpp
-#define PROJECT_NAME "My first mod"
 #include <Cacao>
 #include <iostream>
 

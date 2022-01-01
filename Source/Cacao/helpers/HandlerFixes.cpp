@@ -1,14 +1,17 @@
+// 
+// Copyright camila314 & alk1m123 2022. 
+//
 #include <Cacao>
 // this is the fix for the dynamic_cast problems
 
 namespace Cacao::fixes {
 
 #define HandlerFixFor(CCUtility)                                                                        \
-class $implement(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                   \
+class $(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                            \
 public:                                                                                                 \
 	void destructor() {                                                                                 \
 		if (m_pDelegate) {                                                                              \
-			cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(m_pDelegate);                 \
+			cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(m_pDelegate);                    \
 			if (pObject) {                                                                              \
 				pObject->release();                                                                     \
 			}                                                                                           \
@@ -19,7 +22,7 @@ public:                                                                         
 	}                                                                                                   \
 																										\
 	bool initWithDelegate(cocos2d::CCUtility##Delegate *pDelegate) {                                    \
-		cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(pDelegate);                       \
+		cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(pDelegate);                          \
 		if (pObject) {                                                                                  \
 			m_pDelegate = pDelegate;                                                                    \
 			pObject->retain();                                                                          \
@@ -49,11 +52,11 @@ HandlerFixFor(CCKeypad);
 HandlerFixFor(CCKeyboard);
 HandlerFixFor(CCMouse);
 
-class $implement(CCTargetedTouchHandler, CCTargetedTouchHandlerTypeinfoFix) {
+class $(CCTargetedTouchHandler, CCTargetedTouchHandlerTypeinfoFix) {
 public:
 	void destructor() {
 		if (m_pDelegate) {
-			cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(m_pDelegate);
+			cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(m_pDelegate);
 			if (pObject) {
 				// the entire destructor
 				pObject->release();
@@ -67,7 +70,7 @@ public:
 	}
 
 	bool initWithDelegate(cocos2d::CCTouchDelegate *pDelegate, int nPriority, bool bSwallow) {
-		cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(pDelegate);
+		cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(pDelegate);
 		if (pObject) {
 			m_pDelegate = pDelegate;
 			pObject->retain();
@@ -99,11 +102,11 @@ public:
 	}
 };
 
-class $implement(CCStandardTouchHandler, CCStandardTouchHandlerTypeinfoFix) {
+class $(CCStandardTouchHandler, CCStandardTouchHandlerTypeinfoFix) {
 public:
 	void destructor() {
 		if (m_pDelegate) {
-			cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(m_pDelegate);
+			cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(m_pDelegate);
 			if (pObject) {
 				// the entire destructor
 				pObject->release();
@@ -116,7 +119,7 @@ public:
 	}
 
 	bool initWithDelegate(cocos2d::CCTouchDelegate *pDelegate, int nPriority) {
-		cocos2d::CCObject* pObject = dynamic_cast<cocos2d::CCObject*>(pDelegate);
+		cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(pDelegate);
 		if (pObject) {
 			m_pDelegate = pDelegate;
 			pObject->retain();

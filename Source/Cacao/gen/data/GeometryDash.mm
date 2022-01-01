@@ -37,7 +37,7 @@ class AppDelegate {
 }
 
 class ArtistCell : TableViewCell {
-	ArtistCell(char const*, float, float) = 0x11c740;
+	// ArtistCell(char const*, float, float) = 0x11c740;
 	void draw() = 0x11c980;
 	bool init() = 0x11c7c0;
 	void loadFromObject(SongInfoObject*) = 0x1118b0;
@@ -875,8 +875,8 @@ class GameObject : CCSpritePlus {
 	virtual void updateStartValues() = 0x2fa800;
 	virtual void customObjectSetup() = 0xdc1a0;
 	virtual gd::string getSaveString() = 0x33d3d0;
-	virtual void isFlipX() = 0x335a40;
-	virtual void isFlipY() = 0x335a50;
+	virtual bool isFlipX() = 0x335a40;
+	virtual bool isFlipY() = 0x335a50;
 	virtual void setRScaleX(float) = 0x335cb0;
 	virtual void setRScaleY(float) = 0x335d60;
 	virtual void setRScale(float) = 0x335e10;
@@ -1291,7 +1291,6 @@ class MenuLayer : cocos2d::CCLayer, FLAlertLayerProtocol {
 
     void onMoreGames(cocos2d::CCObject*) =                  0x1d2ad0, 0x1919c0, 0x19fbb4;
     void onQuit(cocos2d::CCObject*) =                       0x1d2b40;
-    static MenuLayer* create() =                                    , 0x190550;
     static cocos2d::CCScene* scene(bool) =                  0x1d12d0, 0x190720;
 }
 
@@ -1894,7 +1893,7 @@ class TableView : CCScrollLayerExt, CCScrollLayerExtDelegate {
 }
 
 class TableViewCell : cocos2d::CCLayer {
-	TableViewCell(char const*, float, float) = 0x383de0;
+	// TableViewCell(char const*, float, float) = 0x383de0;
 	// default constructor
 	volatile TableViewCell() {}
 	volatile char pad[0x1c0-0x170];
