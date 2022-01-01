@@ -4,7 +4,7 @@ classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
-dllexport struct ${cl} : {cl}, InterfaceBase {{
+struct ${cl} : {cl}, InterfaceBase {{
 	${cl}(const ${cl}& c) : {cl}(c) {{}}
 	${cl}() = delete;
 """
