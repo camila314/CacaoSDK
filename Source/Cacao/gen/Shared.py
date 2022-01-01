@@ -41,7 +41,9 @@ class GenFunction:
 		if t == "Win32":
 			if "cocos2d" in self.parent.name:
 				if linkable(self):
-					return f"FunctionScrapper::pointerOf((mem{i})(&{self.parent.name}::{self.declare.name}))"
+					if self.virtual:
+						return f"FunctionScrapper::addressOfVirtual((mem{i})(&{self.parent.name}::{self.declare.name}))"
+					return f"FunctionScrapper::addressOfNonVirtual((mem{i})(&{self.parent.name}::{self.declare.name}))"
 				# return f"dlsym((void*)base, {self.mangle})"
 			return "base+" + str(self.offset[1])
 
@@ -50,7 +52,9 @@ class GenFunction:
 
 		if t == "Android":
 			if linkable(self) and self.declare.name not in ['constructor', 'destructor']:
-				return f"FunctionScrapper::pointerOf((mem{i})(&{self.parent.name}::{self.declare.name}))"
+				if self.virtual:
+					return f"FunctionScrapper::addressOfVirtual((mem{i})(&{self.parent.name}::{self.declare.name}))"
+				return f"FunctionScrapper::addressOfNonVirtual((mem{i})(&{self.parent.name}::{self.declare.name}))"
 			return f'(uintptr_t)dlsym((void*)base, "{self.getMangle()}")'
 	
 	def getOffset(self, t):

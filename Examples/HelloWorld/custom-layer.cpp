@@ -100,25 +100,3 @@ void CustomLayer::backButtonCallback(CCObject* object) {
     keyBackClicked();
 }
 
-// this is the callback function for the button we added in MenuLayer
-// inside this function, the `this` pointer will be what we set the 
-// target to, so it'll be the instance of MenuLayer
-// The only argument to this function `CCObject*` is the button which
-// the callback came from. Here its a CCObject as pretty much every
-// cocos class inherits CCObject, and can be casted into a pointer of it
-void CustomLayer::switchToCustomLayerButton(CCObject* object) {
-    /*
-      Here we create an instance of our layer, and since its its own
-      thing we have to make a scene for it, which can easily be done
-      by just using `CCScene::create()`
-    */
-    auto layer = CustomLayer::create();
-    auto scene = CCScene::create();
-    scene->addChild(layer);
-    // Here we create a transition for the layer, which is that black fade
-    // present in gd
-    auto transition = CCTransitionFade::create(0.5f, scene);
-    // use the director to push the transition, which is
-    // technically a scene
-    CCDirector::sharedDirector()->pushScene(transition);
-}
