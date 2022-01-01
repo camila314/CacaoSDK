@@ -172,14 +172,24 @@ for cl in classes:
 		if info.getOffset(platform) == "None":
 			continue
 		
-
-		bodydeclare = build_declare_member
-		if info.static:
-			bodydeclare = build_declare_static
-		if info.declare.name in ["constructor", "destructor"]:
-			bodydeclare = build_declare_special
-		elif not isPublic(f"{cl.name}::{info.declare.name}"):
-			continue
+		if platform == "Win32":
+			bodydeclare = build_declare_member_win32
+			if info.static:
+				bodydeclare = build_declare_static_win32
+			if info.virtual:
+				bodydeclare = build_declare_virtual_win32
+			if info.declare.name in ["constructor", "destructor"]:
+				bodydeclare = build_declare_special_win32
+			elif not isPublic(f"{cl.name}::{info.declare.name}"):
+				continue
+		else:
+			bodydeclare = build_declare_member
+			if info.static:
+				bodydeclare = build_declare_static
+			if info.declare.name in ["constructor", "destructor"]:
+				bodydeclare = build_declare_special
+			elif not isPublic(f"{cl.name}::{info.declare.name}"):
+				continue
 		
 		out += bodydeclare.format(
 			name = info.declare.name,

@@ -13,12 +13,12 @@ TODO: Make this properly documented
 
 ### Cacao
 
-Cacao comes with a neat little way to hook very quickly. This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the Cacao classes and overriding some of the methods. Cacao classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$redirect`. To use it I give the macro the class I want to hook. You'll also notice that I assign a variable to it. This is because the variable allows me to activate the hooking automatically. Example:
+Cacao comes with a neat little way to hook very quickly. This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the Cacao classes and overriding some of the methods. Cacao classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$()`. To use it I give the macro the class I want to hook. You'll also notice that I assign a variable to it. This is because the variable allows me to activate the hooking automatically. Example:
 ```cpp
 #include <Cacao>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $(EditorUI) {
     void undoLastAction(CCObject* p0) {
         std::cout << "Undo!" << std::endl;
     }
@@ -30,7 +30,7 @@ If you want to call the original function, there is also an easy way to do that 
 #include <Cacao>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $(EditorUI) {
     void undoLastAction(CCObject* p0) {
         std::cout << "Undo!" << std::endl;
         $EditorUI::undoLastAction(p0);
@@ -38,12 +38,12 @@ class $redirect(EditorUI) {
 };
 ```
 
-If you need the name of the hook class you can use the `$implement` macro:
+If you need the name of the hook class you can use the `$()` macro with 2 parameters:
 ```cpp
 #include <Cacao>
 #include <iostream>
 
-class $implement(EditorUI, EditorUIHook) {
+class $(EditorUI, EditorUIHook) {
 	void callback(CCObject*) {
 		std::cout << "Called from EditorUIHook!" << std::endl;
 	}
@@ -60,7 +60,7 @@ Since the Cacao classes subclass the GD classes, we can use the members and func
 #include <Cacao>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $(EditorUI) {
     void undoLastAction(CCObject* p0) {
         std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
         $EditorUI::undoLastAction(p0);
@@ -73,7 +73,7 @@ If you want, you can also use a function with the name `inject` to run code afte
 #include <Cacao>
 #include <iostream>
 
-class $redirect(EditorUI) {
+class $(EditorUI) {
     void undoLastAction(CCObject* p0) {
         std::cout << "We have " << getSelectedObjects()->count() << " objects selected" << std::endl;
         $EditorUI::undoLastAction(p0);

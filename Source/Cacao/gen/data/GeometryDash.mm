@@ -1893,7 +1893,7 @@ class TableView : CCScrollLayerExt, CCScrollLayerExtDelegate {
 }
 
 class TableViewCell : cocos2d::CCLayer {
-	// TableViewCell(char const*, float, float) = 0x383de0;
+	TableViewCell(char const*, float, float) = 0x383de0;
 	// default constructor
 	volatile TableViewCell() {}
 	volatile char pad[0x1c0-0x170];

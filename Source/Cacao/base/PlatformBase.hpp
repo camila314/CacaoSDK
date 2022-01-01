@@ -28,4 +28,12 @@
 	#include <dlfcn.h>
 
 	#include <android/log.h>
+
+#elif defined(CC_TARGET_OS_WIN32)
+
+	#include <function.hpp>
+	#include <x86/optcall.hpp>
+	#include <x86/membercall.hpp>
+	#include <x86/thiscall.hpp>
+
 #endif
