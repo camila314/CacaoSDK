@@ -24,10 +24,11 @@
 
 
 #if defined(CC_TARGET_OS_ANDROID)
-	// dlsym
-	#include <dlfcn.h>
 
+	#include <dlfcn.h>
 	#include <android/log.h>
+
+	#define CacaoLog(format, ...) __android_log_print(ANDROID_LOG_DEBUG, "Cacao", "%s:%d:\n" format"\n", __FILE__, __LINE__, ##__VA_ARGS__);
 
 #elif defined(CC_TARGET_OS_WIN32)
 
@@ -35,5 +36,14 @@
 	#include <x86/optcall.hpp>
 	#include <x86/membercall.hpp>
 	#include <x86/thiscall.hpp>
+	#include <stdio.h>
+
+	#define CacaoLog(format, ...) printf("Cacao %s:%d:\n" format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
+
+#elif defined(CC_TARGET_OS_MACOS)
+
+	#include <stdio.h>
+
+	#define CacaoLog(format, ...) printf("Cacao %s:%d:\n" format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 #endif

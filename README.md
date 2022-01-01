@@ -13,7 +13,7 @@ TODO: Make this properly documented
 
 ### Cacao
 
-Cacao comes with a neat little way to hook very quickly. This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the Cacao classes and overriding some of the methods. Cacao classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$()`. To use it I give the macro the class I want to hook. You'll also notice that I assign a variable to it. This is because the variable allows me to activate the hooking automatically. Example:
+Cacao comes with a neat little way to hook very quickly. This let's you automatically hook functions without needing to manually find the address each time. It works by subclassing some of the Cacao classes and overriding some of the methods. Cacao classes are just like normal GD classes but prefixed with a `$`. To easily subclass these classes there is a macro called `$()`. To use it I give the macro the class I want to hook. Example:
 ```cpp
 #include <Cacao>
 #include <iostream>
