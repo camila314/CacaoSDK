@@ -6,8 +6,9 @@
 #include <cstddef>
 #include <stdint.h>
 #include <gdstdlib.hpp>
+#include <MacroBase.hpp>
 
-uintptr_t getBase();
+CACAODLL uintptr_t getBase();
 inline uintptr_t const base = getBase();
 
 #define CACAO_VERSION "3.4.0"
