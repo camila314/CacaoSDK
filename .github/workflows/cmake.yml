@@ -18,17 +18,13 @@ jobs:
         config:
         - {
             name: "Windows Latest MSVC", 
-            artifacts: |
-              ./Examples/build/HelloWorld/Cacao/*.dylib
-              ./Examples/build/**/*.dylib,
+            artifacts: "./Examples/build/HelloWorld/Cacao/*.dylib\n./Examples/build/**/*.dylib",
             os: windows-latest,
             build_type: "Release", cc: "cl", cxx: "cl",
           }
         - {
             name: "macOS Latest Clang",
-            artifacts: |
-              ./Examples/build/HelloWorld/Cacao/*.dll
-              ./Examples/build/**/*.dll,
+            artifacts: "./Examples/build/HelloWorld/Cacao/*.dll\n./Examples/build/**/*.dll",
             os: macos-latest,
             build_type: "Release", cc: "clang", cxx: "clang++"
           }
