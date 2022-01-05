@@ -7,7 +7,6 @@ include_directories(
 	Cacao/cocos/cocos2dx/platform/third_party/win32/OGLES
 
 	Cacao/hook/lilac-meta/include
-	Cacao/hook/lilac-meta/include/x86
 )
 
 macro(link_prebuilts project)
