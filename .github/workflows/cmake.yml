@@ -18,7 +18,7 @@ jobs:
         config:
         - {
             name: "Windows Latest MSVC", 
-            artifacts: "./Examples/build/HelloWorld/Cacao/Release/*.dll\n./Examples/build/**/Release/*.dll",
+            artifacts: "./Examples/build/HelloWorld/Cacao/RelWithDebInfo/*.dll\n./Examples/build/**/RelWithDebInfo/*.dll",
             os: windows-latest,
             extra_flags: "-T host=x86 -A win32",
             build_type: "RelWithDebInfo", cc: "cl", cxx: "cl",
