@@ -15,9 +15,9 @@ if (NOT DEFINED CACAO_TARGET_PLATFORM)
 endif()
 
 if (WIN32)
-	set(CACAO_PYTHON py)
+	set(CACAO_PYTHON python3.8)
 else()
-	set(CACAO_PYTHON python3)
+	set(CACAO_PYTHON python3.8)
 endif()
 
 if (DEFINED SOURCE_FILES)
