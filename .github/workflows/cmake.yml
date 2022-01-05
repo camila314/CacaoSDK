@@ -21,14 +21,14 @@ jobs:
             artifacts: "./Examples/build/HelloWorld/Cacao/Release/*.dll\n./Examples/build/**/Release/*.dll",
             os: windows-latest,
             extra_flags: "-T host=x86 -A win32",
-            build_type: "Release", cc: "cl", cxx: "cl",
+            build_type: "RelWithDebInfo", cc: "cl", cxx: "cl",
           }
         - {
             name: "macOS Latest Clang",
             artifacts: "./Examples/build/HelloWorld/Cacao/*.dylib\n./Examples/build/**/*.dylib",
             os: macos-latest,
             extra_flags: "",
-            build_type: "Release", cc: "clang", cxx: "clang++"
+            build_type: "RelWithDebInfo", cc: "clang", cxx: "clang++"
           }
 
     steps:
