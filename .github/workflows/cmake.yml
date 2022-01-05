@@ -40,3 +40,12 @@ jobs:
       working-directory: ./Examples
       # Build your program with the given configuration
       run: cmake --build build --config ${{env.BUILD_TYPE}}
+
+    - name: Upload Binaries
+      uses: actions/upload-artifact@v2
+      working-directory: ./Examples
+      with:
+        name: Binaries
+        path: |
+          ./build/HelloWorld/Cacao/libCacao.dylib
+          ./build/**/lib*.dylib
