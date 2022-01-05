@@ -35,25 +35,25 @@ build_declare_special = """
 
 build_declare_virtual_win32 = """
 	dupable getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
-		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Thiscall>\{address{id}\}(this{trail}{params});
+		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Thiscall>{{ address{id} }}(this{trail}{params});
 	}}
 """
 
 build_declare_member_win32 = """
 	dupable getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
-		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Membercall>\{address{id}\}(this{trail}{params});
+		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Membercall>{{ address{id} }}(this{trail}{params});
 	}}
 """
 
 build_declare_static_win32 = """
 	dupable static getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
-		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Optcall>\{address{id}\}(this{trail}{params});
+		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Optcall>{{ address{id} }}(this{trail}{params});
 	}}
 """
 
 build_declare_special_win32 = """
 	dupable void {name}({exprs}) {{
-		lilac::meta::Function<void(decltype(this){trail}{types}), lilac::meta::x86::Membercall>\{address{id}\}(this{trail}{params});
+		lilac::meta::Function<void(decltype(this){trail}{types}), lilac::meta::x86::Membercall>{{ address{id} }}(this{trail}{params});
 	}}
 """
 
