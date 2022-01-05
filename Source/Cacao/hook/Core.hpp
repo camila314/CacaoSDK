@@ -2,7 +2,7 @@
 // Copyright camila314 & alk1m123 2022. 
 //
 #pragma once
-#pragma GCC visibility push(default)
+// #pragma GCC visibility push(default)
 
 #include <cstddef>
 #include <string>
@@ -18,7 +18,7 @@ namespace Cacao::core {
 	//
 	// Base container type for hooks and patches
 	//
-	class BaseContainer {
+	class VISIBLE BaseContainer {
 	public:
 		uintptr_t m_address;
 		
@@ -34,7 +34,7 @@ namespace Cacao::core {
 		friend class ModContainer;
 	};
 
-	class MemoryContainer : public BaseContainer {
+	class VISIBLE MemoryContainer : public BaseContainer {
 	private:
 		const char* m_originalBytes;
 		const char* m_moddedBytes;
@@ -50,7 +50,7 @@ namespace Cacao::core {
 		friend class ModContainer;
 	};
 
-	class HookContainer : public BaseContainer {
+	class VISIBLE HookContainer : public BaseContainer {
 	private:
 		func_t m_function;
 		lilac::HookHandle m_handle;
@@ -66,7 +66,7 @@ namespace Cacao::core {
 	};
 
 	class ModContainer;
-	class ModObject {
+	class VISIBLE ModObject {
 	protected:
 		virtual ~ModObject() {}
 		friend class ModContainer;
@@ -76,7 +76,7 @@ namespace Cacao::core {
 	//
 	// Mod container that contains all the base containers
 	//
-	class ModContainer {
+	class VISIBLE ModContainer {
 	private:
 		std::vector<BaseContainer*> m_mods;
 		std::string m_name;
@@ -102,7 +102,7 @@ namespace Cacao::core {
 		friend class ModInterface;
 	};
 
-	class ModInterface {
+	class VISIBLE ModInterface {
 	public:
 		static std::map<std::string, ModContainer*>& allContainers();
 
@@ -122,9 +122,9 @@ namespace Cacao::core {
 		static const int destruct;
 	};
 }
-uintptr_t getBase();
+uintptr_t VISIBLE getBase();
 
 using ModContainer = Cacao::core::ModContainer;
 using ModInterface = Cacao::core::ModInterface;
 
-#pragma GCC visibility pop
+// #pragma GCC visibility pop
