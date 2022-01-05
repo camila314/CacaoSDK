@@ -11,7 +11,7 @@
 	#define dllexport __declspec(dllexport)
 	#define dupable __forceinline
 
-	#if defined(_USRDLL)
+	#if defined(CACAODLLEXPORT)
 	    #define CACAODLL     __declspec(dllexport)
 	#else         // use a DLL library 
 	    #define CACAODLL     __declspec(dllimport)

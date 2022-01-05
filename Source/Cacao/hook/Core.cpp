@@ -1,6 +1,7 @@
 // 
 // Copyright camila314 & alk1m123 2022. 
 //
+#define CACAODLLEXPORT
 #include "Core.hpp"
 
 namespace Cacao::core {
