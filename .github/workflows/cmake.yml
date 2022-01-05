@@ -59,7 +59,7 @@ jobs:
     - name: Build
       working-directory: ./Examples
       # Build your program with the given configuration
-      run: cmake --build build --config ${{ matrix.config.build_type }}
+      run: cmake --build build --config ${{ matrix.config.build_type }} --target Cacao
 
     - name: Upload ${{ matrix.config.name }} Binaries
       uses: actions/upload-artifact@v2
