@@ -91,26 +91,26 @@ namespace Cacao::core {
 
 	public:
 		// Registers a write of bytes to the address that is byteCount long
-		VISIBLE void registerWrite(uintptr_t address, size_t byteCount, const char* bytes);
-		VISIBLE void registerWriteEnable(uintptr_t address, size_t byteCount, const char* bytes);
+		void registerWrite(uintptr_t address, size_t byteCount, const char* bytes);
+		void registerWriteEnable(uintptr_t address, size_t byteCount, const char* bytes);
 		
 
 		// Registers a function hook to the address
-		VISIBLE void registerHook(uintptr_t address, uintptr_t function); 
-		VISIBLE void registerHookEnable(uintptr_t address, uintptr_t function);
+		void registerHook(uintptr_t address, uintptr_t function); 
+		void registerHookEnable(uintptr_t address, uintptr_t function);
 
 		friend class ModInterface;
 	};
 
 	class ModInterface {
 	public:
-		VISIBLE static std::map<std::string, ModContainer*>& allContainers();
+		static std::map<std::string, ModContainer*>& allContainers();
 
-		VISIBLE static ModContainer& container(const std::string& name);
+		static ModContainer& container(const std::string& name);
 
-		VISIBLE static bool exists(const std::string& name);
+		static bool exists(const std::string& name);
 
-		VISIBLE static void* object(const std::string& name);
+		static void* object(const std::string& name);
 
 		template <typename T>
 		static T& object(const std::string& name) {
