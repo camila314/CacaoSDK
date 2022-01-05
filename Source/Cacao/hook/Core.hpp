@@ -18,7 +18,7 @@ namespace Cacao::core {
 	//
 	// Base container type for hooks and patches
 	//
-	class VISIBLE BaseContainer {
+	class BaseContainer {
 	public:
 		uintptr_t m_address;
 		
@@ -34,7 +34,7 @@ namespace Cacao::core {
 		friend class ModContainer;
 	};
 
-	class VISIBLE MemoryContainer : public BaseContainer {
+	class MemoryContainer : public BaseContainer {
 	private:
 		const char* m_originalBytes;
 		const char* m_moddedBytes;
@@ -50,7 +50,7 @@ namespace Cacao::core {
 		friend class ModContainer;
 	};
 
-	class VISIBLE HookContainer : public BaseContainer {
+	class HookContainer : public BaseContainer {
 	private:
 		func_t m_function;
 		lilac::HookHandle m_handle;
@@ -66,7 +66,7 @@ namespace Cacao::core {
 	};
 
 	class ModContainer;
-	class VISIBLE ModObject {
+	class ModObject {
 	protected:
 		virtual ~ModObject() {}
 		friend class ModContainer;
@@ -76,7 +76,7 @@ namespace Cacao::core {
 	//
 	// Mod container that contains all the base containers
 	//
-	class VISIBLE ModContainer {
+	class ModContainer {
 	private:
 		std::vector<BaseContainer*> m_mods;
 		std::string m_name;
@@ -91,26 +91,26 @@ namespace Cacao::core {
 
 	public:
 		// Registers a write of bytes to the address that is byteCount long
-		void registerWrite(uintptr_t address, size_t byteCount, const char* bytes);
-		void registerWriteEnable(uintptr_t address, size_t byteCount, const char* bytes);
+		VISIBLE void registerWrite(uintptr_t address, size_t byteCount, const char* bytes);
+		VISIBLE void registerWriteEnable(uintptr_t address, size_t byteCount, const char* bytes);
 		
 
 		// Registers a function hook to the address
-		void registerHook(uintptr_t address, uintptr_t function); 
-		void registerHookEnable(uintptr_t address, uintptr_t function);
+		VISIBLE void registerHook(uintptr_t address, uintptr_t function); 
+		VISIBLE void registerHookEnable(uintptr_t address, uintptr_t function);
 
 		friend class ModInterface;
 	};
 
 	class VISIBLE ModInterface {
 	public:
-		static std::map<std::string, ModContainer*>& allContainers();
+		VISIBLE static std::map<std::string, ModContainer*>& allContainers();
 
-		static ModContainer& container(const std::string& name);
+		VISIBLE static ModContainer& container(const std::string& name);
 
-		static bool exists(const std::string& name);
+		VISIBLE static bool exists(const std::string& name);
 
-		static void* object(const std::string& name);
+		VISIBLE static void* object(const std::string& name);
 
 		template <typename T>
 		static T& object(const std::string& name) {
