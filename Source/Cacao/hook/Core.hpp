@@ -118,9 +118,7 @@ namespace Cacao::core {
 			return *static_cast<T*>(object(name));
 		}
 
-	private:
 		static void destructContainers();
-		static const int destruct;
 	};
 }
 CACAODLL uintptr_t getBase();

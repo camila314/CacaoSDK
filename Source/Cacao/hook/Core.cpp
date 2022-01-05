@@ -125,7 +125,7 @@ namespace Cacao::core {
 		}
 	}
 
-	const int ModInterface::destruct = std::atexit(ModInterface::destructContainers);
+	const int destruct = std::atexit(ModInterface::destructContainers);
 
 }	// Cacao::core
 
