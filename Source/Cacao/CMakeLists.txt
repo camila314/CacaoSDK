@@ -3,9 +3,9 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
-# FILE(WRITE ${Cacao_SOURCE_DIR}/Header.hpp "") 
-# FILE(WRITE ${Cacao_SOURCE_DIR}/Interface.hpp "") 
-# FILE(WRITE ${Cacao_SOURCE_DIR}/Source.cpp "") 
+FILE(WRITE ${Cacao_SOURCE_DIR}/Header.hpp "") 
+FILE(WRITE ${Cacao_SOURCE_DIR}/Interface.hpp "") 
+FILE(WRITE ${Cacao_SOURCE_DIR}/Source.cpp "") 
 
 set_property(SOURCE ${Cacao_SOURCE_DIR}/Source.cpp PROPERTY GENERATED 1)
 
@@ -47,11 +47,10 @@ add_custom_command(
     COMMENT "Generating Interface"
 )
 
-# revert 
 add_custom_command(
     COMMAND ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Source.py ${CACAO_TARGET_PLATFORM}
     DEPENDS ${Cacao_SOURCE_DIR}/gen/gen.pickle
-    OUTPUT ${Cacao_SOURCE_DIR}/Source.cpp ${Cacao_SOURCE_DIR}/Source_.cpp
+    OUTPUT ${Cacao_SOURCE_DIR}/Source_.cpp
     COMMENT "Generating Source"
 )
 
