@@ -11,6 +11,12 @@
 	#define dllexport __declspec(dllexport)
 	#define dupable __forceinline
 
+	#if defined(_USRDLL)
+	    #define CACAODLL     __declspec(dllexport)
+	#else         // use a DLL library 
+	    #define CACAODLL     __declspec(dllimport)
+	#endif
+
 #else
 	/**
 	 * We need a hidden attribute for the hook classes because
@@ -20,6 +26,9 @@
 	#define hidden __attribute__((visibility("hidden")))
 	#define dllexport 
 	#define dupable __attribute__((always_inline))
+
+	#define CACAODLL
+
 #endif
 
 
