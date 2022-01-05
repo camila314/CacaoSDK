@@ -47,7 +47,7 @@ build_declare_member_win32 = """
 
 build_declare_static_win32 = """
 	dupable static getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
-		return lilac::meta::Function<std::remove_pointer<fun{id}>::type, lilac::meta::x86::Optcall>{{ address{id} }}(this{trail}{params});
+		return lilac::meta::Function<std::remove_pointer<fun{id}>::type, lilac::meta::x86::Optcall>{{ address{id} }}({params});
 	}}
 """
 
