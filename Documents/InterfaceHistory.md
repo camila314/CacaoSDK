@@ -1,7 +1,7 @@
 # History of Interface Classes
 
 ### 1a07998694824abc492eb6b9d98591d0c0dc26e5
-This version had the problem that you could only hook a single class inside a mod container  
+This version had the problem that you could only hook a single class inside a mod container, and it only supported virtual functions  
 Also the first version of the interface / cackit classes
 ```cpp
 class: public $EditorUI {
@@ -52,7 +52,7 @@ APPLY_HOOKS();
 ```
 
 ### c9f090d539b6b74742f2bab793c4cc88991f981a
-This version removed the CRTP system, I honestly don't remember why
+This version removed the CRTP system, not needing to get the address of the virtual with the derived
 ```cpp
 class: public $EditorUI {
 public:
@@ -66,8 +66,7 @@ APPLY_HOOKS();
 ```
 
 ### 37c7ec8df248a02254de6d84daecca444a484384
-This version removed the need for the public storage access, I don't remember why too  
-It's been a while
+This version removed the need for the public storage access, for the same reason as above
 ```cpp
 class: public $EditorUI {
 	void undoLastAction() override {
@@ -80,7 +79,7 @@ APPLY_HOOKS();
 ```
 
 ### de5eee71b18aa50c225a76667861610049c00b21
-This version brang back both CRTP system (but this time wrapped inside a macro) and the public access. Those were necessary after all I guess
+This version brang back both CRTP system (but this time wrapped inside a macro) and the public access. Now it also supported all types of functions, and not just virtual functions
 ```cpp
 class REDIRECT($EditorUI) {
 public:
