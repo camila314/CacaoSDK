@@ -47,10 +47,11 @@ add_custom_command(
     COMMENT "Generating Interface"
 )
 
+# revert 
 add_custom_command(
     COMMAND ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Source.py ${CACAO_TARGET_PLATFORM}
     DEPENDS ${Cacao_SOURCE_DIR}/gen/gen.pickle
-    OUTPUT ${Cacao_SOURCE_DIR}/Source_.cpp
+    OUTPUT ${Cacao_SOURCE_DIR}/Source.cpp ${Cacao_SOURCE_DIR}/Source_.cpp
     COMMENT "Generating Source"
 )
 
