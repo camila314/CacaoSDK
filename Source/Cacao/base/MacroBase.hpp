@@ -32,8 +32,8 @@
     #define CacaoDebug(format, ...)
 #endif
 
-   #define NUMBER_OF_ARGS(...) NUMBER_OF_ARGS_(__VA_ARGS__, NUMBER_SEQUENCE(),)
-#define NUMBER_OF_ARGS_(...) NUMBER_OF_ARGS_N(__VA_ARGS__)
+#define NUMBER_OF_ARGS(...) EXPAND(NUMBER_OF_ARGS_(__VA_ARGS__, NUMBER_SEQUENCE(),))
+#define NUMBER_OF_ARGS_(...) EXPAND(NUMBER_OF_ARGS_N(__VA_ARGS__))
 #define NUMBER_OF_ARGS_N( 					\
 _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, 	\
 _11,_12,_13,_14,_15,_16,_17,_18,_19,_20, 	\
