@@ -21,6 +21,12 @@ jobs:
       with:
         submodules: recursive
 
+    - name: Create file
+      run: |
+        touch Source/Cacao/Header.hpp
+        touch Source/Cacao/Interface.hpp
+        touch Source/Cacao/Source.cpp
+
     - name: Configure CMake
       working-directory: ./Examples
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
