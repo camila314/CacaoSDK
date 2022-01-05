@@ -3,9 +3,9 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
-FILE(WRITE ${Cacao_SOURCE_DIR}/Header.hpp "") 
-FILE(WRITE ${Cacao_SOURCE_DIR}/Interface.hpp "") 
-FILE(WRITE ${Cacao_SOURCE_DIR}/Source.cpp "") 
+# FILE(WRITE ${Cacao_SOURCE_DIR}/Header.hpp "") 
+# FILE(WRITE ${Cacao_SOURCE_DIR}/Interface.hpp "") 
+# FILE(WRITE ${Cacao_SOURCE_DIR}/Source.cpp "") 
 
 set_property(SOURCE ${Cacao_SOURCE_DIR}/Source.cpp PROPERTY GENERATED 1)
 
