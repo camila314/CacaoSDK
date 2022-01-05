@@ -21,6 +21,13 @@
 #define STACKFIX(a) \
     constexpr int _sf = a; \
     __asm add esp, _sf
+
+#if defined(CACAO_DEBUG)
+	#define CacaoDebug(format, ...) CacaoLog(format, ##__VA_ARGS__)
+#else
+    #define CacaoDebug(format, ...)
+#endif
+
 /**
  * Get type of a function
  */
@@ -164,6 +171,9 @@ CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Class::Function(CONCAT(
 
 #define getFunctionOf(Class, Function, Const, Count, ...)             \
 CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Function(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
+
+#define getWrapperOf(Class, Function, Const, Count, ...)             \
+CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Function##Wrapper(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
 
 // #define setHeaderTypesOf(Id, Class, Function, Convention, Count)                                               \
 // using CONCAT(r, Id) = CONCAT(getReturnOf, Count)(Class, Function, CONCAT(getTypesOf, Count)());                  \

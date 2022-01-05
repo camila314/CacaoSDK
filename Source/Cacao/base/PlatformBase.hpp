@@ -40,10 +40,14 @@
 
 	#define CacaoLog(format, ...) printf("Cacao %s:%d:\n" format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
-#elif defined(CC_TARGET_OS_MACOS)
+#elif defined(CC_TARGET_OS_MAC)
 
 	#include <stdio.h>
 
 	#define CacaoLog(format, ...) printf("Cacao %s:%d:\n" format"\n", __FILE__, __LINE__, ##__VA_ARGS__)
+
+#elif defined(CC_TARGET_OS_IPHONE)
+	
+	#define CacaoLog(format, ...)
 
 #endif

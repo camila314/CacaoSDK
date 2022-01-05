@@ -57,6 +57,25 @@ build_declare_special_win32 = """
 	}}
 """
 
+build_wrapper_member = """
+	getWrapperOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return reinterpret_cast<D*>(this)->D::{name}({params});
+	}}
+"""
+
+build_wrapper_static = """
+	static getWrapperOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return D::{name}({params});
+	}}
+"""
+
+build_wrapper_special = """
+	void {name}Wrapper({exprs}) {{
+		reinterpret_cast<D*>(this)->D::{name}({params});
+	}}
+"""
+
+
 
 build_body2_start = """
 public:
@@ -66,25 +85,25 @@ public:
 
 build_body2_special = """
 		if constexpr(&${cl}::{name} != &D::{name}) {{
-			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual(&D::{name}));
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual(&D::{name}Wrapper));
 		}}
 """
 
 build_body2_body = """
 		if constexpr((mem{id})(&${cl}::{name}) != (der{id})(&D::{name})) {{
-			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual((der{id})(&D::{name})));
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual((der{id})(&D::{name}Wrapper)));
 		}}
 """
 
 build_body2_body_static = """
 		if constexpr((mem{id})(&${cl}::{name}) != (der{id})(&D::{name})) {{
-			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual((der{id})(&D::{name})));
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual((der{id})(&D::{name}Wrapper)));
 		}}
 """
 
 build_body2_body_virtual = """
 		if ((mem{id})(&${cl}::{name}) != (der{id})(&D::{name})) {{
-			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfVirtual((der{id})(&D::{name})));
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfVirtual((der{id})(&D::{name}Wrapper)));
 		}}
 """
 
@@ -192,6 +211,43 @@ for cl in classes:
 				continue
 		
 		out += bodydeclare.format(
+			name = info.declare.name,
+			cl = stripNamespace(cl.name),
+			trail = ', ' if len(info.parameters) > 0 else '',
+			types = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+			params = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
+			exprs = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
+			count = len(info.parameters),
+			const = 'const' if info.const else '',
+			id = i,
+		)
+
+	for i, info in enumerate(cl.info):
+		if not isinstance(info, GenFunction):
+			continue
+		if info.getOffset(platform) == "None":
+			continue
+		
+		# if platform == "Win32":
+		# 	bodydeclare = build_declare_member_win32
+		# 	if info.static:
+		# 		bodydeclare = build_declare_static_win32
+		# 	if info.virtual:
+		# 		bodydeclare = build_declare_virtual_win32
+		# 	if info.declare.name in ["constructor", "destructor"]:
+		# 		bodydeclare = build_declare_special_win32
+		# 	elif not isPublic(f"{cl.name}::{info.declare.name}"):
+		# 		continue
+		# else:
+		bodywrapper = build_wrapper_member
+		if info.static:
+			bodywrapper = build_wrapper_static
+		if info.declare.name in ["constructor", "destructor"]:
+			bodywrapper = build_wrapper_special
+		elif not isPublic(f"{cl.name}::{info.declare.name}"):
+			continue
+		
+		out += bodywrapper.format(
 			name = info.declare.name,
 			cl = stripNamespace(cl.name),
 			trail = ', ' if len(info.parameters) > 0 else '',

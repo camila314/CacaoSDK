@@ -71,12 +71,10 @@ struct replace_member<R(C::*)(Ps...), D> {
  * Main class implementation, it has the structure
  * 
  * class hook0_;
- * namespace {
- *     struct hook0Unique {};
- * }
  * template<typename T>
  * struct hook0 {};
  * namespace {
+ *     struct hook0Unique {};
  *     bool hook0Apply = Cacao::interfaces::$MenuLayer<hook0<hook0Unique>>::_apply();
  * }
  * template<>
@@ -89,8 +87,8 @@ struct replace_member<R(C::*)(Ps...), D> {
  */
 
 
-#define PREDECLARE(derived) derived##_; namespace { struct derived##Unique {}; } template<typename T> struct derived { };
-#define APPLY(base, derived) namespace { bool derived##Apply = base<derived<derived##Unique> >::_apply();  }
+#define PREDECLARE(derived) derived##_; template<typename T> struct derived {};
+#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<derived<derived##Unique> >::_apply();  }
 #define DECLARE(base, derived) template<> struct hidden derived<derived##Unique>: public base<derived<derived##Unique> >
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
