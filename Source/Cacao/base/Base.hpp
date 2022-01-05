@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <stdint.h>
 #include <gdstdlib.hpp>
-#include <MacroBase.hpp>
+#include <PlatformBase.hpp>
 
 CACAODLL uintptr_t getBase();
 inline uintptr_t const base = getBase();
