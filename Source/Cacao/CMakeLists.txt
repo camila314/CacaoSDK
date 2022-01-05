@@ -3,7 +3,6 @@ project(Cacao VERSION 2.0.0 LANGUAGES CXX)
 
 add_subdirectory(hook)
 
-message(${Cacao_SOURCE_DIR})
 FILE(WRITE ${Cacao_SOURCE_DIR}/Header.hpp "") 
 FILE(WRITE ${Cacao_SOURCE_DIR}/Interface.hpp "") 
 FILE(WRITE ${Cacao_SOURCE_DIR}/Source.cpp "") 

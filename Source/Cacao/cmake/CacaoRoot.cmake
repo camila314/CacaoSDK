@@ -45,37 +45,36 @@ target_compile_definitions(${PROJECT_NAME}
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOSo")
 set(CACAO_SOURCES
-	${Cacao_SOURCE_DIR}/Source.cpp 
+	${PROJECT_SOURCE_DIR}/Cacao/Source.cpp 
 )
 message(WARNING "fix asap")
 else()
-message(${Cacao_SOURCE_DIR})
 set(CACAO_SOURCES
-	${Cacao_SOURCE_DIR}/Source.cpp 
-	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
+	${PROJECT_SOURCE_DIR}/Cacao/Source.cpp 
+	${PROJECT_SOURCE_DIR}/Cacao/helpers/Cacao.cpp
 )
 endif()
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS")
 	set(CACAO_FIX_SOURCES
-		${Cacao_SOURCE_DIR}/helpers/HandlerFixes.cpp
+		${PROJECT_SOURCE_DIR}/Cacao/helpers/HandlerFixes.cpp
 	)
 else()
 	set(CACAO_FIX_SOURCES )
 endif()
 
 include_directories(
-	${Cacao_SOURCE_DIR}/
-	${Cacao_SOURCE_DIR}/helpers
-	${Cacao_SOURCE_DIR}/base
-	${Cacao_SOURCE_DIR}/old_stl
-	${Cacao_SOURCE_DIR}/hook
-	${Cacao_SOURCE_DIR}/hook/lilac-core/include
-	${Cacao_SOURCE_DIR}/cocos/
-	${Cacao_SOURCE_DIR}/cocos/cocos2dx
-	${Cacao_SOURCE_DIR}/cocos/cocos2dx/include
-	${Cacao_SOURCE_DIR}/cocos/cocos2dx/kazmath/include
-	${Cacao_SOURCE_DIR}/cocos/extensions
+	${PROJECT_SOURCE_DIR}/Cacao/
+	${PROJECT_SOURCE_DIR}/Cacao/helpers
+	${PROJECT_SOURCE_DIR}/Cacao/base
+	${PROJECT_SOURCE_DIR}/Cacao/old_stl
+	${PROJECT_SOURCE_DIR}/Cacao/hook
+	${PROJECT_SOURCE_DIR}/Cacao/hook/lilac-core/include
+	${PROJECT_SOURCE_DIR}/Cacao/cocos/
+	${PROJECT_SOURCE_DIR}/Cacao/cocos/cocos2dx
+	${PROJECT_SOURCE_DIR}/Cacao/cocos/cocos2dx/include
+	${PROJECT_SOURCE_DIR}/Cacao/cocos/cocos2dx/kazmath/include
+	${PROJECT_SOURCE_DIR}/Cacao/cocos/extensions
 	${INCLUDE_DIRECTORIES}
 )
 
