@@ -7,7 +7,7 @@ add_subdirectory(hook)
 # FILE(WRITE ${Cacao_SOURCE_DIR}/Interface.hpp "") 
 # FILE(WRITE ${Cacao_SOURCE_DIR}/Source.cpp "") 
 
-set_source_files_properties(${Cacao_SOURCE_DIR}/Source.cpp PROPERTIES GENERATED TRUE)
+set_property(SOURCE ${Cacao_SOURCE_DIR}/Source.cpp PROPERTY GENERATED 1)
 
 if (DEFINED CACAO_COMPILE_STATIC)
     add_library(Cacao STATIC 
