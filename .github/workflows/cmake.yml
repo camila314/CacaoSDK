@@ -59,13 +59,13 @@ jobs:
     - name: Build
       working-directory: ./Examples
       # Build your program with the given configuration
-      run: cmake --build build --config ${{ matrix.config.build_type }} --target Gen
+      run: cmake --build build --config ${{ matrix.config.build_type }}
 
-    # - name: Upload ${{ matrix.config.name }} Binaries
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: ${{ matrix.config.name }} Binaries
-    #     path: ${{ matrix.config.artifacts }}
+    - name: Upload ${{ matrix.config.name }} Binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.config.name }} Binaries
+        path: ${{ matrix.config.artifacts }}
 
     - name: Upload ${{ matrix.config.name }} Sources
       uses: actions/upload-artifact@v2
