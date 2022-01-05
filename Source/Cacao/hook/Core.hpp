@@ -102,7 +102,7 @@ namespace Cacao::core {
 		friend class ModInterface;
 	};
 
-	class VISIBLE ModInterface {
+	class ModInterface {
 	public:
 		VISIBLE static std::map<std::string, ModContainer*>& allContainers();
 
