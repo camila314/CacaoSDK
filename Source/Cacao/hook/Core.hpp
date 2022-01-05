@@ -122,7 +122,7 @@ namespace Cacao::core {
 		static const int destruct;
 	};
 }
-uintptr_t VISIBLE getBase();
+uintptr_t getBase();
 
 using ModContainer = Cacao::core::ModContainer;
 using ModInterface = Cacao::core::ModInterface;
