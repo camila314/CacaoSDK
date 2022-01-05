@@ -22,10 +22,11 @@ jobs:
         submodules: recursive
 
     - name: Create file
+      working-directory: ./Source/Cacao
       run: |
-        touch Source/Cacao/Header.hpp
-        touch Source/Cacao/Interface.hpp
-        touch Source/Cacao/Source.cpp
+        touch ./Header.hpp
+        touch ./Interface.hpp
+        touch ./Source.cpp
 
     - name: Configure CMake
       working-directory: ./Examples
