@@ -49,6 +49,7 @@ set(CACAO_SOURCES
 )
 message(WARNING "fix asap")
 else()
+message(${Cacao_SOURCE_DIR})
 set(CACAO_SOURCES
 	${Cacao_SOURCE_DIR}/Source.cpp 
 	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
@@ -94,6 +95,6 @@ target_link_libraries(${PROJECT_NAME}
 # get the naame of first prereq
 # then replace non identifier chars with empty
 # todo: replace space too
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILE_IDENTIFIER__='$(subst .,,$(subst /,,$(subst \\,,$<)))' ")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILE_IDENTIFIER__='$(subst .,,$(subst /,,$(subst \\,,$<)))' ")
 
 
