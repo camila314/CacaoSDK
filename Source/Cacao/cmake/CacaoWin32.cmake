@@ -11,8 +11,8 @@ include_directories(
 
 macro(link_prebuilts project)
 	target_link_libraries(${project} 
-		${Cacao_SOURCE_DIR}/cocos/cocos2dx/libcocos2d
-		${Cacao_SOURCE_DIR}/cocos/extensions/libExtensions
+		${Cacao_SOURCE_DIR}/cocos/cocos2dx/libcocos2d.lib
+		${Cacao_SOURCE_DIR}/cocos/extensions/libExtensions.lib
 	)
 endmacro()
 
