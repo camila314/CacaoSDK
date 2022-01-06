@@ -5,3 +5,7 @@
 [submodule "Source/Cacao/cocos"]
 	path = Source/Cacao/cocos
 	url = https://github.com/altalk23/cocos-headers
+	
+[submodule "Source/Cacao/hook/lilac-meta"]
+	path = Source/Cacao/hook/lilac-meta
+	url = https://github.com/altalk23/lilac-meta

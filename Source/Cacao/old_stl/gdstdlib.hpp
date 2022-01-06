@@ -1,3 +1,6 @@
+// 
+// Copyright camila314 & alk1m123 2022. 
+//
 #pragma once
 
 #include <string>

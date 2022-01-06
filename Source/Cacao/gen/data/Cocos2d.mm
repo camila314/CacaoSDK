@@ -688,7 +688,7 @@ class cocos2d::CCString {
 	virtual auto isEqual(cocos2d::CCObject const*) = 0x44c8f0;
 	virtual auto acceptVisitor(cocos2d::CCDataVisitor&) = 0x44ccb0;
 	virtual cocos2d::CCObject* copyWithZone(cocos2d::CCZone*) = 0x44c870;
-	CCString(gd::string const&) = 0x44c310;
+	// CCString(gd::string const&) = 0x44c310;
 	auto boolValue() const = 0x44c810;
 	auto doubleValue() const = 0x44c7f0;
 	auto floatValue() const = 0x44c7d0;

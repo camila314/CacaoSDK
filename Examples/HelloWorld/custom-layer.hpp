@@ -12,9 +12,6 @@ protected:
     void backButtonCallback(CCObject*);
 public:
     static CustomLayer* create();
-
-    // button callback function. if we were robtop this would be in MenuLayer, however we are not
-    void switchToCustomLayerButton(CCObject*);
 };
 
 // continue reading on `custom-layer.cpp`

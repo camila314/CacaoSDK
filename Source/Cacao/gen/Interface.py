@@ -4,68 +4,106 @@ classes = pickle.load(open(picklepath, "rb"))
 
 build_start = """
 template<class D>
-class ${cl} : public {cl}, public InterfaceBase {{
-public:
+struct ${cl} : {cl}, InterfaceBase {{
 	${cl}(const ${cl}& c) : {cl}(c) {{}}
 	${cl}() = delete;
 """
 
-if platform == "Win32":
-	build_stack = "        STACKFIX({stackfix});\n"
-else:
-	build_stack = ""
+build_member_types = "	setInterfaceTypesOf({id}, {cl}, {name}, {const}, {count}{trail}{types});\n"
 
-build_body1 = """
-	__declspec(dllexport) {type} {name}({params}) {const}{{
-{function}
+build_static_types = "	setInterfaceStaticTypesOf({id}, {cl}, {name}, {const}, {count}{trail}{types});\n"
+
+build_set_address = "	static inline auto address{id} = {address};\n"
+
+build_declare_member = """
+	dupable getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return reinterpret_cast<fun{id}>(address{id})(this{trail}{params});
 	}}
 """
 
-build_body1_virtual = """
-	__declspec(dllexport) {type} {name}({params}) {const}{{
-{function}
+build_declare_static = """
+	dupable static getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return reinterpret_cast<fun{id}>(address{id})({params});
 	}}
 """
 
-build_body1_static = """
-	__declspec(dllexport) static {type} {name}({params}) {const}{{
-{function}
+build_declare_special = """
+	dupable void {name}({exprs}) {{
+		reinterpret_cast<void(*)(decltype(this){trail}{types})>(address{id})(this{trail}{params});
 	}}
 """
+
+build_declare_virtual_win32 = """
+	dupable getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Thiscall>\{address{id}\}(this{trail}{params});
+	}}
+"""
+
+build_declare_member_win32 = """
+	dupable getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Membercall>\{address{id}\}(this{trail}{params});
+	}}
+"""
+
+build_declare_static_win32 = """
+	dupable static getFunctionOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return lilac::meta::Function<std::remove_pointer_v<fun{id}>, lilac::meta::x86::Optcall>\{address{id}\}(this{trail}{params});
+	}}
+"""
+
+build_declare_special_win32 = """
+	dupable void {name}({exprs}) {{
+		lilac::meta::Function<void(decltype(this){trail}{types}), lilac::meta::x86::Membercall>\{address{id}\}(this{trail}{params});
+	}}
+"""
+
+build_wrapper_member = """
+	getWrapperOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return reinterpret_cast<D*>(this)->D::{name}({params});
+	}}
+"""
+
+build_wrapper_static = """
+	static getWrapperOf({cl}, {name}, {const}, {count}{trail}{types}) {{
+		return D::{name}({params});
+	}}
+"""
+
+build_wrapper_special = """
+	void {name}Wrapper({exprs}) {{
+		reinterpret_cast<D*>(this)->D::{name}({params});
+	}}
+"""
+
+
 
 build_body2_start = """
+public:
 	static bool _apply() {{
 """
 	
 
+build_body2_special = """
+		if constexpr(&${cl}::{name} != &D::{name}) {{
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual(&D::{name}Wrapper));
+		}}
+"""
+
 build_body2_body = """
-		using r{id} = {type};
-		using a{id} = r{id}({cl}::*)({params}) {const};
-		using c{id} = r{id}(${cl}::*)({params}) {const};
-		using d{id} = r{id}(D::*)({params}) {const};
-		{setAddress}
-		if constexpr((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
-			m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
+		if constexpr((mem{id})(&${cl}::{name}) != (der{id})(&D::{name})) {{
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual((der{id})(&D::{name}Wrapper)));
+		}}
 """
 
 build_body2_body_static = """
-		using r{id} = {type};
-		using a{id} = r{id}(*)({params});
-		using c{id} = r{id}(*)({params});
-		using d{id} = r{id}(*)({params});
-		{setAddress}
-		if constexpr((c{id})(&${cl}::{name}) != (d{id})(&D::{name}))
-			m->registerHookEnable({offset}, FunctionScrapper::addressOfNonVirtual((d{id})(&D::{name})));
+		if constexpr((mem{id})(&${cl}::{name}) != (der{id})(&D::{name})) {{
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfNonVirtual((der{id})(&D::{name}Wrapper)));
+		}}
 """
 
 build_body2_body_virtual = """
-		using r{id} = {type};
-		using a{id} = r{id}({cl}::*)({params}) {const};
-		using c{id} = r{id}(${cl}::*)({params}) {const};
-		using d{id} = r{id}(D::*)({params}) {const};
-		if ((c{id})(&${cl}::{name}) != (d{id})(&D::{name})) {{
-			{setAddress}
-			m->registerHookEnable({offset}, FunctionScrapper::addressOfVirtual((d{id})(&D::{name})));
+		if ((mem{id})(&${cl}::{name}) != (der{id})(&D::{name})) {{
+			modContainer.registerHookEnable(address{id}, FunctionScrapper::addressOfVirtual((der{id})(&D::{name}Wrapper)));
 		}}
 """
 
@@ -74,39 +112,21 @@ build_body2_end = """
 	}\n"""
 build_end = "};\n"
 
-with open(os.path.join(os.path.dirname(__file__), "scrap", "libcocos2d.demangled.txt"), "r") as f2:
-	accessSpecifier = {}
-	for line in f2.readlines():
-		match = re.search(r"(.+?):.+(cocos2d::.+?)\(", line)
-		if match is not None:
-			accessSpecifier[match.group(2)] = match.group(1)
-	# im sorry
-
-	def getAccessSpecifierOf(func):
-		if func not in accessSpecifier:
-			return "private"
-		return accessSpecifier[func]
 
 
 
 out = """// 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 // Autogenerated using a python script
 //
 #pragma once
 #include <InterfaceBase.hpp>
 #define dl decltype
 #define dv std::declval
-namespace Cacao::kinterface {
+namespace Cacao::interfaces {
 using namespace cocos2d;
 using namespace cocos2d::extension;
 """
-
-def getNamespace(name):
-	return '::'.join(name.split('::')[:-1])
-
-def stripNamespace(name):
-	return name.split('::')[-1]
 
 def isPublic(func):
 	return getNamespace(getNamespace(func)) == "" or getAccessSpecifierOf(func) == "public"
@@ -120,54 +140,123 @@ for cl in classes:
 	for i, info in enumerate(cl.info):
 		if not isinstance(info, GenFunction):
 			continue
-
-		if info.getAddress(platform) == "None":
+		if info.getOffset(platform) == "None":
 			continue
-		
+		if not isPublic(f"{cl.name}::{info.declare.name}"):
+			continue
+
 		if info.declare.name in cl.name:
 			info.declare.name = "constructor"
 			info.declare.type = "void"
-			if platform == "Android":
-				continue
-		elif '~' in info.declare.name:
+			continue
+
+		if '~' in info.declare.name:
 			info.declare.name = "destructor"
 			info.declare.type = "void"
-			if platform == "Android":
-				continue
+			continue
+
+
+		bodytype = build_member_types
+		if info.static:
+			bodytype = build_static_types
+		
+		out += bodytype.format(
+			name = info.declare.name,
+			cl = stripNamespace(cl.name),
+			trail = ', ' if len(info.parameters) > 0 else '',
+			types = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+			count = len(info.parameters),
+			const = 'const' if info.const else '',
+			id = i,
+		)
+
+	for i, info in enumerate(cl.info):
+		if not isinstance(info, GenFunction):
+			continue
+		if info.getOffset(platform) == "None":
+			continue
+		if info.declare.name in ["constructor", "destructor"]:
+			pass
 		elif not isPublic(f"{cl.name}::{info.declare.name}"):
 			continue
 
-		body1 = build_body1
-		if info.static:
-			body1 = build_body1_static
-		elif info.virtual:
-			body1 = build_body1_virtual
-
-		if len(info.parameters) > 0 and info.static:
-			stack = build_stack.format(
-				stackfix = "+".join([f"sizeof({arg.getType(i)})" for i, arg in enumerate(info.parameters)])
-			)
-		else:
-			stack = ""
-
-		if info.declare.type != "auto":
-			if info.declare.type == "void":
-				fnimpl = getFunctionImplementation(cl, info, i).replace("return ", "") + "\n" + stack
-			else:
-				fnimpl = getFunctionImplementation(cl, info, i).replace("return ", "auto _rv = ") + "\n" + stack + "\n" + "        return _rv;"
-		else:
-			fnimpl = getFunctionImplementation(cl, info, i)
-
-		out += body1.format(
-			name = info.declare.name,
-			type = inheritReturn(info),
-			cl = stripNamespace(cl.name),
-			offset = info.getOffset(platform, i), 
-			params = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
-			params2 = (', ' if not info.static and len(info.parameters) > 0 else "") + ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+		out += build_set_address.format(
+			address = info.getAddress(platform, i), 
 			id = i,
-			function = fnimpl,
-			const = "const " if info.const else "",
+		)
+
+	for i, info in enumerate(cl.info):
+		if not isinstance(info, GenFunction):
+			continue
+		if info.getOffset(platform) == "None":
+			continue
+		
+		if platform == "Win32":
+			bodydeclare = build_declare_member_win32
+			if info.static:
+				bodydeclare = build_declare_static_win32
+			if info.virtual:
+				bodydeclare = build_declare_virtual_win32
+			if info.declare.name in ["constructor", "destructor"]:
+				bodydeclare = build_declare_special_win32
+			elif not isPublic(f"{cl.name}::{info.declare.name}"):
+				continue
+		else:
+			bodydeclare = build_declare_member
+			if info.static:
+				bodydeclare = build_declare_static
+			if info.declare.name in ["constructor", "destructor"]:
+				bodydeclare = build_declare_special
+			elif not isPublic(f"{cl.name}::{info.declare.name}"):
+				continue
+		
+		out += bodydeclare.format(
+			name = info.declare.name,
+			cl = stripNamespace(cl.name),
+			trail = ', ' if len(info.parameters) > 0 else '',
+			types = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+			params = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
+			exprs = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
+			count = len(info.parameters),
+			const = 'const' if info.const else '',
+			id = i,
+		)
+
+	for i, info in enumerate(cl.info):
+		if not isinstance(info, GenFunction):
+			continue
+		if info.getOffset(platform) == "None":
+			continue
+		
+		# if platform == "Win32":
+		# 	bodydeclare = build_declare_member_win32
+		# 	if info.static:
+		# 		bodydeclare = build_declare_static_win32
+		# 	if info.virtual:
+		# 		bodydeclare = build_declare_virtual_win32
+		# 	if info.declare.name in ["constructor", "destructor"]:
+		# 		bodydeclare = build_declare_special_win32
+		# 	elif not isPublic(f"{cl.name}::{info.declare.name}"):
+		# 		continue
+		# else:
+		bodywrapper = build_wrapper_member
+		if info.static:
+			bodywrapper = build_wrapper_static
+		if info.declare.name in ["constructor", "destructor"]:
+			bodywrapper = build_wrapper_special
+		elif not isPublic(f"{cl.name}::{info.declare.name}"):
+			continue
+		
+		out += bodywrapper.format(
+			name = info.declare.name,
+			cl = stripNamespace(cl.name),
+			trail = ', ' if len(info.parameters) > 0 else '',
+			types = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
+			params = ', '.join(arg.getName(i) for i, arg in enumerate(info.parameters)),
+			exprs = ', '.join(arg.getExpr(i) for i, arg in enumerate(info.parameters)),
+			count = len(info.parameters),
+			const = 'const' if info.const else '',
+			id = i,
 		)
 
 	out += build_body2_start.format(cl=cl.name)
@@ -176,33 +265,37 @@ for cl in classes:
 		if not isinstance(info, GenFunction):
 			continue
 
-		if info.getAddress(platform) == "None":
+		if info.getOffset(platform) == "None":
 			continue
 
-
-		if "constructor" == info.declare.name or "destructor" == info.declare.name:
-			info.virtual = False
-			info.static = False
-			if platform == "Android":
-				continue
-		elif not isPublic(f"{cl.name}::{info.declare.name}"):
-			continue
-			
 		body2 = build_body2_body
 		if info.static:
 			body2 = build_body2_body_static
 		elif info.virtual:
 			body2 = build_body2_body_virtual
 
+		if "constructor" == info.declare.name:
+			continue #not dealing with this
+
+		if "constructor" == info.declare.name or "destructor" == info.declare.name:
+			info.virtual = False
+			info.static = False
+			body2 = build_body2_special
+			if platform == "Android":
+				continue
+		elif not isPublic(f"{cl.name}::{info.declare.name}"):
+			continue
+			
+		
+
 		out += body2.format(
 			name = info.declare.name,
 			type = inheritReturn(info),
 			cl = stripNamespace(cl.name),
-			offset = info.getOffset(platform, i), 
+			offset = info.getAddress(platform, i), 
 			params = ', '.join(arg.getType(i) for i, arg in enumerate(info.parameters)),
-			const = "const " if info.const else "",
+			count = len(info.parameters),
 			id = i,
-			setAddress = info.setAddress(platform, i),
 		)
 
 	out += build_body2_end
@@ -212,7 +305,7 @@ for cl in classes:
 out += """
 #undef dl
 #undef dv
-} // namespace Cacao::kinterface
+} // namespace Cacao::interfaces
 """
 
 writeIfDifferent("Interface.hpp", out)

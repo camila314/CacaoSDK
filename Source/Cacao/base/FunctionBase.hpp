@@ -1,5 +1,5 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #pragma once 
 
@@ -10,7 +10,9 @@
 #include <cstdlib>
 #include <stddef.h>
 
+#include <PlatformBase.hpp>
 #include <MacroBase.hpp>
+#include <Base.hpp>
 
 #if INT64_MAX == INTPTR_MAX
 	#define NEST1(macro, begin)     \
@@ -124,7 +126,9 @@ public:
 	template<typename T>
 	static ptrdiff_t thunkOf(T ptr) {
 		if (sizeof(T) == sizeof(ptrdiff_t)) return 0;
-		return *(reinterpret_cast<ptrdiff_t*>(&ptr)+1);
+		auto thunk = *(reinterpret_cast<ptrdiff_t*>(&ptr)+1);
+		if (thunk & 1) thunk >>= 1;
+		return thunk;
 	}
 
 public:
@@ -135,16 +139,25 @@ public:
 	template <typename R, typename T, typename ...Ps>
 	static intptr_t addressOfVirtual(R(T::*func)(Ps...)) {
 		static_assert(std::is_copy_constructible<T>::value, "must be copy constructable");
-		auto ptr = reinterpret_cast<T*>(operator new(sizeof(T)));
-		memset((void*)ptr, 0, sizeof(T)); 
-		// i guess i need this
-		// we can also memset it because we havent wrote the vtables yet
-		auto ins = new T(*ptr);
 
+		// Create a random memory block with the size of T
+		// Assign a pointer to that block and cast it to type T*
+		uint8_t dum[sizeof(T)] {};
+		auto ptr = reinterpret_cast<T*>(dum);
+		// Now you have a object of T that actually isn't an object of T and is just a random memory
+		// But C++ doesn't know that of course
+		// So now you can copy an object that wasn't there in the first place
+		// ((oh also get the offsets of the virtual tables))
+		auto ins = new T(*ptr);
+		// this is how the first human was made
+
+		// [[this + thunk] + offset] is the function we want
 		auto address = *(intptr_t*)(*(intptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
 
+		// And we delete the new instance because we are good girls
+		// and we don't leak memories
 		operator delete(ins);
-		operator delete(ptr);
+
 		return address;
 	}
 
@@ -157,6 +170,11 @@ public:
 	static uintptr_t addressOfVirtual(T* ins, R(T::*func)(Ps...)) {
 		auto address = *(uintptr_t*)(*(uintptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
 		return address;
+	}
+
+	template <typename R, typename T, typename ...Ps>
+	static uintptr_t addressOfNonVirtual(R(T::*func)(Ps...) const) {
+		return addressOfNonVirtual(func);
 	}
 
 	template <typename R, typename T, typename ...Ps>

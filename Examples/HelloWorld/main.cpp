@@ -1,8 +1,36 @@
-#define PROJECT_NAME "HelloWorld"
 #include <Cacao>
+
 #include "custom-layer.hpp"
 
-class $redirect(MenuLayer) {
+class $(MenuLayer, CustomLayerAdd) {
+	// this is the callback function for the button we added in MenuLayer
+	// inside this function, the `this` pointer will be what we set the 
+	// target to, so it'll be the instance of MenuLayer
+	// The only argument to this function `CCObject*` is the button which
+	// the callback came from. Here its a CCObject as pretty much every
+	// cocos class inherits CCObject, and can be casted into a pointer of it
+	void onCustomLayer(CCObject* object) {
+	    /*
+	      Here we create an instance of our layer, and since its its own
+	      thing we have to make a scene for it, which can easily be done
+	      by just using `CCScene::create()`
+	    */
+	    auto layer = CustomLayer::create();
+	    auto scene = CCScene::create();
+	    scene->addChild(layer);
+	    // Here we create a transition for the layer, which is that black fade
+	    // present in gd
+	    auto transition = CCTransitionFade::create(0.5f, scene);
+	    // use the director to push the transition, which is
+	    // technically a scene
+	    CCDirector::sharedDirector()->pushScene(transition);
+	}
+
+	void onMoreGames(CCObject* ob) {
+		// FLAlertLayer::create("Cacao", "Hello from custom mod!", "OK")->show();
+		onCustomLayer(nullptr);
+	} 
+
 	bool init() {
         /*
           In cocos2d-x, init functions return a boolean, which is false if
@@ -62,12 +90,10 @@ class $redirect(MenuLayer) {
             /*
               Here is the callback that is called when you press the button. It's
               wrapped in a macro, which casts it to the correct type used by cocos.
-              The callback is in CustomLayer because as previously mentioned, it has to
-              be a class method, and we're not inside a class. I could just create a class
-              specifically for this callback (say `Callback::switchToCustomLayer`), but i
-              find that kinda messy and we can just use this class anyways.
+              The callback is in our hook class because as previously mentioned, it has to
+              be a class method.
             */
-            menu_selector(CustomLayer::switchToCustomLayerButton)
+            menu_selector(CustomLayerAdd::onCustomLayer)
         );
 
         // continue reading on `custom-layer.hpp`, where our CustomLayer is defined
@@ -83,3 +109,4 @@ class $redirect(MenuLayer) {
         return true;
 	} 
 };
+

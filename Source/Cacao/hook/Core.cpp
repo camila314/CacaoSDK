@@ -1,39 +1,32 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #include "Core.hpp"
 
 namespace Cacao::core {
 
-	// Base container implementation
-	BaseContainer::~BaseContainer() {
-		CoreLog("Bye from base, %p", address)
+	BaseContainer::BaseContainer(uintptr_t address) {
+		m_address = address;
 	}
 
-	void BaseContainer::enable() {
-	}
+	BaseContainer::~BaseContainer() { }
 
-	void BaseContainer::disable() {
-	}
+	void BaseContainer::enable() { }
+
+	void BaseContainer::disable() { }
 
 	uintptr_t BaseContainer::getAddress() {
 		return m_address;
 	}
 
-	// Memory container implementation
-	MemoryContainer::MemoryContainer(uintptr_t addr, size_t bytec, char* bytes) {
-		CoreLog("MemoryContainer address %p, size %d\n", addr, bytec);
 
-		// set values
-		m_address = addr;
-		m_byteCount = bytec;
+	MemoryContainer::MemoryContainer(uintptr_t address, size_t byteCount, const char* bytes) : BaseContainer(address) {
+		m_byteCount = byteCount;
 
-		// read the original to the buffer
-		char* buf = new char[m_byteCount];
-		// readPM(address, byteCount, reinterpret_cast<char*>(&buf));
+		char* buffer = new char[byteCount];
+		lilac::Memory::write((void*)buffer, (void*)address, byteCount);
 
-		// set bytes
-		m_originalBytes = buf;
+		m_originalBytes = buffer;
 		m_moddedBytes = bytes;
 	}
 
@@ -44,19 +37,17 @@ namespace Cacao::core {
 		lilac::Memory::write((void*)m_address, (void*)m_originalBytes, m_byteCount);
 	}
 
-
 	MemoryContainer::~MemoryContainer() {
-		CoreLog("Bye from memory, %p", address)
-		free(m_originalBytes);
+		delete[] m_originalBytes;
 	}
 
-	HookContainer::HookContainer(uintptr_t address, func_t function) {
+
+	HookContainer::HookContainer(uintptr_t address, func_t function) : BaseContainer(address) {
 		m_address = address;
 		m_function = function;
 	}
 
 	HookContainer::~HookContainer() {
-		CoreLog("Bye from hook, %p", address)
 		lilac::Hooks::remove(m_handle);
 	}
 
@@ -68,71 +59,75 @@ namespace Cacao::core {
 	}
 
 	void ModContainer::enable() {
-		for(BaseContainer* i : m_mods) {
-			i->enable();
-		}
+		for (BaseContainer* i : m_mods) i->enable();
 	}
 	void ModContainer::disable() {
-		for(BaseContainer* i : m_mods) {
-			i->disable();
-		}
+		for (BaseContainer* i : m_mods) i->disable();
 	}
 
 	ModContainer::ModContainer(std::string name) {
 		m_name = name;
+		m_object = nullptr;
 	}
+
 	ModContainer::~ModContainer() {
 		disable();
+		for (BaseContainer* i : m_mods) delete i;
+		if (m_object) delete m_object;
 	}
 
-	static ModContainer s_instance = ModContainer("");
 
-	ModContainer* ModContainer::instance() {
-		return &s_instance;
-	}
-
-	std::vector<BaseContainer*> ModContainer::getMods() {
-		return m_mods;
-	}
-
-	std::string ModContainer::getName() {
-		return m_name;
-	}
-
-	void ModContainer::setName(std::string name) {
-		m_name = name;
-	}
-
-	void ModContainer::registerWrite(uintptr_t address, size_t byteCount, char* bytes) {
+	void ModContainer::registerWrite(uintptr_t address, size_t byteCount, const char* bytes) {
 		MemoryContainer* write = new MemoryContainer(address, byteCount, bytes);
 		m_mods.push_back(write);
 	}
 
-	void ModContainer::registerWriteEnable(uintptr_t address, size_t byteCount, char* bytes) {
+	void ModContainer::registerWriteEnable(uintptr_t address, size_t byteCount, const char* bytes) {
 		registerWrite(address, byteCount, bytes);
 		m_mods.back()->enable();
 	}
 
-	void ModContainer::registerHook(uintptr_t address, func_t function) {
-		HookContainer* hook = new HookContainer(address, function);
+	void ModContainer::registerHook(uintptr_t address, uintptr_t function) {
+		HookContainer* hook = new HookContainer(address, (func_t)function);
 		m_mods.push_back(hook);
 	}
 
-	void ModContainer::registerHook(uintptr_t address, uintptr_t function) {
-		registerHook(address, (func_t)function);
-	}
-
-	void ModContainer::registerHookEnable(uintptr_t address, func_t function) {
+	void ModContainer::registerHookEnable(uintptr_t address, uintptr_t function) {
 		registerHook(address, function);
 		m_mods.back()->enable();
 	}
 
-	void ModContainer::registerHookEnable(uintptr_t address, uintptr_t function) {
-		registerHook(address, (func_t)function);
-		m_mods.back()->enable();
+	
+	std::map<std::string, ModContainer*>& ModInterface::allContainers() {
+		static std::map<std::string, ModContainer*> s_containers = {}; 
+		return s_containers;
 	}
 
-}
+	ModContainer& ModInterface::container(const std::string& name) {
+		if (!exists(name)) {
+			allContainers()[name] = new ModContainer(name);
+		}
+		return *allContainers()[name];
+	}
+
+	bool ModInterface::exists(const std::string& name) {
+		return allContainers().find(name) != allContainers().end();
+	}
+
+	void* ModInterface::object(const std::string& name) {
+		return allContainers()[name]->m_object;
+	}
+
+
+	void ModInterface::destructContainers() {
+		for (auto& [k, container] : ModInterface::allContainers()) {
+			delete container;
+		}
+	}
+
+	const int ModInterface::destruct = std::atexit(ModInterface::destructContainers);
+
+}	// Cacao::core
 
 #if defined(CC_TARGET_OS_MAC)
 	#include <mach-o/dyld.h>
@@ -142,8 +137,6 @@ namespace Cacao::core {
 	#include <mach-o/dyld.h>
 #elif defined(CC_TARGET_OS_ANDROID)
 	#include <dlfcn.h>
-#else
-   #error Not supported. 
 #endif
 uintptr_t getBase() {
 	#if defined(CC_TARGET_OS_MAC)
@@ -155,6 +148,6 @@ uintptr_t getBase() {
 	#elif defined(CC_TARGET_OS_ANDROID)
 		return reinterpret_cast<uintptr_t>(dlopen("libcocos2dcpp.so", RTLD_LAZY));
 	#else
-		#error Not supported.
+		return 0;
 	#endif
 }

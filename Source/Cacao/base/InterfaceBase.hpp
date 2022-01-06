@@ -1,5 +1,5 @@
 // 
-// Copyright camila314 & alk1m123 2021. 
+// Copyright camila314 & alk1m123 2022. 
 //
 #pragma once
 
@@ -13,24 +13,52 @@
 
 #include <FunctionBase.hpp>
 
-#if defined(CAC_PROJ_NAME)
-	#define PROJECT_NAME CAC_PROJ_NAME
-#endif
+#include <type_traits>
 
-#if defined(PROJECT_NAME)
-	inline void $projectName() {
-		ModContainer::instance()->setName(PROJECT_NAME);
-	}
-	static int const _projectName = ($projectName(), 0);
-#endif
 
-inline ModContainer* const m = ModContainer::instance();
+#define modContainer (ModInterface::container(STR(PROJECT_NAME)))
 
 // Just in case if we ever need to add shared implementations
 class InterfaceBase {
 public:
 	void _apply() {}
 };
+
+template <typename T, typename F>
+inline T base_cast(F obj) {
+	return static_cast<T>(dynamic_cast<void*>(obj));
+}
+
+template <typename F, typename T>
+struct add_qualifier {
+    using type = F;
+};
+
+template <typename R, typename C, typename T, typename ...Ps>
+struct add_qualifier<R(C::*)(Ps...), const T> {
+    using type = R(C::*)(Ps...) const;
+};
+
+template <typename R, typename C, typename T, typename ...Ps>
+struct add_qualifier<R(C::*)(Ps...), T&> {
+    using type = R(C::*)(Ps...) &;
+};
+
+template <typename R, typename C, typename T, typename ...Ps>
+struct add_qualifier<R(C::*)(Ps...), T&&> {
+    using type = R(C::*)(Ps...) &&;
+};
+
+template <typename F, typename D>
+struct replace_member {
+	using type = F;
+};
+
+template <typename R, typename C, typename ...Ps, typename D>
+struct replace_member<R(C::*)(Ps...), D> {
+	using type = R(D::*)(Ps...);
+};
+
 
 /**
  * Basic way to make a main function without it being a main
@@ -42,10 +70,15 @@ public:
 /**
  * Main class implementation, it has the structure
  * 
- * class $hook0;
- * bool $hook0Apply = Cacao::kinterface::$MenuLayer<$hook0>::_apply();
- * class __attribute__(("hidden")) $hook0: public Cacao::kinterface::$MenuLayer<$hook0> {
- * public:
+ * class hook0_;
+ * template<typename T>
+ * struct hook0 {};
+ * namespace {
+ *     struct hook0Unique {};
+ *     bool hook0Apply = Cacao::interfaces::$MenuLayer<hook0<hook0Unique>>::_apply();
+ * }
+ * template<>
+ * struct hidden hook0<hook0Unique>: public Cacao::interfaces::$MenuLayer<hook0<hook0Unique>> {
  *     // code stuff idk
  * };
  * 
@@ -54,14 +87,14 @@ public:
  */
 
 
-#define PREDECLARE(derived) derived;
-#define APPLY(base, derived) bool derived##Apply = base<derived>::_apply();
-#define DECLARE(base, derived) struct hidden derived: public base<derived>
+#define PREDECLARE(derived) derived##_; template<typename T> struct derived {};
+#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<derived<derived##Unique> >::_apply();  }
+#define DECLARE(base, derived) template<> struct hidden derived<derived##Unique>: public base<derived<derived##Unique> >
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
-#define REDIRECT__(base, derived) REDIRECT___(Cacao::kinterface::$##base, derived)
-#define REDIRECT_(base, counter) REDIRECT__(base, CONCAT($hook, counter))
-#define REDIRECT(base) REDIRECT_(base, __COUNTER__)
+#define REDIRECT__(base, derived) REDIRECT___(Cacao::interfaces::$##base, derived)
+#define REDIRECT_(base) REDIRECT__(base, CONCAT(hook, __COUNTER__))
+#define REDIRECT(base) REDIRECT_(base)
 
 /**
  * Interfaces for the class implementation
@@ -74,3 +107,10 @@ public:
  */
 #define $redirect(base) REDIRECT(base)
 #define $implement(base, derived) REDIRECT__(base, derived)
+
+/**
+ * Or just use this lol
+ */
+#define CRTP1(base) $redirect(base)
+#define CRTP2(base, derived) $implement(base, derived)
+#define $(...) CONCAT(CRTP, NUMBER_OF_ARGS(__VA_ARGS__))(__VA_ARGS__)
