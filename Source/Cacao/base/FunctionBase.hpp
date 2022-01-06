@@ -149,6 +149,11 @@ public:
 	}
 
 	template <typename R, typename T, typename ...Ps>
+	static intptr_t addressOfVirtual(R(T::*func)(Ps...) const) {
+		return addressOfVirtual(func);
+	}
+
+	template <typename R, typename T, typename ...Ps>
 	static uintptr_t addressOfVirtual(T* ins, R(T::*func)(Ps...)) {
 		auto address = *(uintptr_t*)(*(uintptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
 		return address;
