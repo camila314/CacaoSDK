@@ -368,6 +368,9 @@ class EditorUI : cocos2d::CCLayer {
 	void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
 	cocos2d::CCArray* getSelectedObjects() = 0x23f30;
 	void init(LevelEditorLayer*) = 0x8ae0;
+	virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ed60;
+	virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2f3d0;
+	virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2fb00;
 	virtual void keyDown(cocos2d::enumKeyCodes) = 0x30790;
 	void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
 	void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
