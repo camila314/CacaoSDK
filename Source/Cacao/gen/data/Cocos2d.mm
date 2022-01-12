@@ -66,7 +66,7 @@ class cocos2d::CCClippingNode {
 }
 
 class cocos2d::CCCopying {
-	volatile cocos2d::CCObject* cocos2d::CCCopying::copyWithZone(cocos2d::CCZone*) {
+	inline cocos2d::CCObject* cocos2d::CCCopying::copyWithZone(cocos2d::CCZone*) {
 		// 2 people complimented my hair today i feel happy
 		//
 		// add 3 to that c:
@@ -195,10 +195,10 @@ class cocos2d::CCImage {
 }
 
 class cocos2d::CCKeyboardDelegate {
-	volatile void cocos2d::CCKeyboardDelegate::keyDown(cocos2d::enumKeyCodes) {};
-	volatile void cocos2d::CCKeyboardDelegate::keyUp(cocos2d::enumKeyCodes) {};
+	inline void cocos2d::CCKeyboardDelegate::keyDown(cocos2d::enumKeyCodes) {};
+	inline void cocos2d::CCKeyboardDelegate::keyUp(cocos2d::enumKeyCodes) {};
 
-	volatile cocos2d::CCKeyboardDelegate::CCKeyboardDelegate() {};
+	inline cocos2d::CCKeyboardDelegate::CCKeyboardDelegate() {};
 }
 
 class cocos2d::CCKeyboardDispatcher {
@@ -369,10 +369,10 @@ class cocos2d::CCMotionStreak {
 }
 
 class cocos2d::CCMouseDelegate {
-	volatile cocos2d::CCMouseDelegate::CCMouseDelegate() {};
-	volatile void cocos2d::CCMouseDelegate::rightKeyDown() {};
-	volatile void cocos2d::CCMouseDelegate::rightKeyUp() {};
-	volatile void cocos2d::CCMouseDelegate::scrollWheel(float, float) {};
+	inline cocos2d::CCMouseDelegate::CCMouseDelegate() {};
+	inline void cocos2d::CCMouseDelegate::rightKeyDown() {};
+	inline void cocos2d::CCMouseDelegate::rightKeyUp() {};
+	inline void cocos2d::CCMouseDelegate::scrollWheel(float, float) {};
 }
 
 class cocos2d::CCMouseHandler {

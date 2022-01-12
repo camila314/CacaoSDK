@@ -74,6 +74,7 @@ include_directories(
 	${Cacao_SOURCE_DIR}/cocos/cocos2dx/include
 	${Cacao_SOURCE_DIR}/cocos/cocos2dx/kazmath/include
 	${Cacao_SOURCE_DIR}/cocos/extensions
+	${Cacao_SOURCE_DIR}/fmod
 	${INCLUDE_DIRECTORIES}
 )
 

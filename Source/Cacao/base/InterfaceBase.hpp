@@ -94,3 +94,11 @@ public:
  */
 #define $redirect(base) REDIRECT(base)
 #define $implement(base, derived) REDIRECT__(base, derived)
+
+namespace Cacao {
+using namespace cocos2d;
+using namespace cocos2d::extension;
+struct interfaces { // i find this really funny
+    #include <Interface.hpp>
+}
+}
