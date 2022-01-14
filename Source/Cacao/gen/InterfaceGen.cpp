@@ -1,4 +1,4 @@
-#include "Shared.hpp"
+#include "SharedGen.hpp"
 #include <iostream>
 
 namespace format_strings {

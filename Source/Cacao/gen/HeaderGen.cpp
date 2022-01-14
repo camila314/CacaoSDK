@@ -1,7 +1,8 @@
-#include "Shared.hpp"
+#include "SharedGen.hpp"
 #include <iostream>
 #include <set>
-#include <deque>
+
+using std::set;
 
 namespace format_strings {
     char const* header_start = R"CAC(

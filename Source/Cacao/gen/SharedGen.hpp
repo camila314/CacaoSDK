@@ -4,6 +4,8 @@
 #include <fmt/ranges.h>
 #include <fstream>
 
+using std::istreambuf_iterator;
+
 #if _WIN32
     #include <direct.h>
 #else
