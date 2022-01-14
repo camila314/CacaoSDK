@@ -71,10 +71,5 @@ for cl in classes:
 			trail = ', ' if len(info.parameters) > 0 else '',
 		)
 
-out += """
-#undef dl
-#undef dv
-"""
-
 writeIfDifferent("Source.cpp", out)
  

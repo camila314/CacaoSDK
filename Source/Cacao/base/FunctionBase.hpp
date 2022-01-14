@@ -10,7 +10,9 @@
 #include <cstdlib>
 #include <stddef.h>
 
+#include <PlatformBase.hpp>
 #include <MacroBase.hpp>
+#include <Base.hpp>
 
 #if INT64_MAX == INTPTR_MAX
 	#define NEST1(macro, begin)     \
@@ -124,7 +126,9 @@ public:
 	template<typename T>
 	static ptrdiff_t thunkOf(T ptr) {
 		if (sizeof(T) == sizeof(ptrdiff_t)) return 0;
-		return *(reinterpret_cast<ptrdiff_t*>(&ptr)+1);
+		auto thunk = *(reinterpret_cast<ptrdiff_t*>(&ptr)+1);
+		if (thunk & 1) thunk >>= 1;
+		return thunk;
 	}
 
 public:
@@ -166,6 +170,11 @@ public:
 	static uintptr_t addressOfVirtual(T* ins, R(T::*func)(Ps...)) {
 		auto address = *(uintptr_t*)(*(uintptr_t*)(pointerOf(ins) + thunkOf(func)) + indexOf(func));
 		return address;
+	}
+
+	template <typename R, typename T, typename ...Ps>
+	static uintptr_t addressOfNonVirtual(R(T::*func)(Ps...) const) {
+		return addressOfNonVirtual(func);
 	}
 
 	template <typename R, typename T, typename ...Ps>

@@ -102,9 +102,15 @@ struct replace_member<R(C::*)(Ps...), D> {
 /**
  * Main class implementation, it has the structure
  * 
- * class $hook0;
- * bool $hook0Apply = Cacao::interfaces::$MenuLayer<$hook0>::_apply();
- * struct __attribute__(("hidden")) $hook0: public Cacao::interfaces::$MenuLayer<$hook0> {
+ * class hook0_;
+ * template<typename T>
+ * struct hook0 {};
+ * namespace {
+ *     struct hook0Unique {};
+ *     bool hook0Apply = Cacao::interfaces::$MenuLayer<hook0<hook0Unique>>::_apply();
+ * }
+ * template<>
+ * struct hidden hook0<hook0Unique>: public Cacao::interfaces::$MenuLayer<hook0<hook0Unique>> {
  *     // code stuff idk
  * };
  * 
@@ -113,13 +119,13 @@ struct replace_member<R(C::*)(Ps...), D> {
  */
 
 
-#define PREDECLARE(derived) derived;
-#define APPLY(base, derived) bool derived##Apply = base<derived>::_apply();
-#define DECLARE(base, derived) struct hidden derived: public base<derived>
+#define PREDECLARE(derived) derived##_; template<typename T> struct derived {};
+#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<derived<derived##Unique> >::_apply();  }
+#define DECLARE(base, derived) template<> struct hidden derived<derived##Unique>: public base<derived<derived##Unique> >
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
 #define REDIRECT__(base, derived) REDIRECT___(Cacao::interfaces::$##base, derived)
-#define REDIRECT_(base) REDIRECT__(base, CONCAT(hook, CONCAT(__LINE__, __COUNTER__)))
+#define REDIRECT_(base) REDIRECT__(base, CONCAT(hook, __COUNTER__))
 #define REDIRECT(base) REDIRECT_(base)
 
 /**

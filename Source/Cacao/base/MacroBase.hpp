@@ -21,6 +21,13 @@
 #define STACKFIX(a) \
     constexpr int _sf = a; \
     __asm add esp, _sf
+
+#if defined(CACAO_DEBUG)
+	#define CacaoDebug(format, ...) CacaoLog(format, ##__VA_ARGS__)
+#else
+    #define CacaoDebug(format, ...)
+#endif
+
 /**
  * Get type of a function
  */
@@ -124,51 +131,6 @@ _61,_62,_63,N,...) N
 #define getReturnOf19(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT19(DECLVAL, 0, __VA_ARGS__)))
 #define getReturnOf20(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT20(DECLVAL, 0, __VA_ARGS__)))
 
-#define getTypesOf0( ) REPEAT0( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf1( ) REPEAT1( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf2( ) REPEAT2( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf3( ) REPEAT3( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf4( ) REPEAT4( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf5( ) REPEAT5( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf6( ) REPEAT6( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf7( ) REPEAT7( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf8( ) REPEAT8( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf9( ) REPEAT9( TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf10() REPEAT10(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf11() REPEAT11(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf12() REPEAT12(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf13() REPEAT13(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf14() REPEAT14(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf15() REPEAT15(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf16() REPEAT16(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf17() REPEAT17(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf18() REPEAT18(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf19() REPEAT19(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getTypesOf20() REPEAT20(TYPE, 0,,,,,,,,,,,,,,,,,,,,,,)
-
-
-#define getParametersOf0( ) REPEAT0( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf1( ) REPEAT1( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf2( ) REPEAT2( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf3( ) REPEAT3( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf4( ) REPEAT4( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf5( ) REPEAT5( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf6( ) REPEAT6( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf7( ) REPEAT7( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf8( ) REPEAT8( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf9( ) REPEAT9( PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf10() REPEAT10(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf11() REPEAT11(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf12() REPEAT12(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf13() REPEAT13(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf14() REPEAT14(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf15() REPEAT15(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf16() REPEAT16(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf17() REPEAT17(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf18() REPEAT18(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf19() REPEAT19(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-#define getParametersOf20() REPEAT20(PARAMETER, 0,,,,,,,,,,,,,,,,,,,,,,)
-
 #define getEvalsOf0(... ) REPEAT0( EVAL, 0, __VA_ARGS__)
 #define getEvalsOf1(... ) REPEAT1( EVAL, 0, __VA_ARGS__)
 #define getEvalsOf2(... ) REPEAT2( EVAL, 0, __VA_ARGS__)
@@ -209,6 +171,9 @@ CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Class::Function(CONCAT(
 
 #define getFunctionOf(Class, Function, Const, Count, ...)             \
 CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Function(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
+
+#define getWrapperOf(Class, Function, Const, Count, ...)             \
+CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Function##Wrapper(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
 
 // #define setHeaderTypesOf(Id, Class, Function, Convention, Count)                                               \
 // using CONCAT(r, Id) = CONCAT(getReturnOf, Count)(Class, Function, CONCAT(getTypesOf, Count)());                  \

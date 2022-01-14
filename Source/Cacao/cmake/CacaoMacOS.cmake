@@ -9,19 +9,22 @@ include_directories(
 	Cacao/cocos/cocos2dx/platform/third_party/mac/OGLES
 )
 
-add_custom_command(
-	COMMAND sudo osxinj \"Geometry Dash\" *.dylib || true
-	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-	COMMENT "Inject target ${PROJECT_NAME}"
-	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/run0
-)
+find_program(OSXinj "osxinj")
+if (OSXinj)
+	add_custom_command(
+		COMMAND sudo osxinj \"Geometry Dash\" *.dylib || true
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		COMMENT "Inject target ${PROJECT_NAME}"
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/run0
+	)
 
-add_custom_target(
-	Inject ALL
-	DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/run0
-)
+	add_custom_target(
+		Inject ALL
+		DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/run0
+	)
 
-add_dependencies(Inject ${PROJECT_NAME})
+	add_dependencies(Inject ${PROJECT_NAME})
+endif()
 
 macro(link_prebuilts project)
 endmacro()
