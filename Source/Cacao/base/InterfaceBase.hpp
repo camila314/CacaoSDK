@@ -12,16 +12,48 @@
 #include <Core.hpp>
 
 #include <FunctionBase.hpp>
+#include <unordered_map>
 
 #include <type_traits>
 
 
 #define modContainer (ModInterface::container(STR(PROJECT_NAME)))
 
-// Just in case if we ever need to add shared implementations
+template <typename T>
+class CacContainer : public cocos2d::CCObject {
+ public:
+    static CacContainer<T>* create() {
+        auto a = new CacContainer<T>;
+        a->autorelease();
+        return a;
+    }
+
+    T& field() {
+        return m_cacaoData;
+    }
+ protected:
+    T m_cacaoData;
+};
+
 class InterfaceBase {
 public:
 	void _apply() {}
+
+    template <typename T>
+    T& $field(std::string name) {
+        cocos2d::CCNode* cacthis = reinterpret_cast<cocos2d::CCNode*>(this);
+        auto fieldMap = reinterpret_cast<CacContainer<std::unordered_map<std::string, CacContainer<T>*> >*>(cacthis->getUserObject());
+        if (!fieldMap) {
+            fieldMap = CacContainer<std::unordered_map<std::string, CacContainer<T>*> >::create();
+            cacthis->setUserObject(fieldMap);
+        }
+
+        if (fieldMap->field().count(name) == 0) {
+            fieldMap->field()[name] = CacContainer<T>::create();
+        }
+
+        return fieldMap->field()[name]->field();
+    }
 };
 
 template <typename T, typename F>
@@ -108,3 +140,12 @@ struct replace_member<R(C::*)(Ps...), D> {
 #define CRTP1(base) $redirect(base)
 #define CRTP2(base, derived) $implement(base, derived)
 #define $(...) CONCAT(CRTP, NUMBER_OF_ARGS(__VA_ARGS__))(__VA_ARGS__)
+
+namespace Cacao {
+	using namespace cocos2d;
+	using namespace cocos2d::extension;
+	using std::declval;
+	struct interfaces { // i find this really funny
+	    #include <Interface.hpp>
+	}
+}

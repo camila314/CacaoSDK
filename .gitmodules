@@ -5,3 +5,9 @@
 [submodule "Source/Cacao/cocos"]
 	path = Source/Cacao/cocos
 	url = https://github.com/altalk23/cocos-headers
+[submodule "Source/Cacao/gen/Broma"]
+	path = Source/Cacao/gen/Broma
+	url = https://github.com/CacaoSDK/Broma
+[submodule "Source/Cacao/gen/fmt"]
+	path = Source/Cacao/gen/fmt
+	url = https://github.com/fmtlib/fmt

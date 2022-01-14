@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libLilacHook.a CMakeFiles/LilacHook.dir/lilac_hook.cpp.o CMakeFiles/LilacHook.dir/impl/lilac_hook_impl.cpp.o CMakeFiles/LilacHook.dir/impl/lilac_hook_macos.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libLilacHook.a
