@@ -725,6 +725,10 @@ class cocos2d::CCTexture2D {
 	auto setTexParameters(cocos2d::_ccTexParams*) = 0x247980;
 }
 
+class cocos2d::CCTextFieldDelegate {
+
+}
+
 class cocos2d::CCTextureCache {
 	auto addImage(char const*, bool) = 0x358120;
 	static cocos2d::CCTextureCache* sharedTextureCache() = 0x356e00;

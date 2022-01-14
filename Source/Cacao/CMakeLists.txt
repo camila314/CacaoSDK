@@ -30,42 +30,7 @@ link_prebuilts(Cacao)
 
 target_link_libraries(Cacao Core)
 
-# add_custom_command(
-#     COMMAND ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Lexer.py ${CACAO_TARGET_PLATFORM} && ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Parser.py ${CACAO_TARGET_PLATFORM}
-#     DEPENDS ${Cacao_SOURCE_DIR}/gen/data/GeometryDash.mm ${Cacao_SOURCE_DIR}/gen/data/Cocos2d.mm ${Cacao_SOURCE_DIR}/gen/Lexer.py ${Cacao_SOURCE_DIR}/gen/Parser.py
-#     OUTPUT ${Cacao_SOURCE_DIR}/gen/gen.pickle
-#     COMMENT "Parsing ${CACAO_TARGET_PLATFORM}"
-# )
-
-# add_custom_command(
-#     COMMAND ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Header.py ${CACAO_TARGET_PLATFORM}
-#     DEPENDS ${Cacao_SOURCE_DIR}/gen/gen.pickle
-#     OUTPUT ${Cacao_SOURCE_DIR}/Header_.hpp 
-#     COMMENT "Generating Header"
-# )
-
-# add_custom_command(
-#     COMMAND ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Interface.py ${CACAO_TARGET_PLATFORM}
-#     DEPENDS ${Cacao_SOURCE_DIR}/gen/gen.pickle
-#     OUTPUT ${Cacao_SOURCE_DIR}/Interface_.hpp
-#     COMMENT "Generating Interface"
-# )
-
-# add_custom_command(
-#     COMMAND ${CACAO_PYTHON} ${Cacao_SOURCE_DIR}/gen/Source.py ${CACAO_TARGET_PLATFORM}
-#     DEPENDS ${Cacao_SOURCE_DIR}/gen/gen.pickle
-#     OUTPUT ${Cacao_SOURCE_DIR}/Source_.cpp
-#     COMMENT "Generating Source"
-# )
-
-# add_custom_target(Gen ALL
-#     DEPENDS ${Cacao_SOURCE_DIR}/Source_.cpp
-#     DEPENDS ${Cacao_SOURCE_DIR}/Header_.hpp
-#     DEPENDS ${Cacao_SOURCE_DIR}/Interface_.hpp
-# )
-
 add_subdirectory(gen)
-# add_dependencies(Cacao Codegen)
 
 target_compile_definitions(Cacao
 	PRIVATE -DPROJECT_NAME=CacaoBase

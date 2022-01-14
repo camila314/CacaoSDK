@@ -24,8 +24,3 @@ endmacro()
 add_gen(Interface Interface.hpp)
 add_gen(Source Source.cpp)
 add_gen(Header Header.hpp)
-
-
-
-
-
