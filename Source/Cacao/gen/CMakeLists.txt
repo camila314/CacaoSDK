@@ -1,17 +1,31 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
-project(Codegen)
+project(Codegen LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(fmt)
-#add_executable(headergen header.cpp)
-add_executable(interfacegen interface.cpp)
 
-#target_include_directories(headergen PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Broma/src)
+macro(add_gen project file)
+	add_executable(${project}Gen ${project}Gen.cpp)
+	target_link_libraries(${project}Gen PUBLIC fmt)
+	target_include_directories(${project}Gen PUBLIC 
+		${CMAKE_CURRENT_SOURCE_DIR}/Broma/src
+		${CMAKE_CURRENT_SOURCE_DIR}/fmt/include
+	)
+	add_custom_target(${project}Run
+		COMMAND ${project}Gen ${CACAO_TARGET_PLATFORM} "${CMAKE_CURRENT_SOURCE_DIR}/data" "${Cacao_SOURCE_DIR}/${file}"
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+		COMMENT "Run ${project}Gen"
+	)
+	add_dependencies(Cacao ${project}Run)
+endmacro()
 
-set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-g")
-target_link_libraries(interfacegen PUBLIC fmt)
-target_include_directories(interfacegen PUBLIC 
-	${CMAKE_CURRENT_SOURCE_DIR}/Broma/src
-	${CMAKE_CURRENT_SOURCE_DIR}/fmt/include
-)
+
+add_gen(Interface Interface.hpp)
+add_gen(Source Source.cpp)
+add_gen(Header Header.hpp)
+
+
+
+
+

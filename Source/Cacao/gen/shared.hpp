@@ -2,6 +2,7 @@
 #include <array>
 #include <fmt/format.h>
 #include <fmt/ranges.h>
+#include <fstream>
 
 #if _WIN32
     #include <direct.h>
@@ -18,25 +19,28 @@ enum CacPlatform {
 
 struct CacShare {
     inline static CacPlatform platform;
+    inline static string writePath;
 
     static Root init(int argc, char** argv) {
-        if (argc < 3)
-            cacerr("Invalid number of parameters (expected 2 found %d)", argc-1);
+        if (argc < 4)
+            cacerr("Invalid number of parameters (expected 3 found %d)", argc-1);
 
         char const* p = argv[1];
-        if (strcmp(p, "windows") == 0)
+        if (strcmp(p, "Win32") == 0)
             platform = kWindows;
-        else if (strcmp(p, "mac") == 0)
+        else if (strcmp(p, "MacOS") == 0)
             platform = kMac;
-        else if (strcmp(p, "ios") == 0)
+        else if (strcmp(p, "iOS") == 0)
             platform = kIos;
-        else if (strcmp(p, "android") == 0)
+        else if (strcmp(p, "Android") == 0)
             platform = kAndroid;
         else cacerr("Invalid platform %s\n", p);
 
         chdir(argv[2]);
         stringstream s;
         s << "#include <Entry.bro>";
+
+        writePath = argv[3];
         return parseTokens(lexStream(s));
     }
 
@@ -71,6 +75,10 @@ struct CacShare {
         return m.hardcodes[(std::array<size_t, 4> {0, 1, 0, 2})[CacShare::platform]];
     }
 
+    static string getArray(size_t size) {
+        return size > 0 ? fmt::format("[{}]", size) : string("");
+    }
+
     static string toUnqualified(string qualifiedName) {
         if (qualifiedName.rfind("::") == string::npos) return qualifiedName;
         return qualifiedName.substr(qualifiedName.rfind("::")+2);
@@ -88,10 +96,14 @@ struct CacShare {
         string out = "";
         size_t c = 0;
         for (auto& i : args) {
-            out += fmt::format("{} p{},", i, c);
+            out += fmt::format("{} p{}, ", i, c);
             ++c;
         }
-        return out.substr(0, out.size()-1);
+        return out.substr(0, out.size()-2);
+    }
+
+    static string formatBases(vector<string> args) {
+        return args.size() > 0 ? " : " + fmt::format("{}", fmt::join(args, ", ")) : string("");
     }
 
     static string formatParameters(size_t paramCount) {
@@ -130,6 +142,13 @@ struct CacShare {
     }
 
     static string getReturn(Function const& f) {
+    	switch (f.function_type) {
+    		case kConstructor:
+    		case kDestructor:
+    			return "void";
+    		default:
+    			break;
+    	}
         if (f.return_type == "auto") {
             string out = fmt::format("decltype(declval<{}>().{}(", f.parent_class->name, f.name);
             vector<string> args;
@@ -139,6 +158,22 @@ struct CacShare {
 
             out += fmt::format("{}))", fmt::join(args, ", "));
             return out;
-        } else return f.return_type;
+        }
+        return f.return_type;
+    }
+
+    static void writeFile(string& output) {
+    	ifstream readfile;
+    	readfile >> std::noskipws;
+    	readfile.open(writePath);
+    	string data((istreambuf_iterator<char>(readfile)), istreambuf_iterator<char>());
+    	readfile.close();
+
+    	if (data != output) {
+    		ofstream writefile;
+    		writefile.open(writePath);
+    		writefile << output;
+    		writefile.close();
+    	}
     }
 };

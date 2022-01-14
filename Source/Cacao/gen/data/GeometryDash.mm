@@ -753,7 +753,8 @@ class GJGameLevel {
 	gd::string m_author = 0x150;
 	int m_audioTrack = 0x18c;
 	int m_songID = 0x190;
-	LevelDifficulty m_difficulty = 0x1ac;
+	int m_difficultyDenominator = 0x1ac;
+	int m_difficultyNumerator = 0x1b0;  
 	bool m_lowDetail = 0x1c5;
 	int m_bestNormal = 0x214;
 	int m_bestPractice = 0x238;
@@ -1531,7 +1532,13 @@ class PlayLayer : GJBaseGameLayer, CCCircleWaveDelegate {
 	bool m_testMode = 0x738;
 	bool m_practiceMode = 0x739;
 	float m_time = 0x760;
-	GameModes m_gameModes = 0x76f;
+	bool m_cube = 0x76f;
+	bool m_ship = 0x770;
+	bool m_ufo = 0x771;
+	bool m_ball = 0x772;
+	bool m_wave = 0x773;
+	bool m_robot = 0x774;
+	bool m_spider = 0x775;
 }
 
 class PlayerCheckpoint {
