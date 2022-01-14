@@ -818,7 +818,7 @@ class GameLevelManager {
 
 class GameManager : cocos2d::CCNode {
     void accountStatusChanged() = 0x1cdad0;
-    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80;
+    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80, , 0x237488;
     void didExitPlayscene() = 0x1d0230;
     void doQuickSave() = 0x1d0200;
     void fadeInMusic(char const*) = 0x1c2ff0;
@@ -1156,6 +1156,11 @@ class GameStatsManager {
 	void storePendingUserCoin(char const*) = 0x42940;
 	void storeSecretCoin(char const*) = 0x42a10;
 	void storeUserCoin(char const*) = 0x42890;
+}
+
+class GJGarageLayer {
+	void onPlayerColor1(cocos2d::CCObject*) = 0x1ba640, , 0x22531c;
+	void onPlayerColor2(cocos2d::CCObject*) = 0x1ba8c0, , 0x225408;
 }
 
 class HardStreak : cocos2d::CCDrawNode {
