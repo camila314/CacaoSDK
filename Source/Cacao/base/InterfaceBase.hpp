@@ -19,77 +19,55 @@
 
 #define modContainer (ModInterface::container(STR(PROJECT_NAME)))
 
-template <typename T>
-class CacContainer : public cocos2d::CCObject {
- public:
-    static CacContainer<T>* create() {
-        auto a = new CacContainer<T>;
-        a->autorelease();
-        return a;
-    }
+template<typename T>
+struct member_t {
+	template<typename Q>
+	void operator=(Q) {
+		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+	}
 
-    T& field() {
-        return m_cacaoData;
-    }
- protected:
-    T m_cacaoData;
+	void operator->() {
+		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+	}
+
+	void operator*() {
+		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+	} 
 };
+
+template<typename T = void*>
+struct container_t {
+	T field;
+};
+
+inline std::unordered_map<size_t, container_t<>*> fields;
+template<typename T, template<typename> typename A1, typename A2>
+T& operator->*(A1<A2>* self, member_t<T>& member) {
+	// set destructor
+	auto& dtor = (*(size_t**)self)[2];
+	if (A1<A2>::originalDestructor == 0) A1<A2>::originalDestructor = dtor;
+	dtor = (size_t)&A1<A2>::fieldCleanup;
+
+	// std::cout << "size of fields: " << fields.size() << std::endl;
+
+	// get thing
+	container_t<>*& field = fields[(size_t)&member];
+	if (!field) field = reinterpret_cast<container_t<>*>(new container_t<T>());
+	return reinterpret_cast<container_t<T>*>(field)->field;
+}
+
 
 class InterfaceBase {
 public:
 	void _apply() {}
-
-    template <typename T>
-    T& $field(std::string name) {
-        cocos2d::CCNode* cacthis = reinterpret_cast<cocos2d::CCNode*>(this);
-        auto fieldMap = reinterpret_cast<CacContainer<std::unordered_map<std::string, CacContainer<T>*> >*>(cacthis->getUserObject());
-        if (!fieldMap) {
-            fieldMap = CacContainer<std::unordered_map<std::string, CacContainer<T>*> >::create();
-            cacthis->setUserObject(fieldMap);
-        }
-
-        if (fieldMap->field().count(name) == 0) {
-            fieldMap->field()[name] = CacContainer<T>::create();
-        }
-
-        return fieldMap->field()[name]->field();
-    }
+	static void fieldCleanup(size_t self) {}
 };
+
 
 template <typename T, typename F>
 inline T base_cast(F obj) {
 	return static_cast<T>(dynamic_cast<void*>(obj));
 }
-
-template <typename F, typename T>
-struct add_qualifier {
-    using type = F;
-};
-
-template <typename R, typename C, typename T, typename ...Ps>
-struct add_qualifier<R(C::*)(Ps...), const T> {
-    using type = R(C::*)(Ps...) const;
-};
-
-template <typename R, typename C, typename T, typename ...Ps>
-struct add_qualifier<R(C::*)(Ps...), T&> {
-    using type = R(C::*)(Ps...) &;
-};
-
-template <typename R, typename C, typename T, typename ...Ps>
-struct add_qualifier<R(C::*)(Ps...), T&&> {
-    using type = R(C::*)(Ps...) &&;
-};
-
-template <typename F, typename D>
-struct replace_member {
-	using type = F;
-};
-
-template <typename R, typename C, typename ...Ps, typename D>
-struct replace_member<R(C::*)(Ps...), D> {
-	using type = R(D::*)(Ps...);
-};
 
 
 /**

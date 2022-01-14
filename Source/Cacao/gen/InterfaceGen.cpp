@@ -8,6 +8,14 @@ template<class D = void>
 struct ${class_name} : {class_name}, InterfaceBase {{
     ${class_name}(const ${class_name}& c) : {class_name}(c) {{}}
     ${class_name}() = delete;
+
+    static inline size_t originalDestructor;
+    static void fieldCleanup(size_t self) {{
+    	const size_t begin = self + sizeof(${class_name});
+    	const size_t end = self + sizeof(D);
+    	for (size_t i = begin; i < end; ++i) fields.erase(i);
+    	reinterpret_cast<void(*)(size_t)>(originalDestructor)(self);
+    }}
 )CAC";
 
     // requires: index, address
