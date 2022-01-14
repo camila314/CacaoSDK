@@ -24,13 +24,13 @@ struct CacShare {
             cacerr("Invalid number of parameters (expected 2 found %d)", argc-1);
 
         char const* p = argv[1];
-        if (strcmp(p, "windows") == 0)
+        if (strcmp(p, "Win32") == 0)
             platform = kWindows;
-        else if (strcmp(p, "mac") == 0)
+        else if (strcmp(p, "MacOS") == 0)
             platform = kMac;
-        else if (strcmp(p, "ios") == 0)
+        else if (strcmp(p, "iOS") == 0)
             platform = kIos;
-        else if (strcmp(p, "android") == 0)
+        else if (strcmp(p, "Android") == 0)
             platform = kAndroid;
         else cacerr("Invalid platform %s\n", p);
 
