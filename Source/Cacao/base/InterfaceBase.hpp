@@ -37,7 +37,10 @@ struct member_t {
 
 template<typename T = void*>
 struct container_t {
-	T field;
+	virtual ~container_t() {
+		field.~T();
+	}
+ 	T field;
 };
 
 inline std::unordered_map<size_t, container_t<>*> fields;
