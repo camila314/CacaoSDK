@@ -48,8 +48,10 @@ T& operator->*(A1<A2>* self, member_t<T>& member) {
 	// this replaces the destructor in the vtable
 	// only done this way to be performant
 	auto& dtor = 2[*(size_t**)self]; // i love this
-	if (A1<A2>::originalDestructor == 0) A1<A2>::originalDestructor = dtor;
-	dtor = (size_t)&A1<A2>::fieldCleanup;
+	if (A1<A2>::originalDestructor == 0) {
+		A1<A2>::originalDestructor = dtor;
+		dtor = (size_t)&A1<A2>::fieldCleanup;
+	}
 
 	// gets the respective field
 	container_t<>*& field = A1<A2>::fields[(size_t)&member];
