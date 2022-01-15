@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../HelloWorld/Cacao/hook/lilac-core/include/lilac_hook.h
+
+../HelloWorld/Cacao/hook/lilac-core/include/lilac_hook.hpp
+lilac_hook.h
+../HelloWorld/Cacao/hook/lilac-core/include/lilac_hook.h
+cstddef
+-
+
+/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Examples/HelloWorld/Cacao/hook/Core.cpp
+Core.hpp
+/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Examples/HelloWorld/Cacao/hook/Core.hpp
+mach-o/dyld.h
+-
+windows.h
+-
+mach-o/dyld.h
+-
+dlfcn.h
+-
+
+/Users/student/Desktop/Storage/Geometry Dash/CacaoSDK/Examples/HelloWorld/Cacao/hook/Core.hpp
+cstddef
+-
+string
+-
+vector
+-
+map
+-
+lilac_hook.hpp
+-
+

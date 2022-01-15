@@ -36,9 +36,6 @@ Projects/
 # Macos be like
 **/.DS_Store
 
-# Byte-compiled files
-**/__pycache__/
-
 # Camila likes leaving sublime stuff in the repo so yeah
 
 # Cache files for Sublime Text
@@ -50,9 +47,6 @@ Projects/
 *.sublime-workspace
 
 # gen specific generated files
-Source/Cacao/gen/parser.out
-Source/Cacao/gen/parsetab.py
-Source/Cacao/gen/gen.pickle
 Source/Cacao/Header.hpp
 Source/Cacao/Interface.hpp
 Source/Cacao/Source.cpp
@@ -62,6 +56,7 @@ Source/Cacao/pkg/uber-apk-signer.jar
 
 # Ignore example build folders
 Examples/*/build
+Examples/build
 
 # Ignore old files
 scripts/

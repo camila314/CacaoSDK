@@ -8,7 +8,6 @@ namespace Cacao::fixes {
 
 #define HandlerFixFor(CCUtility)                                                                        \
 class $(CCUtility##Handler, CCUtility##HandlerTypeinfoFix) {                                            \
-public:                                                                                                 \
 	void destructor() {                                                                                 \
 		if (m_pDelegate) {                                                                              \
 			cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(m_pDelegate);                    \
@@ -53,7 +52,6 @@ HandlerFixFor(CCKeyboard);
 HandlerFixFor(CCMouse);
 
 class $(CCTargetedTouchHandler, CCTargetedTouchHandlerTypeinfoFix) {
-public:
 	void destructor() {
 		if (m_pDelegate) {
 			cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(m_pDelegate);
@@ -103,7 +101,6 @@ public:
 };
 
 class $(CCStandardTouchHandler, CCStandardTouchHandlerTypeinfoFix) {
-public:
 	void destructor() {
 		if (m_pDelegate) {
 			cocos2d::CCObject* pObject = base_cast<cocos2d::CCObject*>(m_pDelegate);

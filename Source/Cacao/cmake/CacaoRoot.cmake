@@ -14,12 +14,6 @@ if (NOT DEFINED CACAO_TARGET_PLATFORM)
 	endif()
 endif()
 
-if (WIN32)
-	set(CACAO_PYTHON py)
-else()
-	set(CACAO_PYTHON python3)
-endif()
-
 if (DEFINED SOURCE_FILES)
 	add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 else()
@@ -75,6 +69,7 @@ include_directories(
 	${Cacao_SOURCE_DIR}/cocos/cocos2dx/include
 	${Cacao_SOURCE_DIR}/cocos/cocos2dx/kazmath/include
 	${Cacao_SOURCE_DIR}/cocos/extensions
+	${Cacao_SOURCE_DIR}/fmod
 	${INCLUDE_DIRECTORIES}
 )
 

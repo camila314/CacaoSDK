@@ -180,10 +180,10 @@ class CCScrollLayerExtDelegate {
 
 class CCSpritePlus : cocos2d::CCSprite {
 	bool initWithSpriteFrameName(char const*) = 0x248670;
-	volatile inline CCSpritePlus* getFollowingSprite() {
+	inline inline CCSpritePlus* getFollowingSprite() {
 		return m_followingSprite;
 	};
-	volatile inline void setFollowingSprite(CCSpritePlus* setter) {
+	inline inline void setFollowingSprite(CCSpritePlus* setter) {
 		m_followingSprite = setter;
 	};
 
@@ -368,6 +368,9 @@ class EditorUI : cocos2d::CCLayer {
 	void getGroupCenter(cocos2d::CCArray*, bool) = 0x23470;
 	cocos2d::CCArray* getSelectedObjects() = 0x23f30;
 	void init(LevelEditorLayer*) = 0x8ae0;
+	virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2ed60;
+	virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2f3d0;
+	virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) = 0x2fb00;
 	virtual void keyDown(cocos2d::enumKeyCodes) = 0x30790;
 	void moveObject(GameObject*, cocos2d::CCPoint) = 0x24b10;
 	void onDuplicate(cocos2d::CCObject*) = 0x18ba0;
@@ -434,11 +437,11 @@ class FLAlertLayer : cocos2d::CCLayerColor {
     bool init(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) =                   0x25e1b0;
 
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*) =                             , 0x22680;
-    '_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_f'
+    [[mangle('_ZN12FLAlertLayer6createEP20FLAlertLayerProtocolPKcSsS3_S3_f')]]
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float) =              0x25e0e0, 0x22730, 0x1fe374;
     static FLAlertLayer* create(FLAlertLayerProtocol*, char const*, gd::string, char const*, char const*, float, bool, float) = 0x25dec0;
     
-    volatile static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {
+    inline static FLAlertLayer* create(char const* title, const gd::string &desc, char const* btn) {
         return FLAlertLayer::create(nullptr, title, desc, btn, nullptr, 300.0);
     };
 
@@ -461,13 +464,13 @@ class FLAlertLayer : cocos2d::CCLayerColor {
 }
 
 class FLAlertLayerProtocol {
-	volatile virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
+	inline virtual void FLAlert_Clicked(FLAlertLayer*, bool) {};
 }
 
 class GameToolbox {
-	'_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_PNS0_7CCArrayE'
+	[[mangle('_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_PNS0_7CCArrayE')]]
 	static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCArray*) = 0x0;
-	'_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE'
+	[[mangle('_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE')]]
 	static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x0;
 }
 
@@ -750,7 +753,8 @@ class GJGameLevel {
 	gd::string m_author = 0x150;
 	int m_audioTrack = 0x18c;
 	int m_songID = 0x190;
-	LevelDifficulty m_difficulty = 0x1ac;
+	int m_difficultyDenominator = 0x1ac;
+	int m_difficultyNumerator = 0x1b0;  
 	bool m_lowDetail = 0x1c5;
 	int m_bestNormal = 0x214;
 	int m_bestPractice = 0x238;
@@ -789,7 +793,7 @@ class GJSpiderSprite {
 }
 
 class GManager : cocos2d::CCNode {
-	volatile virtual void setup() {};
+	inline virtual void setup() {};
 
 	void save() = 0x26f300;
 	void saveData(DS_Dictionary*, gd::string) = 0x26f4b0;
@@ -814,7 +818,7 @@ class GameLevelManager {
 
 class GameManager : cocos2d::CCNode {
     void accountStatusChanged() = 0x1cdad0;
-    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80;
+    const cocos2d::_ccColor3B& colorForIdx(int) = 0x1cbc80, , 0x237488;
     void didExitPlayscene() = 0x1d0230;
     void doQuickSave() = 0x1d0200;
     void fadeInMusic(char const*) = 0x1c2ff0;
@@ -1152,6 +1156,11 @@ class GameStatsManager {
 	void storePendingUserCoin(char const*) = 0x42940;
 	void storeSecretCoin(char const*) = 0x42a10;
 	void storeUserCoin(char const*) = 0x42890;
+}
+
+class GJGarageLayer {
+	void onPlayerColor1(cocos2d::CCObject*) = 0x1ba640, , 0x22531c;
+	void onPlayerColor2(cocos2d::CCObject*) = 0x1ba8c0, , 0x225408;
 }
 
 class HardStreak : cocos2d::CCDrawNode {
@@ -1528,7 +1537,13 @@ class PlayLayer : GJBaseGameLayer, CCCircleWaveDelegate {
 	bool m_testMode = 0x738;
 	bool m_practiceMode = 0x739;
 	float m_time = 0x760;
-	GameModes m_gameModes = 0x76f;
+	bool m_cube = 0x76f;
+	bool m_ship = 0x770;
+	bool m_ufo = 0x771;
+	bool m_ball = 0x772;
+	bool m_wave = 0x773;
+	bool m_robot = 0x774;
+	bool m_spider = 0x775;
 }
 
 class PlayerCheckpoint {
@@ -1895,8 +1910,8 @@ class TableView : CCScrollLayerExt, CCScrollLayerExtDelegate {
 class TableViewCell : cocos2d::CCLayer {
 	TableViewCell(char const*, float, float) = 0x383de0;
 	// default constructor
-	volatile TableViewCell() {}
-	volatile char pad[0x1c0-0x170];
+	inline TableViewCell() {}
+	inline char pad[0x1c0-0x170];
 	float m_parentHeight;
 	float m_height;
 	cocos2d::CCLayerColor* m_backgroundLayer;
@@ -1904,20 +1919,20 @@ class TableViewCell : cocos2d::CCLayer {
 }
 
 class TableViewDataSource {
-	volatile virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
-	volatile virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {};
-	volatile virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
-	volatile virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
-	volatile virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
-	volatile virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {};
-	volatile virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {};
+	inline virtual void willTweenToIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
+	inline virtual void didEndTweenToIndexPath(CCIndexPath&, TableView*) {};
+	inline virtual void TableViewWillDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
+	inline virtual void TableViewDidDisplayCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
+	inline virtual void TableViewWillReloadCellForRowAtIndexPath(CCIndexPath&, TableViewCell*, TableView*) {};
+	inline virtual void cellHeightForRowAtIndexPath(CCIndexPath&, TableView*) {};
+	inline virtual void didSelectRowAtIndexPath(CCIndexPath&, TableView*) {};
 }
 
 class TableViewDelegate {
-	volatile virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;};
-	volatile virtual void numberOfSectionsInTableView(TableView*) {};
-	volatile virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {};
-	volatile virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {};
+	inline virtual int numberOfRowsInSection(unsigned int, TableView*) {return 0;};
+	inline virtual void numberOfSectionsInTableView(TableView*) {};
+	inline virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {};
+	inline virtual void cellForRowAtIndexPath(CCIndexPath&, TableView*) {};
 }
 
 class TextArea : ButtonSprite {
@@ -1929,12 +1944,12 @@ class TextArea : ButtonSprite {
 }
 
 class TextInputDelegate {
-	volatile virtual void textChanged(CCTextInputNode*) {};
-	volatile virtual void textInputOpened(CCTextInputNode*) {};
-	volatile virtual void textInputClosed(CCTextInputNode*) {};
-	volatile virtual void textInputShouldOffset(CCTextInputNode*, float) {};
-	volatile virtual void textInputReturn(CCTextInputNode*) {};
-	volatile virtual bool allowTextInput(CCTextInputNode*) {return true;};
+	inline virtual void textChanged(CCTextInputNode*) {};
+	inline virtual void textInputOpened(CCTextInputNode*) {};
+	inline virtual void textInputClosed(CCTextInputNode*) {};
+	inline virtual void textInputShouldOffset(CCTextInputNode*, float) {};
+	inline virtual void textInputReturn(CCTextInputNode*) {};
+	inline virtual bool allowTextInput(CCTextInputNode*) {return true;};
 }
 
 class ToggleTriggerAction : cocos2d::CCNode {
@@ -1962,6 +1977,32 @@ class UILayer {
 	void enableMenu() = 0x280940;
 	void pCommand(cocos2d::CCNode*) = 0x280830;
 	void toggleCheckpointsMenu(bool) = 0x280430;
+}
+
+class FMODAudioEngine {
+	static FMODAudioEngine* sharedEngine() = 0x20ef80;
+	cocos2d::CCDictionary* m_pDictionary;
+	std::string m_sFilePath;
+	float m_fBackgroundMusicVolume;
+	float m_fEffectsVolume;
+	float m_fPulse1;
+	float m_fPulse2;
+	float m_fPulse3;
+	int m_nPulseCounter;
+	bool m_bMetering;
+	bool m_bFading;
+	bool m_bFadeIn;
+	float m_fFadeInDuration;
+	FMOD::System* m_pSystem;
+	FMOD::Sound* m_pSound;
+	FMOD::Channel* m_pCurrentSoundChannel;
+	FMOD::Channel* m_pGlobalChannel;
+	FMOD::DSP* m_pDSP;
+	FMOD_RESULT m_eLastResult;
+	int m_nVersion;
+	void* m_pExtraDriverData;
+	int m_nMusicOffset;
+
 }
 
 class UndoCommand {
