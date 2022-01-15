@@ -9,6 +9,7 @@ struct ${class_name} : {class_name}, InterfaceBase {{
     ${class_name}(const ${class_name}& c) : {class_name}(c) {{}}
     ${class_name}() = delete;
 
+    static inline std::unordered_map<size_t, container_t<>*> fields;
     static inline size_t originalDestructor;
     static void fieldCleanup(size_t self) {{
     	const size_t begin = self + sizeof(${class_name});

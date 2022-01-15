@@ -43,18 +43,17 @@ struct container_t {
  	T field;
 };
 
-inline std::unordered_map<size_t, container_t<>*> fields;
 template<typename T, template<typename> typename A1, typename A2>
 T& operator->*(A1<A2>* self, member_t<T>& member) {
-	// set destructor
-	auto& dtor = (*(size_t**)self)[2];
+	// this replaces the destructor in the vtable
+	// only done this way to be performant
+	auto& dtor = 2[*(size_t**)self]; // i love this
 	if (A1<A2>::originalDestructor == 0) A1<A2>::originalDestructor = dtor;
 	dtor = (size_t)&A1<A2>::fieldCleanup;
 
-	// std::cout << "size of fields: " << fields.size() << std::endl;
-
-	// get thing
-	container_t<>*& field = fields[(size_t)&member];
+	// gets the respective field
+	container_t<>*& field = A1<A2>::fields[(size_t)&member];
+	// create the container on first use
 	if (!field) field = reinterpret_cast<container_t<>*>(new container_t<T>());
 	return reinterpret_cast<container_t<T>*>(field)->field;
 }
@@ -83,15 +82,16 @@ inline T base_cast(F obj) {
 /**
  * Main class implementation, it has the structure
  * 
- * class hook0_;
+ * class hook0__;
  * template<typename T>
- * struct hook0 {};
+ * struct _hook0 {};
  * namespace {
  *     struct hook0Unique {};
- *     bool hook0Apply = Cacao::interfaces::$MenuLayer<hook0<hook0Unique>>::_apply();
+ *     bool hook0Apply = Cacao::interfaces::$MenuLayer<_hook0<hook0Unique>>::_apply();
  * }
+ * using hook0 = _hook0<hook0Unique>;
  * template<>
- * struct hidden hook0<hook0Unique>: public Cacao::interfaces::$MenuLayer<hook0<hook0Unique>> {
+ * struct hidden _hook0<hook0Unique>: public Cacao::interfaces::$MenuLayer<_hook0<hook0Unique>> {
  *     // code stuff idk
  * };
  * 
@@ -100,9 +100,9 @@ inline T base_cast(F obj) {
  */
 
 
-#define PREDECLARE(derived) derived##_; template<typename T> struct derived {};
-#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<derived<derived##Unique> >::_apply();  }
-#define DECLARE(base, derived) template<> struct hidden derived<derived##Unique>: public base<derived<derived##Unique> >
+#define PREDECLARE(derived) derived##__; template<typename T> struct _##derived {};
+#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<_##derived<derived##Unique> >::_apply();  }
+#define DECLARE(base, derived) using derived = _##derived<derived##Unique>; template<> struct hidden _##derived<derived##Unique>: public base<_##derived<derived##Unique> >
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
 #define REDIRECT__(base, derived) REDIRECT___(Cacao::interfaces::$##base, derived)
