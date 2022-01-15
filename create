@@ -136,9 +136,7 @@ if (( $# + $OPTIND > 1 )); then
 		fi
 		echo "Copying files"
 
-		touch "$copypath/main.cpp"
-		echo "#define PROJECT_NAME \"$projname\"" >> "$copypath/main.cpp"
-		cat "$srcpath/Template/main.cpp" >> "$copypath/main.cpp"
+		cp "$srcpath/Template/main.cpp" "$copypath/main.cpp"
 
 		copy_files
 

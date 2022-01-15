@@ -10,6 +10,8 @@
     #include <unistd.h>
 #endif
 
+using std::istreambuf_iterator;
+
 enum CacPlatform {
     kMac,
     kWindows,
