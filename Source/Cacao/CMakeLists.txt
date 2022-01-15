@@ -30,7 +30,9 @@ link_prebuilts(Cacao)
 
 target_link_libraries(Cacao Core)
 
-add_subdirectory(gen)
+if (NOT DEFINED CACAO_NO_GEN)
+    add_subdirectory(gen)
+endif()
 
 target_compile_definitions(Cacao
 	PRIVATE -DPROJECT_NAME=CacaoBase

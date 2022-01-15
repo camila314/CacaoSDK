@@ -7,8 +7,7 @@
 #include <stdint.h>
 #include <gdstdlib.hpp>
 
-uintptr_t getBase();
-inline uintptr_t const base = getBase();
+// to alk: i removed base for a reason. it causes inconsistent results and often leads to addresses being wrong.
 
 #define CACAO_VERSION "3.4.0"
 
