@@ -49,9 +49,9 @@ struct CacShare {
     static string getAddress(Function const& f) {
         switch (CacShare::platform) {
             case kMac:
-                return "base+" + f.binds[kMac];
+                return "getBase()+" + f.binds[kMac];
             case kIos:
-                return "base+" + f.binds[kIos];
+                return "getBase()+" + f.binds[kIos];
             case kWindows:
                 if (f.name.rfind("cocos2d", 0) == 0) {
                     if (f.function_type == kVirtualFunction)
@@ -59,11 +59,11 @@ struct CacShare {
                     else
                         return fmt::format("FunctionScrapper::addressOfNonVirtual((mem{})(&{}::{}))", f.index, f.parent_class->name, f.name);
                 } else {
-                    return "base+" + f.binds[kWindows];
+                    return "getBase()+" + f.binds[kWindows];
                 }
             case kAndroid:
                 if (any_of(f.args.begin(), f.args.end(), [](string a) {return a.find("gd::") != string::npos;}))
-                    return fmt::format("(uintptr_t)dlsym((void*)base, \"{}\")", f.android_mangle);
+                    return fmt::format("(uintptr_t)dlsym((void*)getBase(), \"{}\")", f.android_mangle);
                 else {
                     if (f.function_type == kVirtualFunction)
                         return fmt::format("FunctionScrapper::addressOfVirtual((mem{})(&{}::{}))", f.index, f.parent_class->name, f.name);

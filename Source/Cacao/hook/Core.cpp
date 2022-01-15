@@ -138,16 +138,23 @@ namespace Cacao::core {
 #elif defined(CC_TARGET_OS_ANDROID)
 	#include <dlfcn.h>
 #endif
+
+static uintptr_t base = 0;
+
 uintptr_t getBase() {
+	if (!base) {
 	#if defined(CC_TARGET_OS_MAC)
-		return _dyld_get_image_vmaddr_slide(0)+0x100000000;
+		base = _dyld_get_image_vmaddr_slide(0)+0x100000000;
 	#elif defined(CC_TARGET_OS_WIN32)
-		return reinterpret_cast<uintptr_t>(GetModuleHandle(0));
+		base = reinterpret_cast<uintptr_t>(GetModuleHandle(0));
 	#elif defined(CC_TARGET_OS_IPHONE)
-		return _dyld_get_image_vmaddr_slide(0)+0x100000000;
+		base = _dyld_get_image_vmaddr_slide(0)+0x100000000;
 	#elif defined(CC_TARGET_OS_ANDROID)
-		return reinterpret_cast<uintptr_t>(dlopen("libcocos2dcpp.so", RTLD_LAZY));
+		base = reinterpret_cast<uintptr_t>(dlopen("libcocos2dcpp.so", RTLD_LAZY));
 	#else
-		return 0;
+		base = 0;
 	#endif
+	}
+
+	return base;
 }
