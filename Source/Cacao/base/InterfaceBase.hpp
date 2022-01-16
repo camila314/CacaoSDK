@@ -20,18 +20,18 @@
 #define modContainer (ModInterface::container(STR(PROJECT_NAME)))
 
 template<typename T>
-struct member_t {
+struct field_t {
 	template<typename Q>
 	void operator=(Q) {
-		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
 	}
 
 	void operator->() {
-		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
 	}
 
 	void operator*() {
-		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
 	} 
 };
 
@@ -44,7 +44,7 @@ struct container_t {
 };
 
 template<typename T, template<typename> typename A1, typename A2>
-T& operator->*(A1<A2>* self, member_t<T>& member) {
+T& operator->*(A1<A2>* self, field_t<T>& member) {
 	// this replaces the destructor in the vtable
 	// only done this way to be performant
 	auto& dtor = 2[*(size_t**)self]; // i love this
