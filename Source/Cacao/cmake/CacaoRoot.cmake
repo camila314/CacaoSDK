@@ -4,6 +4,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+
+set(CACAO_CODEGEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/Gen)
+file(MAKE_DIRECTORY ${CACAO_CODEGEN_DIR})
+
+
 if (NOT DEFINED CACAO_TARGET_PLATFORM)
 	if(APPLE)
 		set(CACAO_TARGET_PLATFORM "MacOS")
@@ -37,17 +42,12 @@ target_compile_definitions(${PROJECT_NAME}
 	# PRIVATE "-D__FILENAME__='\"$(subst${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'"
 )
 
-if("${CACAO_TARGET_PLATFORM}" STREQUAL "iOSo")
+
+file(WRITE ${CACAO_CODEGEN_DIR}/Source.cpp "// this text shouldn't be visible")
 set(CACAO_SOURCES
-	${Cacao_SOURCE_DIR}/Source.cpp 
-)
-message(WARNING "fix asap")
-else()
-set(CACAO_SOURCES
-	${Cacao_SOURCE_DIR}/Source.cpp 
+	${CACAO_CODEGEN_DIR}/Source.cpp 
 	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
 )
-endif()
 
 if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS")
 	set(CACAO_FIX_SOURCES
@@ -58,6 +58,7 @@ else()
 endif()
 
 include_directories(
+	${CACAO_CODEGEN_DIR}/
 	${Cacao_SOURCE_DIR}/
 	${Cacao_SOURCE_DIR}/helpers
 	${Cacao_SOURCE_DIR}/base
