@@ -175,13 +175,23 @@ class $(EditorUI) {
 ### de74c1ffa4a3a7f72ac2394fbfb4a1262fbe470b
 This version allowed for the creation of fields, which let you effectively add extra fields to classes
 You can access them with the special c++ operator ->*
-
 ```cpp
 class $(EditorUI) {
 	member_t<int> number_of_undos; 
 	void undoLastAction() {
 		std::cout << "You have pressed undo " << ++this->*number_of_undos << " times!\n";
 		$EditorUI::undoLastAction();
+	}
+};
+```
+
+### 5f5bead640bc2a52c087f41c49c3354073809f46
+This version added the ability to use the `$orig` macro to call the original function, instead of needing to type it out manually.
+```cpp
+class $(EditorUI) {
+	void undoLastAction() {
+		std::cout << "Undo!\n";
+		$orig();
 	}
 };
 ```
