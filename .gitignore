@@ -46,17 +46,11 @@ Projects/
 # Workspace files are user-specific
 *.sublime-workspace
 
-# gen specific generated files
-Source/Cacao/Header.hpp
-Source/Cacao/Interface.hpp
-Source/Cacao/Source.cpp
-
 # I need to find a way to automatically remove this
 Source/Cacao/pkg/uber-apk-signer.jar
 
-# Ignore example build folders
-Examples/*/build
-Examples/build
+# Ignore build folders
+**/build
 
 # Ignore old files
 scripts/
