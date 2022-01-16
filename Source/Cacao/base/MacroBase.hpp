@@ -12,31 +12,12 @@
 #define STR_(...) #__VA_ARGS__
 #define STR(...) STR_(__VA_ARGS__)
 
-#if _WIN32
-    #define CallConv(x) x
-#else
-    #define CallConv(x)
-#endif
-
-#define STACKFIX(a) \
-    constexpr int _sf = a; \
-    __asm add esp, _sf
-
 #if defined(CACAO_DEBUG)
 	#define CacaoDebug(format, ...) CacaoLog(format, ##__VA_ARGS__)
 #else
     #define CacaoDebug(format, ...)
 #endif
 
-/**
- * Get type of a function
- */
-#define getPReturnOf(Class, Function) decltype(std::declval<Class>().Function())
-#define getReturnOf(Class, Function, ...) decltype(std::declval<Class>().Function( __VA_ARGS__ ))
-
-// #define functionOfP(Class, Function, ...) getPReturnOf(Class, Function, __VA_ARGS__) functionOf_(REPEAT0, Class, Function, __VA_ARGS__)
-// #define functionOf(Class, Function, ...) getReturnOf(Class, Function, __VA_ARGS__) functionOf_( GETREPEAT(__VA_ARGS__), Class, Function, __VA_ARGS__ )
-// #define functionOf_(Macro, Class, Function, ...) Class::Function( Macro(PARAMETER, 0, __VA_ARGS__) )
 
 #define NUMBER_OF_ARGS(...) NUMBER_OF_ARGS_(__VA_ARGS__, NUMBER_SEQUENCE(),)
 #define NUMBER_OF_ARGS_(...) NUMBER_OF_ARGS_N(__VA_ARGS__)
@@ -106,82 +87,4 @@ _61,_62,_63,N,...) N
 #define REPEAT18(macro, i, arg, ...) macro(arg, i), REPEAT17(macro, NUMBER_AFTER(i), __VA_ARGS__)
 #define REPEAT19(macro, i, arg, ...) macro(arg, i), REPEAT18(macro, NUMBER_AFTER(i), __VA_ARGS__)
 #define REPEAT20(macro, i, arg, ...) macro(arg, i), REPEAT19(macro, NUMBER_AFTER(i), __VA_ARGS__)
-
-
-
-#define getReturnOf0( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT0( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf1( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT1( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf2( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT2( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf3( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT3( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf4( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT4( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf5( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT5( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf6( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT6( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf7( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT7( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf8( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT8( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf9( Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT9( DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf10(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT10(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf11(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT11(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf12(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT12(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf13(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT13(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf14(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT14(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf15(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT15(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf16(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT16(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf17(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT17(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf18(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT18(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf19(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT19(DECLVAL, 0, __VA_ARGS__)))
-#define getReturnOf20(Class, Function, ...) decltype(std::declval<Class>().Function(REPEAT20(DECLVAL, 0, __VA_ARGS__)))
-
-#define getEvalsOf0(... ) REPEAT0( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf1(... ) REPEAT1( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf2(... ) REPEAT2( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf3(... ) REPEAT3( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf4(... ) REPEAT4( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf5(... ) REPEAT5( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf6(... ) REPEAT6( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf7(... ) REPEAT7( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf8(... ) REPEAT8( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf9(... ) REPEAT9( EVAL, 0, __VA_ARGS__)
-#define getEvalsOf10(...) REPEAT10(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf11(...) REPEAT11(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf12(...) REPEAT12(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf13(...) REPEAT13(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf14(...) REPEAT14(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf15(...) REPEAT15(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf16(...) REPEAT16(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf17(...) REPEAT17(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf18(...) REPEAT18(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf19(...) REPEAT19(EVAL, 0, __VA_ARGS__)
-#define getEvalsOf20(...) REPEAT20(EVAL, 0, __VA_ARGS__)
-
-
-#define setInterfaceTypesOf(Id, Class, Function, Const, Count, ...)                                  \
-using CONCAT(ret, Id) = CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__);                    \
-using CONCAT(mem, Id) = CONCAT(ret, Id)(Class::*)(__VA_ARGS__) Const;                                \
-using CONCAT(der, Id) = CONCAT(ret, Id)(D::*)(__VA_ARGS__) Const;                                    \
-using CONCAT(fun, Id) = CONCAT(ret, Id)(*)(Const Class* ,##__VA_ARGS__);                             \
-
-#define setInterfaceStaticTypesOf(Id, Class, Function, Const, Count, ...)                            \
-using CONCAT(ret, Id) = CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__);                    \
-using CONCAT(mem, Id) = CONCAT(ret, Id)(*)(__VA_ARGS__);                                             \
-using CONCAT(der, Id) = CONCAT(ret, Id)(*)(__VA_ARGS__);                                             \
-using CONCAT(fun, Id) = CONCAT(ret, Id)(*)(__VA_ARGS__);                                             \
-
-#define getOutoflineFunctionOf(Class, Function, Const, Count, ...)             \
-CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Class::Function(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
-
-#define getFunctionOf(Class, Function, Const, Count, ...)             \
-CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Function(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
-
-#define getWrapperOf(Class, Function, Const, Count, ...)             \
-CONCAT(getReturnOf, Count)(Class, Function, __VA_ARGS__) Function##Wrapper(CONCAT(getEvalsOf, Count)(__VA_ARGS__)) Const
-
-// #define setHeaderTypesOf(Id, Class, Function, Convention, Count)                                               \
-// using CONCAT(r, Id) = CONCAT(getReturnOf, Count)(Class, Function, CONCAT(getTypesOf, Count)());                  \
-// using CONCAT(a, Id) = CONCAT(r, Id)(Class::*)(__VA_ARGS__);                                	   \
-
-// #define setHeaderStaticTypesOf(Id, Class, Function, Convention, Count)                                         \
-// using CONCAT(r, Id) = CONCAT(getReturnOf, Count)(Class, Function, CONCAT(getTypesOf, Count)());                  \
-// using CONCAT(f, Id) = CONCAT(r, Id)(CallConv(Convention)*)(CONCAT(getTypesOf, Count)());                         \
-
-
 

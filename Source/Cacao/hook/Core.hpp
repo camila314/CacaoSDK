@@ -86,8 +86,10 @@ namespace Cacao::core {
 		ModContainer(std::string name);
 		virtual ~ModContainer();
 
+	public:
 		void enable();
 		void disable();
+		inline std::string& getName() {return m_name;}
 
 	public:
 		// Registers a write of bytes to the address that is byteCount long

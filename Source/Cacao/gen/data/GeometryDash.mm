@@ -1,3 +1,44 @@
+class AccountHelpLayer : GJDropDownLayer, GJAccountDelegate, FLAlertLayerProtocol {
+	create();
+	doUnlink();
+	exitLayer();
+	onAccountManagement(cocos2d::CCObject*);
+	onReLogin(cocos2d::CCObject*);
+	onUnlink(cocos2d::CCObject*);
+	updatePage();
+	verifyUnlink();
+	virtual void FLAlert_Clicked(FLAlertLayer* ,bool);
+	virtual bool accountStatusChanged(void);
+	virtual void customSetup(void);
+	virtual void layerHidden(void);
+}
+
+class AccountLayer : GJDropDownLayer, GJAccountDelegate, GJAccountBackupDelegate, GJAccountSyncDelegate, FLAlertLayerProtocol {
+	create();
+	createToggleButton(std::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint);
+	doBackup();
+	doSync();
+	exitLayer();
+	hideLoadingUI();
+	onBackup(cocos2d::CCObject*);
+	onHelp(cocos2d::CCObject*);
+	onLogin(cocos2d::CCObject*);
+	onMore(cocos2d::CCObject*);
+	onRegister(cocos2d::CCObject*);
+	onSync(cocos2d::CCObject*);
+	showLoadingUI();
+	toggleUI(bool);
+	updatePage(bool);
+	virtual void FLAlert_Clicked(FLAlertLayer* ,bool);
+	virtual bool accountStatusChanged(void);
+	virtual bool backupAccountFailed(BackupAccountError);
+	virtual bool backupAccountFinished(void);
+	virtual void customSetup(void);
+	virtual void layerHidden(void);
+	virtual bool syncAccountFailed(BackupAccountError);
+	virtual bool syncAccountFinished(void);
+}
+
 class AchievementCell {
 	void loadFromDict(cocos2d::CCDictionary*) = 0x10eaa0;
 }
@@ -22,7 +63,7 @@ class AnimatedGameObject {
 	void updateChildSpriteColor(cocos2d::_ccColor3B) = 0xc8450;
 }
 
-class AppDelegate {
+class AppDelegate : cocos2d::CCObject {
 	void bgScale() = 0x3aaab0;
 	virtual bool applicationDidFinishLaunching() = 0x3aa900;
 	virtual void applicationDidEnterBackground() = 0x3aabe0;
@@ -33,7 +74,8 @@ class AppDelegate {
 	virtual void willSwitchToScene(cocos2d::CCScene*) = 0x3aaf40;
 	static AppDelegate* get() = 0x3aab10;
 
-	cocos2d::CCScene* m_runningScene = 0x28;
+	void* m_pad;
+	cocos2d::CCScene* m_runningScene;
 }
 
 class ArtistCell : TableViewCell {
@@ -472,6 +514,37 @@ class GameToolbox {
 	static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, cocos2d::CCArray*) = 0x0;
 	[[mangle('_ZN11GameToolbox18createToggleButtonESsMN7cocos2d8CCObjectEFvPS1_EbPNS0_6CCMenuENS0_7CCPointEPNS0_6CCNodeES9_fffS7_PKcbiPNS0_7CCArrayE')]]
 	static CCMenuItemToggler createToggleButton(gd::string, cocos2d::SEL_MenuHandler, bool, cocos2d::CCMenu*, cocos2d::CCPoint, cocos2d::CCNode*, cocos2d::CCNode*, float, float, float, cocos2d::CCPoint, char const*, bool, int, cocos2d::CCArray*) = 0x0;
+}
+
+class GJAccountBackupDelegate {
+	inline virtual bool backupAccountFailed(BackupAccountError) {
+		return false;
+	}
+	inline virtual bool backupAccountFinished(void) {
+		return false;
+	}
+}
+class GJAccountDelegate {
+	inline virtual bool accountStatusChanged(void) {
+		return false;
+	}
+}
+class GJAccountLoginDelegate {
+	inline virtual bool loginAccountFailed(AccountError) {
+		return false;
+	}
+	inline virtual bool loginAccountFinished(int,int) {
+		return false;
+	}
+}
+
+class GJAccountSyncDelegate {
+	inline virtual bool syncAccountFailed(BackupAccountError) {
+		return false;
+	}
+	inline virtual bool syncAccountFinished(void) {
+		return false;
+	}
 }
 
 class GJRotationControl : cocos2d::CCLayer {
@@ -1297,7 +1370,10 @@ class MenuLayer : cocos2d::CCLayer, FLAlertLayerProtocol {
 	virtual void keyDown(cocos2d::enumKeyCodes) =           0x1d33d0, 0x1922c0;
 	virtual void googlePlaySignedIn() =                     0x1d2f30;
 	virtual void FLAlert_Clicked(FLAlertLayer*, bool) =     0x1d3190;
+}
 
+class MenuLayer : cocos2d::CCLayer, FLAlertLayerProtocol {
+	onGarage(cocos2d::CCObject*);
     void onMoreGames(cocos2d::CCObject*) =                  0x1d2ad0, 0x1919c0, 0x19fbb4;
     void onQuit(cocos2d::CCObject*) =                       0x1d2b40;
     static cocos2d::CCScene* scene(bool) =                  0x1d12d0, 0x190720;

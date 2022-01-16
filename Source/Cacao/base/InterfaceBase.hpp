@@ -43,18 +43,18 @@ struct container_t {
  	T field;
 };
 
-template<typename T, template<typename> typename A1, typename A2>
-T& operator->*(A1<A2>* self, member_t<T>& member) {
+template<typename T, typename A>
+T& operator->*(A* self, member_t<T>& member) {
 	// this replaces the destructor in the vtable
 	// only done this way to be performant
-	auto& dtor = 2[*(size_t**)self]; // i love this
-	if (A1<A2>::originalDestructor == 0) {
-		A1<A2>::originalDestructor = dtor;
-		dtor = (size_t)&A1<A2>::fieldCleanup;
+	if (A::originalDestructor == 0) {
+		auto& dtor = 2[*(size_t**)self]; // i love this
+		A::originalDestructor = dtor;
+		dtor = (size_t)&A::fieldCleanup;
 	}
 
 	// gets the respective field
-	container_t<>*& field = A1<A2>::fields[(size_t)&member];
+	container_t<>*& field = A::fields[(size_t)&member];
 	// create the container on first use
 	if (!field) field = reinterpret_cast<container_t<>*>(new container_t<T>());
 	return reinterpret_cast<container_t<T>*>(field)->field;

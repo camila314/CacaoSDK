@@ -378,8 +378,8 @@ namespace gd {
 	struct _bit_iterator {
 		uintptr_t* m_bitptr;
 		unsigned int m_offset;
-		_bit_iterator(uintptr_t* x) : m_offset(0), m_bitptr(x) {}
-		_bit_iterator(uintptr_t* x, unsigned o) : m_offset(o), m_bitptr(x) {}
+		_bit_iterator(uintptr_t* x) : m_bitptr(x), m_offset(0) {}
+		_bit_iterator(uintptr_t* x, unsigned o) : m_bitptr(x), m_offset(o) {}
 		_bit_reference operator*() const { 
 			return _bit_reference(m_bitptr, 1UL << m_offset); 
 		}

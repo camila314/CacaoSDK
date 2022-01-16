@@ -68,6 +68,7 @@ int main(int argc, char** argv) {
    	for (auto& cp : ordered) {
    		auto& cd = *cp;
 
+
         output += fmt::format(format_strings::class_start,
             fmt::arg("class_name", cd.name),
             fmt::arg("base_classes", CacShare::formatBases(cd.superclasses))
@@ -103,7 +104,7 @@ int main(int argc, char** argv) {
         	else used_format = format_strings::member_definition;
         	output += fmt::format(used_format,
                 fmt::arg("type", m.type),
-                fmt::arg("member_name", m.name),
+                fmt::arg("member_name", m.name.substr(m.hardcode ? 2 : 0, m.name.size())),
                 fmt::arg("hardcode", CacShare::getHardcode(m)),
                 fmt::arg("array", CacShare::getArray(m.count)) //why is this not tied to member
             );
