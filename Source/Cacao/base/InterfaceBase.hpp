@@ -43,23 +43,24 @@ struct container_t {
  	T field;
 };
 
-template<typename T, template<typename> typename A1, typename A2>
-T& operator->*(A1<A2>* self, field_t<T>& member) {
+template<typename T, auto O, template<typename, auto> typename A1, typename A2>
+T& operator->*(A1<A2, O>* self, field_t<T>& member) {
 	// this replaces the destructor in the vtable
 	// only done this way to be performant
 	auto& dtor = 2[*(size_t**)self]; // i love this
-	if (A1<A2>::originalDestructor == 0) {
-		A1<A2>::originalDestructor = dtor;
-		dtor = (size_t)&A1<A2>::fieldCleanup;
+	if (A1<A2, O>::originalDestructor == 0) {
+		A1<A2, O>::originalDestructor = dtor;
+		dtor = (size_t)&A1<A2, O>::fieldCleanup;
 	}
 
 	// gets the respective field
-	container_t<>*& field = A1<A2>::fields[(size_t)&member];
+	container_t<>*& field = A1<A2, O>::fields[(size_t)&member];
 	// create the container on first use
 	if (!field) field = reinterpret_cast<container_t<>*>(new container_t<T>());
 	return reinterpret_cast<container_t<T>*>(field)->field;
 }
 
+template <typename t=void, auto orig = 0> class __unitSpec{};
 
 class InterfaceBase {
 public:
@@ -101,10 +102,9 @@ inline T base_cast(F obj) {
  * I am bad at this stuff
  */
 
-
-#define PREDECLARE(derived) derived##__; template<typename T> struct _##derived {};
-#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<_##derived<derived##Unique> >::_apply();  }
-#define DECLARE(base, derived) using derived = _##derived<derived##Unique>; template<> struct hidden _##derived<derived##Unique>: public base<_##derived<derived##Unique> >
+#define PREDECLARE(derived) derived##__; template<typename T, auto _orig> struct _##derived {};
+#define APPLY(base, derived) namespace { struct derived##UUID{}; bool derived##Apply = base<derived##UUID, _##derived>::_apply();  }
+#define DECLARE(base, derived) using derived = _##derived<derived##UUID, 0>; template <auto _orig> struct hidden _##derived<derived##UUID, _orig>: public base<derived##UUID, _##derived>
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
 #define REDIRECT__(base, derived) REDIRECT___(Cacao::interfaces::$##base, derived)
@@ -122,7 +122,7 @@ inline T base_cast(F obj) {
  */
 #define $redirect(base) REDIRECT(base)
 #define $implement(base, derived) REDIRECT__(base, derived)
-
+#define $orig(...) (*this.*_orig)(__VA_ARGS__)
 /**
  * Or just use this lol
  */
