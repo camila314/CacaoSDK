@@ -21,59 +21,58 @@ inline auto& modContainer = ModInterface::container(STR(PROJECT_NAME));
 
 template<typename T>
 struct field_t {
-	template<typename Q>
-	void operator=(Q) {
-		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
-	}
+    template<typename Q>
+    void operator=(Q) {
+        static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
+    }
 
-	void operator->() {
-		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
-	}
+    void operator->() {
+        static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
+    }
 
-	void operator*() {
-		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
-	} 
+    void operator*() {
+        static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
+    } 
 };
 
 template<typename T = void*>
 struct container_t {
-	virtual ~container_t() {
-		field.~T();
-	}
- 	T field;
+    virtual ~container_t() {
+        field.~T();
+    }
+    T field;
 };
 
-template<typename T, typename A>
+template <typename T, typename A>
 T& operator->*(A* self, field_t<T>& member) {
-	// this replaces the destructor in the vtable
-	// only done this way to be performant
-	if (A::originalDestructor == 0) {
-		auto& dtor = 2[*(size_t**)self]; // i love this
-		A::originalDestructor = dtor;
-		dtor = (size_t)&A::fieldCleanup;
-	}
+    // this replaces the destructor in the vtable
+    // only done this way to be performant
+    if (A::originalDestructor == 0) {
+        auto& dtor = 2[*(size_t**)self]; // i love this
+        A::originalDestructor = dtor;
+        dtor = (size_t)&A::fieldCleanup;
+    }
 
-	// gets the respective field
-	container_t<>*& field = A::fields[(size_t)&member];
-	// create the container on first use
-	if (!field) field = reinterpret_cast<container_t<>*>(new container_t<T>());
-	return reinterpret_cast<container_t<T>*>(field)->field;
+    // gets the respective field
+    container_t<>*& field = A::fields[(size_t)&member];
+    // create the container on first use
+    if (!field) field = reinterpret_cast<container_t<>*>(new container_t<T>());
+    return reinterpret_cast<container_t<T>*>(field)->field;
 }
 
-template <typename t=void, auto orig = 0> class __unitSpec{};
+template <typename t = void, auto orig = 0>
+class __unitSpec {};
 
 class InterfaceBase {
-public:
-	void _apply() {}
-	static void fieldCleanup(size_t self) {}
+  public:
+    void _apply() {}
+    static void fieldCleanup(size_t self) {}
 };
-
 
 template <typename T, typename F>
 inline T base_cast(F obj) {
-	return static_cast<T>(dynamic_cast<void*>(obj));
+    return static_cast<T>(dynamic_cast<void*>(obj));
 }
-
 
 /**
  * Basic way to make a main function without it being a main
@@ -131,10 +130,10 @@ inline T base_cast(F obj) {
 #define $(...) CONCAT(CRTP, NUMBER_OF_ARGS(__VA_ARGS__))(__VA_ARGS__)
 
 namespace Cacao {
-	using namespace cocos2d;
-	using namespace cocos2d::extension;
-	using std::declval;
-	struct interfaces { // i find this really funny
-	    #include <Interface.hpp>
-	};
+    using namespace cocos2d;
+    using namespace cocos2d::extension;
+    using std::declval;
+    struct interfaces { // i find this really funny
+        #include <Interface.hpp>
+    };
 }

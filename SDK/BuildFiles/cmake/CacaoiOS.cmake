@@ -5,18 +5,18 @@ set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fms-extensions -Xlinker --no-demangle -Wn
 set(CMAKE_SYSTEM_NAME iOS)
 set(CMAKE_OSX_SYSROOT ${CACAO_IOS_SDK})
 
-include_directories(
+target_include_directories(${PROJECT_NAME} PUBLIC
 	Cacao/api
-	Cacao/cocos/cocos2dx/platform/ios
-	Cacao/cocos/cocos2dx/platform/third_party/ios
-	Cacao/cocos/cocos2dx/platform/third_party/ios/OGLES
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/platform/ios
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/platform/third_party/ios
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/platform/third_party/ios/OGLES
 )
 
 set(PACKAGE_DIR ${CMAKE_CURRENT_BINARY_DIR}/ios_package)
 set(OUT_FILE "${PROJECT_NAME}_${CMAKE_PROJECT_VERSION}-3+release_iphoneos-arm64.deb")
 
 add_custom_command(
-	COMMAND python3 ${Cacao_SOURCE_DIR}/pkg/iOS.py "${PACKAGE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dylib" "${PROJECT_NAME}" "${CMAKE_CURRENT_SOURCE_DIR}/control" "${OUT_FILE}"
+	COMMAND python3 ${CMAKE_SOUCE_DIR}/Cacao/BuildFiles/pkg/iOS.py "${PACKAGE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dylib" "${PROJECT_NAME}" "${CMAKE_CURRENT_SOURCE_DIR}/control" "${OUT_FILE}"
 	DEPENDS ${CACAO_IOS_CONTROL}
 	OUTPUT  ${PACKAGE_DIR}/_
 	COMMENT "Packaging ${PROJECT_NAME}"

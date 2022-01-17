@@ -36,7 +36,8 @@ struct CacShare {
             platform = kIos;
         else if (strcmp(p, "Android") == 0)
             platform = kAndroid;
-        else cacerr("Invalid platform %s\n", p);
+        else
+            cacerr("Invalid platform %s\n", p);
 
         chdir(argv[2]);
         stringstream s;

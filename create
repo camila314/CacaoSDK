@@ -30,7 +30,7 @@ fix_link() {
 	if [ -L "$copypath/Cacao" ]; then
 		rm "$copypath/Cacao"
 	fi
-	relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/Source/Cacao', '$copypath'))"`
+	relpath=`python -c "import os.path; print(os.path.relpath('$srcpath/SDK', '$copypath'))"`
 	cd "$copypath"
 	ln -s $relpath Cacao
 }

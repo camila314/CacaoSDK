@@ -17,7 +17,7 @@ macro(add_gen project file)
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 		COMMENT "Run ${project}Gen"
 	)
-	add_dependencies(Cacao ${project}Run)
+	add_dependencies(${CMAKE_PROJECT_NAME} ${project}Run)
 endmacro()
 
 

@@ -1,19 +1,19 @@
 [submodule "Source/Cacao/hook/lilac-core"]
-	path = Source/Cacao/hook/lilac-core
+	path = SDK/Include/hook/lilac-core
 	url = https://github.com/altalk23/lilac-core
     
-[submodule "Source/Cacao/cocos"]
-	path = Source/Cacao/cocos
+[submodule "SDK/Include/cocos"]
+	path = SDK/Include/cocos
 	url = https://github.com/altalk23/cocos-headers
 
-[submodule "Source/Cacao/gen/Broma"]
-	path = Source/Cacao/gen/Broma
+[submodule "SDK/BuildFiles/gen/Broma"]
+	path = SDK/BuildFiles/gen/Broma
 	url = https://github.com/camila314/Broma
 
-[submodule "Source/Cacao/gen/fmt"]
-	path = Source/Cacao/gen/fmt
+[submodule "SDK/BuildFiles/gen/fmt"]
+	path = SDK/BuildFiles/gen/fmt
 	url = https://github.com/fmtlib/fmt
 	
-[submodule "Source/Cacao/hook/lilac-meta"]
-	path = Source/Cacao/hook/lilac-meta
+[submodule "SDK/Include/hook/lilac-meta"]
+	path = SDK/Include/hook/lilac-meta
 	url = https://github.com/altalk23/lilac-meta

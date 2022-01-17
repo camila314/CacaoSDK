@@ -4,10 +4,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-
-set(CACAO_CODEGEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/Gen)
-file(MAKE_DIRECTORY ${CACAO_CODEGEN_DIR})
-
 if (NOT DEFINED CACAO_TARGET_PLATFORM)
 	if(APPLE)
 		set(CACAO_TARGET_PLATFORM "MacOS")
@@ -18,8 +14,18 @@ if (NOT DEFINED CACAO_TARGET_PLATFORM)
 	endif()
 endif()
 
+set(CACAO_CODEGEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/Gen)
+
+file(MAKE_DIRECTORY ${CACAO_CODEGEN_DIR})
+set(CACAO_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/Cacao/Include)
+
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+	set(SOURCE_FILES ${SOURCE_FILES} ${CMAKE_SOURCE_DIR}/Cacao/Source/Cacao.cpp ${CMAKE_SOURCE_DIR}/Cacao/Source/HandlerFixes.cpp)
+endif()
+
 if (DEFINED SOURCE_FILES)
-	add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+	file(WRITE ${CACAO_CODEGEN_DIR}/Source.cpp "// this text shouldn't be visible") 
+	add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} 	${CACAO_CODEGEN_DIR}/Source.cpp)
 else()
 	message(FATAL_ERROR "Please set SOURCE_FILES in the root CMake file.")
 endif()
@@ -36,46 +42,30 @@ else()
 	message(FATAL_ERROR "Not supported platform, please specify from the following: MacOS, Win32, iOS, Android.")
 endif()
 
+add_subdirectory(${CMAKE_SOURCE_DIR}/Cacao/BuildFiles/gen)
+
 target_compile_definitions(${PROJECT_NAME}
 	PRIVATE -DPROJECT_NAME=${PROJECT_NAME}
 	# PRIVATE "-D__FILENAME__='\"$(subst${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'"
 )
 
-
-file(WRITE ${CACAO_CODEGEN_DIR}/Source.cpp "// this text shouldn't be visible") 
-
-set(CACAO_SOURCES
-	${CACAO_CODEGEN_DIR}/Source.cpp
-	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
-)
-
-if("${CACAO_TARGET_PLATFORM}" STREQUAL "MacOS")
-	set(CACAO_FIX_SOURCES
-		${Cacao_SOURCE_DIR}/helpers/HandlerFixes.cpp
-	)
-else()
-	set(CACAO_FIX_SOURCES )
-endif()
-
-include_directories(
+target_include_directories(${PROJECT_NAME} PUBLIC
 	${CACAO_CODEGEN_DIR}/
-	${Cacao_SOURCE_DIR}/
-	${Cacao_SOURCE_DIR}/helpers
-	${Cacao_SOURCE_DIR}/base
-	${Cacao_SOURCE_DIR}/old_stl
-	${Cacao_SOURCE_DIR}/hook
-	${Cacao_SOURCE_DIR}/hook/lilac-core/include
-	${Cacao_SOURCE_DIR}/cocos/
-	${Cacao_SOURCE_DIR}/cocos/cocos2dx
-	${Cacao_SOURCE_DIR}/cocos/cocos2dx/include
-	${Cacao_SOURCE_DIR}/cocos/cocos2dx/kazmath/include
-	${Cacao_SOURCE_DIR}/cocos/extensions
-	${Cacao_SOURCE_DIR}/fmod
-	${Cacao_SOURCE_DIR}/gen/fmt/include
+	${CACAO_INCLUDE_DIR}/
+	${CACAO_INCLUDE_DIR}/helpers
+	${CACAO_INCLUDE_DIR}/base
+	${CACAO_INCLUDE_DIR}/old_stl
+	${CACAO_INCLUDE_DIR}/hook
+	${CACAO_INCLUDE_DIR}/hook/lilac-core/include
+	${CACAO_INCLUDE_DIR}/cocos/
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/include
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/kazmath/include
+	${CACAO_INCLUDE_DIR}/cocos/extensions
+	${CACAO_INCLUDE_DIR}/fmod
+	${CACAO_INCLUDE_DIR}/gen/fmt/include
 	${INCLUDE_DIRECTORIES}
 )
-
-add_subdirectory(Cacao)
 
 target_link_directories(${PROJECT_NAME} 
 	PRIVATE Cacao
@@ -86,12 +76,3 @@ target_link_libraries(${PROJECT_NAME}
 	fmt
 	${LINK_LIBRARIES}
 )
-
-# basically
-# https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean
-# get the naame of first prereq
-# then replace non identifier chars with empty
-# todo: replace space too
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__FILE_IDENTIFIER__='$(subst .,,$(subst /,,$(subst \\,,$<)))' ")
-
-
