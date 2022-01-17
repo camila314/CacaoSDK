@@ -82,6 +82,10 @@ namespace Cacao {
 
 	CCMenuItemToggler* createToggler(CCObject* parent, SEL_MenuHandler callback);
 
+	class SubclassLayer : public CCLayerColor {
+
+	};
+
 	// class FLDialogHelper;
 
 	// class FLDialogDelegate {
