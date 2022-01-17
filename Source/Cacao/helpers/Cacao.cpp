@@ -66,7 +66,16 @@ CCMenuItemToggler* createToggler(CCObject* parent, SEL_MenuHandler callback) {
 	return CCMenuItemToggler::create(off, on, parent, callback);
 }
 
+CCPoint touchToView(CCPoint p) {
+	auto bar = cocos2d::CCDirector::sharedDirector()->getWinSize()/2;
+	p = p - bar;
 
+	Cacao::printGeometry(p);
+	Cacao::printGeometry(bar);
+	printf("----\n");
+
+    return ccp(p.x, -p.y);
+}
 
 // void FLDialogDelegate::onSubmit(FLDialogHelper* dl, const std::string& text) {dl->close();}
 // void FLDialogDelegate::onCancel(FLDialogHelper* dl) {dl->close();}

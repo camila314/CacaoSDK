@@ -42,8 +42,10 @@ target_compile_definitions(${PROJECT_NAME}
 )
 
 
+file(WRITE ${CACAO_CODEGEN_DIR}/Source.cpp "// this text shouldn't be visible") 
+
 set(CACAO_SOURCES
-	${CACAO_CODEGEN_DIR}/Source.cpp 
+	${CACAO_CODEGEN_DIR}/Source.cpp
 	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
 )
 
