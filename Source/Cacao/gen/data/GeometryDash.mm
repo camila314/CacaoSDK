@@ -487,6 +487,25 @@ class FLAlertLayer : cocos2d::CCLayerColor {
         return FLAlertLayer::create(nullptr, title, desc, btn, nullptr, 300.0);
     };
 
+    inline FLAlertLayer() {
+    	m_buttonMenu = nullptr;
+		m_controlConnected = -1;
+		m_mainLayer = nullptr;
+		m_ZOrder = 0;
+		m_noElasticity = false;
+		m_reverseKeyBack = false;
+		m_scene = nullptr;
+		m_alertProtocol = nullptr;
+		m_scrollingLayer = nullptr;
+		m_button2 = nullptr;
+		m_button1 = nullptr;
+		m_joystickConnected = -1;
+		m_containsBorder = 0;
+    }
+
+    void onBtn1(cocos2d::CCObject*) = 0x25ec20;
+    void onBtn2(cocos2d::CCObject*) = 0x25ec80;
+
     cocos2d::CCMenu* m_buttonMenu;                      // 0x1f8
     int m_controlConnected;                             // 0x200
     FLAlertLayerProtocol* m_alertProtocol;              // 0x208
@@ -1445,8 +1464,9 @@ class PauseLayer : FLAlertLayer {
 }
 
 class PlatformToolbox {
-	void hideCursor() = 0x27c340;
-	void showCursor() = 0x27c360;
+	static void hideCursor() = 0x27c340;
+	static void showCursor() = 0x27c360;
+	static bool isControllerConnected() = 0x27d1b0;
 }
 
 class PlayLayer : GJBaseGameLayer, CCCircleWaveDelegate {

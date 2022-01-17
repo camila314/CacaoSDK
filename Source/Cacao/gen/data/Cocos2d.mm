@@ -741,11 +741,13 @@ class cocos2d::CCTintTo {
 class cocos2d::CCTouch {
 	auto getDelta() const = 0x38340;
 	auto getLocationInView() const = 0x38250;
+	auto getPreviousLocationInView() const = 0x38270;
 }
 
 class cocos2d::CCTouchDispatcher {
 	auto decrementForcePrio(int) = 0x280f70;
 	auto incrementForcePrio(int) = 0x280f60;
+	auto addTargetedDelegate(CCTouchDelegate *, int, bool) = 0x281180;
 }
 
 class cocos2d::CCTouchHandler {
