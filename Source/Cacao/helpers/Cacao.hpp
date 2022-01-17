@@ -77,6 +77,7 @@ namespace Cacao {
 	CCPoint anchorPosition(double x, double y, double ax, double ay);
 	CCPoint relativePosition(double x, double y);
 	CCPoint addedPosition(double x, double y);
+	CCPoint touchToView(CCPoint x);
 	CCSprite* spriteFromPng(unsigned char* img, int img_len);
 
 	CCMenuItemToggler* createToggler(CCObject* parent, SEL_MenuHandler callback);
