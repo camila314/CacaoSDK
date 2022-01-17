@@ -469,7 +469,7 @@ class FLAlertLayer : cocos2d::CCLayerColor {
     virtual void onEnter() =                                                0x25f350;
     virtual bool ccTouchBegan(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ee40;
     virtual void ccTouchMoved(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25f0a0;
-    //virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ef60;
+    virtual void ccTouchEnded(cocos2d::CCTouch*, cocos2d::CCEvent*) =       0x25ef60; //no
     virtual void ccTouchCancelled(cocos2d::CCTouch*, cocos2d::CCEvent*) =   0x25f020;
     virtual void registerWithTouchDispatcher() =                            0x25f2e0;
     virtual void keyBackClicked() =                                         0x25ed90;
