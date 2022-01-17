@@ -17,6 +17,10 @@
 					"shell_cmd": "make -j4 rebuild_cache",
 				},
 				{
+					"name": "Cackit",
+					"shell_cmd": "make -j4 Cackit",
+				},
+				{
 					"name": "CacTemplate",
 					"shell_cmd": "make -j4 CacTemplate",
 				},

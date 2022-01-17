@@ -15,23 +15,23 @@
 #include <unordered_map>
 
 #include <type_traits>
+ 
 
-
-#define modContainer (ModInterface::container(STR(PROJECT_NAME)))
+inline auto& modContainer = ModInterface::container(STR(PROJECT_NAME));
 
 template<typename T>
-struct member_t {
+struct field_t {
 	template<typename Q>
 	void operator=(Q) {
-		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
 	}
 
 	void operator->() {
-		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
 	}
 
 	void operator*() {
-		static_assert(!std::is_same_v<T, T>, "member_t shouldn't be used directly. it should be used with this->*myMember.");
+		static_assert(!std::is_same_v<T, T>, "field_t shouldn't be used directly. it should be used with this->*myMember.");
 	} 
 };
 
@@ -44,7 +44,7 @@ struct container_t {
 };
 
 template<typename T, typename A>
-T& operator->*(A* self, member_t<T>& member) {
+T& operator->*(A* self, field_t<T>& member) {
 	// this replaces the destructor in the vtable
 	// only done this way to be performant
 	if (A::originalDestructor == 0) {
@@ -60,6 +60,7 @@ T& operator->*(A* self, member_t<T>& member) {
 	return reinterpret_cast<container_t<T>*>(field)->field;
 }
 
+template <typename t=void, auto orig = 0> class __unitSpec{};
 
 class InterfaceBase {
 public:
@@ -101,10 +102,9 @@ inline T base_cast(F obj) {
  * I am bad at this stuff
  */
 
-
-#define PREDECLARE(derived) derived##__; template<typename T> struct _##derived {};
-#define APPLY(base, derived) namespace { struct derived##Unique {}; bool derived##Apply = base<_##derived<derived##Unique> >::_apply();  }
-#define DECLARE(base, derived) using derived = _##derived<derived##Unique>; template<> struct hidden _##derived<derived##Unique>: public base<_##derived<derived##Unique> >
+#define PREDECLARE(derived) derived##__; template<typename T, auto _orig> struct _##derived {};
+#define APPLY(base, derived) namespace { struct derived##UUID{}; bool derived##Apply = base<derived##UUID, _##derived>::_apply();  }
+#define DECLARE(base, derived) using derived = _##derived<derived##UUID, 0>; template <auto _orig> struct hidden _##derived<derived##UUID, _orig>: public base<derived##UUID, _##derived>
 
 #define REDIRECT___(base, derived) PREDECLARE(derived) APPLY(base, derived) DECLARE(base, derived)
 #define REDIRECT__(base, derived) REDIRECT___(Cacao::interfaces::$##base, derived)
@@ -122,7 +122,7 @@ inline T base_cast(F obj) {
  */
 #define $redirect(base) REDIRECT(base)
 #define $implement(base, derived) REDIRECT__(base, derived)
-
+#define $orig(...) (*this.*_orig)(__VA_ARGS__)
 /**
  * Or just use this lol
  */

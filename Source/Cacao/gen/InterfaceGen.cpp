@@ -4,7 +4,7 @@
 namespace format_strings {
     // requires: class_name
     char const* interface_start = R"CAC(
-template<class D = void>
+template<typename U=void, template <typename T, auto orig> class D = __unitSpec>
 struct ${class_name} : {class_name}, InterfaceBase {{
     ${class_name}(const ${class_name}& c) : {class_name}(c) {{}}
     ${class_name}() = delete;
@@ -13,7 +13,7 @@ struct ${class_name} : {class_name}, InterfaceBase {{
     static inline size_t originalDestructor;
     static void fieldCleanup(size_t self) {{
     	const size_t begin = self + sizeof(${class_name});
-    	const size_t end = self + sizeof(D);
+    	const size_t end = self + sizeof(D<U, 0>);
     	for (size_t i = begin; i < end; ++i) {{
     		if (fields.find(i) != fields.end()) {{
     			delete fields.at(i);
@@ -77,17 +77,24 @@ struct ${class_name} : {class_name}, InterfaceBase {{
     char const* apply_start = R"CAC(
     static bool _apply() {
 )CAC";
-
     // requires: index, class_name, arg_types, function_name, raw_arg_types, non_virtual
     char const* apply_function_member = R"CAC(
-        if ((ret{index}(${class_name}::*)({raw_arg_types}))(&${class_name}::{function_name}) != (ret{index}(D::*)({raw_arg_types}))(&D::{function_name})) {{
-            modContainer.registerHookEnable(address{index}, FunctionScrapper::addressOf{non_virtual}Virtual((ret{index}(D::*)({raw_arg_types}))(&D::{function_name})));
+    	using baseType{index} = ret{index}(${class_name}::*)({raw_arg_types}) {const};
+		constexpr auto baseAddress{index} = (baseType{index})(&${class_name}::{function_name});
+		using derivedType{index} = ret{index}(D<U, baseAddress{index}>::*)({raw_arg_types}) {const};
+		constexpr auto derivedAddress{index} = (derivedType{index})(&D<U, baseAddress{index}>::{function_name});
+        if (baseAddress{index} != derivedAddress{index}) {{
+            modContainer.registerHookEnable(address{index}, FunctionScrapper::addressOf{non_virtual}Virtual(derivedAddress{index}));
         }}
 )CAC";
 
 	char const* apply_function_static = R"CAC(
-        if ((ret{index}(*)({raw_arg_types}))(&${class_name}::{function_name}) != (ret{index}(*)({raw_arg_types}))(&D::{function_name})) {{
-            modContainer.registerHookEnable(address{index}, FunctionScrapper::addressOfNonVirtual((ret{index}(*)({raw_arg_types}))(&D::{function_name})));
+		using baseType{index} = ret{index}(*)({raw_arg_types});
+		constexpr auto baseAddress{index} = (baseType{index})(&${class_name}::{function_name});
+		using derivedType{index} = ret{index}(*)({raw_arg_types});
+		constexpr auto derivedAddress{index} = (derivedType{index})(&D<U, baseAddress{index}>::{function_name});
+        if (baseAddress{index} != derivedAddress{index}) {{
+            modContainer.registerHookEnable(address{index}, FunctionScrapper::addressOfNonVirtual(derivedAddress{index}));
         }}
 )CAC";
 
@@ -175,7 +182,8 @@ int main(int argc, char** argv) {
                 fmt::arg("arg_types", CacShare::formatArgTypes(f.args)),
                 fmt::arg("function_name", f.name),
                 fmt::arg("raw_arg_types", CacShare::formatRawArgTypes(f.args)),
-                fmt::arg("non_virtual", f.function_type == kVirtualFunction ? "" : "Non")
+                fmt::arg("non_virtual", f.function_type == kVirtualFunction ? "" : "Non"),
+                fmt::arg("const", f.is_const ? "const " : "")
             );
         }
 

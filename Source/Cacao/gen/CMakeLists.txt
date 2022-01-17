@@ -13,7 +13,7 @@ macro(add_gen project file)
 		${CMAKE_CURRENT_SOURCE_DIR}/fmt/include
 	)
 	add_custom_target(${project}Run
-		COMMAND ${project}Gen ${CACAO_TARGET_PLATFORM} "${CMAKE_CURRENT_SOURCE_DIR}/data" "${Cacao_SOURCE_DIR}/${file}"
+		COMMAND ${project}Gen ${CACAO_TARGET_PLATFORM} "${CMAKE_CURRENT_SOURCE_DIR}/data" "${CACAO_CODEGEN_DIR}/${file}"
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 		COMMENT "Run ${project}Gen"
 	)

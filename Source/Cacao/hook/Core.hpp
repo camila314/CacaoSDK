@@ -82,11 +82,11 @@ namespace Cacao::core {
 		std::string m_name;
 		ModObject* m_object;
 
-	protected:
 		ModContainer(std::string name);
+		
+	public:
 		virtual ~ModContainer();
 
-	public:
 		void enable();
 		void disable();
 		inline std::string& getName() {return m_name;}

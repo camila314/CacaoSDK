@@ -531,12 +531,12 @@ class cocos2d::CCObject {
     auto autorelease() = 0x250ed0;
     auto canEncode() = 0x250f90, , 0x43a24;
     auto encodeWithCoder(DS_Dictionary*) = 0x250f70, , 0x43a18;
-    auto getTag() const = 0x250f50, , 0x43a08;
+    virtual auto getTag() const = 0x250f50, , 0x43a08;
     auto isEqual(cocos2d::CCObject const*) = 0x250f20, , 0x439e4;
     auto release() = 0x250ea0;
     auto retain() = 0x250ec0;
-    auto setTag(int) = 0x250f60, , 0x43a10;
-    ~CCObject() = 0x250d90, , 0x6ac0;
+    virtual auto setTag(int) = 0x250f60, , 0x43a10;
+    ~CCObject() = 0x250d20, , 0x6ac0;
 }
 
 class cocos2d::CCParticleSystem {
