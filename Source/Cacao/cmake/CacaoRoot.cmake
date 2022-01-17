@@ -42,9 +42,6 @@ target_compile_definitions(${PROJECT_NAME}
 	# PRIVATE "-D__FILENAME__='\"$(subst${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'"
 )
 
-
-file(WRITE ${CACAO_CODEGEN_DIR}/Source.cpp "// this text shouldn't be visible") 
-
 set(CACAO_SOURCES
 	${CACAO_CODEGEN_DIR}/Source.cpp
 	${Cacao_SOURCE_DIR}/helpers/Cacao.cpp
