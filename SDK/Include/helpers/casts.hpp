@@ -17,7 +17,7 @@ namespace lilac::cast {
      */
     template<typename R, typename T>
     static constexpr R union_cast(T v) {
-        static_assert(sizeof T == sizeof R, "union_cast: R and T don't match in size!");
+        static_assert(sizeof(T) == sizeof(R), "union_cast: R and T don't match in size!");
         constexpr union {
             R r;
             T t;

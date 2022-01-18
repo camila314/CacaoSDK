@@ -26,7 +26,7 @@
 //
 //---------------------------------------------------------------------------------------
 // fs_std_fwd.hpp - The forwarding header for the header/implementation seperated usage of
-//                  ghc::filesystem that uses std::filesystem if it detects it.
+//                  ghc::filesystem that uses ghc::filesystem if it detects it.
 // This file can be include at any place, where fs::filesystem api is needed while
 // not bleeding implementation details (e.g. system includes) into the global namespace,
 // as long as one cpp includes fs_std_impl.hpp to deliver the matching implementations.
@@ -41,7 +41,7 @@
 #define GHC_USE_STD_FS
 #include <filesystem>
 namespace fs {
-using namespace std::filesystem;
+using namespace ghc::filesystem;
 using ifstream = std::ifstream;
 using ofstream = std::ofstream;
 using fstream = std::fstream;

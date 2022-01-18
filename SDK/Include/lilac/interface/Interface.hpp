@@ -2,6 +2,8 @@
 
 #include "Macros.hpp"
 #include "Types.hpp"
+#include <vector>
+#include <helpers/Result.hpp>
 
 namespace lilac {
 	class Mod;

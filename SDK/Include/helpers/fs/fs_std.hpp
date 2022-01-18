@@ -25,7 +25,7 @@
 // SOFTWARE.
 //
 //---------------------------------------------------------------------------------------
-// fs_std.hpp - The dynamic switching header that includes std::filesystem if detected
+// fs_std.hpp - The dynamic switching header that includes ghc::filesystem if detected
 //              or ghc::filesystem if not, and makes the resulting API available in the
 //              namespace fs.
 //---------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 #define GHC_USE_STD_FS
 #include <filesystem>
 namespace fs {
-using namespace std::filesystem;
+using namespace ghc::filesystem;
 using ifstream = std::ifstream;
 using ofstream = std::ofstream;
 using fstream = std::fstream;
