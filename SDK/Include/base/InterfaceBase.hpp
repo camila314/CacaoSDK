@@ -9,15 +9,30 @@
 
 #include <Header.hpp>
 #include <Cacao.hpp>
-#include <Core.hpp>
+#include <lilac-interface.hpp>
 
 #include <FunctionBase.hpp>
 #include <unordered_map>
 
 #include <type_traits>
- 
 
-inline auto& modContainer = ModInterface::container(STR(PROJECT_NAME));
+struct ModInfo {
+    uintptr_t hookAddr;
+    uintptr_t funcLocation;
+};
+
+struct ModStorage {
+    std::vector<ModInfo> m_mods;
+
+    static inline ModStorage& create() {
+        auto a = new ModStorage;
+        return *a;
+    }
+    inline void registerHook(uintptr_t address, uintptr_t function) {
+        m_mods.push_back({address, function});
+    }
+};
+inline auto& modContainer = ModStorage::create();
 
 template<typename T>
 struct field_t {
@@ -80,6 +95,22 @@ inline T base_cast(F obj) {
  */
 #define inject() $inject(); static int const _inject = ($inject(), 0); void $inject()
 
+inline lilac::Mod* MyMod;
+
+LILAC_API bool LILAC_CALL lilac_load(lilac::Mod* mod) {
+    MyMod = mod;
+    for (auto i : modContainer.m_mods) {
+        mod->addHook(
+            (void*)i.hookAddr,
+            (void*)i.funcLocation
+        );
+    }
+    return true;
+}
+
+LILAC_API void LILAC_CALL lilac_unload() {
+
+}
 
 /**
  * Main class implementation, it has the structure

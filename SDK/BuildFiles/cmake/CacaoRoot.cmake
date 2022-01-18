@@ -20,7 +20,11 @@ file(MAKE_DIRECTORY ${CACAO_CODEGEN_DIR})
 set(CACAO_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/Cacao/Include)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-	set(SOURCE_FILES ${SOURCE_FILES} ${CMAKE_SOURCE_DIR}/Cacao/Source/Cacao.cpp ${CMAKE_SOURCE_DIR}/Cacao/Source/HandlerFixes.cpp)
+	#set(SOURCE_FILES ${SOURCE_FILES} ${CMAKE_SOURCE_DIR}/Cacao/Source/Cacao.cpp ${CMAKE_SOURCE_DIR}/Cacao/Source/HandlerFixes.cpp)
+	file(GLOB_RECURSE UTILS_SOURCES 
+		${CMAKE_SOURCE_DIR}/Cacao/Source/*.cpp
+	)
+	set(SOURCE_FILES ${SOURCE_FILES} ${UTILS_SOURCES})
 endif()
 
 if (DEFINED SOURCE_FILES)
@@ -56,7 +60,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	${CACAO_INCLUDE_DIR}/base
 	${CACAO_INCLUDE_DIR}/old_stl
 	${CACAO_INCLUDE_DIR}/hook
-	${CACAO_INCLUDE_DIR}/hook/lilac-core/include
+	${CACAO_INCLUDE_DIR}/lilac
+	${CACAO_INCLUDE_DIR}/lilac/core/include/lilac/core
 	${CACAO_INCLUDE_DIR}/cocos/
 	${CACAO_INCLUDE_DIR}/cocos/cocos2dx
 	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/include

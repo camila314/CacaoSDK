@@ -17,3 +17,9 @@
 [submodule "SDK/Include/hook/lilac-meta"]
 	path = SDK/Include/hook/lilac-meta
 	url = https://github.com/altalk23/lilac-meta
+[submodule "SDK/Include/core"]
+	path = SDK/Include/core
+	url = https://github.com/lilac-sdk/core/
+[submodule "SDK/Include/lilac-core"]
+	path = SDK/Include/lilac-core
+	url = https://github.com/lilac-sdk/core/

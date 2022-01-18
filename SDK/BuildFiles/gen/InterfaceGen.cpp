@@ -84,7 +84,7 @@ struct ${class_name} : {class_name}, InterfaceBase {{
 		using derivedType{index} = ret{index}(D<U, baseAddress{index}>::*)({raw_arg_types}) {const};
 		constexpr auto derivedAddress{index} = (derivedType{index})(&D<U, baseAddress{index}>::{function_name});
         if (baseAddress{index} != derivedAddress{index}) {{
-            modContainer.registerHookEnable(address{index}, FunctionScrapper::addressOf{non_virtual}Virtual(derivedAddress{index}));
+            modContainer.registerHook(address{index}, FunctionScrapper::addressOf{non_virtual}Virtual(derivedAddress{index}));
         }}
 )CAC";
 
@@ -94,7 +94,7 @@ struct ${class_name} : {class_name}, InterfaceBase {{
 		using derivedType{index} = ret{index}(*)({raw_arg_types});
 		constexpr auto derivedAddress{index} = (derivedType{index})(&D<U, baseAddress{index}>::{function_name});
         if (baseAddress{index} != derivedAddress{index}) {{
-            modContainer.registerHookEnable(address{index}, FunctionScrapper::addressOfNonVirtual(derivedAddress{index}));
+            modContainer.registerHook(address{index}, FunctionScrapper::addressOfNonVirtual(derivedAddress{index}));
         }}
 )CAC";
 

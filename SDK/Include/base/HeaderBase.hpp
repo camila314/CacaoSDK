@@ -7,7 +7,6 @@
 #include <MacroBase.hpp>
 #include <PlatformBase.hpp>
 
-#include <Core.hpp>
 #include <cocos2d.h>
 #include <fmod.hpp>
 #include <cocos-ext.h>
