@@ -1,21 +1,6 @@
 #pragma once
 
-#include "platform.hpp"
-
-// Set dllexport/dllimport to lilac classes & functions
-#if _WIN32
-
-#ifdef LILAC_EXPORTING
-    #define LILAC_DLL    __declspec(dllexport)
-#else
-    #define LILAC_DLL    __declspec(dllimport)
-#endif
-
-#else
-#define LILAC_DLL 
-#endif
-
-
+#include <platform/platform.hpp>
 
 // Because C++ doesn't like using a
 // namespace that doesn't exist

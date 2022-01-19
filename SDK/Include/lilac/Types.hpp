@@ -2,7 +2,7 @@
 
 #include "Macros.hpp"
 #include <string>
-#include "ctypes.h"
+#include <platform/cplatform.h>
 
 namespace lilac {
 	/**

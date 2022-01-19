@@ -20,11 +20,7 @@ file(MAKE_DIRECTORY ${CACAO_CODEGEN_DIR})
 set(CACAO_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/Cacao/Include)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-	#set(SOURCE_FILES ${SOURCE_FILES} ${CMAKE_SOURCE_DIR}/Cacao/Source/Cacao.cpp ${CMAKE_SOURCE_DIR}/Cacao/Source/HandlerFixes.cpp)
-	file(GLOB_RECURSE UTILS_SOURCES 
-		${CMAKE_SOURCE_DIR}/Cacao/Source/*.cpp
-	)
-	set(SOURCE_FILES ${SOURCE_FILES} ${UTILS_SOURCES})
+	set(SOURCE_FILES ${SOURCE_FILES} ${CMAKE_SOURCE_DIR}/Cacao/Source/Cacao.cpp ${CMAKE_SOURCE_DIR}/Cacao/Source/HandlerFixes.cpp)
 endif()
 
 if (DEFINED SOURCE_FILES)
@@ -54,7 +50,7 @@ target_compile_definitions(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-	${CACAO_CODEGEN_DIR}/
+	${CMAKE_BINARY_DIR}/
 	${CACAO_INCLUDE_DIR}/
 	${CACAO_INCLUDE_DIR}/helpers
 	${CACAO_INCLUDE_DIR}/base
@@ -65,7 +61,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	${CACAO_INCLUDE_DIR}/cocos/
 	${CACAO_INCLUDE_DIR}/cocos/cocos2dx
 	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/include
+	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/support/zip_support
 	${CACAO_INCLUDE_DIR}/cocos/cocos2dx/kazmath/include
+
 	${CACAO_INCLUDE_DIR}/cocos/extensions
 	${CACAO_INCLUDE_DIR}/fmod
 	${CACAO_INCLUDE_DIR}/gen/fmt/include

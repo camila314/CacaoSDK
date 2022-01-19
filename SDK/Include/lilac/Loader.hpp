@@ -5,6 +5,8 @@
 #include <string_view>
 #include <vector>
 #include <string>
+#include <unordered_map>
+#include <helpers/Result.hpp>
 
 class Lilac;
 
@@ -49,9 +51,6 @@ namespace lilac {
          */
         static constexpr const int s_supportedSchemaMax = 1;
 
-        Loader();
-        virtual ~Loader();
-
         /**
          * This function is to avoid ridiculous 
          * indentation in `checkMetaInformation`
@@ -81,6 +80,9 @@ namespace lilac {
         friend struct ModInfo;
         
     public:
+        Loader();
+        virtual ~Loader();
+
         static Loader* get();
         bool setup();
         size_t updateMods();

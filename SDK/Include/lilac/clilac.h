@@ -1,12 +1,11 @@
 #pragma once
 
-#include "interface/ctypes.h"
+#include <platform/cplatform.h>
+#include <stdbool.h>
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
-#else
-#include <stdbool.h>
-#include <stddef.h>
 #endif
 
 void LILAC_C_DLL lilac_mod_log(void* mod, const char* message);

@@ -7,22 +7,22 @@
 #include <MacroBase.hpp>
 #include <PlatformBase.hpp>
 
-#include <Header.hpp>
+#include <Gen/Header.hpp>
 #include <Cacao.hpp>
-#include <lilac-interface.hpp>
+#include <lilac.hpp>
 
 #include <FunctionBase.hpp>
 #include <unordered_map>
 
 #include <type_traits>
 
-struct ModInfo {
+struct TmpModInfo {
     uintptr_t hookAddr;
     uintptr_t funcLocation;
 };
 
 struct ModStorage {
-    std::vector<ModInfo> m_mods;
+    std::vector<TmpModInfo> m_mods;
 
     static inline ModStorage& create() {
         auto a = new ModStorage;
@@ -165,6 +165,6 @@ namespace Cacao {
     using namespace cocos2d::extension;
     using std::declval;
     struct interfaces { // i find this really funny
-        #include <Interface.hpp>
+        #include <Gen/Interface.hpp>
     };
 }

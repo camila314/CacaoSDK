@@ -114,7 +114,7 @@ namespace lilac {
      * @abstract
      */
     class LILAC_DLL Mod {
-    private:
+    protected:
         /**
          * Platform-specific info
          */
@@ -139,10 +139,6 @@ namespace lilac {
          * Whether the mod is loadable or not
          */
         bool m_resolved = false;
-        /**
-         * Mod info
-         */
-        ModInfo m_info;
         /**
          * Mod temp directory name
          */
@@ -173,6 +169,7 @@ namespace lilac {
         Result<> loadPlatformBinary();
         Result<> unloadPlatformBinary();
 
+ public:    // Quick fix, fod pls make it work
         /**
          * Low-level add hook
          */
@@ -185,8 +182,13 @@ namespace lilac {
 
         Result<> createTempDir();
 
-        static bool validateID(std::string const& id);
+        /**
+         * Mod info
+         */
+        ModInfo m_info; // pain
+ protected:
 
+        static bool validateID(std::string const& id);
         // no copying
         Mod(Mod const&)           = delete;
         Mod operator=(Mod const&) = delete;

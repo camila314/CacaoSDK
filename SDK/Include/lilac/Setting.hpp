@@ -2,10 +2,12 @@
 
 #include "Macros.hpp"
 #include "Types.hpp"
+#include <Base.hpp> // Cacao
 #include <ccTypes.h>
 #include <string>
 #undef snprintf
 #include <helpers/json.hpp>
+#include <helpers/Result.hpp>
 //#include <ccTypes.h>
 #include <limits>
 #undef min
