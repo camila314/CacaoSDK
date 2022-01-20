@@ -1,3 +1,6 @@
+# Archive Warning
+This project is no longer being maintained on this repository, and has moved and been renamed to [Geode](https://github.com/geode-sdk/sdk).
+
 # CacaoSDK
 Cacao is a revolutionary Geometry Dash modding framework for MacOS users. Cacao requires CMake so make sure you have that. To start, run the `create` file and specify a location
 
